@@ -14,6 +14,9 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`prototype/docs/qwen-layered-on-kaggle.md`](prototype/docs/qwen-layered-on-kaggle.md) | Qwen-Image-Layered on free Kaggle T4s: how to run it, why it needs a patch, gotchas |
 | [`prototype/layerproto/fp16_mixed.py`](prototype/layerproto/fp16_mixed.py) | Makes bf16-only Qwen-Image models run on fp16 GPUs (T4) without NaNs |
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
+| [`reports/Layered methods - how to get them working.md`](reports/Layered%20methods%20-%20how%20to%20get%20them%20working.md) | Every layered-generation paper: what runs, what could run, what to borrow; LayerFusion / DreamLayer move-resize analysis |
+| [`reports/Research gap and questions.md`](reports/Research%20gap%20and%20questions.md) | Research gaps that Qwen-Image-Layered and others leave open, and 5 candidate research questions |
+| [`reports/University GPU access LMU.md`](reports/University%20GPU%20access%20LMU.md) | LMU Informatics / LRZ GPU options versus paid APIs, with an access guide |
 | [`docs/open-paths.md`](docs/open-paths.md) | **Open routes and ideas still to research**: where strong text-to-image models fit, segment + inpaint, story events, budget |
 | [`reports/`](reports/) | Research reports: layered-generation models, hosting, the coherent pipeline, Kaggle plans, TPU route, speed and API costs |
 | [`reports/Image generation models hosting and costs.md`](reports/Image%20generation%20models%20hosting%20and%20costs.md) | The research before Phase 1: free and cheap places to run image models (Kaggle, LMU GPUs, Spaces, APIs, OpenRouter), a price-to-performance metric, sketch-input methods, CPU-only options, and links to test the candidate models |
@@ -31,7 +34,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 |---|---|
 | Local app (CPU laptop) | Works. LLM scene split with Ollama `qwen3:4b`, LayerDiffuse SDXL layers, per-layer re-prompt / refine / sketch, captions, recomposite with layer order. About 80 s per 512 px layer. |
 | LayerDiffuse scene-to-layer chain (each element generated on the existing scene) | Works on SDXL base (about 11 min per element on CPU) and on a Kaggle T4 (about 18 s per pass at 1024 px) |
-| Qwen-Image-Layered (image → RGBA layers) on Kaggle 2× T4 | Works with `fp16_mixed`: 640 px, 4 layers, 50 steps take 35 min. **Too slow**: the target is ≤ 40 s. A speed sweep at 512 / 384 px, with fewer steps and no CFG, is running. |
+| Qwen-Image-Layered (image → RGBA layers) on Kaggle 2× T4 | **Works within the time target:** 384 px, 3–4 layers, 4 steps, no CFG take **27–30 s** per split on the free T4s, with `fp16_mixed`. The defaults (640 px, 50 steps) took 35 min. Tested on 3 art styles; see [docs/findings-log.md](docs/findings-log.md), Phase 4. |
 | Hosted alternatives | Comfy Cloud (RTX PRO 6000) does it in seconds. fal costs about $0.05 per run. Kaggle TPU v5e-8 could plausibly reach about 40 s, but needs a port (2–5 days, unproven). See [reports/research_speed_and_apis.md](reports/research_speed_and_apis.md) and [reports/research_tpu_route.md](reports/research_tpu_route.md). |
 
 ## Quick start

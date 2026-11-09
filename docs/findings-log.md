@@ -146,6 +146,22 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 - **On the free T4s, 384 px with 3–4 layers and 4 steps takes 27–30 s**, well under the 40 s target. 512 px with 3 steps (31 s) is the sharper alternative.
 - The split carries over to pixel-art and line-art styles.
 - Weak spot: thin or low-contrast subjects (the pale skeleton) may stay in the background layer at 3 layers.
+### Sweep v6: Qwen-Image-Lightning 4-step LoRA on Layered (untested combination)
+
+**Setup:**
+- `fp16_mixed.add_lora` attaches the LoRA without merging it into the GGUF weights. All 720 LoRA modules matched Layered's layers.
+- The Lightning scheduler config is from the lightx2v model card.
+- Images are in [prototype/kaggle/results_qwen_sweep_v6_lightning/](../prototype/kaggle/results_qwen_sweep_v6_lightning/).
+
+| Variant (384 px, 4 layers, 4 steps) | Total | Recomposite diff | Observation |
+|---|---|---|---|
+| base model (v5) | 30 s | 7.1 | reference |
+| Lightning scheduler only | 35 s | 8.6 | about the same as the base |
+| Lightning LoRA at 0.5 | 39 s | 10.3 | in between |
+| Lightning LoRA at 1.0 | 37–39 s | 11–13.5 | sketch: **the skeleton now separates cleanly** (base: half stuck in the background). But colours and texture drift: noisier sky, the image no longer matches the input as closely. |
+
+**Verdict:** not worth adopting. It doesn't speed anything up (the base model already works at 4 steps), costs about 5 s of LoRA overhead, and reduces how faithfully the layers match the input. Better separation of thin subjects is its only plus. An alternative for that is 4 instead of 3 layers.
+
 - GPU time used for the Qwen sweeps so far: about 2.5 h (Kaggle quota shows 5.4 h this week, including earlier editor sessions).
 
 ## Working agreements
