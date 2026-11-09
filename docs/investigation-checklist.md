@@ -67,3 +67,13 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 - [x] Drift evaluation: EdiVal-Agent harness, 3-arm protocol; the re-decomposition arm would be new
 - [x] HCI: ImageDirector (UIST '26) is the closest prior work, found via the LMU ACM proxy; G4 reworded
 - [ ] Kaggle trials once Kaggle recovers: Qwen-Image-2.1 (auto-push), plain-FLUX control, RevealLayer v8, LayerDiffuse-Flux
+
+## G. Non-Kaggle follow-ups (2026-11-09 night)
+
+- [x] Procedural shadow layer `prototype/layerproto/shadow.py`: EasyOmnimatte-style recipe, with a contact line per object and a cap on shadow length; about 0.6 s per layer on CPU. Results in `prototype/kaggle/results_local_shadow/`
+- [x] Drift-evaluation harness `prototype/layerproto/drift_eval.py`: 3 arms, metrics measured outside the edited regions, per-layer alpha IoU/L1, AUC. Self-test with stand-in editors (`tools/drift_harness_selftest.py`; not a result about real editors)
+- [ ] Story-event router (Ollama) using strategies (a)–(d)
+- [ ] IC-Light fbc relight module, to become `relocate()` v6
+- [ ] Qwen levers: text-encoder cache, 2 layers, Stable-Layers Heun loop
+- [ ] Notebooks: plain-FLUX control, ART+ (weights from `thuteam/CLD`), CLD, voice-note E items
+- [ ] User-study protocol document
