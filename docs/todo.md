@@ -9,20 +9,20 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [~] Fox & cottage runs queued: Qwen-Image-Layered (4/5/6 layers, 384/512 px), Stable-Layers (Euler/Heun), RevealLayer (true_gs 1 / 12 steps and 3.5 / 16 steps)
 - [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
-- [~] **RevealLayer:** works (run 11). Next: the second scene and `true_gs` 3.5 / 16 steps, fox & cottage with boxes
-- [~] **ART+:** run 3 (decoder checkpoint fix) running
+- [~] **RevealLayer:** works on the forest (run 11); fox & cottage run 14 (5 boxes, true_gs 1/12 and 3.5/16) queued
+- [~] **ART+:** runs end to end (run 5); output wrong (small image in a corner, opaque rectangles) → debug size handling and the transparent decode
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
-- [~] **LayerDiffuse-Flux:** run 4 (LoRA keys converted from kohya/BFL format) queued
-- [~] **Stable-Layers:** v9 sweep (Heun via `HeunVelocity`, 2 layers) re-queued; then colour-shift correction
+- [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
+- [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
 - [ ] **LayerD:** threshold / recursion sweep; fox & cottage; a graphic-style image
 - [ ] **SAM2 + LaMa:** segment by noun (points/boxes from the LLM breakdown), mask merging, LaMa vs SDXL inpaint, amodal completion (pix2gestalt)
 - [ ] **Qwen-Image-2.1:** stronger scene-wide edits (the rain edit was subtle), fix the dark halo on RGBA objects, use it as base-image generator
-- [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([models/unreleased.md](models/unreleased.md))
+- [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU
-- [ ] `relocate()` + IC-Light relight + shadow layer together on a T4 ([concepts/harmonisation.md](concepts/harmonisation.md)); attention sharing for thin parts
-- [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([concepts/story-events.md](concepts/story-events.md))
+- [ ] `relocate()` + IC-Light relight + shadow layer together on a T4 ([editing.md §2](concepts/editing.md#2-relighting-and-shadows)); attention sharing for thin parts
+- [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([editing.md §3](concepts/editing.md#3-story-events-across-layers))
 - [ ] Drift experiment with real editors (layered / flat / re-decompose arms) ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [ ] Wire the GPU modules into the app (`prototype/app.py`) as a selectable backend
 

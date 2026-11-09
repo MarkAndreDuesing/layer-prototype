@@ -17,6 +17,21 @@ Kaggle T4; SAM2 hiera-small automatic masks, the 4 largest object masks (< 35% o
 
 3–7 s per image; recomposite diff 0.2–2.4 (layers are cut-outs). Results: [`../../prototype/kaggle/results_segment_inpaint/`](../../prototype/kaggle/results_segment_inpaint/).
 
+## Helper tools (licences)
+
+| Tool | Role | Licence | Size |
+|---|---|---|---|
+| SAM 2.1 | prompted segmentation | Apache-2.0 | 39–224M |
+| SAM 3 | text-prompted segmentation | Meta licence, gated | ≈ 3.6 GB |
+| Florence-2-large | text grounding → boxes for SAM | MIT | 0.77B |
+| BiRefNet | matting (clean cut-outs) | MIT | 0.2B |
+| BEN2 base | matting | MIT | 94.6M |
+| RMBG-2.0 | matting | CC BY-NC, gated | — |
+| LaMa | background fill | Apache-2.0 | small |
+| pix2gestalt | amodal completion of occluded objects | — | — |
+
+More in [../research/hosting.md §7](../research/hosting.md#7-matting-segmentation-and-helper-tools).
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.

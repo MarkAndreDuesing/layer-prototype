@@ -336,6 +336,18 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - **Test scene:** the user chose the fox & cottage variant with the cottage, a stone wall with gate, a path, a fox, a tree and background houses; the prompt was tuned (larger free-standing fox) and the user picked seed 13: `prototype/test_scene/fox_cottage.png`, with layer names and boxes in `fox_cottage.json`.
 - **Docs restructured** into status / todo / log / glossary / concepts / models / research / guides / archive (old → new paths in [archive/MOVED.md](archive/MOVED.md)).
 
+## Phase 8: fox & cottage runs, ART+ end to end, docs consolidated (2026-11-10)
+
+| Run | Result |
+|---|---|
+| Qwen-Image-Layered on fox & cottage (384 px, 4 layers, 4 steps) | 33 s; background / house roof / cottage + tree / fox; 6 layers 41 s; 5 layers at 512 px 62 s |
+| Stable-Layers on fox & cottage (5 layers) | 39 s Euler, 67 s Heun; cleanest split so far: sky / meadow / cottage + tree / path / fox; colour shift (diff ≈ 21) |
+| ART+ run 4 | denoising finished, OOM in the fp32 VAE decode with the transformer still on GPU 0 |
+| ART+ run 5 | end to end (345 s / 285 s, 10 GB) after offloading the transformer before decoding; output wrong: small image in one corner, opaque rectangles, case 2 blank |
+| RevealLayer runs 12–13 (fox & cottage) | failed: fp16 inputs to the scene VAE that our patch had switched to fp32 (the forest test ran only one case); run 14 casts the inputs |
+
+Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with a workflow diagram and routes A–F, [editing](concepts/editing.md), [fp16-on-t4](concepts/fp16-on-t4.md)); LayerFusion and the unreleased methods merged into one methods table ([papers-survey](research/papers-survey.md)); the two Kaggle guides merged ([guides/kaggle.md](guides/kaggle.md)); missing archive tables (APIs, price-performance, base models, LMU access, TPU routes, tool licences) moved into [research/hosting.md](research/hosting.md); research-note facts moved into the factsheets as tables. Where each snapshot's content lives: [archive/MOVED.md](archive/MOVED.md).
+
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)
 
 Merged from the former `session-summary-sketch-to-image.md` (original kept in [archive/](archive/2026-11-07%20Session%20summary%20sketch-to-image.md)).

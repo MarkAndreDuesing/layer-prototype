@@ -1,6 +1,6 @@
 # Current status
 
-> **Role: current state.** The one place for "where are we now". Update this file whenever something changes; other files link here instead of repeating numbers. History is in [log.md](log.md); open work in [todo.md](todo.md). Last update: 2026-11-09, late evening.
+> **Role: current state.** The one place for "where are we now". Update this file whenever something changes; other files link here instead of repeating numbers. History is in [log.md](log.md); open work in [todo.md](todo.md). Last update: 2026-11-10.
 
 **Goal (the loop):** one text prompt → a coherent layered scene → edit single layers (re-prompt, move, resize) → recomposite → story events change the scene. Free hardware: Kaggle 2× T4 (fp16 only) and a CPU laptop. No user study is planned; the prototype and its technical measurements are the contribution ([research/research-gap.md](research/research-gap.md)).
 
@@ -16,31 +16,33 @@
 | Text → layers directly | LayerDiffuse SDXL chain (one element at a time); ART+ (text + boxes) in testing | 18 s per pass at 1024 px (T4) | [models/layerdiffuse-sdxl.md](models/layerdiffuse-sdxl.md), [models/art-plus.md](models/art-plus.md) |
 | Re-prompt one layer | LayerDiffuse `bg2ble → bgble2fg` through the composite; **Qwen-Image-2.1 edits a transparent layer directly** | 18 s / 23 s | [models/qwen-image-2.1.md](models/qwen-image-2.1.md) |
 | Extract one object as a layer | Qwen-Image-2.1 extraction (clean, in place); SAM2 masks | 22 s / 3–7 s | [models/sam2-lama.md](models/sam2-lama.md) |
-| Move / resize a layer | `relocate()` v5: warp + SDXL re-harmonise + interior pinning + paste-back | about 4 s per edit (T4) | [concepts/relocate.md](concepts/relocate.md) |
-| Relight / shadows | IC-Light relight module and procedural shadow layer (CPU-tested) | 44 s CPU / 0.6 s | [concepts/harmonisation.md](concepts/harmonisation.md) |
-| Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU-tested); generative GPU pass pending | about 30 s routing on CPU | [concepts/story-events.md](concepts/story-events.md) |
+| Move / resize a layer | `relocate()` v5: warp + SDXL re-harmonise + interior pinning + paste-back | about 4 s per edit (T4) | [editing.md §1](concepts/editing.md#1-move--resize-with-re-harmonisation-relocate) |
+| Relight / shadows | IC-Light relight module and procedural shadow layer (CPU-tested) | 44 s CPU / 0.6 s | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
+| Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU-tested); generative GPU pass pending | about 30 s routing on CPU | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
 | Recomposite | Alpha compositing in code | instant | — |
 | Measure drift over many edits | Harness built (3 arms), self-test only | — | [research/drift-evaluation.md](research/drift-evaluation.md) |
 
-## Each model / approach (one line each; full factsheets in [models/](models/README.md))
+## Each model: best result so far
 
-| Model | Runs on our hardware? | Status |
-|---|---|---|
-| Qwen-Image-Layered | Yes, 2× T4, 27–35 s per split | Main decomposer |
-| Stable-Layers | Yes, 2× T4, 34 s at 4 steps | Tried; colour shift; Heun + 2-layer sweep running |
-| Qwen Lightning LoRA (on Layered) | Yes | Tried once; 2-step and scale retries open |
-| RevealLayer | **Yes, 2× T4, 134 s for 12 steps** | Works since run 11 (fp16 fixes in its code) |
-| ART+ / PrismLayers | Loads on 2× T4 (295 s, 7.0 / 11.0 GB) | Run 4 (fp32 VAE input fix) running |
-| CLD | Not yet tried | Next, after ART+ (same code family as RevealLayer) |
-| LayerDiffuse-Flux | **Yes, one T4, about 58 s per object** | Works: clean transparent objects incl. semi-transparent glass |
-| Qwen-Image-2.1 (RGBA) | **Yes, 2× T4, 17–23 s** | Works: RGBA text-to-image, layer edit, extraction |
-| LayerDiffuse SDXL (+ chain) | Yes, T4 and CPU | Working base of the prototype |
-| LayerD | Yes, CPU | First attempt: 1 layer; parameter retries open |
-| SAM2 + LaMa | Yes, T4, 3–7 s | First attempt: poor automatic grouping; prompted segmentation open |
-| Plain FLUX.1-dev (control) | Yes, 41 s for 16 steps | Proves FLUX itself runs cleanly in fp16 on a T4 |
-| OmniPSD, PSDiffusion, DreamLayer, LASAGNA, … | — | No weights released ([models/unreleased.md](models/unreleased.md)) |
+One line per model; the full measured table is generated in [models/README.md](models/README.md), the method overview is [research/papers-survey.md](research/papers-survey.md).
+
+| Model | Best result on our hardware | State | Factsheet |
+|---|---|---|---|
+| Qwen-Image-Layered | 27–35 s per split (2× T4); fox & cottage: bg / roof / cottage + tree / fox in 33 s | ✅ main decomposer | [→](models/qwen-image-layered.md) |
+| Stable-Layers | fox & cottage: sky / meadow / cottage + tree / path / fox (39 s Euler, 67 s Heun); colour shift | ✅ | [→](models/stable-layers.md) |
+| RevealLayer | 134 s, background with hidden areas filled + clean layers (forest) | ✅ forest; fox run v14 queued | [→](models/revealayer.md) |
+| Qwen-Image-2.1 | 17–23 s: RGBA text-to-image, RGBA layer edit, extraction | ✅ | [→](models/qwen-image-2.1.md) |
+| LayerDiffuse-Flux | 58 s per transparent object (one T4), semi-transparent glass | ✅ | [→](models/layerdiffuse-flux.md) |
+| LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
+| ART+ | runs end to end (≈ 5 min, 10 GB); output wrong (small image, opaque boxes) | ⚠️ debugging | [→](models/art-plus.md) |
+| SAM2 + LaMa | 3–7 s; poor automatic grouping | ⚠️ retry with noun prompts | [→](models/sam2-lama.md) |
+| LayerD | 60 s CPU; 1 layer on painted scenes | ⚠️ retry | [→](models/layerd.md) |
+| Qwen Lightning LoRA | no speed-up at 4 steps | ⚠️ retry at 2 steps | [→](models/qwen-lightning.md) |
+| CLD | — | ⏳ not run yet | [→](models/cld.md) |
+| Plain FLUX.1-dev (control) | 41 s for 16 steps, no overflow | ✅ check only | — |
+| PSDiffusion, DreamLayer, OmniPSD, LASAGNA, LayerFusion … | — | ❌ no weights / code | [papers-survey §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code) |
 
 ## Infrastructure
-- **Kaggle:** 2× T4, 30 GPU-h/week, **max 2 batch GPU sessions at once**; notebooks are generated by `prototype/tools/make_*.py` and pushed with the CLI ([guides/kaggle-cli.md](guides/kaggle-cli.md)). Quota used this week: about 7 h of 30 (check on kaggle.com/settings).
+- **Kaggle:** 2× T4, 30 GPU-h/week, **max 2 batch GPU sessions at once**; notebooks are generated by `prototype/tools/make_*.py` and pushed with the CLI ([guides/kaggle.md](guides/kaggle.md)). Quota used this week: about 7 h of 30 (check on kaggle.com/settings).
 - **TPU:** CLI batch runs got no TPU (standard CPU image); next try is an interactive TPU session ([research/hosting.md](research/hosting.md#tpu)).
 - **Repo:** github.com/MarkAndreDuesing/layer-prototype.

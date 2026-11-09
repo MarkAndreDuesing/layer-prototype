@@ -22,6 +22,10 @@ Same stack as Qwen-Image-Layered; LoRA attached unmerged with `fp16_mixed.add_lo
 | **4 Heun steps, 384 px** (forest / sketch / pixel art) | 58–61 s | 15.5–17.9 |
 | 8 Heun steps, 384 px | 130 s | 14.8 |
 | 2 layers, 4 Euler steps | 26.5 s | 14.2 |
+| **fox & cottage, 5 layers, 4 Euler steps** | 39 s | 21.0 |
+| fox & cottage, 5 layers, 4 Heun steps | 67 s | 20.6 |
+
+On fox & cottage both give the cleanest split so far: **sky / meadow / cottage + tree / path / fox** ([`results_qwen_fox_v11/`](../../prototype/kaggle/results_qwen_fox_v11/)).
 
 Heun results: [`../../prototype/kaggle/results_qwen_v9b/`](../../prototype/kaggle/results_qwen_v9b/). Euler results: [`../../prototype/kaggle/results_stable_layers_v8/`](../../prototype/kaggle/results_stable_layers_v8/). The README asks for Heun, 50 steps, 640 px.
 

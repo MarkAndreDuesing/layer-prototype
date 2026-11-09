@@ -17,6 +17,15 @@ Planned: same pattern as RevealLayer/ART+ (GGUF re-class, unmerged LoRAs, `fp16_
 
 Not run yet.
 
+## Facts from the paper and repo
+
+| Topic | Fact |
+|---|---|
+| Training | rank-64 LoRA on FLUX.1-dev, 25K iterations at 1024², on the PrismLayersPro training split; reuses ART's transparent decoder |
+| Weights lineage | `pre_trained_LoRA` = ART base (SHA-256 identical); `prism_ft_LoRA` = ART+ PrismLayersPro or CLD's own fine-tune (unclear) |
+| Inputs | image (to the ControlNet adapter) + caption + boxes (snapped to 16 px); adapter conditioning scale 0.9, CFG 4 |
+| Outputs | RGBA whole image, RGBA background, one RGBA layer per box |
+
 ## Best features
 
 Controllable decomposition by boxes, like RevealLayer, with a different training recipe.

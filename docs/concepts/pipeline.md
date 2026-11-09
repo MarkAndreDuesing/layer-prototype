@@ -1,44 +1,71 @@
-# The pipeline: roles, flow and data model
+# The pipeline: loop, routes, roles, data model
 
-> **Role: concept (stable explanation).** How it works and why. Current numbers live in [../status.md](../status.md) and the factsheets in [../models/](../models/README.md); history in [../log.md](../log.md).
+> **Role: concept (high).** How the prototype's loop is built and why. Current numbers: [../status.md](../status.md); models: [../research/papers-survey.md](../research/papers-survey.md). Mechanics of move/resize, relighting and story events: [editing.md](editing.md).
 
-## Goal
+## 1. The loop
 
-**text prompt → coherent layered scene → modify single layers (re-prompt, move, resize) → recompose → story events change the scene.** Each step uses the model that is best at it; no single model does everything.
+```mermaid
+flowchart LR
+    P[Players' text / sketch] --> L[LLM: scene plan<br/>layer names + boxes]
+    L --> G[Whole scene image<br/>SDXL-Turbo · FLUX · Qwen-Image-2.1]
+    G --> D[Split into RGBA layers<br/>Qwen-Image-Layered · Stable-Layers · RevealLayer]
+    L -. text + boxes .-> J[Joint layer generation<br/>ART+ · LayerDiffuse chain]
+    J --> S
+    D --> S[(Layer stack<br/>scene.json)]
+    S --> E1[Re-prompt a layer<br/>LayerDiffuse chain · Qwen-Image-2.1 edit]
+    S --> E2[Move / resize<br/>relocate + relight + shadow]
+    S --> E3[Story event<br/>router → per-layer actions]
+    E1 --> S
+    E2 --> S
+    E3 --> S
+    S --> R[Recomposite → display]
+```
 
-## Why "generate one image, then split it"
+**Why "generate one image, then split it" (or generate jointly):** generating every object on its own and pasting them gives a **sticker collage**: objects don't share lighting, perspective or style. The first prototype did exactly that (LLM splits the prompt into nouns → one LayerDiffuse layer per noun → boxes), so the LLM split is now only a helper (layer names, boxes, captions).
 
-Generating each object separately and pasting them together gives a **sticker collage**: objects don't share lighting, perspective or style (the first prototype did exactly this: an LLM split the prompt into nouns, LayerDiffuse made one transparent layer per noun, boxes placed them). Coherence comes from either
-1. **one image first, then split** (Qwen-Image-Layered, RevealLayer, SAM2 + LaMa), or
-2. **joint or conditioned generation** (ART+ from text + boxes; the LayerDiffuse chain drawing each new element *into* the current scene).
+## 2. Candidate routes (from the 11-07 analysis, updated with measurements)
 
-Analysis and the five candidate pipelines: [../archive/2026-11-07 Coherent layered generation pipeline.md](../archive/2026-11-07%20Coherent%20layered%20generation%20pipeline.md).
+| | Route | Coherence | Re-prompt one layer | Move / resize | On free hardware (measured) |
+|---|---|---|---|---|---|
+| **A** | text-to-image → **Qwen-Image-Layered** (or Stable-Layers) | highest: all layers from one image | inpaint the composite in the layer mask, or edit the RGBA layer (Qwen-Image-2.1) | 2D + `relocate()` | ✅ 27–35 s per split on 2× T4 |
+| **B** | background → per object LayerDiffuse `bg2ble → bgble2fg` on the composite so far | high: each object drawn into the real scene | re-run both steps with the other layers as background | `relocate()`; lighting baked in | ✅ 18 s per element (T4) |
+| **C** | text-to-image → segmenter (SAM2, optionally grounded by the LLM's nouns) → LaMa / SDXL fill | as good as the source; occluded parts missing | inpaint the composite, re-segment | 2D; a moved object shows a "bite" unless completed | ✅ 3–7 s (T4); grouping poor so far |
+| **D** | native joint models (ART+, PSDiffusion, DreamLayer, LASAGNA) | high in the papers | not described | DreamLayer only | ART+ runs (output still wrong); others unreleased |
+| **E** | layout first (LLM / user boxes) → whole-canvas img2img ≈ 0.6 → split with A or C | high and respects placement | as A or C | placement fixed up front | untested |
+| **F** | image + boxes → **RevealLayer** (or CLD) | high; hidden parts and background filled | as A | moving reveals no hole | ✅ 134 s (2× T4) |
 
-## Roles (one model per role, each behind its own interface)
+**Re-prompting a layer while staying coherent:** never regenerate the layer alone. Background = composite of all other layers → mask = the layer's region → draw the new content into that scene (LayerDiffuse `bg2ble`, SDXL inpaint) → extract it as a layer (`bgble2fg`, a segmenter, or re-split). Qwen-Image-2.1 can edit the RGBA layer directly but doesn't see the scene.
 
-| # | Role | Default now | Alternatives | Where it runs |
+## 3. Roles (one model per role, each behind its own interface)
+
+| # | Role | Default now | Alternatives | Runs on |
 |---|---|---|---|---|
-| 1 | Prompt optimiser + scene plan (nouns, boxes) | Ollama `qwen3:4b` | API LLM | laptop |
-| 2 | Text → whole scene | SDXL-Turbo (CPU) | Qwen-Image-2.1, FLUX.1-dev GGUF, ART+ (text + boxes → layers directly) | laptop / Kaggle |
-| 3 | Sketch + prompt → scene | SDXL-Turbo img2img | — | laptop |
-| 4 | **Decompose into layers** | **Qwen-Image-Layered** | RevealLayer (with boxes, fills hidden parts), Stable-Layers, CLD, SAM2 + LaMa, LayerD | Kaggle 2× T4 |
-| 5a | Re-prompt one layer through the scene | LayerDiffuse `bg2ble → bgble2fg` on the composite of the *other* layers | Qwen-Image-2.1 edit of the layer itself | Kaggle T4 |
-| 5b | Content edit of one layer | Qwen-Image-2.1 RGBA edit | Qwen-Image-Edit, FLUX Kontext | Kaggle |
-| 6 | Add an element / story event | LayerDiffuse chain on the composite; event router ([story-events.md](story-events.md)) | edit composite then re-split | Kaggle / laptop |
-| 7 | Move / resize + re-harmonise | `relocate()` ([relocate.md](relocate.md)) + relight + shadow ([harmonisation.md](harmonisation.md)) | plain canvas move (preview) | Kaggle T4 |
-| 8 | Recompose | alpha compositing in code | — | laptop |
-| 9 | Captions / word links (add-on) | `qwen2.5vl:3b` captions per layer | API vision model | laptop |
+| 1 | prompt refine + scene plan (nouns, boxes) | Ollama `qwen3:4b` | API LLM | laptop |
+| 2 | text → whole scene | SDXL-Turbo | Qwen-Image-2.1, FLUX.1-dev GGUF | laptop / Kaggle |
+| 3 | sketch + prompt → scene | SDXL-Turbo img2img | — | laptop |
+| 4 | split into layers | Qwen-Image-Layered | Stable-Layers, RevealLayer, CLD, SAM2 + LaMa, LayerD | Kaggle 2× T4 |
+| 5 | add / re-prompt a layer in context | LayerDiffuse chain | Qwen-Image-2.1 RGBA edit | Kaggle T4 |
+| 6 | move / resize + re-harmonise | `relocate()` + IC-Light + shadow layer | plain 2D move (preview) | Kaggle T4 |
+| 7 | story event | event router + previews | edit composite, re-split | laptop + Kaggle |
+| 8 | recompose | alpha compositing | — | laptop |
+| 9 | captions / word links (add-on) | `qwen2.5vl:3b` | API vision model | laptop |
 
-## Flow
-1. Players describe the scene (text, optionally a sketch); role 1 refines it.
-2. Role 2/3 makes candidate whole images; the group picks one.
-3. Role 4 splits it into N aligned, full-canvas RGBA layers.
-4. Players arrange layers (move, resize, reorder); role 7 re-harmonises on demand, role 8 recomposes.
-5. Per-layer fixes: re-prompt (5a), content edit (5b), or re-split one layer.
-6. Story events (role 6) add or change layers; players accept or edit.
+## 4. Data model (`scene.json`)
 
-## Data model (`scene.json`)
-- **Scene:** prompt, base image, canvas size, ordered layers, edit history.
-- **Layer:** full-canvas RGBA PNG; transform `{x, y, scale, rotation}`; visibility; provenance (decomposed / re-prompted / edited / added by event); prompt, seed; optional caption.
+| Object | Fields |
+|---|---|
+| Scene | prompt, chosen base image, canvas size, ordered layers, edit history |
+| Layer | full-canvas RGBA PNG; transform `{x, y, scale, rotation}`; visibility; provenance (decomposed / re-prompted / edited / added by event); prompt, seed; optional caption |
 
-Earlier plans (kept as snapshots): [../archive/2026-11-07 Qwen layered multi model pipeline plan.md](../archive/2026-11-07%20Qwen%20layered%20multi%20model%20pipeline%20plan.md), [../archive/2026-11-07 Layer based architecture models and hosting.md](../archive/2026-11-07%20Layer%20based%20architecture%20models%20and%20hosting.md).
+## 5. Build status of the original plan
+
+| Phase (from the 11-07 plan) | Status |
+|---|---|
+| 1. Remote decompose (Qwen-Image-Layered on Kaggle) | ✅ done (batch notebook; no live endpoint yet) |
+| 2. Stronger text-to-image | ⚠️ tested (FLUX, Qwen-Image-2.1), not wired into the app |
+| 3. "Generate → choose → decompose" in the UI + canvas | ❌ open |
+| 4. Re-prompt / story-event layers via the chain | ✅ on Kaggle; app integration open |
+| 5. Content edit of one layer (Qwen-Image-2.1 / Qwen-Image-Edit) | ✅ Qwen-Image-2.1 tested |
+| 6. Captions and word links | ✅ in the local app |
+
+Snapshots with the original reasoning: [2026-11-07 Coherent layered generation pipeline](../archive/2026-11-07%20Coherent%20layered%20generation%20pipeline.md), [2026-11-07 Qwen layered multi model pipeline plan](../archive/2026-11-07%20Qwen%20layered%20multi%20model%20pipeline%20plan.md).

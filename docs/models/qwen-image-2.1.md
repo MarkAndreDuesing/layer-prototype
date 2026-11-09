@@ -28,6 +28,22 @@ Qwen Research licence (non-commercial). `Qwen/Qwen-Image-2.1(-Turbo)`; GGUF from
 
 Load 247 s; peak 9.6–10.7 GB. Results: [`../../prototype/kaggle/results_qwen21_v2/`](../../prototype/kaggle/results_qwen21_v2/).
 
+## Usage facts (from the research notes)
+
+| Topic | Fact |
+|---|---|
+| Alpha design | the VAE takes 4-channel RGBA in and out (64-channel latent, 16× downsampling); generation and editing share one pipeline |
+| Official prompts | only the transparency wrapper is official; ComfyUI's background-removal template uses "Remove the background, and output a PNG image." |
+| References | up to 10 reference images (16 ComfyUI slots); `image_1` is the image being edited; placement only by prompt and circle/mask images, no coordinates |
+| Harmonising a pasted object | plausible: pass the rough composite as `image_1` and ask for a blend [unverified] |
+| Alpha quality | no measured benchmark; one provider guide reports near-binary alpha (glass ≈ 99 % opaque) |
+| Speed-ups | Turbo (8 steps), Lightning LoRA, Lightning v2 RL, Fun-Acc LoRA (4 steps); KV cache int8/int4 in ComfyUI |
+| VRAM reports | 4060 Ti 16 GB, int8, 1024 px, 25 steps: ≈ 20 s per image, peak ≈ 15 GB; 5090, NF4: 15.2 GB peak |
+| fp16 | stock VAE NaNs on transparent pixels (texture-fix VAE fixes it); one all-NaN text-encoder report (suspected corrupt files) |
+| Multi-layer | no official multi-layer mode, no announced Layered 2.x, no community decomposition LoRA |
+
+Full notes: [qwen_image_21_rgba.md](../../research_notes/Layered%20loop%20open%20paths/qwen_image_21_rgba.md).
+
 ## Best features
 
 - One model covers three loop steps: new layer from text, re-prompt a layer keeping transparency, cut an object out of a scene.

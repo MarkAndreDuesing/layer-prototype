@@ -15,7 +15,21 @@ GGUF Q4_K_S FLUX.1-dev re-classed into `CustomFluxTransformer2DModel` (max 52 la
 
 ## Benchmarks
 
-Run 2: all LoRAs matched (190 / 304 / 304), weights from the official Drive folders. Run 3: loaded in 295 s (7.0 / 11.0 GB), decoder keys all matched; generation failed on fp16 inputs to the fp32 VAEs. Run 4 (input-casting hooks) running.
+| Run | Result |
+|---|---|
+| 2 | all LoRAs matched (190 / 304 / 304), weights from the official Drive folders; decoder checkpoint load failed (`weights_only`) |
+| 3 | loaded 295 s (7.0 / 11.0 GB); fp16 inputs to fp32 VAEs |
+| 4 | denoising finished; OOM in the fp32 VAE decode |
+| **5** | **end to end: 345 s / 285 s at 16 steps, 10 GB; output wrong** |
+
+## Facts from the paper and repo
+
+| Topic | Fact |
+|---|---|
+| Lineage | ART trained from FLUX.1-dev; ART+ fine-tuned from it (20K iterations at 512², then 10K at 1024²) on PrismLayersPro (Apache-2.0 dataset) |
+| Input | JSON: caption with a style prefix ("This is a [STYLE] style image. …", 21 styles) + layout boxes; the first two boxes are the full image; no input image needed |
+| Weights | Drive folders: `pre_fuse_lora`, `base_ckpt` (ART), `artplus_PrismLayersPro(100k)_ckpt` (`layer_pe` + LoRA), `transp_vae`; unofficial HF mirror `24yearsold/PrismLayers_ckpt` (5.56 GB, 100k variant only) |
+| Original pipeline | the two LoRAs are fused into FLUX, the ART+ LoRA loaded as adapter "layer"; diffusers 0.31, torch 2.4, bf16 |
 
 ## Best features
 
@@ -27,7 +41,7 @@ Trained at 1024 px (we run 512); heavy; Drive downloads can hit quotas.
 
 ## Status
 
-Run 4 running.
+Runs end to end since run 5 (transformer offloaded before the VAE decode): 345 s and 285 s for 16 steps, peak 10 GB. **Output not yet correct:** the whole image comes out small in one corner, layers are opaque rectangles, case 2 blank → size handling and the transparent decode need debugging ([`results_artplus_v5/`](../../prototype/kaggle/results_artplus_v5/)).
 
 ## Next attempts
 

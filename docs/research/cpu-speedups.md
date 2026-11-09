@@ -68,3 +68,38 @@ The chain needs SDXL base at 20 steps and CFG 7 (on SDXL-Turbo the extract step 
 - [Intel Extension for PyTorch (EOL notice)](https://pytorch-extension.intel.com/)
 - [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) · [issue #1449 (Iris Xe)](https://github.com/leejet/stable-diffusion.cpp/issues/1449) · [OpenVINO issue #26391 (iGPU slower than CPU)](https://github.com/openvinotoolkit/openvino/issues/26391)
 - [Intel Core 7 150U](https://nanoreview.info/en/cpu/intel-core-7-150u) · [Intel Core i7-12700](https://nanoreview.info/en/cpu/intel-core-i7-12700)
+
+## Laptop baseline and CPU models (from the 11-05 research)
+
+**Target:** Intel Core 7 150U (15 W, 10 cores / 12 threads, AVX2), 15.7 GB DDR5 on a single module, Intel Iris Xe integrated graphics (96 EUs, shared memory), no dedicated GPU, no NPU. Cinebench R23 multi-core: 8,883, against 19,714 for the desktop i7-12700 that FastSD CPU's published timings use, so **about 2.2× slower** before throttling.
+
+**Tools** (both MIT, both offline once models are downloaded):
+- [FastSD CPU](https://github.com/rupeshs/fastsdcpu): web UI, img2img, ControlNet (LCM-LoRA mode only), OpenVINO, optional Intel iGPU (`DEVICE=GPU`; reports are mixed and the first run compiles).
+- [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp): C++ engine for CPU and Vulkan/OpenCL GPUs; SD 1.x/2.x/XL, Turbo models, FLUX.2 Klein, Qwen Image, Z-Image; ControlNet for SD 1.5 only. One Iris Xe data point: SD 1.5 at 20 steps took 321 s and needed `--diffusion-fa`.
+
+| Model | Published on i7-12700 (OpenVINO, 512 px) | Laptop estimate at research time [est] | RAM | Sketch support | Link |
+|---|---|---|---|---|---|
+| SDXS-512-0.9 | 0.82 s, 1 step | 2–3 s | Low | img2img | [Model](https://huggingface.co/IDKiro/sdxs-512-0.9) |
+| SD-Turbo | 1.7 s | 4–5 s | About 4 GB | img2img | [Model](https://huggingface.co/stabilityai/sd-turbo) |
+| SDXL-Turbo | 2.5 s | 6–8 s | 8 GB minimum | img2img | [Model](https://huggingface.co/stabilityai/sdxl-turbo) |
+| Hyper-SD SDXL | 6.3 s at 768 px | 15–20 s | 8 GB | img2img | [Model](https://huggingface.co/ByteDance/Hyper-SD) |
+| SD 1.5 + LCM-LoRA + ControlNet | Not published | 20–60 s | 4 GB | ControlNet (LineArt, SoftEdge, scribble) | [Base](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) · [LCM-LoRA](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5) · [Scribble](https://huggingface.co/lllyasviel/control_v11p_sd15_scribble) · [LineArt](https://huggingface.co/lllyasviel/control_v11p_sd15_lineart) |
+| Iris 3B | About 90 s, 1024 px, 4 steps | 3–4 min | 8.4 GB | Not documented | — |
+| FLUX.2 Klein 4B | Not published | Minutes | 8 GB | Reference | [Space](https://huggingface.co/spaces/black-forest-labs/FLUX.2-klein-4B) |
+| Z-Image Turbo | Not published | Several minutes | Tight on 16 GB | img2img | [Demo](https://huggingface.co/spaces/mrfakename/Z-Image-Turbo) |
+| FLUX.1 schnell | About 4.5 min | — | About 30 GB | — | Ruled out (RAM) |
+
+**Licences:** SD 1.5 and the ControlNets are open-weights with use restrictions. The Turbo models use Stability's more restrictive licence (FastSD CPU's README: research purposes). The strictly open-source (Apache-2.0) options are FLUX.2 Klein 4B and Z-Image Turbo, which are the ones unlikely to finish within 3 minutes on this laptop.
+
+#### Sketch methods on the laptop, as compared at research time
+
+| | SD 1.5 + LCM-LoRA + ControlNet | SD-Turbo img2img | SDXL-Turbo img2img | SDXL-Turbo + scribble ControlNet |
+|---|---|---|---|---|
+| Composition fidelity | High | Low–medium | Low–medium | High |
+| Rough, thin lines | Good | Poor | Poor | Good |
+| Image quality | Lowest | About SD 1.5 | Best | Best |
+| Time per 512 px image [est] | 20–60 s | 4–5 s | 6–8 s | Unknown; may exceed 3 min |
+| RAM | About 4 GB | About 4 GB | 8 GB | Likely 10 GB+ |
+| Built into FastSD CPU | Yes | Yes | Yes | No (ComfyUI or diffusers) |
+
+Ranking of the three Turbo options at research time (1 = best): SDXL-Turbo img2img first overall on the laptop, SD-Turbo second, SDXL-Turbo + ControlNet last (first on a GPU). Phase 1 then tested the first three columns; see section 9.

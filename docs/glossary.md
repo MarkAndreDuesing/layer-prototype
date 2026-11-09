@@ -18,14 +18,14 @@
 | **bf16 / fp16 / fp32** | Number formats. Many new models are trained in bf16; the T4 has no fast bf16, and fp16 overflows above 65504. |
 | **`fp16_mixed`** | Our patch ([concepts/fp16-on-t4.md](concepts/fp16-on-t4.md)): fast fp16 matrix multiplies with scaled inputs, everything else in fp32, so bf16 models run on a T4 without NaNs. |
 | **NaN / overflow** | "Not a number": what fp16 produces once values exceed its range; one NaN spreads and turns the image into noise or black. |
-| **LayerDiffuse modes** | `fg` (transparent object alone), `bg2ble` (draw an object into a given background), `bgble2fg` (extract that object as a transparent layer), `fg2ble`/`fgble2bg` (the reverse). See [concepts/layerdiffuse-modes.md](concepts/layerdiffuse-modes.md). |
+| **LayerDiffuse modes** | `fg` (transparent object alone), `bg2ble` (draw an object into a given background), `bgble2fg` (extract that object as a transparent layer), `fg2ble`/`fgble2bg` (the reverse). See [LayerDiffuse modes](models/layerdiffuse-sdxl.md#modes-how-layerdiffuse-works). |
 | **Chain** | Our LayerDiffuse scene-to-layer chain: `bg2ble → bgble2fg` per new element, on the current composite. |
-| **`relocate()`** | Our move/resize with re-harmonisation ([concepts/relocate.md](concepts/relocate.md)). |
+| **`relocate()`** | Our move/resize with re-harmonisation ([editing.md §1](concepts/editing.md#1-move--resize-with-re-harmonisation-relocate)). |
 | **Pinning** | During re-harmonisation, replacing the latents inside an object with its original (re-noised) latents so only its rim and surroundings change. |
 | **Paste-back** | After decoding, blending the original object pixels back inside its alpha, to keep identity exactly. |
 | **Identity drift** | A moved or edited object coming out redrawn (changed shape, colour, details). |
 | **Re-harmonisation** | Making a moved/added object fit its new spot: lighting, glow, contact, shadow. |
-| **Story event** | A narrative change that affects the scene ("it starts to rain", "the campfire goes out"); routed to per-layer actions ([concepts/story-events.md](concepts/story-events.md)). |
+| **Story event** | A narrative change that affects the scene ("it starts to rain", "the campfire goes out"); routed to per-layer actions ([editing.md §3](concepts/editing.md#3-story-events-across-layers)). |
 | **Drift (over turns)** | How much unedited parts of a scene change over many successive edits ([research/drift-evaluation.md](research/drift-evaluation.md)). |
 | **Kaggle batch run** | A notebook pushed with the CLI that runs unattended (max 2 GPU runs at once). |
 | **Happy path** | The settings and steps that give a model's best result with the least effort, as recorded in its factsheet. |

@@ -3,7 +3,21 @@
 
 ## What it does
 
-Native transparency for Stable Diffusion: generates a transparent object, or (conditional modes) draws an object into a given background and extracts it as an aligned RGBA layer. Our chain uses `bg2ble → bgble2fg` per element on the current composite ([../concepts/layerdiffuse-modes.md](../concepts/layerdiffuse-modes.md)).
+Native transparency for Stable Diffusion: generates a transparent object, or (conditional modes) draws an object into a given background and extracts it as an aligned RGBA layer. Our chain uses `bg2ble → bgble2fg` per element on the current composite (modes below).
+
+## Modes (how LayerDiffuse works)
+
+LayerDiffuse teaches the model a **latent transparency** signal that a special decoder turns into alpha.
+
+| Mode | Input | Output | Released for |
+|---|---|---|---|
+| `fg` | prompt | one transparent object | SD1.5, SDXL |
+| joint fg + bg | prompt(s) | foreground + background together | SD1.5 only |
+| `bg2ble` | background + prompt | the new object drawn into that background | SD1.5, SDXL |
+| `bgble2fg` | background + blended image | that object as a transparent layer | SD1.5, SDXL |
+| `fg2ble` / `fgble2bg` | foreground (+ blend) | a background around a given object | SD1.5, SDXL |
+
+**Our chain:** composite the current scene → `bg2ble` draws the new element into it → `bgble2fg` extracts it as its own aligned layer → stack it.
 
 ## Licence & weights
 
@@ -11,7 +25,7 @@ Code Apache-2.0, weights OpenRAIL-M ([LayerDiffusion/layerdiffusion-v1](https://
 
 ## How we run it (happy path)
 
-SDXL **base** (not Turbo), 20 steps, CFG 7, Euler; 1024 px on a T4 or 512 px on CPU. Code: [`../../prototype/layerproto/backends/layerdiffuse_chain.py`](../../prototype/layerproto/backends/layerdiffuse_chain.py). Object prompts need "a single X, solo, centered"; "no background" makes it paint an opaque backdrop.
+SDXL **base** (not Turbo), 20 steps, CFG 7, Euler; 1024 px on a T4 or 512 px on CPU. Code: [`../../prototype/layerproto/backends/layerdiffuse_chain.py`](../../prototype/layerproto/backends/layerdiffuse_chain.py). Object prompts need "a single X, solo, centered"; "no background" / "isolated object" makes it paint an opaque backdrop. Lighting is baked into a layer, so moving it later needs `relocate()`. The vendored diffusers port needed keyword arguments for diffusers 0.37 (`shift_factor`).
 
 ## Benchmarks
 

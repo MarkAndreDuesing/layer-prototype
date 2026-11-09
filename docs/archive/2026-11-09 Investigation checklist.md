@@ -15,7 +15,7 @@ Everything the user has asked to investigate across the recent sessions, with st
 
 - [x] Git repo, public on GitHub ([layer-prototype](https://github.com/MarkAndreDuesing/layer-prototype))
 - [x] Public Kaggle notebooks and weight caches (the 3 originals; new trial notebooks are private because publishing them was blocked)
-- [x] `fp16_mixed` as a module, plus a team guide ([qwen-layered-on-kaggle.md](../guides/qwen-on-kaggle.md))
+- [x] `fp16_mixed` as a module, plus a team guide ([qwen-layered-on-kaggle.md](../guides/kaggle.md))
 - [x] Consolidate all session material into the repo (README, findings log, experiments, research notes)
 - [x] Voice-note ideas that are new or unconfirmed ([open-paths.md](2026-11-09%20Open%20paths.md))
 

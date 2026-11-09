@@ -15,8 +15,7 @@
 | [qwen-image-2.1.md](qwen-image-2.1.md) | RGBA generation, layer edit, extraction |
 | [layerd.md](layerd.md) | image → layers by peeling |
 | [sam2-lama.md](sam2-lama.md) | segment + inpaint |
-| [layerfusion.md](layerfusion.md) | idea only |
-| [unreleased.md](unreleased.md) | methods without weights |
+| [../research/papers-survey.md](../research/papers-survey.md) | all methods in one table, incl. those without weights (LayerFusion, PSDiffusion, DreamLayer, OmniPSD …) |
 
 ## Comparison (generated)
 
