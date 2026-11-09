@@ -26,3 +26,9 @@ experiments/p1*/
 experiments/p2*/
 experiments/p3*/
 experiments/r2_*/
+
+# repos cloned inside Kaggle outputs
+prototype/kaggle/results_*/LayerDiffuse-Flux/
+prototype/kaggle/results_*/RevealLayer/
+prototype/kaggle/results_*/PrismLayers/
+prototype/kaggle/results_*/CLD/
