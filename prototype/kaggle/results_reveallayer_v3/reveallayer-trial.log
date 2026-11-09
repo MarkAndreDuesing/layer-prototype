@@ -1,0 +1,158 @@
+[{"stream_name":"stderr","time":10.470157536,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":10.470214507,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":11.879543602,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.879572675,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.879578396,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.879582708000001,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":12.639513129000001,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.639546917,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.639552751,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.639557641,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.623884655,"data":"pip -q install transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf\n"}
+,{"stream_name":"stderr","time":36.477719128,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":36.477753441,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.477758091,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.477776249,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.477781192,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680638052,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":36.6807094,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680715696,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680722183,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680728622,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680736361,"data":"\n"}
+,{"stream_name":"stderr","time":36.680738945,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":36.680760432,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.68076425,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680782097,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.680787458,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":36.85445249,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stdout","time":36.976747707,"data":"git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":37.057842234,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":37.057872315,"data":"\n"}
+,{"stream_name":"stderr","time":37.057876886,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":39.008292181,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":39.008333675,"data":"\n"}
+,{"stream_name":"stderr","time":39.008339222,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":39.008344087,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":39.008348759,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":39.008353354,"data":"\n"}
+,{"stream_name":"stderr","time":39.008357419,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":39.008361244,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":39.008365068,"data":"\n"}
+,{"stream_name":"stderr","time":39.008368689,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":39.008372852,"data":"\n"}
+,{"stream_name":"stderr","time":39.008376368,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":39.008387206,"data":"\n"}
+,{"stream_name":"stderr","time":39.008392502,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":39.0084005,"data":"\n"}
+,{"stream_name":"stderr","time":39.008402985,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":39.008405702,"data":"\n"}
+,{"stream_name":"stderr","time":39.008408156,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":39.211741485,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":39.211773118,"data":"\n"}
+,{"stream_name":"stderr","time":39.211779048,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":39.211783426,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":39.211787549,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":39.211827681,"data":"\n"}
+,{"stream_name":"stderr","time":39.211833006,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":39.211840169,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":39.211844657,"data":"\n"}
+,{"stream_name":"stderr","time":39.211849183,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":39.21185449,"data":"\n"}
+,{"stream_name":"stderr","time":39.211858839,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":39.211863158,"data":"\n"}
+,{"stream_name":"stderr","time":39.211867324,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":39.211870982,"data":"\n"}
+,{"stream_name":"stderr","time":39.21187464,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":39.211878531,"data":"\n"}
+,{"stream_name":"stderr","time":39.211882279,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":39.211885868,"data":"\n"}
+,{"stream_name":"stderr","time":39.211889432,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":39.211893091,"data":"\n"}
+,{"stream_name":"stderr","time":39.211898411,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":39.211902282,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":39.211906746,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":39.211912253,"data":"\n"}
+,{"stream_name":"stderr","time":39.211915547,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":39.211919434,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":39.211923873,"data":"\n"}
+,{"stream_name":"stderr","time":39.211927878,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":39.211932016,"data":"\n"}
+,{"stream_name":"stderr","time":39.21193585,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":39.211939328,"data":"\n"}
+,{"stream_name":"stderr","time":39.21194302,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":39.211946617,"data":"\n"}
+,{"stream_name":"stderr","time":39.211950218,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":39.21195383,"data":"\n"}
+,{"stream_name":"stderr","time":39.211957158,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":39.212925879,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":39.212944063,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":39.212949274,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":39.2129536,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":39.212957817,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":39.212961796,"data":"wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":46.076868187,"data":"vit path patched in /kaggle/working/RevealLayer/models/custom_model_xvae.py\n"}
+,{"stream_name":"stdout","time":78.408359148,"data":"diffusers 0.34.0 /kaggle/working/RevealLayer/diffusers/src/diffusers/__init__.py\n"}
+,{"stream_name":"stderr","time":106.424533856,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":106.424581419,"data":"I0000 00:00:1794225226.908940      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":106.627064305,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":106.627092361,"data":"I0000 00:00:1794225226.908940      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":106.627104321,"data":"\n"}
+,{"stream_name":"stderr","time":106.62710766,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":106.627111353,"data":"I0000 00:00:1794225226.908940      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":229.768825662,"data":"refiner: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stderr","time":232.403615374,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":232.403653736,"data":"\n"}
+,{"stream_name":"stderr","time":232.403680698,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":270.305934633,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":270.306050797,"data":"\n"}
+,{"stream_name":"stderr","time":270.306064295,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":276.332883948,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stderr","time":276.33292501,"data":"\n"}
+,{"stream_name":"stderr","time":276.332955324,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stderr","time":281.352457605,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":281.355295321,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":281.355338219,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":281.355350464,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":281.355356374,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":281.355361646,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":281.355366395,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":281.355387095,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":281.355397391,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":281.355400505,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":281.355403119,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":281.35540577,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":281.355408418,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":281.355411131,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":281.35543238,"data":"/tmp/ipykernel_22/1058528717.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":281.355436956,"data":"     97     if \"lora_\" in n: p.data = p.data.to(D0, DT)\n"}
+,{"stream_name":"stderr","time":281.355441353,"data":"     98 \n"}
+,{"stream_name":"stderr","time":281.355445534,"data":"---\u003e 99 transp_vae = CustomVAE()\n"}
+,{"stream_name":"stderr","time":281.355449731,"data":"    100 print(\"xvae:\", transp_vae.load_state_dict(torch.load(f\"{CK}/xvae/transparent_decoder_ckpt.pth\", map_location=\"cpu\"), strict=False))\n"}
+,{"stream_name":"stderr","time":281.355454576,"data":"    101 transp_vae.to(D0).eval()\n"}
+,{"stream_name":"stderr","time":281.355458591,"data":"\n"}
+,{"stream_name":"stderr","time":281.355462396,"data":"/kaggle/working/RevealLayer/models/custom_model_xvae.py in __init__(self)\n"}
+,{"stream_name":"stderr","time":281.355466761,"data":"    271         self.layer_embedding = 'rope'\n"}
+,{"stream_name":"stderr","time":281.35547098,"data":"    272 \n"}
+,{"stream_name":"stderr","time":281.355474474,"data":"--\u003e 273         self.decoder = ViTEncoder()\n"}
+,{"stream_name":"stderr","time":281.355478309,"data":"    274         self.pos_embedding = FluxPosEmbed(theta=10000, axes_dim=(8, 28, 28))\n"}
+,{"stream_name":"stderr","time":281.355482249,"data":"    275         if 'rel' in self.layer_embedding or 'abs' in self.layer_embedding:\n"}
+,{"stream_name":"stderr","time":281.35548612,"data":"\n"}
+,{"stream_name":"stderr","time":281.355489589,"data":"/kaggle/working/RevealLayer/models/custom_model_xvae.py in __init__(self, arch)\n"}
+,{"stream_name":"stderr","time":281.355493461,"data":"    180             weight_path = os.path.join(weights_base_dir, 'vit_b_32-d86f8d99.pth')\n"}
+,{"stream_name":"stderr","time":281.355497321,"data":"    181             if not os.path.exists(weight_path):\n"}
+,{"stream_name":"stderr","time":281.355502576,"data":"--\u003e 182                 raise FileNotFoundError(f\"ViT-B/32 weight file not found: {weight_path}\")\n"}
+,{"stream_name":"stderr","time":281.355506795,"data":"    183             print(f\"[{os.getpid()}] Creating ViT-B/32 structure...\")\n"}
+,{"stream_name":"stderr","time":281.35551075,"data":"    184             vit = vit_b_32(weights=None)\n"}
+,{"stream_name":"stderr","time":281.355514495,"data":"\n"}
+,{"stream_name":"stderr","time":281.355518085,"data":"FileNotFoundError: ViT-B/32 weight file not found: /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stderr","time":281.355522136,"data":"\n"}
+,{"stream_name":"stderr","time":284.461635373,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":284.461689281,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":284.776146115,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":284.776175688,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":285.775060264,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":285.912074203,"data":"[NbConvertApp] Writing 1362050 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":288.667948464,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":289.633507891,"data":"[NbConvertApp] Writing 1604751 bytes to __results__.html\n"}
+]
