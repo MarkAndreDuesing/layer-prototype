@@ -43,6 +43,10 @@
 | IC-Light fbc relight | relight layer | forest | laptop CPU | 384 px, 8 steps | 44 |  | 1 |  | fire also dimmed | [results_local_relight](../../prototype/kaggle/results_local_relight/) |
 | procedural shadow | shadow layer | forest | laptop CPU | per layer | 0.6 |  | 1 |  |  | [results_local_shadow](../../prototype/kaggle/results_local_shadow/) |
 | LayerDiffuse-Flux | text to RGBA object | campfire / deer / bottle | 1x T4 | 512 px, 16 steps, GGUF Q4 | 58 | 8.9 | 1 |  | semi-transparent glass works | [results_ldflux_v4](../../prototype/kaggle/results_ldflux_v4/) |
+| Stable-Layers (Heun) | image to layers | forest | 2x T4 | 384 px, 4 layers, 4 Heun steps, CFG 1 | 58 |  | 4 | 17.9 | very clean background | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
+| Stable-Layers (Heun) | image to layers | forest | 2x T4 | 384 px, 4 layers, 8 Heun steps, CFG 1 | 130 |  | 4 | 14.8 |  | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
+| Qwen-Image-Layered (Heun) | image to layers | forest | 2x T4 | 384 px, 4 layers, 4 Heun steps, CFG 1 | 58 |  | 4 | 7.0 |  | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
+| Qwen-Image-Layered | image to layers | 3 scenes | 2x T4 | 384 px, 2 layers, 4 steps, CFG 1 | 26 |  | 2 | 5.9-6.5 | bg + one fg layer | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (20 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (24 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

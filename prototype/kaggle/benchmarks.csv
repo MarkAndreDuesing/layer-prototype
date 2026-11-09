@@ -19,3 +19,7 @@ LayerD,image to layers,3 scenes,Kaggle CPU,defaults,60,,1,,results_layerd_trial,
 IC-Light fbc relight,relight layer,forest,laptop CPU,"384 px, 8 steps",44,,1,,results_local_relight,2026-11-09,fire also dimmed
 procedural shadow,shadow layer,forest,laptop CPU,per layer,0.6,,1,,results_local_shadow,2026-11-09,
 LayerDiffuse-Flux,text to RGBA object,campfire / deer / bottle,1x T4,"512 px, 16 steps, GGUF Q4",58,8.9,1,,results_ldflux_v4,2026-11-09,semi-transparent glass works
+Stable-Layers (Heun),image to layers,forest,2x T4,"384 px, 4 layers, 4 Heun steps, CFG 1",58,,4,17.9,results_qwen_v9b,2026-11-09,very clean background
+Stable-Layers (Heun),image to layers,forest,2x T4,"384 px, 4 layers, 8 Heun steps, CFG 1",130,,4,14.8,results_qwen_v9b,2026-11-09,
+Qwen-Image-Layered (Heun),image to layers,forest,2x T4,"384 px, 4 layers, 4 Heun steps, CFG 1",58,,4,7.0,results_qwen_v9b,2026-11-09,
+Qwen-Image-Layered,image to layers,3 scenes,2x T4,"384 px, 2 layers, 4 steps, CFG 1",26,,2,5.9-6.5,results_qwen_v9b,2026-11-09,bg + one fg layer

@@ -19,8 +19,11 @@ Same stack as Qwen-Image-Layered; LoRA attached unmerged with `fp16_mixed.add_lo
 |---|---|---|
 | 4 Euler steps, 384 px | 34 s | 15–18 (base model ≈ 7) |
 | 8 Euler steps, 384 px | 71 s | — |
+| **4 Heun steps, 384 px** (forest / sketch / pixel art) | 58–61 s | 15.5–17.9 |
+| 8 Heun steps, 384 px | 130 s | 14.8 |
+| 2 layers, 4 Euler steps | 26.5 s | 14.2 |
 
-Results: [`../../prototype/kaggle/results_stable_layers_v8/`](../../prototype/kaggle/results_stable_layers_v8/). The README asks for Heun, 50 steps, 640 px.
+Heun results: [`../../prototype/kaggle/results_qwen_v9b/`](../../prototype/kaggle/results_qwen_v9b/). Euler results: [`../../prototype/kaggle/results_stable_layers_v8/`](../../prototype/kaggle/results_stable_layers_v8/). The README asks for Heun, 50 steps, 640 px.
 
 ## Best features
 
@@ -32,7 +35,7 @@ Colour and contrast shift, so the recomposite is about 2× further from the inpu
 
 ## Status
 
-Tried at reduced settings (v8). v9 sweep with exact Heun and 2-layer splits running.
+Runs with Euler (v8) and with exact Heun (v9, via `HeunVelocity`). With Heun the forest background comes out very clean (trees and campfire fully removed, filled), trees split into clean layers; on the sketch the skeleton, fire and logs stay in one layer. Colour shift remains (diff 15–18).
 
 ## Next attempts
 

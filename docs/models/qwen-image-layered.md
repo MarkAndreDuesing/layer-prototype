@@ -24,6 +24,8 @@ Apache-2.0, [Qwen/Qwen-Image-Layered](https://huggingface.co/Qwen/Qwen-Image-Lay
 | 384 px, 3 layers, 3 steps, CFG 1 | 20 s | — | softer edges |
 | **384 px, 4 layers, 4 steps, CFG 1** | **27–35 s** | about 7 | recommended |
 | 512 px, 4 layers, 4 steps, CFG 1 | 48 s | — | sharper |
+| 384 px, 4 layers, 4 **Heun** steps | 58 s | 7.0 | 2 calls per step |
+| 384 px, **2 layers**, 4 steps | 25.7 s | 5.9–6.5 | background + one foreground layer |
 
 Peak memory 8.0 / 7.6 GB (fast settings). Measured on the forest, pixel-art and sketch scenes (sweeps v3–v7, [`../../prototype/kaggle/results_qwen_sweep_v5/`](../../prototype/kaggle/results_qwen_sweep_v5/), [`results_qwen_v7_layers/`](../../prototype/kaggle/results_qwen_v7_layers/)). Fox & cottage: pending.
 
@@ -40,7 +42,7 @@ Peak memory 8.0 / 7.6 GB (fast settings). Measured on the forest, pixel-art and 
 
 ## Status
 
-Working; main decomposer. v9 sweep (Heun, 2-layer splits) running.
+Working; main decomposer. Heun and 2-layer variants measured (v9). Fox & cottage sweep queued.
 
 ## Next attempts
 
