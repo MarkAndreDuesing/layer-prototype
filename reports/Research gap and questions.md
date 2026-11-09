@@ -72,7 +72,7 @@ Adjacent work, outside the matrix:
 - DreamLayer's IRH is the only trained mechanism, and it has no code.
 - QIL treats moves as pixel operations, so shadows and lighting stay stale.
 
-**G4. No HCI evaluation of layer-based generative scene editing for players or novices.**
+**G4 (context only, not pursued: no user study is planned). No HCI evaluation of layer-based generative scene editing for players or novices.**
 - No user study found in QIL, Stable-Layers, RevealLayer or LayerCraft (pages read).
 - ART+ only has preference votes.
 - The only study with real users is Layered Diffusion Brushes, which uses a different notion of "layer" and has an artist audience.
@@ -110,16 +110,8 @@ Sub-question: can an LLM planner choose which layers to regenerate, and with wha
 - **Feasibility:** high.
 - **Risk:** LayerCraft is the nearest work: agentic and layered, with a narrative demo. But it has no code and no temporal evaluation. Cite it and differentiate.
 
-### RQ3 (HCI): Do layer-level controls improve players' sense of agency, predictability and creative satisfaction compared with prompt-only editing?
-- **Gap:** G4.
-- **How we answer it:** a within-subjects study, n ≈ 16–24 LMU students, with two interfaces: (A) a layer panel with re-prompt, drag and resize per layer; (B) a chat-only prompt edit of the whole image. Each participant does the same story tasks in both, in counterbalanced order.
-- **Measures:**
-  - Task success and time
-  - Number of undo/retry actions
-  - Questionnaires: NASA-TLX, the Creativity Support Index (CSI), and an agency/predictability Likert scale (e.g. a sense-of-agency scale)
-  - Semi-structured interview with thematic analysis
-- **Feasibility:** high. Latency of 35–70 s per operation is a confound, so report it, or use a pre-generated cache or Wizard-of-Oz for part of the study.
-- **Risk:** low. No CHI/UIST study was found [search not exhaustive].
+### RQ3 (dropped): user study of layer controls
+- **Not pursued.** The project is a prototype, not a user study. The research question has to be answered by what the prototype does and by technical measurements. G4 stays listed only as context.
 
 ### RQ4 (technical): Can training-free re-harmonisation (DreamLayer-IRH-style latent re-noise) make moved/resized layers physically plausible within an interactive budget?
 - **Gap:** G3.
@@ -138,7 +130,7 @@ Sub-question: can an LLM planner choose which layers to regenerate, and with wha
 - **Metrics:** decomposition quality (Crello protocol from LayerD), plus a small perceptual study of acceptable wait time inside the game.
 - **Feasibility:** high, but less novel. Use it as a supporting contribution to RQ1 or RQ3.
 
-**Recommendation:** combine RQ1 + RQ2 as the technical core ("Do persistent layer stacks keep a story scene stable across many events?"), and use RQ3 as the user evaluation.
+**Recommendation:** the prototype's niche is RQ1 + RQ2 + RQ4 together: "Can a persistent RGBA layer stack, edited per layer and updated by routed story events with training-free re-harmonisation, keep a story scene stable across many events on free hardware?" It is shown by the working loop plus technical measurements (drift curves, harmonisation quality, latency), with no user study.
 
 ## 4. Honest note: does anything already do our whole loop?
 No. As of 2026-11-09, no released method combines all of these:
@@ -152,7 +144,7 @@ The individual parts do exist:
 - QIL (plus Qwen-Image-Edit) covers decompose → edit layer → recomposite, with open weights. With low settings it runs on a T4. So the *editing mechanics* alone are **not** a novel contribution.
 - LayerCraft is conceptually closest to the whole loop (LLM agent, layers, narrative demo). Its code is unreleased and it has no consistency or user evaluation.
 
-Our novelty must therefore lie in two things: the **evaluation over time / story events** and the **HCI study**, not in a new generator.
+Our novelty therefore lies in the **prototype loop itself**: persistent layers, event routing across layers, and re-harmonised moves, together with its **technical evaluation over time and story events**. It does not lie in a new generator or in a user study.
 
 Unverified items:
 - the full text of Stable-Layers (2605.30257) and RevealLayer papers
@@ -175,5 +167,5 @@ Unverified items:
   - Stable-Layers takes 34 s at 4 steps.
   - The FLUX-class models (RevealLayer, LayerDiffuse-Flux, CLD) load and run on 2× T4 with GGUF Q4. RevealLayer takes 69 s for 12 steps, but its quality is still blocked by fp16 overflow; the `fp16_mixed` fix is untested on FLUX.
   - This is a measurable contribution in itself: a quality–latency frontier for open layered models on free GPUs.
-- **New fact that changes the picture: Qwen-Image-2.1 (7B, native RGBA VAE, Turbo at 8 steps, GGUF Q4 at 3.9 GB).** It covers three steps of the loop in one released model: generate an RGBA layer, edit a transparent layer, and extract a subject. If it runs on a T4, the "editing mechanics" are even less novel. That strengthens the conclusion of section 4: our contribution should be the **evaluation over story-event sequences (G1, G2)** and the **HCI study (G4)**.
+- **New fact that changes the picture: Qwen-Image-2.1 (7B, native RGBA VAE, Turbo at 8 steps, GGUF Q4 at 3.9 GB).** It covers three steps of the loop in one released model: generate an RGBA layer, edit a transparent layer, and extract a subject. If it runs on a T4, the "editing mechanics" are even less novel. That strengthens the conclusion of section 4: our contribution is the **prototype loop and its evaluation over story-event sequences (G1, G2, G3)**. No user study is planned.
 - Details: `research_notes/Layered methods deep dive/heavy_models_recheck_2026-11-09.md`.

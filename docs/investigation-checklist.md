@@ -65,7 +65,7 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 - [x] Harmonisation: IC-Light v1 fbc plus a procedural shadow layer; IC-Light v2 never released
 - [x] Story events across layers: no method exists (G2 confirmed); four strategies compared
 - [x] Drift evaluation: EdiVal-Agent harness, 3-arm protocol; the re-decomposition arm would be new
-- [x] HCI: ImageDirector (UIST '26) is the closest prior work, found via the LMU ACM proxy; G4 reworded
+- [x] HCI literature checked (ImageDirector, UIST '26, via the LMU ACM proxy): context only; no user study is planned
 - [ ] Kaggle trials once Kaggle recovers: Qwen-Image-2.1 (auto-push), plain-FLUX control, RevealLayer v8, LayerDiffuse-Flux
 
 ## G. Non-Kaggle follow-ups (2026-11-09 night)
@@ -78,4 +78,3 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 - [x] Notebooks ready: `flux-control-trial` (plain FLUX fp16 vs `fp16_mixed`), `artplus-trial` (text + boxes → layers; base LoRA + transparent VAE from official `thuteam/CLD`, the rest from Drive, with the HF mirror as fallback), RevealLayer with 3 fp16 patches, Qwen-Image-2.1 with the texture-fix VAE
 - [ ] CLD notebook: waits for RevealLayer to work (same code base)
 - [ ] Voice-note E items: feed the Qwen-Image-2.1 scene images into the Qwen batch as new inputs (base-image generator → decomposer); LayerDiffuse complex scenes via `layerproto-chain-batch`. Both need Kaggle
-- [x] User-study protocol draft: [user-study-protocol.md](user-study-protocol.md) (N=24 within-subjects, ImageDirector-based measures plus PXI and drift; ethics check still open)

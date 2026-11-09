@@ -16,7 +16,7 @@ Details are in the linked reports and in [findings-log.md](findings-log.md), Pha
    3. Recomposite.
 
    Weak spot: the moved object gets partly redrawn (identity drift).
-3. **No released method covers our loop, and the editing mechanics alone are not new.** The defensible research contribution is measuring **consistency across many story edits** (layered vs flat), choosing **which layers a story event should change**, and a **user study** of layer-based editing. See [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
+3. **No released method covers our loop, and the editing mechanics alone are not new.** The defensible research contribution is measuring **consistency across many story edits** (layered vs flat), choosing **which layers a story event should change** and **re-harmonising moved layers**, all shown through the prototype itself (no user study is planned). See [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
 4. **Tested and rejected:**
    - LayerD returns 1 layer on our scenes.
    - The Lightning LoRA hurts fidelity and doesn't speed anything up.
@@ -75,7 +75,7 @@ GPU quota: the account shows 6.2 h used this week out of 30 h, including the ear
 
 ## Proposed next steps (need the team's decision)
 
-1. Pick the research question. Suggested: RQ1, layered vs flat drift over 10–20 story events, plus RQ3, a user study. Both are feasible on the T4 setup.
+1. Pick the research question. Suggested: RQ1 (layered vs flat drift over 10–20 story events) together with RQ2 (event routing) and RQ4 (re-harmonisation), shown with the prototype and measured technically. RQ3 (user study) is dropped.
 2. Wire the fast Qwen split and `relocate()` into the prototype app as a Kaggle-hosted backend.
 3. Fix identity drift in `relocate()` (IP-Adapter / reference attention), then evaluate it properly (RQ4).
 4. Email the RBG for abakus access, and ask a supervisor about an LRZ AI project if larger models (ART+, RevealLayer) become interesting.
