@@ -17,11 +17,11 @@ Details are in the linked reports and in [findings-log.md](findings-log.md), Pha
 
    Weak spot: the moved object gets partly redrawn (identity drift).
 3. **No released method covers our loop, and the editing mechanics alone are not new.** The defensible research contribution is measuring **consistency across many story edits** (layered vs flat), choosing **which layers a story event should change** and **re-harmonising moved layers**, all shown through the prototype itself (no user study is planned). See [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
-4. **Tested and rejected:**
-   - LayerD returns 1 layer on our scenes.
-   - The Lightning LoRA hurts fidelity and doesn't speed anything up.
-   - SAM2 + LaMa is fast but gives meaningless groupings.
-   - Stable-Layers needs 50 Heun steps by design.
+4. **Tried so far (first attempts; the user decides verdicts, and further attempts are planned in the checklist):**
+   - LayerD returned 1 layer on our scenes in its first configuration.
+   - The Lightning LoRA lowered fidelity and gave no speed-up at the settings tried.
+   - SAM2 + LaMa is fast; automatic grouping was poor with the settings tried.
+   - Stable-Layers was designed for 50 Heun steps; a 4-step Euler run already works (34 s), and a Heun wrapper is ready.
 5. **University GPUs:** students can use the institute's Slurm cluster without registering. The stronger "abakus" GPU servers need an emailed request to the RBG (Rechnerbetriebsgruppe, the institute's IT group) with a good reason. LRZ AI Systems (A100 / H100) only through a supervisor's AI project. For about 2,000 runs, paid APIs cost about $100–200. See [University GPU access LMU.md](../reports/University%20GPU%20access%20LMU.md).
 
 ## Track C: Qwen-Image-Layered speed (Kaggle 2× T4, GGUF Q4_K_S)

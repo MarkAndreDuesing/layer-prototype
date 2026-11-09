@@ -37,8 +37,8 @@ Everything the user has asked to investigate across the recent sessions, with st
   - [ ] Qwen-Image-2.1 RGBA (7B): **most promising**, with native RGBA VAE, RGBA editing, subject extraction, Turbo at 8 steps and GGUF Q4 at 3.9 GB; notebook ready (`tools/make_qwen21_rgba_trial.py`), waiting for Kaggle
   - [ ] LayerDiffuse-Flux: notebook pushed (`layerdiffuse-flux-trial`, `fp16_mixed` + unmerged LoRA), queued during the Kaggle outage
   - [ ] OmniPSD (if weights exist)
-- [x] LayerD tried: returns 1 layer on scenes
-- [x] SAM2 + LaMa (segment + inpaint route) tried: fast, poor grouping
+- [~] LayerD: first attempt returned 1 layer per scene. Next: other thresholds and recursion depth, larger input, and graphic-style inputs (its training domain)
+- [~] SAM2 + LaMa (segment + inpaint): first attempt fast, poor automatic grouping. Next: prompted/box segmentation from the LLM layer names (Grounded-SAM style), mask merging, a better inpainter
 - [x] **Spatial editing in every paper that has it** (parts 1–3 in `research_notes/Layered methods deep dive/spatial_edit_survey_verified_part*.md`): only DreamLayer has a move/resize algorithm. The decomposition papers just re-composite. The object-move papers keep identity by latent pinning plus attention sharing. (move / resize / re-harmonise): how each does it and what we can borrow. So far only LayerFusion, DreamLayer and PSDiffusion were read ([spatial_edit_mechanics.md](../research_notes/Layered%20methods%20deep%20dive/spatial_edit_mechanics.md)).
 - [x] LayerFusion spatial edit: the paper has none; DreamLayer has one
 - [x] Our training-free move/resize re-harmonisation (`relocate()`): works, about 4 s per edit; identity drift is open
@@ -78,3 +78,12 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 - [x] Notebooks ready: `flux-control-trial` (plain FLUX fp16 vs `fp16_mixed`), `artplus-trial` (text + boxes → layers; base LoRA + transparent VAE from official `thuteam/CLD`, the rest from Drive, with the HF mirror as fallback), RevealLayer with 3 fp16 patches, Qwen-Image-2.1 with the texture-fix VAE
 - [ ] CLD notebook: waits for RevealLayer to work (same code base)
 - [ ] Voice-note E items: feed the Qwen-Image-2.1 scene images into the Qwen batch as new inputs (base-image generator → decomposer); LayerDiffuse complex scenes via `layerproto-chain-batch`. Both need Kaggle
+
+## H. Keep exploring (user decides verdicts; benchmarks + happy path per model)
+
+- [ ] Qwen Lightning LoRA: retry with matched steps and CFG, other LoRA scales, and 2-step/4-step variants; report speed and fidelity per setting
+- [ ] LayerD: parameter sweep (see above); local CPU run if the install is allowed, else Kaggle
+- [ ] SAM2 + LaMa: text/box-prompted segmentation from the LLM layer names, mask merging, LaMa vs SDXL inpaint for the hidden parts
+- [ ] Stable-Layers: Heun v9 sweep, more steps at 384 px, colour-shift correction (match the recomposite to the input)
+- [ ] TPU v5e/v6e probe: 1-hour session to measure, not estimate (separate 20 h/week TPU quota)
+- [ ] Benchmark table + happy path per model (same 3 scenes, time, VRAM, layers, recomposite error, visual sheet)
