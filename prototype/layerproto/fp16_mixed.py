@@ -103,7 +103,11 @@ def remove_lora(model):
 
 
 def _patch_attention():
-    import diffusers.models.transformers.transformer_qwenimage as tq
+    # Qwen-Image attention only; other models (FLUX ports with older bundled diffusers) just get the Linear patch
+    try:
+        import diffusers.models.transformers.transformer_qwenimage as tq
+    except ImportError:
+        return
     if getattr(tq, "_fp16_orig_attn", None) is not None:
         return
     orig = tq.dispatch_attention_fn

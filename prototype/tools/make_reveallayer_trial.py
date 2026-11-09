@@ -47,13 +47,26 @@ for _f in _g.glob(RL + '/**/*.py', recursive=True):
 # fp16 hazards found in RevealLayer's own code (research_notes/Layered loop open paths/flux_layered_t4_and_weights.md):
 # -1e9 ROI-mask fill is -inf in fp16 (fully masked rows -> NaN), unguarded refiner residual, fp16 VAE decode
 FP16_PATCH = r"""
-patch("models/custom_model_mmdit.py", "torch.full((t_total, t_total), -1e9, dtype=dtype", "torch.full((t_total, t_total), -1e4, dtype=dtype")
+patch("models/custom_model_mmdit.py", "torch.full((t_total, t_total), torch.finfo(dtype).min, dtype=dtype", "torch.full((t_total, t_total), -1e4, dtype=dtype")
 patch("models/custom_model_mmdit.py", "hidden_states_part2 = hidden_states[:, l0_len:, :] + delta",
       "hidden_states_part2 = (hidden_states[:, l0_len:, :].float() + torch.nan_to_num(delta.float(), nan=0.0, posinf=6e4, neginf=-6e4)).clamp(-6e4, 6e4).to(hidden_states.dtype)")
 patch("models/custom_pipeline.py", "image_segs = [self.vae.decode(latents_seg, return_dict=False)[0] for latents_seg in latents_segs]",
       "image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]")
 """
 head = head.replace("# ---- use bundled diffusers", VIT_PATCH + FP16_PATCH + "# ---- use bundled diffusers", 1)
+# transparent decoder: weights fp32, but the pipeline hands it fp16 tensors -> cast every tensor input to fp32
+XVAE_FIX = """
+def _to32(m, args, kwargs):
+    c = lambda x: x.float() if torch.is_tensor(x) and x.is_floating_point() else x
+    return tuple(c(a) for a in args), {k: c(v) for k, v in kwargs.items()}
+transp_vae.float().register_forward_pre_hook(_to32, with_kwargs=True)
+for _sub in transp_vae.modules():
+    if _sub is not transp_vae and hasattr(_sub, "decode"): _sub.register_forward_pre_hook(_to32, with_kwargs=True)
+_orig_dec = transp_vae.decode
+transp_vae.decode = lambda *a, **k: _orig_dec(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k)
+"""
+head = head.replace("transp_vae.to(D0).eval()", "transp_vae.to(D0).eval()" + XVAE_FIX, 1)
+assert "_to32" in head
 assert "-1e4, dtype=dtype" in head
 assert "vit_b_32-d86f8d99" in head
 # FLUX overflows fp16 in the single blocks (guard fired every step -> pure noise); reuse our Qwen fix

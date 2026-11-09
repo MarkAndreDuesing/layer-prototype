@@ -31,7 +31,12 @@ MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8
 cell = (cell[:a]
         + "exec(compile(" + repr(MIXED) + ", 'fp16_mixed', 'exec'))\n"
         + "apply_fp16_mixed(pipe.transformer)\n"
-        + "print('lora pairs:', add_lora(pipe.transformer, lora, 1.0), flush=True)\n"
+        + "from safetensors.torch import load_file as _lf\n"
+        + "from diffusers.loaders.lora_conversion_utils import _convert_kohya_flux_lora_to_diffusers as _conv\n"
+        + "_sd = _lf(lora)\n"
+        + "if any(k.startswith('lora_unet_') for k in _sd): _sd = _conv(_sd)  # BFL/kohya names, fused qkv -> diffusers\n"
+        + "_hit, _miss = add_lora(pipe.transformer, _sd, 1.0); print('lora matched', _hit, 'missing', len(_miss), _miss[:3], flush=True)\n"
+        + "assert _hit > 0, 'LoRA did not match'\n"
         + "hits = {'n': 0}\n\n"
         + cell[b:])
 # generation part -> loop over prompts

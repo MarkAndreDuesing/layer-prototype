@@ -1,0 +1,143 @@
+[{"stream_name":"stderr","time":5.869191843,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.86925518,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.671825802,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.671851131,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.671855977,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.671859726,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.245872524,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.24593033,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.245938415,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.245942779,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.830585821,"data":"pip -q install transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf\n"}
+,{"stream_name":"stderr","time":24.204501386,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.204527203,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.204532118,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.204536513,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.204540239,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407471104,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.407504711,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407510242,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407514022,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407517877,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407525547,"data":"\n"}
+,{"stream_name":"stderr","time":24.40752823,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.40754395,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407546626,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407549003,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.407551361,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.453092597,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stdout","time":24.630194634,"data":"git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":24.655611282,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":24.655631563,"data":"\n"}
+,{"stream_name":"stderr","time":24.655634952,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":26.810974093,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":26.810999274,"data":"\n"}
+,{"stream_name":"stderr","time":26.811004305,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":26.811008992,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":26.81101278,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":26.811016407,"data":"\n"}
+,{"stream_name":"stderr","time":26.811019679,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":26.811023241,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":26.811026681,"data":"\n"}
+,{"stream_name":"stderr","time":26.811029874,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":26.811033923,"data":"\n"}
+,{"stream_name":"stderr","time":26.811037119,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":26.811040609,"data":"\n"}
+,{"stream_name":"stderr","time":26.811043836,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":26.81104712,"data":"\n"}
+,{"stream_name":"stderr","time":26.811050251,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":26.811053989,"data":"\n"}
+,{"stream_name":"stderr","time":26.811063587,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":27.014287027,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":27.014311834,"data":"\n"}
+,{"stream_name":"stderr","time":27.014316147,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":27.014319481,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":27.014322802,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":27.014335179,"data":"\n"}
+,{"stream_name":"stderr","time":27.014338583,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":27.014342445,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":27.014345677,"data":"\n"}
+,{"stream_name":"stderr","time":27.014348664,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":27.014352267,"data":"\n"}
+,{"stream_name":"stderr","time":27.014355204,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":27.014358227,"data":"\n"}
+,{"stream_name":"stderr","time":27.014361457,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":27.014365476,"data":"\n"}
+,{"stream_name":"stderr","time":27.014368505,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":27.014372057,"data":"\n"}
+,{"stream_name":"stderr","time":27.014375115,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":27.014378744,"data":"\n"}
+,{"stream_name":"stderr","time":27.014381977,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":27.014385238,"data":"\n"}
+,{"stream_name":"stderr","time":27.014388635,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":27.014392536,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":27.014396219,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":27.01439933,"data":"\n"}
+,{"stream_name":"stderr","time":27.014402251,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":27.014405663,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":27.014409069,"data":"\n"}
+,{"stream_name":"stderr","time":27.014412139,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":27.014415497,"data":"\n"}
+,{"stream_name":"stderr","time":27.014418608,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":27.014421941,"data":"\n"}
+,{"stream_name":"stderr","time":27.014424989,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":27.014428256,"data":"\n"}
+,{"stream_name":"stderr","time":27.014432489,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":27.014436101,"data":"\n"}
+,{"stream_name":"stderr","time":27.014439248,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":27.015187708,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.015206173,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.015210442,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.015214478,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":27.015218337,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":27.015221785,"data":"wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":28.206953643,"data":"mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 \u0026\u0026 cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/\n"}
+,{"stream_name":"stdout","time":28.206990767,"data":"vit path patched in /kaggle/working/RevealLayer/models/custom_model_xvae.py\n"}
+,{"stream_name":"stdout","time":28.207000926,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":28.207003677,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":28.207005868,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":47.330440466,"data":"diffusers 0.34.0 /kaggle/working/RevealLayer/diffusers/src/diffusers/__init__.py\n"}
+,{"stream_name":"stderr","time":64.088711546,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":64.088744705,"data":"I0000 00:00:1794258514.144717      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":64.291065988,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":64.291090907,"data":"I0000 00:00:1794258514.144717      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":64.2910976,"data":"\n"}
+,{"stream_name":"stderr","time":64.291102261,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":64.291106745,"data":"I0000 00:00:1794258514.144717      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":192.000522453,"data":"refiner: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stderr","time":196.980630229,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":196.981262906,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":196.981288798,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":196.981294354,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":196.981297703,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":196.981300876,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":196.981303856,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":196.981306721,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":196.981309811,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":196.981379087,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":196.981385388,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":196.981389861,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":196.981394189,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":196.981398386,"data":"ModuleNotFoundError                       Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":196.981402693,"data":"/tmp/ipykernel_22/105256185.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":196.981432198,"data":"     82 # ---- fp16_mixed (layerproto/fp16_mixed.py, inlined) ----\n"}
+,{"stream_name":"stderr","time":196.981457161,"data":"     83 exec(compile('\"\"\"Run the Qwen-Image(-Layered) transformer on GPUs without bf16 (Kaggle T4, P100, RTX 20xx) without NaNs.\\n\\nQwen-Image is trained for bf16; its hidden values exceed the fp16 limit (65504), so a plain fp16 run gives all-NaN\\nlatents (ComfyUI also lists Qwen-Image as bf16/fp32 only). This keeps the fast fp16 tensor-core matmuls but holds\\neverything else in fp32:\\n\\n  * every Linear: input scaled down to absmax 32, fp16 matmul, result scaled back in fp32\\n    (falls back to a fp32 matmul for that call if the fp16 result is still non-finite)\\n  * attention: q/k in fp16 (RMS-normalised, small), v scaled the same way (attention is linear in v)\\n  * residual stream, norms, gates, embeddings: fp32\\n  * the model\\'s output is returned in fp16, so the diffusers pipeline is unchanged\\n\\nMeasured on Kaggle 2x T4 (Q4_K_S GGUF, 640 px, 4 layers): no NaN, 42 s/step, peak 8.8 / 8.4 GB.\\n\\n    from layerproto.fp16_mixed import apply_fp16_mixed\\n    apply_fp16_mixed(transformer)        # once, after loading; idempotent\\n\"\"\"\\nimport types\\n\\nimport torch\\nimport torch.nn.functional as F\\n\\nLINEAR_LIMIT = 32.0  # absmax the fp16 matmul input is scaled to (1024 was still too high: NaNs)\\nATTN_LIMIT = 32.0\\n\\n\\ndef _dequant(w):\\n    if type(w).__name__ == \"GGUFParameter\":\\n        from diffusers.quantizers.gguf.utils import dequantize_gguf_tensor\\n        return dequantize_gguf_tensor(w)\\n    return w\\n\\n\\ndef _mixed_linear(self, x):\\n    x = x.float()\\n    s = (x.abs().amax() / LINEAR_LIMIT).clamp_(min=1.0)\\n    y = self._fp16_orig_forward((x / s).to(torch.float16)).float()   # = W x/s + b\\n    b = getattr(self, \"bias\", None)\\n    if not torch.isfinite(y).all():                                  # rare: this call in fp32\\n        y = F.linear(x, _dequant(self.weight).float(), None if b is None else b.float())\\n    elif b is None:\\n        y = y * s\\n    else:\\n        b = b.float()\\n        y = (y - b) * s + b\\n    lora = getattr(self, \"_fp16_lora\", None)\\n    if lora is not None:                                             # low-rank delta, same input scaling\\n        A, B, k = lora\\n        if A.device != x.device:                                     # module was moved (e.g. split over GPUs)\\n            A, B = A.to(x.device), B.to(x.device)\\n            self._fp16_lora = (A, B, k)\\n        xs = (x / s).to(torch.float16)\\n        y = y + F.linear(F.linear(xs, A), B).float() * (s * k)\\n    return y\\n\\n\\ndef _lora_pairs(sd):\\n    \"\"\"{module name: (A [r, in], B [out, r], alpha or None)} for common LoRA key layouts (PEFT / kohya / diffusers).\"\"\"\\n    out = {}\\n    for key in sd:\\n        for a_suf, b_suf in ((\".lora_A.weight\", \".lora_B.weight\"), (\".lora_down.weight\", \".lora_up.weight\"),\\n                             (\".lora_A.default.weight\", \".lora_B.default.weight\")):\\n            if key.endswith(a_suf):\\n                base = key[: -len(a_suf)]\\n                bkey = base + b_suf\\n                if bkey in sd:\\n                    alpha = sd.get(base + \".alpha\")\\n                    name = base\\n                    for pre in (\"base_model.model.\", \"diffusion_model.\", \"transformer.\", \"model.\"):\\n                        if name.startswith(pre):\\n                            name = name[len(pre):]\\n                    out[name] = (sd[key], sd[bkey], None if alpha is None else float(alpha))\\n    return out\\n\\n\\ndef add_lora(model, path_or_state_dict, scale: float = 1.0):\\n    \"\"\"Attach a LoRA to an fp16_mixed-patched model (works with GGUF-quantised linears, nothing is merged).\\n    Returns (matched modules, LoRA modules not found).\"\"\"\\n    sd = path_or_state_dict\\n    if isinstance(sd, str):\\n        from safetensors.torch import load_file\\n        sd = load_file(sd)\\n    pairs = _lora_pairs(sd)\\n    mods = dict(model.named_modules())\\n    hit, miss = 0, []\\n    for name, (A, B, alpha) in pairs.items():\\n        m = mods.get(name)\\n        if m is None or not hasattr(m, \"_fp16_orig_forward\"):\\n            miss.append(name)\\n            continue\\n        dev = next((p.device for p in m.parameters()), torch.device(\"cpu\"))\\n        r = A.shape[0]\\n        k = scale * ((alpha / r) if alpha else 1.0)\\n        m._fp16_lora = (A.to(dev, torch.float16), B.to(dev, torch.float16), k)\\n        hit += 1\\n    return hit, miss\\n\\n\\ndef remove_lora(model):\\n    for _, m in model.named_modules():\\n        if hasattr(m, \"_fp16_lora\"):\\n            del m._fp16_lora\\n\\n\\ndef _patch_attention():\\n    import diffusers.models.transformers.transformer_qwenimage as tq\\n    if getattr(tq, \"_fp16_orig_attn\", None) is not None:\\n        return\\n    orig = tq.dispatch_attention_fn\\n\\n    def attn_fp16(q, k, v, attn_mask=None, **kw):\\n        s = (v.float().abs().amax() / ATTN_LIMIT).clamp_(min=1.0)\\n        if attn_mask is not None and attn_mask.is_floating_point():\\n            attn_mask = attn_mask.to(torch.float16)\\n        o = orig(q.to(torch.float16), k.to(torch.float16), (v.float() / s).to(torch.float16), attn_mask=attn_mask, **kw)\\n        return o.float() * s\\n\\n    tq._fp16_orig_attn = orig\\n    tq.dispatch_attention_fn = attn_fp16\\n\\n\\ndef apply_fp16_mixed(model):\\n    \"\"\"Patch a loaded QwenImageTransformer2DModel in place. Returns (linears patched, params moved to fp32).\"\"\"\\n    _patch_attention()\\n    n_lin = n_par = 0\\n    for _, m in model.named_modules():\\n        if \"Linear\" in type(m).__name__:\\n            if not hasattr(m, \"_fp16_orig_forward\"):\\n                m._fp16_orig_forward = m.forward\\n            m.forward = types.MethodType(_mixed_linear, m)\\n            n_lin += 1\\n        else:\\n            for _, p in m.named_parameters(recurse=False):\\n                if p.dtype == torch.float16:\\n                    p.data = p.data.float()\\n                    n_par += 1\\n    if not hasattr(model, \"_fp16_orig_model_forward\"):\\n        model._fp16_orig_model_forward = model.forward\\n\\n        def fwd(*a, **k):\\n            o = model._fp16_orig_model_forward(*a, **k)\\n            if isinstance(o, tuple):\\n                return (o[0].to(torch.float16),) + tuple(o[1:])\\n            if hasattr(o, \"sample\"):\\n                o.sample = o.sample.to(torch.float16)\\n            return o\\n\\n        model.forward = fwd\\n    return n_lin, n_par\\n', 'fp16_mixed', 'exec'))\n"}
+,{"stream_name":"stderr","time":196.981503843,"data":"---\u003e 84 apply_fp16_mixed(t); print('fp16_mixed applied', flush=True)\n"}
+,{"stream_name":"stderr","time":196.9815076,"data":"     85 # ---- R7: fp16 overflow guard ----\n"}
+,{"stream_name":"stderr","time":196.981511665,"data":"     86 _hit = {\"n\":0}\n"}
+,{"stream_name":"stderr","time":196.981515403,"data":"\n"}
+,{"stream_name":"stderr","time":196.981518664,"data":"fp16_mixed in apply_fp16_mixed(model)\n"}
+,{"stream_name":"stderr","time":196.981522353,"data":"\n"}
+,{"stream_name":"stderr","time":196.981525767,"data":"fp16_mixed in _patch_attention()\n"}
+,{"stream_name":"stderr","time":196.981529183,"data":"\n"}
+,{"stream_name":"stderr","time":196.981532512,"data":"ModuleNotFoundError: No module named 'diffusers.models.transformers.transformer_qwenimage'\n"}
+,{"stream_name":"stderr","time":196.981536573,"data":"\n"}
+,{"stream_name":"stderr","time":199.140370089,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":199.140399774,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":199.302213221,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":199.302245161,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":200.039629151,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":200.158700898,"data":"[NbConvertApp] Writing 1349097 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":202.602564845,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":203.202187722,"data":"[NbConvertApp] Writing 1605180 bytes to __results__.html\n"}
+]

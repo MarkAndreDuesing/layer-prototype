@@ -1,0 +1,134 @@
+[{"stream_name":"stderr","time":6.938415923,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.938458075,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.914737115,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.914766865,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.914771801,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.914779456,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.506826554,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.506856338,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.506860867,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.506864425,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.179400481,"data":"pip -q install transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf\n"}
+,{"stream_name":"stderr","time":27.149239989,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.149269705,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.149274962,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.149279751,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.149283258,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351897641,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.35192983,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351948212,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351952443,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351956884,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351961399,"data":"\n"}
+,{"stream_name":"stderr","time":27.351964493,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.35198507,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.3519888,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351992666,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.351996119,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.421700353,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stdout","time":27.584828662,"data":"git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":27.6241464,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":27.624166433,"data":"\n"}
+,{"stream_name":"stderr","time":27.62417188,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":28.912251742,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":28.912280751,"data":"\n"}
+,{"stream_name":"stderr","time":28.91228518,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":28.912288885,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":28.912292483,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":28.912296104,"data":"\n"}
+,{"stream_name":"stderr","time":28.912299475,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":28.912303081,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":28.912306947,"data":"\n"}
+,{"stream_name":"stderr","time":28.912310326,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":28.912314201,"data":"\n"}
+,{"stream_name":"stderr","time":28.912317344,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":28.912320675,"data":"\n"}
+,{"stream_name":"stderr","time":28.912324001,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":28.912327837,"data":"\n"}
+,{"stream_name":"stderr","time":28.912331434,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":28.912335265,"data":"\n"}
+,{"stream_name":"stderr","time":28.912338685,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":29.114695181,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":29.11472106,"data":"\n"}
+,{"stream_name":"stderr","time":29.114725721,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":29.114729903,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":29.114734089,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":29.114747059,"data":"\n"}
+,{"stream_name":"stderr","time":29.114750513,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":29.114754044,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":29.114757627,"data":"\n"}
+,{"stream_name":"stderr","time":29.114760841,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":29.114764726,"data":"\n"}
+,{"stream_name":"stderr","time":29.114767954,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":29.114771368,"data":"\n"}
+,{"stream_name":"stderr","time":29.114774545,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":29.114777965,"data":"\n"}
+,{"stream_name":"stderr","time":29.114781258,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":29.114784912,"data":"\n"}
+,{"stream_name":"stderr","time":29.114788556,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":29.114792142,"data":"\n"}
+,{"stream_name":"stderr","time":29.11479532,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":29.114800641,"data":"\n"}
+,{"stream_name":"stderr","time":29.114808393,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":29.114811006,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":29.114813384,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":29.114815788,"data":"\n"}
+,{"stream_name":"stderr","time":29.114817983,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":29.114820348,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":29.114822695,"data":"\n"}
+,{"stream_name":"stderr","time":29.11482497,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":29.11482736,"data":"\n"}
+,{"stream_name":"stderr","time":29.114829528,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":29.114831814,"data":"\n"}
+,{"stream_name":"stderr","time":29.11483408,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":29.114836309,"data":"\n"}
+,{"stream_name":"stderr","time":29.1148385,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":29.114840862,"data":"\n"}
+,{"stream_name":"stderr","time":29.114843079,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":29.1167731,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.116795507,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.116798635,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.116800933,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":29.116803149,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":29.116805607,"data":"wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":30.48263362,"data":"mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 \u0026\u0026 cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/\n"}
+,{"stream_name":"stdout","time":30.482672323,"data":"vit path patched in /kaggle/working/RevealLayer/models/custom_model_xvae.py\n"}
+,{"stream_name":"stderr","time":30.728440532,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":30.729046025,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":30.729060658,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":30.729065651,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":30.729069724,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":30.729073828,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":30.729077026,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":30.72908013,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":30.729083625,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":30.729086863,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":30.729090156,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":30.729093345,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":30.729096775,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":30.72910013,"data":"AssertionError                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":30.729103495,"data":"/tmp/ipykernel_23/534275867.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":30.729106911,"data":"     35         open(_f, 'w', encoding='utf-8').write(_s); print('vit path patched in', _f)\n"}
+,{"stream_name":"stderr","time":30.729110458,"data":"     36 \n"}
+,{"stream_name":"stderr","time":30.72911359,"data":"---\u003e 37 patch(\"models/custom_model_mmdit.py\", \"torch.full((t_total, t_total), -1e9, dtype=dtype\", \"torch.full((t_total, t_total), -1e4, dtype=dtype\")\n"}
+,{"stream_name":"stderr","time":30.729117541,"data":"     38 patch(\"models/custom_model_mmdit.py\", \"hidden_states_part2 = hidden_states[:, l0_len:, :] + delta\",\n"}
+,{"stream_name":"stderr","time":30.72912144,"data":"     39       \"hidden_states_part2 = (hidden_states[:, l0_len:, :].float() + torch.nan_to_num(delta.float(), nan=0.0, posinf=6e4, neginf=-6e4)).clamp(-6e4, 6e4).to(hidden_states.dtype)\")\n"}
+,{"stream_name":"stderr","time":30.729125978,"data":"\n"}
+,{"stream_name":"stderr","time":30.729130565,"data":"/tmp/ipykernel_23/534275867.py in patch(path, old, new, count)\n"}
+,{"stream_name":"stderr","time":30.729133706,"data":"     15 def patch(path, old, new, count=-1):\n"}
+,{"stream_name":"stderr","time":30.729137412,"data":"     16     p=f\"{RL}/{path}\"; s=open(p,encoding=\"utf-8\").read()\n"}
+,{"stream_name":"stderr","time":30.729140696,"data":"---\u003e 17     assert old in s, f\"patch anchor not found in {path}: {old[:60]}\"\n"}
+,{"stream_name":"stderr","time":30.729144052,"data":"     18     open(p,\"w\",encoding=\"utf-8\").write(s.replace(old,new,count)); print(\"patched\",path)\n"}
+,{"stream_name":"stderr","time":30.729158293,"data":"     19 patch(\"infer.py\", \"torch.bfloat16\", \"torch.float16\")\n"}
+,{"stream_name":"stderr","time":30.729165895,"data":"\n"}
+,{"stream_name":"stderr","time":30.729169056,"data":"AssertionError: patch anchor not found in models/custom_model_mmdit.py: torch.full((t_total, t_total), -1e9, dtype=dtype\n"}
+,{"stream_name":"stderr","time":30.72917266,"data":"\n"}
+,{"stream_name":"stderr","time":33.7290558,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":33.72908345,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":33.898645957,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":33.898673833,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":34.681885627,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":34.769621242,"data":"[NbConvertApp] Writing 1053513 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":37.294913091,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":37.840458571,"data":"[NbConvertApp] Writing 1368052 bytes to __results__.html\n"}
+]

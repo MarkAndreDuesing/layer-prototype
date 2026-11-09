@@ -66,6 +66,16 @@ except Exception as e:  # diffusers GGUF loading for 2.1 is unconfirmed; NF4 is 
     t = QwenImage21Transformer2DModel.from_pretrained(snapshot_download(REPO, allow_patterns=["transformer/*"]), subfolder="transformer",
             quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=DT), torch_dtype=DT)
     print("transformer: NF4 fallback", flush=True)
+# diffusers' GGUF loader only dequantizes nn.Linear; other GGUF params keep packed bytes (run 1: 4096 vs 8192)
+from diffusers.quantizers.gguf.utils import GGUFLinear, GGUFParameter, dequantize_gguf_tensor
+_fixed = 0
+for _m in t.modules():
+    for _n, _p in list(_m.named_parameters(recurse=False)):
+        if isinstance(_m, GGUFLinear) and _n == "weight":
+            continue
+        if isinstance(_p, GGUFParameter):
+            setattr(_m, _n, torch.nn.Parameter(dequantize_gguf_tensor(_p).to(DT), requires_grad=False)); _fixed += 1
+print("dequantized non-linear GGUF params:", _fixed, flush=True)
 apply_fp16_mixed(t); t.to(D0).eval()
 
 from transformers import AutoModelForImageTextToText

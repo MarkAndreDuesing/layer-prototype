@@ -1,0 +1,511 @@
+[{"stream_name":"stderr","time":6.963152237,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.963235599,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.904840091,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.904868196,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.9048746009999995,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.904881788,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.492245937,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.492270206,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.492293302,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.492297789,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.664456041,"data":"pip -q install 'transformers\u003e=5.17' gguf\u003e=0.10 accelerate git+https://github.com/huggingface/diffusers\n"}
+,{"stream_name":"stdout","time":61.669954256,"data":"diffusers 0.42.0.dev0 torch 2.11.0+cu130\n"}
+,{"stream_name":"stderr","time":62.030580451,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":62.030607687,"data":"\n"}
+,{"stream_name":"stderr","time":62.030614156,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":176.090573746,"data":"downloads done 166 s\n"}
+,{"stream_name":"stdout","time":178.695034339,"data":"transformer: GGUF Q4_K_S\n"}
+,{"stream_name":"stderr","time":179.902875506,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":179.902902688,"data":"\n"}
+,{"stream_name":"stderr","time":179.90290777,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":244.996369652,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":244.997148855,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":244.997159162,"data":"\n"}
+,{"stream_name":"stderr","time":244.997162461,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":244.997165706,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":255.899942021,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":255.899984304,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stderr","time":255.899990025,"data":"\n"}
+,{"stream_name":"stderr","time":255.899993394,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":255.8999973,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stdout","time":258.580072079,"data":"loaded 249 s; GiB [8.0, 12.7]\n"}
+,{"stream_name":"stdout","time":260.412201776,"data":"FAILED t2i_rgba_campfire\n"}
+,{"stream_name":"stderr","time":260.541109406,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.541136692,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.541142209,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.54114613,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541149844,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.541153268,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541156896,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.541161059,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541165144,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.541169101,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.541172499,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.541176894,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.541180454,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541183865,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.541187576,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.541190973,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541194199,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.541197237,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.541200578,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.541204233,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541207603,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541211019,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541215052,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541218546,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.541221984,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.541236344,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541240235,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.541243808,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.541247065,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.541250642,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541254009,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541257402,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541260581,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541266002,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.541269887,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.541273107,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.54127655,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541279672,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541282789,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541286236,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541289548,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.541293115,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.541296602,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.541299801,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.541303463,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.541306973,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":260.541310646,"data":"\n"}
+,{"stream_name":"stderr","time":260.541313527,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.541316707,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.541320148,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.541345337,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541349389,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.541352833,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541361436,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.541365358,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541368796,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.541372637,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.541375999,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.541379388,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.541382768,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541386204,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.541389647,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.541392764,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541396047,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.541399218,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.541403453,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.54140705,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541410285,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541418567,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541422255,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541425642,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.541429117,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.54143292,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541436107,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.541439642,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.541443297,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.541446949,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541450226,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541453561,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541457064,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541460364,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.541463999,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.541467432,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.541470959,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.54147803,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.541481464,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.541485157,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.541488469,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.541492016,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.541495391,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.541498707,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.541502298,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.541506969,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stdout","time":260.544655421,"data":"FAILED t2i_rgba_campfire_nokv\n"}
+,{"stream_name":"stderr","time":260.612749602,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.612770408,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.612775532,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.612779285,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612782889,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.612786105,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612789438,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.612793049,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612796445,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.612800016,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.612803172,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.612806515,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.61280987,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.61281359,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.612817197,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.612820184,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612823201,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.612826323,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.612829657,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.612833181,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612836813,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.61284999,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.612853972,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612857716,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.612861001,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.61286435,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.6128674,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.612870825,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.612873991,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.612877457,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612880817,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612884243,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.612887494,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612892458,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.612896112,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.612899617,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.612903242,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612906143,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612909183,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.612912449,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.61291575,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.612919382,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.612923549,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.61292671,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.612930208,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.61293341,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":260.612936916,"data":"\n"}
+,{"stream_name":"stderr","time":260.612939983,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.612943362,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.612946576,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.612954638,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612958403,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.612961895,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612965568,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.612969112,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.612972417,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.61297597,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.612979418,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.612982281,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.61298536,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.61298851,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.612991899,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.612994856,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.612997801,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.613000649,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.613004324,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.613007552,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.61301071,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.61301363,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.613017145,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613020376,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.613023742,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.613027287,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613030448,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.613033967,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.613037294,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.613040853,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613044076,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.613047991,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.613051363,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613054555,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.613062885,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.61306675,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.613070638,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613073887,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.613077033,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.613080535,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.613083655,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.613087078,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.613090476,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.613093797,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.613097352,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.613101697,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stdout","time":260.67417144,"data":"FAILED t2i_scene\n"}
+,{"stream_name":"stderr","time":260.744841082,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.744866374,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.744871987,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.744876227,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744880015,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.744883487,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744886784,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.744891944,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744898879,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.744902992,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.744905757,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.744908119,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.74491043,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744912637,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.744914998,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.744917212,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744926072,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.744928353,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.744930574,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.744933014,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744935175,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.74493734,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.744939647,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744941858,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.74494409,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.744946398,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744948614,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.74495107,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.744953425,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.744955743,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.7449579,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744960127,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.744962418,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744966058,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.74496848,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.744970812,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.744973146,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.744975305,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.744977461,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.744979737,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.74498194,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.74498432,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.74498656,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.744988762,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.744991127,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.744995549,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":260.744997993,"data":"\n"}
+,{"stream_name":"stderr","time":260.745000087,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":260.74500225,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":260.745004524,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":260.7450068,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745009093,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":260.745011324,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745013552,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":260.745015944,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.74501811,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":260.745020449,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":260.745022592,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":260.74502477,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":260.745026961,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745029127,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":260.745031346,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":260.745033497,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745038837,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":260.745041056,"data":"    ^\n"}
+,{"stream_name":"stderr","time":260.745043444,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.745045811,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745048059,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745050237,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.74505262,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745054774,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":260.745057059,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":260.74505935,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745061616,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":260.745064005,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":260.745066342,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.745070498,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745072718,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.74507489,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.745077197,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745079357,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":260.745081735,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":260.745083945,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":260.745086261,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.745088399,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":260.745090577,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":260.745092875,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":260.74509505,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":260.745097433,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":260.745099789,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":260.745102099,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":260.745104467,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":260.745107149,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stdout","time":265.845782548,"data":"FAILED extract_campfire\n"}
+,{"stream_name":"stderr","time":266.048244487,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":266.04828186,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":266.048287041,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":266.048292423,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048299208,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":266.048301687,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048303986,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":266.04830645,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048308656,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":266.04831498,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":266.048317381,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":266.048361409,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":266.048368223,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048371556,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":266.048375175,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":266.048378388,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048381707,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":266.048384961,"data":"    ^\n"}
+,{"stream_name":"stderr","time":266.04838941,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.048392953,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048396193,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048399797,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.04840495,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048411775,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":266.048414201,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":266.048416529,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048418737,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":266.048421078,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":266.048424912,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.04843979,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048443966,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048447991,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.048452157,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048458182,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":266.048461869,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":266.048465145,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.048468809,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048472098,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048475314,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.048478712,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048481955,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":266.048485726,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":266.048493101,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":266.048496505,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":266.048500083,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":266.048503346,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":266.048506709,"data":"\n"}
+,{"stream_name":"stderr","time":266.048509878,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":266.048518959,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":266.048533386,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":266.048537562,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048541771,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":266.048545614,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048549565,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":266.048553839,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048557364,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":266.04856088,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":266.048564183,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":266.048567422,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":266.048570634,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.04857392,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":266.048577254,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":266.0485804,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048583621,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":266.048586746,"data":"    ^\n"}
+,{"stream_name":"stderr","time":266.048590423,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.048594024,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048597196,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.04860044,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.048603996,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048607279,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":266.048616261,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":266.048630572,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048638455,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":266.048643047,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":266.048647176,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.048650774,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048653982,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.04865725,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.048661734,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048664948,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":266.048668591,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":266.048671818,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.048675239,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048678404,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.048681647,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.048685078,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.048688305,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":266.048691781,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":266.048695103,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":266.04869838,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":266.048702068,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":266.048710811,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stdout","time":266.442157684,"data":"FAILED edit_scene_rain\n"}
+,{"stream_name":"stdout","time":266.443008424,"data":"total 257 s\n"}
+,{"stream_name":"stderr","time":266.444816285,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":266.444847399,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":266.444851925,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":266.444855665,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444859314,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":266.444862715,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444877644,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":266.444882817,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.44489041,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":266.444893203,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":266.444895377,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":266.444897525,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":266.444900089,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444919927,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":266.444924168,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":266.444927874,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444931605,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":266.444935171,"data":"    ^\n"}
+,{"stream_name":"stderr","time":266.444938868,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.444942786,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.444946068,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444949288,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.44495277,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.444956024,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":266.444959414,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":266.444962886,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.444966187,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":266.444969662,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":266.444973006,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.444976531,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.444979874,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.444983189,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.444986607,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.44499146,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":266.444995069,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":266.44500012,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.445006719,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445027801,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445032519,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.445036799,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445040546,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":266.445044172,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":266.445047629,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":266.445050892,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":266.445054457,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":266.445057734,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":266.44506118,"data":"\n"}
+,{"stream_name":"stderr","time":266.445064242,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":266.445067505,"data":"  File \"/tmp/ipykernel_23/559538303.py\", line 63, in run\n"}
+,{"stream_name":"stderr","time":266.445070892,"data":"    im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,\n"}
+,{"stream_name":"stderr","time":266.445074219,"data":"         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445077582,"data":"              generator=torch.Generator(D0).manual_seed(42)).images[0]\n"}
+,{"stream_name":"stderr","time":266.4450808,"data":"              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445083999,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":266.445087399,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445090632,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py\", line 784, in __call__\n"}
+,{"stream_name":"stderr","time":266.445096194,"data":"    noise_pred = self.transformer(\n"}
+,{"stream_name":"stderr","time":266.445102802,"data":"                 ~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":266.445117438,"data":"        hidden_states=latent_model_input,\n"}
+,{"stream_name":"stderr","time":266.445121179,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445125079,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":266.445128834,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":266.445132618,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.44513628,"data":"    )[0]\n"}
+,{"stream_name":"stderr","time":266.44513998,"data":"    ^\n"}
+,{"stream_name":"stderr","time":266.445144245,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.445147881,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445151498,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445159724,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.445163289,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445166525,"data":"  File \"fp16_mixed\", line 141, in fwd\n"}
+,{"stream_name":"stderr","time":266.445169815,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/utils/peft_utils.py\", line 323, in wrapper\n"}
+,{"stream_name":"stderr","time":266.445173169,"data":"    result = forward_fn(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445176382,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 923, in forward\n"}
+,{"stream_name":"stderr","time":266.445179909,"data":"    encoder_hidden_states = self.txt_in(encoder_hidden_states)\n"}
+,{"stream_name":"stderr","time":266.445183222,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.445186715,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445189941,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.445193096,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.445196528,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445199871,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 197, in forward\n"}
+,{"stream_name":"stderr","time":266.445203927,"data":"    hidden_states = self.text_norm(hidden_states)\n"}
+,{"stream_name":"stderr","time":266.445208039,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":266.445212185,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445216366,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":266.44522025,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":266.445223724,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":266.445226934,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_qwenimage21.py\", line 185, in forward\n"}
+,{"stream_name":"stderr","time":266.445230482,"data":"    return (hidden_states * rrms * (self.weight.float() + 1)).to(input_dtype)\n"}
+,{"stream_name":"stderr","time":266.445233922,"data":"            ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~\n"}
+,{"stream_name":"stderr","time":266.445237139,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/quantizers/gguf/utils.py\", line 578, in __torch_function__\n"}
+,{"stream_name":"stderr","time":266.445240742,"data":"    result = super().__torch_function__(func, types, args, kwargs)\n"}
+,{"stream_name":"stderr","time":266.445244734,"data":"RuntimeError: The size of tensor a (4096) must match the size of tensor b (8192) at non-singleton dimension 2\n"}
+,{"stream_name":"stderr","time":272.830063854,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":272.830102855,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":273.091644112,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":273.09169237,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":273.961875252,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":274.057115571,"data":"[NbConvertApp] Writing 301623 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":276.519352884,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":277.282110454,"data":"[NbConvertApp] Writing 564792 bytes to __results__.html\n"}
+]

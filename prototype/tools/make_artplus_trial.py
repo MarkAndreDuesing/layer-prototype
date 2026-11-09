@@ -111,7 +111,7 @@ pipe.encode_prompt = _enc
 
 vae_args = argparse.Namespace(max_layers=48, decoder_arch="vit", pos_embedding="rope", layer_embedding="rope", single_layer_decoder=None)
 transp_vae = CustomVAE(vae_args)
-tv = torch.load(glob.glob(f"{CLD}/trans_vae/*.pt")[0], map_location="cpu")
+tv = torch.load(glob.glob(f"{CLD}/trans_vae/*.pt")[0], map_location="cpu", weights_only=False)  # official thuteam/CLD checkpoint
 print("transp vae:", transp_vae.load_state_dict(tv.get("model", tv), strict=False), flush=True)
 transp_vae.to(D0, torch.float32).eval()
 print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
