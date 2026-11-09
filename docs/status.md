@@ -30,9 +30,9 @@
 | Stable-Layers | Yes, 2× T4, 34 s at 4 steps | Tried; colour shift; Heun + 2-layer sweep running |
 | Qwen Lightning LoRA (on Layered) | Yes | Tried once; 2-step and scale retries open |
 | RevealLayer | **Yes, 2× T4, 134 s for 12 steps** | Works since run 11 (fp16 fixes in its code) |
-| ART+ / PrismLayers | Loads on 2× T4 (all 3 LoRAs matched) | Run 3 with checkpoint fix running |
+| ART+ / PrismLayers | Loads on 2× T4 (295 s, 7.0 / 11.0 GB) | Run 4 (fp32 VAE input fix) running |
 | CLD | Not yet tried | Next, after ART+ (same code family as RevealLayer) |
-| LayerDiffuse-Flux | Yes technically (55 s per image) | Run 4 with LoRA key conversion queued |
+| LayerDiffuse-Flux | **Yes, one T4, about 58 s per object** | Works: clean transparent objects incl. semi-transparent glass |
 | Qwen-Image-2.1 (RGBA) | **Yes, 2× T4, 17–23 s** | Works: RGBA text-to-image, layer edit, extraction |
 | LayerDiffuse SDXL (+ chain) | Yes, T4 and CPU | Working base of the prototype |
 | LayerD | Yes, CPU | First attempt: 1 layer; parameter retries open |

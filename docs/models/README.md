@@ -42,6 +42,7 @@
 | LayerD | image to layers | 3 scenes | Kaggle CPU | defaults | 60 |  | 1 |  | returned 1 layer | [results_layerd_trial](../../prototype/kaggle/results_layerd_trial/) |
 | IC-Light fbc relight | relight layer | forest | laptop CPU | 384 px, 8 steps | 44 |  | 1 |  | fire also dimmed | [results_local_relight](../../prototype/kaggle/results_local_relight/) |
 | procedural shadow | shadow layer | forest | laptop CPU | per layer | 0.6 |  | 1 |  |  | [results_local_shadow](../../prototype/kaggle/results_local_shadow/) |
+| LayerDiffuse-Flux | text to RGBA object | campfire / deer / bottle | 1x T4 | 512 px, 16 steps, GGUF Q4 | 58 | 8.9 | 1 |  | semi-transparent glass works | [results_ldflux_v4](../../prototype/kaggle/results_ldflux_v4/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (19 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (20 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

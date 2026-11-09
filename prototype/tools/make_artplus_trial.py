@@ -114,6 +114,16 @@ transp_vae = CustomVAE(vae_args)
 tv = torch.load(glob.glob(f"{CLD}/trans_vae/*.pt")[0], map_location="cpu", weights_only=False)  # official thuteam/CLD checkpoint
 print("transp vae:", transp_vae.load_state_dict(tv.get("model", tv), strict=False), flush=True)
 transp_vae.to(D0, torch.float32).eval()
+# VAEs run in fp32 but the pipeline hands them fp16 tensors -> cast tensor inputs (RevealLayer needed the same fix)
+def _to32(m, args, kwargs):
+    c = lambda x: x.float() if torch.is_tensor(x) and x.is_floating_point() else x
+    return tuple(c(a) for a in args), {k: c(v) for k, v in kwargs.items()}
+for _v in (transp_vae, pipe.vae):
+    _v.register_forward_pre_hook(_to32, with_kwargs=True)
+    for _name in ("encode", "decode"):
+        if hasattr(_v, _name):
+            _f = getattr(_v, _name)
+            setattr(_v, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))
 print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
 
 def boxes16(bs):

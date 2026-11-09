@@ -15,11 +15,17 @@ GGUF Q4_K_S FLUX.1-dev + encoders/VAE from ungated `ostris/Flex.1-alpha`; LoRA k
 
 ## Benchmarks
 
-Run 2: 55 s per image at 512 px / 16 steps, 7.6 GB, but **without** the LoRA (0 keys matched). Run 4 pending.
+| Object (512 px, 16 steps) | Time | Transparent | Result |
+|---|---|---|---|
+| campfire | 63 s | 75% | clean cut-out, stylised fire |
+| deer | 57 s | 82% | clean, fine legs and antlers |
+| glass bottle | 58 s | 77% | **semi-transparent glass** |
+
+Peak 8.9 GB (one T4). Run 2 (55 s, 0 LoRA keys matched) was plain FLUX. Results: [`../../prototype/kaggle/results_ldflux_v4/`](../../prototype/kaggle/results_ldflux_v4/).
 
 ## Best features
 
-FLUX-quality single transparent objects (expected; not yet confirmed).
+Clean FLUX-quality transparent objects, including real semi-transparency (glass); one T4 is enough.
 
 ## Weak spots
 
@@ -27,7 +33,7 @@ Single images only, no multi-layer scenes; heavy model.
 
 ## Status
 
-Run 4 (LoRA key conversion) queued.
+Works since run 4 (LoRA keys converted from BFL/kohya format; all 494 modules matched).
 
 ## Next attempts
 

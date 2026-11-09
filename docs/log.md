@@ -330,6 +330,8 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - **LayerDiffuse-Flux** run 2 ran (55 s per image, 7.6 GB) but **0 LoRA modules matched**: its LoRA uses BFL/kohya key names with fused qkv. Run 4 converts the keys with diffusers' kohya converter first.
 - **ART+** run 2: all three LoRAs matched completely (pre_fuse 190, ART base from CLD 304, ART+ 304; weights from the official Drive folders), then stopped loading the transparent-decoder checkpoint (`weights_only` default in torch ≥ 2.6). Run 3 loads it with `weights_only=False` (official `thuteam/CLD` file).
 - **Qwen v9 sweep** failed on every config (`unexpected keyword 'sampler'`): the batch notebook embeds `qwen_layered.py` via the test-notebook generator, which had not been re-run. Regenerated and re-queued.
+- **LayerDiffuse-Flux run 4 works:** all 494 LoRA modules matched after key conversion; campfire, deer and glass bottle as clean transparent objects (75–82% transparent, the bottle semi-transparent), 57–63 s each at 512 px / 16 steps, 8.9 GB on one T4.
+- **ART+ run 3:** loaded in 295 s (7.0 / 11.0 GB), decoder matched; generation failed on fp16 inputs to fp32 VAEs → run 4 adds input-casting hooks.
 - **Test scene:** the user chose the fox & cottage variant with the cottage, a stone wall with gate, a path, a fox, a tree and background houses; the prompt is being tuned so the fox is larger and does not overlap the wall.
 - **Docs restructured** into status / todo / log / glossary / concepts / models / research / guides / archive (old → new paths in [archive/MOVED.md](archive/MOVED.md)).
 

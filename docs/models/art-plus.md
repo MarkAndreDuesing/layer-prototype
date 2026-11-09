@@ -15,7 +15,7 @@ GGUF Q4_K_S FLUX.1-dev re-classed into `CustomFluxTransformer2DModel` (max 52 la
 
 ## Benchmarks
 
-Run 2: all LoRAs matched (190 / 304 / 304), weights from the official Drive folders; stopped loading the decoder checkpoint. Run 3 running.
+Run 2: all LoRAs matched (190 / 304 / 304), weights from the official Drive folders. Run 3: loaded in 295 s (7.0 / 11.0 GB), decoder keys all matched; generation failed on fp16 inputs to the fp32 VAEs. Run 4 (input-casting hooks) running.
 
 ## Best features
 
@@ -27,7 +27,7 @@ Trained at 1024 px (we run 512); heavy; Drive downloads can hit quotas.
 
 ## Status
 
-Run 3 running.
+Run 4 running.
 
 ## Next attempts
 

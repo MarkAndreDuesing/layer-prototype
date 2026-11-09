@@ -18,3 +18,4 @@ SAM2 + LaMa,image to layers,3 scenes,1x T4,"hiera-small, 4 largest masks",5,,4,0
 LayerD,image to layers,3 scenes,Kaggle CPU,defaults,60,,1,,results_layerd_trial,2026-11-09,returned 1 layer
 IC-Light fbc relight,relight layer,forest,laptop CPU,"384 px, 8 steps",44,,1,,results_local_relight,2026-11-09,fire also dimmed
 procedural shadow,shadow layer,forest,laptop CPU,per layer,0.6,,1,,results_local_shadow,2026-11-09,
+LayerDiffuse-Flux,text to RGBA object,campfire / deer / bottle,1x T4,"512 px, 16 steps, GGUF Q4",58,8.9,1,,results_ldflux_v4,2026-11-09,semi-transparent glass works
