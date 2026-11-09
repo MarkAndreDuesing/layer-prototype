@@ -16,6 +16,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
 | [`docs/open-paths.md`](docs/open-paths.md) | **Open routes and ideas still to research**: where strong text-to-image models fit, segment + inpaint, story events, budget |
 | [`reports/`](reports/) | Research reports: layered-generation models, hosting, the coherent pipeline, Kaggle plans, TPU route, speed and API costs |
+| [`reports/Image generation models hosting and costs.md`](reports/Image%20generation%20models%20hosting%20and%20costs.md) | The research before Phase 1: free and cheap places to run image models (Kaggle, LMU GPUs, Spaces, APIs, OpenRouter), a price-to-performance metric, sketch-input methods, CPU-only options, and links to test the candidate models |
 | [`research_notes/`](research_notes/) | Raw source notes behind the reports |
 | [`docs/fastsd-cpu/`](docs/fastsd-cpu/) | Earlier phase: offline image generation on a CPU laptop with FastSD CPU. [INSTALL.md](docs/fastsd-cpu/INSTALL.md) and [USAGE.md](docs/fastsd-cpu/USAGE.md), two paths (SD-Turbo, SDXL-Turbo) |
 | [`docs/session-summary-sketch-to-image.md`](docs/session-summary-sketch-to-image.md) | How the sketch-to-image phase went, and why each decision was made |

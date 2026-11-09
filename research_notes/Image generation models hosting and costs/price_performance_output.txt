@@ -1,0 +1,38 @@
+N=101  market slope b=25.2 Elo per price doubling  intercept=853  R^2=0.10
+residual sd=104
+
+Top 15 by value residual (Elo above market line at its price):
+model                                    Elo    $/1k  pred  resid   CI pareto win v lead
+Nano Banana 2.1                         1176    33.6   981   +195   12   True       0.43
+Muse Image                              1127    10.0   937   +190   11   True       0.37
+MAI-Image-2.6                           1167    38.9   986   +181   12  False       0.42
+GPT Image 2.5 Sunburst (max)            1223   210.7  1048   +175   10   True       0.50
+Grok Imagine Image 2.0                  1168    60.0  1002   +166   12  False       0.42
+GPT Image 2.5 Flare (max)               1207   210.7  1048   +159   10  False       0.48
+MAI-Image-2.6-Flash                     1120    19.5   961   +159   12  False       0.36
+GPT Image 2 (high)                      1189   211.0  1048   +141   11  False       0.45
+Nano Banana 2                           1140    67.0  1006   +134   10  False       0.38
+Nano Banana 2 Lite                      1107    33.6   981   +126   10  False       0.34
+FLUX 3 Image                            1119    48.0   994   +125   12  False       0.35
+MAI-Image-2.5                           1118    48.1   994   +124   11  False       0.35
+FLUX 3 Image Klein                      1043     9.0   933   +110   12   True       0.26
+Qwen-Image-3.0-Pro                      1097    40.0   987   +110   12  False       0.33
+Qwen-Image-3.0                          1072    30.0   977    +95   12  False       0.30
+
+Pareto frontier (cheapest -> best):
+P-Image-Ideogram (Very Low)              909     3.0 resid +16  win v lead 0.14
+FLUX.2 [dev] Flash                       988     5.0 resid +76  win v lead 0.21
+FLUX.2 [dev] Turbo                       995     8.0 resid +66  win v lead 0.21
+FLUX 3 Image Klein                      1043     9.0 resid +110  win v lead 0.26
+Muse Image                              1127    10.0 resid +190  win v lead 0.37
+Nano Banana 2.1                         1176    33.6 resid +195  win v lead 0.43
+GPT Image 2.5 Sunburst (max)            1223   210.7 resid +175  win v lead 0.50
+
+Bottom 5 residual:
+FLUX.1 [schnell]                         740     3.0 resid -153
+LongCat Image                            857   130.0 resid -173
+Phoenix 0.9 Ultra                        833    76.2 resid -178
+OmniGen V2                               714   150.0 resid -321
+Bagel                                    594   100.0 resid -427
+
+Naive Elo/$ top 5: ['P-Image-Ideogram (Very Low)', 'FLUX.1 [schnell]', 'FLUX.2 [dev] Flash', 'Z-Image Turbo', 'P-Image']
