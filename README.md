@@ -14,6 +14,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`prototype/docs/qwen-layered-on-kaggle.md`](prototype/docs/qwen-layered-on-kaggle.md) | Qwen-Image-Layered on free Kaggle T4s: how to run it, why it needs a patch, gotchas |
 | [`prototype/layerproto/fp16_mixed.py`](prototype/layerproto/fp16_mixed.py) | Makes bf16-only Qwen-Image models run on fp16 GPUs (T4) without NaNs |
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
+| [`docs/open-paths.md`](docs/open-paths.md) | **Open routes and ideas still to research**: where strong text-to-image models fit, segment + inpaint, story events, budget |
 | [`reports/`](reports/) | Research reports: layered-generation models, hosting, the coherent pipeline, Kaggle plans, TPU route, speed and API costs |
 | [`research_notes/`](research_notes/) | Raw source notes behind the reports |
 | [`docs/fastsd-cpu/`](docs/fastsd-cpu/) | Earlier phase: offline image generation on a CPU laptop with FastSD CPU. [INSTALL.md](docs/fastsd-cpu/INSTALL.md) and [USAGE.md](docs/fastsd-cpu/USAGE.md), two paths (SD-Turbo, SDXL-Turbo) |
