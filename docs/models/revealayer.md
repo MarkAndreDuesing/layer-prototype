@@ -56,4 +56,4 @@ fox & cottage with LLM boxes; `true_gs` 3.5 / 16 steps; second scene; 768 px if 
 
 ## Sources
 
-[`../../research_notes/Layered methods deep dive/flux_models_t4_adaptation.md`](../../research_notes/Layered%20methods%20deep%20dive/flux_models_t4_adaptation.md); [`../../research_notes/Layered loop open paths/flux_layered_t4_and_weights.md`](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md); [../log.md](../log.md) Phases 6–7.
+[`../../research_notes/Layered methods deep dive/flux_models_t4_adaptation (untested cells)`](../../research_notes/archive/flux_models_t4_adaptation_untested.md); [`../../research_notes/Layered loop open paths/flux_layered_t4_and_weights.md`](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md); [../log.md](../log.md) Phases 6–7.

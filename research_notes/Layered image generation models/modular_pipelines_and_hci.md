@@ -121,3 +121,39 @@ Native layered models give coherent RGBA layers in one shot, with consistent lig
 ### Gaps
 - I did not verify Qwen-Image-Layered's VRAM needs, or whether it runs on 16 GB with quantization.
 - I found no evaluation comparing modular vs native layered pipelines directly.
+
+## Q6. Matting, segmentation, inpainting and harmonisation for hosting (moved from Free hostable layered models/hosting_and_matting.md §B)
+
+### Takeaway
+For commercial-safe cut-outs, use BiRefNet (MIT) or the BEN2 base model (MIT). SAM 2.1 (Apache-2.0) and Florence-2 (MIT) cover prompted segmentation. LaMa (Apache-2.0) covers background fill. RMBG-2.0, ObjectClear and IC-Light v2 are non-commercial or unreleased. SAM 3 is gated under a custom licence.
+
+### Cited Findings
+- **BiRefNet** (`ZhengPeng7/BiRefNet`): MIT, 0.2B parameters, default 1024×1024 input with fp16 CUDA in the example. A HF collection holds 18 task- and scale-specific variants. — [HF](https://huggingface.co/ZhengPeng7/BiRefNet)
+  - rembg ships these BiRefNet ONNX variants: general, general-fp16, general-lite, portrait, dis, hrsod, cod and massive. — [rembg](https://github.com/danielgatis/rembg)
+- **BEN2** (`PramaLLC/BEN2`): MIT, 94.6M parameters, runs on CUDA or CPU. Only the Base model is open. The Full model (proprietary 22K-image dataset, better hair and 4K handling) is available only through the API or web demo; commercial access goes through sales. — [HF](https://huggingface.co/PramaLLC/BEN2)
+- **RMBG-2.0** (`briaai/RMBG-2.0`): CC BY-NC 4.0 (bria-rmbg-2.0). Gated behind a form. Built on the BiRefNet architecture, 0.2B parameters, 1024 input. Commercial use requires a paid agreement. — [HF](https://huggingface.co/briaai/RMBG-2.0)
+- **InSPyReNet** (via the `transparent-background` package): MIT. Modes are `base` (1024), `fast` (384), `base-nightly` and `custom`. CPU install instructions are provided. — [GitHub](https://github.com/plemeri/transparent-background)
+- **rembg:** the code is MIT, but each weight file keeps its own licence. The default is `bria-rmbg`, which is non-commercial. Supported models: u2net, u2netp, u2net_human_seg, u2net_cloth_seg, silueta, isnet-general-use, isnet-anime, sam, the BiRefNet set above, and bria-rmbg. ViTMatte refiners are also listed. — [GitHub](https://github.com/danielgatis/rembg)
+- **SAM 2 / 2.1:** Apache-2.0 and not gated. Checkpoint sizes are 38.9M (tiny), 46M (small), 80.8M (base+) and 224.4M (large). — [GitHub](https://github.com/facebookresearch/sam2)
+- **SAM 3** (`facebook/sam3`): gated (you must share your HF info). The licence is listed as "other" (custom Meta). It takes text-phrase and exemplar prompts for images and video. About 0.9B parameters stored as F32, so roughly 3.6 GB of weights. — [HF](https://huggingface.co/facebook/sam3)
+- **Grounded-SAM-2:** Apache-2.0 plus component licences (SAM 2, GroundingDINO, cctorch). Grounding DINO and Florence-2 run locally. Grounding DINO 1.5/1.6 and DINO-X need an API token. The README does not mention SAM 3. — [GitHub](https://github.com/IDEA-Research/Grounded-SAM-2)
+- **Florence-2-large:** MIT, about 0.77B parameters. Tasks include captioning, phrase grounding, object detection, dense region captioning, OCR and segmentation. — [HF](https://huggingface.co/microsoft/Florence-2-large)
+- **LaMa:** Apache-2.0. Weights: `smartywu/big-lama` on HF, or Google Drive. — [LICENSE](https://raw.githubusercontent.com/advimman/lama/main/LICENSE), [GitHub](https://github.com/advimman/lama)
+- **ObjectClear:** NTU S-Lab License 1.0 (non-commercial). Built on SDXL-Inpainting and has an fp16 flag. Weights download through a repo script; there is a HF demo Space `jixin0101/ObjectClear`. — [GitHub](https://github.com/zjx0101/ObjectClear)
+- **OmniEraser:** weights at `theSure/Omnieraser` and `theSure/Omnieraser_Controlnet_version`. FLUX-based (FLUX.1-dev ControlNet inpainting). The repo states no licence. — [GitHub](https://github.com/PRIS-CV/OmniEraser)
+- **pix2gestalt:** amodal completion fine-tuned from Lambda Labs' image-conditioned SD. Weights are at `cvlab/pix2gestalt-weights`. The Gradio app needs 22 to 28 GB VRAM. The dataset is research-only. — [GitHub](https://github.com/cvlab-columbia/pix2gestalt)
+- **IC-Light:**
+  - The SD1.5 repo is Apache-2.0, with models `fc`, `fcon` and `fbc` (foreground plus background conditioning). Its default remover, RMBG-1.4, is non-commercial, and the repo suggests BiRefNet instead. — [GitHub](https://github.com/lllyasviel/IC-Light)
+  - IC-Light v2 (FLUX): the weights are not released, and the maintainer said the licence "will be non-commercial only". It is reachable only through the fal.ai API, and the HF Space was reported as 404 or broken in 2025. — [Discussion #98](https://github.com/lllyasviel/IC-Light/discussions/98)
+
+### Inferences
+- **CPU-feasible:** BEN2 base, BiRefNet-lite, InSPyReNet fast, u2net/isnet, SAM 2.1 tiny/small, LaMa, and probably Florence-2-base.
+- **GPU-only in practice:** SAM 3, ObjectClear (SDXL), OmniEraser (FLUX, likely 24 GB+), pix2gestalt (22 to 28 GB) and IC-Light SD1.5 (about 6 to 8 GB, typical for SD1.5).
+- ZeroGPU's 48 GB slice can run all of these.
+
+### Gaps
+- The exact HF repo IDs for BiRefNet_lite, BiRefNet_HR and BiRefNet-matting were not opened individually; only the collection reference was seen on the main card.
+- **No VRAM figures are published** for BiRefNet, SAM 3, ObjectClear, OmniEraser or IC-Light. The CPU/GPU split above is my estimate.
+- **OmniEraser** has no licence in its repo, so treat it as all rights reserved.
+- **The SAM 3 licence text** was not opened.
+- **The pix2gestalt code licence** was not stated in the README.

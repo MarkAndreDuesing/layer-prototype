@@ -4,62 +4,9 @@
 
 Scope note: 17 tool calls were used. Full text was read for PSDiffusion, DreamLayer, OmniPSD and LASAGNA. Only abstracts or project pages were read for CLD, RefLayer, LiWi, LayerFusion and PrismLayers. Items marked **[prior notes, not re-verified]** come from `reports/Layer based architecture models and hosting.md` and were not checked again in this pass.
 
-## Q1. Which methods do "single prompt -> multiple coherent layers" natively, and which can run now?
+## Q1. Native "single prompt -> coherent layers" methods
 
-### Takeaway
-Several papers generate all layers jointly from a global prompt plus per-layer prompts: PSDiffusion, DreamLayer, OmniPSD, LayerFusion, LASAGNA and ART. None of them has verified, downloadable open weights today. The only runnable native text-to-RGBA options are single-layer (or fg+bg) models: LayerDiffuse, LayerDiffuse-Flux and Qwen-Image-2.1. These generate one transparent object per call, not a coordinated multi-layer stack.
-
-### Cited Findings
-- **PSDiffusion (WACV 2026, arXiv 2505.11468)**
-  - **Input:** a global prompt plus per-layer prompts, which an LLM can produce or the user can write. No boxes are needed; layout comes from the global branch's cross-attention maps.
-  - **Coherence:** "layer cross-attention reweighting" for placement, plus "partial joint self-attention" so each layer attends to masked regions of the global branch.
-  - **Layers:** the dataset has 3–6 layers; evaluation uses 3 foreground layers + 1 background.
-  - **Base:** SDXL with a rank-256 LoRA and an RGBA VAE in the LayerDiffuse style; about 60 A800 GPU-hours of training.
-  - **Release:** the paper gives no link or release statement for code or weights. It says it "supports various layer-wise editing" but gives no procedure for regenerating a single layer.
-  - Sources: [arXiv HTML v2](https://arxiv.org/html/2505.11468v2), [project page](https://dingbang777.github.io/PSDiffusion_Website)
-- **DreamLayer (ICCV 2025, arXiv 2503.12838)**
-  - **Input:** one prompt for the background and one per foreground. They are combined into a global prompt that drives a "global layer". Boxes are used only to build the dataset (GroundingDINO).
-  - **Coherence:** Context-Aware Cross-Attention takes a layout from the global layer; Layer-Shared Self-Attention links all layers; Information Retained Harmonization blends them in latent space and produces shadows.
-  - **Layers:** 2–4.
-  - **Base:** SD1.5, fine-tuned Custom-Diffusion style (K/V only).
-  - **Editing:** layers can be moved, flipped or resized at the latent level, with shadows updating to match. Single-layer regeneration is not described.
-  - **Release:** only a project page is linked; no code or weights are stated.
-  - Sources: [arXiv HTML](https://arxiv.org/html/2503.12838), [ICCV page](https://openaccess.thecvf.com/content/ICCV2025/html/Huang_DreamLayer_Simultaneous_Multi-Layer_Generation_via_Diffusion_Model_ICCV_2025_paper.html), [project page](https://ll3rd.github.io/DreamLayer/)
-- **OmniPSD (arXiv 2512.09247)**
-  - **Text-to-PSD input:** a JSON record with a "poster" (global) description plus foreground, midground and background descriptions. Removing the per-layer prompts made results worse (FID 30.43 → 38.56).
-  - **Layers:** a fixed 2×2 grid (composite, fg, mid, bg) generated jointly with FLUX.1-dev; coherence comes from in-context spatial self-attention. Image-to-PSD uses Flux-Kontext with an RGBA VAE.
-  - **Editing:** poster editing in a UI; no regeneration of one layer from a prompt.
-  - **Release:** the paper mentions no code or weights. Prior notes say the code is CC BY-NC-SA with no weights.
-  - Sources: [arXiv HTML](https://arxiv.org/html/2512.09247v1), [project page](https://showlab.github.io/OmniPSD/)
-- **LASAGNA (arXiv 2601.15507, UCSC + Adobe)**
-  - **Base:** a fine-tuned ~2B DiT with an RGBA VAE and a T5 text encoder.
-  - **Modes:** Text2All (composite + clean background + RGBA foreground with shadows and reflections, from text plus a location mask), FG_Gen (foreground given background) and BG_Gen (background given foreground).
-  - **Release:** the dataset (LASAGNA-48K) and benchmark are promised; model release is not stated.
-  - Sources: [arXiv HTML](https://arxiv.org/html/2601.15507), [project page](https://rayjryang.github.io/LASAGNA-Page/)
-- **LayerFusion (arXiv 2412.04460, Virginia Tech + Adobe)**
-  - **Output:** a jointly generated triplet of foreground (RGBA), background and blend, built on transparent-generation priors (LayerDiffuse).
-  - **Release:** no code link was confirmed.
-  - Sources: [project page](https://layerfusion.github.io), [arXiv](https://arxiv.org/html/2412.04460v1)
-- **ART / ART+ and PrismLayers (arXiv 2505.22523)**
-  - ART+ is ART fine-tuned on PrismLayersPro and wins 60% of head-to-head user comparisons with ART. The abstract calls it "open-source", but the HF papers page links only the dataset (creative-graphic-design/PrismLayersPro), not a model.
-  - Sources: [HF papers](https://huggingface.co/papers/2505.22523), [arXiv](https://arxiv.org/abs/2505.22523)
-  - **[prior notes, not re-verified]** ART takes a global prompt plus per-region boxes and prompts. Its weights were removed in July 2025, and the ART+ checkpoint is on Google Drive with no license.
-- **Qwen-Image-2.1**
-  - **Model:** a 7B DiT with a Qwen3-VL 8B encoder. It is the first Qwen model with native RGBA output (prompted with a fixed RGBA phrase), and it can edit transparent layers, extract subjects and take up to 10 reference images.
-  - **License:** Qwen Research License (non-commercial).
-  - **Not confirmed:** whether it decomposes an image into multiple layers. Secondary sources only say it "folds in" Qwen-Image-Layered's role.
-  - Sources: [HF card](https://huggingface.co/Qwen/Qwen-Image-2.1), [ComfyUI wiki](https://comfyui-wiki.com/en/models/qwen-image/qwen-image-2.1)
-- **LayerDiffuse-Flux (RedAIGC)** **[prior notes, not re-verified]:** single-layer RGBA on FLUX.1-dev; the repo has no license and the base model is non-commercial. Source: [HF](https://huggingface.co/RedAIGC/Flux-version-LayerDiffuse)
-
-### Inferences
-- The "single prompt -> coherent layer stack" architecture (a global branch plus per-layer branches with shared attention) is well established in papers: PSDiffusion and DreamLayer on SD, OmniPSD on FLUX.
-- PSDiffusion is architecturally closest to an SDXL+LayerDiffuse stack, so with released weights it would fit a T4. As of now it cannot be run.
-- A practical stand-in is to approximate it: an LLM decomposes the scene into per-layer prompts and a layout, LayerDiffuse generates each layer, and a harmonization pass follows.
-
-### Gaps
-- No VRAM figures are published for any joint model.
-- PSDiffusion, DreamLayer and LayerFusion: the GitHub orgs were not checked directly, only the paper and project-page links.
-- Text2Layer, MuLAn, LayeringDiff, PixelART and RevealLayer were not researched in this pass because of the call budget.
+> Merged into [joint_text_to_layers.md](../Layered%20methods%20deep%20dive/joint_text_to_layers.md#paper-facts-per-method) on 2026-11-10 (moved verbatim, with its citations).
 
 ## Q2. Which methods do the two-stage "T2I image -> decompose into layers", and which can run now?
 

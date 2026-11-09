@@ -28,12 +28,12 @@ Everything the user has asked to investigate across the recent sessions, with st
 ## D. Layered-generation papers (`other_layered_methods.md` and newer)
 
 - [x] First audit of every method's code and weights ([joint_text_to_layers.md](../../research_notes/Layered%20methods%20deep%20dive/joint_text_to_layers.md), [other_psd_methods.md](../../research_notes/Layered%20methods%20deep%20dive/other_psd_methods.md))
-- [x] **Double-check every "not released" claim** ([release_status_recheck.md](../../research_notes/Layered%20methods%20deep%20dive/release_status_recheck.md)): still unreleased except OmniPSD code (no weights), LayerCraft code + LoRA, and an unofficial ART+ mirror with a fresh web search: PSDiffusion, DreamLayer, LASAGNA, LayerFusion, OmniPSD weights, LayeringDiff, LayerDecomp, DiffDecompose, Text2Layer, RefLayer, LayerCraft, LiWi, PixelART
+- [x] **Double-check every "not released" claim** ([joint_text_to_layers.md (release status)](../../research_notes/Layered%20methods%20deep%20dive/joint_text_to_layers.md#release-status-verified-2026-11-09)): still unreleased except OmniPSD code (no weights), LayerCraft code + LoRA, and an unofficial ART+ mirror with a fresh web search: PSDiffusion, DreamLayer, LASAGNA, LayerFusion, OmniPSD weights, LayeringDiff, LayerDecomp, DiffDecompose, Text2Layer, RefLayer, LayerCraft, LiWi, PixelART
 - [ ] **Actually try the methods called infeasible on Kaggle**, at reduced settings as with Qwen:
   - [x] Stable-Layers: runs at 34 s (4 steps); cleaner split but colour shift; Heun still open
   - [~] RevealLayer (FLUX.1-dev GGUF + LoRA): run 5 runs end to end on 2× T4 (69 s / 12 steps, peak 10.5/11.2 GB) but gives noise (fp16 overflow); runs 6/7 add `fp16_mixed`, blocked by the Kaggle outage of 2026-11-09
-  - [ ] ART+ / PrismLayers (Flux-class): its LoRAs appear to be on HF inside CLD's checkpoint (`pre_trained_LoRA`, `prism_ft_LoRA`), which avoids Google Drive ([re-check](../../research_notes/Layered%20methods%20deep%20dive/heavy_models_recheck_2026-11-09.md))
-  - [ ] CLD (FLUX + inpainting ControlNet): code and file sizes read, adaptation planned ([re-check](../../research_notes/Layered%20methods%20deep%20dive/heavy_models_recheck_2026-11-09.md)); waits for the RevealLayer port (same code base)
+  - [ ] ART+ / PrismLayers (Flux-class): its LoRAs appear to be on HF inside CLD's checkpoint (`pre_trained_LoRA`, `prism_ft_LoRA`), which avoids Google Drive ([re-check](../../research_notes/archive/heavy_models_recheck_2026-11-09.md))
+  - [ ] CLD (FLUX + inpainting ControlNet): code and file sizes read, adaptation planned ([re-check](../../research_notes/archive/heavy_models_recheck_2026-11-09.md)); waits for the RevealLayer port (same code base)
   - [ ] Qwen-Image-2.1 RGBA (7B): **most promising**, with native RGBA VAE, RGBA editing, subject extraction, Turbo at 8 steps and GGUF Q4 at 3.9 GB; notebook ready (`tools/make_qwen21_rgba_trial.py`), waiting for Kaggle
   - [ ] LayerDiffuse-Flux: notebook pushed (`layerdiffuse-flux-trial`, `fp16_mixed` + unmerged LoRA), queued during the Kaggle outage
   - [ ] OmniPSD: weights still not released (re-checked 2026-11-09)
@@ -51,7 +51,7 @@ Everything the user has asked to investigate across the recent sessions, with st
 - [ ] Where the strong text-to-image models fit (base-image generator → decomposer): untested
 - [ ] Image-to-image front end → Qwen-Image-Layered: untested
 - [ ] LayerDiffuse on complex scenes (many or overlapping objects): not evaluated
-- [~] Scene-wide story events (fire, rain, night): researched; no layered method does it (gap G2). Three training-free routes listed ([re-check](../../research_notes/Layered%20methods%20deep%20dive/heavy_models_recheck_2026-11-09.md), section 4); a 'rainy night' test is in the Qwen-Image-2.1 notebook
+- [~] Scene-wide story events (fire, rain, night): researched; no layered method does it (gap G2). Three training-free routes listed ([re-check](../../research_notes/archive/heavy_models_recheck_2026-11-09.md), section 4); a 'rainy night' test is in the Qwen-Image-2.1 notebook
 - [~] Prompt breakdown with AI placement plus harmonisation (IC-Light): IC-Light v1 (SD1.5, background-conditioned) fits a T4 and could relight moved layers; v2 (FLUX) has no released weights. Not tried yet
 
 ## F. Exhaustive open-paths research (2026-11-09 evening)

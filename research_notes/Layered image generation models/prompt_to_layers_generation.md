@@ -24,29 +24,7 @@ LayerDiffuse (Zhang & Agrawala, 2024) is still the most mature open way to get a
 
 ## Multi-layer generators (ART, PrismLayers, DreamLayer, LayerFusion, PSDiffusion, OmniPSD, Text2Layer, LayeringDiff)
 
-### Takeaway
-Research methods (2023–2026) generate several RGBA layers in one pass from a global prompt, either with an anonymous layout (ART) or with per-layer prompts (PSDiffusion, DreamLayer, LayerFusion). Most give harmonized lighting because the layers are denoised jointly. Few have usable open weights: ART's were withdrawn.
-
-### Cited Findings
-- **ART (Anonymous Region Transformer)**, arXiv 2502.18364 (Feb 2025, CVPR 2025, Microsoft Research Asia): built on FLUX.1[dev], using 3D RoPE and region-wise attention. It is more than 12x faster than full attention and has fewer layer conflicts — [arXiv](https://arxiv.org/abs/2502.18364v1), [HF paper](https://huggingface.co/papers/2502.18364), [MSR](https://www.microsoft.com/en-us/research/?p=1144107)
-  - Inputs: a global prompt plus an anonymous region layout (boxes with no per-layer captions), from an LLM planner or set by hand. It claims "50+ layers". The license is MIT, but **weights and code were removed on 2025-07-23** because the training data "may have come from illegal sources" — [GitHub microsoft/art-msra](https://github.com/microsoft/art-msra)
-- **PrismLayers / PrismLayersPro**, arXiv 2505.22523 (May 2025): an open synthetic dataset of about 200K multi-layer images, with a 20K "Pro" subset. Images average about 7 layers (range 3–14). Built with LayerFLUX (single transparent layer) and MultiLayerFLUX (composes layers from a layout given by a reference image or an LLM). ART fine-tuned on it ("ART+") won 60% of user-study comparisons — [arXiv PDF](https://arxiv.org/pdf/2505.22523), [CatalyzeX](https://www.catalyzex.com/paper/prismlayers-open-data-for-high-quality-multi). Dataset: [HF artplus/PrismLayersPro](https://huggingface.co/datasets/artplus/PrismLayersPro) — [ar5iv](https://ar5iv.labs.arxiv.org/html/2505.22523)
-- **PSDiffusion**, arXiv 2505.11468 (WACV 2026): takes a global prompt plus layer-specific prompts (evaluated with 3 foreground + 1 background + global). Layer prompts can come from an LLM or the user. Layout is taken from cross-attention maps of a full RGB image generated together with the layers, which keeps the layers harmonized — [arXiv](https://arxiv.org/html/2505.11468), [WACV PDF](https://openaccess.thecvf.com/content/WACV2026/papers/Huang_PSDiffusion_Harmonized_Multi-Layer_Image_Generation_via_Layout_and_Appearance_Alignment_WACV_2026_paper.pdf)
-- **DreamLayer**, arXiv 2503.12838 (ICCV 2025): generates transparent fg and bg layers simultaneously, using Context-Aware Cross-Attention, Layer-Shared Self-Attention and Information-Retained Harmonization. Also supports image-to-layer decomposition and latent editing — [arXiv](https://arxiv.org/html/2503.12838v1), [ICCV](https://openaccess.thecvf.com/content/ICCV2025/html/Huang_DreamLayer_Simultaneous_Multi-Layer_Generation_via_Diffusion_Model_ICCV_2025_paper.html)
-- **LayerFusion**, arXiv 2412.04460 (Dalva et al., Dec 2024): harmonized multi-layer text-to-image using generative priors on latent diffusion — [fugumt](https://fugumt.com/fugumt/paper_check/2412.04460v1_enmode)
-- **LayeringDiff**: generates a composite image, then extracts layers from it, which avoids large-scale training — [fugumt summary](https://fugumt.com/fugumt/paper_check/2412.04460v1_enmode)
-- **Text2Layer** (2023): an autoencoder for layered images, with diffusion producing bg, fg, mask and composite together — same source
-- **OmniPSD**, arXiv 2512.09247 (Dec 2025, NUS + Lovart): Flux-based in-context text-to-PSD and image-to-PSD. Reportedly trained on about 200K real PSDs (from a review, unverified). Project page: [showlab.github.io/OmniPSD](https://showlab.github.io/OmniPSD/) — [arXiv](https://arxiv.org/pdf/2512.09247)
-- **TransPixar / TransPixeler** (Adobe + HKUST, arXiv 2501.03006): RGBA text-to-video. Adds alpha tokens with a LoRA on a DiT. A CogVideoX-5B LoRA is released and Mochi training code is open — [HF wileewang/TransPixar](https://huggingface.co/wileewang/TransPixar), [project](https://wileewang.github.io/TransPixar)
-- Newer 2026 work seen only as titles: **LiWi: Layering in the Wild** (arXiv 2605.14552) and "Controllable layered image generation for real-world editing" (arXiv 2601.15507) — [LiWi PDF](https://arxiv.org/pdf/2605.14552)
-
-### Inferences
-- Joint methods (PSDiffusion, DreamLayer, ART) give the best cross-layer lighting harmony. But regenerating one layer means re-running everything, or using inpainting-style tricks with a fixed seed.
-- Of the joint methods, PSDiffusion's input format (global + per-layer prompts) is the closest to the game's per-object prompt design.
-
-### Gaps
-- Weights, licenses and VRAM were not verified for DreamLayer, PSDiffusion, LayerFusion, OmniPSD or LayeringDiff. Assume code-only or no release until checked.
-- Not covered by search: LayerCraft, LayerTracer (vector/SVG layers), Alfie, MuLAN dataset, and "Generative Image Layer Decomposition" (LayerDecomp, Adobe).
+> Merged into [joint_text_to_layers.md](../Layered%20methods%20deep%20dive/joint_text_to_layers.md#paper-facts-per-method) on 2026-11-10 (moved verbatim, with its citations).
 
 ## Qwen-Image-Layered, Qwen-Image-2.1 and other modern base models
 

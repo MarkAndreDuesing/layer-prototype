@@ -39,37 +39,6 @@ Code and weights are released: a LoRA plus TransparentVAE on FLUX.1-dev. The FLU
 
 ## 3. Research models: code and weights status
 
-### Takeaway
-Of the research models, only CLD, ART (originally), LayerD, See-through, OmniPSD (code only), and PrismLayers (code and data) have public releases. All the generative ones sit on FLUX.1-dev, which means a non-commercial license and a hard fit on 16 GB. LayerD is the outlier: it is lightweight and runs on CPU.
+> Merged into [joint_text_to_layers.md](../Layered%20methods%20deep%20dive/joint_text_to_layers.md#code-and-weights-table-2026-11-07) on 2026-11-10 (moved verbatim, with its citations).
 
-### Cited Findings
-| Model | Code | Weights | License | Base | Source |
-|---|---|---|---|---|---|
-| CLD (2511.16249) | Yes, MIT | HF thuteam/CLD (LoRAs + trans_vae, Dec 2025) | MIT code, FLUX.1-dev NC for base | FLUX.1-dev + alimama FLUX ControlNet-Inpainting-Alpha | [monkek123King/CLD](https://github.com/monkek123King/CLD) |
-| ART | microsoft/art-msra (search snippet only) | HF ART-Release/ART_v1.0. It returned HTTP 401 on 2026-11-07, so it may now be gated or removed | Not confirmed | FLUX.1-dev (search snippet only) | [HF ART_v1.0 discussion](https://huggingface.co/ART-Release/ART_v1.0/discussions/1/files) |
-| PrismLayers / ART+ | github.com/redredsheep/PrismLayers | Dataset on HF. A separate ART+ weights link is not confirmed | Not stated | ART fine-tune | [prism-layers.github.io](https://prism-layers.github.io/) |
-| OmniPSD (2512.09247) | Yes, showlab/OmniPSD, with train/infer scripts | No download link in README | LICENCE file present, type not shown | FLUX.1-dev (T2PSD), FLUX.1-Kontext-dev (I2PSD) | [showlab/OmniPSD](https://github.com/showlab/OmniPSD) |
-| LayerD (2509.25134, ICCV25) | Yes, Apache-2.0. The repo is archived (read-only) | HF cyberagent/layerd-birefnet | Apache-2.0 code | BiRefNet matting + inpainting. Has a CPU device example | [CyberAgentAILab/LayerD](https://github.com/CyberAgentAILab/LayerD) |
-| See-through (anime, SIGGRAPH 2026) | Yes, shitagaki-lab/see-through | HF layerdifforg/*, plus an NF4 Marigold variant for low VRAM | Apache-2.0 code, Open RAIL++-M on weights (search snippet only) | LayerDiff 3D + Marigold | [shitagaki-lab/see-through](https://github.com/shitagaki-lab/see-through) |
-| DiffDecompose (2505.21541) | Not released. README: "We will release the code and datasets after being accepted" | None | None | Not stated | [Wangzt1121/DiffDecompose](https://github.com/Wangzt1121/DiffDecompose) |
-| PSDiffusion (2505.11468, WACV26) | No repo found | None | n/a | n/a | [project page](https://dingbang777.github.io/PSDiffusion_Website) |
-| RefLayer (2602.19358, ICLR26) | No code link on arXiv | None | n/a | n/a | [arXiv](https://arxiv.org/abs/2602.19358) |
-| LiWi (2605.14552) | Project page only. Abstract says "will soon release" code and dataset | None | n/a | n/a | [arXiv](https://arxiv.org/abs/2605.14552) |
-| 2601.15507 (LASAGNA, Adobe co-authors) | No code link. Releases the LASAGNA-48K dataset and LASAGNA-BENCH benchmark | None found | n/a | n/a | [arXiv](https://arxiv.org/abs/2601.15507) |
-| LayerDecomp (Adobe, 2411.17864) | The project page lists only paper links | None found | n/a | n/a | [project page](https://rayjryang.github.io/LayerDecomp/) |
-| RevealLayer (2605.11818), PixelART (2609.22789) | Listed as "paper only" | None | n/a | n/a | [awesome-image-layer-decomposition](https://github.com/discopotato3376-oss/awesome-image-layer-decomposition) (third-party list) |
-| DreamLayer, LayerFusion | No repo found in search | None found | n/a | n/a | [search: OmniPSD similar papers](https://arxiv.deeppaper.ai/papers/2512.09247v1/similar) |
-| Related: Qwen-Image-Layered | QwenLM/Qwen-Image-Layered | HF Qwen/Qwen-Image-Layered (Dec 19 2025) | Apache-2.0, 20B params (per list) | Qwen-Image | [awesome list](https://github.com/discopotato3376-oss/awesome-image-layer-decomposition) |
-
-### Inferences
-- **Fits a free T4 easily:** LayerDiffuse SD1.5/SDXL, LayerD (BiRefNet, ~1 GB, CPU-capable), and See-through (NF4 variant).
-- **Needs quantization or offload on 16 GB, so Kaggle is preferred:** LayerDiffuse-Flux, CLD, ART, and OmniPSD, all on FLUX.1-dev. The T4's lack of bf16 adds friction.
-- **Unlikely to be practical on a free T4:** Qwen-Image-Layered (20B).
-- **Commercial use:** the FLUX.1-dev Non-Commercial License restricts every FLUX-based option. Research and prototype use is fine.
-
-### Gaps
-- No project publishes VRAM figures.
-- I did not confirm official ComfyUI or diffusers support for the FLUX-based research models, or for ready Kaggle/Colab notebooks for any of them.
-- ART's HF status is unclear (401).
-- PrismLayers license and ART+ weights are unconfirmed.
-- I did not open the OmniPSD license contents or the official DreamLayer and LayerFusion pages.
+The 2026-11-09 re-check in that file supersedes most rows.
