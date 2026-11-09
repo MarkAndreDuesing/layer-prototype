@@ -2,6 +2,18 @@
 
 All findings and decisions so far, in date order. Numbers are measured unless marked **[est]**. The reports in [`../reports/`](../reports/) hold the sourced research behind each decision.
 
+## Phase 0: models, hosting and costs research (2026-11-05 → 07)
+
+Full report: [Image generation models hosting and costs.md](../reports/Image%20generation%20models%20hosting%20and%20costs.md).
+
+- **Quality bar:** Z-Image Turbo's level (arena Elo 936) is enough. Cost, accessibility and sketch input decide the model, not leaderboard rank.
+- **Recurring free GPUs:** Kaggle (about 30 GPU-h/week), the LMU Informatik CIP pool (RTX 2060 SUPER 8 GB through Slurm, with a CIP account) and Hugging Face Spaces (5 GPU-min/day). The LMU Abaki servers (A5000 24 GB) are for theses only; LRZ needs a research project.
+- **Ruled out as recurring options:** SageMaker Studio Lab (closed to new users), Lightning AI and Comfy Cloud (one-time trials), Colab web UIs (forbidden on the free tier).
+- **APIs:** DeepSeek and Kimi have no image generation. Open models cost about $0.001–0.015 per image on fal, WaveSpeed, Runware or Together. OpenRouter adds a 5.5% top-up fee ($0.80 minimum).
+- **Price-to-performance:** Pareto frontier over 101 arena models; the knee is at about $10 per 1,000 images (Muse Image). FLUX 3 Image Klein is the cheapest open-weights model on the frontier ($9 per 1,000). Script: [../research_notes/Image generation models hosting and costs/](../research_notes/Image%20generation%20models%20hosting%20and%20costs/).
+- **Sketch input** needs img2img, a ControlNet or reference editing. Z-Image Turbo (Apache-2.0, fits 16 GB) and SDXL have scribble ControlNets; FLUX.2/3 Klein only reference editing.
+- **CPU-only on the laptop:** only small distilled models (SD-Turbo, SDXL-Turbo, SDXS, SD 1.5 + LCM-LoRA) were expected to stay under 3 minutes. Phase 1 tested three of them. The research-time speed estimates (4–8 s per image) were about 4–10× too optimistic; measured: about 20 s and 58 s.
+
 ## Phase 1: sketch-to-image on a CPU laptop (FastSD CPU)
 
 **Setup:** Windows 11 laptop, 15.7 GB RAM, no GPU. Current guides (two paths, offline): [fastsd-cpu/INSTALL.md](fastsd-cpu/INSTALL.md) and [fastsd-cpu/USAGE.md](fastsd-cpu/USAGE.md). Results: [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md). How the session went and why each decision was made: [session-summary-sketch-to-image.md](session-summary-sketch-to-image.md).
