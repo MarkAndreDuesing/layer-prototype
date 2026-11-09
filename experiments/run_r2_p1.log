@@ -1,0 +1,460 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:540
++ ... pts\python.exe"; & $py run_round2.py r2_p1 *> "run_r2_p1.log"; "FINIS ...
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM Model pipeline - stabilityai/sd-turbo *****
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading pipeline components...:  20%|██        | 1/5 [00:00<00:01,  3.89it/s]
+Loading pipeline components...:  40%|████      | 2/5 [00:00<00:00,  4.57it/s]
+Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00,  2.88it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [00:01<00:00,  4.92it/s]
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.StableDiffusionPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_img2img.StableDiffusionImg2ImgPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+Pipeline : StableDiffusionImg2ImgPipeline {
+  "_class_name": "StableDiffusionImg2ImgPipeline",
+  "_diffusers_version": "0.37.0",
+  "feature_extractor": [
+    null,
+    null
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    null,
+    null
+  ],
+  "scheduler": [
+    "diffusers",
+    "EulerDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : []
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:12<00:12, 12.29s/it]
+100%|██████████| 2/2 [00:15<00:00,  7.09s/it]
+100%|██████████| 2/2 [00:15<00:00,  7.87s/it]
+r2_p1 seed123123 filled_s70 pixelart 31.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.49s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.49s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.49s/it]
+r2_p1 seed123123 filled_s70 impressionist 19.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.36s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.39s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.38s/it]
+r2_p1 seed123123 filled_s70 hyperreal 20.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.36s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.50s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.48s/it]
+r2_p1 seed123123 filled_s70 nostyle 21.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.37s/it]
+ 67%|██████▋   | 2/3 [00:07<00:03,  3.57s/it]
+100%|██████████| 3/3 [00:11<00:00,  3.74s/it]
+100%|██████████| 3/3 [00:11<00:00,  3.67s/it]
+r2_p1 seed123123 filled_s80 pixelart 25.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.22s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.22s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.22s/it]
+r2_p1 seed123123 filled_s80 impressionist 22.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.33s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.33s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.28s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.29s/it]
+r2_p1 seed123123 filled_s80 hyperreal 22.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.23s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.24s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.22s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.23s/it]
+r2_p1 seed123123 filled_s80 nostyle 22.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.14s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+r2_p1 seed123123 filled_s90 pixelart 21.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.16s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.23s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed123123 filled_s90 impressionist 22.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:07,  3.59s/it]
+ 67%|██████▋   | 2/3 [00:07<00:03,  3.56s/it]
+100%|██████████| 3/3 [00:10<00:00,  3.56s/it]
+100%|██████████| 3/3 [00:10<00:00,  3.56s/it]
+r2_p1 seed123123 filled_s90 hyperreal 23.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.38s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.32s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.32s/it]
+r2_p1 seed123123 filled_s90 nostyle 23.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.59s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.47s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.35s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.29s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.34s/it]
+r2_p1 seed123123 filled_s90_5steps pixelart 26.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.20s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.19s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.19s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.19s/it]
+r2_p1 seed123123 filled_s90_5steps impressionist 25.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.21s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.21s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.21s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.21s/it]
+r2_p1 seed123123 filled_s90_5steps hyperreal 25.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.20s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+r2_p1 seed123123 filled_s90_5steps nostyle 25.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.21s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+r2_p1 seed7 filled_s70 pixelart 19.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.31s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.26s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.27s/it]
+r2_p1 seed7 filled_s70 impressionist 19.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+r2_p1 seed7 filled_s70 hyperreal 19.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+r2_p1 seed7 filled_s70 nostyle 19.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.23s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+r2_p1 seed7 filled_s80 pixelart 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
+r2_p1 seed7 filled_s80 impressionist 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.22s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+r2_p1 seed7 filled_s80 hyperreal 22.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed7 filled_s80 nostyle 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.26s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.25s/it]
+r2_p1 seed7 filled_s90 pixelart 23.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed7 filled_s90 impressionist 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
+r2_p1 seed7 filled_s90 hyperreal 22.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.22s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+r2_p1 seed7 filled_s90 nostyle 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.21s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.22s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.21s/it]
+r2_p1 seed7 filled_s90_5steps pixelart 25.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.23s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.24s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.23s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.22s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.23s/it]
+r2_p1 seed7 filled_s90_5steps impressionist 25.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.21s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.21s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+r2_p1 seed7 filled_s90_5steps hyperreal 25.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.20s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.20s/it]
+r2_p1 seed7 filled_s90_5steps nostyle 25.5s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.19s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.19s/it]
+r2_p1 seed2024 filled_s70 pixelart 19.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.21s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.22s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.22s/it]
+r2_p1 seed2024 filled_s70 impressionist 19.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.30s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.26s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.27s/it]
+r2_p1 seed2024 filled_s70 hyperreal 19.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s70 nostyle 19.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s80 pixelart 22.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.37s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.45s/it]
+100%|██████████| 3/3 [00:10<00:00,  3.48s/it]
+100%|██████████| 3/3 [00:10<00:00,  3.47s/it]
+r2_p1 seed2024 filled_s80 impressionist 23.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s80 hyperreal 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.21s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s80 nostyle 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.18s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.19s/it]
+r2_p1 seed2024 filled_s90 pixelart 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.20s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s90 impressionist 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.21s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.21s/it]
+r2_p1 seed2024 filled_s90 hyperreal 22.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.21s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.21s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.20s/it]
+r2_p1 seed2024 filled_s90 nostyle 22.2s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.20s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.21s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.22s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.21s/it]
+r2_p1 seed2024 filled_s90_5steps pixelart 25.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.18s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.19s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.19s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.19s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.19s/it]
+r2_p1 seed2024 filled_s90_5steps impressionist 25.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.19s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.25s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.23s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.23s/it]
+r2_p1 seed2024 filled_s90_5steps hyperreal 25.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:09,  3.20s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.20s/it]
+ 75%|███████▌  | 3/4 [00:09<00:03,  3.21s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.21s/it]
+100%|██████████| 4/4 [00:12<00:00,  3.21s/it]
+r2_p1 seed2024 filled_s90_5steps nostyle 25.5s
+ALL DONE r2_p1

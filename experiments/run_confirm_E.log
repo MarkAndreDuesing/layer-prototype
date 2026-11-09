@@ -1,0 +1,178 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:944
++ ... ,"F","G") { & $py run_confirm_text.py $b *> "run_confirm_$b.log" }; " ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM Model pipeline - stabilityai/sdxl-turbo *****
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  8.07it/s]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:02,  2.43it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:05<00:05,  1.68s/it]
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:05<00:02,  1.20s/it]
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:06<00:01,  1.11s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [00:06<00:00,  1.24it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:06<00:00,  1.04it/s]
+Pipeline : StableDiffusionXLPipeline {
+  "_class_name": "StableDiffusionXLPipeline",
+  "_diffusers_version": "0.37.0",
+  "_name_or_path": "stabilityai/sdxl-turbo",
+  "feature_extractor": [
+    null,
+    null
+  ],
+  "force_zeros_for_empty_prompt": true,
+  "image_encoder": [
+    null,
+    null
+  ],
+  "scheduler": [
+    "diffusers",
+    "EulerAncestralDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "text_encoder_2": [
+    "transformers",
+    "CLIPTextModelWithProjection"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "tokenizer_2": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : []
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:36<01:50, 36.86s/it]
+ 50%|█████     | 2/4 [00:50<00:46, 23.36s/it]
+ 75%|███████▌  | 3/4 [00:57<00:15, 15.95s/it]
+100%|██████████| 4/4 [01:04<00:00, 12.40s/it]
+100%|██████████| 4/4 [01:04<00:00, 16.21s/it]
+confirmE seed11 text_sdxlturbo pixelart 76.0s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:33<01:39, 33.05s/it]
+ 50%|█████     | 2/4 [00:47<00:44, 22.05s/it]
+ 75%|███████▌  | 3/4 [00:54<00:15, 15.36s/it]
+100%|██████████| 4/4 [01:02<00:00, 12.24s/it]
+100%|██████████| 4/4 [01:02<00:00, 15.57s/it]
+confirmE seed11 text_sdxlturbo impressionist 80.1s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:33<01:39, 33.11s/it]
+ 50%|█████     | 2/4 [00:41<00:37, 18.84s/it]
+ 75%|███████▌  | 3/4 [00:50<00:13, 13.93s/it]
+100%|██████████| 4/4 [00:59<00:00, 12.23s/it]
+100%|██████████| 4/4 [00:59<00:00, 14.92s/it]
+confirmE seed11 text_sdxlturbo hyperreal 77.2s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:37<01:53, 37.96s/it]
+ 50%|█████     | 2/4 [00:46<00:40, 20.40s/it]
+ 75%|███████▌  | 3/4 [00:53<00:14, 14.46s/it]
+100%|██████████| 4/4 [01:01<00:00, 11.73s/it]
+100%|██████████| 4/4 [01:01<00:00, 15.25s/it]
+confirmE seed11 text_sdxlturbo nostyle 79.7s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:29<01:29, 29.91s/it]
+ 50%|█████     | 2/4 [00:44<00:42, 21.07s/it]
+ 75%|███████▌  | 3/4 [00:52<00:14, 14.88s/it]
+100%|██████████| 4/4 [00:59<00:00, 11.99s/it]
+100%|██████████| 4/4 [00:59<00:00, 14.96s/it]
+confirmE seed42 text_sdxlturbo pixelart 77.2s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:29<01:28, 29.40s/it]
+ 50%|█████     | 2/4 [00:37<00:33, 16.82s/it]
+ 75%|███████▌  | 3/4 [00:44<00:12, 12.58s/it]
+100%|██████████| 4/4 [00:52<00:00, 10.65s/it]
+100%|██████████| 4/4 [00:52<00:00, 13.16s/it]
+confirmE seed42 text_sdxlturbo impressionist 72.2s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:26<01:19, 26.43s/it]
+ 50%|█████     | 2/4 [00:43<00:42, 21.04s/it]
+ 75%|███████▌  | 3/4 [00:51<00:14, 14.79s/it]
+100%|██████████| 4/4 [00:58<00:00, 11.91s/it]
+100%|██████████| 4/4 [00:58<00:00, 14.64s/it]
+confirmE seed42 text_sdxlturbo hyperreal 75.4s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:34<01:44, 34.84s/it]
+ 50%|█████     | 2/4 [00:43<00:38, 19.26s/it]
+ 75%|███████▌  | 3/4 [00:50<00:13, 13.95s/it]
+100%|██████████| 4/4 [00:58<00:00, 11.42s/it]
+100%|██████████| 4/4 [00:58<00:00, 14.59s/it]
+confirmE seed42 text_sdxlturbo nostyle 75.6s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:31<01:35, 31.72s/it]
+ 50%|█████     | 2/4 [00:40<00:36, 18.21s/it]
+ 75%|███████▌  | 3/4 [00:47<00:13, 13.19s/it]
+100%|██████████| 4/4 [00:55<00:00, 10.94s/it]
+100%|██████████| 4/4 [00:55<00:00, 13.79s/it]
+confirmE seed99 text_sdxlturbo pixelart 73.7s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:30<01:32, 30.81s/it]
+ 50%|█████     | 2/4 [00:44<00:41, 20.67s/it]
+ 75%|███████▌  | 3/4 [00:52<00:14, 14.81s/it]
+100%|██████████| 4/4 [00:59<00:00, 11.88s/it]
+100%|██████████| 4/4 [00:59<00:00, 14.90s/it]
+confirmE seed99 text_sdxlturbo impressionist 76.8s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:26<01:18, 26.28s/it]
+ 50%|█████     | 2/4 [00:37<00:35, 17.64s/it]
+ 75%|███████▌  | 3/4 [00:45<00:12, 12.91s/it]
+100%|██████████| 4/4 [00:52<00:00, 10.85s/it]
+100%|██████████| 4/4 [00:52<00:00, 13.21s/it]
+confirmE seed99 text_sdxlturbo hyperreal 70.2s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:25<01:16, 25.47s/it]
+ 50%|█████     | 2/4 [00:35<00:32, 16.47s/it]
+ 75%|███████▌  | 3/4 [00:42<00:12, 12.14s/it]
+100%|██████████| 4/4 [00:49<00:00, 10.09s/it]
+100%|██████████| 4/4 [00:49<00:00, 12.40s/it]
+confirmE seed99 text_sdxlturbo nostyle 65.9s
+ALL DONE confirm E

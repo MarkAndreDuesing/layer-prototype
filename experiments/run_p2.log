@@ -1,0 +1,159 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:568
++ ... ach ($p in "p1","p2") { & $py run_tests.py $p *> "run_$p.log" }; fore ...
++                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM Model pipeline - stabilityai/sdxl-turbo *****
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:02,  2.08it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:01<00:01,  2.95it/s]
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:06<00:03,  1.65s/it]
+Loading pipeline components...: 100%|██████████| 7/7 [00:06<00:00,  1.12it/s]
+Pipeline : StableDiffusionXLImg2ImgPipeline {
+  "_class_name": "StableDiffusionXLImg2ImgPipeline",
+  "_diffusers_version": "0.37.0",
+  "feature_extractor": [
+    null,
+    null
+  ],
+  "force_zeros_for_empty_prompt": true,
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_aesthetics_score": false,
+  "scheduler": [
+    "diffusers",
+    "EulerAncestralDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "text_encoder_2": [
+
+    "transformers",
+    "CLIPTextModelWithProjection"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "tokenizer_2": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : []
+Using StableDiffusionXLPipeline
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:31<01:02, 31.18s/it]
+ 67%|██████▋   | 2/3 [00:41<00:19, 19.04s/it]
+100%|██████████| 3/3 [00:48<00:00, 13.33s/it]
+100%|██████████| 3/3 [00:48<00:00, 16.09s/it]
+p2 raw_s80 pixelart 62.8s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:29<00:59, 29.95s/it]
+ 67%|██████▋   | 2/3 [00:39<00:18, 18.06s/it]
+100%|██████████| 3/3 [00:46<00:00, 12.83s/it]
+100%|██████████| 3/3 [00:46<00:00, 15.46s/it]
+p2 raw_s80 impressionist 65.1s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:31<01:02, 31.21s/it]
+ 67%|██████▋   | 2/3 [00:38<00:17, 17.40s/it]
+100%|██████████| 3/3 [00:45<00:00, 12.43s/it]
+100%|██████████| 3/3 [00:45<00:00, 15.16s/it]
+p2 raw_s80 hyperreal 64.7s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:25<00:50, 25.35s/it]
+ 67%|██████▋   | 2/3 [00:33<00:15, 15.31s/it]
+100%|██████████| 3/3 [00:39<00:00, 11.21s/it]
+100%|██████████| 3/3 [00:40<00:00, 13.33s/it]
+p2 raw_s80 nostyle 58.6s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:22<00:45, 22.65s/it]
+ 67%|██████▋   | 2/3 [00:37<00:18, 18.08s/it]
+100%|██████████| 3/3 [00:44<00:00, 12.80s/it]
+100%|██████████| 3/3 [00:44<00:00, 14.69s/it]
+p2 blur_s80 pixelart 63.8s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:21<00:43, 21.61s/it]
+ 67%|██████▋   | 2/3 [00:30<00:14, 14.22s/it]
+100%|██████████| 3/3 [00:37<00:00, 10.67s/it]
+100%|██████████| 3/3 [00:37<00:00, 12.37s/it]
+p2 blur_s80 impressionist 59.6s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:22<00:44, 22.46s/it]
+ 67%|██████▋   | 2/3 [00:38<00:18, 18.97s/it]
+100%|██████████| 3/3 [00:45<00:00, 13.47s/it]
+100%|██████████| 3/3 [00:45<00:00, 15.30s/it]
+p2 blur_s80 hyperreal 66.6s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:25<00:51, 25.55s/it]
+ 67%|██████▋   | 2/3 [00:35<00:16, 16.57s/it]
+100%|██████████| 3/3 [00:42<00:00, 11.94s/it]
+100%|██████████| 3/3 [00:42<00:00, 14.09s/it]
+p2 blur_s80 nostyle 61.4s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:19<00:19, 19.17s/it]
+100%|██████████| 2/2 [00:27<00:00, 12.73s/it]
+100%|██████████| 2/2 [00:27<00:00, 13.70s/it]
+p2 blur_s60 pixelart 49.1s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:22<00:22, 22.28s/it]
+100%|██████████| 2/2 [00:34<00:00, 16.23s/it]
+100%|██████████| 2/2 [00:34<00:00, 17.14s/it]
+p2 blur_s60 impressionist 53.3s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:27<00:27, 27.60s/it]
+100%|██████████| 2/2 [00:35<00:00, 16.17s/it]
+100%|██████████| 2/2 [00:35<00:00, 17.90s/it]
+p2 blur_s60 hyperreal 55.5s
+Using StableDiffusionXLPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:28<00:28, 28.58s/it]
+100%|██████████| 2/2 [00:36<00:00, 16.58s/it]
+100%|██████████| 2/2 [00:36<00:00, 18.38s/it]
+p2 blur_s60 nostyle 57.8s
+ALL DONE p2

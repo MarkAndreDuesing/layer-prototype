@@ -1,0 +1,185 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:944
++ ... ,"F","G") { & $py run_confirm_text.py $b *> "run_confirm_$b.log" }; " ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM Model pipeline - stabilityai/sd-turbo *****
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading pipeline components...:  20%|██        | 1/5 [00:00<00:00,  4.94it/s]
+Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00,  6.34it/s]
+Loading pipeline components...:  80%|████████  | 4/5 [00:00<00:00,  6.70it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00,  7.89it/s]
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.StableDiffusionPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_img2img.StableDiffusionImg2ImgPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+Pipeline : StableDiffusionPipeline {
+  "_class_name": "StableDiffusionPipeline",
+  "_diffusers_version": "0.37.0",
+  "_name_or_path": "stabilityai/sd-turbo",
+  "feature_extractor": [
+    null,
+    null
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    null,
+    null
+  ],
+  "scheduler": [
+    "diffusers",
+    "EulerDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : []
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:11<00:35, 11.69s/it]
+ 50%|█████     | 2/4 [00:15<00:13,  6.93s/it]
+ 75%|███████▌  | 3/4 [00:18<00:05,  5.35s/it]
+100%|██████████| 4/4 [00:22<00:00,  4.63s/it]
+100%|██████████| 4/4 [00:22<00:00,  5.57s/it]
+confirmF seed11 text_sdturbo pixelart 34.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.47s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.44s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.43s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.43s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.43s/it]
+confirmF seed11 text_sdturbo impressionist 22.9s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.39s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.42s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.42s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.42s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.42s/it]
+confirmF seed11 text_sdturbo hyperreal 23.1s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.39s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.40s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.41s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+confirmF seed11 text_sdturbo nostyle 22.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.40s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.41s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.41s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.41s/it]
+confirmF seed42 text_sdturbo pixelart 22.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.38s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.38s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.39s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+confirmF seed42 text_sdturbo impressionist 22.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.39s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.41s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+confirmF seed42 text_sdturbo hyperreal 22.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.38s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.37s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.38s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+confirmF seed42 text_sdturbo nostyle 22.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.41s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.40s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.40s/it]
+confirmF seed99 text_sdturbo pixelart 22.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.38s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.39s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.39s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+confirmF seed99 text_sdturbo impressionist 22.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.41s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.41s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.41s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.41s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.41s/it]
+confirmF seed99 text_sdturbo hyperreal 22.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:03<00:10,  3.42s/it]
+ 50%|█████     | 2/4 [00:06<00:06,  3.43s/it]
+ 75%|███████▌  | 3/4 [00:10<00:03,  3.42s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.42s/it]
+100%|██████████| 4/4 [00:13<00:00,  3.42s/it]
+confirmF seed99 text_sdturbo nostyle 22.8s
+ALL DONE confirm F

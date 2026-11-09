@@ -1,0 +1,219 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:573
++ ... $p in "p1","p3","p2") { & $py run_tests.py $p *> "run_$p.log" }; "FIN ...
++                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM-LoRA pipeline - Lykon/dreamshaper-8 *****
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  4.02it/s]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  5.03it/s]CLIPFeatureExtractor appears to have been 
+deprecated in transformers. Using CLIPImageProcessor instead.
+
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00, 15.38it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 12.59it/s]
+No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state 
+dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the 
+warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new
+The config attributes {'skip_prk_steps': True} were passed to LCMScheduler, but are not expected and will be ignored. 
+Please verify your scheduler_config.json configuration file.
+The config attributes {'solver_order': 2, 'algorithm_type': 'deis', 'solver_type': 'logrho', 'lower_order_final': 
+True, 'use_karras_sigmas': False, 'skip_prk_steps': True} were passed to LCMScheduler, but are not expected and will 
+be ignored. Please verify your scheduler_config.json configuration file.
+LCM LoRA model detected so using recommended LCMScheduler
+Add FreeU - SD
+Pipeline : StableDiffusionPipeline {
+  "_class_name": "StableDiffusionPipeline",
+  "_diffusers_version": "0.37.0",
+  "_name_or_path": "Lykon/dreamshaper-8",
+  "feature_extractor": [
+    "transformers",
+    "CLIPImageProcessor"
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    "stable_diffusion",
+    "StableDiffusionSafetyChecker"
+  ],
+  "scheduler": [
+    "diffusers",
+    "LCMScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : ['lcm']
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:06<00:18,  6.11s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.39s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.14s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.08s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.21s/it]
+p3 canny_c60 pixelart 29.1s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:04<00:14,  4.98s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.05s/it]
+ 75%|███████▌  | 3/4 [00:15<00:04,  5.00s/it]
+100%|██████████| 4/4 [00:19<00:00,  4.93s/it]
+100%|██████████| 4/4 [00:19<00:00,  4.96s/it]
+p3 canny_c60 impressionist 27.4s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:04<00:14,  4.83s/it]
+ 50%|█████     | 2/4 [00:09<00:09,  4.98s/it]
+ 75%|███████▌  | 3/4 [00:14<00:04,  4.99s/it]
+100%|██████████| 4/4 [00:19<00:00,  5.02s/it]
+100%|██████████| 4/4 [00:19<00:00,  4.99s/it]
+p3 canny_c60 hyperreal 28.1s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:16,  5.47s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.45s/it]
+ 75%|███████▌  | 3/4 [00:16<00:05,  5.46s/it]
+100%|██████████| 4/4 [00:21<00:00,  5.35s/it]
+100%|██████████| 4/4 [00:21<00:00,  5.39s/it]
+p3 canny_c60 nostyle 29.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.11s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.12s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.08s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.06s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.07s/it]
+p3 canny_c100 pixelart 28.3s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:16,  5.49s/it]
+ 50%|█████     | 2/4 [00:11<00:11,  5.60s/it]
+ 75%|███████▌  | 3/4 [00:16<00:05,  5.65s/it]
+100%|██████████| 4/4 [00:23<00:00,  5.86s/it]
+100%|██████████| 4/4 [00:23<00:00,  5.77s/it]
+p3 canny_c100 impressionist 32.1s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:06<00:18,  6.24s/it]
+ 50%|█████     | 2/4 [00:12<00:12,  6.07s/it]
+ 75%|███████▌  | 3/4 [00:17<00:05,  5.63s/it]
+100%|██████████| 4/4 [00:23<00:00,  5.82s/it]
+100%|██████████| 4/4 [00:23<00:00,  5.85s/it]
+p3 canny_c100 hyperreal 32.3s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:16,  5.63s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.31s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.20s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.18s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.24s/it]
+p3 canny_c100 nostyle 29.2s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.09s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.12s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.20s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.27s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.22s/it]
+p3 scribble_c60 pixelart 29.3s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:16,  5.59s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.44s/it]
+ 75%|███████▌  | 3/4 [00:17<00:05,  5.75s/it]
+100%|██████████| 4/4 [00:22<00:00,  5.62s/it]
+100%|██████████| 4/4 [00:22<00:00,  5.62s/it]
+p3 scribble_c60 impressionist 30.5s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.07s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.09s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.11s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.10s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.10s/it]
+p3 scribble_c60 hyperreal 28.5s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.05s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.18s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.21s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.17s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.17s/it]
+p3 scribble_c60 nostyle 28.7s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.08s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.11s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.11s/it]
+p3 scribble_c100 pixelart 28.5s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.10s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.11s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.10s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.11s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.11s/it]
+p3 scribble_c100 impressionist 28.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.09s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.10s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.11s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+p3 scribble_c100 hyperreal 28.5s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.13s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.13s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.13s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+p3 scribble_c100 nostyle 28.6s
+ALL DONE p3

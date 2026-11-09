@@ -2,6 +2,12 @@
 /*
 !/prototype/
 !/reports/
+!/research_notes/
+!/experiments/
+!/fastsdcpu_local/
+!/SETUP_AND_USAGE_GUIDE.md
+!/README.md
+!/docs/
 !/.gitignore
 __pycache__/
 *.pyc
@@ -11,3 +17,13 @@ prototype/kaggle/qwen_test_output*/
 prototype/kaggle/run_output/
 prototype/kaggle/*.zip
 prototype/vendor/diffuser_layerdiffuse/
+# experiments: keep docs, scripts, inputs and comparison sheets; skip the raw image folders (~180 MB)
+experiments/all_images/
+experiments/confirm_images/
+experiments/sheets_unfiltered/
+experiments/final/*/
+experiments/confirm/
+experiments/p1*/
+experiments/p2*/
+experiments/p3*/
+experiments/r2_*/

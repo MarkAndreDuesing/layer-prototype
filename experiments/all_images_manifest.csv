@@ -1,0 +1,189 @@
+file,path,phase,input,model,base,control,strength,scale,steps,guidance,negative,seed,style,cfg,src
+P1__ph1__blur__str60-steps4-g1.0__seed123123__pixelart.png,P1,1,blur,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,pixelart,blur_s60,p1\blur_s60__pixelart.png
+P1__ph1__blur__str60-steps4-g1.0__seed123123__impressionist.png,P1,1,blur,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,impressionist,blur_s60,p1\blur_s60__impressionist.png
+P1__ph1__blur__str60-steps4-g1.0__seed123123__hyperreal.png,P1,1,blur,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,hyperreal,blur_s60,p1\blur_s60__hyperreal.png
+P1__ph1__blur__str60-steps4-g1.0__seed123123__nostyle.png,P1,1,blur,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,nostyle,blur_s60,p1\blur_s60__nostyle.png
+P1__ph1__blur__str80-steps4-g1.0__seed123123__pixelart.png,P1,1,blur,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,pixelart,blur_s80,p1\blur_s80__pixelart.png
+P1__ph1__blur__str80-steps4-g1.0__seed123123__impressionist.png,P1,1,blur,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,impressionist,blur_s80,p1\blur_s80__impressionist.png
+P1__ph1__blur__str80-steps4-g1.0__seed123123__hyperreal.png,P1,1,blur,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,hyperreal,blur_s80,p1\blur_s80__hyperreal.png
+P1__ph1__blur__str80-steps4-g1.0__seed123123__nostyle.png,P1,1,blur,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,nostyle,blur_s80,p1\blur_s80__nostyle.png
+P1__ph3__filled__str70-steps4-g1.0__seed7__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,7,pixelart,filled_s70,r2_p1\seed7\filled_s70__pixelart.png
+P1__ph3__filled__str70-steps4-g1.0__seed7__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,7,impressionist,filled_s70,r2_p1\seed7\filled_s70__impressionist.png
+P1__ph3__filled__str70-steps4-g1.0__seed7__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,7,hyperreal,filled_s70,r2_p1\seed7\filled_s70__hyperreal.png
+P1__ph3__filled__str70-steps4-g1.0__seed7__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,7,nostyle,filled_s70,r2_p1\seed7\filled_s70__nostyle.png
+P1__ph3__filled__str80-steps4-g1.0__seed7__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,7,pixelart,filled_s80,r2_p1\seed7\filled_s80__pixelart.png
+P1__ph3__filled__str80-steps4-g1.0__seed7__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,7,impressionist,filled_s80,r2_p1\seed7\filled_s80__impressionist.png
+P1__ph3__filled__str80-steps4-g1.0__seed7__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,7,hyperreal,filled_s80,r2_p1\seed7\filled_s80__hyperreal.png
+P1__ph3__filled__str80-steps4-g1.0__seed7__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,7,nostyle,filled_s80,r2_p1\seed7\filled_s80__nostyle.png
+P1__ph3__filled__str90-steps4-g1.0__seed7__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,7,pixelart,filled_s90,r2_p1\seed7\filled_s90__pixelart.png
+P1__ph3__filled__str90-steps4-g1.0__seed7__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,7,impressionist,filled_s90,r2_p1\seed7\filled_s90__impressionist.png
+P1__ph3__filled__str90-steps4-g1.0__seed7__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,7,hyperreal,filled_s90,r2_p1\seed7\filled_s90__hyperreal.png
+P1__ph3__filled__str90-steps4-g1.0__seed7__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,7,nostyle,filled_s90,r2_p1\seed7\filled_s90__nostyle.png
+P1__ph3__filled__str90-steps5-g1.0__seed7__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,7,pixelart,filled_s90_5steps,r2_p1\seed7\filled_s90_5steps__pixelart.png
+P1__ph3__filled__str90-steps5-g1.0__seed7__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,7,impressionist,filled_s90_5steps,r2_p1\seed7\filled_s90_5steps__impressionist.png
+P1__ph3__filled__str90-steps5-g1.0__seed7__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,7,hyperreal,filled_s90_5steps,r2_p1\seed7\filled_s90_5steps__hyperreal.png
+P1__ph3__filled__str90-steps5-g1.0__seed7__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,7,nostyle,filled_s90_5steps,r2_p1\seed7\filled_s90_5steps__nostyle.png
+P1__ph3__filled__str70-steps4-g1.0__seed2024__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,2024,pixelart,filled_s70,r2_p1\seed2024\filled_s70__pixelart.png
+P1__ph3__filled__str70-steps4-g1.0__seed2024__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,2024,impressionist,filled_s70,r2_p1\seed2024\filled_s70__impressionist.png
+P1__ph3__filled__str70-steps4-g1.0__seed2024__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,2024,hyperreal,filled_s70,r2_p1\seed2024\filled_s70__hyperreal.png
+P1__ph3__filled__str70-steps4-g1.0__seed2024__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,2024,nostyle,filled_s70,r2_p1\seed2024\filled_s70__nostyle.png
+P1__ph3__filled__str80-steps4-g1.0__seed2024__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,2024,pixelart,filled_s80,r2_p1\seed2024\filled_s80__pixelart.png
+P1__ph3__filled__str80-steps4-g1.0__seed2024__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,2024,impressionist,filled_s80,r2_p1\seed2024\filled_s80__impressionist.png
+P1__ph3__filled__str80-steps4-g1.0__seed2024__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,2024,hyperreal,filled_s80,r2_p1\seed2024\filled_s80__hyperreal.png
+P1__ph3__filled__str80-steps4-g1.0__seed2024__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,2024,nostyle,filled_s80,r2_p1\seed2024\filled_s80__nostyle.png
+P1__ph3__filled__str90-steps4-g1.0__seed2024__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,2024,pixelart,filled_s90,r2_p1\seed2024\filled_s90__pixelart.png
+P1__ph3__filled__str90-steps4-g1.0__seed2024__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,2024,impressionist,filled_s90,r2_p1\seed2024\filled_s90__impressionist.png
+P1__ph3__filled__str90-steps4-g1.0__seed2024__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,2024,hyperreal,filled_s90,r2_p1\seed2024\filled_s90__hyperreal.png
+P1__ph3__filled__str90-steps4-g1.0__seed2024__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,2024,nostyle,filled_s90,r2_p1\seed2024\filled_s90__nostyle.png
+P1__ph3__filled__str90-steps5-g1.0__seed2024__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,2024,pixelart,filled_s90_5steps,r2_p1\seed2024\filled_s90_5steps__pixelart.png
+P1__ph3__filled__str90-steps5-g1.0__seed2024__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,2024,impressionist,filled_s90_5steps,r2_p1\seed2024\filled_s90_5steps__impressionist.png
+P1__ph3__filled__str90-steps5-g1.0__seed2024__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,2024,hyperreal,filled_s90_5steps,r2_p1\seed2024\filled_s90_5steps__hyperreal.png
+P1__ph3__filled__str90-steps5-g1.0__seed2024__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,2024,nostyle,filled_s90_5steps,r2_p1\seed2024\filled_s90_5steps__nostyle.png
+P1__ph2__filled__str60-steps4-g1.0__seed123123__pixelart.png,P1,2,filled,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,pixelart,filled_s60,p1_filled\filled_s60__pixelart.png
+P1__ph2__filled__str60-steps4-g1.0__seed123123__impressionist.png,P1,2,filled,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,impressionist,filled_s60,p1_filled\filled_s60__impressionist.png
+P1__ph2__filled__str60-steps4-g1.0__seed123123__hyperreal.png,P1,2,filled,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,hyperreal,filled_s60,p1_filled\filled_s60__hyperreal.png
+P1__ph2__filled__str60-steps4-g1.0__seed123123__nostyle.png,P1,2,filled,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,nostyle,filled_s60,p1_filled\filled_s60__nostyle.png
+P1__ph2__filled__str80-steps4-g1.0__seed123123__pixelart.png,P1,2,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,pixelart,filled_s80,p1_filled\filled_s80__pixelart.png
+P1__ph2__filled__str80-steps4-g1.0__seed123123__impressionist.png,P1,2,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,impressionist,filled_s80,p1_filled\filled_s80__impressionist.png
+P1__ph2__filled__str80-steps4-g1.0__seed123123__hyperreal.png,P1,2,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,hyperreal,filled_s80,p1_filled\filled_s80__hyperreal.png
+P1__ph2__filled__str80-steps4-g1.0__seed123123__nostyle.png,P1,2,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,nostyle,filled_s80,p1_filled\filled_s80__nostyle.png
+P1__ph3__filled__str70-steps4-g1.0__seed123123__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,123123,pixelart,filled_s70,r2_p1\seed123123\filled_s70__pixelart.png
+P1__ph3__filled__str70-steps4-g1.0__seed123123__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,123123,impressionist,filled_s70,r2_p1\seed123123\filled_s70__impressionist.png
+P1__ph3__filled__str70-steps4-g1.0__seed123123__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,123123,hyperreal,filled_s70,r2_p1\seed123123\filled_s70__hyperreal.png
+P1__ph3__filled__str70-steps4-g1.0__seed123123__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.7,,4,1.0,,123123,nostyle,filled_s70,r2_p1\seed123123\filled_s70__nostyle.png
+P1__ph3__filled__str80-steps4-g1.0__seed123123__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,pixelart,filled_s80,r2_p1\seed123123\filled_s80__pixelart.png
+P1__ph3__filled__str80-steps4-g1.0__seed123123__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,impressionist,filled_s80,r2_p1\seed123123\filled_s80__impressionist.png
+P1__ph3__filled__str80-steps4-g1.0__seed123123__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,hyperreal,filled_s80,r2_p1\seed123123\filled_s80__hyperreal.png
+P1__ph3__filled__str80-steps4-g1.0__seed123123__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,nostyle,filled_s80,r2_p1\seed123123\filled_s80__nostyle.png
+P1__ph3__filled__str90-steps4-g1.0__seed123123__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,123123,pixelart,filled_s90,r2_p1\seed123123\filled_s90__pixelart.png
+P1__ph3__filled__str90-steps4-g1.0__seed123123__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,123123,impressionist,filled_s90,r2_p1\seed123123\filled_s90__impressionist.png
+P1__ph3__filled__str90-steps4-g1.0__seed123123__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,123123,hyperreal,filled_s90,r2_p1\seed123123\filled_s90__hyperreal.png
+P1__ph3__filled__str90-steps4-g1.0__seed123123__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,4,1.0,,123123,nostyle,filled_s90,r2_p1\seed123123\filled_s90__nostyle.png
+P1__ph3__filled__str90-steps5-g1.0__seed123123__pixelart.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,123123,pixelart,filled_s90_5steps,r2_p1\seed123123\filled_s90_5steps__pixelart.png
+P1__ph3__filled__str90-steps5-g1.0__seed123123__impressionist.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,123123,impressionist,filled_s90_5steps,r2_p1\seed123123\filled_s90_5steps__impressionist.png
+P1__ph3__filled__str90-steps5-g1.0__seed123123__hyperreal.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,123123,hyperreal,filled_s90_5steps,r2_p1\seed123123\filled_s90_5steps__hyperreal.png
+P1__ph3__filled__str90-steps5-g1.0__seed123123__nostyle.png,P1,3,filled,stabilityai/sd-turbo,,,0.9,,5,1.0,,123123,nostyle,filled_s90_5steps,r2_p1\seed123123\filled_s90_5steps__nostyle.png
+P1__ph1__raw__str60-steps4-g1.0__seed123123__pixelart.png,P1,1,raw,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,pixelart,raw_s60,p1\raw_s60__pixelart.png
+P1__ph1__raw__str60-steps4-g1.0__seed123123__impressionist.png,P1,1,raw,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,impressionist,raw_s60,p1\raw_s60__impressionist.png
+P1__ph1__raw__str60-steps4-g1.0__seed123123__hyperreal.png,P1,1,raw,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,hyperreal,raw_s60,p1\raw_s60__hyperreal.png
+P1__ph1__raw__str60-steps4-g1.0__seed123123__nostyle.png,P1,1,raw,stabilityai/sd-turbo,,,0.6,,4,1.0,,123123,nostyle,raw_s60,p1\raw_s60__nostyle.png
+P1__ph1__raw__str80-steps4-g1.0__seed123123__pixelart.png,P1,1,raw,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,pixelart,raw_s80,p1\raw_s80__pixelart.png
+P1__ph1__raw__str80-steps4-g1.0__seed123123__impressionist.png,P1,1,raw,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,impressionist,raw_s80,p1\raw_s80__impressionist.png
+P1__ph1__raw__str80-steps4-g1.0__seed123123__hyperreal.png,P1,1,raw,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,hyperreal,raw_s80,p1\raw_s80__hyperreal.png
+P1__ph1__raw__str80-steps4-g1.0__seed123123__nostyle.png,P1,1,raw,stabilityai/sd-turbo,,,0.8,,4,1.0,,123123,nostyle,raw_s80,p1\raw_s80__nostyle.png
+P2__ph1__blur__str60-steps4-g1.0__seed123123__pixelart.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,pixelart,blur_s60,p2\blur_s60__pixelart.png
+P2__ph1__blur__str60-steps4-g1.0__seed123123__impressionist.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,impressionist,blur_s60,p2\blur_s60__impressionist.png
+P2__ph1__blur__str60-steps4-g1.0__seed123123__hyperreal.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,hyperreal,blur_s60,p2\blur_s60__hyperreal.png
+P2__ph1__blur__str60-steps4-g1.0__seed123123__nostyle.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,nostyle,blur_s60,p2\blur_s60__nostyle.png
+P2__ph1__blur__str80-steps4-g1.0__seed123123__pixelart.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,pixelart,blur_s80,p2\blur_s80__pixelart.png
+P2__ph1__blur__str80-steps4-g1.0__seed123123__impressionist.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,impressionist,blur_s80,p2\blur_s80__impressionist.png
+P2__ph1__blur__str80-steps4-g1.0__seed123123__hyperreal.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,hyperreal,blur_s80,p2\blur_s80__hyperreal.png
+P2__ph1__blur__str80-steps4-g1.0__seed123123__nostyle.png,P2,1,blur,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,nostyle,blur_s80,p2\blur_s80__nostyle.png
+P2__ph3__filled__str70-steps4-g1.0__seed7__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,7,pixelart,filled_s70,r2_p2\seed7\filled_s70__pixelart.png
+P2__ph3__filled__str70-steps4-g1.0__seed7__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,7,impressionist,filled_s70,r2_p2\seed7\filled_s70__impressionist.png
+P2__ph3__filled__str70-steps4-g1.0__seed7__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,7,hyperreal,filled_s70,r2_p2\seed7\filled_s70__hyperreal.png
+P2__ph3__filled__str70-steps4-g1.0__seed7__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,7,nostyle,filled_s70,r2_p2\seed7\filled_s70__nostyle.png
+P2__ph3__filled__str80-steps4-g1.0__seed7__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,7,pixelart,filled_s80,r2_p2\seed7\filled_s80__pixelart.png
+P2__ph3__filled__str80-steps4-g1.0__seed7__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,7,impressionist,filled_s80,r2_p2\seed7\filled_s80__impressionist.png
+P2__ph3__filled__str80-steps4-g1.0__seed7__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,7,hyperreal,filled_s80,r2_p2\seed7\filled_s80__hyperreal.png
+P2__ph3__filled__str80-steps4-g1.0__seed7__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,7,nostyle,filled_s80,r2_p2\seed7\filled_s80__nostyle.png
+P2__ph3__filled__str90-steps4-g1.0__seed7__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,7,pixelart,filled_s90,r2_p2\seed7\filled_s90__pixelart.png
+P2__ph3__filled__str90-steps4-g1.0__seed7__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,7,impressionist,filled_s90,r2_p2\seed7\filled_s90__impressionist.png
+P2__ph3__filled__str90-steps4-g1.0__seed7__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,7,hyperreal,filled_s90,r2_p2\seed7\filled_s90__hyperreal.png
+P2__ph3__filled__str90-steps4-g1.0__seed7__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,7,nostyle,filled_s90,r2_p2\seed7\filled_s90__nostyle.png
+P2__ph4__filled__str90-steps5-g1.0__seed7__pixelart.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,7,pixelart,filled_s90_5steps,r2_p2\seed7\filled_s90_5steps__pixelart.png
+P2__ph4__filled__str90-steps5-g1.0__seed7__impressionist.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,7,impressionist,filled_s90_5steps,r2_p2\seed7\filled_s90_5steps__impressionist.png
+P2__ph4__filled__str90-steps5-g1.0__seed7__hyperreal.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,7,hyperreal,filled_s90_5steps,r2_p2\seed7\filled_s90_5steps__hyperreal.png
+P2__ph4__filled__str90-steps5-g1.0__seed7__nostyle.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,7,nostyle,filled_s90_5steps,r2_p2\seed7\filled_s90_5steps__nostyle.png
+P2__ph3__filled__str70-steps4-g1.0__seed2024__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,2024,pixelart,filled_s70,r2_p2\seed2024\filled_s70__pixelart.png
+P2__ph3__filled__str70-steps4-g1.0__seed2024__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,2024,impressionist,filled_s70,r2_p2\seed2024\filled_s70__impressionist.png
+P2__ph3__filled__str70-steps4-g1.0__seed2024__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,2024,hyperreal,filled_s70,r2_p2\seed2024\filled_s70__hyperreal.png
+P2__ph3__filled__str70-steps4-g1.0__seed2024__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,2024,nostyle,filled_s70,r2_p2\seed2024\filled_s70__nostyle.png
+P2__ph3__filled__str80-steps4-g1.0__seed2024__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,2024,pixelart,filled_s80,r2_p2\seed2024\filled_s80__pixelart.png
+P2__ph3__filled__str80-steps4-g1.0__seed2024__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,2024,impressionist,filled_s80,r2_p2\seed2024\filled_s80__impressionist.png
+P2__ph3__filled__str80-steps4-g1.0__seed2024__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,2024,hyperreal,filled_s80,r2_p2\seed2024\filled_s80__hyperreal.png
+P2__ph3__filled__str80-steps4-g1.0__seed2024__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,2024,nostyle,filled_s80,r2_p2\seed2024\filled_s80__nostyle.png
+P2__ph3__filled__str90-steps4-g1.0__seed2024__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,2024,pixelart,filled_s90,r2_p2\seed2024\filled_s90__pixelart.png
+P2__ph3__filled__str90-steps4-g1.0__seed2024__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,2024,impressionist,filled_s90,r2_p2\seed2024\filled_s90__impressionist.png
+P2__ph3__filled__str90-steps4-g1.0__seed2024__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,2024,hyperreal,filled_s90,r2_p2\seed2024\filled_s90__hyperreal.png
+P2__ph3__filled__str90-steps4-g1.0__seed2024__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,2024,nostyle,filled_s90,r2_p2\seed2024\filled_s90__nostyle.png
+P2__ph4__filled__str90-steps5-g1.0__seed2024__pixelart.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,2024,pixelart,filled_s90_5steps,r2_p2\seed2024\filled_s90_5steps__pixelart.png
+P2__ph4__filled__str90-steps5-g1.0__seed2024__impressionist.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,2024,impressionist,filled_s90_5steps,r2_p2\seed2024\filled_s90_5steps__impressionist.png
+P2__ph4__filled__str90-steps5-g1.0__seed2024__hyperreal.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,2024,hyperreal,filled_s90_5steps,r2_p2\seed2024\filled_s90_5steps__hyperreal.png
+P2__ph4__filled__str90-steps5-g1.0__seed2024__nostyle.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,2024,nostyle,filled_s90_5steps,r2_p2\seed2024\filled_s90_5steps__nostyle.png
+P2__ph2__filled__str60-steps4-g1.0__seed123123__pixelart.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,pixelart,filled_s60,p2_filled\filled_s60__pixelart.png
+P2__ph2__filled__str60-steps4-g1.0__seed123123__impressionist.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,impressionist,filled_s60,p2_filled\filled_s60__impressionist.png
+P2__ph2__filled__str60-steps4-g1.0__seed123123__hyperreal.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,hyperreal,filled_s60,p2_filled\filled_s60__hyperreal.png
+P2__ph2__filled__str60-steps4-g1.0__seed123123__nostyle.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.6,,4,1.0,,123123,nostyle,filled_s60,p2_filled\filled_s60__nostyle.png
+P2__ph2__filled__str80-steps4-g1.0__seed123123__pixelart.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,pixelart,filled_s80,p2_filled\filled_s80__pixelart.png
+P2__ph2__filled__str80-steps4-g1.0__seed123123__impressionist.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,impressionist,filled_s80,p2_filled\filled_s80__impressionist.png
+P2__ph2__filled__str80-steps4-g1.0__seed123123__hyperreal.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,hyperreal,filled_s80,p2_filled\filled_s80__hyperreal.png
+P2__ph2__filled__str80-steps4-g1.0__seed123123__nostyle.png,P2,2,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,nostyle,filled_s80,p2_filled\filled_s80__nostyle.png
+P2__ph3__filled__str70-steps4-g1.0__seed123123__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,123123,pixelart,filled_s70,r2_p2\seed123123\filled_s70__pixelart.png
+P2__ph3__filled__str70-steps4-g1.0__seed123123__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,123123,impressionist,filled_s70,r2_p2\seed123123\filled_s70__impressionist.png
+P2__ph3__filled__str70-steps4-g1.0__seed123123__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,123123,hyperreal,filled_s70,r2_p2\seed123123\filled_s70__hyperreal.png
+P2__ph3__filled__str70-steps4-g1.0__seed123123__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.7,,4,1.0,,123123,nostyle,filled_s70,r2_p2\seed123123\filled_s70__nostyle.png
+P2__ph3__filled__str80-steps4-g1.0__seed123123__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,pixelart,filled_s80,r2_p2\seed123123\filled_s80__pixelart.png
+P2__ph3__filled__str80-steps4-g1.0__seed123123__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,impressionist,filled_s80,r2_p2\seed123123\filled_s80__impressionist.png
+P2__ph3__filled__str80-steps4-g1.0__seed123123__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,hyperreal,filled_s80,r2_p2\seed123123\filled_s80__hyperreal.png
+P2__ph3__filled__str80-steps4-g1.0__seed123123__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,nostyle,filled_s80,r2_p2\seed123123\filled_s80__nostyle.png
+P2__ph3__filled__str90-steps4-g1.0__seed123123__pixelart.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,123123,pixelart,filled_s90,r2_p2\seed123123\filled_s90__pixelart.png
+P2__ph3__filled__str90-steps4-g1.0__seed123123__impressionist.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,123123,impressionist,filled_s90,r2_p2\seed123123\filled_s90__impressionist.png
+P2__ph3__filled__str90-steps4-g1.0__seed123123__hyperreal.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,123123,hyperreal,filled_s90,r2_p2\seed123123\filled_s90__hyperreal.png
+P2__ph3__filled__str90-steps4-g1.0__seed123123__nostyle.png,P2,3,filled,stabilityai/sdxl-turbo,,,0.9,,4,1.0,,123123,nostyle,filled_s90,r2_p2\seed123123\filled_s90__nostyle.png
+P2__ph4__filled__str90-steps5-g1.0__seed123123__pixelart.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,123123,pixelart,filled_s90_5steps,r2_p2\seed123123\filled_s90_5steps__pixelart.png
+P2__ph4__filled__str90-steps5-g1.0__seed123123__impressionist.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,123123,impressionist,filled_s90_5steps,r2_p2\seed123123\filled_s90_5steps__impressionist.png
+P2__ph4__filled__str90-steps5-g1.0__seed123123__hyperreal.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,123123,hyperreal,filled_s90_5steps,r2_p2\seed123123\filled_s90_5steps__hyperreal.png
+P2__ph4__filled__str90-steps5-g1.0__seed123123__nostyle.png,P2,4,filled,stabilityai/sdxl-turbo,,,0.9,,5,1.0,,123123,nostyle,filled_s90_5steps,r2_p2\seed123123\filled_s90_5steps__nostyle.png
+P2__ph1__raw__str80-steps4-g1.0__seed123123__pixelart.png,P2,1,raw,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,pixelart,raw_s80,p2\raw_s80__pixelart.png
+P2__ph1__raw__str80-steps4-g1.0__seed123123__impressionist.png,P2,1,raw,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,impressionist,raw_s80,p2\raw_s80__impressionist.png
+P2__ph1__raw__str80-steps4-g1.0__seed123123__hyperreal.png,P2,1,raw,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,hyperreal,raw_s80,p2\raw_s80__hyperreal.png
+P2__ph1__raw__str80-steps4-g1.0__seed123123__nostyle.png,P2,1,raw,stabilityai/sdxl-turbo,,,0.8,,4,1.0,,123123,nostyle,raw_s80,p2\raw_s80__nostyle.png
+P3__ph2__canny-filled__dreamshaper8-scale100-steps4-g1.0__seed123123__pixelart.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,1.0,4,1.0,,123123,pixelart,canny_filled_c100,p3_filled\canny_filled_c100__pixelart.png
+P3__ph2__canny-filled__dreamshaper8-scale100-steps4-g1.0__seed123123__impressionist.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,1.0,4,1.0,,123123,impressionist,canny_filled_c100,p3_filled\canny_filled_c100__impressionist.png
+P3__ph2__canny-filled__dreamshaper8-scale100-steps4-g1.0__seed123123__hyperreal.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,1.0,4,1.0,,123123,hyperreal,canny_filled_c100,p3_filled\canny_filled_c100__hyperreal.png
+P3__ph2__canny-filled__dreamshaper8-scale100-steps4-g1.0__seed123123__nostyle.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,1.0,4,1.0,,123123,nostyle,canny_filled_c100,p3_filled\canny_filled_c100__nostyle.png
+P3__ph2__canny-filled__dreamshaper8-scale60-steps4-g1.0__seed123123__pixelart.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,0.6,4,1.0,,123123,pixelart,canny_filled_c60,p3_filled\canny_filled_c60__pixelart.png
+P3__ph2__canny-filled__dreamshaper8-scale60-steps4-g1.0__seed123123__impressionist.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,0.6,4,1.0,,123123,impressionist,canny_filled_c60,p3_filled\canny_filled_c60__impressionist.png
+P3__ph2__canny-filled__dreamshaper8-scale60-steps4-g1.0__seed123123__hyperreal.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,0.6,4,1.0,,123123,hyperreal,canny_filled_c60,p3_filled\canny_filled_c60__hyperreal.png
+P3__ph2__canny-filled__dreamshaper8-scale60-steps4-g1.0__seed123123__nostyle.png,P3,2,canny-filled,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-filled,,0.6,4,1.0,,123123,nostyle,canny_filled_c60,p3_filled\canny_filled_c60__nostyle.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed7__pixelart.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,7,pixelart,neutral_g10_c70,r2_p3\seed7\neutral_g10_c70__pixelart.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed7__impressionist.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,7,impressionist,neutral_g10_c70,r2_p3\seed7\neutral_g10_c70__impressionist.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed7__hyperreal.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,7,hyperreal,neutral_g10_c70,r2_p3\seed7\neutral_g10_c70__hyperreal.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed7__nostyle.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,7,nostyle,neutral_g10_c70,r2_p3\seed7\neutral_g10_c70__nostyle.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed7__pixelart.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",7,pixelart,neutral_g15neg_c70,r2_p3\seed7\neutral_g15neg_c70__pixelart.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed7__impressionist.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",7,impressionist,neutral_g15neg_c70,r2_p3\seed7\neutral_g15neg_c70__impressionist.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed7__hyperreal.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",7,hyperreal,neutral_g15neg_c70,r2_p3\seed7\neutral_g15neg_c70__hyperreal.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed7__nostyle.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",7,nostyle,neutral_g15neg_c70,r2_p3\seed7\neutral_g15neg_c70__nostyle.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__pixelart.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,7,pixelart,neutral_g10_c70_6steps,r2_p3\seed7\neutral_g10_c70_6steps__pixelart.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__impressionist.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,7,impressionist,neutral_g10_c70_6steps,r2_p3\seed7\neutral_g10_c70_6steps__impressionist.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__hyperreal.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,7,hyperreal,neutral_g10_c70_6steps,r2_p3\seed7\neutral_g10_c70_6steps__hyperreal.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__nostyle.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,7,nostyle,neutral_g10_c70_6steps,r2_p3\seed7\neutral_g10_c70_6steps__nostyle.png
+P3__ph1__canny-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__pixelart.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,1.0,4,1.0,,123123,pixelart,canny_c100,p3\canny_c100__pixelart.png
+P3__ph1__canny-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__impressionist.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,1.0,4,1.0,,123123,impressionist,canny_c100,p3\canny_c100__impressionist.png
+P3__ph1__canny-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__hyperreal.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,1.0,4,1.0,,123123,hyperreal,canny_c100,p3\canny_c100__hyperreal.png
+P3__ph1__canny-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__nostyle.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,1.0,4,1.0,,123123,nostyle,canny_c100,p3\canny_c100__nostyle.png
+P3__ph1__canny-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__pixelart.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,0.6,4,1.0,,123123,pixelart,canny_c60,p3\canny_c60__pixelart.png
+P3__ph1__canny-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__impressionist.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,0.6,4,1.0,,123123,impressionist,canny_c60,p3\canny_c60__impressionist.png
+P3__ph1__canny-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__hyperreal.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,0.6,4,1.0,,123123,hyperreal,canny_c60,p3\canny_c60__hyperreal.png
+P3__ph1__canny-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__nostyle.png,P3,1,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,canny-raw,,0.6,4,1.0,,123123,nostyle,canny_c60,p3\canny_c60__nostyle.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed123123__pixelart.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,123123,pixelart,neutral_g10_c70,r2_p3\seed123123\neutral_g10_c70__pixelart.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed123123__impressionist.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,123123,impressionist,neutral_g10_c70,r2_p3\seed123123\neutral_g10_c70__impressionist.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed123123__hyperreal.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,123123,hyperreal,neutral_g10_c70,r2_p3\seed123123\neutral_g10_c70__hyperreal.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.0__seed123123__nostyle.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.0,,123123,nostyle,neutral_g10_c70,r2_p3\seed123123\neutral_g10_c70__nostyle.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed123123__pixelart.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",123123,pixelart,neutral_g15neg_c70,r2_p3\seed123123\neutral_g15neg_c70__pixelart.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed123123__impressionist.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",123123,impressionist,neutral_g15neg_c70,r2_p3\seed123123\neutral_g15neg_c70__impressionist.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed123123__hyperreal.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",123123,hyperreal,neutral_g15neg_c70,r2_p3\seed123123\neutral_g15neg_c70__hyperreal.png
+P3__ph3__canny-raw__neutral-scale70-steps4-g1.5neg__seed123123__nostyle.png,P3,3,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,4,1.5,"blurry, low quality, multiple skeletons, extra people, text, watermark",123123,nostyle,neutral_g15neg_c70,r2_p3\seed123123\neutral_g15neg_c70__nostyle.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed123123__pixelart.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,123123,pixelart,neutral_g10_c70_6steps,r2_p3\seed123123\neutral_g10_c70_6steps__pixelart.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed123123__impressionist.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,123123,impressionist,neutral_g10_c70_6steps,r2_p3\seed123123\neutral_g10_c70_6steps__impressionist.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed123123__hyperreal.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,123123,hyperreal,neutral_g10_c70_6steps,r2_p3\seed123123\neutral_g10_c70_6steps__hyperreal.png
+P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed123123__nostyle.png,P3,4,canny-raw,SD1.5 + LCM-LoRA + scribble ControlNet,stable-diffusion-v1-5 (neutral),canny-raw,,0.7,6,1.0,,123123,nostyle,neutral_g10_c70_6steps,r2_p3\seed123123\neutral_g10_c70_6steps__nostyle.png
+P3__ph1__scribble-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__pixelart.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,1.0,4,1.0,,123123,pixelart,scribble_c100,p3\scribble_c100__pixelart.png
+P3__ph1__scribble-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__impressionist.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,1.0,4,1.0,,123123,impressionist,scribble_c100,p3\scribble_c100__impressionist.png
+P3__ph1__scribble-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__hyperreal.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,1.0,4,1.0,,123123,hyperreal,scribble_c100,p3\scribble_c100__hyperreal.png
+P3__ph1__scribble-raw__dreamshaper8-scale100-steps4-g1.0__seed123123__nostyle.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,1.0,4,1.0,,123123,nostyle,scribble_c100,p3\scribble_c100__nostyle.png
+P3__ph1__scribble-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__pixelart.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,0.6,4,1.0,,123123,pixelart,scribble_c60,p3\scribble_c60__pixelart.png
+P3__ph1__scribble-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__impressionist.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,0.6,4,1.0,,123123,impressionist,scribble_c60,p3\scribble_c60__impressionist.png
+P3__ph1__scribble-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__hyperreal.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,0.6,4,1.0,,123123,hyperreal,scribble_c60,p3\scribble_c60__hyperreal.png
+P3__ph1__scribble-raw__dreamshaper8-scale60-steps4-g1.0__seed123123__nostyle.png,P3,1,scribble-raw,SD1.5 + LCM-LoRA + scribble ControlNet,Lykon/dreamshaper-8,scribble-raw,,0.6,4,1.0,,123123,nostyle,scribble_c60,p3\scribble_c60__nostyle.png

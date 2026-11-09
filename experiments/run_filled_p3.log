@@ -1,0 +1,180 @@
+﻿python.exe : C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\timm\models\layers\__init__.py:49: FutureWarning: 
+Importing from timm.models.layers is deprecated, please import via timm.layers
+At line:1 char:642
++ ... 1","p2","p3") { & $py run_filled.py $p *> "run_filled_$p.log" }; "FIN ...
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Mark O...via timm.layers:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\timm\models\registry.py:4: 
+FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_5m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_5m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_11m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_11m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_384 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_384. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_512 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_512. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+Multiple distributions found for package optimum. Picked distribution: optimum
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM-LoRA pipeline - Lykon/dreamshaper-8 *****
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  6.12it/s]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  6.48it/s]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00,  6.82it/s]
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00, 10.88it/s]CLIPFeatureExtractor appears to have been 
+deprecated in transformers. Using CLIPImageProcessor instead.
+
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 11.36it/s]
+No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state 
+dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the 
+warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new
+The config attributes {'skip_prk_steps': True} were passed to LCMScheduler, but are not expected and will be ignored. 
+Please verify your scheduler_config.json configuration file.
+The config attributes {'solver_order': 2, 'algorithm_type': 'deis', 'solver_type': 'logrho', 'lower_order_final': 
+True, 'use_karras_sigmas': False, 'skip_prk_steps': True} were passed to LCMScheduler, but are not expected and will 
+be ignored. Please verify your scheduler_config.json configuration file.
+LCM LoRA model detected so using recommended LCMScheduler
+Add FreeU - SD
+Pipeline : StableDiffusionPipeline {
+  "_class_name": "StableDiffusionPipeline",
+  "_diffusers_version": "0.37.0",
+  "_name_or_path": "Lykon/dreamshaper-8",
+  "feature_extractor": [
+    "transformers",
+    "CLIPImageProcessor"
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    "stable_diffusion",
+    "StableDiffusionSafetyChecker"
+  ],
+  "scheduler": [
+    "diffusers",
+    "LCMScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : ['lcm']
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:12<00:38, 12.68s/it]
+ 50%|█████     | 2/4 [00:17<00:16,  8.31s/it]
+ 75%|███████▌  | 3/4 [00:23<00:06,  6.88s/it]
+100%|██████████| 4/4 [00:28<00:00,  6.19s/it]
+100%|██████████| 4/4 [00:28<00:00,  7.06s/it]
+p3 canny_filled_c60 pixelart 37.5s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.17s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.13s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.18s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.17s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.17s/it]
+p3 canny_filled_c60 impressionist 28.8s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.10s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.10s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.10s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.11s/it]
+p3 canny_filled_c60 hyperreal 28.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.10s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.12s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+p3 canny_filled_c60 nostyle 28.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.10s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.11s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.12s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.14s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.13s/it]
+p3 canny_filled_c100 pixelart 28.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.06s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.19s/it]
+ 75%|███████▌  | 3/4 [00:16<00:05,  5.60s/it]
+100%|██████████| 4/4 [00:21<00:00,  5.55s/it]
+100%|██████████| 4/4 [00:21<00:00,  5.47s/it]
+p3 canny_filled_c100 impressionist 30.0s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.11s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.14s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.13s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.13s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.13s/it]
+p3 canny_filled_c100 hyperreal 28.6s
+Using StableDiffusionControlNetPipeline
+
+  0%|          | 0/4 [00:00<?, ?it/s]
+ 25%|██▌       | 1/4 [00:05<00:15,  5.09s/it]
+ 50%|█████     | 2/4 [00:10<00:10,  5.10s/it]
+ 75%|███████▌  | 3/4 [00:15<00:05,  5.10s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.11s/it]
+100%|██████████| 4/4 [00:20<00:00,  5.10s/it]
+p3 canny_filled_c100 nostyle 28.5s
+ALL DONE p3

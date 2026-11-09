@@ -1,0 +1,168 @@
+﻿python.exe : C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\timm\models\layers\__init__.py:49: FutureWarning: 
+Importing from timm.models.layers is deprecated, please import via timm.layers
+At line:1 char:642
++ ... 1","p2","p3") { & $py run_filled.py $p *> "run_filled_$p.log" }; "FIN ...
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Mark O...via timm.layers:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\timm\models\registry.py:4: 
+FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_5m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_5m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_11m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_11m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_224 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_224. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_384 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_384. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+C:\Users\Mark Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\controlnet_aux\segment_anything\modelin
+g\tiny_vit_sam.py:654: UserWarning: Overwriting tiny_vit_21m_512 in registry with 
+controlnet_aux.segment_anything.modeling.tiny_vit_sam.tiny_vit_21m_512. This is because the name being registered 
+conflicts with an existing name. Please check if this is not expected.
+  return register_model(fn_wrapper)
+Multiple distributions found for package optimum. Picked distribution: optimum
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM Model pipeline - stabilityai/sd-turbo *****
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading pipeline components...:  20%|██        | 1/5 [00:00<00:00,  7.99it/s]
+Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00, 11.32it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 11.43it/s]
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 11.12it/s]
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.StableDiffusionPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+You have disabled the safety checker for <class 
+'diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion_img2img.StableDiffusionImg2ImgPipeline'> by passing 
+`safety_checker=None`. Ensure that you abide to the conditions of the Stable Diffusion license and do not expose 
+unfiltered results in services or applications open to the public. Both the diffusers team and Hugging Face strongly 
+recommend to keep the safety filter enabled in all public facing circumstances, disabling it only for use-cases that 
+involve analyzing network behavior or auditing its results. For more information, please have a look at 
+https://github.com/huggingface/diffusers/pull/254 .
+
+Pipeline : StableDiffusionImg2ImgPipeline {
+  "_class_name": "StableDiffusionImg2ImgPipeline",
+  "_diffusers_version": "0.37.0",
+  "feature_extractor": [
+    null,
+    null
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    null,
+    null
+  ],
+  "scheduler": [
+    "diffusers",
+    "EulerDiscreteScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : []
+Using StableDiffusionPipeline
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:10<00:10, 10.19s/it]
+100%|██████████| 2/2 [00:13<00:00,  6.19s/it]
+100%|██████████| 2/2 [00:13<00:00,  6.79s/it]
+p1 filled_s60 pixelart 29.3s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.15s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.19s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.18s/it]
+p1 filled_s60 impressionist 18.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.16s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.16s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.16s/it]
+p1 filled_s60 hyperreal 18.9s
+Using StableDiffusionPipeline
+
+  0%|          | 0/2 [00:00<?, ?it/s]
+ 50%|█████     | 1/2 [00:03<00:03,  3.16s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.16s/it]
+100%|██████████| 2/2 [00:06<00:00,  3.16s/it]
+p1 filled_s60 nostyle 18.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.15s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+p1 filled_s80 pixelart 21.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.16s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.16s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.16s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.16s/it]
+p1 filled_s80 impressionist 21.9s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.16s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.15s/it]
+p1 filled_s80 hyperreal 22.0s
+Using StableDiffusionPipeline
+
+  0%|          | 0/3 [00:00<?, ?it/s]
+ 33%|███▎      | 1/3 [00:03<00:06,  3.16s/it]
+ 67%|██████▋   | 2/3 [00:06<00:03,  3.16s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.16s/it]
+100%|██████████| 3/3 [00:09<00:00,  3.16s/it]
+p1 filled_s80 nostyle 21.9s
+ALL DONE p1

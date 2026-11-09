@@ -1,0 +1,220 @@
+﻿python.exe : Multiple distributions found for package optimum. Picked distribution: optimum
+At line:1 char:944
++ ... ,"F","G") { & $py run_confirm_text.py $b *> "run_confirm_$b.log" }; " ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Multiple distri...bution: optimum:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+C:\Users\Mark 
+Other\Documents\StabeDiffusionCPU\fastsdcpu\env\Lib\site-packages\huggingface_hub\utils\_validators.py:206: 
+UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a 
+local directory does not use symlinks anymore.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+Torch datatype : torch.float32
+***** Init LCM-LoRA pipeline - stable-diffusion-v1-5/stable-diffusion-v1-5 *****
+
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]StableDiffusionSafetyChecker LOAD REPORT from: 
+C:\Users\Mark Other\.cache\huggingface\hub\models--stable-diffusion-v1-5--stable-diffusion-v1-5\snapshots\451f4fe16113b
+ff5a5d2269ed5ad43b0592e9a14\safety_checker
+Key                                               | Status     |  | 
+--------------------------------------------------+------------+--+-
+vision_model.vision_model.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 10.67it/s]CLIPTextModel LOAD REPORT from: 
+C:\Users\Mark Other\.cache\huggingface\hub\models--stable-diffusion-v1-5--stable-diffusion-v1-5\snapshots\451f4fe16113b
+ff5a5d2269ed5ad43b0592e9a14\text_encoder
+Key                                | Status     |  | 
+-----------------------------------+------------+--+-
+text_model.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00, 10.27it/s]
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00, 11.58it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 12.12it/s]
+No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state 
+dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the 
+warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new
+The config attributes {'skip_prk_steps': True} were passed to LCMScheduler, but are not expected and will be ignored. 
+Please verify your scheduler_config.json configuration file.
+LCM LoRA model detected so using recommended LCMScheduler
+Add FreeU - SD
+Pipeline : StableDiffusionPipeline {
+  "_class_name": "StableDiffusionPipeline",
+  "_diffusers_version": "0.37.0",
+  "_name_or_path": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+  "feature_extractor": [
+    "transformers",
+    "CLIPImageProcessor"
+  ],
+  "image_encoder": [
+    null,
+    null
+  ],
+  "requires_safety_checker": true,
+  "safety_checker": [
+    "stable_diffusion",
+    "StableDiffusionSafetyChecker"
+  ],
+  "scheduler": [
+    "diffusers",
+    "LCMScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ]
+}
+
+Active adapters : ['lcm']
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:11<00:58, 11.66s/it]
+ 33%|███▎      | 2/6 [00:16<00:29,  7.36s/it]
+ 50%|█████     | 3/6 [00:20<00:17,  5.97s/it]
+ 67%|██████▋   | 4/6 [00:24<00:10,  5.32s/it]
+ 83%|████████▎ | 5/6 [00:28<00:04,  4.94s/it]
+100%|██████████| 6/6 [00:33<00:00,  4.72s/it]
+100%|██████████| 6/6 [00:33<00:00,  5.54s/it]
+confirmG seed11 text_lcmlora_neutral_6steps pixelart 43.4s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.27s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.28s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.29s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.30s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+confirmG seed11 text_lcmlora_neutral_6steps impressionist 34.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.23s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.31s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.31s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.31s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.39s/it]
+100%|██████████| 6/6 [00:26<00:00,  4.45s/it]
+100%|██████████| 6/6 [00:26<00:00,  4.38s/it]
+confirmG seed11 text_lcmlora_neutral_6steps hyperreal 35.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.26s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.31s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.30s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.29s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.30s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+confirmG seed11 text_lcmlora_neutral_6steps nostyle 34.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.27s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.28s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.31s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.31s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.30s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.30s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.30s/it]
+confirmG seed42 text_lcmlora_neutral_6steps pixelart 34.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.25s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.27s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.27s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.27s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.26s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.27s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.27s/it]
+confirmG seed42 text_lcmlora_neutral_6steps impressionist 34.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.28s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.30s/it]
+ 50%|█████     | 3/6 [00:12<00:13,  4.34s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.33s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.32s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.31s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.32s/it]
+confirmG seed42 text_lcmlora_neutral_6steps hyperreal 34.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.29s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.30s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.29s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.28s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.26s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.27s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.28s/it]
+confirmG seed42 text_lcmlora_neutral_6steps nostyle 34.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.28s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.29s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.28s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.27s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.30s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+confirmG seed99 text_lcmlora_neutral_6steps pixelart 34.7s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.26s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.27s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.28s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.29s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.30s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+confirmG seed99 text_lcmlora_neutral_6steps impressionist 34.6s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.27s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.26s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.28s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.28s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.28s/it]
+confirmG seed99 text_lcmlora_neutral_6steps hyperreal 34.8s
+Using StableDiffusionPipeline
+
+  0%|          | 0/6 [00:00<?, ?it/s]
+ 17%|█▋        | 1/6 [00:04<00:21,  4.30s/it]
+ 33%|███▎      | 2/6 [00:08<00:17,  4.29s/it]
+ 50%|█████     | 3/6 [00:12<00:12,  4.30s/it]
+ 67%|██████▋   | 4/6 [00:17<00:08,  4.29s/it]
+ 83%|████████▎ | 5/6 [00:21<00:04,  4.28s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.28s/it]
+100%|██████████| 6/6 [00:25<00:00,  4.29s/it]
+confirmG seed99 text_lcmlora_neutral_6steps nostyle 34.6s
+ALL DONE confirm G
