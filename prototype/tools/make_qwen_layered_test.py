@@ -21,6 +21,21 @@ CAPTION = ("An impressionist oil painting of a forest clearing at night: tall pi
            "stars in a blue sky, distant mountains, a campfire with logs in the middle, a wooden chair next to it, "
            "rocks and fallen branches on the ground.")
 b64 = base64.b64encode(open(img_path, "rb").read()).decode()
+# extra test images (different styles / content) for generalisation checks
+EXTRA = {
+    "pixelart_camp": (os.path.join(ROOT, "experiments", "P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__pixelart.png"),
+                      "A colourful pixel-art night scene: a skeleton sitting next to a small brick campfire, stylised white, yellow and "
+                      "green trees, a big yellow moon and a small orange moon in a dark blue starry sky, brown ground."),
+    "sketch_skeleton": (os.path.join(ROOT, "experiments", "blkB__P2__raw__str80-steps4-g1.0__seed11__hyperreal.png"),
+                        "A pale illustration of a skeleton sitting at a small wooden table next to a campfire with logs and stones, "
+                        "two cut logs, misty pine trees and a few stars, all inside a thin circle on a white background."),
+}
+def _jpeg_b64(f):   # JPEG keeps the notebook small (the Kaggle API rejected a 1.5 MB notebook with PNGs)
+    import io
+    from PIL import Image
+    buf = io.BytesIO(); Image.open(f).convert("RGB").save(buf, "JPEG", quality=92)
+    return base64.b64encode(buf.getvalue()).decode()
+EXTRA_B64 = {k: (_jpeg_b64(f), c) for k, (f, c) in EXTRA.items()}
 module_src = open(os.path.join(PROTO, "layerproto", "qwen_layered.py"), encoding="utf-8").read()
 mixed_src = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8").read()
 WORK = "/kaggle/working"
@@ -77,6 +92,7 @@ os.environ['HF_HUB_DISABLE_XET'] = '1'
 OUT = WORK + '/qwen_layered_test'; os.makedirs(OUT, exist_ok=True)
 CAPTION = {json.dumps(CAPTION)}
 img = Image.open(io.BytesIO(base64.b64decode('{b64}'))).convert('RGB'); img.save(f'{{OUT}}/input.png')
+EXTRA = {{k: (Image.open(io.BytesIO(base64.b64decode(b))).convert('RGB'), c) for k, (b, c) in {json.dumps(EXTRA_B64)}.items()}}
 DT = torch.float16
 import glob
 _g = glob.glob('/kaggle/input/**/qwen-image-layered-Q4_K_S.gguf', recursive=True)
@@ -132,6 +148,7 @@ vae = AutoencoderKLQwenImage.from_pretrained(SRC, subfolder='vae', torch_dtype=D
 pipe = Q.make_pipeline(te, vae, SRC)
 stats['stage1_load_s'] = round(time.time() - t, 1); t = time.time()
 emb = tuple(x.to('cuda:0') for x in Q.encode(pipe, CAPTION, device='cuda:0'))
+emb_x = {k: tuple(x.to('cuda:0') for x in Q.encode(pipe, c, device='cuda:0')) for k, (_, c) in EXTRA.items()}
 stats['stage1_encode_s'] = round(time.time() - t, 1); peak('stage1')
 del te; Q.unload_text_encoder(pipe, DT); torch.cuda.reset_peak_memory_stats()
 print('after unload, GB allocated:', round(torch.cuda.memory_allocated(0) / 1e9, 2)); save(); print(stats)

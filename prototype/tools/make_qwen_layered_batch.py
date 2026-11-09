@@ -50,22 +50,28 @@ if _BAD:   # find the first module (execution order) whose output is non-finite,
 assert not _BAD, 'NaN/inf still present - stopping before the 50-step run'
 """
 SWEEP = """
-# Speed sweep towards the 40 s goal (SDXL-Turbo reference: 512 px, few steps, no CFG). Each config = full decomposition.
+# Sweep v5: generalisation to other images + transformer kept on the GPUs between runs (offload=False).
 import numpy as np
-CONFIGS = [  # (resolution, layers, steps, true_cfg)
-    (512, 4, 20, 4.0), (512, 3, 12, 4.0), (512, 3, 12, 1.0),
-    (384, 3, 12, 4.0), (384, 3, 20, 1.0), (384, 3, 8, 1.0), (512, 3, 8, 1.0),
+CONFIGS = [  # (image key, resolution, layers, steps)   all true_cfg 1 (v3: no visible loss, half the time)
+    ('forest', 384, 3, 4), ('forest', 384, 3, 3), ('forest', 512, 3, 3), ('forest', 384, 4, 4),
+    ('pixelart_camp', 384, 3, 4), ('pixelart_camp', 384, 4, 5), ('pixelart_camp', 512, 4, 4),
+    ('sketch_skeleton', 384, 3, 4), ('sketch_skeleton', 384, 4, 5), ('sketch_skeleton', 512, 4, 4),
 ]
+IMGS = {'forest': (img, emb), **{k: (EXTRA[k][0], emb_x[k]) for k in EXTRA}}
 stats['sweep'] = []
-for res, nl, steps, cfg in CONFIGS:
-    split_across_gpus(tr); torch.cuda.synchronize(); t = time.time()
-    out, st = Q.decompose(pipe, tr, img, CAPTION, emb, steps=steps, layers=nl, resolution=res, true_cfg=cfg)
-    canvas, info = Q.recompose(out, img.size)
-    row = dict(res=res, layers=nl, steps=steps, cfg=cfg, total_s=round(time.time() - t, 1), **st,
+split_across_gpus(tr)
+for key, res, nl, steps in CONFIGS:
+    im, e = IMGS[key]
+    torch.cuda.synchronize(); t = time.time()
+    out, st = Q.decompose(pipe, tr, im, CAPTION, e, steps=steps, layers=nl, resolution=res, true_cfg=1.0, offload=False)
+    total = round(time.time() - t, 1)
+    canvas, info = Q.recompose(out, im.size)
+    row = dict(image=key, res=res, layers=nl, steps=steps, total_s=total, **st,
                transparent_pct=[i['transparent_pct'] for i in info],
-               recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(img.size), dtype=int) - np.array(img, dtype=int)).mean()), 2))
+               recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(im.size), dtype=int) - np.array(im, dtype=int)).mean()), 2),
+               peak_GB=[round(torch.cuda.max_memory_allocated(i) / 1e9, 2) for i in range(torch.cuda.device_count())])
     stats['sweep'].append(row); save(); print(row, flush=True)
-    Q.strip([img, canvas] + out).save(f'{OUT}/sweep_{res}px_{nl}L_{steps}st_cfg{cfg:g}.png')
+    Q.strip([im, canvas] + out).save(f'{OUT}/v5_{key}_{res}px_{nl}L_{steps}st.png')
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []
@@ -87,6 +93,8 @@ for c in nb["cells"]:
         s = s.split("try:")[0].replace("    x = x.detach().float()\n",
               "    global _BAD\n    x = x.detach().float()\n    _BAD = _BAD or not torch.isfinite(x).all().item()\n")
         s = "_BAD = False\n" + s
+    elif "fp32 residual stream + fp16" in s and SWEEP_MODE:     # cheaper NaN check at 384 px
+        s = s.replace("resolution=640)", "resolution=384, true_cfg=1.0)") + PROBE
     elif "# Every linear: input scaled" in s:             # stop before the 50-step run if NaNs remain
         s += PROBE
     elif "def split_across_gpus" in s:                    # keep the split helpers, skip their run

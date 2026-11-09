@@ -1,0 +1,117 @@
+{
+ "weights_cached": true,
+ "input_read_MBps": 300.7,
+ "copy_to_local_s": 80.7,
+ "stage1_load_s": 71.0,
+ "stage1_encode_s": 3.6,
+ "stage1_peak_GB": [
+  8.82,
+  8.13
+ ],
+ "gguf_params_dequantized": 1,
+ "transformer_load_s": 45.4,
+ "mixed_smoke": {
+  "denoise_s": 22.0,
+  "s_per_step": 7.49,
+  "decode_s": 0.7
+ },
+ "sweep": [
+  {
+   "res": 384,
+   "layers": 3,
+   "steps": 5,
+   "cfg": 1.0,
+   "total_s": 40.8,
+   "denoise_s": 34.0,
+   "s_per_step": 6.8,
+   "decode_s": 0.5,
+   "transparent_pct": [
+    0.0,
+    83.7,
+    75.3
+   ],
+   "recomposite_diff": 6.79
+  },
+  {
+   "res": 384,
+   "layers": 3,
+   "steps": 4,
+   "cfg": 1.0,
+   "total_s": 32.7,
+   "denoise_s": 27.6,
+   "s_per_step": 6.89,
+   "decode_s": 0.5,
+   "transparent_pct": [
+    0.0,
+    82.6,
+    73.2
+   ],
+   "recomposite_diff": 7.07
+  },
+  {
+   "res": 448,
+   "layers": 3,
+   "steps": 5,
+   "cfg": 1.0,
+   "total_s": 48.2,
+   "denoise_s": 43.6,
+   "s_per_step": 8.72,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    87.7,
+    97.0
+   ],
+   "recomposite_diff": 6.79
+  },
+  {
+   "res": 512,
+   "layers": 3,
+   "steps": 4,
+   "cfg": 1.0,
+   "total_s": 48.9,
+   "denoise_s": 44.0,
+   "s_per_step": 10.97,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    88.1,
+    93.7
+   ],
+   "recomposite_diff": 7.32
+  },
+  {
+   "res": 512,
+   "layers": 3,
+   "steps": 5,
+   "cfg": 1.0,
+   "total_s": 59.9,
+   "denoise_s": 54.7,
+   "s_per_step": 10.94,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    88.2,
+    94.1
+   ],
+   "recomposite_diff": 6.69
+  },
+  {
+   "res": 384,
+   "layers": 4,
+   "steps": 5,
+   "cfg": 1.0,
+   "total_s": 45.1,
+   "denoise_s": 40.3,
+   "s_per_step": 8.06,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    83.1,
+    79.0,
+    95.7
+   ],
+   "recomposite_diff": 6.63
+  }
+ ]
+}

@@ -75,7 +75,8 @@ def fix_gguf_non_linear(model, dtype) -> int:
 
 
 def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps: int = 50, layers: int = 4,
-              resolution: int = 640, seed: int = 777, true_cfg: float = 4.0, on_step=None):
+              resolution: int = 640, seed: int = 777, true_cfg: float = 4.0, on_step=None,
+              offload: bool = True):
     """Run the decomposition. Returns (list of RGBA layers, stats)."""
     pipe.register_modules(transformer=transformer)
     image = image.convert("RGBA")  # the layered VAE has 4 input channels (as in the model card example)
@@ -119,8 +120,10 @@ def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps
     if len(times) > 1:
         stats["s_per_step"] = round((times[-1] - times[0]) / (len(times) - 1), 2)
 
-    # free the GPU before decoding: move the weights to CPU RAM (works even while the caller still holds `transformer`)
-    transformer.to("cpu")
+    # free the GPU before decoding: move the weights to CPU RAM (works even while the caller still holds `transformer`).
+    # offload=False keeps it on the GPU(s) (enough room when it is split over two T4s or at small resolutions)
+    if offload:
+        transformer.to("cpu")
     pipe.register_modules(transformer=None)
     gc.collect()
     if torch.cuda.is_available():

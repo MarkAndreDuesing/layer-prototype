@@ -103,6 +103,29 @@ Full report: [Image generation models hosting and costs.md](../reports/Image%20g
   - Kaggle TPU v5e-8, which the account offers: 8 chips × 16 GB, bf16. **[est]** about 40 s at about 30 steps, but it needs a torch_xla port of the pipeline (2–5 days) and nobody has published Qwen-Image on TPU.
   - Hosted APIs: fal about $0.05 per run; WaveSpeed $0.025 per layer. Comfy Cloud plans start at $20/month.
 
+### Result: about 33–41 s per split on the free T4s (sweeps v3 and v4)
+
+All runs use the forest test image on Kaggle 2× T4 with `fp16_mixed` and the Q4_K_S GGUF. "Total" is the wall time for one full split (denoise, VAE decode and recomposite), not counting model loading. The images are in [prototype/kaggle/results_qwen_sweep_v3/](../prototype/kaggle/results_qwen_sweep_v3/) and [results_qwen_sweep_v4/](../prototype/kaggle/results_qwen_sweep_v4/).
+
+| Resolution | Layers | Steps | CFG | s / step | Total | Layers usable? |
+|---|---|---|---|---|---|---|
+| 640 | 4 | 50 | 4 | 42 | 35 min | yes (reference) |
+| 512 | 4 | 20 | 4 | 25.9 | 525 s | yes |
+| 512 | 3 | 12 | 4 | 22.1 | 272 s | yes |
+| 512 | 3 | 12 | 1 | 11.1 | 139 s | yes, same as CFG 4 |
+| 384 | 3 | 8 | 1 | 7.3 | 63 s | yes |
+| 512 | 3 | 5 | 1 | 10.9 | 60 s | yes |
+| 448 | 3 | 5 | 1 | 8.7 | 48 s | yes |
+| 384 | 4 | 5 | 1 | 8.1 | 45 s | yes: trees, pines, fire+chair, stump |
+| **384** | **3** | **5** | **1** | **6.8** | **41 s** | **yes** |
+| **384** | **3** | **4** | **1** | **6.9** | **33 s** | **yes, slightly softer edges** |
+
+**Findings:**
+- **CFG 1 instead of 4 halves the time** (one pass per step instead of two) with no visible loss.
+- **Steps can drop from 50 to 4–5.** The layer split stays sensible (background, tree group, campfire group). Edges get a little softer, and the reconstruction error rises from 4.1 to about 7 out of 255.
+- **Time per step scales with pixel count:** about 7 s at 384 px, 9 s at 448 and 11 s at 512.
+- Each total included about 5 s of moving the transformer between GPU and CPU. Sweep v5 removes that (`offload=False`) and tests other images.
+
 ## Working agreements
 
 - Instructions are written as numbered steps with links and code.

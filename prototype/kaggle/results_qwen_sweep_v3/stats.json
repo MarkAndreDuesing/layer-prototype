@@ -1,0 +1,128 @@
+{
+ "weights_cached": true,
+ "input_read_MBps": 356.2,
+ "copy_to_local_s": 78.4,
+ "stage1_load_s": 77.5,
+ "stage1_encode_s": 1.8,
+ "stage1_peak_GB": [
+  8.82,
+  8.13
+ ],
+ "gguf_params_dequantized": 1,
+ "transformer_load_s": 47.6,
+ "sweep": [
+  {
+   "res": 512,
+   "layers": 4,
+   "steps": 20,
+   "cfg": 4.0,
+   "total_s": 525.4,
+   "denoise_s": 517.4,
+   "s_per_step": 25.91,
+   "decode_s": 1.0,
+   "transparent_pct": [
+    0.0,
+    95.4,
+    97.8,
+    72.9
+   ],
+   "recomposite_diff": 5.67
+  },
+  {
+   "res": 512,
+   "layers": 3,
+   "steps": 12,
+   "cfg": 4.0,
+   "total_s": 272.4,
+   "denoise_s": 265.8,
+   "s_per_step": 22.14,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    88.7,
+    95.2
+   ],
+   "recomposite_diff": 5.58
+  },
+  {
+   "res": 512,
+   "layers": 3,
+   "steps": 12,
+   "cfg": 1.0,
+   "total_s": 138.7,
+   "denoise_s": 133.5,
+   "s_per_step": 11.11,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    88.5,
+    94.2
+   ],
+   "recomposite_diff": 5.02
+  },
+  {
+   "res": 384,
+   "layers": 3,
+   "steps": 12,
+   "cfg": 4.0,
+   "total_s": 178.9,
+   "denoise_s": 174.0,
+   "s_per_step": 14.49,
+   "decode_s": 0.5,
+   "transparent_pct": [
+    0.0,
+    81.1,
+    78.0
+   ],
+   "recomposite_diff": 6.32
+  },
+  {
+   "res": 384,
+   "layers": 3,
+   "steps": 20,
+   "cfg": 1.0,
+   "total_s": 150.7,
+   "denoise_s": 145.4,
+   "s_per_step": 7.27,
+   "decode_s": 0.5,
+   "transparent_pct": [
+    0.0,
+    83.8,
+    75.8
+   ],
+   "recomposite_diff": 5.56
+  },
+  {
+   "res": 384,
+   "layers": 3,
+   "steps": 8,
+   "cfg": 1.0,
+   "total_s": 63.2,
+   "denoise_s": 58.5,
+   "s_per_step": 7.31,
+   "decode_s": 0.5,
+   "transparent_pct": [
+    0.0,
+    83.9,
+    75.7
+   ],
+   "recomposite_diff": 6.26
+  },
+  {
+   "res": 512,
+   "layers": 3,
+   "steps": 8,
+   "cfg": 1.0,
+   "total_s": 94.0,
+   "denoise_s": 88.8,
+   "s_per_step": 11.09,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    88.3,
+    94.2
+   ],
+   "recomposite_diff": 5.5
+  }
+ ]
+}
