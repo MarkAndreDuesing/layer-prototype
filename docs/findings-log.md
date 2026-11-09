@@ -254,3 +254,18 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
   - But colours and contrast shift, so the recomposite is about 2× further from the input (difference 15–18 vs about 7).
 - **Heun sampler** (what Stable-Layers recommends) failed: the diffusers pipeline passes custom sigmas, which `FlowMatchHeunDiscreteScheduler` rejects. Still open; it would need its own denoising loop as in `decompose.py`.
 - Results: [prototype/kaggle/results_stable_layers_v8/](../prototype/kaggle/results_stable_layers_v8/).
+
+### FLUX-class trials on 2× T4 and the Kaggle outage (2026-11-09 afternoon)
+
+- **RevealLayer** ([tools/make_reveallayer_trial.py](../prototype/tools/make_reveallayer_trial.py)): GGUF Q4_K_S FLUX.1-dev, with the encoders and VAE from ungated `ostris/Flex.1-alpha`.
+  - Runs 1–4 failed in turn on:
+    1. transformers 5 (pinned 4.57.1)
+    2. the authors' hard-coded ViT-B/32 path (download it and also copy it to the original path)
+    3. the same path again
+    4. a cancel with no log
+  - **Run 5 runs end to end:** model load about 4 min, then **69 s for 12 steps** at 512 px, peak 10.5 / 11.2 GB. **But every layer is pure noise.** The fp16 guard fired on all 12 steps in `FluxSingleTransformerBlock`, the same overflow as Qwen-Image. Results: [results_reveallayer_v5/](../prototype/kaggle/results_reveallayer_v5/).
+  - Runs 6 and 7 apply `fp16_mixed` to the transformer. They are still untested because of the outage.
+- **LayerDiffuse-Flux** ([tools/make_layerdiffuse_flux_trial.py](../prototype/tools/make_layerdiffuse_flux_trial.py)): uses `fp16_mixed` and `add_lora`. Pushed, but queued throughout the outage.
+- **Qwen-Image-2.1-Turbo RGBA** ([tools/make_qwen21_rgba_trial.py](../prototype/tools/make_qwen21_rgba_trial.py)): written, not pushed yet.
+- **Kaggle outage:** from about 14:00, runs stayed QUEUED or went to CANCEL_REQUESTED with no log. The editor showed "Failed to Authorize Session". A Kaggle banner confirmed a platform issue. Quota (6:50 of 30 h) and phone verification were fine.
+  - **Lesson:** every batch trial now gets a 25-minute SIGALRM cap so that a stall still ends with a log. Check for a Kaggle banner before re-pushing.

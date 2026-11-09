@@ -1,0 +1,113 @@
+r"""Kaggle 2x T4 notebook: Qwen-Image-2.1-Turbo (7B, native RGBA VAE) at reduced settings.
+
+    fastsdcpu\env\Scripts\python.exe prototype\tools\make_qwen21_rgba_trial.py
+    cd prototype\kaggle\upload_qwen21_rgba_trial && python -m kaggle.cli kernels push -p .
+
+Why: Qwen-Image-2.1 generates RGBA from text, edits transparent layers and extracts subjects (model card,
+2026). That covers three steps of our loop (new layer, re-prompt a layer, split an object out) in one model.
+
+Setup (facts checked 2026-11-09):
+  * transformer: unsloth/Qwen-Image-2.1-Turbo-GGUF Q4_K_S (3.91 GB); diffusers main maps
+    QwenImage21Transformer2DModel for from_single_file. Turbo = 8 steps, CFG 1, schedule saved in the checkpoint.
+  * rest (Qwen3-VL text encoder ~17.5 GB bf16, 4-channel VAE 1.35 GB, processor, scheduler) from
+    Qwen/Qwen-Image-2.1-Turbo; text encoder in fp16 split over both T4s via device_map.
+  * our fp16_mixed on the transformer (Qwen-family models overflow plain fp16).
+  * 512 px instead of 2048 (VAE is 16x, so 32x32 = 1024 image tokens).
+Qwen Research Licence (non-commercial) applies.
+"""
+import base64
+import io
+import json
+import os
+
+from PIL import Image
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PROTO = os.path.dirname(HERE)
+ROOT = os.path.dirname(PROTO)
+OUT = os.path.join(PROTO, "kaggle", "upload_qwen21_rgba_trial")
+SCENE = "experiments/blkE__P2__textonly__sdxlturbo-steps4-g1.0__seed11__impressionist.png"
+
+buf = io.BytesIO()
+Image.open(os.path.join(ROOT, SCENE)).convert("RGB").resize((512, 512)).save(buf, "JPEG", quality=90)
+SCENE_B64 = base64.b64encode(buf.getvalue()).decode()
+MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8").read()
+
+src = r'''import signal, time as _t
+_T0 = _t.time()
+def _cap(*a): raise TimeoutError("25 min cap hit after %.0fs" % (_t.time() - _T0))
+signal.signal(signal.SIGALRM, _cap); signal.alarm(25 * 60)
+
+import subprocess, os, sys, json, time, base64, io
+def sh(c): print(c, flush=True); subprocess.run(c, shell=True, check=True)
+sh("pip -q install 'transformers>=5.17' gguf>=0.10 accelerate git+https://github.com/huggingface/diffusers")
+import torch, numpy as np
+from PIL import Image
+from huggingface_hub import hf_hub_download, snapshot_download
+import diffusers
+from diffusers import QwenImage21Pipeline, QwenImage21Transformer2DModel, GGUFQuantizationConfig
+print("diffusers", diffusers.__version__, "torch", torch.__version__, flush=True)
+
+REPO = "Qwen/Qwen-Image-2.1-Turbo"
+BASE = snapshot_download(REPO, ignore_patterns=["transformer/*.safetensors", "assets/*"])
+gguf = hf_hub_download("unsloth/Qwen-Image-2.1-Turbo-GGUF", "qwen-image-2.1-turbo-Q4_K_S.gguf")
+print("downloads done", round(time.time() - _T0), "s", flush=True)
+D0, DT = torch.device("cuda:0"), torch.float16
+
+exec(compile(__MIXED__, "fp16_mixed", "exec"))
+t = QwenImage21Transformer2DModel.from_single_file(gguf, config=BASE, subfolder="transformer",
+        quantization_config=GGUFQuantizationConfig(compute_dtype=DT), torch_dtype=DT)
+apply_fp16_mixed(t); t.to(D0).eval()
+
+from transformers import AutoModelForImageTextToText
+te = AutoModelForImageTextToText.from_pretrained(f"{BASE}/text_encoder", torch_dtype=DT, device_map="auto",
+        max_memory={0: "5GiB", 1: "14GiB", "cpu": "24GiB"})
+pipe = QwenImage21Pipeline.from_pretrained(BASE, transformer=t, text_encoder=te, torch_dtype=DT)
+pipe.vae.to(D0)
+type(pipe)._execution_device = property(lambda self: D0)
+print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
+
+os.makedirs("/kaggle/working/q21_out", exist_ok=True)
+def alpha_stats(im):
+    if im.mode != "RGBA": return f"mode {im.mode}"
+    a = np.asarray(im.getchannel("A")); return f"RGBA, transparent {(a < 16).mean()*100:.0f}%, opaque {(a > 240).mean()*100:.0f}%"
+def run(name, prompt, image=None, size=512):
+    try:
+        torch.cuda.reset_peak_memory_stats(0); t0 = time.time()
+        with torch.inference_mode():
+            im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size,
+                      generator=torch.Generator(D0).manual_seed(42)).images[0]
+        im.save(f"/kaggle/working/q21_out/{name}.png")
+        print(f"{name}: {time.time()-t0:.0f}s, {alpha_stats(im)}, peak GiB {torch.cuda.max_memory_allocated(0)/2**30:.1f}", flush=True)
+        return im
+    except BaseException as e:
+        import traceback; traceback.print_exc(); print("FAILED", name, flush=True)
+        if isinstance(e, TimeoutError): raise
+
+RGBA = "This is an RGBA image with transparency. {}. The image has alpha channel and the background is transparent."
+fire = run("t2i_rgba_campfire", RGBA.format("A small campfire with crossed logs, impressionist oil painting style"))
+run("t2i_scene", "An impressionist oil painting of a forest clearing at night with a campfire, pine trees and a full moon")
+if fire is not None:
+    run("edit_rgba_bluefire", RGBA.format("Make the flames blue, keep everything else the same"), image=[fire])
+scene = Image.open(io.BytesIO(base64.b64decode("__SCENE__"))).convert("RGB")
+scene.save("/kaggle/working/q21_out/scene_input.png")
+run("extract_campfire", RGBA.format("Extract only the campfire from the input image, keep its exact look"), image=[scene])
+run("edit_scene_rain", "Make it a rainy night, keep the composition and style the same", image=[scene])
+print("total", round(time.time() - _T0), "s", flush=True)
+'''
+src = src.replace("__MIXED__", repr(MIXED)).replace("__SCENE__", SCENE_B64)
+compile(src, "cell", "exec")
+
+os.makedirs(OUT, exist_ok=True)
+nb = {"cells": [{"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [],
+                 "source": src.strip("\n").splitlines(True)}],
+      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+                   "language_info": {"name": "python"}}, "nbformat": 4, "nbformat_minor": 5}
+json.dump(nb, open(os.path.join(OUT, "qwen21-rgba-trial.ipynb"), "w", encoding="utf-8"), indent=1)
+json.dump({"id": "markandreduesing/qwen21-rgba-trial", "title": "qwen21-rgba-trial",
+           "code_file": "qwen21-rgba-trial.ipynb", "language": "python", "kernel_type": "notebook",
+           "is_private": "true", "enable_gpu": "true", "enable_tpu": "false", "enable_internet": "true",
+           "machine_shape": "NvidiaTeslaT4", "dataset_sources": [], "competition_sources": [],
+           "kernel_sources": [], "model_sources": []},
+          open(os.path.join(OUT, "kernel-metadata.json"), "w"), indent=1)
+print("wrote", OUT, round(os.path.getsize(os.path.join(OUT, "qwen21-rgba-trial.ipynb")) / 1e6, 2), "MB")

@@ -1,0 +1,216 @@
+[{"stream_name":"stderr","time":6.929871242,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.929910878,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.916933432,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.9169622,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.916967221,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.9169708629999995,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.521941465,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.521970055,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.521984551,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.521993541,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.179562871,"data":"pip -q install transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf\n"}
+,{"stream_name":"stderr","time":27.573829036,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.573858362,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.573863657,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.573867494,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.573871322,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776594338,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.776628962,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776632894,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776635616,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776638446,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776641022,"data":"\n"}
+,{"stream_name":"stderr","time":27.776643514,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":27.77668531,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776690358,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776694231,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.776697849,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":27.842274556,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stdout","time":28.011301986,"data":"git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":28.044596179,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":28.044616344,"data":"\n"}
+,{"stream_name":"stderr","time":28.044621067,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":29.516952075,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":29.516978818,"data":"\n"}
+,{"stream_name":"stderr","time":29.516983369,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":29.516987196,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":29.516990832,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":29.51699446,"data":"\n"}
+,{"stream_name":"stderr","time":29.516997762,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":29.517001954,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":29.517005765,"data":"\n"}
+,{"stream_name":"stderr","time":29.517013471,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":29.517016628,"data":"\n"}
+,{"stream_name":"stderr","time":29.517018904,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":29.517021318,"data":"\n"}
+,{"stream_name":"stderr","time":29.517023661,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":29.517026136,"data":"\n"}
+,{"stream_name":"stderr","time":29.517028465,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":29.51703114,"data":"\n"}
+,{"stream_name":"stderr","time":29.517033368,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":29.719482465,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":29.719511851,"data":"\n"}
+,{"stream_name":"stderr","time":29.719516266,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":29.719519904,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":29.719523306,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":29.719538736,"data":"\n"}
+,{"stream_name":"stderr","time":29.719542165,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":29.719545688,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":29.719549005,"data":"\n"}
+,{"stream_name":"stderr","time":29.719552094,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":29.719555759,"data":"\n"}
+,{"stream_name":"stderr","time":29.719558644,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":29.719566465,"data":"\n"}
+,{"stream_name":"stderr","time":29.719568898,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":29.719571016,"data":"\n"}
+,{"stream_name":"stderr","time":29.719573152,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":29.719575392,"data":"\n"}
+,{"stream_name":"stderr","time":29.719577468,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":29.719579704,"data":"\n"}
+,{"stream_name":"stderr","time":29.719581744,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":29.719584019,"data":"\n"}
+,{"stream_name":"stderr","time":29.719586079,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":29.719588296,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":29.719590587,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":29.719592747,"data":"\n"}
+,{"stream_name":"stderr","time":29.719594863,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":29.719597079,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":29.719599259,"data":"\n"}
+,{"stream_name":"stderr","time":29.719601303,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":29.719603534,"data":"\n"}
+,{"stream_name":"stderr","time":29.719605547,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":29.719607686,"data":"\n"}
+,{"stream_name":"stderr","time":29.719609736,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":29.719611817,"data":"\n"}
+,{"stream_name":"stderr","time":29.719613872,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":29.71961647,"data":"\n"}
+,{"stream_name":"stderr","time":29.719618527,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":29.72163553,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.721652521,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.721656843,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":29.721660518,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":29.721664178,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":29.721667439,"data":"wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":30.870677923,"data":"mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 \u0026\u0026 cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/\n"}
+,{"stream_name":"stdout","time":30.870721792,"data":"vit path patched in /kaggle/working/RevealLayer/models/custom_model_xvae.py\n"}
+,{"stream_name":"stdout","time":54.521486986,"data":"diffusers 0.34.0 /kaggle/working/RevealLayer/diffusers/src/diffusers/__init__.py\n"}
+,{"stream_name":"stderr","time":75.438060072,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":75.43810468,"data":"I0000 00:00:1794232646.081314      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":75.6408392,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":75.640862732,"data":"I0000 00:00:1794232646.081314      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":75.640868081,"data":"\n"}
+,{"stream_name":"stderr","time":75.640872976,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":75.640878063,"data":"I0000 00:00:1794232646.081314      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":196.688027502,"data":"refiner: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stderr","time":199.246222984,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":199.246271374,"data":"\n"}
+,{"stream_name":"stderr","time":199.246280408,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":199.462344611,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":199.462369726,"data":"\n"}
+,{"stream_name":"stderr","time":199.462373754,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":242.838289411,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stderr","time":242.83842094,"data":"\n"}
+,{"stream_name":"stderr","time":242.838431249,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stdout","time":243.820989902,"data":"[23] Creating ViT-B/32 structure...\n"}
+,{"stream_name":"stdout","time":244.623185992,"data":"[23] Loading local weights from: /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":245.957167819,"data":"[23] Applying weights to the model...\n"}
+,{"stream_name":"stdout","time":245.957207382,"data":"[23] ViT-B/32 loaded successfully.\n"}
+,{"stream_name":"stdout","time":245.957212079,"data":"ViT Encoder Missing keys: []\n"}
+,{"stream_name":"stdout","time":245.957215639,"data":"ViT Encoder Unexpected keys: ['pos_embedding']\n"}
+,{"stream_name":"stdout","time":247.365940922,"data":"xvae: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stdout","time":247.424425497,"data":"start forest at 237s since cell start\n"}
+,{"stream_name":"stdout","time":247.624050836,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":247.624091189,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":247.624095488,"data":"Running generation for sample: forest with 5 layers...\n"}
+,{"stream_name":"stdout","time":257.165636734,"data":"[guard] non-finite fp16 activations in FluxSingleTransformerBlock\n"}
+,{"stream_name":"stdout","time":314.311838483,"data":"images.shape: torch.Size([5, 3, 512, 512])\n"}
+,{"stream_name":"stderr","time":314.973078632,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":314.973110496,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":314.973114656,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":314.973117846,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":314.973120682,"data":"\n"}
+,{"stream_name":"stderr","time":314.973123507,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":314.973139329,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":314.973144611,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":314.973150055,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":315.624696696,"data":"tensor([[[[ 0.9956,  1.0049,  1.0010,  ...,  0.9917,  0.9878,  0.9897],\n"}
+,{"stream_name":"stdout","time":315.624729019,"data":"          [ 0.9941,  1.0020,  0.9995,  ...,  0.9995,  1.0020,  0.9917],\n"}
+,{"stream_name":"stdout","time":315.624733279,"data":"          [ 1.0039,  1.0146,  1.0098,  ...,  1.0068,  1.0137,  1.0029],\n"}
+,{"stream_name":"stdout","time":315.624736326,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":315.624752024,"data":"          [ 1.0068,  1.0078,  1.0098,  ...,  1.0068,  1.0039,  1.0127],\n"}
+,{"stream_name":"stdout","time":315.624757004,"data":"          [ 1.0049,  1.0088,  1.0098,  ...,  1.0068,  1.0010,  1.0010],\n"}
+,{"stream_name":"stdout","time":315.624762115,"data":"          [ 0.9961,  1.0166,  1.0195,  ...,  0.9985,  1.0039,  1.0020]]],\n"}
+,{"stream_name":"stdout","time":315.624767344,"data":"\n"}
+,{"stream_name":"stdout","time":315.62477183,"data":"\n"}
+,{"stream_name":"stdout","time":315.624775967,"data":"        [[[ 0.9683,  0.9839,  0.9614,  ...,  0.9482,  0.9326,  0.9385],\n"}
+,{"stream_name":"stdout","time":315.62478015,"data":"          [ 0.9419,  0.9575,  0.9590,  ...,  0.9526,  0.9536,  0.9521],\n"}
+,{"stream_name":"stdout","time":315.624784466,"data":"          [ 0.9717,  0.9839,  0.9502,  ...,  0.9653,  0.9702,  0.9692],\n"}
+,{"stream_name":"stdout","time":315.6248048,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":315.624807583,"data":"          [ 0.9902,  0.9902,  0.9863,  ...,  0.9399,  0.9521,  0.9702],\n"}
+,{"stream_name":"stdout","time":315.624809765,"data":"          [ 0.9834,  0.9907,  0.9907,  ...,  0.9141,  0.9268,  0.9414],\n"}
+,{"stream_name":"stdout","time":315.624811994,"data":"          [ 0.9609,  0.9814,  0.9971,  ...,  0.9014,  0.9229,  0.9087]]],\n"}
+,{"stream_name":"stdout","time":315.624814172,"data":"\n"}
+,{"stream_name":"stdout","time":315.624816285,"data":"\n"}
+,{"stream_name":"stdout","time":315.624818785,"data":"        [[[ 0.8193,  0.8687,  0.8672,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624821024,"data":"          [ 0.8262,  0.8452,  0.8320,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624823196,"data":"          [ 0.8174,  0.8569,  0.8667,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624825379,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":315.62482752,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624829684,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624831826,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":315.624834007,"data":"\n"}
+,{"stream_name":"stdout","time":315.624836881,"data":"\n"}
+,{"stream_name":"stdout","time":315.624850656,"data":"        [[[-1.0000, -1.0000, -1.0000,  ...,  0.9175,  0.8960,  0.8994],\n"}
+,{"stream_name":"stdout","time":315.624854306,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.8999,  0.9370,  0.9385],\n"}
+,{"stream_name":"stdout","time":315.624858215,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9077,  0.9175,  0.9312],\n"}
+,{"stream_name":"stdout","time":315.624861799,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":315.624865507,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624869315,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624872619,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":315.624875947,"data":"\n"}
+,{"stream_name":"stdout","time":315.624878913,"data":"\n"}
+,{"stream_name":"stdout","time":315.62488199,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624885217,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624888457,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624891802,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":315.624895905,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624899232,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":315.624902493,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]]],\n"}
+,{"stream_name":"stdout","time":315.624905827,"data":"       device='cuda:0', dtype=torch.float16)\n"}
+,{"stream_name":"stdout","time":315.624909127,"data":"result_list.shape: (5, 512, 512, 4)\n"}
+,{"stream_name":"stdout","time":315.624914105,"data":"Original input image saved to /kaggle/working/reveal_out/gs1.0_st12/forest/original_full_image.png\n"}
+,{"stream_name":"stdout","time":315.624924422,"data":"Resized image saved to /kaggle/working/reveal_out/gs1.0_st12/forest/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":316.064059072,"data":"All 5 layers and merged image saved to /kaggle/working/reveal_out/gs1.0_st12/forest\n"}
+,{"stream_name":"stdout","time":316.064088497,"data":"forest true_gs=1.0 steps=12: 69s; guard hits=12; peak GiB [10.5, 11.2]\n"}
+,{"stream_name":"stdout","time":316.101116299,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_1_rgba.png\n"}
+,{"stream_name":"stdout","time":316.101141547,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_1_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.101147048,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/merged_image.png\n"}
+,{"stream_name":"stdout","time":316.101151445,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":316.101156137,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/original_full_image.png\n"}
+,{"stream_name":"stdout","time":316.101160583,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/fg_rgba.png\n"}
+,{"stream_name":"stdout","time":316.101164912,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_0_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.101168922,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_2_rgba.png\n"}
+,{"stream_name":"stdout","time":316.101173044,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_0_rgba.png\n"}
+,{"stream_name":"stdout","time":316.101183613,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_2_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.101186719,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/bg_rgba.png\n"}
+,{"stream_name":"stdout","time":316.104061138,"data":"find /kaggle/working/reveal_out -name '*.png' | head -50\n"}
+,{"stream_name":"stdout","time":316.104081786,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_1_rgba.png\n"}
+,{"stream_name":"stdout","time":316.104086839,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_1_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.104091005,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/merged_image.png\n"}
+,{"stream_name":"stdout","time":316.104097335,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":316.10410619,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/original_full_image.png\n"}
+,{"stream_name":"stdout","time":316.104109558,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/fg_rgba.png\n"}
+,{"stream_name":"stdout","time":316.104112225,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_0_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.104115025,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_2_rgba.png\n"}
+,{"stream_name":"stdout","time":316.10411773,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_0_rgba.png\n"}
+,{"stream_name":"stdout","time":316.10412039,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/layer_2_rgba_mask.png\n"}
+,{"stream_name":"stdout","time":316.104123027,"data":"/kaggle/working/reveal_out/gs1.0_st12/forest/bg_rgba.png\n"}
+,{"stream_name":"stderr","time":322.756466924,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":322.756496664,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":322.936180641,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":322.936241563,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":323.706306672,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":323.834281311,"data":"[NbConvertApp] Writing 1374441 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":326.304234737,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":326.896169268,"data":"[NbConvertApp] Writing 1615898 bytes to __results__.html\n"}
+]

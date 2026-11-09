@@ -159,3 +159,21 @@ Unverified items:
 - user studies inside the PSDiffusion, DreamLayer and LayerDiffuse papers
 - MagicScroll details
 - an exhaustive ACM DL search for CHI/UIST work
+
+## 5. Re-check, 2026-11-09 evening (after the spatial-edit survey and the first trials)
+
+- **G1 (long edit sequences): still open.** Nothing new found.
+- **G2 (story events across layers): still open, and confirmed.** A targeted search found no layered method that applies one global edit (weather, time of day, fire) consistently across several layers. The nearest work:
+  - SceneCrafter does weather and time of day, but for driving scenes and with no layers.
+  - LASAGNA and DreamLayer only harmonise at generation time.
+- **G3 (re-harmonising after move/resize): narrowed but still open.**
+  - Our training-free `relocate()` v5 works: about 4 s per edit on a T4, and identity largely holds with pinning plus paste-back.
+  - No released model does this.
+  - Qwen-Image-2.1 (released, open weights) supports masked local edits and editing of transparent layers. It may serve as a second re-harmoniser (not tested yet).
+- **G5 (latency on free hardware): partly answered by us.**
+  - Qwen-Image-Layered gives a usable split in 27–35 s on 2× T4.
+  - Stable-Layers takes 34 s at 4 steps.
+  - The FLUX-class models (RevealLayer, LayerDiffuse-Flux, CLD) load and run on 2× T4 with GGUF Q4. RevealLayer takes 69 s for 12 steps, but its quality is still blocked by fp16 overflow; the `fp16_mixed` fix is untested on FLUX.
+  - This is a measurable contribution in itself: a quality–latency frontier for open layered models on free GPUs.
+- **New fact that changes the picture: Qwen-Image-2.1 (7B, native RGBA VAE, Turbo at 8 steps, GGUF Q4 at 3.9 GB).** It covers three steps of the loop in one released model: generate an RGBA layer, edit a transparent layer, and extract a subject. If it runs on a T4, the "editing mechanics" are even less novel. That strengthens the conclusion of section 4: our contribution should be the **evaluation over story-event sequences (G1, G2)** and the **HCI study (G4)**.
+- Details: `research_notes/Layered methods deep dive/heavy_models_recheck_2026-11-09.md`.

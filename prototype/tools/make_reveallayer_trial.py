@@ -32,6 +32,26 @@ head = cell.split("# ---- one example")[0]
 # RevealLayer bundles diffusers 0.34, which imports FLAX_WEIGHTS_NAME from transformers 4.x (removed in transformers 5)
 head = head.replace('pip -q install gguf>=0.10', 'pip -q install transformers==4.57.1 gguf>=0.10', 1)
 assert "transformers==4.57.1" in head
+# the transparent VAE hard-codes the authors' local path to torchvision's ImageNet ViT-B/32 weights
+VIT_PATCH = r"""
+os.makedirs('/kaggle/working/vit32', exist_ok=True)
+sh('wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth')
+import glob as _g, re as _re
+sh('mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 && cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/')
+for _f in _g.glob(RL + '/**/*.py', recursive=True):
+    _s = open(_f, encoding='utf-8', errors='ignore').read()
+    if 'vit32' in _s and '/home/jovyan' in _s:
+        _s = _re.sub(r"/home/jovyan/[^'\"]*?vit32", "/kaggle/working/vit32", _s)
+        open(_f, 'w', encoding='utf-8').write(_s); print('vit path patched in', _f)
+"""
+head = head.replace("# ---- use bundled diffusers", VIT_PATCH + "# ---- use bundled diffusers", 1)
+assert "vit_b_32-d86f8d99" in head
+# FLUX overflows fp16 in the single blocks (guard fired every step -> pure noise); reuse our Qwen fix
+MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8").read()
+APPLY = ("\n# ---- fp16_mixed (layerproto/fp16_mixed.py, inlined) ----\nexec(compile(" + repr(MIXED) + ", 'fp16_mixed', 'exec'))\n"
+         "apply_fp16_mixed(t); print('fp16_mixed applied', flush=True)\n")
+head = head.replace("# ---- R7: fp16 overflow guard", APPLY + "# ---- R7: fp16 overflow guard", 1)
+assert "apply_fp16_mixed(t)" in head
 imgs = {}
 for k, (f, boxes) in SCENES.items():
     buf = io.BytesIO()
@@ -43,10 +63,11 @@ import base64, io, time
 from types import SimpleNamespace
 from PIL import Image
 SCENES = {json.dumps(imgs)}
-for name, (b, boxes) in SCENES.items():
+for name, (b, boxes) in list(SCENES.items())[:1]:
     p = f"/kaggle/working/{{name}}.png"; Image.open(io.BytesIO(base64.b64decode(b))).save(p)
     sample = {{"index": name, "layout": boxes, "full_image_path": p}}
-    for true_gs, steps in ((1.0, 12), (3.5, 16)):
+    for true_gs, steps in ((1.0, 12),):
+        print(f"start {{name}} at {{time.time()-_T0:.0f}}s since cell start", flush=True)
         args = SimpleNamespace(seed=43, cfg=1.0, steps=steps, true_gs=true_gs, output_dir=f"/kaggle/working/reveal_out/gs{{true_gs}}_st{{steps}}")
         torch.cuda.reset_peak_memory_stats(0); torch.cuda.reset_peak_memory_stats(1); t0 = time.time()
         try:
@@ -54,11 +75,16 @@ for name, (b, boxes) in SCENES.items():
                 infer.test_one_sample(args, sample, pipe, transp_vae, D0, shuffle=False)
             print(f"{{name}} true_gs={{true_gs}} steps={{steps}}: {{time.time()-t0:.0f}}s; guard hits={{_hit['n']}}; peak GiB",
                   [round(torch.cuda.max_memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
-        except Exception as e:
+        except BaseException as e:
             import traceback; traceback.print_exc(); print("FAILED", name, true_gs, steps, flush=True)
 sh("find /kaggle/working/reveal_out -name '*.png' | head -50")
 '''
-src = head + tail
+CAP = """import signal, time as _t
+_T0 = _t.time()
+def _cap(*a): raise TimeoutError("25 min cap hit after %.0fs" % (_t.time() - _T0))
+signal.signal(signal.SIGALRM, _cap); signal.alarm(25 * 60)
+"""
+src = CAP + head + tail
 compile(src, "cell", "exec")
 os.makedirs(OUT, exist_ok=True)
 nb = {"cells": [{"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [],
