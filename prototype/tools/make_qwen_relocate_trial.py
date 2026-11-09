@@ -31,20 +31,27 @@ with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
                     z.write(full, os.path.join("prototype", os.path.relpath(full, PROTO)))
     z.write(os.path.join(HERE, "qwen_relocate_demo.py"), "prototype/tools/qwen_relocate_demo.py")
 code_b64 = base64.b64encode(buf.getvalue()).decode()
+VARIANTS = [["--free-last", "2", "--band", "9", "--paste-back", "0", "--strengths", "0.3,0.45"],      # fixed pin mask only
+            ["--free-last", "2", "--band", "9", "--paste-back", "0.8", "--strengths", "0.3,0.45"],    # + 80% paste-back
+            ["--free-last", "2", "--band", "9", "--paste-back", "1.0", "--strengths", "0.45"]]        # exact pixels
 cmds = [["prototype/tools/qwen_relocate_demo.py", "--layers-dir", f"layers/{d}", "--index", str(i), "--prompt", p,
-         "--dx", str(dx), "--dy", str(dy), "--scale", str(sc), "--out", "/kaggle/working/qwen_relocate", "--pin", "0.7", "--strengths", "0.3,0.45"]
-        for d, i, p, dx, dy, sc in DEMOS]
+         "--dx", str(dx), "--dy", str(dy), "--scale", str(sc), "--out", "/kaggle/working/qwen_relocate"] + v
+        for d, i, p, dx, dy, sc in DEMOS for v in VARIANTS]
 SRC = f'''
 import base64, io, os, subprocess, sys, zipfile, time
 os.environ['HF_HUB_DISABLE_XET'] = '1'
 print(subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'diffusers==0.37.0'], capture_output=True, text=True).stderr[-800:])
 zipfile.ZipFile(io.BytesIO(base64.b64decode("{code_b64}"))).extractall('/kaggle/working')
 os.chdir('/kaggle/working')
-import glob, shutil
-src = glob.glob('/kaggle/input/**/qwen_layered_test', recursive=True)   # outputs of the qwen-layered-batch run v7
-print('layers from', src, flush=True)
-for d in glob.glob(src[0] + '/layers_*'):
-    shutil.copytree(d, 'layers/' + os.path.basename(d), dirs_exist_ok=True)
+import glob, shutil, tarfile
+# v7 layers from the private dataset markandreduesing/qwen-v7-layers (folders, or .tar archives of them)
+os.makedirs('layers', exist_ok=True)
+for f in glob.glob('/kaggle/input/**/layers_*', recursive=True):
+    if f.endswith('.tar'):
+        tarfile.open(f).extractall('layers')
+    elif os.path.isdir(f):
+        shutil.copytree(f, 'layers/' + os.path.basename(f), dirs_exist_ok=True)
+print('layers:', sorted(os.listdir('layers')), flush=True)
 for c in {json.dumps(cmds)}:
     t = time.time()
     r = subprocess.run([sys.executable] + c, capture_output=True, text=True)
@@ -59,7 +66,7 @@ nb = {"cells": [{"cell_type": "code", "metadata": {}, "execution_count": None, "
 json.dump(nb, open(os.path.join(OUT, "qwen-relocate-trial.ipynb"), "w", encoding="utf-8"), indent=1)
 json.dump({"id": "markandreduesing/qwen-relocate-trial", "title": "qwen-relocate-trial", "code_file": "qwen-relocate-trial.ipynb",
            "language": "python", "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true",
-           "enable_tpu": "false", "enable_internet": "true", "machine_shape": "NvidiaTeslaT4", "dataset_sources": [],
-           "competition_sources": [], "kernel_sources": ["markandreduesing/qwen-layered-batch"], "model_sources": []},
+           "enable_tpu": "false", "enable_internet": "true", "machine_shape": "NvidiaTeslaT4", "dataset_sources": ["markandreduesing/qwen-v7-layers"],
+           "competition_sources": [], "kernel_sources": [], "model_sources": []},
           open(os.path.join(OUT, "kernel-metadata.json"), "w"), indent=1)
 print("wrote", OUT, "| payload", round(len(code_b64) / 1e6, 2), "MB b64")

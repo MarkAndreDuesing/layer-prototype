@@ -9,10 +9,10 @@
  "enable_tpu": "false",
  "enable_internet": "true",
  "machine_shape": "NvidiaTeslaT4",
- "dataset_sources": [],
- "competition_sources": [],
- "kernel_sources": [
-  "markandreduesing/qwen-layered-batch"
+ "dataset_sources": [
+  "markandreduesing/qwen-v7-layers"
  ],
+ "competition_sources": [],
+ "kernel_sources": [],
  "model_sources": []
 }

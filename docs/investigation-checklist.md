@@ -1,0 +1,55 @@
+# Investigation checklist
+
+Everything the user has asked to investigate across the recent sessions, with status. **Done** means verified and written up, with the location given. **Open** means not finished yet. Updated as work progresses.
+
+## A. Qwen-Image-Layered on Kaggle
+
+- [x] Run on free Kaggle T4s despite having no bf16: `fp16_mixed` ([findings-log](findings-log.md), Phase 3)
+- [x] Explore every Kaggle option, including the TPU ([research_tpu_route.md](../reports/research_tpu_route.md)). The TPU port was not attempted.
+- [x] Reduce generation time towards ≤ 40–60 s by downscaling: 27–35 s ([findings-log](findings-log.md), Phase 4)
+- [x] Keep running configuration adjustments in the background: sweeps v3–v7, the Lightning LoRA
+- [ ] Remaining levers from the plan: fp16 attention everywhere (partly done in `fp16_mixed`), caching the text-encoder outputs, 2 layers
+- [ ] TPU v5e-8 port (20 h/week of free quota): researched, not attempted
+
+## B. Reusability for the team
+
+- [x] Git repo, public on GitHub ([layer-prototype](https://github.com/MarkAndreDuesing/layer-prototype))
+- [x] Public Kaggle notebooks and weight caches (the 3 originals; new trial notebooks are private because publishing them was blocked)
+- [x] `fp16_mixed` as a module, plus a team guide ([qwen-layered-on-kaggle.md](../prototype/docs/qwen-layered-on-kaggle.md))
+- [x] Consolidate all session material into the repo (README, findings log, experiments, research notes)
+- [x] Voice-note ideas that are new or unconfirmed ([open-paths.md](open-paths.md))
+
+## C. Hosting and cost
+
+- [x] Alternative hosts for Qwen-Image-Layered: Lightning AI, Modal, HF ZeroGPU, WaveSpeed, fal
+- [x] Comfy Cloud vs paid APIs ([research_speed_and_apis.md](../reports/research_speed_and_apis.md))
+- [x] LMU Informatics / LRZ GPUs vs the paid API ([University GPU access LMU.md](../reports/University%20GPU%20access%20LMU.md)). Many points are marked unverified; questions for the RBG are listed.
+
+## D. Layered-generation papers (`other_layered_methods.md` and newer)
+
+- [x] First audit of every method's code and weights ([joint_text_to_layers.md](../research_notes/Layered%20methods%20deep%20dive/joint_text_to_layers.md), [other_psd_methods.md](../research_notes/Layered%20methods%20deep%20dive/other_psd_methods.md))
+- [x] **Double-check every "not released" claim** ([release_status_recheck.md](../research_notes/Layered%20methods%20deep%20dive/release_status_recheck.md)): still unreleased except OmniPSD code (no weights), LayerCraft code + LoRA, and an unofficial ART+ mirror with a fresh web search: PSDiffusion, DreamLayer, LASAGNA, LayerFusion, OmniPSD weights, LayeringDiff, LayerDecomp, DiffDecompose, Text2Layer, RefLayer, LayerCraft, LiWi, PixelART
+- [ ] **Actually try the methods called infeasible on Kaggle**, at reduced settings as with Qwen:
+  - [x] Stable-Layers: runs at 34 s (4 steps); cleaner split but colour shift; Heun still open
+  - [ ] RevealLayer (FLUX.1-dev GGUF + LoRA): adapted; run 1 failed on transformers 5, run 2 running
+  - [ ] ART+ / PrismLayers (Flux-class)
+  - [ ] CLD (FLUX + inpainting ControlNet)
+  - [ ] Qwen-Image-2.1 RGBA (7B)
+  - [ ] LayerDiffuse-Flux
+  - [ ] OmniPSD (if weights exist)
+- [x] LayerD tried: returns 1 layer on scenes
+- [x] SAM2 + LaMa (segment + inpaint route) tried: fast, poor grouping
+- [x] **Spatial editing in every paper that has it** (parts 1–3 in `research_notes/Layered methods deep dive/spatial_edit_survey_verified_part*.md`): only DreamLayer has a move/resize algorithm. The decomposition papers just re-composite. The object-move papers keep identity by latent pinning plus attention sharing. (move / resize / re-harmonise): how each does it and what we can borrow. So far only LayerFusion, DreamLayer and PSDiffusion were read ([spatial_edit_mechanics.md](../research_notes/Layered%20methods%20deep%20dive/spatial_edit_mechanics.md)).
+- [x] LayerFusion spatial edit: the paper has none; DreamLayer has one
+- [x] Our training-free move/resize re-harmonisation (`relocate()`): works, about 4 s per edit; identity drift is open
+- [~] Fix identity drift in `relocate()`: v5 (fixed pin mask + paste-back) largely fixes it; attention sharing not yet tried
+- [x] Research gap and research questions ([Research gap and questions.md](../reports/Research%20gap%20and%20questions.md))
+- [ ] Re-check the research gap once the deeper spatial-edit survey and the trials are done
+
+## E. Voice-note paths still open ([open-paths.md](open-paths.md))
+
+- [ ] Where the strong text-to-image models fit (base-image generator → decomposer): untested
+- [ ] Image-to-image front end → Qwen-Image-Layered: untested
+- [ ] LayerDiffuse on complex scenes (many or overlapping objects): not evaluated
+- [ ] Scene-wide story events (fire, rain, night): open
+- [ ] Prompt breakdown with AI placement plus harmonisation (IC-Light): open

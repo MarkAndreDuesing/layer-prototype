@@ -50,28 +50,51 @@ if _BAD:   # find the first module (execution order) whose output is non-finite,
 assert not _BAD, 'NaN/inf still present - stopping before the 50-step run'
 """
 SWEEP = """
-# Run v7: the recommended fast settings on all 3 images, saving every RGBA layer (input for the relocate trial).
-import numpy as np
+# Run v8: Stable-Layers (Stability AI LoRA on Qwen-Image-Layered, Stability Community licence) at REDUCED settings.
+# Its README asks for Heun, 50 steps, 640 px; here we test how far it can be cut down, next to the base model.
+import numpy as np, json as _json
+from huggingface_hub import hf_hub_download
+from diffusers import FlowMatchHeunDiscreteScheduler
+from layerproto.fp16_mixed import add_lora, remove_lora
+cfg = _json.load(open(hf_hub_download('StabilityLabs/Stable-Layers', 'model/adapter_config.json')))
+lp = hf_hub_download('StabilityLabs/Stable-Layers', 'model/adapter_model.safetensors')
+lscale = cfg.get('lora_alpha', cfg.get('r', 1)) / cfg.get('r', 1)
+print('adapter config', {k: cfg.get(k) for k in ('r', 'lora_alpha', 'target_modules')}, 'scale', lscale, flush=True)
+orig_sched = pipe.scheduler
 IMGS = {'forest': (img, emb), **{k: (EXTRA[k][0], emb_x[k]) for k in EXTRA}}
-CONFIGS = [('forest', 384, 4, 4), ('pixelart_camp', 384, 4, 4), ('sketch_skeleton', 384, 4, 4),
-           ('forest', 512, 4, 3), ('pixelart_camp', 512, 4, 3), ('sketch_skeleton', 512, 4, 3)]
+CONFIGS = [  # (variant, sampler, image, resolution, layers, steps)
+    ('stable_layers', 'euler', 'forest', 384, 4, 4), ('stable_layers', 'euler', 'sketch_skeleton', 384, 4, 4),
+    ('stable_layers', 'euler', 'pixelart_camp', 384, 4, 4),
+    ('stable_layers', 'euler', 'forest', 384, 4, 8), ('stable_layers', 'heun', 'forest', 384, 4, 6),
+    ('stable_layers', 'heun', 'sketch_skeleton', 384, 4, 6), ('stable_layers', 'heun', 'forest', 512, 4, 10),
+    ('base', 'heun', 'forest', 384, 4, 6),
+]
 stats['sweep'] = []
 split_across_gpus(tr)
-for key, res, nl, steps in CONFIGS:
+for variant, sampler, key, res, nl, steps in CONFIGS:
+    remove_lora(tr)
+    if variant == 'stable_layers':
+        hit, miss = add_lora(tr, lp, scale=lscale)
+        stats.setdefault('lora_match', [hit, len(miss), miss[:5]]); print('LoRA matched', hit, 'missing', len(miss), miss[:3], flush=True)
+    if sampler == 'heun':
+        pipe.scheduler = FlowMatchHeunDiscreteScheduler.from_config(orig_sched.config)
     im, e = IMGS[key]
     torch.cuda.synchronize(); t = time.time()
-    out, st = Q.decompose(pipe, tr, im, CAPTION, e, steps=steps, layers=nl, resolution=res, true_cfg=1.0, offload=False)
+    try:
+        out, st = Q.decompose(pipe, tr, im, CAPTION, e, steps=steps, layers=nl, resolution=res, true_cfg=1.0, offload=False)
+    except Exception as ex:
+        print('FAILED', variant, sampler, key, repr(ex)[:300], flush=True); stats['sweep'].append(dict(variant=variant, sampler=sampler, image=key, error=repr(ex)[:300])); save(); continue
+    finally:
+        pipe.scheduler = orig_sched
     total = round(time.time() - t, 1)
     canvas, info = Q.recompose(out, im.size)
-    tag = f'{key}_{res}px_{nl}L_{steps}st'
-    os.makedirs(f'{OUT}/layers_{tag}', exist_ok=True)
-    for i, L in enumerate(out):
-        L.save(f'{OUT}/layers_{tag}/layer_{i}.png')
-    row = dict(image=key, res=res, layers=nl, steps=steps, total_s=total, **st,
+    tag = f'{variant}_{sampler}_{key}_{res}px_{nl}L_{steps}st'
+    row = dict(variant=variant, sampler=sampler, image=key, res=res, layers=nl, steps=steps, total_s=total, **st,
                transparent_pct=[i['transparent_pct'] for i in info],
                recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(im.size), dtype=int) - np.array(im, dtype=int)).mean()), 2))
     stats['sweep'].append(row); save(); print(row, flush=True)
-    Q.strip([im, canvas] + out).save(f'{OUT}/v7_{tag}.png')
+    Q.strip([im, canvas] + out).save(f'{OUT}/v8_{tag}.png')
+remove_lora(tr)
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []

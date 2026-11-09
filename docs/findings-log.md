@@ -232,3 +232,25 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - The remaining problem is **identity drift**: re-harmonising redraws the object. **Run v2 pinned the interior for 70% of the steps instead of 40%: almost no change** (the forest is nearly identical, the skeleton slightly closer to the original). The drift happens in the unpinned final steps. The next candidates are identity conditioning (IP-Adapter on the original object, or reference-only attention) or pinning with a softer mask through every step ([results_qwen_relocate_v2_pin70/](../prototype/kaggle/results_qwen_relocate_v2_pin70/)).
 - Qwen sometimes groups unrelated objects into one layer (skeleton + tree). Using more layers, or splitting the grouped layer again, is the obvious fix.
 - Results: [prototype/kaggle/results_qwen_relocate_v1/](../prototype/kaggle/results_qwen_relocate_v1/).
+
+### Identity drift in `relocate()`: two bugs found, fixed in v5
+
+- **v3/v4 bug:** the strips were byte-identical whatever the pin settings, so pinning was a no-op. The pin mask used alpha > 128, then eroded 12 px per side. Qwen layers have soft alpha, so this covered only about 42 of 4,096 latent pixels for the campfire.
+  - A separate wrong timestep lookup (img2img keeps the full timestep list) turned out not to matter: the Euler scheduler's `add_noise` uses its own step index.
+- **v5:** the mask now uses alpha > 40 with a 4 px band. The interior is pinned on every step except the last 2. Optional **paste-back** blends the original object pixels back inside its alpha after decoding (several papers do this; see `spatial_edit_survey_verified_part*.md`).
+- **Result:**
+  - The pinned interior now holds (forest log pile and flame keep their shape).
+  - With paste-back 0.8, the moved skeleton keeps its look in the new place, while the surroundings are still re-harmonised.
+  - About 4 s per edit.
+  - Remaining problems: thin parts at the edge (chair legs) still change, and contact shadows stay weak.
+- Results: [prototype/kaggle/results_qwen_relocate_v5_fixedpin/](../prototype/kaggle/results_qwen_relocate_v5_fixedpin/).
+
+### Stable-Layers (Stability AI) at reduced settings on the T4 (run v8)
+
+- **Setup:** its 330 MB PEFT LoRA attached via `fp16_mixed.add_lora`; all 420 modules matched. Euler sampler, CFG 1, 384 px, 4 layers.
+- **Speed:** 4 steps about 34 s; 8 steps about 71 s.
+- **Result:**
+  - Cleaner semantic split than the base model: on the sketch the background is truly empty paper and the fire gets its own layer.
+  - But colours and contrast shift, so the recomposite is about 2× further from the input (difference 15–18 vs about 7).
+- **Heun sampler** (what Stable-Layers recommends) failed: the diffusers pipeline passes custom sigmas, which `FlowMatchHeunDiscreteScheduler` rejects. Still open; it would need its own denoising loop as in `decompose.py`.
+- Results: [prototype/kaggle/results_stable_layers_v8/](../prototype/kaggle/results_stable_layers_v8/).

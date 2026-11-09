@@ -234,7 +234,8 @@ class LayerDiffuseChain(ChainBackend):
                 self._pipe.unet._ld_cond, self._vae.mod_number = None, None
 
     def relocate(self, scene: Image.Image, layer: Image.Image, box, prompt: str, seed: int, strength: float = 0.5,
-                 pin_frac: float = 0.4, w=512, h=512, steps=20, guidance=7.0, negative="", extract: str = "model"):
+                 pin_frac: float = 0.4, w=512, h=512, steps=20, guidance=7.0, negative="", extract: str = "model",
+                 free_last: int | None = None, band: int = 9, paste_back: float = 0.0):
         """Training-free move/resize with re-harmonisation (our proposal, after DreamLayer's harmonisation step).
 
         scene: background RGB(A) without the layer; layer: the layer's RGBA (canvas-sized); box: new (x, y, bw, bh)
@@ -259,7 +260,8 @@ class LayerDiffuseChain(ChainBackend):
         moved.alpha_composite(obj.resize((max(1, bw), max(1, bh)), Image.LANCZOS), (x, y))
         naive = scene.copy()
         naive.alpha_composite(moved)
-        interior = moved.getchannel("A").point(lambda a: 255 if a > 128 else 0).filter(ImageFilter.MinFilter(9))
+        # alpha > 40 (Qwen layers have soft alpha; >128 left ~1% of thin objects, so v1-v4 pinned almost nothing)
+        interior = moved.getchannel("A").point(lambda a: 255 if a > 40 else 0).filter(ImageFilter.MinFilter(band))
 
         with self._lock:
             self._load()
@@ -275,13 +277,18 @@ class LayerDiffuseChain(ChainBackend):
             gen = torch.Generator("cpu").manual_seed(int(seed))
             noise = torch.randn(lat0.shape, generator=gen).to(lat0.device, lat0.dtype)
             n_real = max(1, int(steps * strength))
-            pin_until = int(n_real * pin_frac)
+            # free_last=None: pin only the first pin_frac of the steps (v2). free_last=k: pin the interior on EVERY
+            # step except the last k (after Collage Diffusion's per-layer noise level / DesignEdit's late fusion),
+            # so only the edge band and the surroundings are re-generated (identity drift fix, v3)
+            pin_until = int(n_real * pin_frac) if free_last is None else max(0, n_real - free_last)
 
             def pin(p, i, t, kw):
                 if i < pin_until:
+                    # img2img keeps the FULL timestep list but only runs its tail, so look up where we are by
+                    # value (bug in v1-v3: ts[i + 1] pointed at a much noisier early timestep)
                     ts = p.scheduler.timesteps
-                    t_next = ts[min(i + 1, len(ts) - 1)]
-                    ref = p.scheduler.add_noise(lat0, noise, t_next.reshape(1)) if i + 1 < len(ts) else lat0
+                    k = int((ts == t).nonzero()[0][0]) if (ts == t).any() else i
+                    ref = p.scheduler.add_noise(lat0, noise, ts[k + 1].reshape(1)) if k + 1 < len(ts) else lat0
                     kw["latents"] = kw["latents"] * (1 - m) + ref * m
                 return kw
 
@@ -294,6 +301,12 @@ class LayerDiffuseChain(ChainBackend):
             finally:
                 self._pipe.unet._ld_cond = None
                 self._pipe.scheduler = self._sched_default
+        if paste_back > 0:
+            # blend the warped original object back over the re-harmonised image inside its alpha (identity kept;
+            # the surroundings keep the new light / shadow). paste_back=1: exact original pixels inside the object
+            a = (np.asarray(moved.getchannel("A"), dtype=np.float32)[..., None] / 255.0) * paste_back
+            mix = np.asarray(harm.convert("RGB"), dtype=np.float32) * (1 - a) + np.asarray(moved.convert("RGB"), dtype=np.float32) * a
+            harm = Image.fromarray(mix.clip(0, 255).astype(np.uint8)).convert("RGBA")
         if extract == "model":
             new_layer = self._extract(scene, harm, prompt, seed, w, h, steps, guidance, negative)
         else:

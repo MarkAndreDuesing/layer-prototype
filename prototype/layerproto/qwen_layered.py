@@ -91,7 +91,7 @@ def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps
         times.append(time.time())
         if on_step:
             on_step(i)
-        if i == steps - 1:
+        if i == len(p.scheduler.timesteps) - 1:   # last step (Heun schedulers have ~2x steps timesteps)
             # Take the final latents and stop before the pipeline's own decode: it would run the VAE while the
             # 12.7 GB transformer is still on the GPU (OOM on a 15 GB T4), and output_type="latent" is broken in
             # diffusers 0.37 (that branch returns an unassigned `images` variable).
