@@ -50,45 +50,28 @@ if _BAD:   # find the first module (execution order) whose output is non-finite,
 assert not _BAD, 'NaN/inf still present - stopping before the 50-step run'
 """
 SWEEP = """
-# Sweep v6: Qwen-Image-Lightning 4-step LoRA (trained for Qwen-Image T2I) on Qwen-Image-Layered. Untested combination.
-import numpy as np, math
-from huggingface_hub import hf_hub_download
-from diffusers import FlowMatchEulerDiscreteScheduler
-from layerproto.fp16_mixed import add_lora, remove_lora
-LIGHT_SCHED = dict(base_image_seq_len=256, base_shift=math.log(3), invert_sigmas=False, max_image_seq_len=8192,
-                   max_shift=math.log(3), num_train_timesteps=1000, shift=1.0, shift_terminal=None,
-                   stochastic_sampling=False, time_shift_type='exponential', use_beta_sigmas=False,
-                   use_dynamic_shifting=True, use_exponential_sigmas=False, use_karras_sigmas=False)
-orig_sched = pipe.scheduler
-lp = hf_hub_download('lightx2v/Qwen-Image-Lightning', 'Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors')
+# Run v7: the recommended fast settings on all 3 images, saving every RGBA layer (input for the relocate trial).
+import numpy as np
 IMGS = {'forest': (img, emb), **{k: (EXTRA[k][0], emb_x[k]) for k in EXTRA}}
-CONFIGS = [  # (variant, image, resolution, layers, steps)
-    ('lightning', 'forest', 384, 3, 4), ('lightning', 'forest', 384, 4, 4), ('lightning', 'forest', 512, 4, 4),
-    ('lightning', 'pixelart_camp', 384, 4, 4), ('lightning', 'sketch_skeleton', 384, 4, 4),
-    ('lightning_half', 'forest', 384, 4, 4), ('lightning_sched_only', 'forest', 384, 4, 4),
-]
+CONFIGS = [('forest', 384, 4, 4), ('pixelart_camp', 384, 4, 4), ('sketch_skeleton', 384, 4, 4),
+           ('forest', 512, 4, 3), ('pixelart_camp', 512, 4, 3), ('sketch_skeleton', 512, 4, 3)]
 stats['sweep'] = []
 split_across_gpus(tr)
-for variant, key, res, nl, steps in CONFIGS:
-    remove_lora(tr)
-    if variant.startswith('lightning') and variant != 'lightning_sched_only':
-        hit, miss = add_lora(tr, lp, scale=0.5 if variant == 'lightning_half' else 1.0)
-        stats.setdefault('lora_match', [hit, len(miss), miss[:5]]); print('LoRA modules matched', hit, 'missing', len(miss), miss[:5], flush=True)
-    pipe.scheduler = FlowMatchEulerDiscreteScheduler.from_config(LIGHT_SCHED)
+for key, res, nl, steps in CONFIGS:
     im, e = IMGS[key]
     torch.cuda.synchronize(); t = time.time()
-    try:
-        out, st = Q.decompose(pipe, tr, im, CAPTION, e, steps=steps, layers=nl, resolution=res, true_cfg=1.0, offload=False)
-    finally:
-        pipe.scheduler = orig_sched
+    out, st = Q.decompose(pipe, tr, im, CAPTION, e, steps=steps, layers=nl, resolution=res, true_cfg=1.0, offload=False)
     total = round(time.time() - t, 1)
     canvas, info = Q.recompose(out, im.size)
-    row = dict(variant=variant, image=key, res=res, layers=nl, steps=steps, total_s=total, **st, nan=_BAD,
+    tag = f'{key}_{res}px_{nl}L_{steps}st'
+    os.makedirs(f'{OUT}/layers_{tag}', exist_ok=True)
+    for i, L in enumerate(out):
+        L.save(f'{OUT}/layers_{tag}/layer_{i}.png')
+    row = dict(image=key, res=res, layers=nl, steps=steps, total_s=total, **st,
                transparent_pct=[i['transparent_pct'] for i in info],
                recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(im.size), dtype=int) - np.array(im, dtype=int)).mean()), 2))
     stats['sweep'].append(row); save(); print(row, flush=True)
-    Q.strip([im, canvas] + out).save(f'{OUT}/v6_{variant}_{key}_{res}px_{nl}L_{steps}st.png')
-remove_lora(tr)
+    Q.strip([im, canvas] + out).save(f'{OUT}/v7_{tag}.png')
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []
