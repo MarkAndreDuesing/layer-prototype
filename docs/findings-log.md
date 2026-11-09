@@ -126,6 +126,28 @@ All runs use the forest test image on Kaggle 2× T4 with `fp16_mixed` and the Q4
 - **Time per step scales with pixel count:** about 7 s at 384 px, 9 s at 448 and 11 s at 512.
 - Each total included about 5 s of moving the transformer between GPU and CPU. Sweep v5 removes that (`offload=False`) and tests other images.
 
+### Sweep v5: transformer kept on the GPUs, 3 different images
+
+The transformer now stays on the GPUs between splits (`offload=False`). Peak memory is 8.0 / 7.6 GB, so it fits. Images are in [prototype/kaggle/results_qwen_sweep_v5/](../prototype/kaggle/results_qwen_sweep_v5/).
+
+| Image | Resolution | Layers | Steps | Total | Split |
+|---|---|---|---|---|---|
+| impressionist forest | 384 | 3 | 3 | **20 s** | background / bare trees / pines + campfire; usable, slightly softer |
+| impressionist forest | 384 | 3 | 4 | **27 s** | same split |
+| impressionist forest | 384 | 4 | 4 | 30 s | adds a stump and log layer |
+| impressionist forest | 512 | 3 | 3 | 31 s | sharper |
+| pixel-art camp | 384 | 3 | 4 | 27 s | — |
+| pixel-art camp | 384 | 4 | 5 | 38 s | sky + moon / ground + campfire / tree group / skeleton + green tree; good |
+| pixel-art camp | 512 | 4 | 4 | 48 s | — |
+| pale sketch, skeleton | 384 | 3 | 4 | 27 s | campfire, table and logs separated, but the **skeleton stays half in the background** |
+| pale sketch, skeleton | 384 | 4 | 5 | 38 s | — |
+
+**Conclusion:**
+- **On the free T4s, 384 px with 3–4 layers and 4 steps takes 27–30 s**, well under the 40 s target. 512 px with 3 steps (31 s) is the sharper alternative.
+- The split carries over to pixel-art and line-art styles.
+- Weak spot: thin or low-contrast subjects (the pale skeleton) may stay in the background layer at 3 layers.
+- GPU time used for the Qwen sweeps so far: about 2.5 h (Kaggle quota shows 5.4 h this week, including earlier editor sessions).
+
 ## Working agreements
 
 - Instructions are written as numbered steps with links and code.

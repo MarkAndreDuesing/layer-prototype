@@ -33,7 +33,7 @@ def b64(path):
 SRC = f'''
 import subprocess, sys, time, io, base64, json, os
 t0 = time.time()
-r = subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'git+https://github.com/CyberAgentAILab/LayerD.git'],
+r = subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'git+https://github.com/CyberAgentAILab/LayerD.git', 'transformers<5'],  # BiRefNet remote code breaks on transformers 5
                    capture_output=True, text=True)
 print('pip rc', r.returncode, r.stderr[-1500:], flush=True)
 from PIL import Image

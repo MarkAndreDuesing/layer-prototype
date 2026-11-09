@@ -233,6 +233,69 @@ class LayerDiffuseChain(ChainBackend):
             finally:
                 self._pipe.unet._ld_cond, self._vae.mod_number = None, None
 
+    def relocate(self, scene: Image.Image, layer: Image.Image, box, prompt: str, seed: int, strength: float = 0.5,
+                 pin_frac: float = 0.4, w=512, h=512, steps=20, guidance=7.0, negative=""):
+        """Training-free move/resize with re-harmonisation (our proposal, after DreamLayer's harmonisation step).
+
+        scene: background RGB(A) without the layer; layer: the layer's RGBA (canvas-sized); box: new (x, y, bw, bh)
+        in pixels for the layer's visible content. Steps:
+          1. crop the layer to its alpha bbox, resize into `box`, paste over the scene (naive composite)
+          2. bg2ble img2img from the naive composite at `strength`; during the first `pin_frac` of the denoising
+             steps the object's (eroded) interior is pinned to the re-noised naive composite, so shape and identity
+             stay while the rim and surroundings can re-light / grow contact shadows
+          3. bgble2fg extracts the re-harmonised object (incl. shadow) as a new aligned RGBA layer
+        Returns (naive_composite, harmonised_composite, new_layer).
+        """
+        import torch
+        from PIL import ImageFilter
+        from diffusers import StableDiffusionXLImg2ImgPipeline
+
+        scene = scene.convert("RGBA").resize((w, h))
+        layer = layer.convert("RGBA").resize((w, h))
+        bbox = layer.getchannel("A").point(lambda a: 255 if a > 20 else 0).getbbox()
+        obj = layer.crop(bbox) if bbox else layer
+        x, y, bw, bh = [int(v) for v in box]
+        moved = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+        moved.alpha_composite(obj.resize((max(1, bw), max(1, bh)), Image.LANCZOS), (x, y))
+        naive = scene.copy()
+        naive.alpha_composite(moved)
+        interior = moved.getchannel("A").point(lambda a: 255 if a > 128 else 0).filter(ImageFilter.MinFilter(9))
+
+        with self._lock:
+            self._load()
+            self._set_mode("bg2ble")
+            self._pipe.unet._ld_cond, self._vae.mod_number = self._encode(scene, w, h), None
+            i2i = StableDiffusionXLImg2ImgPipeline(**self._pipe.components)
+            if not self.turbo:
+                i2i.scheduler = self._sched_blend
+            lat0 = self._encode(naive, w, h)
+            m = torch.from_numpy(np.asarray(interior.resize((w // 8, h // 8)), dtype=np.float32) / 255.0)
+            m = m[None, None].to(lat0.device, lat0.dtype)
+            gen = torch.Generator("cpu").manual_seed(int(seed))
+            noise = torch.randn(lat0.shape, generator=gen).to(lat0.device, lat0.dtype)
+            n_real = max(1, int(steps * strength))
+            pin_until = int(n_real * pin_frac)
+
+            def pin(p, i, t, kw):
+                if i < pin_until:
+                    ts = p.scheduler.timesteps
+                    t_next = ts[min(i + 1, len(ts) - 1)]
+                    ref = p.scheduler.add_noise(lat0, noise, t_next.reshape(1)) if i + 1 < len(ts) else lat0
+                    kw["latents"] = kw["latents"] * (1 - m) + ref * m
+                return kw
+
+            try:
+                harm = i2i(prompt=prompt, negative_prompt=negative or None, image=naive.convert("RGB"),
+                           strength=strength, num_inference_steps=steps, guidance_scale=guidance,
+                           generator=torch.Generator("cpu").manual_seed(int(seed)),
+                           callback_on_step_end=pin, callback_on_step_end_tensor_inputs=["latents"],
+                           return_dict=False)[0][0].convert("RGBA")
+            finally:
+                self._pipe.unet._ld_cond = None
+                self._pipe.scheduler = self._sched_default
+        new_layer = self._extract(scene, harm, prompt, seed, w, h, steps, guidance, negative)
+        return naive, harm, new_layer
+
     def info(self) -> dict:
         return {"backend": self.name, "model": self.model, "device": getattr(self, "device", "not loaded"),
                 "mode": self._mode, "load_seconds": round(self.load_seconds, 1)}

@@ -37,11 +37,69 @@ def _mixed_linear(self, x):
     y = self._fp16_orig_forward((x / s).to(torch.float16)).float()   # = W x/s + b
     b = getattr(self, "bias", None)
     if not torch.isfinite(y).all():                                  # rare: this call in fp32
-        return F.linear(x, _dequant(self.weight).float(), None if b is None else b.float())
-    if b is None:
-        return y * s
-    b = b.float()
-    return (y - b) * s + b
+        y = F.linear(x, _dequant(self.weight).float(), None if b is None else b.float())
+    elif b is None:
+        y = y * s
+    else:
+        b = b.float()
+        y = (y - b) * s + b
+    lora = getattr(self, "_fp16_lora", None)
+    if lora is not None:                                             # low-rank delta, same input scaling
+        A, B, k = lora
+        if A.device != x.device:                                     # module was moved (e.g. split over GPUs)
+            A, B = A.to(x.device), B.to(x.device)
+            self._fp16_lora = (A, B, k)
+        xs = (x / s).to(torch.float16)
+        y = y + F.linear(F.linear(xs, A), B).float() * (s * k)
+    return y
+
+
+def _lora_pairs(sd):
+    """{module name: (A [r, in], B [out, r], alpha or None)} for common LoRA key layouts (PEFT / kohya / diffusers)."""
+    out = {}
+    for key in sd:
+        for a_suf, b_suf in ((".lora_A.weight", ".lora_B.weight"), (".lora_down.weight", ".lora_up.weight"),
+                             (".lora_A.default.weight", ".lora_B.default.weight")):
+            if key.endswith(a_suf):
+                base = key[: -len(a_suf)]
+                bkey = base + b_suf
+                if bkey in sd:
+                    alpha = sd.get(base + ".alpha")
+                    name = base
+                    for pre in ("base_model.model.", "diffusion_model.", "transformer.", "model."):
+                        if name.startswith(pre):
+                            name = name[len(pre):]
+                    out[name] = (sd[key], sd[bkey], None if alpha is None else float(alpha))
+    return out
+
+
+def add_lora(model, path_or_state_dict, scale: float = 1.0):
+    """Attach a LoRA to an fp16_mixed-patched model (works with GGUF-quantised linears, nothing is merged).
+    Returns (matched modules, LoRA modules not found)."""
+    sd = path_or_state_dict
+    if isinstance(sd, str):
+        from safetensors.torch import load_file
+        sd = load_file(sd)
+    pairs = _lora_pairs(sd)
+    mods = dict(model.named_modules())
+    hit, miss = 0, []
+    for name, (A, B, alpha) in pairs.items():
+        m = mods.get(name)
+        if m is None or not hasattr(m, "_fp16_orig_forward"):
+            miss.append(name)
+            continue
+        dev = next((p.device for p in m.parameters()), torch.device("cpu"))
+        r = A.shape[0]
+        k = scale * ((alpha / r) if alpha else 1.0)
+        m._fp16_lora = (A.to(dev, torch.float16), B.to(dev, torch.float16), k)
+        hit += 1
+    return hit, miss
+
+
+def remove_lora(model):
+    for _, m in model.named_modules():
+        if hasattr(m, "_fp16_lora"):
+            del m._fp16_lora
 
 
 def _patch_attention():

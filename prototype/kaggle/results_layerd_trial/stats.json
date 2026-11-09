@@ -1,0 +1,44 @@
+{
+ "forest": {
+  "seconds_cpu": 61.4,
+  "n_layers": 1,
+  "layers": [
+   {
+    "size": [
+     512,
+     512
+    ],
+    "mode": "RGBA",
+    "transparent_pct": 0.0
+   }
+  ]
+ },
+ "pixelart_camp": {
+  "seconds_cpu": 57.8,
+  "n_layers": 1,
+  "layers": [
+   {
+    "size": [
+     512,
+     512
+    ],
+    "mode": "RGBA",
+    "transparent_pct": 0.0
+   }
+  ]
+ },
+ "sketch_skeleton": {
+  "seconds_cpu": 60.1,
+  "n_layers": 1,
+  "layers": [
+   {
+    "size": [
+     512,
+     512
+    ],
+    "mode": "RGBA",
+    "transparent_pct": 0.0
+   }
+  ]
+ }
+}
