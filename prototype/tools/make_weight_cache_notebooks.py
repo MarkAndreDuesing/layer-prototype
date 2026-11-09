@@ -51,7 +51,7 @@ for slug, src in NOTEBOOKS.items():
                        "language_info": {"name": "python"}}, "nbformat": 4, "nbformat_minor": 5}
     json.dump(nb, open(os.path.join(folder, slug + ".ipynb"), "w", encoding="utf-8"), indent=1)
     json.dump({"id": "markandreduesing/" + slug, "title": slug, "code_file": slug + ".ipynb", "language": "python",
-               "kernel_type": "notebook", "is_private": "true", "enable_gpu": "false", "enable_tpu": "false",
+               "kernel_type": "notebook", "is_private": "false", "enable_gpu": "false", "enable_tpu": "false",
                "enable_internet": "true", "machine_shape": "", "dataset_sources": [], "competition_sources": [],
                "kernel_sources": [], "model_sources": []},
               open(os.path.join(folder, "kernel-metadata.json"), "w"), indent=1)

@@ -98,16 +98,23 @@ def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps
             raise _Stop
         return kw
 
+    # the pipeline only accepts 640 / 1024; for other sizes (e.g. 512, 384) swap in our target area
+    import diffusers.pipelines.qwenimage.pipeline_qwenimage_layered as _pl
+    _orig_cd = _pl.calculate_dimensions
+    if resolution not in (640, 1024):
+        _pl.calculate_dimensions = lambda area, ratio: _orig_cd(resolution * resolution, ratio)
     t0 = time.time()
     try:
         with torch.no_grad():
             pipe(image=image, prompt=caption, prompt_embeds=pe, prompt_embeds_mask=pm,
                  negative_prompt_embeds=ne, negative_prompt_embeds_mask=nm, true_cfg_scale=true_cfg,
-                 layers=layers, resolution=resolution, num_inference_steps=steps, cfg_normalize=True,
+                 layers=layers, resolution=resolution if resolution in (640, 1024) else 640, num_inference_steps=steps, cfg_normalize=True,
                  generator=torch.Generator(gen_device).manual_seed(seed), callback_on_step_end=cb,
                  callback_on_step_end_tensor_inputs=["latents"])
     except _Stop:
         pass
+    finally:
+        _pl.calculate_dimensions = _orig_cd
     stats = {"denoise_s": round(time.time() - t0, 1)}
     if len(times) > 1:
         stats["s_per_step"] = round((times[-1] - times[0]) / (len(times) - 1), 2)

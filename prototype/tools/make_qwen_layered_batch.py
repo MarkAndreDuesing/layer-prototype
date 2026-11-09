@@ -49,12 +49,35 @@ if _BAD:   # find the first module (execution order) whose output is non-finite,
     print('FIRST NON-FINITE:', stats['first_nonfinite'], flush=True); save()
 assert not _BAD, 'NaN/inf still present - stopping before the 50-step run'
 """
+SWEEP = """
+# Speed sweep towards the 40 s goal (SDXL-Turbo reference: 512 px, few steps, no CFG). Each config = full decomposition.
+import numpy as np
+CONFIGS = [  # (resolution, layers, steps, true_cfg)
+    (512, 4, 20, 4.0), (512, 3, 12, 4.0), (512, 3, 12, 1.0),
+    (384, 3, 12, 4.0), (384, 3, 20, 1.0), (384, 3, 8, 1.0), (512, 3, 8, 1.0),
+]
+stats['sweep'] = []
+for res, nl, steps, cfg in CONFIGS:
+    split_across_gpus(tr); torch.cuda.synchronize(); t = time.time()
+    out, st = Q.decompose(pipe, tr, img, CAPTION, emb, steps=steps, layers=nl, resolution=res, true_cfg=cfg)
+    canvas, info = Q.recompose(out, img.size)
+    row = dict(res=res, layers=nl, steps=steps, cfg=cfg, total_s=round(time.time() - t, 1), **st,
+               transparent_pct=[i['transparent_pct'] for i in info],
+               recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(img.size), dtype=int) - np.array(img, dtype=int)).mean()), 2))
+    stats['sweep'].append(row); save(); print(row, flush=True)
+    Q.strip([img, canvas] + out).save(f'{OUT}/sweep_{res}px_{nl}L_{steps}st_cfg{cfg:g}.png')
+"""
+SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []
 for c in nb["cells"]:
     s = src(c)
     if c["cell_type"] == "markdown":
         if any(k in s for k in ("# Feasibility", "## Stage 1", "## Results", "Mixed precision")):
             keep.append(c)
+        continue
+    if SWEEP_MODE and ("steps=50" in s or "Q.recompose(result" in s):
+        if "steps=50" in s:
+            setsrc(c, SWEEP); keep.append(c)
         continue
     if "fp16 overflow probe" in s or "fp16 fix: the MLP" in s or "_ln_fp32" in s or "TFLOPS" in s:
         continue                                          # failed experiments / measurements already done
@@ -77,7 +100,7 @@ for c in keep:
 os.makedirs(OUT, exist_ok=True)
 json.dump(nb, open(os.path.join(OUT, "qwen-layered-batch.ipynb"), "w", encoding="utf-8"), indent=1)
 meta = json.load(open(os.path.join(SRC_DIR, "kernel-metadata.json")))
-meta.update(id="markandreduesing/qwen-layered-batch", title="qwen-layered-batch", code_file="qwen-layered-batch.ipynb",
+meta.update(is_private="false", id="markandreduesing/qwen-layered-batch", title="qwen-layered-batch", code_file="qwen-layered-batch.ipynb",
             machine_shape="NvidiaTeslaT4")
 json.dump(meta, open(os.path.join(OUT, "kernel-metadata.json"), "w"), indent=1)
 print("cells:", [src(c).strip().splitlines()[0][:60] for c in keep])

@@ -65,7 +65,7 @@ pipe = Q.make_pipeline(te, vae)
 emb = Q.encode(pipe, CAPTION, device="cpu")
 print("embeds:", [tuple(e.shape) for e in emb], "masks given:", emb[1] is not None and emb[3] is not None)
 Q.unload_text_encoder(pipe, DT)
-layers, stats = Q.decompose(pipe, tr, img, CAPTION, emb, steps=2, layers=4, resolution=640,
+layers, stats = Q.decompose(pipe, tr, img, CAPTION, emb, steps=2, layers=3, resolution=384,
                             on_step=lambda i: print("  step", i))
 canvas, info = Q.recompose(layers, img.size)
 print("stats:", stats)

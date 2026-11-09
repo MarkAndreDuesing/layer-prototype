@@ -4,6 +4,12 @@ Splits one image into RGBA layers with [Qwen/Qwen-Image-Layered](https://hugging
 
 **Status (2026-11-09):** works, no NaNs, 4 clean layers. It takes **42 s per step, so 35 min for the default 50 steps**. That is far too slow for gameplay; see [../../reports/research_speed_and_apis.md](../../reports/research_speed_and_apis.md) and [../../reports/research_tpu_route.md](../../reports/research_tpu_route.md).
 
+## Public links
+
+- Code: https://github.com/MarkAndreDuesing/layer-prototype
+- Batch notebook: https://www.kaggle.com/code/markandreduesing/qwen-layered-batch
+- Cached weights (attach as notebook inputs): https://www.kaggle.com/code/markandreduesing/qwen-layered-weights-transformer and https://www.kaggle.com/code/markandreduesing/qwen-layered-weights-base
+
 ## Why it needs a patch
 
 Qwen-Image is built for **bf16**. The T4 has no bf16, and in fp16 the model's internal values exceed the fp16 limit (65504), giving all-NaN output. ComfyUI also lists Qwen-Image as bf16/fp32 only.
@@ -34,7 +40,7 @@ apply_fp16_mixed(transformer)
    python -m venv kagglecli && kagglecli\Scripts\pip install kaggle
    ```
    Create an API token at https://www.kaggle.com/settings (API → Create New Token) and save it as `%USERPROFILE%\.kaggle\kaggle.json`.
-2. You need access to the two weight notebooks (ask the owner to add you as a collaborator). Or build your own copies: push `kaggle/upload_qwen-layered-weights-transformer` and `-base` under your username (CPU only, no GPU quota). Then change the `kernel_sources` usernames in both generators.
+2. The two weight notebooks are public, so the batch notebook can attach them as they are. If you prefer your own copies, build them yourself: push `kaggle/upload_qwen-layered-weights-transformer` and `-base` under your username (CPU only, no GPU quota). Then change the `kernel_sources` usernames in both generators.
 3. Generate the notebooks (any Python with only the standard library works):
    ```bash
    python prototype/tools/make_qwen_layered_test.py
