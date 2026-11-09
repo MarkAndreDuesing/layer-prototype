@@ -16,8 +16,10 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
 | [`reports/`](reports/) | Research reports: layered-generation models, hosting, the coherent pipeline, Kaggle plans, TPU route, speed and API costs |
 | [`research_notes/`](research_notes/) | Raw source notes behind the reports |
-| [`SETUP_AND_USAGE_GUIDE.md`](SETUP_AND_USAGE_GUIDE.md) | Earlier phase: sketch-to-image on a CPU laptop with FastSD CPU (3 tested paths) |
-| [`experiments/`](experiments/) | Sketch-to-image test plan, results, ranking sheet, input sketches, comparison sheets and kept images. Raw image folders are not included. |
+| [`docs/fastsd-cpu/`](docs/fastsd-cpu/) | Earlier phase: offline image generation on a CPU laptop with FastSD CPU. [INSTALL.md](docs/fastsd-cpu/INSTALL.md) and [USAGE.md](docs/fastsd-cpu/USAGE.md), two paths (SD-Turbo, SDXL-Turbo) |
+| [`docs/session-summary-sketch-to-image.md`](docs/session-summary-sketch-to-image.md) | How the sketch-to-image phase went, and why each decision was made |
+| [`docs/archive/`](docs/archive/) | Superseded documents (the first 3-path guide) |
+| [`experiments/`](experiments/) | Sketch-to-image test plan, results, ranking sheet, input sketches, comparison sheets, the user's favourites and offline-test images. Raw image folders are not included. |
 | [`fastsdcpu_local/`](fastsdcpu_local/) | Our patch to FastSD CPU and an offline launcher |
 
 ## Current status (2026-11-09)
@@ -33,4 +35,4 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 
 1. Clone this repo, then follow [prototype/README.md](prototype/README.md) for the local app. It needs Ollama, and the LayerDiffuse code from [prototype/vendor/README.md](prototype/vendor/README.md).
 2. For Qwen-Image-Layered on Kaggle, follow [prototype/docs/qwen-layered-on-kaggle.md](prototype/docs/qwen-layered-on-kaggle.md). The batch notebook and cached weights are public on Kaggle.
-3. For the earlier sketch-to-image tests, follow [SETUP_AND_USAGE_GUIDE.md](SETUP_AND_USAGE_GUIDE.md) and [fastsdcpu_local/README.md](fastsdcpu_local/README.md).
+3. For offline CPU image generation with FastSD CPU (the earlier sketch-to-image phase), follow [docs/fastsd-cpu/INSTALL.md](docs/fastsd-cpu/INSTALL.md), then [docs/fastsd-cpu/USAGE.md](docs/fastsd-cpu/USAGE.md).

@@ -1,5 +1,7 @@
 # Sketch-to-image on CPU with FastSD CPU: install, setup and the 3 paths
 
+> **Archived (2026-11-09).** This is the first, machine-specific version of the guide. It still has Path 3 (ControlNet), our test prompt and the Hugging Face cache download, which does **not** work offline (`IncompleteSnapshotError`). Use the current two-path guides instead: [../fastsd-cpu/INSTALL.md](../fastsd-cpu/INSTALL.md) and [../fastsd-cpu/USAGE.md](../fastsd-cpu/USAGE.md). It is kept because it records the exact values behind the test runs.
+
 Based on the test runs (see `experiments/CONFIRMATION_RESULTS.md` and `experiments/MODEL_RANKING_SHEET.xlsx`).
 Tested on Windows 11, 15.7 GB RAM, no GPU. Values below are the ones used in the tests, not guesses.
 

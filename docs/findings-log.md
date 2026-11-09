@@ -4,7 +4,7 @@ All findings and decisions so far, in date order. Numbers are measured unless ma
 
 ## Phase 1: sketch-to-image on a CPU laptop (FastSD CPU)
 
-**Setup:** Windows 11 laptop, 15.7 GB RAM, no GPU. The full guide is [../SETUP_AND_USAGE_GUIDE.md](../SETUP_AND_USAGE_GUIDE.md); the results are in [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md).
+**Setup:** Windows 11 laptop, 15.7 GB RAM, no GPU. Current guides (two paths, offline): [fastsd-cpu/INSTALL.md](fastsd-cpu/INSTALL.md) and [fastsd-cpu/USAGE.md](fastsd-cpu/USAGE.md). Results: [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md). How the session went and why each decision was made: [session-summary-sketch-to-image.md](session-summary-sketch-to-image.md).
 
 | Path | Speed and memory | Verdict |
 |---|---|---|
@@ -24,6 +24,18 @@ All findings and decisions so far, in date order. Numbers are measured unless ma
 - Close Chrome, IDEs and VMs before running SDXL.
 - Set `HF_HUB_DISABLE_XET=1` for downloads.
 - FastSD CPU needs a float32 patch for SDXL-Turbo (see [../fastsdcpu_local/](../fastsdcpu_local/)).
+
+**Final decisions (2026-11-07):**
+- **Path 3 (ControlNet) dropped:** slower, and the fewest kept images (2/12 with a sketch, 0/12 text-only). The guides keep Path 1 (SD-Turbo, fast) and Path 2 (SDXL-Turbo, best).
+- **Settings for both paths:** LCM mode, 4 steps, 512 × 512, Guidance 1, no negative prompt, Strength 0.8 for Image to Image, no fixed seed. Generate at least 3 images and pick one.
+- **The user's 8 favourites** (all SDXL-Turbo: filled img2img, raw img2img and text-only) are in [../experiments/favourites/](../experiments/favourites/).
+
+**Offline use (verified 2026-11-07):**
+- A cache filled by the app's own automatic download **fails offline** with `IncompleteSnapshotError`: `huggingface_hub` compares the cache against the full repo listing.
+- Fix: download complete model folders with `snapshot_download(local_dir='models/<name>', ignore_patterns=[...])` and list `models/<name>` in `configs/lcm-models.txt`. The ignore patterns cut the repos from 13 GB / 55.5 GB to 4.9 GB / 13 GB.
+- `use_offline_model: true` in `configs/settings.yaml` persists across restarts; the UI checkbox does not. The `--use_offline_model` flag only affects CLI mode.
+- `HF_HUB_OFFLINE=1`, `TRANSFORMERS_OFFLINE=1` and `GRADIO_ANALYTICS_ENABLED=False` block all network calls ([../fastsdcpu_local/start-webui-offline.bat](../fastsdcpu_local/start-webui-offline.bat)).
+- Both models worked in both modes with the network blocked: about 25 s (SD-Turbo) and about 70 s (SDXL-Turbo) per image. A physically disconnected run has not been done yet. Images: [../experiments/offline_test/](../experiments/offline_test/).
 
 ## Phase 2: layered scenes, local prototype (2026-11-07)
 
@@ -82,6 +94,7 @@ All findings and decisions so far, in date order. Numbers are measured unless ma
 ## Working agreements
 
 - Instructions are written as numbered steps with links and code.
+- No arbitrary "best" picks: build neutral, complete outputs (all images, neutral comparison sheets) and let the user choose.
 - Check facts before stating them, and mark estimates.
 - Don't invent features. Follow the plan and the references.
 - GPU quota is limited: verify locally (`prototype/tools/dryrun_qwen_*.py` with tiny models), smoke-test 2 steps, and avoid full runs per bug.

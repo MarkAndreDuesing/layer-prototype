@@ -1,5 +1,21 @@
 # Experiment output guide
 
+Phase 1 of the repo: sketch-to-image on a CPU laptop with FastSD CPU. The summary is in [../docs/findings-log.md](../docs/findings-log.md); the session story is in [../docs/session-summary-sketch-to-image.md](../docs/session-summary-sketch-to-image.md).
+
+**What is in git:** docs, scripts, logs, manifests, `inputs/`, the comparison sheets (`sheets/`, `confirm_sheets/`), `favourites/`, `offline_test/`, the 3 `final/` sheets and the parked images in this folder. The raw image folders (`all_images/`, `confirm_images/`, `p1…`, `r2_…`, `confirm/`) stay local because of their size (about 180 MB).
+
+## Quick index
+
+| File / folder | What |
+|---|---|
+| `MODEL_RANKING_SHEET.xlsx` | Final ranking of models, settings, styles and seeds (all 3 paths, before Path 3 was dropped) |
+| `CONFIRMATION_TEST_PLAN.md` / `CONFIRMATION_RESULTS.md` | Pre-registered 120-image test and its results |
+| `confirm_sheets/` | One sheet per path and seed for the confirmation test. Black cells were removed by the user. |
+| `favourites/` | The user's 8 named favourites from the confirmation test, all SDXL-Turbo. The first 5 come closest to the original pixel-art intent; the other 3 are favourites in other styles. |
+| `*.png` in this folder | Images the user parked as "conceptually interesting, but not what was asked" |
+| `offline_test/` | Proof images from the offline test (both models, Text to Image and Image to Image) |
+| `run_*.py`, `compile_*.py`, `build_sheets_filtered.py` | Scripts that generated the images and sheets, through the FastSD CPU web UI API |
+
 Every generated PNG is in `all_images/` (188 files, no selection made).
 `all_images_manifest.csv` has one row per image with all settings and the original source path.
 `sheets/` has one comparison sheet per path, input image and seed (14 sheets).
@@ -31,6 +47,10 @@ extra people, text, watermark).
 Names: `<path>_input-<input>_seed<seed>.png`. Columns: input image, then the 4 styles.
 Rows: every run for that path, input and seed, in run order (phase, then Strength/scale, steps, guidance).
 Each row label shows phase, configuration name, settings and source folder.
+
+## Confirmation test file names (`confirm_images/`, `favourites/`)
+
+`blk<block>__<path>__<input>__<settings>__seed<seed>__<style>.png`. Blocks: A = P2 filled (Strength 0.7/0.8/0.9), B = P2 raw sketch, C = P1 filled, D = P3 Canny ControlNet, E = P2 text-only, F = P1 text-only, G = P3 text-only. Seeds 11, 42, 99. See `CONFIRMATION_TEST_PLAN.md`.
 
 ## Other folders
 
