@@ -71,6 +71,15 @@ pipe.vae.float()
 for _name in ("encode", "decode"):
     _f = getattr(pipe.vae, _name)
     setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))
+# fox & cottage (5 boxes -> 7 frames) OOM'd in the fp32 decode with the transformer still on GPU 0: offload it first
+pipe.vae.enable_slicing()
+for _v in (pipe.vae, transp_vae):
+    _dec2 = _v.decode
+    def _off(*a, _d=_dec2, **k):
+        if next(t.parameters()).device.type == "cuda":
+            t.to("cpu"); torch.cuda.empty_cache()
+        return _d(*a, **k)
+    _v.decode = _off
 """
 head = head.replace("transp_vae.to(D0).eval()", "transp_vae.to(D0).eval()" + XVAE_FIX, 1)
 assert "_to32" in head
@@ -99,6 +108,7 @@ for name, (b, boxes) in list(SCENES.items())[:1]:
     for true_gs, steps in ((1.0, 12), (3.5, 16)):
         print(f"start {{name}} at {{time.time()-_T0:.0f}}s since cell start", flush=True)
         args = SimpleNamespace(seed=43, cfg=1.0, steps=steps, true_gs=true_gs, output_dir=f"/kaggle/working/reveal_out/gs{{true_gs}}_st{{steps}}")
+        t.to(D0); torch.cuda.empty_cache()
         torch.cuda.reset_peak_memory_stats(0); torch.cuda.reset_peak_memory_stats(1); t0 = time.time()
         try:
             with torch.inference_mode():

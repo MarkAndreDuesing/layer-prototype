@@ -103,6 +103,8 @@ t.to(D0).eval()
 pipe = CustomFluxPipelineCfgLayer.from_pretrained(BASE, transformer=t, scheduler=dev_sched, torch_dtype=DT)
 pipe.vae.to(D0, torch.float32); pipe.text_encoder.to(D1); pipe.text_encoder_2.to(D1)
 CustomFluxPipelineCfgLayer._execution_device = property(lambda self: D0)
+# PrismLayers was written for diffusers 0.31 (FLUX vae_scale_factor 16); 0.32+ uses 8 -> latents for 2x the size, boxes in one corner
+pipe.vae_scale_factor = 16; print('vae_scale_factor ->', pipe.vae_scale_factor, flush=True)
 _orig_enc = pipe.encode_prompt
 def _enc(*a, device=None, **kw):
     out = _orig_enc(*a, device=D1, **kw)
@@ -111,8 +113,18 @@ pipe.encode_prompt = _enc
 
 vae_args = argparse.Namespace(max_layers=48, decoder_arch="vit", pos_embedding="rope", layer_embedding="rope", single_layer_decoder=None)
 transp_vae = CustomVAE(vae_args)
-tv = torch.load(glob.glob(f"{CLD}/trans_vae/*.pt")[0], map_location="cpu", weights_only=False)  # official thuteam/CLD checkpoint
-print("transp vae:", transp_vae.load_state_dict(tv.get("model", tv), strict=False), flush=True)
+# ART+'s own transparent decoder (run 6 with CLD's trans_vae gave fully opaque layers): Drive folder, else HF mirror, else CLD
+_tv = None
+if sh(f"gdown --folder -q https://drive.google.com/drive/folders/1K-d1RurP6W8LaVNc3y70Y60K3RqF2eo- -O /kaggle/working/art_tvae", check=False) == 0:
+    _c = sorted(glob.glob("/kaggle/working/art_tvae/**/*.pt*", recursive=True)) + sorted(glob.glob("/kaggle/working/art_tvae/**/*.safetensors", recursive=True))
+    _tv = _c[0] if _c else None
+if _tv is None:
+    try: _tv = hf_hub_download("24yearsold/PrismLayers_ckpt", "trans_vae/0008000.safetensors")
+    except Exception as e: print("mirror decoder failed", e)
+if _tv is None: _tv = glob.glob(f"{CLD}/trans_vae/*.pt")[0]
+print("transparent decoder file:", _tv, flush=True)
+tv = load_file(_tv) if _tv.endswith(".safetensors") else torch.load(_tv, map_location="cpu", weights_only=False)
+print("transp vae:", transp_vae.load_state_dict(tv.get("model", tv) if isinstance(tv, dict) and "model" in tv else tv, strict=False), flush=True)
 transp_vae.to(D0, torch.float32).eval()
 # VAEs run in fp32 but the pipeline hands them fp16 tensors -> cast tensor inputs (RevealLayer needed the same fix)
 def _to32(m, args, kwargs):

@@ -26,7 +26,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROTO = os.path.dirname(HERE)
 ROOT = os.path.dirname(PROTO)
 OUT = os.path.join(PROTO, "kaggle", "upload_qwen21_rgba_trial")
-SCENE = "experiments/blkE__P2__textonly__sdxlturbo-steps4-g1.0__seed11__impressionist.png"
+SCENE = "prototype/test_scene/fox_cottage.png"   # shared test scene
 
 buf = io.BytesIO()
 Image.open(os.path.join(ROOT, SCENE)).convert("RGB").resize((512, 512)).save(buf, "JPEG", quality=90)
@@ -115,18 +115,23 @@ def run(name, prompt, image=None, size=512, kv=True):
         if isinstance(e, TimeoutError): raise
 
 RGBA = "This is an RGBA image with transparency. {}. The image has alpha channel and the background is transparent."
-fire = run("t2i_rgba_campfire", RGBA.format("A small campfire with crossed logs, impressionist oil painting style"))
-run("t2i_rgba_campfire_nokv", RGBA.format("A small campfire with crossed logs, impressionist oil painting style"), kv=False)  # diffusers: KV cache not bit-exact in reduced precision
-run("t2i_scene","An impressionist oil painting of a forest clearing at night with a campfire, pine trees and a full moon")
-if fire is not None:
-    run("edit_rgba_bluefire", RGBA.format("Make the flames blue, keep everything else the same"), image=[fire])
 scene = Image.open(io.BytesIO(base64.b64decode("__SCENE__"))).convert("RGB")
 scene.save("/kaggle/working/q21_out/scene_input.png")
-run("extract_campfire", RGBA.format("Extract only the campfire from the input image, keep its exact look"), image=[scene])
-run("edit_scene_rain", "Make it a rainy night, keep the composition and style the same", image=[scene])
+CAP = "__CAPTION__"
+fox = run("extract_fox", "Remove the background, and output a PNG image. Keep only the red fox, exactly as it looks.", image=[scene])
+run("extract_fox_wrapper", RGBA.format("Extract only the red fox from the input image, keep its exact look and pose"), image=[scene])
+run("extract_cottage", "Remove the background, and output a PNG image. Keep only the cottage with its roof and walls.", image=[scene])
+if fox is not None:
+    run("edit_rgba_fox_to_wolf", RGBA.format("Turn the red fox into a grey wolf in the same pose and the same storybook style"), image=[fox])
+run("edit_scene_night", "Change the time of day to a dark night with a full moon and warm light in the cottage windows. Keep every object, the composition and the painting style the same.", image=[scene])
+run("edit_scene_heavy_rain", "Make it pour with heavy rain: dark grey storm clouds, visible rain streaks everywhere, wet shiny cobblestones and puddles. Keep every object, the composition and the style.", image=[scene])
+run("t2i_scene_from_caption", CAP)
+run("t2i_rgba_lantern", RGBA.format("A small glowing iron lantern, storybook illustration style"))
 print("total", round(time.time() - _T0), "s", flush=True)
 '''
-src = src.replace("__MIXED__", repr(MIXED)).replace("__SCENE__", SCENE_B64)
+import json as _j
+_cap = _j.load(open(os.path.join(PROTO, "test_scene", "fox_cottage.json"), encoding="utf-8"))["caption"]
+src = src.replace("__MIXED__", repr(MIXED)).replace("__SCENE__", SCENE_B64).replace("__CAPTION__", _cap.replace('"', "'"))
 compile(src, "cell", "exec")
 
 os.makedirs(OUT, exist_ok=True)
