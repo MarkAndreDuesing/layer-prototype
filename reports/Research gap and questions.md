@@ -169,3 +169,5 @@ Unverified items:
   - This is a measurable contribution in itself: a quality–latency frontier for open layered models on free GPUs.
 - **New fact that changes the picture: Qwen-Image-2.1 (7B, native RGBA VAE, Turbo at 8 steps, GGUF Q4 at 3.9 GB).** It covers three steps of the loop in one released model: generate an RGBA layer, edit a transparent layer, and extract a subject. If it runs on a T4, the "editing mechanics" are even less novel. That strengthens the conclusion of section 4: our contribution is the **prototype loop and its evaluation over story-event sequences (G1, G2, G3)**. No user study is planned.
 - Details: `research_notes/Layered methods deep dive/heavy_models_recheck_2026-11-09.md`.
+- **Prototype modules built for G2/G3 since:** story-event router with instant previews (`events.py`), IC-Light relight (`relight.py`), procedural shadow layer (`shadow.py`), and the drift harness for G1 (`drift_eval.py`). All CPU-tested; GPU runs pending.
+- **G5:** the TPU route is being probed (CLI batch runs got no TPU so far).

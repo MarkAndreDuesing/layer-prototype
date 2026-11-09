@@ -1,6 +1,6 @@
 # Plan: Qwen-Image-Layered multi-model pipeline (hosted GPU / Kaggle)
 
-Status: plan only, nothing built yet. Written 2026-11-07. Builds on [Coherent layered generation pipeline.md](Coherent%20layered%20generation%20pipeline.md) and [Layer based architecture models and hosting.md](Layer%20based%20architecture%20models%20and%20hosting.md). **[est]** marks estimates that haven't been tested.
+Status (updated 2026-11-09): **partly built.** Role 4 (decompose) runs on Kaggle 2× T4 in 27–35 s; roles 5a/6 (LayerDiffuse chain) run on a T4; move/resize with re-harmonisation (`relocate()`) works in about 4 s; roles 2 (stronger text-to-image) and 5b (Qwen-Image-Edit) are not built yet; Qwen-Image-2.1 is being tested as an option for 2 and 5b. Written 2026-11-07. Builds on [Coherent layered generation pipeline.md](Coherent%20layered%20generation%20pipeline.md) and [Layer based architecture models and hosting.md](Layer%20based%20architecture%20models%20and%20hosting.md). **[est]** marks estimates that haven't been tested.
 
 ## 1. Goal
 
@@ -56,7 +56,7 @@ Why this is coherent: the first set of layers comes from one image (role 4). Eve
 
 | Option | What runs there | Notes |
 |---|---|---|
-| **Kaggle T4 16 GB (free, about 30 GPU-h/week)** | Roles 2, 3, 5a, 6 (SDXL fp16 fits) and role 4 only quantized | Qwen-Image-Layered is about 20B parameters. BF16 needs about 40–45 GB, so a T4 needs GGUF/fp8 plus CPU offload: probably several minutes per image, and nobody has shown it working [est]. Run `layerproto/remote_server.py` (or ComfyUI's API) behind a tunnel |
+| **Kaggle T4 16 GB (free, about 30 GPU-h/week)** | Roles 2, 3, 5a, 6 (SDXL fp16 fits) and role 4 quantized | **Measured:** Qwen-Image-Layered GGUF Q4 split over both T4s with `fp16_mixed`: 27–35 s per split at 384 px. Run `layerproto/remote_server.py` (or ComfyUI's API) behind a tunnel |
 | **Modal ($30/month free credit)** | Same as Kaggle, plus an L4/A10 for role 4 at a stable HTTPS endpoint | Doesn't break any terms; the cleanest live backend |
 | **Hosted per-image API (fal / Replicate)** | Role 4 only | About $0.05 per image on fal (unverified). Needs a card |
 | **Laptop (CPU)** | Roles 1, 7, 8, and slowly roles 2, 3 and 5a/6 (SDXL-Turbo) | Role 4 is not feasible |
@@ -83,7 +83,7 @@ Why this is coherent: the first set of layers comes from one image (role 4). Eve
 
 ## 7. Open questions to test first
 
-1. Does Qwen-Image-Layered (quantized) fit on a T4, and how long does it take per image?
-2. Do the LayerDiffuse SDXL conditional models keep quality with SDXL-Turbo (few steps, CFG 1), or do they need SDXL base at 20 steps and CFG 7? The local draft tests this first.
+1. Does Qwen-Image-Layered (quantized) fit on a T4, and how long does it take per image? **Answered:** yes on 2× T4, 27–35 s (findings log, Phase 4).
+2. Do the LayerDiffuse SDXL conditional models keep quality with SDXL-Turbo (few steps, CFG 1), or do they need SDXL base at 20 steps and CFG 7? **Answered:** the extract step fails on Turbo; SDXL base at 20 steps works (findings log, Phase 2).
 3. Does a layer re-prompted with `bg2ble` → `bgble2fg` keep the lighting of the layers decomposed by Qwen? Lighting gets baked into the new layer, so moving it later may look slightly off (LayerDiffuse paper, Sec. 4.12).
 4. When the decomposed layers include the background as one big layer, does re-prompting the background need its own path, such as `fg2ble` → `fgble2bg` with the foreground layers as the condition?

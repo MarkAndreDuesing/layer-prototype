@@ -1,0 +1,25 @@
+{
+ "0": {
+  "ok": true,
+  "s": 105.0,
+  "jax": "0.11.1",
+  "n": 1,
+  "kind": "cpu",
+  "one_chip_bf16_TFLOPS": 0.1
+ },
+ "1": {
+  "ok": false,
+  "s": 26.5,
+  "error": "ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')"
+ },
+ "2": {
+  "ok": false,
+  "s": 0.0,
+  "error": "ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')"
+ },
+ "3": {
+  "ok": false,
+  "s": 26.1,
+  "error": "ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')"
+ }
+}

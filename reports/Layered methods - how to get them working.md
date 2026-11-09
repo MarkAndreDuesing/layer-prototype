@@ -12,22 +12,23 @@ Several facts here come from pages read through a summarising fetch tool, not wo
 
 | Method | What it does | Code / weights | Runs on our hardware? | How we could get it working |
 |---|---|---|---|---|
-| **Qwen-Image-Layered** | image → N RGBA layers | Yes, Apache-2.0 | **Yes, about 33–41 s on 2× T4** (384 px, 4–5 steps, our `fp16_mixed`) | Running now. This is our main route. |
-| **Stable-Layers** (Stability AI) | Qwen-Image-Layered plus an RL-tuned LoRA (330 MB, PEFT; trained with Qwen 3.5 9B as the teacher) | Yes: `StabilityLabs/Stable-Layers`; Stability Community licence (free below $1M revenue; attribution required) | Its README says a non-Heun sampler, fewer steps or a higher resolution "will garble the results". It is fixed at Heun, 50 steps (about 100 model evaluations), 640 px, CFG 1. On our T4 that is about 100 × 21 s, i.e. 35 min. | **Not suited to our speed target.** Only worth trying for quality comparisons (e.g. on LRZ). |
-| **LayerD** (ICCV 2025) | image → layers: cut out the top layer, fill in beneath, repeat | Yes, Apache-2.0 (repo archived 2026-10-30) | Yes: BiRefNet plus LaMa, runs on CPU | **Tested 2026-11-09** on a Kaggle CPU (needs `transformers<5`): about 60 s per image, but on all 3 of our scenes (impressionist forest, pixel-art camp, pale sketch) it returned **1 layer, the unchanged image**. It was trained on graphic designs, so it finds no "top layer" to peel off in painted scenes. **Not usable without retraining.** Results in `prototype/kaggle/results_layerd_trial/`. |
-| **RevealLayer** (ICML 2026) | image + boxes → RGBA layers, including hidden parts | Code Apache-2.0, LoRA on FLUX.1-dev | FLUX on a T4 is hard (fp16 overflow, 12B) [U] | LRZ, or FLUX GGUF with an fp16 workaround like ours. Its amodal completion (filling in hidden parts) fits "move an object, the background stays complete". |
-| **ART+ / PrismLayers** | global prompt + boxes → variable number of RGBA layers (joint generation) | Code MIT; weights on Google Drive | Flux-class; hard on a T4 | LRZ. Before downloading, check whether it bundles the ART base that Microsoft withdrew (data-provenance issue). |
-| **CLD** | image → layers, one box per layer | Code MIT; weights on HF (FLUX.1-dev, non-commercial) | Hard on a T4 | Import tool only |
-| **LayerFusion** | joint fg + bg + blend generation sharing attention | **No code**, but **training-free** on SDXL + LayerDiffuse | Yes, it's our stack | **Re-implement**: the mask and attention-blending equations are in the paper (see §2). |
-| **PSDiffusion** | joint multi-layer generation on SDXL | "Code coming soon" | Would fit | Borrow its partial joint self-attention without training; its own LoRA needs about 60 A800-hours to train. |
-| **DreamLayer** | joint 2–4 layers on SD1.5, with move/resize and shadows | Dataset on HF (`LL3RD/DreamLayer`); code "coming soon" | Fits | Borrow its harmonisation step without training. A small fine-tune on its dataset is possible [U]. |
-| **OmniPSD** | text/image → PSD with a fixed fg/mid/bg grid | Code yes, weights not linked | FLUX.1-dev | Blocked until the weights appear |
-| **LASAGNA** (Adobe) | text → composite + background + foreground with shadows | Not released | — | Ideas only. Its fg-given-bg mode is what LayerDiffuse SD1.5 already does. |
-| **LayerCraft** | LLM agents plan and edit layered images (has a narrative demo) | Code unreleased | — | Use as a design reference for our Ollama planner |
-| **Qwen-Image-2.1** | text → single RGBA object | Yes; Qwen Research licence (non-commercial) | 7B, with our fp16 workaround | Per-object sprites only |
-| **Alfie** | training-free single transparent object | Code yes | Yes [U] | Alternative to LayerDiffuse for sprites |
-| **See-through** | anime image → up to 23 PSD layers | Code yes | [U] | Only if the game's art style is anime |
-| **Generate → SAM2 → amodal completion (pix2gestalt) → LaMa** | build-your-own decomposition | All parts public | Yes | Our "segment + inpaint" route, with LayerD's peel loop as the template |
+| **Qwen-Image-Layered** | image → N RGBA layers | Yes, Apache-2.0 | **Yes, 27–35 s on 2× T4** (384 px, 4 layers, 4 steps, CFG 1, our `fp16_mixed`) | Running; main decomposer so far. Heun and 2-layer variants in the v9 sweep. |
+| **Stable-Layers** (Stability AI) | Qwen-Image-Layered plus an RL-tuned LoRA (330 MB, PEFT) | Yes: `StabilityLabs/Stable-Layers`; Stability Community licence | **Yes at reduced settings:** 4 Euler steps 34 s, 8 steps 71 s (384 px). README asks for Heun, 50 steps, 640 px. | Tried (v8): cleaner semantic split, but a colour shift (recomposite diff 15–18 vs 7). Next: Heun via `HeunVelocity` (ready), more steps, colour correction. |
+| **LayerD** (ICCV 2025) | image → layers: cut out the top layer, fill in beneath, repeat | Yes, Apache-2.0 (repo archived 2026-10-30) | Yes: BiRefNet plus LaMa, CPU | Tried once on a Kaggle CPU (needs `transformers<5`): about 60 s per image, but returned 1 layer on our 3 painted scenes (it was trained on graphic designs). Next: thresholds, recursion depth, the fox & cottage scene, a graphic-style input. |
+| **RevealLayer** (ICML 2026) | image + boxes → RGBA layers, including hidden parts | Code Apache-2.0, LoRA on FLUX.1-dev | **Runs end to end on 2× T4** (GGUF Q4, 512 px, 69 s for 12 steps), output still noise from fp16 overflow | Run 8 patches three fp16 hazards in its code; a plain-FLUX control run checks the base. Waiting for Kaggle GPUs. |
+| **ART+ / PrismLayers** | global prompt + boxes → variable number of RGBA layers (joint generation) | Code MIT; weights on Google Drive; **ART base LoRA hash-identical to `thuteam/CLD` `pre_trained_LoRA` (Apache-2.0)** | Notebook ready (GGUF Q4, unmerged LoRAs, `fp16_mixed`) | Only FLUX model that goes **text + boxes → layers** without an input image. Waiting for Kaggle GPUs. |
+| **CLD** | image + one box per layer → layers | Code MIT; weights on HF (Apache-2.0) on FLUX.1-dev (non-commercial) | Plan ready (same code base as RevealLayer) | Notebook after RevealLayer works. |
+| **LayerDiffuse-Flux** | text → single transparent image (FLUX) | LoRA + transparent VAE on HF (AFL-3.0) | Notebook ready (`fp16_mixed`, unmerged LoRA) | Queued during the Kaggle outage. |
+| **LayerFusion** | joint fg + bg + blend generation sharing attention | **No code**, but **training-free** on SDXL + LayerDiffuse | Yes, it's our stack | **Re-implement**: the mask and attention-blending equations are in the paper (see §2). Not started. |
+| **PSDiffusion** | joint multi-layer generation on SDXL | "Code coming soon" (re-checked 2026-11-09) | Would fit | Borrow its partial joint self-attention without training. |
+| **DreamLayer** | joint 2–4 layers on SD1.5, with move/resize and shadows | Dataset on HF (`LL3RD/DreamLayer`); code "coming soon" | Fits | Its harmonisation step is the basis of our `relocate()`. A small fine-tune on its dataset is possible [U]. |
+| **OmniPSD** | text/image → PSD with a fixed fg/mid/bg grid | Code yes, weights not released (re-checked) | FLUX.1-dev | Blocked until the weights appear |
+| **LASAGNA** (Adobe) | text → composite + background + foreground with shadows | Not released | — | Ideas only. |
+| **LayerCraft** | LLM agents plan and edit layered images (has a narrative demo) | Code + LoRA released (re-checked) | — | Design reference for our Ollama planner and event router |
+| **Qwen-Image-2.1** | text → RGBA; **edits a transparent layer; extracts a subject**; masked local edits | Yes; Qwen Research licence (non-commercial) | 7B; Turbo 8 steps; GGUF Q4 3.9 GB; stock VAE NaNs in fp16, texture-fix VAE is fp16-safe | Notebook ready (re-prompt a layer, extract, scene-wide edit). Waiting for Kaggle GPUs. No multi-layer split mode. |
+| **Alfie** | training-free single transparent object | Code yes | Yes [U] | Alternative to LayerDiffuse for sprites; not tried |
+| **See-through** | anime image → up to 23 PSD layers | Code yes | [U] | Only if the game's art style is anime; not tried |
+| **Generate → SAM2 → (amodal) → LaMa** | build-your-own decomposition | All parts public | **Yes: 3–7 s on a T4** | Tried with "largest K masks": fast, near-exact recomposite, poor grouping. Next: segment by noun from the LLM breakdown, amodal completion. |
 
 ## 2. The LayerFusion question: can its edit phase rescue LayerDiffuse?
 
@@ -42,6 +43,8 @@ The move/resize mechanism we actually want comes from **DreamLayer's harmonisati
 - The latents are alpha-composited and denoised together from there, which is how shadows follow the object.
 
 DreamLayer trained its model, but this step itself needs no training.
+
+**Status 2026-11-09:** built as `LayerDiffuseChain.relocate()` (v5: Euler sampler, mask extraction, fixed pin mask, optional paste-back): **about 4 s per edit at 512 px on a T4**, identity largely kept. Details in [findings-log.md](../docs/findings-log.md), Phase 5. The original proposal follows.
 
 **Proposed design** (our extension, not from any paper; full pseudocode in `spatial_edit_mechanics.md`):
 1. Warp the layer's RGBA to its new box in pixel space and paste it over the background.
@@ -58,13 +61,15 @@ DreamLayer trained its model, but this step itself needs no training.
 - **Up-scaling** blurs the object.
 - **Multiple objects** occluding each other still just stack without trained joint attention.
 
-## 3. Ranked recommendations
+## 3. Order of trials (the user decides verdicts)
 
-1. **Keep Qwen-Image-Layered as the decomposer.** It is the only route that runs end to end on free hardware within the time limit.
-2. **Stable-Layers** needs 50 Heun steps at 640 px by design, so it doesn't fit our time limit. Keep it for offline quality comparisons only.
-3. **Prototype the training-free move/resize re-harmonisation** (§2) on the LayerDiffuse chain. This is our own extension, and it ties to research question RQ4.
-4. **Generate → SAM2 → amodal → LaMa** as a cheap second decomposer to compare against Qwen-Image-Layered.
-5. **LRZ only:** RevealLayer and ART+ as stronger joint and amodal models, if a supervisor's LRZ AI project becomes available (see [University GPU access LMU.md](University%20GPU%20access%20LMU.md)).
+Every method above stays in play until tested well enough to compare. Current order, by what is ready:
+1. **Qwen-Image-Layered** at the fast settings, plus Stable-Layers with Heun and 2-layer splits (v9 sweep ready).
+2. **Qwen-Image-2.1** for re-prompting and extracting single layers (notebook ready).
+3. **FLUX models** on 2× T4: FLUX control run, RevealLayer run 8, ART+, LayerDiffuse-Flux, then CLD.
+4. **Training-free move/resize** (`relocate()` v5) combined with IC-Light relighting and the shadow layer.
+5. **Re-tries:** LayerD and SAM2 + LaMa with the next attempts listed above, Lightning LoRA at 2 steps.
+6. All of them on the shared **fox & cottage test scene**, with the same benchmark table (time, VRAM, layer count, recomposite error, visual sheet) and a happy path per model.
 
 ## 4. Research gap (summary of [Research gap and questions.md](Research%20gap%20and%20questions.md))
 
@@ -74,12 +79,10 @@ What nobody has measured or built:
 - **G1:** whether layer stacks stay consistent over long chains of story edits. Multi-turn editing benchmarks show flat images drift after a few turns, but they never test layer stacks.
 - **G2:** a story event selecting and regenerating only the affected layers.
 - **G3:** re-harmonising a layer after a move or resize with released tools.
-- **G4:** any user study of layer-based generative scene editing.
 - **G5:** the quality-versus-latency trade-off on free GPUs.
 
-Candidate research questions (details, metrics and study designs are in the report):
+Candidate research questions, answered through the prototype and technical measurements (details in the report):
 - **RQ1:** do layer stacks drift less than flat editing over 10–20 story events?
 - **RQ2:** can an LLM pick which layers a story event should change?
-- **RQ3 (HCI):** do layer controls raise players' sense of agency and creativity support compared with prompt-only editing?
-- **RQ4:** does training-free move/resize re-harmonisation look plausible within about one minute on a T4?
-- **RQ5:** where is the latency/quality frontier, and how long will players wait? Our sweeps already give the first data points.
+- **RQ4:** does training-free move/resize re-harmonisation look plausible at interactive speed on a T4? (`relocate()` v5: about 4 s.)
+- **RQ5:** where is the latency/quality frontier on free hardware? Our sweeps already give the first data points.

@@ -144,3 +144,9 @@ Colab's free tier forbids serving endpoints from a notebook. Use Kaggle, or Moda
 - `layerproto/remote_server.py`: FastAPI wrapper for a GPU host.
 - `vendor/diffuser_layerdiffuse`: MIT diffusers port of LayerDiffuse (rootonchair).
 - `tools/smoke_layerdiffuse.py`: a one-image speed and memory test.
+
+Added later (GPU loop, mostly run on Kaggle):
+- `layerproto/backends/layerdiffuse_chain.py`: scene-to-layer chain (`bg2ble` → `bgble2fg`) and `relocate()` (move/resize a layer with re-harmonisation, about 4 s on a T4).
+- `layerproto/qwen_layered.py` + `layerproto/fp16_mixed.py`: Qwen-Image-Layered on 2× T4 (27–35 s per split), Heun wrapper, prompt cache.
+- `layerproto/relight.py` (IC-Light relight of a layer), `layerproto/shadow.py` (procedural shadow layer), `layerproto/events.py` (story-event router with instant previews), `layerproto/drift_eval.py` (drift over long edit sequences).
+- `tools/make_*_trial.py`: Kaggle notebook generators for every model trial; results in `kaggle/results_*`. See [../docs/findings-log.md](../docs/findings-log.md).

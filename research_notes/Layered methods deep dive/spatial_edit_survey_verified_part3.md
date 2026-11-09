@@ -1,5 +1,7 @@
 # Spatial-edit survey, part 3: object relocation and identity preservation (verified)
 
+> **Built since:** the training-free move/resize re-harmonisation proposed from this material is `LayerDiffuseChain.relocate()` (v5: Euler, mask extraction, interior pinning, paste-back), about 4 s per edit on a T4; results in `docs/findings-log.md`, Phase 5.
+
 Source: arXiv HTML full text, Method sections and appendices, read 2026-11-09 with a summarising fetcher. Where a field says "not stated", the paper text I read does not give it.
 GitHub check: MC-E/DragonDiffusion returned HTTP 200. The other repos returned 504 (GitHub throttling), so they are **[CODE NOT VERIFIED]**. The repo URL listed for each is the one printed in the paper.
 

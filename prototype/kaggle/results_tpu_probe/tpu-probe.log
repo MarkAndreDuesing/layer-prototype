@@ -1,0 +1,77 @@
+[{"stream_name":"stderr","time":7.542145769,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.542265615,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.731083349,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.73111568,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.731120394,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.731124532,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.554875621,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.554952207,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.554957002,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.554959882,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.950006422,"data":"$ pip list 2\u003e/dev/null | grep -iE '^(torch|torch.xla|torch_xla|jax|jaxlib|libtpu|diffusers|transformers|accelerate) '\n"}
+,{"stream_name":"stdout","time":14.115187167,"data":"accelerate                            1.15.0\n"}
+,{"stream_name":"stdout","time":14.115227572,"data":"diffusers                             0.42.0\n"}
+,{"stream_name":"stdout","time":14.115232669,"data":"jax                                   0.11.1\n"}
+,{"stream_name":"stdout","time":14.115237498,"data":"jaxlib                                0.11.1\n"}
+,{"stream_name":"stdout","time":14.115241458,"data":"torch                                 2.11.0+cpu\n"}
+,{"stream_name":"stdout","time":14.115245508,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":14.11524976,"data":"\n"}
+,{"stream_name":"stdout","time":14.116442385,"data":"$ env | grep -iE 'TPU|XLA' | head -20\n"}
+,{"stream_name":"stdout","time":14.122298252,"data":"\n"}
+,{"stream_name":"stdout","time":18.082538493,"data":"STAGE 1 {\"ok\": false, \"s\": 7.1, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}\n"}
+,{"stream_name":"stdout","time":18.085696692,"data":"STAGE 2 {\"ok\": false, \"s\": 0.0, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}\n"}
+,{"stream_name":"stdout","time":18.087760839,"data":"$ pip -q install -U 'diffusers\u003e=0.36' 'transformers\u003e=4.57,\u003c5' accelerate\n"}
+,{"stream_name":"stderr","time":18.283633519,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":18.28368309,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":18.283688857,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":18.283693546,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 24, in s1\n"}
+,{"stream_name":"stderr","time":18.283833577,"data":"    import torch, torch_xla, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":18.28385442,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stderr","time":18.283882149,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":18.283885367,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":18.283888128,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":18.283890898,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 37, in s2\n"}
+,{"stream_name":"stderr","time":18.283893402,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":18.283896288,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stderr","time":18.283898745,"data":"\n"}
+,{"stream_name":"stderr","time":18.283901194,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":18.283903562,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":18.283906441,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":18.283909225,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 24, in s1\n"}
+,{"stream_name":"stderr","time":18.28391197,"data":"    import torch, torch_xla, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":18.283914663,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stderr","time":18.283917498,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":18.283919911,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":18.283923085,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":18.283925653,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 37, in s2\n"}
+,{"stream_name":"stderr","time":18.283928135,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":18.283930585,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stdout","time":44.394147391,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stdout","time":44.394184265,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":44.394191563,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":44.394196915,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":44.394202567,"data":"\n"}
+,{"stream_name":"stdout","time":44.396996222,"data":"STAGE 3 {\"ok\": false, \"s\": 26.3, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}\n"}
+,{"stream_name":"stdout","time":44.400383166,"data":"TOTAL 33 s {\"1\": {\"ok\": false, \"s\": 7.1, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}, \"2\": {\"ok\": false, \"s\": 0.0, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}, \"3\": {\"ok\": false, \"s\": 26.3, \"error\": \"ModuleNotFoundError(\\\"No module named 'torch_xla'\\\")\"}}\n"}
+,{"stream_name":"stderr","time":44.402172657,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":44.402221668,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":44.402228105,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":44.402232397,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 53, in s3\n"}
+,{"stream_name":"stderr","time":44.402236615,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":44.402240313,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stderr","time":44.402244571,"data":"\n"}
+,{"stream_name":"stderr","time":44.402248206,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":44.402252157,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":44.402256252,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":44.402260245,"data":"  File \"/tmp/ipykernel_16/277043019.py\", line 53, in s3\n"}
+,{"stream_name":"stderr","time":44.402264046,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":44.402267717,"data":"ModuleNotFoundError: No module named 'torch_xla'\n"}
+,{"stream_name":"stderr","time":48.646574275,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":48.646619897,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":48.897625349,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":48.897653756,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":49.877627662,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":49.978310553,"data":"[NbConvertApp] Writing 66776 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":53.550986847,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":54.251973619,"data":"[NbConvertApp] Writing 366315 bytes to __results__.html\n"}
+]

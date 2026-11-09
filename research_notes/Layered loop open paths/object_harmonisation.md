@@ -1,5 +1,7 @@
 # Object-layer harmonisation after place/move/resize (status Nov 2026)
 
+> **Built since (2026-11-09):** `prototype/layerproto/relight.py` (IC-Light fbc relight keeping the layer's alpha, with detail transfer; CPU test 44 s at 8 steps / 384 px) and `prototype/layerproto/shadow.py` (procedural shadow layer from this note's EasyOmnimatte recipe; about 0.6 s per layer). Results in `prototype/kaggle/results_local_relight/` and `results_local_shadow/`.
+
 Scope: methods to fix lighting, colour, shadows, contact, reflections and style on an RGBA object layer after `relocate()` (warp, then SDXL img2img with LayerDiffuse bg2ble, latent pinning, mask extraction, paste-back; ~4 s at 512 px on a T4). Target: Kaggle 2x T4, fp16, 16 GB each. This file has had two passes (about 40 tool calls). Items marked [unverified] come from snippets, mirrors or prior knowledge and were not checked against the primary page.
 
 ## IC-Light v1/v2 and relighting alternatives

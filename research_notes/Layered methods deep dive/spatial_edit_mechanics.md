@@ -1,5 +1,7 @@
 # Spatial edit + re-harmonise: mechanics from LayerFusion, DreamLayer, PSDiffusion
 
+> **Built since:** the training-free move/resize re-harmonisation proposed from this material is `LayerDiffuseChain.relocate()` (v5: Euler, mask extraction, interior pinning, paste-back), about 4 s per edit on a T4; results in `docs/findings-log.md`, Phase 5.
+
 Date: 2026-11-09. Sources were read through the arXiv HTML pages using a summarising fetch tool. Exact layer names and numbers are as reported by that tool. Check them against the PDF before relying on them.
 
 ## 1. What each paper actually does

@@ -1,0 +1,99 @@
+[{"stream_name":"stderr","time":8.632404356,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.632471548,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":9.961343456,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.961376384,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.961382079,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.961386477,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.813583863,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.813617208,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.813620871,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.813623721,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":117.252425381,"data":"STAGE 0 {\"ok\": true, \"s\": 105.0, \"jax\": \"0.11.1\", \"n\": 1, \"kind\": \"cpu\", \"one_chip_bf16_TFLOPS\": 0.1}\n"}
+,{"stream_name":"stdout","time":120.934122902,"data":"$ pip -q install 'torch_xla[tpu]~=2.11.0' -f https://storage.googleapis.com/libtpu-releases/index.html\n"}
+,{"stream_name":"stdout","time":123.049607958,"data":"ERROR: Could not find a version that satisfies the requirement torch_xla~=2.11.0 (from versions: 2.8.0, 2.8.1, 2.9.0)\n"}
+,{"stream_name":"stdout","time":123.04965289,"data":"ERROR: No matching distribution found for torch_xla~=2.11.0\n"}
+,{"stream_name":"stdout","time":123.049659903,"data":"\n"}
+,{"stream_name":"stdout","time":123.05066824,"data":"$ pip -q install 'torch_xla[tpu]' -f https://storage.googleapis.com/libtpu-releases/index.html\n"}
+,{"stream_name":"stdout","time":141.716050356,"data":"\n"}
+,{"stream_name":"stdout","time":141.717081831,"data":"$ pip list 2\u003e/dev/null | grep -iE '^(torch|torch.xla|torch_xla|jax|jaxlib|libtpu|diffusers|transformers|accelerate) '\n"}
+,{"stream_name":"stdout","time":143.732629442,"data":"accelerate                            1.15.0\n"}
+,{"stream_name":"stdout","time":143.732667977,"data":"diffusers                             0.42.0\n"}
+,{"stream_name":"stdout","time":143.732674247,"data":"jax                                   0.11.1\n"}
+,{"stream_name":"stdout","time":143.732679058,"data":"jaxlib                                0.11.1\n"}
+,{"stream_name":"stdout","time":143.732683629,"data":"libtpu                                0.0.17\n"}
+,{"stream_name":"stdout","time":143.732688515,"data":"torch                                 2.11.0+cpu\n"}
+,{"stream_name":"stdout","time":143.73269328,"data":"torch_xla                             2.8.1\n"}
+,{"stream_name":"stdout","time":143.732698255,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":143.732703175,"data":"\n"}
+,{"stream_name":"stdout","time":143.73344728,"data":"$ env | grep -iE 'TPU|XLA' | head -20\n"}
+,{"stream_name":"stdout","time":143.739368988,"data":"TPU_SKIP_MDS_QUERY=1\n"}
+,{"stream_name":"stdout","time":143.739413138,"data":"\n"}
+,{"stream_name":"stdout","time":143.773922056,"data":"STAGE 1 {\"ok\": false, \"s\": 26.5, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}\n"}
+,{"stream_name":"stdout","time":143.780964571,"data":"STAGE 2 {\"ok\": false, \"s\": 0.0, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}\n"}
+,{"stream_name":"stdout","time":143.782912149,"data":"$ pip -q install -U 'diffusers\u003e=0.36' 'transformers\u003e=4.57,\u003c5' accelerate\n"}
+,{"stream_name":"stderr","time":143.974868906,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":143.974910621,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":143.974915534,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":143.974918638,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 44, in s1\n"}
+,{"stream_name":"stderr","time":143.974921413,"data":"    import torch, torch_xla, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":143.97492413,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":143.974927178,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":143.974929698,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stderr","time":143.974932517,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":143.97493506,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":143.974937793,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":143.974940431,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 57, in s2\n"}
+,{"stream_name":"stderr","time":143.97494291,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":143.974945492,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":143.974948164,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":143.974950558,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stderr","time":143.974953256,"data":"\n"}
+,{"stream_name":"stderr","time":143.974955658,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":143.974958252,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":143.974960733,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":143.97496331,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 44, in s1\n"}
+,{"stream_name":"stderr","time":143.974965845,"data":"    import torch, torch_xla, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":143.9749684,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":143.97498439,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":143.974987033,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stderr","time":143.974989696,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":143.974992266,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":143.974994734,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":143.974997286,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 57, in s2\n"}
+,{"stream_name":"stderr","time":143.97500107,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":143.975003629,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":143.975006254,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":143.975008614,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stdout","time":169.87556285,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stdout","time":169.875615722,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":169.875623697,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":169.875628695,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":169.875633637,"data":"\n"}
+,{"stream_name":"stdout","time":169.882688222,"data":"STAGE 3 {\"ok\": false, \"s\": 26.1, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}\n"}
+,{"stream_name":"stdout","time":169.886188371,"data":"TOTAL 158 s {\"0\": {\"ok\": true, \"s\": 105.0, \"jax\": \"0.11.1\", \"n\": 1, \"kind\": \"cpu\", \"one_chip_bf16_TFLOPS\": 0.1}, \"1\": {\"ok\": false, \"s\": 26.5, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}, \"2\": {\"ok\": false, \"s\": 0.0, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}, \"3\": {\"ok\": false, \"s\": 26.1, \"error\": \"ImportError('/usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv')\"}}\n"}
+,{"stream_name":"stderr","time":169.887690303,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":169.887720543,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":169.8877274,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":169.887733437,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 73, in s3\n"}
+,{"stream_name":"stderr","time":169.887758411,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":169.887763311,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":169.887768603,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":169.887772478,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stderr","time":169.88777668,"data":"\n"}
+,{"stream_name":"stderr","time":169.887780508,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":169.887784066,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 13, in stage\n"}
+,{"stream_name":"stderr","time":169.887788265,"data":"    out = fn(); R[n] = {\"ok\": True, \"s\": round(time.time() - t0, 1), **(out or {})}\n"}
+,{"stream_name":"stderr","time":169.887792321,"data":"  File \"/tmp/ipykernel_16/2057762042.py\", line 73, in s3\n"}
+,{"stream_name":"stderr","time":169.887796682,"data":"    import torch, torch_xla.core.xla_model as xm, torch_xla.runtime as xr\n"}
+,{"stream_name":"stderr","time":169.88780142,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch_xla/__init__.py\", line 20, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":169.887806153,"data":"    import _XLAC\n"}
+,{"stream_name":"stderr","time":169.88781019,"data":"ImportError: /usr/local/lib/python3.13/dist-packages/_XLAC.cpython-313-x86_64-linux-gnu.so: undefined symbol: _ZNK3c1010TensorImpl35is_non_overlapping_and_dense_customEv\n"}
+,{"stream_name":"stderr","time":174.082010828,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":174.082048046,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":174.29357631,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":174.293606835,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":175.272285907,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":175.368307906,"data":"[NbConvertApp] Writing 70315 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":178.651598087,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":179.336281957,"data":"[NbConvertApp] Writing 374686 bytes to __results__.html\n"}
+]

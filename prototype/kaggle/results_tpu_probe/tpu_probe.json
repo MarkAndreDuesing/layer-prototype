@@ -1,0 +1,17 @@
+{
+ "1": {
+  "ok": false,
+  "s": 7.1,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ },
+ "2": {
+  "ok": false,
+  "s": 0.0,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ },
+ "3": {
+  "ok": false,
+  "s": 26.3,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ }
+}

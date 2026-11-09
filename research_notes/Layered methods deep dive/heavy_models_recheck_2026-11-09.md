@@ -96,6 +96,7 @@ Sources: [CLD repo](https://github.com/monkek123King/CLD) (`infer/infer.py`, `in
   - Run 5 works end to end: 69 s for 12 steps, peak 10.5 / 11.2 GB.
   - Its output was pure noise, because FLUX overflows fp16 in `FluxSingleTransformerBlock`.
   - Runs 6 and 7 add `fp16_mixed` and are waiting for Kaggle.
+  - Later the same evening: three fp16 hazards were found in RevealLayer's own code (−1e9 attention-mask fill, unguarded refiner residual, fp16 VAE decode) and patched for run 8; a plain-FLUX control notebook was added. See `../Layered loop open paths/flux_layered_t4_and_weights.md`.
 
 ## 4. Open voice-note paths
 

@@ -1,5 +1,7 @@
 # Other methods for coherent layered generation and decomposition (as of 2026-11-07)
 
+> **Update 2026-11-09:** this is the 11-07 snapshot. Since then Qwen-Image-Layered runs on the free Kaggle 2× T4 (GGUF Q4 + `fp16_mixed`, 27–35 s per split), so "too large for a T4" no longer holds. CLD's code and weights were read in detail (`../Layered methods deep dive/heavy_models_recheck_2026-11-09.md`). Current status of every method: `reports/Layered methods - how to get them working.md`.
+
 Scope note: 17 tool calls were used. Full text was read for PSDiffusion, DreamLayer, OmniPSD and LASAGNA. Only abstracts or project pages were read for CLD, RefLayer, LiWi, LayerFusion and PrismLayers. Items marked **[prior notes, not re-verified]** come from `reports/Layer based architecture models and hosting.md` and were not checked again in this pass.
 
 ## Q1. Which methods do "single prompt -> multiple coherent layers" natively, and which can run now?

@@ -36,7 +36,7 @@ Everything the user has asked to investigate across the recent sessions, with st
   - [ ] CLD (FLUX + inpainting ControlNet): code and file sizes read, adaptation planned ([re-check](../research_notes/Layered%20methods%20deep%20dive/heavy_models_recheck_2026-11-09.md)); waits for the RevealLayer port (same code base)
   - [ ] Qwen-Image-2.1 RGBA (7B): **most promising**, with native RGBA VAE, RGBA editing, subject extraction, Turbo at 8 steps and GGUF Q4 at 3.9 GB; notebook ready (`tools/make_qwen21_rgba_trial.py`), waiting for Kaggle
   - [ ] LayerDiffuse-Flux: notebook pushed (`layerdiffuse-flux-trial`, `fp16_mixed` + unmerged LoRA), queued during the Kaggle outage
-  - [ ] OmniPSD (if weights exist)
+  - [ ] OmniPSD: weights still not released (re-checked 2026-11-09)
 - [~] LayerD: first attempt returned 1 layer per scene. Next: other thresholds and recursion depth, larger input, and graphic-style inputs (its training domain)
 - [~] SAM2 + LaMa (segment + inpaint): first attempt fast, poor automatic grouping. Next: prompted/box segmentation from the LLM layer names (Grounded-SAM style), mask merging, a better inpainter
 - [x] **Spatial editing in every paper that has it** (parts 1–3 in `research_notes/Layered methods deep dive/spatial_edit_survey_verified_part*.md`): only DreamLayer has a move/resize algorithm. The decomposition papers just re-composite. The object-move papers keep identity by latent pinning plus attention sharing. (move / resize / re-harmonise): how each does it and what we can borrow. So far only LayerFusion, DreamLayer and PSDiffusion were read ([spatial_edit_mechanics.md](../research_notes/Layered%20methods%20deep%20dive/spatial_edit_mechanics.md)).
@@ -85,5 +85,6 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 - [ ] LayerD: parameter sweep (see above); local CPU run if the install is allowed, else Kaggle
 - [ ] SAM2 + LaMa: text/box-prompted segmentation from the LLM layer names, mask merging, LaMa vs SDXL inpaint for the hidden parts
 - [ ] Stable-Layers: Heun v9 sweep, more steps at 384 px, colour-shift correction (match the recomposite to the input)
-- [ ] TPU v5e/v6e probe: 1-hour session to measure, not estimate (separate 20 h/week TPU quota)
-- [ ] Benchmark table + happy path per model (same 3 scenes, time, VRAM, layers, recomposite error, visual sheet)
+- [~] TPU probe: notebook ready; 3 CLI runs got no TPU (CPU image), torch 2.11 vs torch_xla ≤ 2.9 found. Next: interactive TPU session in the editor
+- [ ] Benchmark table + happy path per model on the shared fox & cottage test scene (plus the old 3 scenes as style checks): time, VRAM, layers, recomposite error, visual sheet
+- [~] Shared test scene: fox & cottage chosen by the user; variants generated (`prototype/tools/make_test_scene.py`, `prototype/kaggle/test_scene_candidates/`)

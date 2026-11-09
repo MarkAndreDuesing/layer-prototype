@@ -100,7 +100,7 @@ Full report: [Image generation models hosting and costs.md](../reports/Image%20g
 - **Official settings:** the model card and the ComfyUI template both use 50 steps, CFG 4 and 640 px. fal defaults to 28 steps. No Lightning or few-step LoRA exists for Layered.
 - **Options under test:**
   - A lower resolution (512 / 384 px; the pipeline was patched to accept sizes below 640), fewer steps, no CFG (one pass per step) and 3 layers. This mirrors the SDXL-Turbo settings that ran in under 60 s on the laptop.
-  - Kaggle TPU v5e-8, which the account offers: 8 chips × 16 GB, bf16. **[est]** about 40 s at about 30 steps, but it needs a torch_xla port of the pipeline (2–5 days) and nobody has published Qwen-Image on TPU.
+  - Kaggle TPU v5e-8, which the account offers: 8 chips × 16 GB, bf16. **[est]** about 40 s at about 30 steps, but it needs a torch_xla port of the pipeline and nobody has published Qwen-Image on TPU. (The "2–5 days" effort figure first written here was an unverified AI guess; a measuring probe followed, see Phase 6.)
   - Hosted APIs: fal about $0.05 per run; WaveSpeed $0.025 per layer. Comfy Cloud plans start at $20/month.
 
 ### Result: about 33–41 s per split on the free T4s (sweeps v3 and v4)
@@ -128,7 +128,13 @@ All runs use the forest test image on Kaggle 2× T4 with `fp16_mixed` and the Q4
 
 ### Sweep v5: transformer kept on the GPUs, 3 different images
 
-The transformer now stays on the GPUs between splits (`offload=False`). Peak memory is 8.0 / 7.6 GB, so it fits. Images are in [prototype/kaggle/results_qwen_sweep_v5/](../prototype/kaggle/results_qwen_sweep_v5/).
+**What was done and why:**
+- Until v4, `decompose()` moved the 20B transformer from the GPUs back to CPU RAM after every split. That was needed at 640 px, where the VAE decode ran out of memory while the transformer was still on the GPU, and it cost about 5 s per split.
+- v5 checked that at 384–512 px the split transformer leaves enough room for the decode, so it can stay on the GPUs between splits (`offload=False`). Peak memory is 8.0 / 7.6 GB on the two T4s, so it fits.
+- v5 also tested whether the fast settings carry over beyond the forest painting: the same model on a pixel-art camp and a pale pencil sketch, at 3 or 4 layers, 3 to 5 steps and 384 or 512 px, always with CFG 1.
+- **Reading the table:** "Total" is the wall time for one split (denoise + VAE decode of every layer + recomposite), with the model already loaded. "Split" describes what ended up in each layer, judged from the saved layer strips.
+
+Images are in [prototype/kaggle/results_qwen_sweep_v5/](../prototype/kaggle/results_qwen_sweep_v5/).
 
 | Image | Resolution | Layers | Steps | Total | Split |
 |---|---|---|---|---|---|
@@ -146,7 +152,13 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 - **On the free T4s, 384 px with 3–4 layers and 4 steps takes 27–30 s**, well under the 40 s target. 512 px with 3 steps (31 s) is the sharper alternative.
 - The split carries over to pixel-art and line-art styles.
 - Weak spot: thin or low-contrast subjects (the pale skeleton) may stay in the background layer at 3 layers.
+- Why 384 px / 4 layers / 4 steps / CFG 1 became the recommended setting: it is the fastest setting that kept a sensible split on all three styles. 3 steps also works on the forest (20 s) but edges get softer; 512 px is sharper but about 1.5× slower.
 ### Sweep v6: Qwen-Image-Lightning 4-step LoRA on Layered (untested combination)
+
+**What was done and why:**
+- Qwen-Image-Lightning (lightx2v) is a speed LoRA distilled for the plain Qwen-Image text-to-image model so it works at 4–8 steps. Nobody had tried it on Qwen-Image-Layered, which shares the base architecture but was fine-tuned for decomposition. The question was whether it makes the 4-step split better or faster.
+- Variants: the Lightning scheduler config alone (no LoRA), then the LoRA at strength 0.5 and at 1.0, each at 384 px, 4 layers, 4 steps, on the 3 test images.
+- **"Recomposite diff"** = mean absolute pixel difference (0–255) between the input image and the alpha-composite of all output layers. Low means the layers together still reproduce the input; it does not measure how well objects are separated.
 
 **Setup:**
 - `fp16_mixed.add_lora` attaches the LoRA without merging it into the GGUF weights. All 720 LoRA modules matched Layered's layers.
@@ -160,7 +172,8 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 | Lightning LoRA at 0.5 | 39 s | 10.3 | in between |
 | Lightning LoRA at 1.0 | 37–39 s | 11–13.5 | sketch: **the skeleton now separates cleanly** (base: half stuck in the background). But colours and texture drift: noisier sky, the image no longer matches the input as closely. |
 
-**Verdict:** not worth adopting. It doesn't speed anything up (the base model already works at 4 steps), costs about 5 s of LoRA overhead, and reduces how faithfully the layers match the input. Better separation of thin subjects is its only plus. An alternative for that is 4 instead of 3 layers.
+**First-attempt result (the user decides verdicts):** at these settings it gives no speed-up (the base model already works at 4 steps), adds about 5 s of LoRA overhead, and lowers how faithfully the layers match the input. Its plus is cleaner separation of thin subjects.
+**Next attempts:** 2-step runs (where a distillation LoRA should matter most), a finer scale sweep (0.25–0.75), and using it only for hard, low-contrast scenes.
 
 - GPU time used for the Qwen sweeps so far: about 2.5 h (Kaggle quota shows 5.4 h this week, including earlier editor sessions).
 
@@ -174,13 +187,14 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 
 ## Phase 5: other decomposition routes and move/resize re-harmonisation (2026-11-09)
 
-### LayerD (released, Apache-2.0) on our scenes: not usable
+### LayerD (released, Apache-2.0) on our scenes: first attempt returned one layer
 
 - **Setup:** Kaggle CPU, no GPU quota. It needs `transformers<5`, because BiRefNet's remote code breaks on transformers 5.
 - **Result:** about 60 s per image, but on all 3 scenes it returned **1 layer, the unchanged image**. It was trained on graphic designs and finds nothing to peel off in painted scenes.
 - Results: [prototype/kaggle/results_layerd_trial/](../prototype/kaggle/results_layerd_trial/).
+- **Next attempts:** lower the matting/peel thresholds and allow more recursion depth; test on the new fox & cottage scene and on a flatter, graphic-style image closer to its training domain.
 
-### Generate → SAM2 → LaMa (segment + inpaint route): fast, but the grouping isn't meaningful
+### Generate → SAM2 → LaMa (segment + inpaint route): first attempt fast, automatic grouping poor
 
 - **Pipeline** ([tools/make_segment_inpaint_trial.py](../prototype/tools/make_segment_inpaint_trial.py)): SAM2 hiera-small automatic masks, then the 4 largest object masks (each under 35% of the image) as layers, then LaMa fills the background.
 - **Speed and fidelity:** **3–7 s per image** on a T4. The recomposite matches almost exactly (diff 0.2–2.4), because the layers are cut-outs of the original pixels.
@@ -188,7 +202,8 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
   - Forest: moon, stump, flame, logs. The trees and chair are not separated.
   - Sketch: one tree, campfire, log, plus a "layer" that is the white background. The **skeleton is not separated**.
 - **No amodal completion:** hidden parts of objects stay missing.
-- **Verdict:** a fast fallback if an LLM or VLM chooses which masks to keep (points or boxes per noun, instead of "largest K"). Qwen-Image-Layered gives far more meaningful layers.
+- **First-attempt result:** with automatic "largest K masks" selection, Qwen-Image-Layered gave far more meaningful layers.
+- **Next attempts:** prompt SAM2 with points or boxes per noun from the LLM breakdown (Grounded-SAM style) instead of "largest K"; merge masks per object; compare LaMa with SDXL inpainting for the hidden parts; add amodal completion (pix2gestalt) for occluded objects.
 - Results: [prototype/kaggle/results_segment_inpaint/](../prototype/kaggle/results_segment_inpaint/).
 
 ### Move/resize with re-harmonisation on the LayerDiffuse chain (training-free, our proposal)
@@ -201,11 +216,20 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 
 The idea follows DreamLayer's harmonisation step. Nothing is trained.
 
+**Step by step, in more detail:**
+1. **Warp in pixel space.** The layer's RGBA is scaled and shifted into the target box with PIL and alpha-composited over the background (the composite of all other layers). This is the "moved but not yet integrated" image: right position, but old lighting and no contact with the new spot.
+2. **Encode and re-noise.** That image is VAE-encoded and noised to strength s (s = 0.3 means the last 30% of the denoising schedule is redone). Low s keeps the object; high s lets the model redraw more.
+3. **Denoise with the scene as condition.** SDXL base with the LayerDiffuse `bg2ble` weights denoises it, conditioned on the background latent, so lighting, glow and style come from the scene.
+4. **Pin the interior.** In the early steps the latents *inside* the object (its alpha, eroded by a few pixels) are replaced by the original object's latents, re-noised to the current step. Only the rim and the surroundings can change (contact, glow, edges), which keeps the object's identity.
+5. **Re-extract the layer.** v1 used LayerDiffuse's `bgble2fg` model to extract the moved object as a new RGBA layer. v2 uses a mask instead: the object's own warped alpha plus every pixel that changed noticeably within a ring around it (where new glow or contact appeared).
+
+**What strength does:** s = 0.3 keeps identity and adds light and glow from the new surroundings; s = 0.5 also redraws details such as faces; s = 0.6 with v1's sampler broke down.
+
 **Tests (SDXL base, 512 px, 20 steps, CFG 7, Kaggle T4):**
 
 | Version | Result |
 |---|---|
-| v1: DPM++ SDE scheduler, `bgble2fg` extraction | About 11 s per edit. At s = 0.6 the image fills with artifacts (latent pinning fights the stochastic sampler). The extracted layer is translucent or the wrong object. **Not usable.** |
+| v1: DPM++ SDE scheduler, `bgble2fg` extraction | About 11 s per edit. At s = 0.6 the image fills with artifacts: a stochastic sampler adds fresh noise every step, which fights the pinned latents, so pinned and free regions disagree. The extracted layer is translucent or the wrong object. Replaced by v2's deterministic Euler sampler and mask extraction. |
 | **v2: Euler scheduler, mask extraction** (the object's alpha plus wherever the image changed, within a ring around it) | **About 4–5 s per edit.** The moved object takes on the new surroundings' light and glow, and the extracted layer is clean. **s = 0.3 keeps identity**; s = 0.5 re-draws details such as the face. `bgble2fg` extraction (about 9.5 s) is still worse than the mask. |
 
 Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_relocate_v2/); v1 in `results_relocate_smoke_turbo/` and the notebook history.
@@ -221,6 +245,11 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 1. Qwen-Image-Layered run v7: 384 px, 4 layers, 4 steps, **about 32 s**, every RGBA layer saved. See [results_qwen_v7_layers/](../prototype/kaggle/results_qwen_v7_layers/).
 2. Pick one layer, move and resize it, then re-harmonise it against the composite of all the other layers with `relocate()` (SDXL base, 512 px, mask extraction). That takes **about 3.5 s per edit** once SDXL is loaded; the first edit pays about 20 s of loading.
 
+**How the two parts connect:**
+- The v7 notebook saved each scene's 4 RGBA layers as PNGs; they were uploaded as a private Kaggle dataset (`qwen-v7-layers`). The relocate notebook reads them, so the 20B Qwen model and SDXL never have to share the GPUs.
+- For each scene one layer was picked by hand (the one with the clearest object). The other three were alpha-composited back to front to form the background condition, so the moved object is harmonised against the actual decomposed scene, not the original image.
+- Each result strip shows: original composite, the move without harmonisation (plain paste), and the harmonised result at each strength.
+
 | Scene | Edit | Result (strength 0.3, pin 40%) |
 |---|---|---|
 | impressionist forest | campfire + chair: move right, scale 1.2 | It fits the new spot, with the same painterly style and fire glow. But the log pile is redrawn flatter and the chair changes shape. |
@@ -229,7 +258,7 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 
 **Takeaways:**
 - The loop is technically complete and fast enough for interaction on free hardware: about 32 s per split and about 4 s per move.
-- The remaining problem is **identity drift**: re-harmonising redraws the object. **Run v2 pinned the interior for 70% of the steps instead of 40%: almost no change** (the forest is nearly identical, the skeleton slightly closer to the original). The drift happens in the unpinned final steps. The next candidates are identity conditioning (IP-Adapter on the original object, or reference-only attention) or pinning with a softer mask through every step ([results_qwen_relocate_v2_pin70/](../prototype/kaggle/results_qwen_relocate_v2_pin70/)).
+- The remaining problem at that point was **identity drift**: re-harmonising redraws the object. **Run v2 pinned the interior for 70% of the steps instead of 40%: almost no change** (explained later: because of a bug the pin mask was nearly empty; fixed in v5 below) (the forest is nearly identical, the skeleton slightly closer to the original). The drift happens in the unpinned final steps. The next candidates are identity conditioning (IP-Adapter on the original object, or reference-only attention) or pinning with a softer mask through every step ([results_qwen_relocate_v2_pin70/](../prototype/kaggle/results_qwen_relocate_v2_pin70/)).
 - Qwen sometimes groups unrelated objects into one layer (skeleton + tree). Using more layers, or splitting the grouped layer again, is the obvious fix.
 - Results: [prototype/kaggle/results_qwen_relocate_v1/](../prototype/kaggle/results_qwen_relocate_v1/).
 
@@ -252,7 +281,8 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - **Result:**
   - Cleaner semantic split than the base model: on the sketch the background is truly empty paper and the fire gets its own layer.
   - But colours and contrast shift, so the recomposite is about 2× further from the input (difference 15–18 vs about 7).
-- **Heun sampler** (what Stable-Layers recommends) failed: the diffusers pipeline passes custom sigmas, which `FlowMatchHeunDiscreteScheduler` rejects. Still open; it would need its own denoising loop as in `decompose.py`.
+- **Heun sampler** (what Stable-Layers recommends) failed: the diffusers pipeline passes custom sigmas, which `FlowMatchHeunDiscreteScheduler` rejects. **Since then:** `qwen_layered.HeunVelocity` turns the pipeline's own Euler step into an exact Heun step (checked on a toy ODE: error 0.05 vs 0.37 for Euler at 8 steps); the v9 sweep with it waits for Kaggle.
+- **Next attempts:** Heun at 4–8 steps, more steps at 384 px, and a colour-shift correction (match the recomposite's colour statistics to the input).
 - Results: [prototype/kaggle/results_stable_layers_v8/](../prototype/kaggle/results_stable_layers_v8/).
 
 ### FLUX-class trials on 2× T4 and the Kaggle outage (2026-11-09 afternoon)
@@ -265,7 +295,20 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
     4. a cancel with no log
   - **Run 5 runs end to end:** model load about 4 min, then **69 s for 12 steps** at 512 px, peak 10.5 / 11.2 GB. **But every layer is pure noise.** The fp16 guard fired on all 12 steps in `FluxSingleTransformerBlock`, the same overflow as Qwen-Image. Results: [results_reveallayer_v5/](../prototype/kaggle/results_reveallayer_v5/).
   - Runs 6 and 7 apply `fp16_mixed` to the transformer. They are still untested because of the outage.
+  - Since then, three fp16 hazards were found in RevealLayer's own code and patched in the notebook (run 8): the attention mask is filled with −1e9 (−inf in fp16, so fully masked rows give NaN), an unguarded refiner residual, and an fp16 VAE decode the authors themselves flagged ("odd purple output"). A plain-FLUX control notebook separates "FLUX on a T4" from "RevealLayer's code".
 - **LayerDiffuse-Flux** ([tools/make_layerdiffuse_flux_trial.py](../prototype/tools/make_layerdiffuse_flux_trial.py)): uses `fp16_mixed` and `add_lora`. Pushed, but queued throughout the outage.
 - **Qwen-Image-2.1-Turbo RGBA** ([tools/make_qwen21_rgba_trial.py](../prototype/tools/make_qwen21_rgba_trial.py)): written, not pushed yet.
 - **Kaggle outage:** from about 14:00, runs stayed QUEUED or went to CANCEL_REQUESTED with no log. The editor showed "Failed to Authorize Session". A Kaggle banner confirmed a platform issue. Quota (6:50 of 30 h) and phone verification were fine.
   - **Lesson:** every batch trial now gets a 25-minute SIGALRM cap so that a stall still ends with a log. Check for a Kaggle banner before re-pushing.
+
+## Phase 6: loop modules on CPU, research round, TPU probe (2026-11-09 evening)
+
+- **Story-event router** ([layerproto/events.py](../prototype/layerproto/events.py)): Ollama `qwen3:4b` turns an event into per-layer actions (keep / relight / reprompt / remove) plus effect overlays. 5 test events routed sensibly at about 30 s each on CPU; instant CPU preview with colour grading and procedural rain, snow, fog, smoke and glow. Results: [results_local_events/](../prototype/kaggle/results_local_events/).
+- **Procedural shadow layer** ([layerproto/shadow.py](../prototype/layerproto/shadow.py)): EasyOmnimatte-style recipe, one contact line per object, capped length; about 0.6 s per layer. Results: [results_local_shadow/](../prototype/kaggle/results_local_shadow/).
+- **IC-Light relighting** ([layerproto/relight.py](../prototype/layerproto/relight.py)): the SD1.5 fbc model relights a layer against a new background, keeping the layer's alpha and detail; 44 s on CPU (8 steps, 384 px). The fire also loses brightness (the model has no notion of light sources). Results: [results_local_relight/](../prototype/kaggle/results_local_relight/).
+- **Drift harness** ([layerproto/drift_eval.py](../prototype/layerproto/drift_eval.py)): 3 arms (layered / flat / re-decompose), per-turn metrics outside the edited regions. Self-test with stand-in editors only, not a result about real models.
+- **Qwen levers:** `cached_encode()` (prompt embeddings cached on disk) and `HeunVelocity`; v9 sweep generated.
+- **Notebooks waiting for Kaggle GPUs:** Qwen-Image-2.1 RGBA (with the fp16-safe texture-fix VAE), FLUX control, RevealLayer run 8, ART+ (base LoRA hash-identical to the official CLD file), LayerDiffuse-Flux.
+- **TPU probe** ([tools/make_tpu_probe.py](../prototype/tools/make_tpu_probe.py)): three CLI runs never got a TPU. Kaggle stores `machine_shape: TpuV5E8`, but the batch runs used the standard CPU image (JAX saw only a CPU). Also found: pip's newest `torch_xla` is 2.9 while the image ships torch 2.11, so torch has to be pinned to 2.9. Next: run the probe as an interactive TPU session in the editor.
+- **Test image:** from now on one consistent scene built for layer splitting (fox & cottage, see [prototype/kaggle/test_scene_candidates/](../prototype/kaggle/test_scene_candidates/)) is the main test input; the old forest, sketch and pixel-art scenes stay as style checks.
+- Research write-up: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md).

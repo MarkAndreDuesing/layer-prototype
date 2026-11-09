@@ -1,5 +1,7 @@
 # Spatial editing in layered-image papers: verified survey, part 2
 
+> **Built since:** the training-free move/resize re-harmonisation proposed from this material is `LayerDiffuseChain.relocate()` (v5: Euler, mask extraction, interior pinning, paste-back), about 4 s per edit on a T4; results in `docs/findings-log.md`, Phase 5.
+
 Sources: arXiv HTML full text, fetched 2026-11-09 through WebFetch, which returns a summary of the page. Quotes are the excerpts WebFetch returned, so they are close to the paper but check them against the paper before citing. Nothing below comes from memory.
 Caveats: for LASAGNA and LayerCraft, only the first 100k characters were read, so the appendix tail is [NOT READ]. No GitHub repos were opened, so the code status is what the paper or the search result says.
 

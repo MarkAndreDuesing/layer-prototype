@@ -19,6 +19,7 @@ This page lists only what is **new, unconfirmed or still open**, updated to the 
 - **Idea:** a small local image-to-image model (a sketch or image plus the prompt, giving one image) works well and fast. Its output could feed any layering route.
 - **Known:** SDXL-Turbo img2img gives about 58 s per image on the laptop CPU (see [findings-log.md](findings-log.md), Phase 1).
 - **Open:** the combination img2img → Qwen-Image-Layered or img2img → segmentation is **untested**. How it fits the LayerDiffuse route, which builds its own layers, is unclear.
+- **Planned test:** feed generated base images (SDXL-Turbo locally, Qwen-Image-2.1 on Kaggle) into the Qwen-Image-Layered batch, using the shared fox & cottage test scene.
 
 ## 3. LayerDiffuse for complex scenes
 
@@ -32,8 +33,9 @@ This page lists only what is **new, unconfirmed or still open**, updated to the 
 
 - **Idea:** the scene changes as the story goes on, e.g. "the forest is now on fire". The change becomes a new layer stacked on the existing scene.
 - **Since then:** a story-event step through the LayerDiffuse chain works on a Kaggle T4.
+- **Since 2026-11-09 evening:** a story-event router ([events.py](../prototype/layerproto/events.py)) maps an event to per-layer actions (keep / relight / re-prompt / remove) plus effect overlays, with an instant CPU preview (procedural rain, snow, fog, smoke, glow). The research found no layered method that does scene-wide events (gap G2); four strategies are compared in [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md).
 - **Open:**
-  - Effects that cover the whole scene (fire, rain, night) rather than single objects.
+  - The generative part of scene-wide events on a GPU: background edit + IC-Light relight of each layer, LayerDiffuse effect layers, or edit-and-re-split.
   - Whether the same thing works on top of Qwen-Image-Layered output: re-generate a changed layer through the composite.
 
 ## 5. Prompt breakdown with AI-decided placement and size
@@ -42,26 +44,28 @@ This page lists only what is **new, unconfirmed or still open**, updated to the 
 - **Status:** this was the first prototype version; the LLM already guesses boxes.
 - **Known problem:** objects generated separately don't share lighting or style ("sticker collage", see [Coherent layered generation pipeline.md](../reports/Coherent%20layered%20generation%20pipeline.md)).
 - **Open:** whether a strong model plus a harmonising pass can fix the coherence. One candidate is IC-Light relighting (Apache-2.0); see [Free hostable layered models.md](../reports/Free%20hostable%20layered%20models.md).
+- **Since then:** an IC-Light relight module ([relight.py](../prototype/layerproto/relight.py)) and a procedural shadow layer ([shadow.py](../prototype/layerproto/shadow.py)) work on CPU; `relocate()` re-harmonises moved layers in about 4 s on a T4. A GPU test of all three together is pending.
 
-## 6. Generate → segment → inpaint (untested)
+## 6. Generate → segment → inpaint (first attempt done, more to try)
 
 - **Idea:** generate one normal image, then cut out the objects with a segmentation model, one layer each. Inpaint the hole each object leaves in the layer below.
 - **Candidates:**
   - **Matting** (clean cut-outs): BiRefNet (MIT) and BEN2 base (MIT), already researched.
   - **Segmentation:** a model like SAM (Segment Anything) to find the objects. The name from the voice note is unclear and still to be confirmed.
   - **Inpainting:** SDXL inpainting, or the chain's own backgrounds.
-- **Open:**
-  - Speed of the three passes on Kaggle T4 or the laptop.
-  - Quality of the inpainted background.
-  - How objects get grouped into layers.
+- **First attempt (2026-11-09):** SAM2 automatic masks + LaMa on a Kaggle T4: 3–7 s per image, near-exact recomposite, but "largest K masks" picked fragments instead of story objects, and hidden parts stay missing. Details in [findings-log.md](findings-log.md), Phase 5.
+- **Open / next attempts:**
+  - Segment by noun (points or boxes from the LLM breakdown, Grounded-SAM style) instead of "largest K".
+  - LaMa vs SDXL inpainting for the background; amodal completion (pix2gestalt) for occluded objects.
+  - Quality on the shared fox & cottage test scene.
 
 ## 7. Qwen-Image-Layered: speed and budget
 
 - **Quality:** best of all routes. On Comfy Cloud it decomposed scenes into sensible layers.
-- **Kaggle:** the bf16 problem is **solved** with [fp16_mixed.py](../prototype/layerproto/fp16_mixed.py), but a run takes 35 min at the default settings.
+- **Kaggle:** the bf16 problem is **solved** with [fp16_mixed.py](../prototype/layerproto/fp16_mixed.py). The default settings take 35 min, but **384 px, 4 layers, 4 steps, CFG 1 takes 27–35 s** on the free 2× T4 (sweeps v3–v7).
 - **Open:**
-  - The speed sweep (512 / 384 px, fewer steps, no CFG, 3 layers) to see whether ≤ 40 s is reachable on a T4 and what quality is lost.
-  - The Kaggle TPU v5e-8 port: an estimate of about 40 s, 2–5 days of work, unproven ([research_tpu_route.md](../reports/research_tpu_route.md)).
+  - Quality at the fast settings versus the defaults on more scenes (Stable-Layers with Heun, 2-layer splits: v9 sweep ready).
+  - The Kaggle TPU route: estimated about 40 s ([research_tpu_route.md](../reports/research_tpu_route.md)); the effort estimate was a guess. A probe notebook exists, but CLI batch runs did not get a TPU, so it has to run as an interactive TPU session.
 - **API budget:**
   - At about $0.05 per run (fal), €100 for the team is roughly 2,000 runs, before any other testing.
   - That suits final demos better than early prototyping ([research_speed_and_apis.md](../reports/research_speed_and_apis.md)).

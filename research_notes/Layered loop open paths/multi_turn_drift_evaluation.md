@@ -1,5 +1,7 @@
 # Multi-turn edit drift and consistency: evaluation for layered vs flat scenes (as of Nov 2026)
 
+> **Built since (2026-11-09):** the protocol's harness is `prototype/layerproto/drift_eval.py` (3 arms, metrics outside the edited regions, per-layer alpha IoU and L1); self-test with stand-in editors in `prototype/tools/drift_harness_selftest.py`.
+
 Scope note: about 15 tool calls. Most numbers come from arXiv HTML or alphaxiv text of the primary papers. Items taken from secondary summaries, or only partly read, are marked [unverified].
 
 ## Q1. Multi-turn, sequential and iterative editing benchmarks (2023-2026): what they measure, how much drift, which models drift most

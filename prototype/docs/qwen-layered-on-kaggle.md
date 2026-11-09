@@ -2,7 +2,10 @@
 
 Splits one image into RGBA layers with [Qwen/Qwen-Image-Layered](https://huggingface.co/Qwen/Qwen-Image-Layered) (Apache-2.0) on Kaggle's free "GPU T4 x2".
 
-**Status (2026-11-09):** works, no NaNs, 4 clean layers. It takes **42 s per step, so 35 min for the default 50 steps**. That is far too slow for gameplay; see [../../reports/research_speed_and_apis.md](../../reports/research_speed_and_apis.md) and [../../reports/research_tpu_route.md](../../reports/research_tpu_route.md).
+**Status (2026-11-09):** works, no NaNs.
+- **Recommended fast settings: 384 px, 4 layers, 4 steps, CFG 1 (`true_cfg=1.0`), `offload=False` → 27–35 s per split** on the free 2× T4 (sweeps v3–v7, [findings log](../../docs/findings-log.md), Phase 4).
+- The defaults (640 px, 50 steps, CFG 4) take 42 s per step, 35 min per split.
+- Options in `qwen_layered.py`: `sampler="heun"` (exact Heun via `HeunVelocity`, 2 model calls per step), `layers=2`, and `cached_encode()` to skip the text encoder for repeated captions.
 
 ## Public links
 
@@ -31,7 +34,7 @@ apply_fp16_mixed(transformer)
 | Notebook generator: unattended batch run | [`tools/make_qwen_layered_batch.py`](../tools/make_qwen_layered_batch.py) → `kaggle/upload_qwen_batch/` |
 | Cached weights (Kaggle notebook outputs, attached as inputs) | `markandreduesing/qwen-layered-weights-transformer` (Q4_K_S GGUF, 12.4 GB), `markandreduesing/qwen-layered-weights-base` (text encoder, VAE, configs, 16.9 GB) |
 | Notebook that builds those caches | `kaggle/upload_qwen-layered-weights-*` |
-| Last good result | `kaggle/results_qwen_batch_v2/` |
+| Last good results | `kaggle/results_qwen_v7_layers/` (fast settings, every RGBA layer), `kaggle/results_qwen_sweep_v3`–`v6`, Stable-Layers `kaggle/results_stable_layers_v8/` |
 
 ## Run it yourself
 
@@ -49,7 +52,7 @@ apply_fp16_mixed(transformer)
    python prototype/tools/make_qwen_layered_batch.py
    ```
 4. In `prototype/kaggle/upload_qwen_batch/kernel-metadata.json`, change `id` to `<your-username>/qwen-layered-batch`.
-5. Push and run it (uses about 45 min of GPU quota):
+5. Push and run it (the GPU time depends on the sweep in the SWEEP cell; the fast settings take well under a minute per split, plus about 5 min of loading):
    ```bash
    cd prototype/kaggle/upload_qwen_batch && python -m kaggle.cli kernels push -p .
    ```

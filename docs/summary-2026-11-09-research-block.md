@@ -15,7 +15,7 @@ Details are in the linked reports and in [findings-log.md](findings-log.md), Pha
    2. Move or resize a layer, then re-harmonise it into the scene: about 3.5 s per edit with our training-free `relocate()` on SDXL + LayerDiffuse.
    3. Recomposite.
 
-   Weak spot: the moved object gets partly redrawn (identity drift).
+   Weak spot at first: the moved object got partly redrawn (identity drift). Fixed later the same day in v5 (pin-mask bug fixed, paste-back), see the relocate section below.
 3. **No released method covers our loop, and the editing mechanics alone are not new.** The defensible research contribution is measuring **consistency across many story edits** (layered vs flat), choosing **which layers a story event should change** and **re-harmonising moved layers**, all shown through the prototype itself (no user study is planned). See [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
 4. **Tried so far (first attempts; the user decides verdicts, and further attempts are planned in the checklist):**
    - LayerD returned 1 layer on our scenes in its first configuration.
@@ -61,7 +61,7 @@ GPU quota: the account shows 6.2 h used this week out of 30 h, including the ear
 | **v2** | **Euler scheduler plus mask extraction: clean, about 4 s per edit** |
 | On Qwen layers | Works on all 3 scenes. The object takes on the scene's style and light, but is partly redrawn. A longer pin doesn't help. |
 
-**Next step:** identity conditioning, e.g. IP-Adapter on the original object.
+**Next step (as written then):** identity conditioning, e.g. IP-Adapter on the original object. **Update:** v5 found and fixed a pin-mask bug; with paste-back identity largely holds. Next: attention sharing, IC-Light relight and the shadow layer.
 
 ## Track B: GPUs
 
@@ -77,5 +77,5 @@ GPU quota: the account shows 6.2 h used this week out of 30 h, including the ear
 
 1. Pick the research question. Suggested: RQ1 (layered vs flat drift over 10–20 story events) together with RQ2 (event routing) and RQ4 (re-harmonisation), shown with the prototype and measured technically. RQ3 (user study) is dropped.
 2. Wire the fast Qwen split and `relocate()` into the prototype app as a Kaggle-hosted backend.
-3. Fix identity drift in `relocate()` (IP-Adapter / reference attention), then evaluate it properly (RQ4).
+3. ~~Fix identity drift in `relocate()`~~ (largely done in v5); combine it with IC-Light relighting and the shadow layer, then evaluate it properly (RQ4).
 4. Email the RBG for abakus access, and ask a supervisor about an LRZ AI project if larger models (ART+, RevealLayer) become interesting.

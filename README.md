@@ -16,7 +16,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`prototype/layerproto/`](prototype/layerproto/) loop modules | `qwen_layered.py` (split, Heun wrapper, prompt cache), `backends/layerdiffuse_chain.py` (`relocate()` move/resize + re-harmonise), `relight.py` (IC-Light relight of a layer), `shadow.py` (procedural shadow layer), `events.py` (story-event router + instant previews), `drift_eval.py` (drift over long edit sequences) |
 | [`docs/investigation-checklist.md`](docs/investigation-checklist.md) | **Everything asked to investigate, with status** |
 | [`reports/Layered loop open paths.md`](reports/Layered%20loop%20open%20paths.md) | Latest research: Qwen-Image-2.1 RGBA, FLUX layer models on T4, harmonisation, story events, drift evaluation |
-| [`docs/summary-2026-11-09-research-block.md`](docs/summary-2026-11-09-research-block.md) | **Latest summary**: 27–32 s Qwen split on free T4, full split → move → re-harmonise loop, paper audit, research gap, LMU GPUs |
+| [`docs/summary-2026-11-09-research-block.md`](docs/summary-2026-11-09-research-block.md) | Summary of the 11-09 research block: 27–32 s Qwen split on free T4, full split → move → re-harmonise loop, paper audit, research gap, LMU GPUs |
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
 | [`reports/Layered methods - how to get them working.md`](reports/Layered%20methods%20-%20how%20to%20get%20them%20working.md) | Every layered-generation paper: what runs, what could run, what to borrow; LayerFusion / DreamLayer move-resize analysis |
 | [`reports/Research gap and questions.md`](reports/Research%20gap%20and%20questions.md) | Research gaps the prototype should fill (persistent layers + story events + re-harmonised moves, measured technically) |
@@ -42,7 +42,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | Move / resize a layer with re-harmonisation | `relocate()` v5 on a T4: about 4 s per edit, identity largely kept (pinning + paste-back) |
 | Story events, shadows, relighting | Router, procedural shadow layer and IC-Light relight work on CPU; GPU runs pending |
 | FLUX layer models (RevealLayer, LayerDiffuse-Flux, ART+), Qwen-Image-2.1 | Notebooks ready with fp16 fixes; RevealLayer runs end to end on 2× T4 (69 s), output still noise. Kaggle outage on 2026-11-09 blocked further runs |
-| Hosted alternatives | Comfy Cloud (RTX PRO 6000) does it in seconds. fal costs about $0.05 per run. Kaggle TPU v5e-8 could plausibly reach about 40 s, but needs a port (2–5 days, unproven). See [reports/research_speed_and_apis.md](reports/research_speed_and_apis.md) and [reports/research_tpu_route.md](reports/research_tpu_route.md). |
+| Hosted alternatives | Comfy Cloud (RTX PRO 6000) does it in seconds. fal costs about $0.05 per run. Kaggle TPU v5e-8 could plausibly reach about 40 s; a probe is under way (CLI runs got no TPU so far). See [reports/research_speed_and_apis.md](reports/research_speed_and_apis.md) and [reports/research_tpu_route.md](reports/research_tpu_route.md). |
 
 ## Quick start
 

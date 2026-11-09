@@ -1,5 +1,7 @@
 # Spatial editing survey (verified, part 1)
 
+> **Built since:** the training-free move/resize re-harmonisation proposed from this material is `LayerDiffuseChain.relocate()` (v5: Euler, mask extraction, interior pinning, paste-back), about 4 s per edit on a T4; results in `docs/findings-log.md`, Phase 5.
+
 Source: arXiv HTML full text for each paper, read through WebFetch, which returns model-summarised extracts. Quotes are as the fetch returned them. Not read: ART HTML past character 100k (including supplementary Algorithms 1 and 2), Stable-Layers past character 100k (including Appendix F), and the PDFs. Code repositories were not checked.
 
 ## 1. DreamLayer (2503.12838): describes spatial editing

@@ -1,5 +1,11 @@
 # Generate one image first, then split it
 
+> **Status update (2026-11-09).** This report is the 11-07 analysis and stays as written. Since then:
+> - Qwen-Image-Layered **runs on the free Kaggle 2× T4** (GGUF Q4 + `fp16_mixed`): 27–35 s per split at 384 px, 4 layers, 4 steps. Item 6 of "What to test first" is answered.
+> - The LayerDiffuse scene-to-layer chain works on a T4 (about 18 s per pass at 1024 px), and `relocate()` moves/resizes a layer with re-harmonisation in about 4 s.
+> - Segment + inpaint (SAM2 + LaMa) and LayerD were tried once; next attempts are listed in [findings-log.md](../docs/findings-log.md).
+> - Current status of every method: [Layered methods - how to get them working.md](Layered%20methods%20-%20how%20to%20get%20them%20working.md).
+
 The current storytelling prototype **does not achieve coherent layered generation**. It makes a sticker collage. Each layer is a separate SDXL-Turbo text-to-image call with its own random seed and no image conditioning. Each object is pushed into isolation by the "a single X, solo, centered" wrapper and then pasted into a box the LLM guessed. The layers share only a style suffix and the same generation settings. Qwen-Image-Layered works the other way round. Its released model takes **one finished RGB image** and splits it into N RGBA layers that composite back to that image, so the layers are coherent because they all come from the same picture. Your Comfy Cloud reference (Krea2-Turbo T2I → Qwen-Image-Layered with 6 layers → recomposite) is therefore the right design, and it should be the primary pipeline. Qwen-Image-Layered is a 20B model, so it cannot run on the laptop. There are two local fallbacks:
 
 - chained SDXL LayerDiffuse (bg2ble → bgble2fg), which builds the scene one object at a time, each conditioned on the scene so far;

@@ -1,0 +1,25 @@
+{
+ "0": {
+  "ok": true,
+  "s": 102.3,
+  "jax": "0.11.1",
+  "n": 1,
+  "kind": "cpu",
+  "one_chip_bf16_TFLOPS": 0.1
+ },
+ "1": {
+  "ok": false,
+  "s": 11.2,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ },
+ "2": {
+  "ok": false,
+  "s": 0.0,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ },
+ "3": {
+  "ok": false,
+  "s": 25.4,
+  "error": "ModuleNotFoundError(\"No module named 'torch_xla'\")"
+ }
+}

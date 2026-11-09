@@ -1,5 +1,7 @@
 # Joint text-to-multi-layer methods: deep dive (checked 2026-11-09)
 
+> **Update 2026-11-09 evening:** ART+ provenance is now clearer: the ART base LoRA is byte-identical (SHA-256) to `pre_trained_LoRA` in the official `thuteam/CLD` repo (Apache-2.0). A Kaggle 2× T4 notebook for ART+ (GGUF Q4 FLUX, unmerged LoRAs, `fp16_mixed`) is ready: `prototype/tools/make_artplus_trial.py`. Release status of the other methods: `release_status_recheck.md`. The research text below is unchanged.
+
 This builds on `../Coherent layered generation pipeline/other_layered_methods.md`. That file covers paper details. This one adds checks of release status on GitHub, Hugging Face and project pages.
 **[U]** = not verified this pass (taken from memory or a secondary source).
 

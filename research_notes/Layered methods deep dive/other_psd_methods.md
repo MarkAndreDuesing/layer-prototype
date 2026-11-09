@@ -1,5 +1,7 @@
 # Other Text/Image-to-PSD & layer-decomposition methods (audit, 2026-11-09)
 
+> **Update 2026-11-09:** measured since this audit: Stable-Layers runs on 2× T4 at reduced settings (4 steps 34 s, via our GGUF stack, not the 40 GB bf16 base); LayerD and SAM2 + LaMa were tried once (next attempts in `docs/findings-log.md`); RevealLayer runs end to end on 2× T4 (output still being fixed). The audit below is unchanged.
+
 Legend: [U] = unverified (not confirmed directly on GitHub/HF in this pass). T4 = 16 GB, fp16 only (no bf16).
 Excluded (covered elsewhere): Qwen-Image-Layered (QIL), LayerDiffuse, PSDiffusion, DreamLayer, OmniPSD, LASAGNA, LayerFusion, ART, CLD, Qwen-Image-2.1.
 

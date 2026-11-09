@@ -1,5 +1,7 @@
 # Heavy layered models: reduced-spec Kaggle 2x T4 plans
 
+> **Update 2026-11-09:** many [U] points below were resolved in `heavy_models_recheck_2026-11-09.md` and `../Layered loop open paths/flux_layered_t4_and_weights.md` (e.g. ungated encoders from `ostris/Flex.1-alpha` instead of FLUX.1-schnell, the Stable-Layers adapter config, Qwen-Image-2.1 GGUF sizes). Stable-Layers already runs at reduced settings on 2× T4 (34 s at 4 steps).
+
 Target: Kaggle free, 2x T4 (16 GB each, fp16 only, no bf16), ~30 GB RAM, ~70 GB disk.
 Researched 2026-11-09. [U] = unverified (not read in code/page, inferred or from memory).
 GitHub HTML pages timed out (504); READMEs read via raw.githubusercontent.com.

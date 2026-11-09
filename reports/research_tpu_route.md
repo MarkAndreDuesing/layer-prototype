@@ -54,10 +54,17 @@
 
 ## Verdict
 - **Feasible, with a medium-to-high risk of engineering friction.** A ~40 s target is realistic on v5e-8 with about 30 steps at fixed shapes, and easy on v6e-8.
-- **Effort:** 2–5 days to adapt the Flux SPMD example to QwenImageLayeredPipeline (sharding specs, fixed shapes, debugging recompiles). The JAX route would take weeks.
+- **Effort:** an unverified AI estimate said "2–5 days" (and "weeks" for JAX). Treat both as guesses; the probe below measures instead.
 - **Quota:** 20 h per week minus compile overhead. That allows roughly 1,000+ decompositions per week.
 - **First step:** a 1-hour probe session to confirm:
   - the chip type,
   - host RAM,
   - torch_xla and torch versions,
   - whether `pip install` of a recent diffusers works.
+
+## Probe results (2026-11-09 evening)
+
+Notebook generator: [prototype/tools/make_tpu_probe.py](../prototype/tools/make_tpu_probe.py).
+- Three runs pushed through the Kaggle CLI never got a TPU. Kaggle stores `enable_tpu: true` and `machine_shape: TpuV5E8` (`TpuV6E8` is not a valid name), but the runs used the standard CPU Docker image and JAX saw only a CPU.
+- The image ships **torch 2.11 (CPU build) and JAX 0.11.1, no torch_xla**. pip's newest `torch_xla` is 2.9, so torch has to be pinned to 2.9 to match.
+- **Next:** run the probe as an interactive session in the Kaggle editor with Accelerator = TPU, to see whether TPUs are only available there.

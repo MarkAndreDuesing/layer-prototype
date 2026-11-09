@@ -1,5 +1,7 @@
 # Layer-based architecture: models and hosting
 
+> **Status update (2026-11-09).** Written 11-07, before any T4 runs. Measured since (details in [findings-log.md](../docs/findings-log.md)): Qwen-Image-Layered 27–35 s per split on 2× T4; LayerDiffuse SDXL chain about 18 s per pass at 1024 px on one T4; `relocate()` about 4 s per move; RevealLayer (FLUX GGUF Q4) runs end to end at 69 s for 12 steps (output still being fixed). The "[est]" figures below for those models are superseded.
+
 Reference for the storytelling-game prototype: every scene object is its own prompted, individually regenerable RGBA layer. Merges "Layered image generation models" and "Free hostable layered models", updated with the 2026-11-07 open-items closeout.
 
 **[est]** = estimate from parameter counts or file sizes, not a tested run. No T4 timings or VRAM measurements are published for any model below.
@@ -31,7 +33,7 @@ T4 = 15–16 GB VRAM, no native bf16.
 | **LayerDiffuse SDXL** | Native RGBA object (main generator) | Same (yes) | ~7 GB fp16, fits; `--cpu-offload` available [est] | same; [diffusers port](https://github.com/rootonchair/diffuser_layerdiffuse), [ComfyUI nodes](https://github.com/huchenlei/ComfyUI-layerdiffuse) |
 | LayerDiffuse-Flux | Native RGBA on FLUX.1-dev | No repo license; FLUX.1-dev base (no) | Needs heavy quantization or offload [est] | [RedAIGC/Flux-version-LayerDiffuse](https://huggingface.co/RedAIGC/Flux-version-LayerDiffuse) |
 | Qwen-Image-2.1 | Native text-to-RGBA (7B DiT), transparent editing, subject extraction | Qwen Research License (no) | Q8 GGUF 7.64 GB + Q4 encoder ~5 GB; Unsloth says ~11 GB; likely fits [est] | [Qwen/Qwen-Image-2.1](https://huggingface.co/Qwen/Qwen-Image-2.1), [GGUF](https://huggingface.co/unsloth/Qwen-Image-2.1-GGUF) |
-| Qwen-Image-Layered | Image-to-layers import (20B) | Apache-2.0 (yes) | ~40–45 GB BF16; does not fit; Colab T4 ran out of RAM; 4-bit + offload unproven. Hosted on fal at $0.05/image | [Qwen/Qwen-Image-Layered](https://huggingface.co/Qwen/Qwen-Image-Layered), [Comfy fp8](https://huggingface.co/Comfy-Org/Qwen-Image-Layered) |
+| Qwen-Image-Layered | Image-to-layers import (20B) | Apache-2.0 (yes) | ~40–45 GB BF16. **Measured (2026-11-09): GGUF Q4_K_S split over Kaggle 2× T4 with `fp16_mixed` works, 27–35 s per split** (384 px, 4 layers, 4 steps). Hosted on fal at $0.05/image | [Qwen/Qwen-Image-Layered](https://huggingface.co/Qwen/Qwen-Image-Layered), [Comfy fp8](https://huggingface.co/Comfy-Org/Qwen-Image-Layered) |
 | FLUX.2 Klein 4B | RGB object/background generator; multi-ref edit or harmonizer | Apache-2.0 (yes) | Card: "as little as 13 GB"; borderline on T4. Card links Colab/Kaggle notebooks | [black-forest-labs/FLUX.2-klein-4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B) |
 | FLUX 3 Image Klein (5.6B) | RGB only, no transparency | FLUX Kommunity v1.0 (free under $5M revenue); gated | Card peak 25–31 GB; poor T4 fit | [flux-3-image-klein](https://huggingface.co/black-forest-labs/flux-3-image-klein) |
 | Z-Image Turbo | RGB only (architecture B) | Not researched | Not researched | no RGBA/layer adapter found |
