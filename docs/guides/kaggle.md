@@ -47,7 +47,9 @@ Every model has a notebook generator `prototype/tools/make_<name>.py` that write
 | `make_layerdiffuse_flux_trial.py` | LayerDiffuse-Flux | one T4 is enough |
 | `make_qwen21_rgba_trial.py` | Qwen-Image-2.1 | texture-fix VAE |
 | `make_flux_control_trial.py` | plain FLUX.1-dev | fp16 sanity check |
-| `make_segment_inpaint_trial.py`, `make_layerd_trial.py` | SAM2 + LaMa, LayerD | LayerD runs on a CPU notebook |
+| `make_segment_inpaint_v2.py` (v1: `make_segment_inpaint_trial.py`) | SAM2 + LaMa | v2: one mask per named object (hand boxes / Grounding DINO / automatic) on fox & cottage |
+| `make_layerd_v2.py` (v1: `make_layerd_trial.py`) | LayerD | CPU notebook, no GPU quota; v2 sweeps 5 variants |
+| `make_test_scene.py` | shared test scene | SDXL-Turbo on the laptop CPU, about 2.5 min per image |
 | `make_qwen_relocate_trial.py`, `make_relocate_trial.py` | `relocate()` | uses the `qwen-v7-layers` dataset |
 | `make_tpu_probe.py` | TPU probe | CLI runs got no TPU so far |
 
@@ -62,7 +64,8 @@ Every model has a notebook generator `prototype/tools/make_<name>.py` that write
 | Rule | Why |
 |---|---|
 | `machine_shape: NvidiaTeslaT4` | gives 2× T4 |
-| at most **2 batch GPU sessions** at once | a third push fails ("Maximum batch GPU session count of 2 reached") |
+| at most **2 batch GPU sessions** at once | a third push fails ("Maximum batch GPU session count of 2 reached"); CPU notebooks don't count |
+| decode in fp32 with the big transformer offloaded first | fp32 VAE decodes of many layers ran out of memory next to the transformer (ART+, RevealLayer) |
 | keep notebooks well under 1.5 MB | larger ones are rejected (HTTP 400): embed images as JPEG or attach data |
 | 25-min SIGALRM cap in every trial | a stall still ends with a log; cancelled runs keep no output |
 | check kaggle.com/work/code for an outage banner before re-pushing | the 2026-11-09 outage looked like account problems |

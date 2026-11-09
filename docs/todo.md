@@ -6,18 +6,18 @@
 Goal per model: a happy path, best features, and numbers on the shared fox & cottage scene (time, VRAM, layer count, recomposite diff, visual sheet), filled into its factsheet in [models/](models/README.md).
 
 - [x] Fox & cottage test scene chosen (seed 13): `prototype/test_scene/fox_cottage.png` + `fox_cottage.json` (names, boxes, caption)
-- [~] Fox & cottage runs queued: Qwen-Image-Layered (4/5/6 layers, 384/512 px), Stable-Layers (Euler/Heun), RevealLayer (true_gs 1 / 12 steps and 3.5 / 16 steps)
+- [x] Fox & cottage: Qwen-Image-Layered and Stable-Layers done (Stable-Layers cleanest: sky / meadow / cottage + tree / path / fox)
 - [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
-- [~] **RevealLayer:** works on the forest (run 11); fox & cottage run 14 (5 boxes, true_gs 1/12 and 3.5/16) queued
-- [~] **ART+:** runs end to end (run 5); output wrong (small image in a corner, opaque rectangles) → debug size handling and the transparent decode
+- [~] **RevealLayer:** works on the forest (run 11); fox & cottage: fp16 fixed, decode OOM → v15 offloads the transformer before decoding (queued)
+- [~] **ART+:** size bug fixed (diffusers 0.32+ FLUX `vae_scale_factor` 8 vs 16) → full-size scenes; layers still opaque crops → v7 loads ART+'s own transparent decoder
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
-- [ ] **LayerD:** threshold / recursion sweep; fox & cottage; a graphic-style image
-- [ ] **SAM2 + LaMa:** segment by noun (points/boxes from the LLM breakdown), mask merging, LaMa vs SDXL inpaint, amodal completion (pix2gestalt)
-- [ ] **Qwen-Image-2.1:** stronger scene-wide edits (the rain edit was subtle), fix the dark halo on RGBA objects, use it as base-image generator
+- [~] **LayerD:** 5-variant CPU sweep on fox & cottage + forest running (threshold, no palette refinement, 1024 px matting, 5 iterations)
+- [~] **SAM2 + LaMa:** fox & cottage run with hand boxes / Grounding DINO from layer names / automatic masks; then LaMa vs SDXL inpaint, amodal completion (pix2gestalt)
+- [~] **Qwen-Image-2.1:** fox & cottage notebook ready (extract fox / cottage, fox → wolf RGBA edit, night and heavy-rain edits, scene from caption, lantern prop); halo fix open
 - [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU

@@ -348,6 +348,16 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 
 Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with a workflow diagram and routes A–F, [editing](concepts/editing.md), [fp16-on-t4](concepts/fp16-on-t4.md)); LayerFusion and the unreleased methods merged into one methods table ([papers-survey](research/papers-survey.md)); the two Kaggle guides merged ([guides/kaggle.md](guides/kaggle.md)); missing archive tables (APIs, price-performance, base models, LMU access, TPU routes, tool licences) moved into [research/hosting.md](research/hosting.md); research-note facts moved into the factsheets as tables. Where each snapshot's content lives: [archive/MOVED.md](archive/MOVED.md).
 
+## Phase 9: ART+ size bug, decoder fixes, re-tries on fox & cottage (2026-11-10)
+
+| Run | Result |
+|---|---|
+| ART+ run 6 | cause of the "small image in a corner": PrismLayers was written for diffusers 0.31, where FLUX's `vae_scale_factor` was 16; in 0.32+ it is 8, so latents were built for a 1024 px image with boxes in one quarter (also why run 4 ran out of memory). With 16 restored: **full-size coherent scenes** (330 s / 282 s, 8.2 GB). Layers are still opaque crops: CLD's transparent decoder was used; LoRA headers have no alpha keys, so scale 1.0 was right. Run 7 loads ART+'s own decoder. |
+| RevealLayer run 14 (fox & cottage) | fp16 inputs fixed; out of memory in the fp32 decode (5 boxes → 7 frames) → run 15 offloads the transformer before decoding |
+| SAM2 + LaMa v2 | pushed: one mask per named object from hand boxes, Grounding DINO boxes from the layer names, or automatic masks |
+| LayerD v2 | CPU sweep pushed: lower alpha threshold, no palette refinement, 1024 px matting, 5 iterations; logs alpha coverage per step |
+| Qwen-Image-2.1 | fox & cottage notebook written (extraction, fox → wolf RGBA edit, night / heavy-rain edits, scene from caption) |
+
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)
 
 Merged from the former `session-summary-sketch-to-image.md` (original kept in [archive/](archive/2026-11-07%20Session%20summary%20sketch-to-image.md)).

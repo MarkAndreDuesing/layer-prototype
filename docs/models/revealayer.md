@@ -48,7 +48,7 @@ Slow (about 2 min per split); needs boxes; heavy setup; FLUX.1-dev licence.
 
 ## Status
 
-Works on 2× T4 since run 11 (forest). Fox & cottage runs 12–13 failed on fp16 inputs to the now-fp32 scene VAE; run 14 casts them.
+Works on 2× T4 since run 11 (forest). Fox & cottage: runs 12–13 failed on fp16 inputs to the now-fp32 scene VAE; run 14 fixed that but ran out of memory in the fp32 decode (5 boxes → 7 frames); run 15 offloads the transformer before decoding.
 
 ## Next attempts
 
