@@ -49,21 +49,41 @@ from diffusers import QwenImage21Pipeline, QwenImage21Transformer2DModel, GGUFQu
 print("diffusers", diffusers.__version__, "torch", torch.__version__, flush=True)
 
 REPO = "Qwen/Qwen-Image-2.1-Turbo"
-BASE = snapshot_download(REPO, ignore_patterns=["transformer/*.safetensors", "assets/*"])
+BASE = snapshot_download(REPO, ignore_patterns=["transformer/*.safetensors", "vae/*.safetensors", "assets/*"])
 gguf = hf_hub_download("unsloth/Qwen-Image-2.1-Turbo-GGUF", "qwen-image-2.1-turbo-Q4_K_S.gguf")
 print("downloads done", round(time.time() - _T0), "s", flush=True)
 D0, DT = torch.device("cuda:0"), torch.float16
 
 exec(compile(__MIXED__, "fp16_mixed", "exec"))
-t = QwenImage21Transformer2DModel.from_single_file(gguf, config=BASE, subfolder="transformer",
-        quantization_config=GGUFQuantizationConfig(compute_dtype=DT), torch_dtype=DT)
+try:
+    t = QwenImage21Transformer2DModel.from_single_file(gguf, config=BASE, subfolder="transformer",
+            quantization_config=GGUFQuantizationConfig(compute_dtype=DT), torch_dtype=DT)
+    print("transformer: GGUF Q4_K_S", flush=True)
+except Exception as e:  # diffusers GGUF loading for 2.1 is unconfirmed; NF4 is reported working (15 GB peak on a 5090 at 1024)
+    import traceback; traceback.print_exc()
+    sh("pip -q install bitsandbytes")
+    from diffusers import BitsAndBytesConfig
+    t = QwenImage21Transformer2DModel.from_pretrained(snapshot_download(REPO, allow_patterns=["transformer/*"]), subfolder="transformer",
+            quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=DT), torch_dtype=DT)
+    print("transformer: NF4 fallback", flush=True)
 apply_fp16_mixed(t); t.to(D0).eval()
 
 from transformers import AutoModelForImageTextToText
 te = AutoModelForImageTextToText.from_pretrained(f"{BASE}/text_encoder", torch_dtype=DT, device_map="auto",
         max_memory={0: "5GiB", 1: "14GiB", "cpu": "24GiB"})
-pipe = QwenImage21Pipeline.from_pretrained(BASE, transformer=t, text_encoder=te, torch_dtype=DT)
+# stock 2.1 VAE gives NaNs in fp16, mostly in fully transparent regions; texture-fix VAE is fp16-safe drop-in
+from diffusers import AutoencoderKLQwenImage21
+vae = AutoencoderKLQwenImage21.from_pretrained("madebyollin/texture-fix-vae-for-qwen-image-2.1", torch_dtype=DT)
+pipe = QwenImage21Pipeline.from_pretrained(BASE, transformer=t, text_encoder=te, vae=vae, torch_dtype=DT)
 pipe.vae.to(D0)
+_ep = pipe.encode_prompt
+def _checked_encode(*a, **k):
+    out = _ep(*a, **k)
+    for o in (out if isinstance(out, tuple) else (out,)):
+        if torch.is_tensor(o) and o.is_floating_point() and not torch.isfinite(o).all():
+            print("[warn] non-finite prompt embeddings from the fp16 text encoder", flush=True)
+    return out
+pipe.encode_prompt = _checked_encode
 type(pipe)._execution_device = property(lambda self: D0)
 print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
 
@@ -71,11 +91,11 @@ os.makedirs("/kaggle/working/q21_out", exist_ok=True)
 def alpha_stats(im):
     if im.mode != "RGBA": return f"mode {im.mode}"
     a = np.asarray(im.getchannel("A")); return f"RGBA, transparent {(a < 16).mean()*100:.0f}%, opaque {(a > 240).mean()*100:.0f}%"
-def run(name, prompt, image=None, size=512):
+def run(name, prompt, image=None, size=512, kv=True):
     try:
         torch.cuda.reset_peak_memory_stats(0); t0 = time.time()
         with torch.inference_mode():
-            im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size,
+            im = pipe(prompt=prompt, image=image, width=size, height=size, output_resolution=size, use_kv_cache=kv,
                       generator=torch.Generator(D0).manual_seed(42)).images[0]
         im.save(f"/kaggle/working/q21_out/{name}.png")
         print(f"{name}: {time.time()-t0:.0f}s, {alpha_stats(im)}, peak GiB {torch.cuda.max_memory_allocated(0)/2**30:.1f}", flush=True)
@@ -86,7 +106,8 @@ def run(name, prompt, image=None, size=512):
 
 RGBA = "This is an RGBA image with transparency. {}. The image has alpha channel and the background is transparent."
 fire = run("t2i_rgba_campfire", RGBA.format("A small campfire with crossed logs, impressionist oil painting style"))
-run("t2i_scene", "An impressionist oil painting of a forest clearing at night with a campfire, pine trees and a full moon")
+run("t2i_rgba_campfire_nokv", RGBA.format("A small campfire with crossed logs, impressionist oil painting style"), kv=False)  # diffusers: KV cache not bit-exact in reduced precision
+run("t2i_scene","An impressionist oil painting of a forest clearing at night with a campfire, pine trees and a full moon")
 if fire is not None:
     run("edit_rgba_bluefire", RGBA.format("Make the flames blue, keep everything else the same"), image=[fire])
 scene = Image.open(io.BytesIO(base64.b64decode("__SCENE__"))).convert("RGB")

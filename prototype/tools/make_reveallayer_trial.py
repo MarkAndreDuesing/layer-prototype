@@ -44,7 +44,17 @@ for _f in _g.glob(RL + '/**/*.py', recursive=True):
         _s = _re.sub(r"/home/jovyan/[^'\"]*?vit32", "/kaggle/working/vit32", _s)
         open(_f, 'w', encoding='utf-8').write(_s); print('vit path patched in', _f)
 """
-head = head.replace("# ---- use bundled diffusers", VIT_PATCH + "# ---- use bundled diffusers", 1)
+# fp16 hazards found in RevealLayer's own code (research_notes/Layered loop open paths/flux_layered_t4_and_weights.md):
+# -1e9 ROI-mask fill is -inf in fp16 (fully masked rows -> NaN), unguarded refiner residual, fp16 VAE decode
+FP16_PATCH = r"""
+patch("models/custom_model_mmdit.py", "torch.full((t_total, t_total), -1e9, dtype=dtype", "torch.full((t_total, t_total), -1e4, dtype=dtype")
+patch("models/custom_model_mmdit.py", "hidden_states_part2 = hidden_states[:, l0_len:, :] + delta",
+      "hidden_states_part2 = (hidden_states[:, l0_len:, :].float() + torch.nan_to_num(delta.float(), nan=0.0, posinf=6e4, neginf=-6e4)).clamp(-6e4, 6e4).to(hidden_states.dtype)")
+patch("models/custom_pipeline.py", "image_segs = [self.vae.decode(latents_seg, return_dict=False)[0] for latents_seg in latents_segs]",
+      "image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]")
+"""
+head = head.replace("# ---- use bundled diffusers", VIT_PATCH + FP16_PATCH + "# ---- use bundled diffusers", 1)
+assert "-1e4, dtype=dtype" in head
 assert "vit_b_32-d86f8d99" in head
 # FLUX overflows fp16 in the single blocks (guard fired every step -> pure noise); reuse our Qwen fix
 MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8").read()

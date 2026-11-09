@@ -53,3 +53,17 @@ Everything the user has asked to investigate across the recent sessions, with st
 - [ ] LayerDiffuse on complex scenes (many or overlapping objects): not evaluated
 - [~] Scene-wide story events (fire, rain, night): researched; no layered method does it (gap G2). Three training-free routes listed ([re-check](../research_notes/Layered%20methods%20deep%20dive/heavy_models_recheck_2026-11-09.md), section 4); a 'rainy night' test is in the Qwen-Image-2.1 notebook
 - [~] Prompt breakdown with AI placement plus harmonisation (IC-Light): IC-Light v1 (SD1.5, background-conditioned) fits a T4 and could relight moved layers; v2 (FLUX) has no released weights. Not tried yet
+
+## F. Exhaustive open-paths research (2026-11-09 evening)
+
+Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md). Notes: `research_notes/Layered loop open paths/`.
+
+- [x] Qwen-Image-2.1 RGBA in depth. The stock VAE produces NaNs in fp16, so the notebook now uses the texture-fix VAE, plus an NF4 fallback and a NaN check
+- [x] FLUX layered models on T4, plus where their weights come from
+  - ART base LoRA = CLD `pre_trained_LoRA`, confirmed by hash; it is Apache-2.0 on HF
+  - RevealLayer fp16 hazards patched: the -1e9 mask, the refiner residual, and the VAE decode
+- [x] Harmonisation: IC-Light v1 fbc plus a procedural shadow layer; IC-Light v2 never released
+- [x] Story events across layers: no method exists (G2 confirmed); four strategies compared
+- [x] Drift evaluation: EdiVal-Agent harness, 3-arm protocol; the re-decomposition arm would be new
+- [x] HCI: ImageDirector (UIST '26) is the closest prior work, found via the LMU ACM proxy; G4 reworded
+- [ ] Kaggle trials once Kaggle recovers: Qwen-Image-2.1 (auto-push), plain-FLUX control, RevealLayer v8, LayerDiffuse-Flux
