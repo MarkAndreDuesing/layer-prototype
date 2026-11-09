@@ -44,4 +44,4 @@ Write `make_cld_trial.py` once ART+ works.
 
 ## Sources
 
-[`../../research_notes/Layered methods deep dive/heavy_models_recheck_2026-11-09`](../../research_notes/archive/heavy_models_recheck_2026-11-09.md) §2.
+`../../research_notes/Layered methods deep dive/heavy_models_recheck_2026-11-09` (removed 2026-11-10; in git history before commit 35dc02a) §2.

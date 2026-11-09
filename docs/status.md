@@ -30,7 +30,7 @@ One line per model; the full measured table is generated in [models/README.md](m
 |---|---|---|---|
 | Qwen-Image-Layered | 27–35 s per split (2× T4); fox & cottage: bg / roof / cottage + tree / fox in 33 s | ✅ main decomposer | [→](models/qwen-image-layered.md) |
 | Stable-Layers | fox & cottage: sky / meadow / cottage + tree / path / fox (39 s Euler, 67 s Heun); colour shift | ✅ | [→](models/stable-layers.md) |
-| RevealLayer | 134 s, background with hidden areas filled + clean layers (forest) | ✅ forest; fox & cottage: denoising works, decode OOM fixed (v15 queued) | [→](models/revealayer.md) |
+| RevealLayer | 134 s, background with hidden areas filled + clean layers (forest) | ✅ forest and fox & cottage (140 s, 5 boxes: filled background + cottage / gate / tree / fox) | [→](models/revealayer.md) |
 | Qwen-Image-2.1 | 17–23 s: RGBA text-to-image, RGBA layer edit, extraction | ✅ | [→](models/qwen-image-2.1.md) |
 | LayerDiffuse-Flux | 58 s per transparent object (one T4), semi-transparent glass | ✅ | [→](models/layerdiffuse-flux.md) |
 | LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |

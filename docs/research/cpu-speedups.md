@@ -6,7 +6,7 @@ Ways to cut the time per image on the team laptop (Intel Core 7 150U, 15.7 GB RA
 
 ## Why the Phase 1 runs were slower than the published numbers
 
-The research-time estimates in [Image generation models hosting and costs.md](../archive/2026-11-05%20Image%20generation%20models%20hosting%20and%20costs.md) §9 scaled FastSD CPU's fastest published timings. Those used OpenVINO, the tiny decoder and 1 step. The tested setup ([../docs/fastsd-cpu/USAGE.md](../guides/fastsd-cpu/USAGE.md)) used none of the three:
+The research-time estimates in Image generation models hosting and costs.md (removed 2026-11-10; in git history before commit 35dc02a) §9 scaled FastSD CPU's fastest published timings. Those used OpenVINO, the tiny decoder and 1 step. The tested setup ([../docs/fastsd-cpu/USAGE.md](../guides/fastsd-cpu/USAGE.md)) used none of the three:
 
 | Setting | Tested setup | Published fastest |
 |---|---|---|

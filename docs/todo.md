@@ -9,7 +9,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] Fox & cottage: Qwen-Image-Layered and Stable-Layers done (Stable-Layers cleanest: sky / meadow / cottage + tree / path / fox)
 - [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
-- [~] **RevealLayer:** works on the forest (run 11); fox & cottage: fp16 fixed, decode OOM → v15 offloads the transformer before decoding (queued)
+- [x] **RevealLayer:** works on forest and fox & cottage (140 s at 12 steps; filled background + clean object layers)
 - [~] **ART+:** size bug fixed (diffusers 0.32+ FLUX `vae_scale_factor` 8 vs 16) → full-size scenes; layers still opaque crops → v7 loads ART+'s own transparent decoder
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object

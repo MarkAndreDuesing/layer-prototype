@@ -55,6 +55,8 @@
 | SAM2 + LaMa (hand boxes) | image to layers | fox & cottage | 1x T4 | SAM2 hiera-small box prompts, LaMa | 8 |  | 6 | 1.27 | houses / cottage / gate / tree / fox; blurry bg fill | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
 | SAM2 + LaMa (Grounding DINO nouns) | image to layers | fox & cottage | 1x T4 | Grounding DINO tiny + SAM2 + LaMa | 7 |  | 6 | 1.30 | fully automatic; missed village houses | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
 | SAM2 + LaMa (auto masks) | image to layers | fox & cottage | 1x T4 | automatic, 5 largest | 9 |  | 6 |  | fragments | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
+| RevealLayer | image + boxes to layers | fox & cottage | 2x T4 | 512 px, 5 boxes, 12 steps, true_gs 1 | 140 | 11.2 | 5+bg |  | filled bg + cottage / gate / tree / fox | [results_reveallayer_fox_v15](../../prototype/kaggle/results_reveallayer_fox_v15/) |
+| RevealLayer | image + boxes to layers | fox & cottage | 2x T4 | 512 px, 5 boxes, 16 steps, true_gs 3.5 | 334 | 11.2 | 5+bg |  | slightly cleaner edges | [results_reveallayer_fox_v15](../../prototype/kaggle/results_reveallayer_fox_v15/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (33 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (35 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

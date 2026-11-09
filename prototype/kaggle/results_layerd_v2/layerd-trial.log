@@ -1,0 +1,92 @@
+[{"stream_name":"stderr","time":9.965542128,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":9.965632584,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":11.54743271,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.54747137,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.547475712,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.54747856,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":12.523923342,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.523961056,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.523966622,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.523970771,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":46.968585395,"data":"pip rc 0 ace-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":46.968622129,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":46.968628989,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":46.968634202,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":46.96863912,"data":"\n"}
+,{"stream_name":"stderr","time":69.533740217,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":69.533799444,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":69.533806434,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":69.533812443,"data":"\n"}
+,{"stream_name":"stderr","time":69.533817132,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":69.533822607,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":69.533827365,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":75.654162438,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":75.654201961,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":75.654206653,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":75.654210296,"data":"\n"}
+,{"stream_name":"stderr","time":75.654232009,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":75.654235324,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":75.654238009,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":80.426955056,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":80.427002823,"data":"I0000 00:00:1794266751.143285      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":80.434057324,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":80.434087336,"data":"I0000 00:00:1794266751.143285      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":80.434092049,"data":"\n"}
+,{"stream_name":"stderr","time":80.434095243,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":80.434098423,"data":"I0000 00:00:1794266751.143285      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":97.851157571,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":97.851201199,"data":"I0000 00:00:1794266770.634378      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":98.053737232,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":98.053771856,"data":"I0000 00:00:1794266770.634378      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":98.053779165,"data":"\n"}
+,{"stream_name":"stderr","time":98.053784256,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":98.053789361,"data":"I0000 00:00:1794266770.634378      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":100.682123442,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":100.682162097,"data":"\n"}
+,{"stream_name":"stderr","time":100.682200255,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":113.541987207,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":113.54203421,"data":"\n"}
+,{"stream_name":"stderr","time":113.542039173,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":117.356892294,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":117.598672289,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r  5%|▌         | 10.1M/196M [00:00\u003c00:04, 44.2MB/s]\n"}
+,{"stream_name":"stderr","time":117.822482168,"data":"\r  5%|▌         | 10.1M/196M [00:00\u003c00:04, 44.2MB/s]\r 10%|█         | 20.1M/196M [00:00\u003c00:04, 45.7MB/s]\n"}
+,{"stream_name":"stderr","time":118.056119136,"data":"\r 10%|█         | 20.1M/196M [00:00\u003c00:04, 45.7MB/s]\r 15%|█▌        | 30.1M/196M [00:00\u003c00:03, 45.3MB/s]\n"}
+,{"stream_name":"stderr","time":118.277476888,"data":"\r 15%|█▌        | 30.1M/196M [00:00\u003c00:03, 45.3MB/s]\r 20%|██        | 40.1M/196M [00:00\u003c00:03, 46.2MB/s]\n"}
+,{"stream_name":"stderr","time":118.502498354,"data":"\r 20%|██        | 40.1M/196M [00:00\u003c00:03, 46.2MB/s]\r 26%|██▌       | 50.1M/196M [00:01\u003c00:03, 46.3MB/s]\n"}
+,{"stream_name":"stderr","time":118.740233805,"data":"\r 26%|██▌       | 50.1M/196M [00:01\u003c00:03, 46.3MB/s]\r 31%|███       | 60.1M/196M [00:01\u003c00:03, 45.5MB/s]\n"}
+,{"stream_name":"stderr","time":118.966514594,"data":"\r 31%|███       | 60.1M/196M [00:01\u003c00:03, 45.5MB/s]\r 36%|███▌      | 70.1M/196M [00:01\u003c00:02, 45.8MB/s]\n"}
+,{"stream_name":"stderr","time":119.190073086,"data":"\r 36%|███▌      | 70.1M/196M [00:01\u003c00:02, 45.8MB/s]\r 41%|████      | 80.1M/196M [00:01\u003c00:02, 46.2MB/s]\n"}
+,{"stream_name":"stderr","time":119.414884616,"data":"\r 41%|████      | 80.1M/196M [00:01\u003c00:02, 46.2MB/s]\r 46%|████▌     | 90.1M/196M [00:02\u003c00:02, 46.3MB/s]\n"}
+,{"stream_name":"stderr","time":119.642280936,"data":"\r 46%|████▌     | 90.1M/196M [00:02\u003c00:02, 46.3MB/s]\r 51%|█████     | 100M/196M [00:02\u003c00:02, 46.3MB/s] \n"}
+,{"stream_name":"stderr","time":119.86516423,"data":"\r 51%|█████     | 100M/196M [00:02\u003c00:02, 46.3MB/s] \r 56%|█████▌    | 110M/196M [00:02\u003c00:01, 46.5MB/s]\n"}
+,{"stream_name":"stderr","time":120.088125212,"data":"\r 56%|█████▌    | 110M/196M [00:02\u003c00:01, 46.5MB/s]\r 61%|██████    | 120M/196M [00:02\u003c00:01, 46.7MB/s]\n"}
+,{"stream_name":"stderr","time":120.320522329,"data":"\r 61%|██████    | 120M/196M [00:02\u003c00:01, 46.7MB/s]\r 66%|██████▋   | 130M/196M [00:02\u003c00:01, 46.2MB/s]\n"}
+,{"stream_name":"stderr","time":120.548157396,"data":"\r 66%|██████▋   | 130M/196M [00:02\u003c00:01, 46.2MB/s]\r 71%|███████▏  | 140M/196M [00:03\u003c00:01, 46.1MB/s]\n"}
+,{"stream_name":"stderr","time":120.774031918,"data":"\r 71%|███████▏  | 140M/196M [00:03\u003c00:01, 46.1MB/s]\r 76%|███████▋  | 150M/196M [00:03\u003c00:01, 46.2MB/s]\n"}
+,{"stream_name":"stderr","time":121.002516302,"data":"\r 76%|███████▋  | 150M/196M [00:03\u003c00:01, 46.2MB/s]\r 82%|████████▏ | 160M/196M [00:03\u003c00:00, 46.1MB/s]\n"}
+,{"stream_name":"stderr","time":121.230841773,"data":"\r 82%|████████▏ | 160M/196M [00:03\u003c00:00, 46.1MB/s]\r 87%|████████▋ | 170M/196M [00:03\u003c00:00, 46.0MB/s]\n"}
+,{"stream_name":"stderr","time":121.461726326,"data":"\r 87%|████████▋ | 170M/196M [00:03\u003c00:00, 46.0MB/s]\r 92%|█████████▏| 180M/196M [00:04\u003c00:00, 45.8MB/s]\n"}
+,{"stream_name":"stderr","time":121.691497284,"data":"\r 92%|█████████▏| 180M/196M [00:04\u003c00:00, 45.8MB/s]\r 97%|█████████▋| 190M/196M [00:04\u003c00:00, 45.8MB/s]\n"}
+,{"stream_name":"stderr","time":121.716349064,"data":"\r 97%|█████████▋| 190M/196M [00:04\u003c00:00, 45.8MB/s]\r100%|██████████| 196M/196M [00:04\u003c00:00, 47.2MB/s]\n"}
+,{"stream_name":"stderr","time":122.500379643,"data":"\r100%|██████████| 196M/196M [00:04\u003c00:00, 47.2MB/s]\n"}
+,{"stream_name":"stderr","time":122.500428212,"data":"\n"}
+,{"stream_name":"stderr","time":122.500452106,"data":"\n"}
+,{"stream_name":"stdout","time":181.240668005,"data":"default fox_cottage {'layers': 1, 'seconds': 58.6, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":238.889476187,"data":"default forest {'layers': 1, 'seconds': 57.6, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":297.405435436,"data":"th0.001_iter5 fox_cottage {'layers': 1, 'seconds': 56.7, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":354.67727086,"data":"th0.001_iter5 forest {'layers': 1, 'seconds': 57.3, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":413.695814378,"data":"norefine_iter5 fox_cottage {'layers': 1, 'seconds': 56.7, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":470.093398538,"data":"norefine_iter5 forest {'layers': 1, 'seconds': 56.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":530.237081651,"data":"norefine_nounblend_iter5 fox_cottage {'layers': 1, 'seconds': 58.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":591.74761112,"data":"norefine_nounblend_iter5 forest {'layers': 1, 'seconds': 61.5, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":654.341137748,"data":"matt1024_norefine_iter5 fox_cottage {'layers': 1, 'seconds': 60.6, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stdout","time":712.484615149,"data":"matt1024_norefine_iter5 forest {'layers': 1, 'seconds': 58.1, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': []}\n"}
+,{"stream_name":"stderr","time":718.636040976,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":718.636090482,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":718.881119908,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":718.881157493,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":719.921360322,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":720.03393808,"data":"[NbConvertApp] Writing 302901 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":723.525592447,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":724.252081244,"data":"[NbConvertApp] Writing 580379 bytes to __results__.html\n"}
+]

@@ -32,3 +32,5 @@ ART+,text + boxes to layers,forest / sketch prompts,2x T4,"512 px, 16 steps, CFG
 SAM2 + LaMa (hand boxes),image to layers,fox & cottage,1x T4,"SAM2 hiera-small box prompts, LaMa",8,,6,1.27,results_segment_inpaint_v2,2026-11-10,houses / cottage / gate / tree / fox; blurry bg fill
 SAM2 + LaMa (Grounding DINO nouns),image to layers,fox & cottage,1x T4,"Grounding DINO tiny + SAM2 + LaMa",7,,6,1.30,results_segment_inpaint_v2,2026-11-10,fully automatic; missed village houses
 SAM2 + LaMa (auto masks),image to layers,fox & cottage,1x T4,"automatic, 5 largest",9,,6,,results_segment_inpaint_v2,2026-11-10,fragments
+RevealLayer,image + boxes to layers,fox & cottage,2x T4,"512 px, 5 boxes, 12 steps, true_gs 1",140,11.2,5+bg,,results_reveallayer_fox_v15,2026-11-10,filled bg + cottage / gate / tree / fox
+RevealLayer,image + boxes to layers,fox & cottage,2x T4,"512 px, 5 boxes, 16 steps, true_gs 3.5",334,11.2,5+bg,,results_reveallayer_fox_v15,2026-11-10,slightly cleaner edges

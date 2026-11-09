@@ -6,7 +6,7 @@ All findings and decisions so far, in date order. Numbers are measured unless ma
 
 ## Phase 0: models, hosting and costs research (2026-11-05 → 07)
 
-Full report: [Image generation models hosting and costs.md](archive/2026-11-05%20Image%20generation%20models%20hosting%20and%20costs.md).
+Full report: Image generation models hosting and costs.md (removed 2026-11-10; in git history before commit 35dc02a).
 
 - **Quality bar:** Z-Image Turbo's level (arena Elo 936) is enough. Cost, accessibility and sketch input decide the model, not leaderboard rank.
 - **Recurring free GPUs:** Kaggle (about 30 GPU-h/week), the LMU Informatik CIP pool (RTX 2060 SUPER 8 GB through Slurm, with a CIP account) and Hugging Face Spaces (5 GPU-min/day). The LMU Abaki servers (A5000 24 GB) are for theses only; LRZ needs a research project.
@@ -18,7 +18,7 @@ Full report: [Image generation models hosting and costs.md](archive/2026-11-05%2
 
 ## Phase 1: sketch-to-image on a CPU laptop (FastSD CPU)
 
-**Setup:** Windows 11 laptop, 15.7 GB RAM, no GPU. Current guides (two paths, offline): [fastsd-cpu/INSTALL.md](guides/fastsd-cpu/INSTALL.md) and [fastsd-cpu/USAGE.md](guides/fastsd-cpu/USAGE.md). Results: [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md). How the session went and why each decision was made: [session-summary-sketch-to-image.md](archive/2026-11-07%20Session%20summary%20sketch-to-image.md).
+**Setup:** Windows 11 laptop, 15.7 GB RAM, no GPU. Current guides (two paths, offline): [fastsd-cpu/INSTALL.md](guides/fastsd-cpu/INSTALL.md) and [fastsd-cpu/USAGE.md](guides/fastsd-cpu/USAGE.md). Results: [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md). How the session went and why each decision was made: session-summary-sketch-to-image.md (removed 2026-11-10; in git history before commit 35dc02a).
 
 | Path | Speed and memory | Verdict |
 |---|---|---|
@@ -54,7 +54,7 @@ Full report: [Image generation models hosting and costs.md](archive/2026-11-05%2
 ## Phase 2: layered scenes, local prototype (2026-11-07)
 
 1. **First version:** the LLM splits the scene into nouns, and each layer is generated on its own with LayerDiffuse SDXL-Turbo, wrapped as "a single X, solo, centered", then placed in a box. About 80 s per layer on CPU, about 7 min for a 3-layer scene with captions.
-2. **Audit:** that version is a sticker collage, not coherent layered generation. Each layer is an independent text-to-image call that shares only a style suffix. See [Coherent layered generation pipeline.md](archive/2026-11-07%20Coherent%20layered%20generation%20pipeline.md). **Decision:** coherence has to come from one shared image or scene. Generate the scene first and then split it (Qwen-Image-Layered), or build it element by element on the existing scene (LayerDiffuse chain). A layer edit stays coherent only if it is regenerated through the composite.
+2. **Audit:** that version is a sticker collage, not coherent layered generation. Each layer is an independent text-to-image call that shares only a style suffix. See Coherent layered generation pipeline.md (removed 2026-11-10; in git history before commit 35dc02a). **Decision:** coherence has to come from one shared image or scene. Generate the scene first and then split it (Qwen-Image-Layered), or build it element by element on the existing scene (LayerDiffuse chain). A layer edit stays coherent only if it is regenerated through the composite.
 3. **LayerDiffuse scene-to-layer chain** (`bg2ble → bgble2fg`, in `prototype/layerproto/backends/layerdiffuse_chain.py`):
    - On SDXL-Turbo, the extract step fails (0–5% transparent).
    - On SDXL base (20 steps, CFG 7, 512 px) it works: the scene is kept, the element is added in place, and the extracted layer is 63% transparent. That takes about 11 min per element on CPU.
@@ -313,7 +313,7 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - **Notebooks waiting for Kaggle GPUs:** Qwen-Image-2.1 RGBA (with the fp16-safe texture-fix VAE), FLUX control, RevealLayer run 8, ART+ (base LoRA hash-identical to the official CLD file), LayerDiffuse-Flux.
 - **TPU probe** ([tools/make_tpu_probe.py](../prototype/tools/make_tpu_probe.py)): three CLI runs never got a TPU. Kaggle stores `machine_shape: TpuV5E8`, but the batch runs used the standard CPU image (JAX saw only a CPU). Also found: pip's newest `torch_xla` is 2.9 while the image ships torch 2.11, so torch has to be pinned to 2.9. Next: run the probe as an interactive TPU session in the editor.
 - **Test image:** from now on one consistent scene built for layer splitting (fox & cottage, see [prototype/kaggle/test_scene_candidates/](../prototype/kaggle/test_scene_candidates/)) is the main test input; the old forest, sketch and pixel-art scenes stay as style checks.
-- Research write-up: [Layered loop open paths.md](archive/2026-11-09%20Layered%20loop%20open%20paths.md).
+- Research write-up: Layered loop open paths.md (removed 2026-11-10; in git history before commit 35dc02a).
 
 ## Phase 7: Kaggle back, FLUX-class models running (2026-11-09 night)
 
@@ -353,14 +353,15 @@ Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with 
 | Run | Result |
 |---|---|
 | ART+ run 6 | cause of the "small image in a corner": PrismLayers was written for diffusers 0.31, where FLUX's `vae_scale_factor` was 16; in 0.32+ it is 8, so latents were built for a 1024 px image with boxes in one quarter (also why run 4 ran out of memory). With 16 restored: **full-size coherent scenes** (330 s / 282 s, 8.2 GB). Layers are still opaque crops: CLD's transparent decoder was used; LoRA headers have no alpha keys, so scale 1.0 was right. Run 7 loads ART+'s own decoder. |
-| RevealLayer run 14 (fox & cottage) | fp16 inputs fixed; out of memory in the fp32 decode (5 boxes → 7 frames) → run 15 offloads the transformer before decoding |
+| RevealLayer runs 14–15 (fox & cottage) | 14: out of memory in the fp32 decode (5 boxes → 7 frames); **15 works** with the transformer offloaded before decoding: 140 s (12 steps) / 334 s (16 steps, true_gs 3.5), filled background + cottage / gate / tree / fox |
+| Docs | research_notes de-duplicated into hubs; superseded drafts, the HCI note and the docs archive snapshots deleted (content merged first; originals in git history before 35dc02a) |
 | SAM2 + LaMa v2 | **by noun works:** hand boxes and Grounding DINO boxes from the layer names both give village house / cottage / gate arch / tree / fox as clean cut-outs in 7–8 s (DINO missed only "village houses"); automatic masks still give fragments; LaMa fill blurry for large holes |
 | LayerD v2 | CPU sweep pushed: lower alpha threshold, no palette refinement, 1024 px matting, 5 iterations; logs alpha coverage per step |
 | Qwen-Image-2.1 | fox & cottage notebook written (extraction, fox → wolf RGBA edit, night / heavy-rain edits, scene from caption) |
 
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)
 
-Merged from the former `session-summary-sketch-to-image.md` (original kept in [archive/](archive/2026-11-07%20Session%20summary%20sketch-to-image.md)).
+Merged from the former `session-summary-sketch-to-image.md` (original kept in archive/ (removed 2026-11-10; in git history before commit 35dc02a)).
 
 
 A summary of the first working session, which became Phase 1 of this repo. Numbers and results are in [findings-log.md](log.md) (Phase 1) and [../experiments/](../experiments/). This page records **what was done, in what order, and why each decision was made**.
@@ -386,7 +387,7 @@ A summary of the first working session, which became Phase 1 of this repo. Numbe
 | 11-06 → 07 | Pre-registered confirmation test: 120 images on new seeds (11, 42, 99), with text-only counterparts added | [../experiments/CONFIRMATION_TEST_PLAN.md](../experiments/CONFIRMATION_TEST_PLAN.md) |
 | 11-07 | The user filtered the confirmation images (27 kept, 21 parked as "interesting but not what was asked") and named 8 favourites. All favourites are SDXL-Turbo | [../experiments/CONFIRMATION_RESULTS.md](../experiments/CONFIRMATION_RESULTS.md), [../experiments/favourites/](../experiments/favourites/) |
 | 11-07 | Final ranking delivered as a sheet, not prose | [../experiments/MODEL_RANKING_SHEET.xlsx](../experiments/MODEL_RANKING_SHEET.xlsx) |
-| 11-07 | Wrote the setup and usage guide, then split it into two editable docs | First version archived: [archive/SETUP_AND_USAGE_GUIDE_3_paths.md](archive/2026-11-07%20Setup%20and%20usage%20guide%203%20paths.md) |
+| 11-07 | Wrote the setup and usage guide, then split it into two editable docs | First version archived: archive/SETUP_AND_USAGE_GUIDE_3_paths.md (removed 2026-11-10; in git history before commit 35dc02a) |
 | 11-07 | **Dropped Path 3** (slower, fewest kept). Generalised both docs for teammates: upstream install steps, no machine-specific workarounds, no test prompt or sketch, fully offline after setup | [fastsd-cpu/INSTALL.md](guides/fastsd-cpu/INSTALL.md), [fastsd-cpu/USAGE.md](guides/fastsd-cpu/USAGE.md) |
 | 11-07 | Tested offline use; found and fixed the cache problem (below). Added Step 0, a Requirements section, fully independent setup per path, and no fixed seed | Both models verified offline, in both modes |
 

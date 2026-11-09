@@ -48,10 +48,14 @@ for vname, v in VARIANTS.items():
     t = time.time(); m = LayerD(matting_hf_card='cyberagent/layerd-birefnet', **v['kw']).to('cpu')
     if v['th'] is not None: m._th_alpha = v['th']
     cov = []
-    orig = m.matting_model.__call__
-    def spy(img, _o=orig):
-        a = _o(img); cov.append(round(float((np.asarray(a) > m._th_alpha).mean()), 3)); return a
-    m.matting_model.__call__ = spy
+    class Spy:   # assigning __call__ on an instance is ignored by Python; wrap the object instead
+        def __init__(self, inner): self.inner = inner
+        def __getattr__(self, k): return getattr(self.inner, k)
+        def __call__(self, img):
+            a = np.asarray(self.inner(img), dtype=np.float32)
+            cov.append(dict(above_th=round(float((a > m._th_alpha).mean()), 3), mean=round(float(a.mean()), 3), max=round(float(a.max()), 3)))
+            return a
+    m.matting_model = Spy(m.matting_model)
     for name, im in IMAGES.items():
         cov.clear(); t0 = time.time()
         try:

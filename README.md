@@ -18,7 +18,7 @@ Personal, non-commercial team prototype on free hardware (Kaggle 2× T4, a CPU l
 | Step-by-step guides (Kaggle, FastSD CPU) | [docs/guides/](docs/guides/) |
 | Terms (split, recomposite diff, pinning, GGUF…) | [docs/glossary.md](docs/glossary.md) |
 | Raw research notes with sources | [research_notes/](research_notes/README.md) |
-| Older reports and plans (read-only snapshots) | [docs/archive/](docs/archive/) |
+| Where removed older reports went | [docs/archive/MOVED.md](docs/archive/MOVED.md) |
 
 ## Quick start
 1. Local app: [prototype/README.md](prototype/README.md) (needs Ollama and the LayerDiffuse code from [prototype/vendor/README.md](prototype/vendor/README.md)).
@@ -32,10 +32,10 @@ Personal, non-commercial team prototype on free hardware (Kaggle 2× T4, a CPU l
 
 ## Two layers of documentation
 - **For reading:** `README.md`, `docs/status.md`, `docs/todo.md`, `docs/log.md`, `docs/research/`, `docs/models/`, `docs/concepts/`, `docs/guides/`. Each fact lives in one of these.
-- **For reproduction and sources (mostly for AI-assisted follow-up work):** `research_notes/` (cited raw notes) and `docs/archive/` (dated snapshots, unchanged).
+- **For reproduction and sources (mostly for AI-assisted follow-up work):** `research_notes/` (cited raw notes, one hub per topic). Older snapshots were merged and removed; see `docs/archive/MOVED.md`.
 
 ## Keeping the docs tidy
-- Each fact lives in one place: current state in `docs/status.md`, per-model facts in `docs/models/`, history only in `docs/log.md`; archive files are never edited.
+- Each fact lives in one place: current state in `docs/status.md`, per-model facts in `docs/models/`, history only in `docs/log.md`.
 - After a run: add a row to `prototype/kaggle/benchmarks.csv`, then `python prototype/tools/build_benchmarks.py`.
 - Before pushing: `python prototype/tools/check_doc_links.py`.
-- Files moved in the 2026-11-09 restructure (old → new paths): [docs/archive/MOVED.md](docs/archive/MOVED.md).
+- Moved and removed files: [docs/archive/MOVED.md](docs/archive/MOVED.md).

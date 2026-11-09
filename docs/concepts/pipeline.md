@@ -68,4 +68,4 @@ flowchart LR
 | 5. Content edit of one layer (Qwen-Image-2.1 / Qwen-Image-Edit) | ✅ Qwen-Image-2.1 tested |
 | 6. Captions and word links | ✅ in the local app |
 
-Snapshots with the original reasoning: [2026-11-07 Coherent layered generation pipeline](../archive/2026-11-07%20Coherent%20layered%20generation%20pipeline.md), [2026-11-07 Qwen layered multi model pipeline plan](../archive/2026-11-07%20Qwen%20layered%20multi%20model%20pipeline%20plan.md).
+Snapshots with the original reasoning: 2026-11-07 Coherent layered generation pipeline (removed 2026-11-10; in git history before commit 35dc02a), 2026-11-07 Qwen layered multi model pipeline plan (removed 2026-11-10; in git history before commit 35dc02a).

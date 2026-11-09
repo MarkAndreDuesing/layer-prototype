@@ -155,15 +155,6 @@ Several papers generate all layers jointly from a global prompt plus per-layer p
 - **TransPixar / TransPixeler** (Adobe + HKUST, arXiv 2501.03006): RGBA text-to-video. Adds alpha tokens with a LoRA on a DiT. A CogVideoX-5B LoRA is released and Mochi training code is open — [HF wileewang/TransPixar](https://huggingface.co/wileewang/TransPixar), [project](https://wileewang.github.io/TransPixar)
 - Newer 2026 work seen only as titles: **LiWi: Layering in the Wild** (arXiv 2605.14552) and "Controllable layered image generation for real-world editing" (arXiv 2601.15507) — [LiWi PDF](https://arxiv.org/pdf/2605.14552)
 
-Short 11-07 summaries of methods also covered above (kept for their extra details):
-
-Research methods (2023–2026) generate several RGBA layers in one pass from a global prompt, either with an anonymous layout (ART) or with per-layer prompts (PSDiffusion, DreamLayer, LayerFusion). Most give harmonized lighting because the layers are denoised jointly. Few have usable open weights: ART's were withdrawn.
-
-- **PSDiffusion**, arXiv 2505.11468 (WACV 2026): takes a global prompt plus layer-specific prompts (evaluated with 3 foreground + 1 background + global). Layer prompts can come from an LLM or the user. Layout is taken from cross-attention maps of a full RGB image generated together with the layers, which keeps the layers harmonized — [arXiv](https://arxiv.org/html/2505.11468), [WACV PDF](https://openaccess.thecvf.com/content/WACV2026/papers/Huang_PSDiffusion_Harmonized_Multi-Layer_Image_Generation_via_Layout_and_Appearance_Alignment_WACV_2026_paper.pdf)
-- **DreamLayer**, arXiv 2503.12838 (ICCV 2025): generates transparent fg and bg layers simultaneously, using Context-Aware Cross-Attention, Layer-Shared Self-Attention and Information-Retained Harmonization. Also supports image-to-layer decomposition and latent editing — [arXiv](https://arxiv.org/html/2503.12838v1), [ICCV](https://openaccess.thecvf.com/content/ICCV2025/html/Huang_DreamLayer_Simultaneous_Multi-Layer_Generation_via_Diffusion_Model_ICCV_2025_paper.html)
-- **LayerFusion**, arXiv 2412.04460 (Dalva et al., Dec 2024): harmonized multi-layer text-to-image using generative priors on latent diffusion — [fugumt](https://fugumt.com/fugumt/paper_check/2412.04460v1_enmode)
-- **OmniPSD**, arXiv 2512.09247 (Dec 2025, NUS + Lovart): Flux-based in-context text-to-PSD and image-to-PSD. Reportedly trained on about 200K real PSDs (from a review, unverified). Project page: [showlab.github.io/OmniPSD](https://showlab.github.io/OmniPSD/) — [arXiv](https://arxiv.org/pdf/2512.09247)
-
 #### Inferences
 - Joint methods (PSDiffusion, DreamLayer, ART) give the best cross-layer lighting harmony. But regenerating one layer means re-running everything, or using inpainting-style tricks with a fixed seed.
 - Of the joint methods, PSDiffusion's input format (global + per-layer prompts) is the closest to the game's per-object prompt design.
@@ -172,44 +163,12 @@ Research methods (2023–2026) generate several RGBA layers in one pass from a g
 - Weights, licenses and VRAM were not verified for DreamLayer, PSDiffusion, LayerFusion, OmniPSD or LayeringDiff. Assume code-only or no release until checked.
 - Not covered by search: LayerCraft, LayerTracer (vector/SVG layers), Alfie, MuLAN dataset, and "Generative Image Layer Decomposition" (LayerDecomp, Adobe).
 
-## Code and weights table (2026-11-07)
+## Not in the release table above (from the 2026-11-07 check)
 
-From [layerdiffuse_and_research_models.md](../Free%20hostable%20layered%20models/layerdiffuse_and_research_models.md) §3; older than the release table above, kept for rows it does not cover (See-through, LayerD details).
-
-#### Takeaway
-Of the research models, only CLD, ART (originally), LayerD, See-through, OmniPSD (code only), and PrismLayers (code and data) have public releases. All the generative ones sit on FLUX.1-dev, which means a non-commercial license and a hard fit on 16 GB. LayerD is the outlier: it is lightweight and runs on CPU.
-
-#### Cited Findings
-| Model | Code | Weights | License | Base | Source |
-|---|---|---|---|---|---|
-| CLD (2511.16249) | Yes, MIT | HF thuteam/CLD (LoRAs + trans_vae, Dec 2025) | MIT code, FLUX.1-dev NC for base | FLUX.1-dev + alimama FLUX ControlNet-Inpainting-Alpha | [monkek123King/CLD](https://github.com/monkek123King/CLD) |
-| ART | microsoft/art-msra (search snippet only) | HF ART-Release/ART_v1.0. It returned HTTP 401 on 2026-11-07, so it may now be gated or removed | Not confirmed | FLUX.1-dev (search snippet only) | [HF ART_v1.0 discussion](https://huggingface.co/ART-Release/ART_v1.0/discussions/1/files) |
-| PrismLayers / ART+ | github.com/redredsheep/PrismLayers | Dataset on HF. A separate ART+ weights link is not confirmed | Not stated | ART fine-tune | [prism-layers.github.io](https://prism-layers.github.io/) |
-| OmniPSD (2512.09247) | Yes, showlab/OmniPSD, with train/infer scripts | No download link in README | LICENCE file present, type not shown | FLUX.1-dev (T2PSD), FLUX.1-Kontext-dev (I2PSD) | [showlab/OmniPSD](https://github.com/showlab/OmniPSD) |
-| LayerD (2509.25134, ICCV25) | Yes, Apache-2.0. The repo is archived (read-only) | HF cyberagent/layerd-birefnet | Apache-2.0 code | BiRefNet matting + inpainting. Has a CPU device example | [CyberAgentAILab/LayerD](https://github.com/CyberAgentAILab/LayerD) |
-| See-through (anime, SIGGRAPH 2026) | Yes, shitagaki-lab/see-through | HF layerdifforg/*, plus an NF4 Marigold variant for low VRAM | Apache-2.0 code, Open RAIL++-M on weights (search snippet only) | LayerDiff 3D + Marigold | [shitagaki-lab/see-through](https://github.com/shitagaki-lab/see-through) |
-| DiffDecompose (2505.21541) | Not released. README: "We will release the code and datasets after being accepted" | None | None | Not stated | [Wangzt1121/DiffDecompose](https://github.com/Wangzt1121/DiffDecompose) |
-| PSDiffusion (2505.11468, WACV26) | No repo found | None | n/a | n/a | [project page](https://dingbang777.github.io/PSDiffusion_Website) |
-| RefLayer (2602.19358, ICLR26) | No code link on arXiv | None | n/a | n/a | [arXiv](https://arxiv.org/abs/2602.19358) |
-| LiWi (2605.14552) | Project page only. Abstract says "will soon release" code and dataset | None | n/a | n/a | [arXiv](https://arxiv.org/abs/2605.14552) |
-| 2601.15507 (LASAGNA, Adobe co-authors) | No code link. Releases the LASAGNA-48K dataset and LASAGNA-BENCH benchmark | None found | n/a | n/a | [arXiv](https://arxiv.org/abs/2601.15507) |
-| LayerDecomp (Adobe, 2411.17864) | The project page lists only paper links | None found | n/a | n/a | [project page](https://rayjryang.github.io/LayerDecomp/) |
-| RevealLayer (2605.11818), PixelART (2609.22789) | Listed as "paper only" | None | n/a | n/a | [awesome-image-layer-decomposition](https://github.com/discopotato3376-oss/awesome-image-layer-decomposition) (third-party list) |
-| DreamLayer, LayerFusion | No repo found in search | None found | n/a | n/a | [search: OmniPSD similar papers](https://arxiv.deeppaper.ai/papers/2512.09247v1/similar) |
-| Related: Qwen-Image-Layered | QwenLM/Qwen-Image-Layered | HF Qwen/Qwen-Image-Layered (Dec 19 2025) | Apache-2.0, 20B params (per list) | Qwen-Image | [awesome list](https://github.com/discopotato3376-oss/awesome-image-layer-decomposition) |
-
-#### Inferences
-- **Fits a free T4 easily:** LayerDiffuse SD1.5/SDXL, LayerD (BiRefNet, ~1 GB, CPU-capable), and See-through (NF4 variant).
-- **Needs quantization or offload on 16 GB, so Kaggle is preferred:** LayerDiffuse-Flux, CLD, ART, and OmniPSD, all on FLUX.1-dev. The T4's lack of bf16 adds friction.
-- **Unlikely to be practical on a free T4:** Qwen-Image-Layered (20B).
-- **Commercial use:** the FLUX.1-dev Non-Commercial License restricts every FLUX-based option. Research and prototype use is fine.
-
-#### Gaps
-- No project publishes VRAM figures.
-- I did not confirm official ComfyUI or diffusers support for the FLUX-based research models, or for ready Kaggle/Colab notebooks for any of them.
-- ART's HF status is unclear (401).
-- PrismLayers license and ART+ weights are unconfirmed.
-- I did not open the OmniPSD license contents or the official DreamLayer and LayerFusion pages.
+| Model | Code | Weights | Licence | Note |
+|---|---|---|---|---|
+| See-through (anime, SIGGRAPH 2026) | [shitagaki-lab/see-through](https://github.com/shitagaki-lab/see-through) | HF `layerdifforg/*`, NF4 Marigold variant for low VRAM | Apache-2.0 code, Open RAIL++-M weights [U] | LayerDiff 3D + Marigold; anime only |
+| LayerD (2509.25134, ICCV 2025) | [CyberAgentAILab/LayerD](https://github.com/CyberAgentAILab/LayerD), archived | HF `cyberagent/layerd-birefnet` | Apache-2.0 | BiRefNet matting + inpainting, runs on CPU |
 
 ## Top 3 most promising for the game
 1. **LayerFusion-style training-free harmonisation on LayerDiffuse SDXL.** It needs no weights or training, runs on hardware we already use, and extends to N layers by combining it with the PSDiffusion attention-mask ideas. Single-layer regeneration means rerunning one fg branch with shared attention to the frozen blend/bg.

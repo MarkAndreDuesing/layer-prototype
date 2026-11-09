@@ -37,6 +37,15 @@ Results: [`../../prototype/kaggle/results_reveallayer_v11/`](../../prototype/kag
 
 The official pipeline runs only in bf16 at 1024 px, 30 steps. A ComfyUI port (Ltamann/ComfyUI-TBG-RevealLayer, Nov 2026) accepts fp16/bf16/fp32 FLUX but not GGUF. Full notes: [flux_layered_t4_and_weights.md](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md).
 
+## Fox & cottage (shared test scene, 5 boxes)
+
+| Setting | Time | Result |
+|---|---|---|
+| true_gs 1.0, 12 steps | 140 s | background with cottage, tree and fox removed and plausibly filled; clean layers: cottage, gate arch, tree, fox; "village houses" layer nearly empty |
+| true_gs 3.5, 16 steps | 334 s | same split, slightly cleaner edges |
+
+Peak 8.7 / 11.2 GB. Results: [`../../prototype/kaggle/results_reveallayer_fox_v15/`](../../prototype/kaggle/results_reveallayer_fox_v15/).
+
 ## Best features
 
 - Fills in what was behind each object: the background stays complete when an object is moved.
@@ -48,7 +57,7 @@ Slow (about 2 min per split); needs boxes; heavy setup; FLUX.1-dev licence.
 
 ## Status
 
-Works on 2× T4 since run 11 (forest). Fox & cottage: runs 12–13 failed on fp16 inputs to the now-fp32 scene VAE; run 14 fixed that but ran out of memory in the fp32 decode (5 boxes → 7 frames); run 15 offloads the transformer before decoding.
+Works on 2× T4 since run 11 (forest). Fox & cottage: runs 12–13 failed on fp16 inputs to the now-fp32 scene VAE; run 14 fixed that but ran out of memory in the fp32 decode (5 boxes → 7 frames); run 15 offloads the transformer before decoding and **works**.
 
 ## Next attempts
 
@@ -56,4 +65,4 @@ fox & cottage with LLM boxes; `true_gs` 3.5 / 16 steps; second scene; 768 px if 
 
 ## Sources
 
-[`../../research_notes/Layered methods deep dive/flux_models_t4_adaptation (untested cells)`](../../research_notes/archive/flux_models_t4_adaptation_untested.md); [`../../research_notes/Layered loop open paths/flux_layered_t4_and_weights.md`](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md); [../log.md](../log.md) Phases 6–7.
+`../../research_notes/Layered methods deep dive/flux_models_t4_adaptation (untested cells)` (removed 2026-11-10; in git history before commit 35dc02a); [`../../research_notes/Layered loop open paths/flux_layered_t4_and_weights.md`](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md); [../log.md](../log.md) Phases 6–7.

@@ -47,4 +47,4 @@ Heun 4–8 steps; colour correction (match the recomposite's colour statistics t
 
 ## Sources
 
-[../log.md](../log.md) Phase 5; [`../../research_notes/Layered methods deep dive/heavy_models_inference_plans`](../../research_notes/archive/heavy_models_inference_plans.md) §4.
+[../log.md](../log.md) Phase 5; `../../research_notes/Layered methods deep dive/heavy_models_inference_plans` (removed 2026-11-10; in git history before commit 35dc02a) §4.

@@ -1,0 +1,62 @@
+{
+ "default/fox_cottage": {
+  "layers": 1,
+  "seconds": 58.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "default/forest": {
+  "layers": 1,
+  "seconds": 57.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "th0.001_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 56.7,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "th0.001_iter5/forest": {
+  "layers": 1,
+  "seconds": 57.3,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "norefine_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 56.7,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "norefine_iter5/forest": {
+  "layers": 1,
+  "seconds": 56.4,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "norefine_nounblend_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 58.4,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "norefine_nounblend_iter5/forest": {
+  "layers": 1,
+  "seconds": 61.5,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "matt1024_norefine_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 60.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ },
+ "matt1024_norefine_iter5/forest": {
+  "layers": 1,
+  "seconds": 58.1,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": []
+ }
+}
