@@ -27,6 +27,8 @@ ap.add_argument("--scale", type=float, default=1.3)
 ap.add_argument("--size", type=int, default=512)
 ap.add_argument("--steps", type=int, default=20)
 ap.add_argument("--guidance", type=float, default=7.0)
+ap.add_argument("--pin", type=float, default=0.4)
+ap.add_argument("--strengths", default="0.3,0.4")
 ap.add_argument("--model", default="stabilityai/stable-diffusion-xl-base-1.0")
 ap.add_argument("--out", required=True)
 a = ap.parse_args()
@@ -45,10 +47,10 @@ bw, bh = (x1 - x0) * a.scale, (y1 - y0) * a.scale
 cx, cy = (x0 + x1) / 2 + a.dx * S, (y0 + y1) / 2 + a.dy * S
 box = (int(cx - bw / 2), int(cy - bh / 2), int(bw), int(bh))
 chain = LayerDiffuseChain(model=a.model)
-for strength in (0.3, 0.4):
+for strength in [float(v) for v in a.strengths.split(",")]:
     t = time.time()
     naive, harm, new = chain.relocate(scene, target, box, a.prompt, seed=7, strength=strength, w=S, h=S,
-                                      steps=a.steps, guidance=a.guidance, extract="mask")
+                                      steps=a.steps, guidance=a.guidance, extract="mask", pin_frac=a.pin)
     final = scene.copy()
     final.alpha_composite(new)
     green = Image.new("RGBA", (S, S), (40, 160, 60, 255))
@@ -56,6 +58,6 @@ for strength in (0.3, 0.4):
     strip = Image.new("RGB", (S * 5, S))
     for i, im in enumerate((orig, naive, harm, green, final)):
         strip.paste(im.convert("RGB"), (S * i, 0))
-    name = f"{os.path.basename(os.path.normpath(a.layers_dir))}_L{a.index}_s{int(strength * 100)}"
+    name = f"{os.path.basename(os.path.normpath(a.layers_dir))}_L{a.index}_s{int(strength * 100)}_pin{int(a.pin * 100)}"
     strip.save(os.path.join(a.out, name + "_strip.png"))
     print(name, "edit done in", round(time.time() - t, 1), "s", flush=True)

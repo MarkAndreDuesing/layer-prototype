@@ -13,6 +13,7 @@ This repo gathers the code, experiments, research and decisions so far. Personal
 | [`prototype/`](prototype/) | The app (Gradio UI, LLM scene split, LayerDiffuse chain) plus the Kaggle notebooks and tools. Start with [prototype/README.md](prototype/README.md). |
 | [`prototype/docs/qwen-layered-on-kaggle.md`](prototype/docs/qwen-layered-on-kaggle.md) | Qwen-Image-Layered on free Kaggle T4s: how to run it, why it needs a patch, gotchas |
 | [`prototype/layerproto/fp16_mixed.py`](prototype/layerproto/fp16_mixed.py) | Makes bf16-only Qwen-Image models run on fp16 GPUs (T4) without NaNs |
+| [`docs/summary-2026-11-09-research-block.md`](docs/summary-2026-11-09-research-block.md) | **Latest summary**: 27–32 s Qwen split on free T4, full split → move → re-harmonise loop, paper audit, research gap, LMU GPUs |
 | [`docs/findings-log.md`](docs/findings-log.md) | **All findings and decisions in date order**: what worked, what failed, measured numbers |
 | [`reports/Layered methods - how to get them working.md`](reports/Layered%20methods%20-%20how%20to%20get%20them%20working.md) | Every layered-generation paper: what runs, what could run, what to borrow; LayerFusion / DreamLayer move-resize analysis |
 | [`reports/Research gap and questions.md`](reports/Research%20gap%20and%20questions.md) | Research gaps that Qwen-Image-Layered and others leave open, and 5 candidate research questions |

@@ -214,3 +214,21 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - Contact shadows are weak.
 - The old position isn't inpainted when the background itself contains the object (here the background was clean).
 - Only one object and one scene were tested. A proper evaluation is research question RQ4 in [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
+
+### Full loop on free T4s: Qwen-Image-Layered split → move a layer → re-harmonise
+
+**Pipeline** ([tools/qwen_relocate_demo.py](../prototype/tools/qwen_relocate_demo.py) and [tools/make_qwen_relocate_trial.py](../prototype/tools/make_qwen_relocate_trial.py)):
+1. Qwen-Image-Layered run v7: 384 px, 4 layers, 4 steps, **about 32 s**, every RGBA layer saved. See [results_qwen_v7_layers/](../prototype/kaggle/results_qwen_v7_layers/).
+2. Pick one layer, move and resize it, then re-harmonise it against the composite of all the other layers with `relocate()` (SDXL base, 512 px, mask extraction). That takes **about 3.5 s per edit** once SDXL is loaded; the first edit pays about 20 s of loading.
+
+| Scene | Edit | Result (strength 0.3, pin 40%) |
+|---|---|---|
+| impressionist forest | campfire + chair: move right, scale 1.2 | It fits the new spot, with the same painterly style and fire glow. But the log pile is redrawn flatter and the chair changes shape. |
+| pale sketch | skeleton: move left | It sits plausibly behind the campfire, but is re-rendered darker and more detailed than the original pale style. |
+| pixel art | skeleton + green tree: move left | Placement and style hold. The tree came along because Qwen put it in the same layer. Some ghosting remains at the old spot. |
+
+**Takeaways:**
+- The loop is technically complete and fast enough for interaction on free hardware: about 32 s per split and about 4 s per move.
+- The remaining problem is **identity drift**: re-harmonising redraws the object. **Run v2 pinned the interior for 70% of the steps instead of 40%: almost no change** (the forest is nearly identical, the skeleton slightly closer to the original). The drift happens in the unpinned final steps. The next candidates are identity conditioning (IP-Adapter on the original object, or reference-only attention) or pinning with a softer mask through every step ([results_qwen_relocate_v2_pin70/](../prototype/kaggle/results_qwen_relocate_v2_pin70/)).
+- Qwen sometimes groups unrelated objects into one layer (skeleton + tree). Using more layers, or splitting the grouped layer again, is the obvious fix.
+- Results: [prototype/kaggle/results_qwen_relocate_v1/](../prototype/kaggle/results_qwen_relocate_v1/).

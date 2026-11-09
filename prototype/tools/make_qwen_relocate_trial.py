@@ -32,7 +32,7 @@ with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
     z.write(os.path.join(HERE, "qwen_relocate_demo.py"), "prototype/tools/qwen_relocate_demo.py")
 code_b64 = base64.b64encode(buf.getvalue()).decode()
 cmds = [["prototype/tools/qwen_relocate_demo.py", "--layers-dir", f"layers/{d}", "--index", str(i), "--prompt", p,
-         "--dx", str(dx), "--dy", str(dy), "--scale", str(sc), "--out", "/kaggle/working/qwen_relocate"]
+         "--dx", str(dx), "--dy", str(dy), "--scale", str(sc), "--out", "/kaggle/working/qwen_relocate", "--pin", "0.7", "--strengths", "0.3,0.45"]
         for d, i, p, dx, dy, sc in DEMOS]
 SRC = f'''
 import base64, io, os, subprocess, sys, zipfile, time
