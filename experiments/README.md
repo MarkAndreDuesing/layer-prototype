@@ -1,6 +1,6 @@
 # Experiment output guide
 
-Phase 1 of the repo: sketch-to-image on a CPU laptop with FastSD CPU. The summary is in [../docs/findings-log.md](../docs/findings-log.md); the session story is in [../docs/session-summary-sketch-to-image.md](../docs/session-summary-sketch-to-image.md).
+Phase 1 of the repo: sketch-to-image on a CPU laptop with FastSD CPU. The summary is in [../docs/findings-log.md](../docs/log.md); the session story is in [../docs/session-summary-sketch-to-image.md](../docs/archive/2026-11-07%20Session%20summary%20sketch-to-image.md).
 
 **What is in git:** docs, scripts, logs, manifests, `inputs/`, the comparison sheets (`sheets/`, `confirm_sheets/`), `favourites/`, `offline_test/`, the 3 `final/` sheets and the parked images in this folder. The raw image folders (`all_images/`, `confirm_images/`, `p1…`, `r2_…`, `confirm/`) stay local because of their size (about 180 MB).
 
