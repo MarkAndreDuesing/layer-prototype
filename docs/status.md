@@ -15,7 +15,7 @@
 | Image → layers | **Qwen-Image-Layered** (main), **RevealLayer** (image + boxes, fills hidden parts), Stable-Layers | 27–35 s / 134 s / 34 s | [models/qwen-image-layered.md](models/qwen-image-layered.md), [models/revealayer.md](models/revealayer.md) |
 | Text → layers directly | LayerDiffuse SDXL chain (one element at a time); ART+ (text + boxes) in testing | 18 s per pass at 1024 px (T4) | [models/layerdiffuse-sdxl.md](models/layerdiffuse-sdxl.md), [models/art-plus.md](models/art-plus.md) |
 | Re-prompt one layer | LayerDiffuse `bg2ble → bgble2fg` through the composite; **Qwen-Image-2.1 edits a transparent layer directly** | 18 s / 23 s | [models/qwen-image-2.1.md](models/qwen-image-2.1.md) |
-| Extract one object as a layer | Qwen-Image-2.1 extraction (clean, in place); SAM2 masks | 22 s / 3–7 s | [models/sam2-lama.md](models/sam2-lama.md) |
+| Extract one object as a layer | Qwen-Image-2.1 extraction (clean, in place); Grounding DINO + SAM2 by name | 22 s / 7 s | [models/sam2-lama.md](models/sam2-lama.md) |
 | Move / resize a layer | `relocate()` v5: warp + SDXL re-harmonise + interior pinning + paste-back | about 4 s per edit (T4) | [editing.md §1](concepts/editing.md#1-move--resize-with-re-harmonisation-relocate) |
 | Relight / shadows | IC-Light relight module and procedural shadow layer (CPU-tested) | 44 s CPU / 0.6 s | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
 | Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU-tested); generative GPU pass pending | about 30 s routing on CPU | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
@@ -35,7 +35,7 @@ One line per model; the full measured table is generated in [models/README.md](m
 | LayerDiffuse-Flux | 58 s per transparent object (one T4), semi-transparent glass | ✅ | [→](models/layerdiffuse-flux.md) |
 | LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
 | ART+ | full-size coherent scenes from text + boxes (≈ 5 min, 8.2 GB); layers still opaque crops | ⚠️ v7 tests its own transparent decoder | [→](models/art-plus.md) |
-| SAM2 + LaMa | 3–7 s; poor automatic grouping | ⚠️ fox & cottage: hand boxes / Grounding DINO nouns / automatic, running | [→](models/sam2-lama.md) |
+| SAM2 + LaMa | **by noun (Grounding DINO + SAM2): house / cottage / gate / tree / fox in 7 s**, fully automatic; blurry background fill | ✅ by noun | [→](models/sam2-lama.md) |
 | LayerD | 60 s CPU; 1 layer on painted scenes | ⚠️ 5-variant CPU sweep running | [→](models/layerd.md) |
 | Qwen Lightning LoRA | no speed-up at 4 steps | ⚠️ retry at 2 steps | [→](models/qwen-lightning.md) |
 | CLD | — | ⏳ not run yet | [→](models/cld.md) |

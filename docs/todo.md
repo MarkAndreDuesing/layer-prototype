@@ -16,7 +16,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
 - [~] **LayerD:** 5-variant CPU sweep on fox & cottage + forest running (threshold, no palette refinement, 1024 px matting, 5 iterations)
-- [~] **SAM2 + LaMa:** fox & cottage run with hand boxes / Grounding DINO from layer names / automatic masks; then LaMa vs SDXL inpaint, amodal completion (pix2gestalt)
+- [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
+- [ ] SAM2 route: SDXL inpaint for large holes, pix2gestalt amodal completion
 - [~] **Qwen-Image-2.1:** fox & cottage notebook ready (extract fox / cottage, fox → wolf RGBA edit, night and heavy-rain edits, scene from caption, lantern prop); halo fix open
 - [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 

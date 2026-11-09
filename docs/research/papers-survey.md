@@ -15,7 +15,7 @@
 | **LayerDiffuse-Flux** | text → transparent object | FLUX.1-dev + LoRA + transparent VAE | ✅ · ✅ · AFL-3.0 (+ FLUX-dev NC) | ✅ 58 s, semi-transparent glass works | single layer only | [layerdiffuse-flux](../models/layerdiffuse-flux.md) |
 | **Qwen-Image-2.1** | text → RGBA; edit an RGBA layer; extract a subject | 7B DiT, Qwen3-VL, 4-channel VAE | ✅ · ✅ · Qwen Research (NC) | ✅ 17–23 s per call | layer re-prompt keeping alpha, extraction, ≤ 10 references; no multi-layer split | [qwen-image-2.1](../models/qwen-image-2.1.md) |
 | **LayerD** (ICCV 2025) | image → layers by peeling (matte top layer, inpaint, repeat) | BiRefNet + LaMa | ✅ · ✅ · Apache-2.0 (archived) | ⚠️ CPU 60 s; returned 1 layer on painted scenes | — | [layerd](../models/layerd.md) |
-| **SAM2 + LaMa** (+ pix2gestalt) | image → cut-out layers + inpainted background | SAM2, LaMa | ✅ · ✅ · Apache-2.0 | ✅ 3–7 s; poor automatic grouping | segment by noun (planned) | [sam2-lama](../models/sam2-lama.md) |
+| **SAM2 + LaMa** (+ pix2gestalt) | image → cut-out layers + inpainted background | SAM2, LaMa | ✅ · ✅ · Apache-2.0 | ✅ 7 s by noun (Grounding DINO + SAM2): clean object layers; blurry LaMa fill | segment by noun, object cut-outs | [sam2-lama](../models/sam2-lama.md) |
 | Qwen-Image-Lightning LoRA | speed LoRA tried on Qwen-Image-Layered | Qwen-Image | ✅ · ✅ · Apache-2.0 | ⚠️ no speed-up at 4 steps; separates thin subjects | — | [qwen-lightning](../models/qwen-lightning.md) |
 
 ## 2. Methods we cannot run (no weights or code)

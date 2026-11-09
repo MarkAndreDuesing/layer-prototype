@@ -354,7 +354,7 @@ Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with 
 |---|---|
 | ART+ run 6 | cause of the "small image in a corner": PrismLayers was written for diffusers 0.31, where FLUX's `vae_scale_factor` was 16; in 0.32+ it is 8, so latents were built for a 1024 px image with boxes in one quarter (also why run 4 ran out of memory). With 16 restored: **full-size coherent scenes** (330 s / 282 s, 8.2 GB). Layers are still opaque crops: CLD's transparent decoder was used; LoRA headers have no alpha keys, so scale 1.0 was right. Run 7 loads ART+'s own decoder. |
 | RevealLayer run 14 (fox & cottage) | fp16 inputs fixed; out of memory in the fp32 decode (5 boxes → 7 frames) → run 15 offloads the transformer before decoding |
-| SAM2 + LaMa v2 | pushed: one mask per named object from hand boxes, Grounding DINO boxes from the layer names, or automatic masks |
+| SAM2 + LaMa v2 | **by noun works:** hand boxes and Grounding DINO boxes from the layer names both give village house / cottage / gate arch / tree / fox as clean cut-outs in 7–8 s (DINO missed only "village houses"); automatic masks still give fragments; LaMa fill blurry for large holes |
 | LayerD v2 | CPU sweep pushed: lower alpha threshold, no palette refinement, 1024 px matting, 5 iterations; logs alpha coverage per step |
 | Qwen-Image-2.1 | fox & cottage notebook written (extraction, fox → wolf RGBA edit, night / heavy-rain edits, scene from caption) |
 

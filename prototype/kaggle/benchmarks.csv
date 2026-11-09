@@ -29,3 +29,6 @@ Qwen-Image-Layered,image to layers,fox & cottage,2x T4,"512 px, 5 layers, 4 step
 Stable-Layers,image to layers,fox & cottage,2x T4,"384 px, 5 layers, 4 Euler steps, CFG 1",39,,5,21.0,results_qwen_fox_v11,2026-11-09,sky / meadow / cottage+tree / path / fox
 Stable-Layers (Heun),image to layers,fox & cottage,2x T4,"384 px, 5 layers, 4 Heun steps, CFG 1",67,,5,20.6,results_qwen_fox_v11,2026-11-09,same clean split
 ART+,text + boxes to layers,forest / sketch prompts,2x T4,"512 px, 16 steps, CFG 4",315,10.0,4,,results_artplus_v5,2026-11-09,runs; output wrong (small image, opaque boxes)
+SAM2 + LaMa (hand boxes),image to layers,fox & cottage,1x T4,"SAM2 hiera-small box prompts, LaMa",8,,6,1.27,results_segment_inpaint_v2,2026-11-10,houses / cottage / gate / tree / fox; blurry bg fill
+SAM2 + LaMa (Grounding DINO nouns),image to layers,fox & cottage,1x T4,"Grounding DINO tiny + SAM2 + LaMa",7,,6,1.30,results_segment_inpaint_v2,2026-11-10,fully automatic; missed village houses
+SAM2 + LaMa (auto masks),image to layers,fox & cottage,1x T4,"automatic, 5 largest",9,,6,,results_segment_inpaint_v2,2026-11-10,fragments

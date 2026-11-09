@@ -1,0 +1,60 @@
+[{"stream_name":"stderr","time":6.780526265,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.780571119,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.703680533,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.703707111,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.703713201,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.703717379,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.3031596,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.303202553,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.303207133,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.303210683,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":127.468700134,"data":"['git+https://github.com/facebookresearch/sam2.git'] rc 0 \n"}
+,{"stream_name":"stdout","time":128.391271483,"data":"['--no-deps', 'simple-lama-inpainting'] rc 0 \n"}
+,{"stream_name":"stdout","time":130.349100996,"data":"['fire'] rc 0 talled. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stdout","time":130.349136869,"data":"simple-lama-inpainting 0.1.2 requires fire\u003c0.6.0,\u003e=0.5.0, but you have fire 0.7.1 which is incompatible.\n"}
+,{"stream_name":"stdout","time":130.349142956,"data":"simple-lama-inpainting 0.1.2 requires numpy\u003c2.0.0,\u003e=1.24.3, but you have numpy 2.1.3 which is incompatible.\n"}
+,{"stream_name":"stdout","time":130.34914761,"data":"simple-lama-inpainting 0.1.2 requires pillow\u003c10.0.0,\u003e=9.5.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":130.349152141,"data":"\n"}
+,{"stream_name":"stderr","time":161.358801245,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":161.35884058,"data":"\n"}
+,{"stream_name":"stderr","time":161.358847161,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":177.299981344,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":177.300010855,"data":"\n"}
+,{"stream_name":"stderr","time":177.300022069,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":177.473770655,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":177.57522059,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r 18%|█▊        | 36.1M/196M [00:00\u003c00:00, 379MB/s]\n"}
+,{"stream_name":"stderr","time":177.681392564,"data":"\r 18%|█▊        | 36.1M/196M [00:00\u003c00:00, 379MB/s]\r 37%|███▋      | 72.2M/196M [00:00\u003c00:00, 365MB/s]\n"}
+,{"stream_name":"stderr","time":177.786681632,"data":"\r 37%|███▋      | 72.2M/196M [00:00\u003c00:00, 365MB/s]\r 56%|█████▌    | 110M/196M [00:00\u003c00:00, 371MB/s] \n"}
+,{"stream_name":"stderr","time":177.909964969,"data":"\r 56%|█████▌    | 110M/196M [00:00\u003c00:00, 371MB/s] \r 74%|███████▍  | 146M/196M [00:00\u003c00:00, 341MB/s]\n"}
+,{"stream_name":"stderr","time":178.010231512,"data":"\r 74%|███████▍  | 146M/196M [00:00\u003c00:00, 341MB/s]\r 94%|█████████▎| 184M/196M [00:00\u003c00:00, 360MB/s]\n"}
+,{"stream_name":"stderr","time":178.034558858,"data":"\r 94%|█████████▎| 184M/196M [00:00\u003c00:00, 360MB/s]\r100%|██████████| 196M/196M [00:00\u003c00:00, 367MB/s]\n"}
+,{"stream_name":"stderr","time":178.675860456,"data":"\r100%|██████████| 196M/196M [00:00\u003c00:00, 367MB/s]\n"}
+,{"stream_name":"stderr","time":178.675891552,"data":"\n"}
+,{"stream_name":"stderr","time":178.675895775,"data":"\n"}
+,{"stream_name":"stdout","time":178.985874359,"data":"load 18.2 s\n"}
+,{"stream_name":"stderr","time":179.186763345,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/transforms/functional.py:154: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n"}
+,{"stream_name":"stderr","time":179.18681105,"data":"  img = torch.from_numpy(pic.transpose((2, 0, 1))).contiguous()\n"}
+,{"stream_name":"stderr","time":179.186815098,"data":"\n"}
+,{"stream_name":"stderr","time":179.186817728,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/transforms/functional.py:154: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n"}
+,{"stream_name":"stderr","time":179.186827061,"data":"  img = torch.from_numpy(pic.transpose((2, 0, 1))).contiguous()\n"}
+,{"stream_name":"stderr","time":194.293497284,"data":"/usr/local/lib/python3.13/dist-packages/sam2/sam2_image_predictor.py:431: UserWarning: cannot import name '_C' from 'sam2' (/usr/local/lib/python3.13/dist-packages/sam2/__init__.py)\n"}
+,{"stream_name":"stderr","time":194.293528036,"data":"\n"}
+,{"stream_name":"stderr","time":194.293533485,"data":"Skipping the post-processing step due to the error above. You can still use SAM 2 and it's OK to ignore the error above, although some post-processing functionality may be limited (which doesn't affect the results in most cases; see https://github.com/facebookresearch/sam2/blob/main/INSTALL.md).\n"}
+,{"stream_name":"stderr","time":194.293537959,"data":"  masks = self._transforms.postprocess_masks(\n"}
+,{"stream_name":"stderr","time":194.293540869,"data":"\n"}
+,{"stream_name":"stderr","time":194.293543733,"data":"/usr/local/lib/python3.13/dist-packages/sam2/sam2_image_predictor.py:431: UserWarning: cannot import name '_C' from 'sam2' (/usr/local/lib/python3.13/dist-packages/sam2/__init__.py)\n"}
+,{"stream_name":"stderr","time":194.2935471,"data":"\n"}
+,{"stream_name":"stderr","time":194.293568608,"data":"Skipping the post-processing step due to the error above. You can still use SAM 2 and it's OK to ignore the error above, although some post-processing functionality may be limited (which doesn't affect the results in most cases; see https://github.com/facebookresearch/sam2/blob/main/INSTALL.md).\n"}
+,{"stream_name":"stderr","time":194.293573953,"data":"  masks = self._transforms.postprocess_masks(\n"}
+,{"stream_name":"stdout","time":197.366822074,"data":"A_hand_boxes {'layers': 6, 'recomposite_diff': 1.27, 'coverage': [0.022, 0.163, 0.014, 0.166, 0.025], 'seconds': 8.1}\n"}
+,{"stream_name":"stdout","time":197.367752674,"data":"B_grounding_dino {'layers': 6, 'recomposite_diff': 1.3, 'coverage': [0.0, 0.16, 0.015, 0.166, 0.025], 'seconds': 6.7, 'found': {'village houses': True, 'cottage': True, 'stone gate arch': True, 'big tree': True, 'red fox': True}, 'boxes': {'village houses': [61, 98, 475, 330], 'cottage': [61, 99, 475, 331], 'stone gate arch': [62, 246, 151, 327], 'big tree': [174, 0, 512, 356], 'red fox': [216, 333, 369, 450]}}\n"}
+,{"stream_name":"stdout","time":197.368561484,"data":"C_auto_largest {'layers': 6, 'recomposite_diff': 1.11, 'coverage': [0.032, 0.033, 0.059, 0.102, 0.103], 'seconds': 3.6}\n"}
+,{"stream_name":"stderr","time":203.157803433,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":203.157831598,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":203.328224293,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":203.328246438,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":204.06659092,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":204.154204481,"data":"[NbConvertApp] Writing 286546 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":206.586973068,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":207.118600426,"data":"[NbConvertApp] Writing 561081 bytes to __results__.html\n"}
+]

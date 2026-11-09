@@ -52,6 +52,9 @@
 | Stable-Layers | image to layers | fox & cottage | 2x T4 | 384 px, 5 layers, 4 Euler steps, CFG 1 | 39 |  | 5 | 21.0 | sky / meadow / cottage+tree / path / fox | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
 | Stable-Layers (Heun) | image to layers | fox & cottage | 2x T4 | 384 px, 5 layers, 4 Heun steps, CFG 1 | 67 |  | 5 | 20.6 | same clean split | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
 | ART+ | text + boxes to layers | forest / sketch prompts | 2x T4 | 512 px, 16 steps, CFG 4 | 315 | 10.0 | 4 |  | runs; output wrong (small image | [results_artplus_v5](../../prototype/kaggle/results_artplus_v5/) |
+| SAM2 + LaMa (hand boxes) | image to layers | fox & cottage | 1x T4 | SAM2 hiera-small box prompts, LaMa | 8 |  | 6 | 1.27 | houses / cottage / gate / tree / fox; blurry bg fill | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
+| SAM2 + LaMa (Grounding DINO nouns) | image to layers | fox & cottage | 1x T4 | Grounding DINO tiny + SAM2 + LaMa | 7 |  | 6 | 1.30 | fully automatic; missed village houses | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
+| SAM2 + LaMa (auto masks) | image to layers | fox & cottage | 1x T4 | automatic, 5 largest | 9 |  | 6 |  | fragments | [results_segment_inpaint_v2](../../prototype/kaggle/results_segment_inpaint_v2/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (30 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (33 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

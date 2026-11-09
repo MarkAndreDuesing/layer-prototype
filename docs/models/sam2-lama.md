@@ -32,6 +32,16 @@ Kaggle T4; SAM2 hiera-small automatic masks, the 4 largest object masks (< 35% o
 
 More in [../research/hosting.md §7](../research/hosting.md#7-matting-segmentation-and-helper-tools).
 
+## Fox & cottage (v2: one mask per named object)
+
+| Variant | Time | Result |
+|---|---|---|
+| A: hand boxes → SAM2 | 8 s | village house, cottage, gate arch, tree, fox: clean cut-outs; diff 1.27 |
+| **B: layer names → Grounding DINO → SAM2** (fully automatic) | 7 s | same as A except "village houses" (boxed the cottage instead); diff 1.30 |
+| C: automatic masks, 5 largest | 9 s | fragments (cloud, bush, lawn piece, path) |
+
+Weak spot of A/B: the LaMa background fill is blurry where large objects (cottage, tree) were removed; hidden parts of objects stay missing. Results: [`../../prototype/kaggle/results_segment_inpaint_v2/`](../../prototype/kaggle/results_segment_inpaint_v2/).
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.
@@ -42,11 +52,11 @@ Automatic "largest K" masks pick fragments (moon, stump, flame) instead of story
 
 ## Status
 
-Tried once (automatic masks).
+Works by noun (v2): Grounding DINO + SAM2 gives meaningful object layers fully automatically in about 7 s.
 
 ## Next attempts
 
-Segment by noun (points/boxes from the LLM breakdown, Grounded-SAM style); merge masks per object; LaMa vs SDXL inpaint; pix2gestalt amodal completion; fox & cottage.
+SDXL inpaint instead of LaMa for large holes; pix2gestalt amodal completion for occluded parts (cottage behind the tree); combine with RevealLayer's filled background.
 
 ## Sources
 
