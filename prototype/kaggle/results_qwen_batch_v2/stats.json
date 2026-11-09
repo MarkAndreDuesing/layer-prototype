@@ -1,0 +1,64 @@
+{
+ "weights_cached": true,
+ "input_read_MBps": 269.9,
+ "copy_to_local_s": 107.3,
+ "stage1_load_s": 70.7,
+ "stage1_encode_s": 3.8,
+ "stage1_peak_GB": [
+  8.82,
+  8.13
+ ],
+ "gguf_params_dequantized": 1,
+ "transformer_load_s": 59.2,
+ "mixed_smoke": {
+  "denoise_s": 85.7,
+  "s_per_step": 39.75,
+  "decode_s": 1.6
+ },
+ "denoise_s": 2113.3,
+ "s_per_step": 42.28,
+ "decode_s": 1.6,
+ "stage2_peak_GB": [
+  8.77,
+  8.43
+ ],
+ "layers": [
+  {
+   "size": [
+    640,
+    640
+   ],
+   "transparent_pct": 0.0,
+   "opaque_pct": 100.0,
+   "has_nan_black": false
+  },
+  {
+   "size": [
+    640,
+    640
+   ],
+   "transparent_pct": 97.7,
+   "opaque_pct": 0.7,
+   "has_nan_black": false
+  },
+  {
+   "size": [
+    640,
+    640
+   ],
+   "transparent_pct": 96.3,
+   "opaque_pct": 1.9,
+   "has_nan_black": false
+  },
+  {
+   "size": [
+    640,
+    640
+   ],
+   "transparent_pct": 94.4,
+   "opaque_pct": 3.8,
+   "has_nan_black": false
+  }
+ ],
+ "recomposite_mean_abs_diff": 4.13
+}

@@ -1,0 +1,19 @@
+{
+ "id": "markandreduesing/cache-speed-test",
+ "title": "cache-speed-test",
+ "code_file": "cache-speed-test.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": "true",
+ "enable_gpu": "false",
+ "enable_tpu": "false",
+ "enable_internet": "false",
+ "machine_shape": "",
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [
+  "markandreduesing/qwen-layered-weights-transformer",
+  "markandreduesing/qwen-layered-weights-base"
+ ],
+ "model_sources": []
+}

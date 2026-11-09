@@ -1,0 +1,12 @@
+# Only the team prototype and reports are tracked
+/*
+!/prototype/
+!/reports/
+!/.gitignore
+__pycache__/
+*.pyc
+prototype/crash.log
+prototype/scenes/
+prototype/kaggle/qwen_test_output*/
+prototype/kaggle/run_output/
+prototype/kaggle/*.zip

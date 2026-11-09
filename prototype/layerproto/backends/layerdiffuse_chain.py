@@ -1,0 +1,238 @@
+"""LayerDiffuse SDXL scene-to-layer chain (Zhang & Agrawala 2024, released SDXL conditional models).
+
+    background(prompt)                      plain SDXL -> opaque base layer
+    blend(scene, prompt)            bg2ble:   draws the new element INTO the current scene (lighting, perspective)
+    extract(scene, blended, prompt) bgble2fg: returns only that new element as an RGBA layer
+
+The two conditional models are weight deltas on the SDXL UNet (bg2ble: 206 tensors, bgble2fg: 1252 tensors,
+~1.8B params) plus 4 / 8 extra input channels. Holding three UNets would not fit in 16 GB RAM, so deltas are
+added and subtracted in place, streamed tensor by tensor from the safetensors file (memory overhead ~one tensor).
+Weights: rootonchair/diffuser_layerdiffuse (converted from LayerDiffusion/layerdiffusion-v1, OpenRAIL-M).
+"""
+from __future__ import annotations
+
+import os
+import sys
+import threading
+import time
+import types
+
+import numpy as np
+from PIL import Image
+
+_VENDOR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "vendor",
+                       "diffuser_layerdiffuse")
+if _VENDOR not in sys.path:
+    sys.path.insert(0, _VENDOR)
+
+REPO = "rootonchair/diffuser_layerdiffuse"
+DELTAS = {"bg2ble": ("diffuser_layer_xl_bg2ble.safetensors", 4),
+          "bgble2fg": ("diffuser_layer_xl_bgble2fg.safetensors", 8)}
+LD_REPO = "LayerDiffusion/layerdiffusion-v1"
+
+
+from .chain_base import ChainBackend, ChainParams
+
+
+class LayerDiffuseChain(ChainBackend):
+    name = "layerdiffuse-sdxl-chain"
+
+    def __init__(self, model: str = "stabilityai/sdxl-turbo", device: str = "auto", alpha_quality: str = "fast",
+                 variant: str | None = None):
+        os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+        self.model, self.alpha_quality, self._device_pref = model, alpha_quality, device
+        # SDXL base is downloaded as its fp16 files only; they are upcast to float32 on CPU
+        self.variant = variant if variant is not None else ("fp16" if "xl-base" in model else None)
+        self.turbo = "turbo" in model.lower()
+        self._lock = threading.Lock()
+        self._pipe = None
+        self._mode = "base"
+        self.load_seconds = 0.0
+
+    # ------------------------------------------------------------------ loading
+    def _load(self):
+        if self._pipe is not None:
+            return
+        import torch
+        from diffusers import StableDiffusionXLPipeline
+        from huggingface_hub import hf_hub_download
+        from safetensors.torch import load_file
+        from layer_diffuse.models import TransparentVAEDecoder
+
+        t0 = time.time()
+        dev = self._device_pref
+        if dev == "auto":
+            dev = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device, self.dtype = dev, (torch.float16 if dev == "cuda" else torch.float32)
+
+        vkw = {"variant": self.variant} if self.variant else {}
+        if self.dtype == torch.float16:
+            # SDXL's own VAE overflows in fp16; the reference LayerDiffuse scripts use the fp16-fix VAE
+            vae = TransparentVAEDecoder.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=self.dtype)
+        else:
+            vae = TransparentVAEDecoder.from_pretrained(self.model, subfolder="vae", torch_dtype=self.dtype, **vkw)
+        if self.dtype == torch.float16:
+            vae.config.force_upcast = False
+        vae.set_transparent_decoder(load_file(hf_hub_download(LD_REPO, "vae_transparent_decoder.safetensors")))
+        if self.alpha_quality == "fast":
+            vae.estimate_augmented = lambda pixel, latent: vae.estimate_single_pass(pixel, latent).clip(0, 1)
+        vae.mod_number = None  # opaque decode unless extracting a layer
+        self._vae = vae
+
+        pipe = StableDiffusionXLPipeline.from_pretrained(self.model, vae=vae, torch_dtype=self.dtype,
+                                                         add_watermarker=False, **vkw).to(dev)
+        if dev == "cpu":
+            for comp in pipe.components.values():
+                if hasattr(comp, "to") and hasattr(comp, "parameters"):
+                    comp.to(dtype=self.dtype)
+        self._pipe = pipe
+        self._sched_default = pipe.scheduler
+        # the reference bg2ble script blends with DPM++ 2M SDE Karras (SDXL base, 20 steps, CFG 7)
+        from diffusers import DPMSolverMultistepScheduler
+        self._sched_blend = DPMSolverMultistepScheduler.from_config(
+            pipe.scheduler.config, algorithm_type="sde-dpmsolver++", solver_order=2, use_karras_sigmas=True)
+        unet = pipe.unet
+        self._conv_base = unet.conv_in
+        self._conv = {"base": unet.conv_in}
+        for mode, (fname, extra) in DELTAS.items():
+            self._conv[mode] = self._make_conv(fname, extra)
+        self._patch_forward(unet)
+        self.load_seconds = time.time() - t0
+
+    def _make_conv(self, fname, extra):
+        """conv_in for a conditional mode: base weights padded with zeros for the extra channels, plus delta."""
+        import torch
+        from huggingface_hub import hf_hub_download
+        from safetensors import safe_open
+
+        base = self._conv_base
+        conv = torch.nn.Conv2d(base.in_channels + extra, base.out_channels, base.kernel_size, base.stride,
+                               base.padding).to(device=self.device, dtype=self.dtype)
+        with torch.no_grad(), safe_open(hf_hub_download(REPO, fname), "pt") as f:
+            w = torch.zeros_like(conv.weight)
+            w[:, :base.in_channels] = base.weight
+            conv.weight.copy_(w + f.get_tensor("conv_in.weight").to(device=self.device, dtype=self.dtype))
+            b = base.bias.clone()
+            if "conv_in.bias" in f.keys():
+                b = b + f.get_tensor("conv_in.bias").to(device=self.device, dtype=self.dtype)
+            conv.bias.copy_(b)
+        return conv
+
+    def _patch_forward(self, unet):
+        orig = unet.forward
+        unet._ld_cond = None
+
+        def forward(self_, sample, timestep, *args, **kwargs):
+            if self_._ld_cond is not None:
+                c = self_._ld_cond.to(device=sample.device, dtype=sample.dtype)
+                if c.shape[0] != sample.shape[0]:  # classifier-free guidance doubles the batch
+                    c = c.repeat(sample.shape[0] // c.shape[0], 1, 1, 1)
+                sample = torch_cat([sample, c])
+            return orig(sample, timestep, *args, **kwargs)
+
+        import torch
+        torch_cat = lambda xs: torch.cat(xs, dim=1)  # noqa: E731
+        unet.forward = types.MethodType(forward, unet)
+
+    def _stream_delta(self, mode: str, sign: float):
+        import torch
+        from huggingface_hub import hf_hub_download
+        from safetensors import safe_open
+
+        params = dict(self._pipe.unet.named_parameters())
+        with torch.no_grad(), safe_open(hf_hub_download(REPO, DELTAS[mode][0]), "pt") as f:
+            for key in f.keys():
+                if key.startswith("conv_in."):
+                    continue
+                p = params[key]
+                p.add_(f.get_tensor(key).to(device=p.device, dtype=p.dtype), alpha=sign)
+
+    def _set_mode(self, mode: str):
+        if mode == self._mode:
+            return
+        if self._mode != "base":
+            self._stream_delta(self._mode, -1.0)
+        if mode != "base":
+            self._stream_delta(mode, +1.0)
+        self._pipe.unet.conv_in = self._conv[mode]
+        self._mode = mode
+
+    # ------------------------------------------------------------------ helpers
+    def _encode(self, img: Image.Image, w: int, h: int):
+        import torch
+        from layer_diffuse.utils import crop_and_resize_image, rgba2rgbfp32
+
+        arr = crop_and_resize_image(rgba2rgbfp32(np.array(img.convert("RGBA"))), 1, h, w)
+        t = torch.from_numpy(np.ascontiguousarray(arr[None].copy())).movedim(-1, 1)
+        t = t.to(device=self.device, dtype=self.dtype) * 2.0 - 1.0
+        with torch.no_grad():
+            lat = self._pipe.vae.encode(t).latent_dist.mean
+        return lat * self._pipe.vae.config.scaling_factor
+
+    def _run(self, prompt, seed, w, h, steps, guidance, negative=""):
+        import torch
+
+        return self._pipe(prompt=prompt, negative_prompt=negative or None, width=w, height=h,
+                          num_inference_steps=steps, guidance_scale=guidance,
+                          generator=torch.Generator("cpu").manual_seed(int(seed)), return_dict=False)[0][0]
+
+    # ------------------------------------------------------------------ the chain
+    # ---- ChainBackend API (ChainParams) ----------------------------------------
+    def background(self, p, seed=None, **kw) -> Image.Image:  # type: ignore[override]
+        if isinstance(p, ChainParams):
+            return self._background(p.prompt, p.seed, p.width, p.height, p.steps, p.guidance, p.negative_prompt)
+        return self._background(p, seed, **kw)
+
+    def blend(self, scene, p, seed=None, **kw) -> Image.Image:  # type: ignore[override]
+        if isinstance(p, ChainParams):
+            return self._blend(scene, p.prompt, p.seed, p.width, p.height, p.steps, p.guidance, p.negative_prompt)
+        return self._blend(scene, p, seed, **kw)
+
+    def extract(self, scene, blended, p, seed=None, **kw) -> Image.Image:  # type: ignore[override]
+        if isinstance(p, ChainParams):
+            return self._extract(scene, blended, p.prompt, p.seed, p.width, p.height, p.steps, p.guidance,
+                                 p.negative_prompt)
+        return self._extract(scene, blended, p, seed, **kw)
+
+    # ---- implementation ------------------------------------------------------------
+    def _background(self, prompt, seed, w=512, h=512, steps=4, guidance=1.0, negative="") -> Image.Image:
+        with self._lock:
+            self._load()
+            self._set_mode("base")
+            self._pipe.unet._ld_cond, self._vae.mod_number = None, None
+            img = self._run(prompt, seed, w, h, steps, guidance, negative).convert("RGBA")
+            img.putalpha(255)
+            return img
+
+    def _blend(self, scene: Image.Image, prompt, seed, w=512, h=512, steps=4, guidance=1.0, negative="") -> Image.Image:
+        """bg2ble: the scene with the new element drawn into it (opaque RGB)."""
+        with self._lock:
+            self._load()
+            self._set_mode("bg2ble")
+            self._pipe.unet._ld_cond, self._vae.mod_number = self._encode(scene, w, h), None
+            if not self.turbo:
+                self._pipe.scheduler = self._sched_blend
+            try:
+                return self._run(prompt, seed, w, h, steps, guidance, negative).convert("RGBA")
+            finally:
+                self._pipe.unet._ld_cond = None
+                self._pipe.scheduler = self._sched_default
+
+    def _extract(self, scene: Image.Image, blended: Image.Image, prompt, seed, w=512, h=512, steps=4, guidance=1.0,
+                 negative="") -> Image.Image:
+        """bgble2fg: only the new element, as a transparent RGBA layer aligned with the scene."""
+        import torch
+
+        with self._lock:
+            self._load()
+            self._set_mode("bgble2fg")
+            cond = torch.cat([self._encode(scene, w, h), self._encode(blended, w, h)], dim=1)
+            self._pipe.unet._ld_cond, self._vae.mod_number = cond, 1
+            try:
+                return self._run(prompt, seed, w, h, steps, guidance, negative).convert("RGBA")
+            finally:
+                self._pipe.unet._ld_cond, self._vae.mod_number = None, None
+
+    def info(self) -> dict:
+        return {"backend": self.name, "model": self.model, "device": getattr(self, "device", "not loaded"),
+                "mode": self._mode, "load_seconds": round(self.load_seconds, 1)}

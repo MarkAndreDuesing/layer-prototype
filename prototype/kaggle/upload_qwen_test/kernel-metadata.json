@@ -1,0 +1,19 @@
+{
+ "id": "markandreduesing/qwen-layered-feasibility",
+ "title": "qwen-layered-feasibility",
+ "code_file": "qwen-layered-feasibility.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": "true",
+ "enable_gpu": "true",
+ "enable_tpu": "false",
+ "enable_internet": "true",
+ "machine_shape": "",
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [
+  "markandreduesing/qwen-layered-weights-transformer",
+  "markandreduesing/qwen-layered-weights-base"
+ ],
+ "model_sources": []
+}
