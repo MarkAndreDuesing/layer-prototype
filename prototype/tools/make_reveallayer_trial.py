@@ -66,6 +66,11 @@ for _sub in transp_vae.modules():
     if _sub is not transp_vae and hasattr(_sub, "decode"): _sub.register_forward_pre_hook(_to32, with_kwargs=True)
 _orig_dec = transp_vae.decode
 transp_vae.decode = lambda *a, **k: _orig_dec(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k)
+# the scene VAE is switched to fp32 by our decode patch; the pipeline also encodes with it in fp16 -> keep it fp32, cast inputs
+pipe.vae.float()
+for _name in ("encode", "decode"):
+    _f = getattr(pipe.vae, _name)
+    setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))
 """
 head = head.replace("transp_vae.to(D0).eval()", "transp_vae.to(D0).eval()" + XVAE_FIX, 1)
 assert "_to32" in head

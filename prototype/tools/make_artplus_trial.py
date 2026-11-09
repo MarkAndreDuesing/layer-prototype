@@ -124,6 +124,15 @@ for _v in (transp_vae, pipe.vae):
         if hasattr(_v, _name):
             _f = getattr(_v, _name)
             setattr(_v, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))
+# run 4 OOM'd in the fp32 VAE decode with the transformer still on GPU 0: offload it before decoding, slice/tile the VAE
+pipe.vae.enable_slicing(); pipe.vae.enable_tiling()
+for _v in (transp_vae, pipe.vae):
+    _dec = _v.decode
+    def _offload_then(*a, _d=_dec, **k):
+        if next(t.parameters()).device.type == "cuda":
+            t.to("cpu"); torch.cuda.empty_cache()
+        return _d(*a, **k)
+    _v.decode = _offload_then
 print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_allocated(i)/2**30, 1) for i in range(2)], flush=True)
 
 def boxes16(bs):
@@ -133,6 +142,7 @@ os.makedirs("/kaggle/working/art_out", exist_ok=True)
 for k, inp in enumerate(LAYOUTS):
     for steps in (16,):
         try:
+            t.to(D0); torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats(0); t0 = time.time()
             with torch.inference_mode():
                 x_hat, image, _ = pipe(prompt=inp["whole_image"]["caption"], validation_box=boxes16(inp["layout"]),
