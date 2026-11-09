@@ -1,0 +1,150 @@
+{
+ "A heavy rainstorm begins": {
+  "strategy": "bg_relight",
+  "background_prompt": "rainy forest at night",
+  "layers": [
+   {
+    "name": "night forest background",
+    "action": "relight",
+    "prompt": "rainy forest at night"
+   },
+   {
+    "name": "tall bare tree",
+    "action": "relight",
+    "prompt": "tall bare tree in rain"
+   },
+   {
+    "name": "pine tree",
+    "action": "relight",
+    "prompt": "pine tree in rain"
+   },
+   {
+    "name": "campfire and wooden chair",
+    "action": "relight",
+    "prompt": "campfire with wet wood and wooden chair in rain"
+   }
+  ],
+  "effects": [
+   "rain"
+  ],
+  "reason": "Heavy rainstorm changes weather and lighting, so all visible layers need relighting to match the new conditions. The rain effect is added as an overlay."
+ },
+ "Thick fog rolls in from the mountains": {
+  "strategy": "effects",
+  "background_prompt": "foggy night forest",
+  "layers": [
+   {
+    "name": "night forest background",
+    "action": "relight",
+    "prompt": "foggy night forest"
+   },
+   {
+    "name": "tall bare tree",
+    "action": "relight",
+    "prompt": "tall bare tree in fog"
+   },
+   {
+    "name": "pine tree",
+    "action": "relight",
+    "prompt": "pine tree in fog"
+   },
+   {
+    "name": "campfire and wooden chair",
+    "action": "relight",
+    "prompt": "campfire with smoking logs and wooden chair in fog"
+   }
+  ],
+  "effects": [
+   "fog"
+  ],
+  "reason": "Thick fog rolls in from the mountains is an overlay effect that affects the entire scene without changing object geometry or identity. All layers need relighting to match the new foggy atmosphere. The event doesn't change object shapes, so no recompose or reprompt is needed. Effects list includes 'fog' as the physical overlay."
+ },
+ "The campfire goes out and it gets very dark": {
+  "strategy": "bg_relight",
+  "background_prompt": "dark forest at night",
+  "layers": [
+   {
+    "name": "night forest background",
+    "action": "relight",
+    "prompt": "dark forest at night"
+   },
+   {
+    "name": "tall bare tree",
+    "action": "relight",
+    "prompt": "tall bare tree"
+   },
+   {
+    "name": "pine tree",
+    "action": "relight",
+    "prompt": "pine tree"
+   },
+   {
+    "name": "campfire and wooden chair",
+    "action": "reprompt",
+    "prompt": "extinguished campfire with smoking logs and a wooden chair"
+   }
+  ],
+  "effects": [
+   "night"
+  ],
+  "reason": "The event changes weather/light/time (campfire going out makes it very dark), so strategy is bg_relight. Background and all trees get relighted for new darkness. Campfire goes out but the chair stays, so reprompt for the whole layer. Effects include night since it's very dark."
+ },
+ "Snow piles up on everything": {
+  "strategy": "recompose",
+  "background_prompt": "snow-covered forest at night",
+  "layers": [
+   {
+    "name": "night forest background",
+    "action": "relight",
+    "prompt": "snow-covered forest at night"
+   },
+   {
+    "name": "tall bare tree",
+    "action": "reprompt",
+    "prompt": "tall bare tree covered in snow"
+   },
+   {
+    "name": "pine tree",
+    "action": "reprompt",
+    "prompt": "pine tree covered in snow"
+   },
+   {
+    "name": "campfire and wooden chair",
+    "action": "reprompt",
+    "prompt": "campfire covered in snow with a wooden chair covered in snow"
+   }
+  ],
+  "effects": [
+   "snow"
+  ],
+  "reason": "Snow piles up on everything, so all objects get covered in snow. This changes geometry (snow accumulation) and requires reprompting each layer. Background is relighted for night with snow."
+ },
+ "The wooden chair turns into solid gold": {
+  "strategy": "per_layer",
+  "background_prompt": "night forest background",
+  "layers": [
+   {
+    "name": "night forest background",
+    "action": "keep",
+    "prompt": "night forest background"
+   },
+   {
+    "name": "tall bare tree",
+    "action": "keep",
+    "prompt": "tall bare tree"
+   },
+   {
+    "name": "pine tree",
+    "action": "keep",
+    "prompt": "pine tree"
+   },
+   {
+    "name": "campfire and wooden chair",
+    "action": "reprompt",
+    "prompt": "solid gold campfire and wooden chair"
+   }
+  ],
+  "effects": [],
+  "reason": "The event changes the wooden chair to solid gold, so the campfire and wooden chair layer needs reprompting to reflect the new material. Other layers remain unchanged as the event only affects the chair."
+ }
+}
