@@ -180,7 +180,7 @@ Phase 1 ([../docs/findings-log.md](../docs/findings-log.md), [../experiments/CON
 | SD 1.5 + LCM-LoRA + ControlNet | Best for sketch fidelity | Followed the layout best, but slower and rougher; kept 2/12 with a sketch, 0/12 text-only. **Dropped** |
 | Best overall on the laptop | SDXL-Turbo img2img | SDXL-Turbo img2img (Strength 0.8, 4 steps, Guidance 1): all 8 favourites |
 
-The speed estimates were about 4–10× too optimistic. They scaled FastSD CPU's published OpenVINO + tiny-decoder timings, while the tested setup used LCM mode with the full decoder (see [../docs/fastsd-cpu/USAGE.md](../docs/fastsd-cpu/USAGE.md)). OpenVINO and the tiny decoder were not measured on this laptop.
+The speed estimates were about 4–10× too optimistic. They scaled FastSD CPU's published OpenVINO + tiny-decoder timings, while the tested setup used LCM mode with the full decoder (see [../docs/fastsd-cpu/USAGE.md](../docs/fastsd-cpu/USAGE.md)). OpenVINO and the tiny decoder were not measured on this laptop. Options to close the gap, with a test order: [research_cpu_speedups.md](research_cpu_speedups.md).
 
 ## 10. Differences from the other reports
 

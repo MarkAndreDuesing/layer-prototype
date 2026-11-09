@@ -12,7 +12,7 @@ Full report: [Image generation models hosting and costs.md](../reports/Image%20g
 - **APIs:** DeepSeek and Kimi have no image generation. Open models cost about $0.001–0.015 per image on fal, WaveSpeed, Runware or Together. OpenRouter adds a 5.5% top-up fee ($0.80 minimum).
 - **Price-to-performance:** Pareto frontier over 101 arena models; the knee is at about $10 per 1,000 images (Muse Image). FLUX 3 Image Klein is the cheapest open-weights model on the frontier ($9 per 1,000). Script: [../research_notes/Image generation models hosting and costs/](../research_notes/Image%20generation%20models%20hosting%20and%20costs/).
 - **Sketch input** needs img2img, a ControlNet or reference editing. Z-Image Turbo (Apache-2.0, fits 16 GB) and SDXL have scribble ControlNets; FLUX.2/3 Klein only reference editing.
-- **CPU-only on the laptop:** only small distilled models (SD-Turbo, SDXL-Turbo, SDXS, SD 1.5 + LCM-LoRA) were expected to stay under 3 minutes. Phase 1 tested three of them. The research-time speed estimates (4–8 s per image) were about 4–10× too optimistic; measured: about 20 s and 58 s.
+- **CPU-only on the laptop:** only small distilled models (SD-Turbo, SDXL-Turbo, SDXS, SD 1.5 + LCM-LoRA) were expected to stay under 3 minutes. Phase 1 tested three of them. The research-time speed estimates (4–8 s per image) were about 4–10× too optimistic; measured: about 20 s and 58 s. They scaled published timings that used OpenVINO, the tiny decoder and 1 step, none of which the tested setup used. Speed-up options and a test order: [research_cpu_speedups.md](../reports/research_cpu_speedups.md).
 
 ## Phase 1: sketch-to-image on a CPU laptop (FastSD CPU)
 
