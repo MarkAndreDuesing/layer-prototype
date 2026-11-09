@@ -27,7 +27,7 @@ Found nothing to peel in painterly scenes at default settings.
 
 ## Status
 
-Tried once.
+**First results were invalid:** diagnostics show the BiRefNet matting output is exactly 0 everywhere (weights not materialised under newer transformers), so LayerD was never really tested. Fix in progress (forced full load).
 
 ## Next attempts
 

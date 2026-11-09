@@ -34,3 +34,6 @@ SAM2 + LaMa (Grounding DINO nouns),image to layers,fox & cottage,1x T4,"Groundin
 SAM2 + LaMa (auto masks),image to layers,fox & cottage,1x T4,"automatic, 5 largest",9,,6,,results_segment_inpaint_v2,2026-11-10,fragments
 RevealLayer,image + boxes to layers,fox & cottage,2x T4,"512 px, 5 boxes, 12 steps, true_gs 1",140,11.2,5+bg,,results_reveallayer_fox_v15,2026-11-10,filled bg + cottage / gate / tree / fox
 RevealLayer,image + boxes to layers,fox & cottage,2x T4,"512 px, 5 boxes, 16 steps, true_gs 3.5",334,11.2,5+bg,,results_reveallayer_fox_v15,2026-11-10,slightly cleaner edges
+Qwen-Image-2.1 Turbo,extract object,fox & cottage,2x T4,"512 px, 8 steps",27,10.7,1,,results_qwen21_fox,2026-11-10,clean fox in place
+Qwen-Image-2.1 Turbo,edit RGBA layer (fox to wolf),fox & cottage,2x T4,"512 px, 8 steps",21,10.7,1,,results_qwen21_fox,2026-11-10,alpha kept
+Qwen-Image-2.1 Turbo,scene event edit (night / rain),fox & cottage,2x T4,"512 px, 8 steps",22,10.7,,,results_qwen21_fox,2026-11-10,strong; composition kept

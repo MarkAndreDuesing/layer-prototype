@@ -18,7 +18,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [~] **LayerD:** 5-variant CPU sweep on fox & cottage + forest running (threshold, no palette refinement, 1024 px matting, 5 iterations)
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [ ] SAM2 route: SDXL inpaint for large holes, pix2gestalt amodal completion
-- [~] **Qwen-Image-2.1:** fox & cottage notebook ready (extract fox / cottage, fox → wolf RGBA edit, night and heavy-rain edits, scene from caption, lantern prop); halo fix open
+- [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)
+- [ ] Qwen-Image-2.1: re-split the night / rain composites with Qwen-Image-Layered (story-event strategy a), cottage extraction without the fox, halo fix on generated objects
 - [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU

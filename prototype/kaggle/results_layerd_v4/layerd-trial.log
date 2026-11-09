@@ -1,0 +1,109 @@
+[{"stream_name":"stderr","time":7.662418899,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.662476809,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.724773611,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.724809762,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.724814422,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.724818251,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.370348229,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.370382079,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.370387119,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.370418148,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":34.044220905,"data":"pip rc 0 ace-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.044263505,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.044268115,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.044272245,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.044276185,"data":"\n"}
+,{"stream_name":"stderr","time":48.849023975,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":48.849061005,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":48.849066685,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":48.849071745,"data":"\n"}
+,{"stream_name":"stderr","time":48.849076385000004,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":48.849081415,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":48.849086425,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":52.901860494,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":52.901898814,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":52.901904324,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":52.901909024,"data":"\n"}
+,{"stream_name":"stderr","time":52.901931214,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":52.901933584,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":52.901935564,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":56.779550553,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":56.779585313,"data":"I0000 00:00:1794267622.418656      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":56.981217811,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":56.981244581,"data":"I0000 00:00:1794267622.418656      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":56.981249121,"data":"\n"}
+,{"stream_name":"stderr","time":56.981252531,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":56.981255651,"data":"I0000 00:00:1794267622.418656      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":68.990198777,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":68.990238297,"data":"I0000 00:00:1794267636.321854      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":69.192728465,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":69.192760975,"data":"I0000 00:00:1794267636.321854      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":69.192766295,"data":"\n"}
+,{"stream_name":"stderr","time":69.192769545,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":69.192772945,"data":"I0000 00:00:1794267636.321854      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":70.877943005,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":70.87798415500001,"data":"\n"}
+,{"stream_name":"stderr","time":70.877988495,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":81.941532216,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":81.941573477,"data":"\n"}
+,{"stream_name":"stderr","time":81.941579086,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":82.401297039,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":82.525358112,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r  0%|          | 384k/196M [00:00\u003c01:04, 3.20MB/s]\n"}
+,{"stream_name":"stderr","time":82.629174656,"data":"\r  0%|          | 384k/196M [00:00\u003c01:04, 3.20MB/s]\r  1%|          | 1.00M/196M [00:00\u003c00:41, 4.91MB/s]\n"}
+,{"stream_name":"stderr","time":82.733840519,"data":"\r  1%|          | 1.00M/196M [00:00\u003c00:41, 4.91MB/s]\r  1%|          | 1.75M/196M [00:00\u003c00:33, 6.04MB/s]\n"}
+,{"stream_name":"stderr","time":82.838251343,"data":"\r  1%|          | 1.75M/196M [00:00\u003c00:33, 6.04MB/s]\r  1%|▏         | 2.62M/196M [00:00\u003c00:28, 7.11MB/s]\n"}
+,{"stream_name":"stderr","time":82.940348857,"data":"\r  1%|▏         | 2.62M/196M [00:00\u003c00:28, 7.11MB/s]\r  2%|▏         | 3.62M/196M [00:00\u003c00:24, 8.20MB/s]\n"}
+,{"stream_name":"stderr","time":83.041235201,"data":"\r  2%|▏         | 3.62M/196M [00:00\u003c00:24, 8.20MB/s]\r  2%|▏         | 4.75M/196M [00:00\u003c00:21, 9.37MB/s]\n"}
+,{"stream_name":"stderr","time":83.147341035,"data":"\r  2%|▏         | 4.75M/196M [00:00\u003c00:21, 9.37MB/s]\r  3%|▎         | 6.12M/196M [00:00\u003c00:18, 10.8MB/s]\n"}
+,{"stream_name":"stderr","time":83.255923398,"data":"\r  3%|▎         | 6.12M/196M [00:00\u003c00:18, 10.8MB/s]\r  4%|▍         | 7.75M/196M [00:00\u003c00:15, 12.4MB/s]\n"}
+,{"stream_name":"stderr","time":83.357147882,"data":"\r  4%|▍         | 7.75M/196M [00:00\u003c00:15, 12.4MB/s]\r  5%|▍         | 9.50M/196M [00:00\u003c00:13, 14.1MB/s]\n"}
+,{"stream_name":"stderr","time":83.546806121,"data":"\r  5%|▍         | 9.50M/196M [00:00\u003c00:13, 14.1MB/s]\r  6%|▌         | 10.9M/196M [00:01\u003c00:17, 11.2MB/s]\n"}
+,{"stream_name":"stderr","time":83.649849095,"data":"\r  6%|▌         | 10.9M/196M [00:01\u003c00:17, 11.2MB/s]\r  7%|▋         | 13.1M/196M [00:01\u003c00:13, 14.2MB/s]\n"}
+,{"stream_name":"stderr","time":83.753766149,"data":"\r  7%|▋         | 13.1M/196M [00:01\u003c00:13, 14.2MB/s]\r  8%|▊         | 15.8M/196M [00:01\u003c00:10, 17.5MB/s]\n"}
+,{"stream_name":"stderr","time":83.855507713,"data":"\r  8%|▊         | 15.8M/196M [00:01\u003c00:10, 17.5MB/s]\r 10%|▉         | 18.8M/196M [00:01\u003c00:08, 21.2MB/s]\n"}
+,{"stream_name":"stderr","time":84.058284991,"data":"\r 10%|▉         | 18.8M/196M [00:01\u003c00:08, 21.2MB/s]\r 11%|█         | 21.0M/196M [00:01\u003c00:10, 17.0MB/s]\n"}
+,{"stream_name":"stderr","time":84.159782175,"data":"\r 11%|█         | 21.0M/196M [00:01\u003c00:10, 17.0MB/s]\r 13%|█▎        | 24.8M/196M [00:01\u003c00:08, 22.2MB/s]\n"}
+,{"stream_name":"stderr","time":84.267163258,"data":"\r 13%|█▎        | 24.8M/196M [00:01\u003c00:08, 22.2MB/s]\r 15%|█▍        | 28.5M/196M [00:01\u003c00:06, 26.0MB/s]\n"}
+,{"stream_name":"stderr","time":84.432525418,"data":"\r 15%|█▍        | 28.5M/196M [00:01\u003c00:06, 26.0MB/s]\r 16%|█▌        | 31.2M/196M [00:02\u003c00:07, 22.9MB/s]\n"}
+,{"stream_name":"stderr","time":84.534287993,"data":"\r 16%|█▌        | 31.2M/196M [00:02\u003c00:07, 22.9MB/s]\r 19%|█▊        | 36.6M/196M [00:02\u003c00:05, 30.8MB/s]\n"}
+,{"stream_name":"stderr","time":84.73533189,"data":"\r 19%|█▊        | 36.6M/196M [00:02\u003c00:05, 30.8MB/s]\r 20%|██        | 40.1M/196M [00:02\u003c00:06, 25.7MB/s]\n"}
+,{"stream_name":"stderr","time":84.838463084,"data":"\r 20%|██        | 40.1M/196M [00:02\u003c00:06, 25.7MB/s]\r 24%|██▍       | 47.0M/196M [00:02\u003c00:04, 35.9MB/s]\n"}
+,{"stream_name":"stderr","time":85.023631371,"data":"\r 24%|██▍       | 47.0M/196M [00:02\u003c00:04, 35.9MB/s]\r 26%|██▌       | 51.0M/196M [00:02\u003c00:04, 31.0MB/s]\n"}
+,{"stream_name":"stderr","time":85.124759957,"data":"\r 26%|██▌       | 51.0M/196M [00:02\u003c00:04, 31.0MB/s]\r 30%|███       | 59.2M/196M [00:02\u003c00:03, 43.2MB/s]\n"}
+,{"stream_name":"stderr","time":85.313165996,"data":"\r 30%|███       | 59.2M/196M [00:02\u003c00:03, 43.2MB/s]\r 33%|███▎      | 64.1M/196M [00:02\u003c00:03, 37.2MB/s]\n"}
+,{"stream_name":"stderr","time":85.500721882,"data":"\r 33%|███▎      | 64.1M/196M [00:02\u003c00:03, 37.2MB/s]\r 36%|███▌      | 70.1M/196M [00:03\u003c00:03, 36.0MB/s]\n"}
+,{"stream_name":"stderr","time":86.056175411,"data":"\r 36%|███▌      | 70.1M/196M [00:03\u003c00:03, 36.0MB/s]\r 41%|████      | 80.1M/196M [00:03\u003c00:04, 25.8MB/s]\n"}
+,{"stream_name":"stderr","time":86.59186564,"data":"\r 41%|████      | 80.1M/196M [00:03\u003c00:04, 25.8MB/s]\r 46%|████▌     | 90.1M/196M [00:04\u003c00:04, 23.0MB/s]\n"}
+,{"stream_name":"stderr","time":86.780284326,"data":"\r 46%|████▌     | 90.1M/196M [00:04\u003c00:04, 23.0MB/s]\r 51%|█████     | 100M/196M [00:04\u003c00:03, 29.0MB/s] \n"}
+,{"stream_name":"stderr","time":86.976286297,"data":"\r 51%|█████     | 100M/196M [00:04\u003c00:03, 29.0MB/s] \r 56%|█████▌    | 110M/196M [00:04\u003c00:02, 34.3MB/s]\n"}
+,{"stream_name":"stderr","time":87.155255118,"data":"\r 56%|█████▌    | 110M/196M [00:04\u003c00:02, 34.3MB/s]\r 61%|██████    | 120M/196M [00:04\u003c00:02, 39.6MB/s]\n"}
+,{"stream_name":"stderr","time":87.345428016,"data":"\r 61%|██████    | 120M/196M [00:04\u003c00:02, 39.6MB/s]\r 66%|██████▋   | 130M/196M [00:04\u003c00:01, 43.5MB/s]\n"}
+,{"stream_name":"stderr","time":87.529351194,"data":"\r 66%|██████▋   | 130M/196M [00:04\u003c00:01, 43.5MB/s]\r 71%|███████▏  | 140M/196M [00:05\u003c00:01, 47.0MB/s]\n"}
+,{"stream_name":"stderr","time":87.718804651,"data":"\r 71%|███████▏  | 140M/196M [00:05\u003c00:01, 47.0MB/s]\r 76%|███████▋  | 150M/196M [00:05\u003c00:00, 49.2MB/s]\n"}
+,{"stream_name":"stderr","time":87.915471531,"data":"\r 76%|███████▋  | 150M/196M [00:05\u003c00:00, 49.2MB/s]\r 82%|████████▏ | 160M/196M [00:05\u003c00:00, 50.5MB/s]\n"}
+,{"stream_name":"stderr","time":88.10436594,"data":"\r 82%|████████▏ | 160M/196M [00:05\u003c00:00, 50.5MB/s]\r 87%|████████▋ | 170M/196M [00:05\u003c00:00, 51.9MB/s]\n"}
+,{"stream_name":"stderr","time":88.334292296,"data":"\r 87%|████████▋ | 170M/196M [00:05\u003c00:00, 51.9MB/s]\r 92%|█████████▏| 180M/196M [00:05\u003c00:00, 49.8MB/s]\n"}
+,{"stream_name":"stderr","time":88.528849074,"data":"\r 92%|█████████▏| 180M/196M [00:05\u003c00:00, 49.8MB/s]\r 97%|█████████▋| 190M/196M [00:06\u003c00:00, 51.0MB/s]\n"}
+,{"stream_name":"stderr","time":88.550420174,"data":"\r 97%|█████████▋| 190M/196M [00:06\u003c00:00, 51.0MB/s]\r100%|██████████| 196M/196M [00:06\u003c00:00, 33.5MB/s]\n"}
+,{"stream_name":"stderr","time":89.081601192,"data":"\r100%|██████████| 196M/196M [00:06\u003c00:00, 33.5MB/s]\n"}
+,{"stream_name":"stderr","time":89.081634282,"data":"\n"}
+,{"stream_name":"stderr","time":89.081638402,"data":"\n"}
+,{"stream_name":"stdout","time":121.926711088,"data":"default fox_cottage {'layers': 1, 'seconds': 32.8, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":154.410096327,"data":"default forest {'layers': 1, 'seconds': 32.5, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":188.648701089,"data":"th0.001_iter5 fox_cottage {'layers': 1, 'seconds': 32.9, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":221.728223155,"data":"th0.001_iter5 forest {'layers': 1, 'seconds': 33.1, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":254.91843926,"data":"norefine_iter5 fox_cottage {'layers': 1, 'seconds': 31.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":287.99883898,"data":"norefine_iter5 forest {'layers': 1, 'seconds': 33.1, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":321.230556732,"data":"norefine_nounblend_iter5 fox_cottage {'layers': 1, 'seconds': 31.9, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":353.375180673,"data":"norefine_nounblend_iter5 forest {'layers': 1, 'seconds': 32.1, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":387.08009651,"data":"matt1024_norefine_iter5 fox_cottage {'layers': 1, 'seconds': 32.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":420.434981601,"data":"matt1024_norefine_iter5 forest {'layers': 1, 'seconds': 33.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stderr","time":426.451937757,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":426.451986857,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":426.615200951,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":426.615235491,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":427.353458025,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":427.428438721,"data":"[NbConvertApp] Writing 303681 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":429.928918415,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":430.390210525,"data":"[NbConvertApp] Writing 582852 bytes to __results__.html\n"}
+]

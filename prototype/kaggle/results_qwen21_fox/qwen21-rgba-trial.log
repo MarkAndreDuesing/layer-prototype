@@ -1,0 +1,50 @@
+[{"stream_name":"stderr","time":7.05231443,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.052351651,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.073230504,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.073293441,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.073299664,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.073303549,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.710192806,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.710224198,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.71023077,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.710235363,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.949711047,"data":"pip -q install 'transformers\u003e=5.17' gguf\u003e=0.10 accelerate git+https://github.com/huggingface/diffusers\n"}
+,{"stream_name":"stdout","time":64.848708951,"data":"diffusers 0.42.0.dev0 torch 2.11.0+cu130\n"}
+,{"stream_name":"stderr","time":65.303366021,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":65.303396932,"data":"\n"}
+,{"stream_name":"stderr","time":65.303403017,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":172.059894354,"data":"downloads done 162 s\n"}
+,{"stream_name":"stdout","time":175.053280756,"data":"transformer: GGUF Q4_K_S\n"}
+,{"stream_name":"stdout","time":175.062016678,"data":"dequantized non-linear GGUF params: 1\n"}
+,{"stream_name":"stderr","time":176.341899608,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":176.341929051,"data":"\n"}
+,{"stream_name":"stderr","time":176.341947709,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":239.25878438,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":239.259636492,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":239.259648528,"data":"\n"}
+,{"stream_name":"stderr","time":239.259652941,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":239.259657979,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":248.985269971,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":248.985358893,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stderr","time":248.985366769,"data":"\n"}
+,{"stream_name":"stderr","time":248.985370756,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":248.98537522,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stdout","time":251.855430918,"data":"loaded 242 s; GiB [8.0, 12.7]\n"}
+,{"stream_name":"stdout","time":278.853784938,"data":"extract_fox: 27s, RGBA, transparent 97%, opaque 2%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":299.113746029,"data":"extract_fox_wrapper: 20s, RGBA, transparent 100%, opaque 0%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":319.83526597,"data":"extract_cottage: 21s, RGBA, transparent 70%, opaque 28%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":341.229740263,"data":"edit_rgba_fox_to_wolf: 21s, RGBA, transparent 97%, opaque 2%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":362.970775331,"data":"edit_scene_night: 22s, RGBA, transparent 0%, opaque 100%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":385.234539296,"data":"edit_scene_heavy_rain: 22s, RGBA, transparent 0%, opaque 100%, peak GiB 10.7\n"}
+,{"stream_name":"stdout","time":404.458919282,"data":"t2i_scene_from_caption: 19s, RGBA, transparent 0%, opaque 100%, peak GiB 9.7\n"}
+,{"stream_name":"stdout","time":423.677964446,"data":"t2i_rgba_lantern: 19s, RGBA, transparent 73%, opaque 23%, peak GiB 9.7\n"}
+,{"stream_name":"stdout","time":423.67929809,"data":"total 414 s\n"}
+,{"stream_name":"stderr","time":430.156815625,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":430.156845437,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":430.424877667,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":430.424904844,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":431.440752988,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":431.545878334,"data":"[NbConvertApp] Writing 341779 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":434.207747338,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":435.021856223,"data":"[NbConvertApp] Writing 602472 bytes to __results__.html\n"}
+]

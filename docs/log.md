@@ -359,6 +359,14 @@ Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with 
 | LayerD v2 | CPU sweep pushed: lower alpha threshold, no palette refinement, 1024 px matting, 5 iterations; logs alpha coverage per step |
 | Qwen-Image-2.1 | fox & cottage notebook written (extraction, fox → wolf RGBA edit, night / heavy-rain edits, scene from caption) |
 
+## Phase 10: Qwen-Image-2.1 on fox & cottage, LayerD root cause (2026-11-10)
+
+| Run | Result |
+|---|---|
+| Qwen-Image-2.1 on fox & cottage | about 20 s per call: fox extracted cleanly in place (ComfyUI background-removal prompt; the RGBA-wrapper prompt gave an empty image); cottage extraction kept the fox; fox → grey wolf RGBA edit keeps alpha; **night and heavy-rain scene edits are strong and keep the composition** (explicit "keep every object, the composition and the style"); scene from caption and a lantern prop good |
+| LayerD v4 diagnostics | the matting network outputs exactly 0 on every pixel (max 0.0) for all variants and scenes → the "1 layer" results never tested LayerD; weights not materialised. v6 with transformers 4.46.3 failed (checkpoint has no safetensors metadata); v7 keeps transformers < 5 and forces a full load (`low_cpu_mem_usage=False`) with a load report |
+| ART+ v7 | own transparent decoder loaded fully; output unchanged → whole and background frames identical, so the per-layer mechanism is not taking effect; v8 logs `layer_pe` and per-frame latents |
+
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)
 
 Merged from the former `session-summary-sketch-to-image.md` (original kept in archive/ (removed 2026-11-10; in git history before commit 35dc02a)).

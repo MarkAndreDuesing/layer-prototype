@@ -1,0 +1,121 @@
+[{"stream_name":"stderr","time":8.333290817,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.333372485,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":9.57920809,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.579315665,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.579322269,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.579325464,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.428759169,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.428825504,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.428833155,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.428838635,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":37.032195201,"data":"pip rc 0 ace-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":37.032275758,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":37.032284563,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":37.032295269,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":37.032300588,"data":"\n"}
+,{"stream_name":"stdout","time":50.340411706,"data":"transformers 4.46.3\n"}
+,{"stream_name":"stderr","time":50.917698181,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":50.917745112,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":50.917751753,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":50.917757308,"data":"\n"}
+,{"stream_name":"stderr","time":50.917764136,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":50.917789609,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":50.917795463,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":56.243723629,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":56.243773346,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":56.243779342,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":56.243809562,"data":"\n"}
+,{"stream_name":"stderr","time":56.243814402,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":56.24381888,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":56.243822805,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":60.20836702,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":60.208442981,"data":"I0000 00:00:1794268161.097354      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":60.211363176,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":60.211406477,"data":"I0000 00:00:1794268161.097354      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":60.211413747,"data":"\n"}
+,{"stream_name":"stderr","time":60.21141787,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":60.211422446,"data":"I0000 00:00:1794268161.097354      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":74.922532275,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":74.922584293,"data":"I0000 00:00:1794268177.396780      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":75.125037216,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":75.125067617,"data":"I0000 00:00:1794268177.396780      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":75.12507344,"data":"\n"}
+,{"stream_name":"stderr","time":75.125077913,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":75.125082512,"data":"I0000 00:00:1794268177.396780      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":80.742424128,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":80.742460688,"data":"\n"}
+,{"stream_name":"stderr","time":80.742466057,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":90.888228601,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":90.889033464,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":90.889053896,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":90.889061664,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":90.889097447,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":90.889104301,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":90.889108562,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":90.889113448,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":90.889118555,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":90.88912303,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":90.889126978,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":90.889130964,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":90.889134963,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":90.889138879,"data":"AttributeError                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":90.889142906,"data":"/tmp/ipykernel_16/1931041313.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":90.889151825,"data":"     26 stats = {}\n"}
+,{"stream_name":"stderr","time":90.889154888,"data":"     27 for vname, v in VARIANTS.items():\n"}
+,{"stream_name":"stderr","time":90.889157558,"data":"---\u003e 28     t = time.time(); m = LayerD(matting_hf_card='cyberagent/layerd-birefnet', **v['kw']).to('cpu')\n"}
+,{"stream_name":"stderr","time":90.88916041,"data":"     29     if v['th'] is not None: m._th_alpha = v['th']\n"}
+,{"stream_name":"stderr","time":90.889163112,"data":"     30     cov = []\n"}
+,{"stream_name":"stderr","time":90.889165805,"data":"\n"}
+,{"stream_name":"stderr","time":90.889168496,"data":"/usr/local/lib/python3.13/dist-packages/layerd/models/layerd.py in __init__(self, matting_hf_card, matting_process_size, matting_weight_path, use_unblend, bg_refine, fg_refine, fg_refine_num_colors, bg_refine_num_colors, kernel_scale, device)\n"}
+,{"stream_name":"stderr","time":90.889171564,"data":"     44         \"\"\"\n"}
+,{"stream_name":"stderr","time":90.889174284,"data":"     45 \n"}
+,{"stream_name":"stderr","time":90.889176968,"data":"---\u003e 46         self.matting_model = build_matting(\n"}
+,{"stream_name":"stderr","time":90.88917972,"data":"     47             \"birefnet\",\n"}
+,{"stream_name":"stderr","time":90.889183453,"data":"     48             hf_card=matting_hf_card,\n"}
+,{"stream_name":"stderr","time":90.889197766,"data":"\n"}
+,{"stream_name":"stderr","time":90.889202182,"data":"/usr/local/lib/python3.13/dist-packages/layerd/models/matting/__init__.py in build_matting(name, **kwargs)\n"}
+,{"stream_name":"stderr","time":90.889207061,"data":"     27         available = list(MATTING_MODELS.keys())\n"}
+,{"stream_name":"stderr","time":90.889213002,"data":"     28         raise ValueError(f\"Unknown matting model: {name}. Available: {available}\")\n"}
+,{"stream_name":"stderr","time":90.889218236,"data":"---\u003e 29     return MATTING_MODELS[name](**kwargs)\n"}
+,{"stream_name":"stderr","time":90.889222218,"data":"     30 \n"}
+,{"stream_name":"stderr","time":90.889226055,"data":"     31 \n"}
+,{"stream_name":"stderr","time":90.889229835,"data":"\n"}
+,{"stream_name":"stderr","time":90.889233541,"data":"/usr/local/lib/python3.13/dist-packages/layerd/models/matting/birefnet_matting.py in __init__(self, hf_card, process_image_size, device, weight_path)\n"}
+,{"stream_name":"stderr","time":90.889242723,"data":"     36         \"\"\"\n"}
+,{"stream_name":"stderr","time":90.889247367,"data":"     37         super().__init__()\n"}
+,{"stream_name":"stderr","time":90.889282368,"data":"---\u003e 38         self.model = build_birefnet(hf_card)\n"}
+,{"stream_name":"stderr","time":90.889286889,"data":"     39         if weight_path is not None:\n"}
+,{"stream_name":"stderr","time":90.889291184,"data":"     40             # Use fsspec for unified I/O (works with local paths and cloud storage)\n"}
+,{"stream_name":"stderr","time":90.889295137,"data":"\n"}
+,{"stream_name":"stderr","time":90.889298815,"data":"/tmp/ipykernel_16/1931041313.py in _build(card, **kw)\n"}
+,{"stream_name":"stderr","time":90.889302808,"data":"     10 from transformers import AutoModelForImageSegmentation as _AM\n"}
+,{"stream_name":"stderr","time":90.889306732,"data":"     11 def _build(card=\"cyberagent/layerd-birefnet\", **kw):\n"}
+,{"stream_name":"stderr","time":90.889310749,"data":"---\u003e 12     m, info = _AM.from_pretrained(card, trust_remote_code=True, low_cpu_mem_usage=False, output_loading_info=True)\n"}
+,{"stream_name":"stderr","time":90.889315019,"data":"     13     print(\"birefnet load info:\", {k: len(v) for k, v in info.items()}, {k: v[:3] for k, v in info.items() if v}, flush=True)\n"}
+,{"stream_name":"stderr","time":90.889319264,"data":"     14     return m\n"}
+,{"stream_name":"stderr","time":90.889323036,"data":"\n"}
+,{"stream_name":"stderr","time":90.889326778,"data":"/usr/local/lib/python3.13/dist-packages/transformers/models/auto/auto_factory.py in from_pretrained(cls, pretrained_model_name_or_path, *model_args, **kwargs)\n"}
+,{"stream_name":"stderr","time":90.889330955,"data":"    557             cls.register(config.__class__, model_class, exist_ok=True)\n"}
+,{"stream_name":"stderr","time":90.889336119,"data":"    558             model_class = add_generation_mixin_to_remote_model(model_class)\n"}
+,{"stream_name":"stderr","time":90.889341196,"data":"--\u003e 559             return model_class.from_pretrained(\n"}
+,{"stream_name":"stderr","time":90.889345582,"data":"    560                 pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs\n"}
+,{"stream_name":"stderr","time":90.889351394,"data":"    561             )\n"}
+,{"stream_name":"stderr","time":90.889355598,"data":"\n"}
+,{"stream_name":"stderr","time":90.889360689,"data":"/usr/local/lib/python3.13/dist-packages/transformers/modeling_utils.py in from_pretrained(cls, pretrained_model_name_or_path, config, cache_dir, ignore_mismatched_sizes, force_download, local_files_only, token, revision, use_safetensors, weights_only, *model_args, **kwargs)\n"}
+,{"stream_name":"stderr","time":90.889365629,"data":"   3995                 metadata = f.metadata()\n"}
+,{"stream_name":"stderr","time":90.88936954,"data":"   3996 \n"}
+,{"stream_name":"stderr","time":90.889373345,"data":"-\u003e 3997             if metadata.get(\"format\") == \"pt\":\n"}
+,{"stream_name":"stderr","time":90.889377747,"data":"   3998                 pass\n"}
+,{"stream_name":"stderr","time":90.889381644,"data":"   3999             elif metadata.get(\"format\") == \"tf\":\n"}
+,{"stream_name":"stderr","time":90.889385977,"data":"\n"}
+,{"stream_name":"stderr","time":90.889389555,"data":"AttributeError: 'NoneType' object has no attribute 'get'\n"}
+,{"stream_name":"stderr","time":90.889393497,"data":"\n"}
+,{"stream_name":"stderr","time":94.162336942,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":94.162398493,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":94.374078852,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":94.374128138,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":95.328995509,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":95.436422433,"data":"[NbConvertApp] Writing 313982 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":98.948072316,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":99.620768566,"data":"[NbConvertApp] Writing 596313 bytes to __results__.html\n"}
+]

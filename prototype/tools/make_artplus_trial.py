@@ -94,6 +94,9 @@ t.__class__ = CustomFluxTransformer2DModel
 t.register_to_config(max_layer_num=52); t.max_layer_num = 52
 pe = load_any(art_pe); pe = pe.get("layer_pe", next(iter(pe.values()))) if isinstance(pe, dict) else pe
 t.layer_pe = nn.Parameter(pe.to(torch.float32).view(1, 52, 1, 1, -1), requires_grad=False)
+_raw = load_any(art_pe)
+print("layer_pe file:", art_pe, "type", type(_raw).__name__, "keys", list(_raw.keys())[:5] if isinstance(_raw, dict) else None,
+      "shape", tuple(pe.shape), "norm", round(float(pe.float().norm()), 3), "frame-to-frame diff", round(float((pe.float().view(52, -1)[1] - pe.float().view(52, -1)[0]).abs().mean()), 5), flush=True)
 exec(compile(__MIXED__, "fp16_mixed", "exec"))
 apply_fp16_mixed(t)
 for name, path in (("pre_fuse", pre_fuse), ("art_base(CLD)", f"{CLD}/pre_trained_LoRA/pytorch_lora_weights.safetensors"), ("artplus", art_lora)):
@@ -157,9 +160,12 @@ for k, inp in enumerate(LAYOUTS):
             t.to(D0); torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats(0); t0 = time.time()
             with torch.inference_mode():
-                x_hat, image, _ = pipe(prompt=inp["whole_image"]["caption"], validation_box=boxes16(inp["layout"]),
+                x_hat, image, _lat = pipe(prompt=inp["whole_image"]["caption"], validation_box=boxes16(inp["layout"]),
                                        generator=torch.Generator(D0).manual_seed(42), height=512, width=512,
                                        num_inference_steps=steps, guidance_scale=4.0, num_layers=len(inp["layout"]), sdxl_vae=transp_vae)
+            _l = _lat.float().reshape(_lat.shape[0] * _lat.shape[1] if _lat.dim() == 5 else _lat.shape[0], -1) if torch.is_tensor(_lat) else None
+            if _l is not None and _l.shape[0] > 1:
+                print("final latents per frame: frame0-vs-frame1 diff", round(float((_l[0] - _l[1]).abs().mean()), 4), "frame std", [round(float(x), 3) for x in _l.std(dim=1)[:6]], flush=True)
             x_hat = ((x_hat + 1) / 2).squeeze(0).permute(1, 0, 2, 3).float()
             d = f"/kaggle/working/art_out/case{k}_{steps}st"; os.makedirs(d, exist_ok=True)
             image[0].save(f"{d}/whole.png"); image[1].save(f"{d}/background.png")

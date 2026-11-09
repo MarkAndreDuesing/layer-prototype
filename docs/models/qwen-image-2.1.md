@@ -28,6 +28,20 @@ Qwen Research licence (non-commercial). `Qwen/Qwen-Image-2.1(-Turbo)`; GGUF from
 
 Load 247 s; peak 9.6–10.7 GB. Results: [`../../prototype/kaggle/results_qwen21_v2/`](../../prototype/kaggle/results_qwen21_v2/).
 
+## Fox & cottage (shared test scene)
+
+| Task (512 px, Turbo, about 20 s each) | Result |
+|---|---|
+| extract fox ("Remove the background, and output a PNG image. Keep only the red fox …") | clean transparent fox at its original position; the RGBA-wrapper prompt returned an empty image |
+| extract cottage | cottage + gate arch, but the fox was kept too |
+| RGBA edit: fox → grey wolf | wolf in the same pose and style, alpha kept |
+| scene edit: night | strong and convincing: moon, dark sky, lit windows, composition unchanged |
+| scene edit: heavy rain | storm clouds, rain streaks, wet cobbles and puddles, composition unchanged |
+| scene from the caption | coherent storybook scene (cottage, gate arch, tree, fox, path) |
+| transparent lantern prop | clean, with a glow |
+
+Results: [`../../prototype/kaggle/results_qwen21_fox/`](../../prototype/kaggle/results_qwen21_fox/). Strong, explicit edit prompts ("Keep every object, the composition and the style") fixed the subtle rain edit of the first run.
+
 ## Usage facts (from the research notes)
 
 | Topic | Fact |

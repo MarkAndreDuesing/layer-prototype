@@ -18,7 +18,7 @@
 | Extract one object as a layer | Qwen-Image-2.1 extraction (clean, in place); Grounding DINO + SAM2 by name | 22 s / 7 s | [models/sam2-lama.md](models/sam2-lama.md) |
 | Move / resize a layer | `relocate()` v5: warp + SDXL re-harmonise + interior pinning + paste-back | about 4 s per edit (T4) | [editing.md §1](concepts/editing.md#1-move--resize-with-re-harmonisation-relocate) |
 | Relight / shadows | IC-Light relight module and procedural shadow layer (CPU-tested) | 44 s CPU / 0.6 s | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
-| Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU-tested); generative GPU pass pending | about 30 s routing on CPU | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
+| Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU); **Qwen-Image-2.1 scene edits (night, heavy rain) keep the composition** | 30 s routing (CPU) + 22 s edit (T4) | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
 | Recomposite | Alpha compositing in code | instant | — |
 | Measure drift over many edits | Harness built (3 arms), self-test only | — | [research/drift-evaluation.md](research/drift-evaluation.md) |
 
@@ -31,12 +31,12 @@ One line per model; the full measured table is generated in [models/README.md](m
 | Qwen-Image-Layered | 27–35 s per split (2× T4); fox & cottage: bg / roof / cottage + tree / fox in 33 s | ✅ main decomposer | [→](models/qwen-image-layered.md) |
 | Stable-Layers | fox & cottage: sky / meadow / cottage + tree / path / fox (39 s Euler, 67 s Heun); colour shift | ✅ | [→](models/stable-layers.md) |
 | RevealLayer | 134 s, background with hidden areas filled + clean layers (forest) | ✅ forest and fox & cottage (140 s, 5 boxes: filled background + cottage / gate / tree / fox) | [→](models/revealayer.md) |
-| Qwen-Image-2.1 | 17–23 s: RGBA text-to-image, RGBA layer edit, extraction | ✅ | [→](models/qwen-image-2.1.md) |
+| Qwen-Image-2.1 | about 20 s: fox extracted cleanly, fox → wolf keeping alpha, **strong night / heavy-rain scene edits keeping the composition** | ✅ | [→](models/qwen-image-2.1.md) |
 | LayerDiffuse-Flux | 58 s per transparent object (one T4), semi-transparent glass | ✅ | [→](models/layerdiffuse-flux.md) |
 | LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
 | ART+ | full-size coherent scenes from text + boxes (≈ 5 min, 8.2 GB); layers still opaque crops | ⚠️ v7 tests its own transparent decoder | [→](models/art-plus.md) |
 | SAM2 + LaMa | **by noun (Grounding DINO + SAM2): house / cottage / gate / tree / fox in 7 s**, fully automatic; blurry background fill | ✅ by noun | [→](models/sam2-lama.md) |
-| LayerD | 60 s CPU; 1 layer on painted scenes | ⚠️ 5-variant CPU sweep running | [→](models/layerd.md) |
+| LayerD | earlier "1 layer" results invalid: matting output was all zeros (weights not loaded) | ⚠️ load fix running (CPU) | [→](models/layerd.md) |
 | Qwen Lightning LoRA | no speed-up at 4 steps | ⚠️ retry at 2 steps | [→](models/qwen-lightning.md) |
 | CLD | — | ⏳ not run yet | [→](models/cld.md) |
 | Plain FLUX.1-dev (control) | 41 s for 16 steps, no overflow | ✅ check only | — |

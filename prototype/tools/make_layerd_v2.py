@@ -34,6 +34,16 @@ print('pip rc', r.returncode, r.stderr[-400:], flush=True)
 import numpy as np
 from PIL import Image
 from layerd import LayerD
+# v4 showed the matting output is exactly 0 everywhere (max 0.0): BiRefNet weights not materialised under newer
+# transformers. Pinned transformers 4.46.3 and force a full (non-meta) load; check the output range first.
+import layerd.matting.birefnet as _lb, layerd.models.matting.birefnet_matting as _lm
+from transformers import AutoModelForImageSegmentation as _AM
+def _build(card="cyberagent/layerd-birefnet", **kw):
+    m, info = _AM.from_pretrained(card, trust_remote_code=True, low_cpu_mem_usage=False, output_loading_info=True)
+    print("birefnet load info:", {{k: len(v) for k, v in info.items()}}, {{k: v[:3] for k, v in info.items() if v}}, flush=True)
+    return m
+_lb.build_birefnet = _build; _lm.build_birefnet = _build
+import transformers; print("transformers", transformers.__version__, flush=True)
 OUT = '/kaggle/working/layerd_v2'; os.makedirs(OUT, exist_ok=True)
 IMAGES = {{k: Image.open(io.BytesIO(base64.b64decode(v))).convert('RGB') for k, v in {json.dumps({k: b64(v) for k, v in IMAGES.items()})}.items()}}
 VARIANTS = {{
