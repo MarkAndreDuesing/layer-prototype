@@ -5,7 +5,8 @@
 ## 1. Get every model working, then benchmark it
 Goal per model: a happy path, best features, and numbers on the shared fox & cottage scene (time, VRAM, layer count, recomposite diff, visual sheet), filled into its factsheet in [models/](models/README.md).
 
-- [ ] Finalise the fox & cottage test scene (tuned prompt, `prototype/tools/make_test_scene.py`)
+- [x] Fox & cottage test scene chosen (seed 13): `prototype/test_scene/fox_cottage.png` + `fox_cottage.json` (names, boxes, caption)
+- [~] Fox & cottage runs queued: Qwen-Image-Layered (4/5/6 layers, 384/512 px), Stable-Layers (Euler/Heun), RevealLayer (true_gs 1 / 12 steps and 3.5 / 16 steps)
 - [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
 - [~] **RevealLayer:** works (run 11). Next: the second scene and `true_gs` 3.5 / 16 steps, fox & cottage with boxes

@@ -4,7 +4,7 @@
 
 **Goal (the loop):** one text prompt → a coherent layered scene → edit single layers (re-prompt, move, resize) → recomposite → story events change the scene. Free hardware: Kaggle 2× T4 (fp16 only) and a CPU laptop. No user study is planned; the prototype and its technical measurements are the contribution ([research/research-gap.md](research/research-gap.md)).
 
-**Shared test scene:** fox & cottage (storybook style), chosen 2026-11-09; final variant being tuned ([../prototype/kaggle/test_scene_candidates/](../prototype/kaggle/test_scene_candidates/)). Older test scenes (impressionist forest, pale sketch, pixel-art camp) stay as style checks.
+**Shared test scene:** fox & cottage (storybook style, SDXL-Turbo seed 13), chosen 2026-11-09: [../prototype/test_scene/fox_cottage.png](../prototype/test_scene/fox_cottage.png). Layer names, hand-drawn boxes (village houses, cottage, stone gate arch, big tree, red fox) and caption: [fox_cottage.json](../prototype/test_scene/fox_cottage.json); preview with boxes: [fox_cottage_boxes.jpg](../prototype/test_scene/fox_cottage_boxes.jpg). Candidates: [../prototype/kaggle/test_scene_candidates/](../prototype/kaggle/test_scene_candidates/). Older test scenes (impressionist forest, pale sketch, pixel-art camp) stay as style checks.
 
 ## Each step of the loop
 

@@ -61,6 +61,9 @@ lp = hf_hub_download('StabilityLabs/Stable-Layers', 'model/adapter_model.safeten
 lscale = cfg.get('lora_alpha', cfg.get('r', 1)) / cfg.get('r', 1)
 IMGS = {'forest': (img, emb), **{k: (EXTRA[k][0], emb_x[k]) for k in EXTRA}}
 CONFIGS = [  # (variant, sampler, image, resolution, layers, steps)
+    ('base', 'euler', 'fox_cottage', 384, 4, 4), ('base', 'euler', 'fox_cottage', 384, 6, 4),
+    ('base', 'euler', 'fox_cottage', 512, 5, 4), ('stable_layers', 'euler', 'fox_cottage', 384, 5, 4),
+    ('stable_layers', 'heun', 'fox_cottage', 384, 5, 4), ('base', 'heun', 'fox_cottage', 384, 5, 4),
     ('stable_layers', 'heun', 'forest', 384, 4, 4), ('stable_layers', 'heun', 'sketch_skeleton', 384, 4, 4),
     ('stable_layers', 'heun', 'pixelart_camp', 384, 4, 4), ('stable_layers', 'heun', 'forest', 384, 4, 8),
     ('base', 'heun', 'forest', 384, 4, 4),

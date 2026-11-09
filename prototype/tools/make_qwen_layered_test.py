@@ -22,7 +22,10 @@ CAPTION = ("An impressionist oil painting of a forest clearing at night: tall pi
            "rocks and fallen branches on the ground.")
 b64 = base64.b64encode(open(img_path, "rb").read()).decode()
 # extra test images (different styles / content) for generalisation checks
+import json as _json
+_FC = _json.load(open(os.path.join(PROTO, "test_scene", "fox_cottage.json"), encoding="utf-8"))
 EXTRA = {
+    "fox_cottage": (os.path.join(PROTO, "test_scene", "fox_cottage.png"), _FC["caption"]),   # shared test scene
     "pixelart_camp": (os.path.join(ROOT, "experiments", "P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__pixelart.png"),
                       "A colourful pixel-art night scene: a skeleton sitting next to a small brick campfire, stylised white, yellow and "
                       "green trees, a big yellow moon and a small orange moon in a dark blue starry sky, brown ground."),

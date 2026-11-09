@@ -332,7 +332,7 @@ Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_rel
 - **Qwen v9 sweep** failed on every config (`unexpected keyword 'sampler'`): the batch notebook embeds `qwen_layered.py` via the test-notebook generator, which had not been re-run. Regenerated and re-queued.
 - **LayerDiffuse-Flux run 4 works:** all 494 LoRA modules matched after key conversion; campfire, deer and glass bottle as clean transparent objects (75–82% transparent, the bottle semi-transparent), 57–63 s each at 512 px / 16 steps, 8.9 GB on one T4.
 - **ART+ run 3:** loaded in 295 s (7.0 / 11.0 GB), decoder matched; generation failed on fp16 inputs to fp32 VAEs → run 4 adds input-casting hooks.
-- **Test scene:** the user chose the fox & cottage variant with the cottage, a stone wall with gate, a path, a fox, a tree and background houses; the prompt is being tuned so the fox is larger and does not overlap the wall.
+- **Test scene:** the user chose the fox & cottage variant with the cottage, a stone wall with gate, a path, a fox, a tree and background houses; the prompt was tuned (larger free-standing fox) and the user picked seed 13: `prototype/test_scene/fox_cottage.png`, with layer names and boxes in `fox_cottage.json`.
 - **Docs restructured** into status / todo / log / glossary / concepts / models / research / guides / archive (old → new paths in [archive/MOVED.md](archive/MOVED.md)).
 
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)

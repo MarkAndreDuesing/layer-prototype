@@ -19,7 +19,9 @@ PROTO = os.path.dirname(HERE)
 ROOT = os.path.dirname(PROTO)
 OUT = os.path.join(PROTO, "kaggle", "upload_reveallayer_trial")
 MD = os.path.join(ROOT, "research_notes", "Layered methods deep dive", "flux_models_t4_adaptation.md")
+_FC = json.load(open(os.path.join(PROTO, "test_scene", "fox_cottage.json"), encoding="utf-8"))
 SCENES = {  # image, boxes (x0, y0, x1, y1) in original pixels, back to front
+    "fox_cottage": ("prototype/test_scene/fox_cottage.png", [l["box"] for l in _FC["layers_back_to_front"]]),
     "forest": ("experiments/blkE__P2__textonly__sdxlturbo-steps4-g1.0__seed11__impressionist.png",
                [[0, 0, 260, 420], [300, 0, 512, 420], [100, 320, 340, 460]]),
     "sketch_skeleton": ("experiments/blkB__P2__raw__str80-steps4-g1.0__seed11__hyperreal.png",
@@ -78,7 +80,7 @@ assert "apply_fp16_mixed(t)" in head
 imgs = {}
 for k, (f, boxes) in SCENES.items():
     buf = io.BytesIO()
-    Image.open(os.path.join(ROOT, f)).convert("RGB").save(buf, "PNG")
+    Image.open(os.path.join(ROOT, f)).convert("RGB").save(buf, "JPEG", quality=93)
     imgs[k] = (base64.b64encode(buf.getvalue()).decode(), boxes)
 tail = f'''
 # ---- our scenes (replaces the demo example) ----
@@ -89,7 +91,7 @@ SCENES = {json.dumps(imgs)}
 for name, (b, boxes) in list(SCENES.items())[:1]:
     p = f"/kaggle/working/{{name}}.png"; Image.open(io.BytesIO(base64.b64decode(b))).save(p)
     sample = {{"index": name, "layout": boxes, "full_image_path": p}}
-    for true_gs, steps in ((1.0, 12),):
+    for true_gs, steps in ((1.0, 12), (3.5, 16)):
         print(f"start {{name}} at {{time.time()-_T0:.0f}}s since cell start", flush=True)
         args = SimpleNamespace(seed=43, cfg=1.0, steps=steps, true_gs=true_gs, output_dir=f"/kaggle/working/reveal_out/gs{{true_gs}}_st{{steps}}")
         torch.cuda.reset_peak_memory_stats(0); torch.cuda.reset_peak_memory_stats(1); t0 = time.time()
