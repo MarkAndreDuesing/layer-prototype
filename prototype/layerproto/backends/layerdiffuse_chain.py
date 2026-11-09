@@ -234,7 +234,7 @@ class LayerDiffuseChain(ChainBackend):
                 self._pipe.unet._ld_cond, self._vae.mod_number = None, None
 
     def relocate(self, scene: Image.Image, layer: Image.Image, box, prompt: str, seed: int, strength: float = 0.5,
-                 pin_frac: float = 0.4, w=512, h=512, steps=20, guidance=7.0, negative=""):
+                 pin_frac: float = 0.4, w=512, h=512, steps=20, guidance=7.0, negative="", extract: str = "model"):
         """Training-free move/resize with re-harmonisation (our proposal, after DreamLayer's harmonisation step).
 
         scene: background RGB(A) without the layer; layer: the layer's RGBA (canvas-sized); box: new (x, y, bw, bh)
@@ -266,8 +266,9 @@ class LayerDiffuseChain(ChainBackend):
             self._set_mode("bg2ble")
             self._pipe.unet._ld_cond, self._vae.mod_number = self._encode(scene, w, h), None
             i2i = StableDiffusionXLImg2ImgPipeline(**self._pipe.components)
-            if not self.turbo:
-                i2i.scheduler = self._sched_blend
+            # deterministic default scheduler: pinning latents to a re-noised reference breaks the stochastic
+            # DPM++ SDE blend scheduler (v1 trial: heavy artifacts at strength 0.6)
+            i2i.scheduler = self._sched_default
             lat0 = self._encode(naive, w, h)
             m = torch.from_numpy(np.asarray(interior.resize((w // 8, h // 8)), dtype=np.float32) / 255.0)
             m = m[None, None].to(lat0.device, lat0.dtype)
@@ -293,8 +294,30 @@ class LayerDiffuseChain(ChainBackend):
             finally:
                 self._pipe.unet._ld_cond = None
                 self._pipe.scheduler = self._sched_default
-        new_layer = self._extract(scene, harm, prompt, seed, w, h, steps, guidance, negative)
+        if extract == "model":
+            new_layer = self._extract(scene, harm, prompt, seed, w, h, steps, guidance, negative)
+        else:
+            new_layer = self.mask_extract(scene, harm, moved)
         return naive, harm, new_layer
+
+    @staticmethod
+    def mask_extract(scene: Image.Image, harm: Image.Image, moved: Image.Image, thr: float = 18.0,
+                     ring: int = 41) -> Image.Image:
+        """Cheap, deterministic layer from a re-harmonised composite: RGB from `harm`; alpha = the moved object's
+        alpha, plus (within a ring around it) wherever `harm` differs from the background, which picks up the new
+        contact shadow / glow. No model call."""
+        from PIL import ImageFilter
+
+        a_obj = np.asarray(moved.getchannel("A"), dtype=np.float32) / 255.0
+        d = np.abs(np.asarray(harm.convert("RGB"), dtype=np.float32) -
+                   np.asarray(scene.convert("RGB").resize(harm.size), dtype=np.float32)).mean(-1)
+        a_diff = np.clip((d - thr) / thr, 0, 1)
+        near = np.asarray(moved.getchannel("A").point(lambda v: 255 if v > 20 else 0)
+                          .filter(ImageFilter.MaxFilter(ring)), dtype=np.float32) / 255.0
+        a = np.maximum(a_obj, a_diff * near)
+        out = harm.convert("RGBA")
+        out.putalpha(Image.fromarray((a * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1)))
+        return out
 
     def info(self) -> dict:
         return {"backend": self.name, "model": self.model, "device": getattr(self, "device", "not loaded"),

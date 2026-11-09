@@ -1,0 +1,23 @@
+{
+ "forest": {
+  "seconds_gpu": 7.2,
+  "seconds_segment": 5.9,
+  "n_masks": 19,
+  "n_layers": 5,
+  "recomposite_diff": 0.19
+ },
+ "pixelart_camp": {
+  "seconds_gpu": 4.9,
+  "seconds_segment": 2.6,
+  "n_masks": 19,
+  "n_layers": 5,
+  "recomposite_diff": 1.78
+ },
+ "sketch_skeleton": {
+  "seconds_gpu": 2.8,
+  "seconds_segment": 2.5,
+  "n_masks": 19,
+  "n_layers": 5,
+  "recomposite_diff": 2.41
+ }
+}

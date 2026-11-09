@@ -171,3 +171,46 @@ The transformer now stays on the GPUs between splits (`offload=False`). Peak mem
 - Check facts before stating them, and mark estimates.
 - Don't invent features. Follow the plan and the references.
 - GPU quota is limited: verify locally (`prototype/tools/dryrun_qwen_*.py` with tiny models), smoke-test 2 steps, and avoid full runs per bug.
+
+## Phase 5: other decomposition routes and move/resize re-harmonisation (2026-11-09)
+
+### LayerD (released, Apache-2.0) on our scenes: not usable
+
+- **Setup:** Kaggle CPU, no GPU quota. It needs `transformers<5`, because BiRefNet's remote code breaks on transformers 5.
+- **Result:** about 60 s per image, but on all 3 scenes it returned **1 layer, the unchanged image**. It was trained on graphic designs and finds nothing to peel off in painted scenes.
+- Results: [prototype/kaggle/results_layerd_trial/](../prototype/kaggle/results_layerd_trial/).
+
+### Generate → SAM2 → LaMa (segment + inpaint route): fast, but the grouping isn't meaningful
+
+- **Pipeline** ([tools/make_segment_inpaint_trial.py](../prototype/tools/make_segment_inpaint_trial.py)): SAM2 hiera-small automatic masks, then the 4 largest object masks (each under 35% of the image) as layers, then LaMa fills the background.
+- **Speed and fidelity:** **3–7 s per image** on a T4. The recomposite matches almost exactly (diff 0.2–2.4), because the layers are cut-outs of the original pixels.
+- **Grouping is poor.** SAM picks fragments, not story objects:
+  - Forest: moon, stump, flame, logs. The trees and chair are not separated.
+  - Sketch: one tree, campfire, log, plus a "layer" that is the white background. The **skeleton is not separated**.
+- **No amodal completion:** hidden parts of objects stay missing.
+- **Verdict:** a fast fallback if an LLM or VLM chooses which masks to keep (points or boxes per noun, instead of "largest K"). Qwen-Image-Layered gives far more meaningful layers.
+- Results: [prototype/kaggle/results_segment_inpaint/](../prototype/kaggle/results_segment_inpaint/).
+
+### Move/resize with re-harmonisation on the LayerDiffuse chain (training-free, our proposal)
+
+`LayerDiffuseChain.relocate()` in [layerdiffuse_chain.py](../prototype/layerproto/backends/layerdiffuse_chain.py) does four things:
+1. Warps the layer into its new box and pastes it over the background.
+2. Runs an SDXL img2img pass, conditioned on the background through LayerDiffuse `bg2ble`, at strength s.
+3. Pins the object's interior to its re-noised self for the first 40% of steps.
+4. Re-extracts the layer.
+
+The idea follows DreamLayer's harmonisation step. Nothing is trained.
+
+**Tests (SDXL base, 512 px, 20 steps, CFG 7, Kaggle T4):**
+
+| Version | Result |
+|---|---|
+| v1: DPM++ SDE scheduler, `bgble2fg` extraction | About 11 s per edit. At s = 0.6 the image fills with artifacts (latent pinning fights the stochastic sampler). The extracted layer is translucent or the wrong object. **Not usable.** |
+| **v2: Euler scheduler, mask extraction** (the object's alpha plus wherever the image changed, within a ring around it) | **About 4–5 s per edit.** The moved object takes on the new surroundings' light and glow, and the extracted layer is clean. **s = 0.3 keeps identity**; s = 0.5 re-draws details such as the face. `bgble2fg` extraction (about 9.5 s) is still worse than the mask. |
+
+Results: [prototype/kaggle/results_relocate_v2/](../prototype/kaggle/results_relocate_v2/); v1 in `results_relocate_smoke_turbo/` and the notebook history.
+
+**Open:**
+- Contact shadows are weak.
+- The old position isn't inpainted when the background itself contains the object (here the background was clean).
+- Only one object and one scene were tested. A proper evaluation is research question RQ4 in [Research gap and questions.md](../reports/Research%20gap%20and%20questions.md).
