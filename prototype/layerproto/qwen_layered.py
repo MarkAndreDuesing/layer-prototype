@@ -46,6 +46,62 @@ def encode(pipe, caption: str, device, max_len: int = 512):
     return pe, (pm if pm is not None else ones(pe)), ne, (nm if nm is not None else ones(ne))
 
 
+def cached_encode(pipe, caption: str, device, cache_dir: str, max_len: int = 512):
+    """encode() with a disk cache keyed by caption: a cache hit means the 15 GB text encoder never has to be loaded
+    (Kaggle: ~70 s load + RAM). Typical loop use: one fixed caption ("" or the scene prompt) per scene."""
+    import hashlib
+    import os
+    os.makedirs(cache_dir, exist_ok=True)
+    f = os.path.join(cache_dir, hashlib.sha1(f"{caption}|{max_len}".encode()).hexdigest()[:16] + ".pt")
+    if os.path.exists(f):
+        return tuple(t.to(device) for t in torch.load(f, map_location="cpu"))
+    out = encode(pipe, caption, device, max_len)
+    torch.save(tuple(t.detach().cpu() for t in out), f)
+    return out
+
+
+class HeunVelocity:
+    """Turn the pipeline's Euler step into Heun's method (what Stable-Layers' decompose.py uses) without touching the
+    pipeline: the transformer wrapper returns v_heun = (v(x, s) + v(x + dt*v(x, s), s_next)) / 2, so the pipeline's
+    own Euler update x + dt*v_heun is exactly a Heun step. Final step (s_next = 0) stays Euler, as in Stable-Layers.
+    Only the generated tokens are advanced for the midpoint; the trailing condition-image tokens stay fixed.
+    Cost: 2 transformer calls per step (1 on the last step)."""
+
+    def __init__(self, transformer, scheduler, layers: int):
+        self.t, self.sched, self.frac = transformer, scheduler, (layers + 1) / (layers + 2)
+        self.orig = transformer.forward
+
+    def __enter__(self):
+        self.t.forward = self.forward
+        return self
+
+    def __exit__(self, *a):
+        self.t.forward = self.orig
+
+    def _next_sigma(self, s):
+        sig = self.sched.sigmas.to(torch.float32).cpu()
+        i = int(torch.argmin((sig - s).abs()))
+        return float(sig[i + 1]) if i + 1 < len(sig) else 0.0
+
+    def forward(self, hidden_states, *a, timestep=None, **kw):
+        out1 = self.orig(hidden_states, *a, timestep=timestep, **kw)
+        v1 = out1[0] if isinstance(out1, tuple) else out1.sample
+        s = float(timestep.flatten()[0])                 # pipeline passes sigma (timestep / 1000)
+        s_next = self._next_sigma(s)
+        if s_next <= 0:
+            return out1
+        n = int(round(hidden_states.shape[1] * self.frac))
+        x_mid = hidden_states.clone()
+        x_mid[:, :n] = hidden_states[:, :n] + (s_next - s) * v1[:, :n].to(hidden_states.dtype)
+        out2 = self.orig(x_mid, *a, timestep=torch.full_like(timestep, s_next), **kw)
+        v2 = out2[0] if isinstance(out2, tuple) else out2.sample
+        v = 0.5 * (v1 + v2)
+        if isinstance(out1, tuple):
+            return (v,) + tuple(out1[1:])
+        out1.sample = v
+        return out1
+
+
 def unload_text_encoder(pipe, dtype):
     """Free the text encoder. The pipeline still reads text_encoder.dtype later, so leave a stand-in;
     object.__setattr__ bypasses diffusers' component registration (which rejects non-modules)."""
@@ -76,8 +132,9 @@ def fix_gguf_non_linear(model, dtype) -> int:
 
 def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps: int = 50, layers: int = 4,
               resolution: int = 640, seed: int = 777, true_cfg: float = 4.0, on_step=None,
-              offload: bool = True):
-    """Run the decomposition. Returns (list of RGBA layers, stats)."""
+              offload: bool = True, sampler: str = "euler"):
+    """Run the decomposition. Returns (list of RGBA layers, stats). sampler="heun" doubles the transformer calls
+    (Stable-Layers recommends Heun; its decompose.py uses linear sigmas, here the pipeline's schedule is kept)."""
     pipe.register_modules(transformer=transformer)
     image = image.convert("RGBA")  # the layered VAE has 4 input channels (as in the model card example)
     pe, pm, ne, nm = embeds
@@ -105,8 +162,10 @@ def decompose(pipe, transformer, image: Image.Image, caption: str, embeds, steps
     if resolution not in (640, 1024):
         _pl.calculate_dimensions = lambda area, ratio: _orig_cd(resolution * resolution, ratio)
     t0 = time.time()
+    import contextlib
+    heun = HeunVelocity(transformer, pipe.scheduler, layers) if sampler == "heun" else contextlib.nullcontext()
     try:
-        with torch.no_grad():
+        with torch.no_grad(), heun:
             pipe(image=image, prompt=caption, prompt_embeds=pe, prompt_embeds_mask=pm,
                  negative_prompt_embeds=ne, negative_prompt_embeds_mask=nm, true_cfg_scale=true_cfg,
                  layers=layers, resolution=resolution if resolution in (640, 1024) else 640, num_inference_steps=steps, cfg_normalize=True,

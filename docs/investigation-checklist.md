@@ -72,8 +72,10 @@ Report: [Layered loop open paths.md](../reports/Layered%20loop%20open%20paths.md
 
 - [x] Procedural shadow layer `prototype/layerproto/shadow.py`: EasyOmnimatte-style recipe, with a contact line per object and a cap on shadow length; about 0.6 s per layer on CPU. Results in `prototype/kaggle/results_local_shadow/`
 - [x] Drift-evaluation harness `prototype/layerproto/drift_eval.py`: 3 arms, metrics measured outside the edited regions, per-layer alpha IoU/L1, AUC. Self-test with stand-in editors (`tools/drift_harness_selftest.py`; not a result about real editors)
-- [ ] Story-event router (Ollama) using strategies (a)–(d)
-- [ ] IC-Light fbc relight module, to become `relocate()` v6
-- [ ] Qwen levers: text-encoder cache, 2 layers, Stable-Layers Heun loop
-- [ ] Notebooks: plain-FLUX control, ART+ (weights from `thuteam/CLD`), CLD, voice-note E items
-- [ ] User-study protocol document
+- [x] Story-event router `layerproto/events.py`: Ollama qwen3:4b routes 5 test events sensibly (about 30 s each on CPU); instant CPU preview with grading and procedural rain/snow/fog/smoke/glow overlays (`results_local_events/`). Weak spot: prompts from the 4B model are sometimes poor ('solid gold campfire')
+- [x] IC-Light fbc relight module `layerproto/relight.py` (with detail transfer and original alpha): CPU smoke test relights a layer to a night background (8 steps, 384 px, 44 s on CPU). Not yet wired into `relocate()`; fire loses brightness (no notion of light sources)
+- [x] Qwen levers: `cached_encode()` (disk cache of prompt embeddings) and `HeunVelocity` (exact Heun step through the pipeline's Euler step; toy-ODE check: error 0.05 vs 0.37 for Euler at 8 steps). Qwen batch v9 sweep (Stable-Layers with Heun, 2-layer splits) generated, waiting for Kaggle
+- [x] Notebooks ready: `flux-control-trial` (plain FLUX fp16 vs `fp16_mixed`), `artplus-trial` (text + boxes → layers; base LoRA + transparent VAE from official `thuteam/CLD`, the rest from Drive, with the HF mirror as fallback), RevealLayer with 3 fp16 patches, Qwen-Image-2.1 with the texture-fix VAE
+- [ ] CLD notebook: waits for RevealLayer to work (same code base)
+- [ ] Voice-note E items: feed the Qwen-Image-2.1 scene images into the Qwen batch as new inputs (base-image generator → decomposer); LayerDiffuse complex scenes via `layerproto-chain-batch`. Both need Kaggle
+- [x] User-study protocol draft: [user-study-protocol.md](user-study-protocol.md) (N=24 within-subjects, ImageDirector-based measures plus PXI and drift; ethics check still open)
