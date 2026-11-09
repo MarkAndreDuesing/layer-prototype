@@ -14,7 +14,7 @@ Layers are not merged back into one image in this draft.
 | Layer images | SDXL-Turbo + LayerDiffuse SDXL LoRA, CPU float32, 512 px, 4 steps | `"image_backend": "remote"` → `layerproto/remote_server.py` on a Kaggle / Modal GPU |
 | Image-to-text per layer | Ollama `qwen2.5vl:3b` (or `moondream`, faster but garbled) | any vision model |
 
-Background reading: [docs/archive/2026-11-07 Layer based architecture models and hosting.md](../docs/archive/2026-11-07%20Layer%20based%20architecture%20models%20and%20hosting.md)
+Background reading: docs/archive/2026-11-07 Layer based architecture models and hosting.md (removed 2026-11-10; in git history before commit 35dc02a)
 
 ## Run it
 
