@@ -1,0 +1,413 @@
+[{"stream_name":"stderr","time":5.527245298,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.527284098,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.314601336,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.314640776,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.31464647,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.314651142,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.860529886,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.860557511,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.860561708,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.860565279,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.220230165,"data":"pip -q install transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf\n"}
+,{"stream_name":"stderr","time":24.69933861,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.699361412000002,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.699366999,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.699371673999998,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.699375899,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.901954503,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.901996956,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902001306,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902003924,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902006663999998,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902024352,"data":"\n"}
+,{"stream_name":"stderr","time":24.902028093,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":24.902050441,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902054555,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902058241,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.902061839,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":24.935636505,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stdout","time":25.122756137,"data":"git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":25.13830335,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":25.138337508,"data":"\n"}
+,{"stream_name":"stderr","time":25.138342358,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":27.346492913,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":27.346518191,"data":"\n"}
+,{"stream_name":"stderr","time":27.346527112,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":27.346529946,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":27.346532565,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":27.346535172,"data":"\n"}
+,{"stream_name":"stderr","time":27.346537485,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":27.346540194,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":27.346553773,"data":"\n"}
+,{"stream_name":"stderr","time":27.346572721,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":27.34657733,"data":"\n"}
+,{"stream_name":"stderr","time":27.346581092,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":27.346585127,"data":"\n"}
+,{"stream_name":"stderr","time":27.346588906,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":27.346592427,"data":"\n"}
+,{"stream_name":"stderr","time":27.346595641,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":27.346599196,"data":"\n"}
+,{"stream_name":"stderr","time":27.346602286,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":27.550694486,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":27.550721162,"data":"\n"}
+,{"stream_name":"stderr","time":27.550725628,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":27.550729599,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":27.550733678,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":27.550759576,"data":"\n"}
+,{"stream_name":"stderr","time":27.550764004,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":27.550767978,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":27.550771771,"data":"\n"}
+,{"stream_name":"stderr","time":27.550775231,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":27.550779586,"data":"\n"}
+,{"stream_name":"stderr","time":27.55078331,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":27.550786926,"data":"\n"}
+,{"stream_name":"stderr","time":27.550790024,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":27.550793348,"data":"\n"}
+,{"stream_name":"stderr","time":27.550796529,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":27.550800631,"data":"\n"}
+,{"stream_name":"stderr","time":27.550804717,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":27.550808885,"data":"\n"}
+,{"stream_name":"stderr","time":27.550812938,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":27.550817353,"data":"\n"}
+,{"stream_name":"stderr","time":27.550821124,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":27.550825197,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":27.550829138,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":27.55083336,"data":"\n"}
+,{"stream_name":"stderr","time":27.550836806,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":27.550840317,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":27.550843771,"data":"\n"}
+,{"stream_name":"stderr","time":27.550847672,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":27.550852173,"data":"\n"}
+,{"stream_name":"stderr","time":27.550856037,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":27.550860044,"data":"\n"}
+,{"stream_name":"stderr","time":27.550864349,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":27.550868249,"data":"\n"}
+,{"stream_name":"stderr","time":27.550871804,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":27.550875337,"data":"\n"}
+,{"stream_name":"stderr","time":27.550878535,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":27.552180435,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.552205493,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.552210467,"data":"patched infer.py\n"}
+,{"stream_name":"stdout","time":27.552214234,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":27.552218078,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":27.552221927,"data":"wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":28.587392765,"data":"mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 \u0026\u0026 cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/\n"}
+,{"stream_name":"stdout","time":28.587424495,"data":"vit path patched in /kaggle/working/RevealLayer/models/custom_model_xvae.py\n"}
+,{"stream_name":"stdout","time":28.587429508,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":28.587433052,"data":"patched models/custom_model_mmdit.py\n"}
+,{"stream_name":"stdout","time":28.587436319,"data":"patched models/custom_pipeline.py\n"}
+,{"stream_name":"stdout","time":46.737790342,"data":"diffusers 0.34.0 /kaggle/working/RevealLayer/diffusers/src/diffusers/__init__.py\n"}
+,{"stream_name":"stderr","time":62.68627711,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.686304403,"data":"I0000 00:00:1794263437.670880      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":62.889317715,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.889342013,"data":"I0000 00:00:1794263437.670880      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":62.889347497,"data":"\n"}
+,{"stream_name":"stderr","time":62.889351668,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.889355942,"data":"I0000 00:00:1794263437.670880      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":185.729140936,"data":"refiner: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stdout","time":187.440702671,"data":"fp16_mixed applied\n"}
+,{"stream_name":"stderr","time":188.144992804,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":188.145024378,"data":"\n"}
+,{"stream_name":"stderr","time":188.145033233,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":225.227833324,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":225.228389691,"data":"\n"}
+,{"stream_name":"stderr","time":225.228399116,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":231.789456102,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stderr","time":231.789492387,"data":"\n"}
+,{"stream_name":"stderr","time":231.789497652,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stdout","time":232.767759565,"data":"[23] Creating ViT-B/32 structure...\n"}
+,{"stream_name":"stdout","time":233.535164262,"data":"[23] Loading local weights from: /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":234.874840775,"data":"[23] Applying weights to the model...\n"}
+,{"stream_name":"stdout","time":234.874872997,"data":"[23] ViT-B/32 loaded successfully.\n"}
+,{"stream_name":"stdout","time":234.87489534,"data":"ViT Encoder Missing keys: []\n"}
+,{"stream_name":"stdout","time":234.874907926,"data":"ViT Encoder Unexpected keys: ['pos_embedding']\n"}
+,{"stream_name":"stdout","time":236.268541408,"data":"xvae: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stdout","time":236.293108502,"data":"start fox_cottage at 228s since cell start\n"}
+,{"stream_name":"stdout","time":236.493581986,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":236.493609032,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":236.493613169,"data":"Running generation for sample: fox_cottage with 7 layers...\n"}
+,{"stream_name":"stdout","time":371.93480076,"data":"FAILED fox_cottage 1.0 12\n"}
+,{"stream_name":"stdout","time":371.93555789,"data":"start fox_cottage at 364s since cell start\n"}
+,{"stream_name":"stderr","time":372.135349779,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":372.135376052,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 148, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":372.135382138,"data":"    infer.test_one_sample(args, sample, pipe, transp_vae, D0, shuffle=False)\n"}
+,{"stream_name":"stderr","time":372.135387003,"data":"    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135391603,"data":"  File \"/kaggle/working/RevealLayer/infer.py\", line 370, in test_one_sample\n"}
+,{"stream_name":"stderr","time":372.135396329,"data":"    output, rgba_output, _, _ = pipeline(\n"}
+,{"stream_name":"stderr","time":372.135401122,"data":"                                ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":372.135405668,"data":"        prompt=\"Decompose the image into foreground and background.\",\n"}
+,{"stream_name":"stderr","time":372.135410278,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135414816,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":372.135419482,"data":"        transparent_decoder=transp_vae,\n"}
+,{"stream_name":"stderr","time":372.135424113,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135428542,"data":"    )\n"}
+,{"stream_name":"stderr","time":372.135432876,"data":"    ^\n"}
+,{"stream_name":"stderr","time":372.135437294,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":372.135442128,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135446557,"data":"  File \"/kaggle/working/RevealLayer/models/custom_pipeline.py\", line 914, in __call__\n"}
+,{"stream_name":"stderr","time":372.135451262,"data":"    image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]\n"}
+,{"stream_name":"stderr","time":372.135455959,"data":"                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135460502,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 130, in \u003clambda\u003e\n"}
+,{"stream_name":"stderr","time":372.135465242,"data":"    setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))\n"}
+,{"stream_name":"stderr","time":372.135470078,"data":"                                                        ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135474818,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/utils/accelerate_utils.py\", line 46, in wrapper\n"}
+,{"stream_name":"stderr","time":372.135490137,"data":"    return method(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.13549382,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 323, in decode\n"}
+,{"stream_name":"stderr","time":372.135497678,"data":"    decoded = self._decode(z).sample\n"}
+,{"stream_name":"stderr","time":372.135501154,"data":"              ~~~~~~~~~~~~^^^\n"}
+,{"stream_name":"stderr","time":372.13550458,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 294, in _decode\n"}
+,{"stream_name":"stderr","time":372.13550849,"data":"    dec = self.decoder(z)\n"}
+,{"stream_name":"stderr","time":372.135511964,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135516893,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135520404,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135523944,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.13552767,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135531565,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/vae.py\", line 305, in forward\n"}
+,{"stream_name":"stderr","time":372.135535302,"data":"    sample = up_block(sample, latent_embeds)\n"}
+,{"stream_name":"stderr","time":372.135538783,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.13554252,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.13554602,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135549456,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135553222,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135556681,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/unets/unet_2d_blocks.py\", line 2643, in forward\n"}
+,{"stream_name":"stderr","time":372.135560465,"data":"    hidden_states = upsampler(hidden_states)\n"}
+,{"stream_name":"stderr","time":372.135564084,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135567983,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135571418,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135574846,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.1355786,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135582058,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/upsampling.py\", line 188, in forward\n"}
+,{"stream_name":"stderr","time":372.135585852,"data":"    hidden_states = self.conv(hidden_states)\n"}
+,{"stream_name":"stderr","time":372.135589308,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135596211,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135599777,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135603268,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135606996,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135610468,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 553, in forward\n"}
+,{"stream_name":"stderr","time":372.135614193,"data":"    return self._conv_forward(input, self.weight, self.bias)\n"}
+,{"stream_name":"stderr","time":372.135617763,"data":"           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135621457,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 548, in _conv_forward\n"}
+,{"stream_name":"stderr","time":372.135625653,"data":"    return F.conv2d(\n"}
+,{"stream_name":"stderr","time":372.135629067,"data":"           ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":372.13563248,"data":"        input, weight, bias, self.stride, self.padding, self.dilation, self.groups\n"}
+,{"stream_name":"stderr","time":372.135636078,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135639695,"data":"    )\n"}
+,{"stream_name":"stderr","time":372.135643061,"data":"    ^\n"}
+,{"stream_name":"stderr","time":372.13564838,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.72 GiB is free. Including non-PyTorch memory, this process has 12.84 GiB memory in use. Of the allocated memory 10.72 GiB is allocated by PyTorch, and 1.99 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stderr","time":372.135656308,"data":"\n"}
+,{"stream_name":"stderr","time":372.135659757,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":372.135663248,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 148, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":372.135667044,"data":"    infer.test_one_sample(args, sample, pipe, transp_vae, D0, shuffle=False)\n"}
+,{"stream_name":"stderr","time":372.13567063,"data":"    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135674182,"data":"  File \"/kaggle/working/RevealLayer/infer.py\", line 370, in test_one_sample\n"}
+,{"stream_name":"stderr","time":372.135677917,"data":"    output, rgba_output, _, _ = pipeline(\n"}
+,{"stream_name":"stderr","time":372.135681411,"data":"                                ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":372.135684883,"data":"        prompt=\"Decompose the image into foreground and background.\",\n"}
+,{"stream_name":"stderr","time":372.135688518,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.13569211,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":372.135695617,"data":"        transparent_decoder=transp_vae,\n"}
+,{"stream_name":"stderr","time":372.135699088,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135702558,"data":"    )\n"}
+,{"stream_name":"stderr","time":372.135708708,"data":"    ^\n"}
+,{"stream_name":"stderr","time":372.13571213,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":372.135715929,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135734359,"data":"  File \"/kaggle/working/RevealLayer/models/custom_pipeline.py\", line 914, in __call__\n"}
+,{"stream_name":"stderr","time":372.135740406,"data":"    image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]\n"}
+,{"stream_name":"stderr","time":372.13574432,"data":"                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.13574796,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 130, in \u003clambda\u003e\n"}
+,{"stream_name":"stderr","time":372.135752295,"data":"    setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))\n"}
+,{"stream_name":"stderr","time":372.135756176,"data":"                                                        ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135759889,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/utils/accelerate_utils.py\", line 46, in wrapper\n"}
+,{"stream_name":"stderr","time":372.135763661,"data":"    return method(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135767068,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 323, in decode\n"}
+,{"stream_name":"stderr","time":372.135770757,"data":"    decoded = self._decode(z).sample\n"}
+,{"stream_name":"stderr","time":372.13577418,"data":"              ~~~~~~~~~~~~^^^\n"}
+,{"stream_name":"stderr","time":372.13577762,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 294, in _decode\n"}
+,{"stream_name":"stderr","time":372.135781452,"data":"    dec = self.decoder(z)\n"}
+,{"stream_name":"stderr","time":372.135784857,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135788646,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135792145,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135795631,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135799304,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135802714,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/vae.py\", line 305, in forward\n"}
+,{"stream_name":"stderr","time":372.135806476,"data":"    sample = up_block(sample, latent_embeds)\n"}
+,{"stream_name":"stderr","time":372.135809951,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135813832,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.13581732,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135820896,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135824762,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135831592,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/unets/unet_2d_blocks.py\", line 2643, in forward\n"}
+,{"stream_name":"stderr","time":372.135835542,"data":"    hidden_states = upsampler(hidden_states)\n"}
+,{"stream_name":"stderr","time":372.135839034,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.135842822,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135846264,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.1358497,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135853492,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135857327,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/upsampling.py\", line 188, in forward\n"}
+,{"stream_name":"stderr","time":372.13586113,"data":"    hidden_states = self.conv(hidden_states)\n"}
+,{"stream_name":"stderr","time":372.135864624,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":372.13586839,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135871834,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135875368,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":372.135879116,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":372.135882549,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 553, in forward\n"}
+,{"stream_name":"stderr","time":372.135886236,"data":"    return self._conv_forward(input, self.weight, self.bias)\n"}
+,{"stream_name":"stderr","time":372.135889701,"data":"           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135893148,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 548, in _conv_forward\n"}
+,{"stream_name":"stderr","time":372.135902102,"data":"    return F.conv2d(\n"}
+,{"stream_name":"stderr","time":372.135905532,"data":"           ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":372.135908946,"data":"        input, weight, bias, self.stride, self.padding, self.dilation, self.groups\n"}
+,{"stream_name":"stderr","time":372.135912499,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":372.135916085,"data":"    )\n"}
+,{"stream_name":"stderr","time":372.135919542,"data":"    ^\n"}
+,{"stream_name":"stderr","time":372.13592312,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.72 GiB is free. Including non-PyTorch memory, this process has 12.84 GiB memory in use. Of the allocated memory 10.72 GiB is allocated by PyTorch, and 1.99 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stdout","time":372.136399293,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":373.727292337,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":373.727335899,"data":"Running generation for sample: fox_cottage with 7 layers...\n"}
+,{"stream_name":"stdout","time":724.517434463,"data":"FAILED fox_cottage 3.5 16\n"}
+,{"stream_name":"stderr","time":724.533813028,"data":"find: ‘/kaggle/working/reveal_out’: No such file or directory\n"}
+,{"stream_name":"stdout","time":724.536316434,"data":"find /kaggle/working/reveal_out -name '*.png' | head -50\n"}
+,{"stream_name":"stderr","time":724.537964368,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":724.53798299,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 148, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":724.537988626,"data":"    infer.test_one_sample(args, sample, pipe, transp_vae, D0, shuffle=False)\n"}
+,{"stream_name":"stderr","time":724.537993005,"data":"    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.537997403,"data":"  File \"/kaggle/working/RevealLayer/infer.py\", line 370, in test_one_sample\n"}
+,{"stream_name":"stderr","time":724.538001682,"data":"    output, rgba_output, _, _ = pipeline(\n"}
+,{"stream_name":"stderr","time":724.538005854,"data":"                                ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":724.538010075,"data":"        prompt=\"Decompose the image into foreground and background.\",\n"}
+,{"stream_name":"stderr","time":724.538014393,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538018513,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":724.538022737,"data":"        transparent_decoder=transp_vae,\n"}
+,{"stream_name":"stderr","time":724.538026795,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538030976,"data":"    )\n"}
+,{"stream_name":"stderr","time":724.538040829,"data":"    ^\n"}
+,{"stream_name":"stderr","time":724.538043975,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":724.53804697,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538049851,"data":"  File \"/kaggle/working/RevealLayer/models/custom_pipeline.py\", line 914, in __call__\n"}
+,{"stream_name":"stderr","time":724.538052778,"data":"    image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]\n"}
+,{"stream_name":"stderr","time":724.538055703,"data":"                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538058581,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 130, in \u003clambda\u003e\n"}
+,{"stream_name":"stderr","time":724.538061739,"data":"    setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))\n"}
+,{"stream_name":"stderr","time":724.53806479,"data":"                                                        ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.53806789,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/utils/accelerate_utils.py\", line 46, in wrapper\n"}
+,{"stream_name":"stderr","time":724.538070958,"data":"    return method(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538073837,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 323, in decode\n"}
+,{"stream_name":"stderr","time":724.538076909,"data":"    decoded = self._decode(z).sample\n"}
+,{"stream_name":"stderr","time":724.538087753,"data":"              ~~~~~~~~~~~~^^^\n"}
+,{"stream_name":"stderr","time":724.538092317,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 294, in _decode\n"}
+,{"stream_name":"stderr","time":724.538094881,"data":"    dec = self.decoder(z)\n"}
+,{"stream_name":"stderr","time":724.538097075,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538100208,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.53810258,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538104785,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538107225,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538109416,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/vae.py\", line 305, in forward\n"}
+,{"stream_name":"stderr","time":724.538111861,"data":"    sample = up_block(sample, latent_embeds)\n"}
+,{"stream_name":"stderr","time":724.538114083,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538116632,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538118905,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538121104,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538123457,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538125667,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/unets/unet_2d_blocks.py\", line 2643, in forward\n"}
+,{"stream_name":"stderr","time":724.538128032,"data":"    hidden_states = upsampler(hidden_states)\n"}
+,{"stream_name":"stderr","time":724.538130243,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538132634,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538134947,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.53813716,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538139523,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538141718,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/upsampling.py\", line 188, in forward\n"}
+,{"stream_name":"stderr","time":724.538144068,"data":"    hidden_states = self.conv(hidden_states)\n"}
+,{"stream_name":"stderr","time":724.538146273,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538148663,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538150882,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538153081,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538155453,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538160318,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 553, in forward\n"}
+,{"stream_name":"stderr","time":724.538162783,"data":"    return self._conv_forward(input, self.weight, self.bias)\n"}
+,{"stream_name":"stderr","time":724.538165057,"data":"           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538167338,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 548, in _conv_forward\n"}
+,{"stream_name":"stderr","time":724.538169938,"data":"    return F.conv2d(\n"}
+,{"stream_name":"stderr","time":724.538172148,"data":"           ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":724.538174333,"data":"        input, weight, bias, self.stride, self.padding, self.dilation, self.groups\n"}
+,{"stream_name":"stderr","time":724.538176669,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538178968,"data":"    )\n"}
+,{"stream_name":"stderr","time":724.538181126,"data":"    ^\n"}
+,{"stream_name":"stderr","time":724.538184142,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.71 GiB is free. Including non-PyTorch memory, this process has 12.85 GiB memory in use. Of the allocated memory 10.72 GiB is allocated by PyTorch, and 1.99 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stderr","time":724.53819066,"data":"find: ‘/kaggle/working/reveal_out’: No such file or directory\n"}
+,{"stream_name":"stderr","time":724.538193483,"data":"\n"}
+,{"stream_name":"stderr","time":724.538195804,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":724.538198106,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 148, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":724.53820055,"data":"    infer.test_one_sample(args, sample, pipe, transp_vae, D0, shuffle=False)\n"}
+,{"stream_name":"stderr","time":724.538202848,"data":"    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538205195,"data":"  File \"/kaggle/working/RevealLayer/infer.py\", line 370, in test_one_sample\n"}
+,{"stream_name":"stderr","time":724.538207567,"data":"    output, rgba_output, _, _ = pipeline(\n"}
+,{"stream_name":"stderr","time":724.53820987,"data":"                                ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":724.538212092,"data":"        prompt=\"Decompose the image into foreground and background.\",\n"}
+,{"stream_name":"stderr","time":724.538214596,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538217003,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stderr","time":724.538219273,"data":"        transparent_decoder=transp_vae,\n"}
+,{"stream_name":"stderr","time":724.538221573,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538223808,"data":"    )\n"}
+,{"stream_name":"stderr","time":724.538225941,"data":"    ^\n"}
+,{"stream_name":"stderr","time":724.538228086,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":724.538230496,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.53823465,"data":"  File \"/kaggle/working/RevealLayer/models/custom_pipeline.py\", line 914, in __call__\n"}
+,{"stream_name":"stderr","time":724.538237117,"data":"    image_segs = [self.vae.float().decode(latents_seg.float(), return_dict=False)[0] for latents_seg in latents_segs]\n"}
+,{"stream_name":"stderr","time":724.538239489,"data":"                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538241808,"data":"  File \"/tmp/ipykernel_23/1828112377.py\", line 130, in \u003clambda\u003e\n"}
+,{"stream_name":"stderr","time":724.538244482,"data":"    setattr(pipe.vae, _name, (lambda f: lambda *a, **k: f(*[x.float() if torch.is_tensor(x) and x.is_floating_point() else x for x in a], **k))(_f))\n"}
+,{"stream_name":"stderr","time":724.538246966,"data":"                                                        ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538249382,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/utils/accelerate_utils.py\", line 46, in wrapper\n"}
+,{"stream_name":"stderr","time":724.538251837,"data":"    return method(self, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538254088,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 323, in decode\n"}
+,{"stream_name":"stderr","time":724.538256514,"data":"    decoded = self._decode(z).sample\n"}
+,{"stream_name":"stderr","time":724.538258902,"data":"              ~~~~~~~~~~~~^^^\n"}
+,{"stream_name":"stderr","time":724.538261177,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/autoencoder_kl.py\", line 294, in _decode\n"}
+,{"stream_name":"stderr","time":724.5382636,"data":"    dec = self.decoder(z)\n"}
+,{"stream_name":"stderr","time":724.538265792,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538268222,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.53827046,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538272693,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538275103,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538277332,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/autoencoders/vae.py\", line 305, in forward\n"}
+,{"stream_name":"stderr","time":724.538279756,"data":"    sample = up_block(sample, latent_embeds)\n"}
+,{"stream_name":"stderr","time":724.538281993,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538284395,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538286627,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538288865,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538291258,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.5382935,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/unets/unet_2d_blocks.py\", line 2643, in forward\n"}
+,{"stream_name":"stderr","time":724.538295911,"data":"    hidden_states = upsampler(hidden_states)\n"}
+,{"stream_name":"stderr","time":724.53829815,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538302962,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538306065,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538308682,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.538311774,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538314195,"data":"  File \"/kaggle/working/RevealLayer/diffusers/src/diffusers/models/upsampling.py\", line 188, in forward\n"}
+,{"stream_name":"stderr","time":724.538316745,"data":"    hidden_states = self.conv(hidden_states)\n"}
+,{"stream_name":"stderr","time":724.538319087,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":724.538321567,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.538323903,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538326955,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":724.53832941,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":724.53833164,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 553, in forward\n"}
+,{"stream_name":"stderr","time":724.538334014,"data":"    return self._conv_forward(input, self.weight, self.bias)\n"}
+,{"stream_name":"stderr","time":724.538336387,"data":"           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538338732,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 548, in _conv_forward\n"}
+,{"stream_name":"stderr","time":724.538341522,"data":"    return F.conv2d(\n"}
+,{"stream_name":"stderr","time":724.538343778,"data":"           ~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":724.538346048,"data":"        input, weight, bias, self.stride, self.padding, self.dilation, self.groups\n"}
+,{"stream_name":"stderr","time":724.538348492,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":724.538350935,"data":"    )\n"}
+,{"stream_name":"stderr","time":724.538353173,"data":"    ^\n"}
+,{"stream_name":"stderr","time":724.53835542,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.75 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.71 GiB is free. Including non-PyTorch memory, this process has 12.85 GiB memory in use. Of the allocated memory 10.72 GiB is allocated by PyTorch, and 1.99 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stderr","time":724.538358578,"data":"find: ‘/kaggle/working/reveal_out’: No such file or directory\n"}
+,{"stream_name":"stderr","time":730.990815949,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":730.990865466,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":731.163544941,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":731.163581499,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":731.91440332,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":732.046787671,"data":"[NbConvertApp] Writing 719549 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":734.541195097,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":735.116929693,"data":"[NbConvertApp] Writing 971616 bytes to __results__.html\n"}
+]

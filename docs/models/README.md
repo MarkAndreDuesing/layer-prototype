@@ -47,6 +47,12 @@
 | Stable-Layers (Heun) | image to layers | forest | 2x T4 | 384 px, 4 layers, 8 Heun steps, CFG 1 | 130 |  | 4 | 14.8 |  | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
 | Qwen-Image-Layered (Heun) | image to layers | forest | 2x T4 | 384 px, 4 layers, 4 Heun steps, CFG 1 | 58 |  | 4 | 7.0 |  | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
 | Qwen-Image-Layered | image to layers | 3 scenes | 2x T4 | 384 px, 2 layers, 4 steps, CFG 1 | 26 |  | 2 | 5.9-6.5 | bg + one fg layer | [results_qwen_v9b](../../prototype/kaggle/results_qwen_v9b/) |
+| Qwen-Image-Layered | image to layers | fox & cottage | 2x T4 | 384 px, 4 layers, 4 steps, CFG 1 | 33 |  | 4 | 9.4 | bg / roof / cottage+tree / fox | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
+| Qwen-Image-Layered | image to layers | fox & cottage | 2x T4 | 384 px, 6 layers, 4 steps, CFG 1 | 41 |  | 6 | 17.3 |  | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
+| Qwen-Image-Layered | image to layers | fox & cottage | 2x T4 | 512 px, 5 layers, 4 steps, CFG 1 | 62 |  | 5 | 13.4 | tree and fox separate | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
+| Stable-Layers | image to layers | fox & cottage | 2x T4 | 384 px, 5 layers, 4 Euler steps, CFG 1 | 39 |  | 5 | 21.0 | sky / meadow / cottage+tree / path / fox | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
+| Stable-Layers (Heun) | image to layers | fox & cottage | 2x T4 | 384 px, 5 layers, 4 Heun steps, CFG 1 | 67 |  | 5 | 20.6 | same clean split | [results_qwen_fox_v11](../../prototype/kaggle/results_qwen_fox_v11/) |
+| ART+ | text + boxes to layers | forest / sketch prompts | 2x T4 | 512 px, 16 steps, CFG 4 | 315 | 10.0 | 4 |  | runs; output wrong (small image | [results_artplus_v5](../../prototype/kaggle/results_artplus_v5/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (24 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (30 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->
