@@ -10,3 +10,4 @@ prototype/scenes/
 prototype/kaggle/qwen_test_output*/
 prototype/kaggle/run_output/
 prototype/kaggle/*.zip
+prototype/vendor/diffuser_layerdiffuse/
