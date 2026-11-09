@@ -1,0 +1,20 @@
+model,task,scene,hardware,settings,seconds,peak_gb,layers,recomposite_diff,result_dir,date,note
+Qwen-Image-Layered,image to layers,forest,2x T4,"640 px, 4 layers, 50 steps, CFG 4",2100,8.8,4,4.1,results_qwen_batch_v2,2026-11-09,defaults
+Qwen-Image-Layered,image to layers,forest,2x T4,"384 px, 3 layers, 3 steps, CFG 1",20,8.0,3,,results_qwen_sweep_v5,2026-11-09,softer edges
+Qwen-Image-Layered,image to layers,forest,2x T4,"384 px, 4 layers, 4 steps, CFG 1",30,8.0,4,7.1,results_qwen_sweep_v5,2026-11-09,recommended
+Qwen-Image-Layered,image to layers,pixel-art camp,2x T4,"384 px, 4 layers, 5 steps, CFG 1",38,8.0,4,,results_qwen_sweep_v5,2026-11-09,
+Qwen-Image-Layered,image to layers,forest,2x T4,"512 px, 3 layers, 3 steps, CFG 1",31,8.0,3,,results_qwen_sweep_v5,2026-11-09,sharper
+Stable-Layers,image to layers,forest,2x T4,"384 px, 4 layers, 4 Euler steps, CFG 1",34,,4,15-18,results_stable_layers_v8,2026-11-09,colour shift
+Stable-Layers,image to layers,forest,2x T4,"384 px, 4 layers, 8 Euler steps, CFG 1",71,,4,,results_stable_layers_v8,2026-11-09,
+Qwen Lightning LoRA 1.0,image to layers,3 scenes,2x T4,"384 px, 4 layers, 4 steps",38,,4,11-13.5,results_qwen_sweep_v6_lightning,2026-11-09,thin subjects separate better
+RevealLayer,image + boxes to layers,forest,2x T4,"512 px, 3 boxes, 12 steps, true_gs 1",134,11.4,3+bg,,results_reveallayer_v11,2026-11-09,hidden areas filled
+Qwen-Image-2.1 Turbo,text to RGBA object,campfire,2x T4,"512 px, 8 steps",20,9.7,1,,results_qwen21_v2,2026-11-09,dark halo
+Qwen-Image-2.1 Turbo,edit RGBA layer,campfire,2x T4,"512 px, 8 steps",23,10.7,1,,results_qwen21_v2,2026-11-09,alpha kept
+Qwen-Image-2.1 Turbo,extract object,forest,2x T4,"512 px, 8 steps",22,10.7,1,,results_qwen21_v2,2026-11-09,clean in-place layer
+FLUX.1-dev GGUF Q4 (control),text to image,campfire,1x T4,"512 px, 16 steps, plain fp16",41,7.5,,,results_flux_control_v1,2026-11-09,no overflow
+LayerDiffuse SDXL chain,add element to scene,forest,1x T4,"1024 px, 20 steps, CFG 7",18,,1,,layerproto-chain-batch,2026-11-07,per pass
+relocate() v5,move/resize layer,forest,1x T4,"512 px, 20 steps, strength 0.3",4,,1,,results_qwen_relocate_v5_fixedpin,2026-11-09,identity largely kept
+SAM2 + LaMa,image to layers,3 scenes,1x T4,"hiera-small, 4 largest masks",5,,4,0.2-2.4,results_segment_inpaint,2026-11-09,poor automatic grouping
+LayerD,image to layers,3 scenes,Kaggle CPU,defaults,60,,1,,results_layerd_trial,2026-11-09,returned 1 layer
+IC-Light fbc relight,relight layer,forest,laptop CPU,"384 px, 8 steps",44,,1,,results_local_relight,2026-11-09,fire also dimmed
+procedural shadow,shadow layer,forest,laptop CPU,per layer,0.6,,1,,results_local_shadow,2026-11-09,

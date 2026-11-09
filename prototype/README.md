@@ -14,7 +14,7 @@ Layers are not merged back into one image in this draft.
 | Layer images | SDXL-Turbo + LayerDiffuse SDXL LoRA, CPU float32, 512 px, 4 steps | `"image_backend": "remote"` → `layerproto/remote_server.py` on a Kaggle / Modal GPU |
 | Image-to-text per layer | Ollama `qwen2.5vl:3b` (or `moondream`, faster but garbled) | any vision model |
 
-Background reading: [../reports/Layer based architecture models and hosting.md](../reports/Layer%20based%20architecture%20models%20and%20hosting.md)
+Background reading: [docs/archive/2026-11-07 Layer based architecture models and hosting.md](../docs/archive/2026-11-07%20Layer%20based%20architecture%20models%20and%20hosting.md)
 
 ## Run it
 
@@ -149,4 +149,4 @@ Added later (GPU loop, mostly run on Kaggle):
 - `layerproto/backends/layerdiffuse_chain.py`: scene-to-layer chain (`bg2ble` → `bgble2fg`) and `relocate()` (move/resize a layer with re-harmonisation, about 4 s on a T4).
 - `layerproto/qwen_layered.py` + `layerproto/fp16_mixed.py`: Qwen-Image-Layered on 2× T4 (27–35 s per split), Heun wrapper, prompt cache.
 - `layerproto/relight.py` (IC-Light relight of a layer), `layerproto/shadow.py` (procedural shadow layer), `layerproto/events.py` (story-event router with instant previews), `layerproto/drift_eval.py` (drift over long edit sequences).
-- `tools/make_*_trial.py`: Kaggle notebook generators for every model trial; results in `kaggle/results_*`. See [../docs/findings-log.md](../docs/findings-log.md).
+- `tools/make_*_trial.py`: Kaggle notebook generators for every model trial; results in `kaggle/results_*`. See [../docs/log.md](../docs/log.md).

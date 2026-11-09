@@ -14,12 +14,13 @@ from diffusers import AutoPipelineForText2Image
 from PIL import Image
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "kaggle", "test_scene_candidates")
-BASE = ("storybook illustration, wide view, a red fox standing in the centre on short green lawn, a small stone cottage "
-        "with a red roof just behind the fox in the centre, {third}, rolling green hills and a blue sky with soft clouds "
-        "behind, clean empty foreground, clearly separated objects, soft daylight, painterly")
-THIRDS = {"fence": "a simple wooden picket fence to the right of the cottage",
-          "farmer": "a farmer in a straw hat standing to the left of the cottage"}
-SEEDS = [int(x) for x in sys.argv[1:]] or [3, 11, 21]
+BASE = ("storybook illustration, a large red fox standing on open green lawn in the right foreground, "
+        "a small stone cottage with an orange thatched roof in the middle distance, a low dry-stone wall with a "
+        "wooden gate to the left of the cottage, a cobblestone path winding from the cottage into the foreground, "
+        "a big leafy tree behind the cottage, a few small village houses on the rolling hills in the background, "
+        "blue sky with soft clouds, {third}, clearly separated objects, soft daylight, painterly")
+THIRDS = {"v2": "the fox stands alone on the lawn away from the wall and the path"}
+SEEDS = [int(x) for x in sys.argv[1:]] or [11, 5, 8, 13, 17, 29]
 
 pipe = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float32)
 outs = []
@@ -30,8 +31,9 @@ for name, third in THIRDS.items():
                   generator=torch.Generator().manual_seed(seed)).images[0]
         f = os.path.join(OUT, f"A_{name}_s{seed}.png"); im.save(f); outs.append(f)
         print(os.path.basename(f), round(time.time() - t), "s", flush=True)
-sheet = Image.new("RGB", (512 * len(SEEDS), 512 * len(THIRDS)))
+cols = 3; rows = (len(outs) + cols - 1) // cols
+sheet = Image.new("RGB", (512 * cols, 512 * rows))
 for i, f in enumerate(outs):
-    sheet.paste(Image.open(f), ((i % len(SEEDS)) * 512, (i // len(SEEDS)) * 512))
-sheet.save(os.path.join(OUT, "A_variants.jpg"), quality=88)
+    sheet.paste(Image.open(f), ((i % cols) * 512, (i // cols) * 512))
+sheet.save(os.path.join(OUT, f"A_variants_{list(THIRDS)[0]}.jpg"), quality=88)
 print("done")

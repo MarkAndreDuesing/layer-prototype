@@ -1,0 +1,71 @@
+[{"stream_name":"stderr","time":7.044897184,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.044942875,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.029344829,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.029375468,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.029380064,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.029383688,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.634725561,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.634776423,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.634783341,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.634787271,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.833794142,"data":"name, memory.total [MiB]\r\n"}
+,{"stream_name":"stdout","time":9.833821237,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":9.833825924,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":17.978858184,"data":"{'torch': '2.11.0+cu130', 'diffusers': '0.37.0', 'transformers': '5.20.2', 'gguf': '0.19.0', 'accelerate': '1.15.0'}\n"}
+,{"stream_name":"stdout","time":25.011957468,"data":"module ok\n"}
+,{"stream_name":"stdout","time":26.392721235,"data":"transformer from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-transformer/qwen-image-layered-Q4_K_S.gguf | base from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-base/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":36.487379137,"data":"cached text encoder read speed: 313.3 MB/s\n"}
+,{"stream_name":"stderr","time":68.842717643,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":68.84274803,"data":"\n"}
+,{"stream_name":"stderr","time":68.842753995,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":68.843628522,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":68.843648049,"data":"\n"}
+,{"stream_name":"stderr","time":68.843653129,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stdout","time":68.935219331,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":69.137614824,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":149.762986174,"data":"base weights on local disk after 77.1 s -\u003e /tmp/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":214.482701489,"data":"text encoder loaded in 68.5 s\n"}
+,{"stream_name":"stdout","time":218.939651014,"data":"stage1 peak GB per GPU: [8.82, 8.13]\n"}
+,{"stream_name":"stdout","time":218.961744423,"data":"after unload, GB allocated: 0.27\n"}
+,{"stream_name":"stdout","time":218.961769809,"data":"{'weights_cached': True, 'input_read_MBps': 313.3, 'copy_to_local_s': 77.1, 'stage1_load_s': 69.9, 'stage1_encode_s': 2.7, 'stage1_peak_GB': [8.82, 8.13]}\n"}
+,{"stream_name":"stdout","time":273.076860229,"data":"loaded in 54.1 s; GB allocated 12.67\n"}
+,{"stream_name":"stdout","time":273.178916872,"data":"linears patched, params moved to fp32: (846, 242)\n"}
+,{"stream_name":"stderr","time":274.033067146,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":274.033110922,"data":"\n"}
+,{"stream_name":"stderr","time":274.033131281,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":302.065913707,"data":"latents nan: False inf: False absmax: 1.22\n"}
+,{"stream_name":"stdout","time":302.091024754,"data":"vae input nan: False inf: False absmax: 0.45\n"}
+,{"stream_name":"stdout","time":302.274707492,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.288533186,"data":"vae input nan: False inf: False absmax: 0.34\n"}
+,{"stream_name":"stdout","time":302.411446039,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.417893646,"data":"vae input nan: False inf: False absmax: 0.44\n"}
+,{"stream_name":"stdout","time":302.540265623,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.546838063,"data":"vae input nan: False inf: False absmax: 0.37\n"}
+,{"stream_name":"stdout","time":302.670852889,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.679464972,"data":"{'denoise_s': 19.5, 's_per_step': 7.61, 'decode_s': 0.6} | peak GB per GPU: [7.34, 7.01]\n"}
+,{"stream_name":"stderr","time":303.367847259,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.367873733,"data":"\n"}
+,{"stream_name":"stderr","time":303.367878759,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.368694423,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.36871517,"data":"\n"}
+,{"stream_name":"stderr","time":303.368720465,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":312.05211941,"data":"FAILED stable_layers heun forest TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.224192233,"data":"FAILED stable_layers heun sketch_skeleton TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.392103663,"data":"FAILED stable_layers heun pixelart_camp TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.561282019,"data":"FAILED stable_layers heun forest TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.574288471,"data":"FAILED base heun forest TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.583756394,"data":"FAILED base euler forest TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.593516451,"data":"FAILED base euler sketch_skeleton TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.60290186,"data":"FAILED base euler pixelart_camp TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stdout","time":312.77373761,"data":"FAILED stable_layers euler forest TypeError(\"decompose() got an unexpected keyword argument 'sampler'\")\n"}
+,{"stream_name":"stderr","time":319.747213857,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":319.747248841,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":320.072615747,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":320.072640615,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":321.848230599,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":321.962559865,"data":"[NbConvertApp] Writing 1434471 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":324.45369076,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":325.445043354,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":325.445069985,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":325.44569528,"data":"[NbConvertApp] Writing 1158446 bytes to __results__.html\n"}
+]
