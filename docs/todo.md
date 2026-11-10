@@ -15,7 +15,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
-- [~] **LayerD:** 5-variant CPU sweep on fox & cottage + forest running (threshold, no palette refinement, 1024 px matting, 5 iterations)
+- [x] **LayerD:** weights load fine; 3 layers on a flat design, none on painted scenes (matting predicts no foreground)
+- [ ] LayerD loop with generic BiRefNet as matting model on fox & cottage
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [ ] SAM2 route: SDXL inpaint for large holes, pix2gestalt amodal completion
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)

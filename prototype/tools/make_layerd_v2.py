@@ -39,6 +39,7 @@ from layerd import LayerD
 import layerd.matting.birefnet as _lb, layerd.models.matting.birefnet_matting as _lm
 from transformers import AutoModelForImageSegmentation as _AM
 def _build(card="cyberagent/layerd-birefnet", **kw):
+    card = os.environ.get("BIREF_CARD", card)   # v11: swap in generic BiRefNet
     m, info = _AM.from_pretrained(card, trust_remote_code=True, low_cpu_mem_usage=False, output_loading_info=True)
     print("birefnet load info:", {{k: len(v) for k, v in info.items()}}, {{k: v[:3] for k, v in info.items() if v}}, flush=True)
     return m
@@ -46,8 +47,15 @@ _lb.build_birefnet = _build; _lm.build_birefnet = _build
 import transformers; print("transformers", transformers.__version__, flush=True)
 OUT = '/kaggle/working/layerd_v2'; os.makedirs(OUT, exist_ok=True)
 IMAGES = {{k: Image.open(io.BytesIO(base64.b64decode(v))).convert('RGB') for k, v in {json.dumps({k: b64(v) for k, v in IMAGES.items()})}.items()}}
+from PIL import ImageDraw
+_d = Image.new('RGB', (768, 768), (244, 226, 190)); _g = ImageDraw.Draw(_d)   # flat graphic design: LayerD's training domain
+_g.ellipse((200, 120, 560, 480), fill=(220, 70, 50)); _g.rectangle((80, 560, 690, 680), fill=(40, 70, 120))
+_g.text((120, 590), "STORY TIME", fill=(255, 255, 255), font_size=72)
+IMAGES['design_flat'] = _d
 VARIANTS = {{
     'default': dict(kw={{}}, th=None, iters=3),
+    'generic_birefnet': dict(kw={{}}, th=None, iters=4, card='ZhengPeng7/BiRefNet'),
+    'generic_birefnet_norefine': dict(kw=dict(fg_refine=False, bg_refine=False), th=None, iters=4, card='ZhengPeng7/BiRefNet'),
 }}
 import torch
 def _diag(card):
@@ -63,11 +71,12 @@ def _diag(card):
             for i, e in enumerate(o): walk(e, f'{{pre}}[{{i}}]')
         else: print(' ', pre, type(o), flush=True)
     walk(out)
-for _c in ('cyberagent/layerd-birefnet', 'ZhengPeng7/BiRefNet'):
+for _c in ():
     try: _diag(_c)
     except Exception as e: print('diag failed', _c, repr(e)[:300], flush=True)
 stats = {{}}
 for vname, v in VARIANTS.items():
+    os.environ['BIREF_CARD'] = v.get('card', 'cyberagent/layerd-birefnet')
     t = time.time(); m = LayerD(matting_hf_card='cyberagent/layerd-birefnet', **v['kw']).to('cpu')
     if v['th'] is not None: m._th_alpha = v['th']
     cov = []
@@ -75,7 +84,7 @@ for vname, v in VARIANTS.items():
         def __init__(self, inner): self.inner = inner
         def __getattr__(self, k): return getattr(self.inner, k)
         def __call__(self, img):
-            a = np.asarray(self.inner(img), dtype=np.float32)
+            a = np.asarray(self.inner(img), dtype=np.float64)
             cov.append(dict(above_th=round(float((a > m._th_alpha).mean()), 3), mean=round(float(a.mean()), 3), max=round(float(a.max()), 3)))
             return a
     m.matting_model = Spy(m.matting_model)

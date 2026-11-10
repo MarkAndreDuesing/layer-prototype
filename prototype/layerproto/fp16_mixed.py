@@ -43,14 +43,14 @@ def _mixed_linear(self, x):
     else:
         b = b.float()
         y = (y - b) * s + b
-    lora = getattr(self, "_fp16_lora", None)
-    if lora is not None:                                             # low-rank delta, same input scaling
-        A, B, k = lora
-        if A.device != x.device:                                     # module was moved (e.g. split over GPUs)
-            A, B = A.to(x.device), B.to(x.device)
-            self._fp16_lora = (A, B, k)
+    loras = getattr(self, "_fp16_lora", None)
+    if loras:                                                        # low-rank deltas (stacked LoRAs), same input scaling
         xs = (x / s).to(torch.float16)
-        y = y + F.linear(F.linear(xs, A), B).float() * (s * k)
+        for i, (A, B, k) in enumerate(loras):
+            if A.device != x.device:                                 # module was moved (e.g. split over GPUs)
+                A, B = A.to(x.device), B.to(x.device)
+                loras[i] = (A, B, k)
+            y = y + F.linear(F.linear(xs, A), B).float() * (s * k)
     return y
 
 
@@ -91,7 +91,10 @@ def add_lora(model, path_or_state_dict, scale: float = 1.0):
         dev = next((p.device for p in m.parameters()), torch.device("cpu"))
         r = A.shape[0]
         k = scale * ((alpha / r) if alpha else 1.0)
-        m._fp16_lora = (A.to(dev, torch.float16), B.to(dev, torch.float16), k)
+        # append, never replace: ART+ stacks three LoRAs on the same modules (v1-v8 silently kept only the last one)
+        if not hasattr(m, "_fp16_lora"):
+            m._fp16_lora = []
+        m._fp16_lora.append((A.to(dev, torch.float16), B.to(dev, torch.float16), k))
         hit += 1
     return hit, miss
 
