@@ -71,6 +71,11 @@ The notebook is built but not pushed (pushing would start a run and use GPU quot
 5. Start the app, open the tab **Decompose an image (GPU)**, upload an image, method `sam2-lama`, type the object names (comma separated) and press Decompose.
 6. Stop the Kaggle notebook when done (the tunnel and the GPU session end with it).
 
+### Editor notes (2026-11-10)
+- The editor's Accelerator list offers only **GPU T4 x2**, **TPU v5e-8** and **None** (no T4 x1); the quota line there (for example "15:05 / 30 hrs") is the live weekly GPU counter.
+- A session shown as "Draft Session Starting..." forever can still be running: open the clock icon at the bottom left (Active Events), choose the session's **...** menu and **Stop Session**, then Run All starts a fresh one.
+- Cell outputs sit in cross-origin iframes, so they can only be read from a screenshot, not from page text.
+
 ## 4. Rules learned
 | Rule | Why |
 |---|---|
