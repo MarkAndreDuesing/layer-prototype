@@ -15,11 +15,11 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] ART+: "painting" prefix + background sentence (v11): flat blue background, still vignettes
 - [x] ART+ objects pasted on RevealLayer's background: style / scale clash (sticker look), needs harmonisation
 - [x] Harmonise ART+ objects (`relocate()` 0.4 / 0.6 + IC-Light): does not close the style gap
-- [~] ART+ at 1024 px (probe: fits, 11.0 GiB, about 190 s per step, 16 steps about 50 min; full run open, needs a 55-min cap); use ART+'s own whole-image frame as the background instead of another model's
+- [x] ART+ at 1024 px: runs, 8 steps in 21 min, 11.0 GiB (16 steps would be about 40 min); whole-image frame as background not yet used; use ART+'s own whole-image frame as the background instead of another model's
 - [x] **CLD:** works on fox & cottage (v3): clean layers + inpainted background
 - [x] CLD on Qwen-2.1 night / rain composites (v4): works with the same boxes
 - [x] CLD with 7 boxes (v5): fits (13.3 GB, 434 s); hedge good, ground path not extractable as a layer
-- [~] CLD at 768 / 1024 px: fits with the adapter on GPU 1, text encoders on the CPU and an own `layer_pe` copy (2-step probes, peak 10.8 / 13.0 GiB, see models/cld.md); open: a full 16-step run at 768 px to get quality and time, then port the layout into `make_cld_trial.py`; background comparison CLD vs RevealLayer done from existing runs (CLD's background is a separate generation, see models/cld.md)
+- [~] CLD at 768 / 1024 px: fits with the adapter on GPU 1, text encoders on the CPU and an own `layer_pe` copy (2-step probes, peak 10.8 / 13.0 GiB, see models/cld.md); full 16-step run at 768 px done (23 min, 10.8 GiB, clean layers); open: port the layout into `make_cld_trial.py`; background comparison CLD vs RevealLayer done from existing runs (CLD's background is a separate generation, see models/cld.md)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [x] **Qwen Lightning LoRA:** 2-step runs + scale sweep done (v10): half the time, worse split

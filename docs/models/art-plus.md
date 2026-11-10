@@ -75,6 +75,8 @@ It does **not** close the style gap: the glossy objects stay glossy and oversize
 
 To avoid a 50-minute run, one session measured only 2 denoising steps at 1024 px (boxes doubled): load 290 s, **2 steps 395 s, peak 11.0 GiB on GPU 0**. So 1024 px **fits in memory** (the 512 px run peaked at 8.6 GiB). Per step that is about 190 s against about 21 s at 512 px (343 s for 16 steps), roughly 9x, so a 16-step run at 1024 px would take about 50 min and 8 steps about 25 min; both exceed the 25-min cap used in the trials (the cap can be raised to 55 min). Two steps give noise, so no quality is claimed. Files: `prototype/kaggle/results_artplus_1024/`.
 
+**Real run at 1024 px, 8 steps (`artplus-1024-8st`):** 1251 s (21 min) after a 340 s load, peak 11.0 GiB on GPU 0, so the estimate above held (about 150 s per step). Bottom row of the strip in [cld](cld.md) (whole image, background, merged, layers): a coherent sticker-style scene at 1024 px with the fox, cottage, tree, bush and cloud as separate transparent layers over a blue-to-green gradient background. As in the 512 px runs, ART+ draws its own scene from the caption and boxes in its own style, not the fox & cottage painting; 8 steps is below the 16 used at 512 px. Files: `prototype/kaggle/results_artplus_1024_8st/`.
+
 ## Best features
 
 The only released FLUX model that makes a layered scene straight from text + boxes (boxes can come from our LLM breakdown).

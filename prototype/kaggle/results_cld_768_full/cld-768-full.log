@@ -1,0 +1,99 @@
+[{"stream_name":"stderr","time":6.718484874,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.718527493,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.658302137,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.658365892,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.658371449,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.658376253,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.289494561,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.289542774,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.28954899,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.289553688,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.545415479,"data":"pip -q install 'transformers==4.57.1' diffusers==0.32.2 peft==0.14.0 gguf\u003e=0.10 sentencepiece protobuf mmengine gdown einops\n"}
+,{"stream_name":"stderr","time":31.93645429,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":31.936482966,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.936489384,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.936494562,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.139127065,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":32.139163196,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.139169157,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.139173329,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.13917744,"data":"\n"}
+,{"stream_name":"stderr","time":32.139180821,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":32.139184867,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.139188877,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":32.139209555,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":32.224268241,"data":"git clone --depth 1 https://github.com/monkek123King/CLD /kaggle/working/CLD\n"}
+,{"stream_name":"stderr","time":32.245351249,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":32.447835208,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":32.447863348,"data":"\n"}
+,{"stream_name":"stderr","time":32.447868185,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":64.950390185,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":64.950453963,"data":"I0000 00:00:1794345054.599723      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":65.155549313,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":65.155597979,"data":"I0000 00:00:1794345054.599723      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":65.155604525,"data":"\n"}
+,{"stream_name":"stderr","time":65.155609496,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":65.155614666,"data":"I0000 00:00:1794345054.599723      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":69.897443203,"data":"diffusers 0.32.2\n"}
+,{"stream_name":"stdout","time":157.139931791,"data":"CLD files: ['README.md', 'decouple_LoRA/adapter/pytorch_lora_weights.safetensors', 'decouple_LoRA/layer_pe.pth', 'decouple_LoRA/transformer/pytorch_lora_weights.safetensors', 'pre_trained_LoRA/pytorch_lora_weights.safetensors', 'prism_ft_LoRA/pytorch_lora_weights.safetensors', 'trans_vae/0008000.pt']\n"}
+,{"stream_name":"stdout","time":218.705877886,"data":"layer_pe file: /root/.cache/huggingface/hub/models--thuteam--CLD/snapshots/13e6c46dc1a6a1d2f2def53b24370e28c76e3379/decouple_LoRA/layer_pe.pth type dict keys ['layer_pe'] shape (1, 52, 1, 1, 3072) norm 12.154 frame-to-frame diff 0.04072\n"}
+,{"stream_name":"stdout","time":221.276488236,"data":"LoRA pre_trained: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":223.846275269,"data":"LoRA prism_ft: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":226.486767688,"data":"LoRA decouple: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":241.330733615,"data":"LoRA adapter: matched 48 missing 0 []\n"}
+,{"stream_name":"stderr","time":242.720460096,"data":"Expected types for transformer: ['FluxTransformer2DModel'], got CustomFluxTransformer2DModel.\n"}
+,{"stream_name":"stderr","time":242.720493249,"data":"\n"}
+,{"stream_name":"stderr","time":242.720500139,"data":"Expected types for transformer: ['FluxTransformer2DModel'], got CustomFluxTransformer2DModel.\n"}
+,{"stream_name":"stderr","time":242.730301164,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":242.730339593,"data":"\n"}
+,{"stream_name":"stderr","time":242.730346018,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":281.654241573,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":281.654419496,"data":"\n"}
+,{"stream_name":"stderr","time":281.654446221,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stdout","time":289.739700211,"data":"vae_scale_factor -\u003e 16\n"}
+,{"stream_name":"stdout","time":291.505897748,"data":"Downloading: \"https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\" to /root/.cache/torch/hub/checkpoints/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stderr","time":291.506900075,"data":"\r  0%|          | 0.00/337M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":291.609420156,"data":"\r  0%|          | 0.00/337M [00:00\u003c?, ?B/s]\r  7%|▋         | 22.9M/337M [00:00\u003c00:01, 240MB/s]\n"}
+,{"stream_name":"stderr","time":291.707960571,"data":"\r  7%|▋         | 22.9M/337M [00:00\u003c00:01, 240MB/s]\r 14%|█▍        | 47.2M/337M [00:00\u003c00:01, 249MB/s]\n"}
+,{"stream_name":"stderr","time":291.824828801,"data":"\r 14%|█▍        | 47.2M/337M [00:00\u003c00:01, 249MB/s]\r 21%|██        | 71.0M/337M [00:00\u003c00:01, 231MB/s]\n"}
+,{"stream_name":"stderr","time":291.925488845,"data":"\r 21%|██        | 71.0M/337M [00:00\u003c00:01, 231MB/s]\r 28%|██▊       | 94.1M/337M [00:00\u003c00:01, 235MB/s]\n"}
+,{"stream_name":"stderr","time":292.025292354,"data":"\r 28%|██▊       | 94.1M/337M [00:00\u003c00:01, 235MB/s]\r 35%|███▍      | 118M/337M [00:00\u003c00:00, 239MB/s] \n"}
+,{"stream_name":"stderr","time":292.12558004,"data":"\r 35%|███▍      | 118M/337M [00:00\u003c00:00, 239MB/s] \r 42%|████▏     | 141M/337M [00:00\u003c00:00, 242MB/s]\n"}
+,{"stream_name":"stderr","time":292.22547648,"data":"\r 42%|████▏     | 141M/337M [00:00\u003c00:00, 242MB/s]\r 49%|████▉     | 165M/337M [00:00\u003c00:00, 243MB/s]\n"}
+,{"stream_name":"stderr","time":292.326001207,"data":"\r 49%|████▉     | 165M/337M [00:00\u003c00:00, 243MB/s]\r 56%|█████▌    | 189M/337M [00:00\u003c00:00, 245MB/s]\n"}
+,{"stream_name":"stderr","time":292.425952449,"data":"\r 56%|█████▌    | 189M/337M [00:00\u003c00:00, 245MB/s]\r 63%|██████▎   | 212M/337M [00:00\u003c00:00, 247MB/s]\n"}
+,{"stream_name":"stderr","time":292.526465096,"data":"\r 63%|██████▎   | 212M/337M [00:00\u003c00:00, 247MB/s]\r 70%|███████   | 236M/337M [00:01\u003c00:00, 247MB/s]\n"}
+,{"stream_name":"stderr","time":292.630806171,"data":"\r 70%|███████   | 236M/337M [00:01\u003c00:00, 247MB/s]\r 77%|███████▋  | 260M/337M [00:01\u003c00:00, 244MB/s]\n"}
+,{"stream_name":"stderr","time":292.731111096,"data":"\r 77%|███████▋  | 260M/337M [00:01\u003c00:00, 244MB/s]\r 84%|████████▍ | 284M/337M [00:01\u003c00:00, 246MB/s]\n"}
+,{"stream_name":"stderr","time":292.832553318,"data":"\r 84%|████████▍ | 284M/337M [00:01\u003c00:00, 246MB/s]\r 91%|█████████▏| 307M/337M [00:01\u003c00:00, 246MB/s]\n"}
+,{"stream_name":"stderr","time":292.933976259,"data":"\r 91%|█████████▏| 307M/337M [00:01\u003c00:00, 246MB/s]\r 98%|█████████▊| 331M/337M [00:01\u003c00:00, 244MB/s]\n"}
+,{"stream_name":"stderr","time":292.959084834,"data":"\r 98%|█████████▊| 331M/337M [00:01\u003c00:00, 244MB/s]\r100%|██████████| 337M/337M [00:01\u003c00:00, 243MB/s]\n"}
+,{"stream_name":"stderr","time":293.033366379,"data":"\r100%|██████████| 337M/337M [00:01\u003c00:00, 243MB/s]\n"}
+,{"stream_name":"stderr","time":293.033409916,"data":"\n"}
+,{"stream_name":"stderr","time":293.033413816,"data":"\n"}
+,{"stream_name":"stdout","time":293.128895666,"data":"ViT Encoder Missing keys: []\n"}
+,{"stream_name":"stdout","time":293.128935522,"data":"ViT Encoder Unexpected keys: ['pos_embedding']\n"}
+,{"stream_name":"stdout","time":293.128939752,"data":"transparent decoder file: /root/.cache/huggingface/hub/models--thuteam--CLD/snapshots/13e6c46dc1a6a1d2f2def53b24370e28c76e3379/trans_vae/0008000.pt\n"}
+,{"stream_name":"stdout","time":297.259107797,"data":"transp vae: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stdout","time":297.730436796,"data":"loaded 288 s; GiB [7.0, 4.0]\n"}
+,{"stream_name":"stderr","time":1659.605833248,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":1659.606023615,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":1659.606036986,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1659.606042165,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1659.606049883,"data":"\n"}
+,{"stream_name":"stderr","time":1659.606053554,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":1659.606057191,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":1659.606060008,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1659.606063021,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":1676.798050486,"data":"final latents per frame: frame0-vs-frame1 diff 1.2289 frame std [2.383, 2.783, 3.573, 3.506, 3.507, 3.668]\n"}
+,{"stream_name":"stdout","time":1678.151998061,"data":"case0 16 steps: 1380s, peak GiB 10.8\n"}
+,{"stream_name":"stdout","time":1678.152895388,"data":"total 1669 s\n"}
+,{"stream_name":"stderr","time":1685.744389694,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1685.744430065,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1686.002999195,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1686.003034838,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1687.077781013,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1687.270585431,"data":"[NbConvertApp] Writing 1098626 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1690.008536267,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1690.846925938,"data":"[NbConvertApp] Writing 1253097 bytes to __results__.html\n"}
+]
