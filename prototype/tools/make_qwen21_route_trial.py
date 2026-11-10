@@ -143,7 +143,7 @@ dec = Qwen21Decomposer(pipe)
 stub = type("NoChain", (), {"info": lambda self: {"backend": "decompose-only"}})()
 client = TestClient(build_app(stub, "tok", decomposer=MethodRouter({"qwen21-extract": dec})))
 import requests
-from layerproto.remote import img_to_b64, b64_to_img
+from layerproto.backends.remote import img_to_b64, b64_to_img
 BOXES = [[95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]]
 NAMES = ["cottage", "stone gate arch", "big tree", "red fox"]
 from dataclasses import asdict

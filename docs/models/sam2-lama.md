@@ -91,7 +91,11 @@ Both recomposite to the input. Both cottages are incomplete where the tree and h
 
 ![amodal in the route](../img/sam2_amodal_route.jpg)
 
-The cottage layer gains wall on its right end, but the fill is patchy: green and sky-coloured patches appear where the arch and the tree were, because the inpaint sees the leftover background around the hole and the prompt is only the object name. The Qwen-Image-2.1 "extract only the cottage without X" result ([qwen-image-2.1](qwen-image-2.1.md)) is much cleaner. Next: a better fill prompt (wall, roof, door), a tighter hidden mask, and routing the same box prompt to Qwen-2.1 on the server. Geometry unit test: `prototype/tools/test_amodal_fill.py`. Files: `prototype/kaggle/results_amodal_route/`.
+The cottage layer gains wall on its right end, but the fill is patchy: green and sky-coloured patches appear where the arch and the tree were, because the inpaint sees the leftover background around the hole and the prompt is only the object name. The Qwen-Image-2.1 "extract only the cottage without X" result ([qwen-image-2.1](qwen-image-2.1.md)) is much cleaner. Next: a better fill prompt (wall, roof, door), a tighter hidden mask, and routing the same box prompt to Qwen-2.1 on the server. **Second try (amodal v2, same session type, `prototype/kaggle/results_amodal_v2/`):** the fill on a neutral-grey base with the prompt "a complete cottage, the same material and colours continuing" and a negative prompt for grass, hedge, leaves and sky. Top row old base, bottom row neutral base.
+
+![amodal v1 vs v2](../img/sam2_amodal_v2.jpg)
+
+The green and sky patches are gone, but the model keeps the grey it was shown, so the hidden parts of the cottage come out as grey blocks, which is not better. The flag `Sam2Decomposer.amodal_neutral` stays available (default off). The Qwen-Image-2.1 extraction ([qwen-image-2.1](qwen-image-2.1.md)) is the approach that gave a clean whole cottage, so the next step for the SAM2 route is to take the fill from Qwen-2.1 (the `qwen21-extract` method) instead of SDXL-inpaint. Geometry unit test: `prototype/tools/test_amodal_fill.py`. Files: `prototype/kaggle/results_amodal_route/`.
 
 ## Best features
 

@@ -31,7 +31,7 @@ class Sam2Decomposer:
         self.lama = SimpleLama()
         self._inpaint = None                                # SDXL-inpaint, loaded on the first amodal request
 
-    amodal_neutral = True       # inpaint on the object over neutral grey, so the fill does not copy leftover background colours
+    amodal_neutral = False      # True: inpaint on the object over neutral grey. Tested 2026-11-10: removes the green patches but the fill comes out grey
 
     def _fill_hidden(self, base: Image.Image, hidden: np.ndarray, prompt: str, seed: int = 5) -> Image.Image:
         """SDXL-inpaint `base` inside `hidden` (bool mask); returns an RGB image of base's size."""
