@@ -11,11 +11,23 @@ Code MIT ([monkek123King/CLD](https://github.com/monkek123King/CLD)); weights `t
 
 ## How we run it (happy path)
 
-Planned: same pattern as RevealLayer/ART+ (GGUF re-class, unmerged LoRAs, `fp16_mixed`), ControlNet on GPU 1; 512 px, about 16 steps, ≤ 3 boxes.
+GGUF Q4_K_S FLUX.1-dev re-classed into CLD's custom transformer; three LoRAs (pre_trained, prism_ft, decouple) and the MultiLayerAdapter + its LoRA attached unmerged with `fp16_mixed` (the wrapper had to learn list outputs); input image + caption + boxes; 512 px, 16 steps, CFG 4, adapter scale 0.9; diffusers 0.32.2 (needs a one-line import patch for `BaseOutput`). Generator: [`../../prototype/tools/make_cld_trial.py`](../../prototype/tools/make_cld_trial.py), kernel `cld-trial`.
 
 ## Benchmarks
 
-Not run yet.
+Fox & cottage with the 5 hand boxes, 2× T4: **376 s, peak 13.2 GB on GPU 0** (load 310 s). Whole | background | houses | cottage | gate arch | tree | fox | merged:
+
+![CLD v3 on fox & cottage](../img/cld_v3_fox.jpg)
+
+| Layer | Alpha coverage | Observation |
+|---|---|---|
+| village houses (box 0) | 1.8 % | two small orange roofs only |
+| cottage | 26 % | clean cut-out incl. hedge |
+| gate arch | 2.1 % | small arch with door |
+| big tree | 17 % | trunk + crown, clean edges |
+| fox | 2.5 % | clean, correct pose |
+
+Results: `prototype/kaggle/results_cld_v3/`. The first runs failed on a diffusers import (v1) and on the fp16 wrapper not handling the adapter's list outputs (v2).
 
 ## Facts from the paper and repo
 
@@ -28,7 +40,7 @@ Not run yet.
 
 ## Best features
 
-Controllable decomposition by boxes, like RevealLayer, with a different training recipe.
+Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).
 
 ## Weak spots
 
@@ -36,11 +48,11 @@ Needs an input image (not text → layers); three LoRAs + ControlNet → memory-
 
 ## Status
 
-Notebook not written yet; next after ART+ (shares its code family).
+**Works** (v3): faithful re-render of the input scene plus clean RGBA layers per box and an **inpainted background** (hallucinated village houses behind the cottage, i.e. the hidden parts are filled).
 
 ## Next attempts
 
-Write `make_cld_trial.py` once ART+ works.
+1024 px; more boxes (rocks, hedge); compare moving a layer over CLD's background vs. RevealLayer's; timing with fewer steps.
 
 ## Sources
 

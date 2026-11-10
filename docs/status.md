@@ -38,7 +38,7 @@ One line per model; the full measured table is generated in [models/README.md](m
 | SAM2 + LaMa | **by noun (Grounding DINO + SAM2): house / cottage / gate / tree / fox in 7 s**, fully automatic; blurry background fill | ✅ by noun | [→](models/sam2-lama.md) |
 | LayerD | 3 clean layers on a flat graphic design (206 s CPU); finds no foreground on painted scenes (matting empty) ; with generic BiRefNet it peels the fox cleanly, then takes the rest of the scene as one layer | ⚠️ partial on painted scenes | [→](models/layerd.md) |
 | Qwen Lightning LoRA | no speed-up at 4 steps | ⚠️ retry at 2 steps | [→](models/qwen-lightning.md) |
-| CLD | — | ⏳ not run yet | [→](models/cld.md) |
+| CLD | image + boxes → re-rendered scene, inpainted background, clean layers per box (376 s, 13.2 GB, 2× T4) | ✅ v3 | [→](models/cld.md) |
 | Plain FLUX.1-dev (control) | 41 s for 16 steps, no overflow | ✅ check only | — |
 | PSDiffusion, DreamLayer, OmniPSD, LASAGNA, LayerFusion … | — | ❌ no weights / code | [papers-survey §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code) |
 

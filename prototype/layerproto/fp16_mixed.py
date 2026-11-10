@@ -147,6 +147,8 @@ def apply_fp16_mixed(model):
         def fwd(*a, **k):
             o = model._fp16_orig_model_forward(*a, **k)
             if isinstance(o, tuple):
+                if isinstance(o[0], (list, tuple)):          # ControlNet-style adapters return (list of block samples, ...)
+                    return tuple([x.to(torch.float16) for x in e] if isinstance(e, (list, tuple)) else e for e in o)
                 return (o[0].to(torch.float16),) + tuple(o[1:])
             if hasattr(o, "sample"):
                 o.sample = o.sample.to(torch.float16)
