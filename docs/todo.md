@@ -46,7 +46,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 ## 4. Speed and hosting
 - [~] **TPU:** probe notebook ready (`prototype/tools/make_tpu_probe.py`); CLI batch runs got no TPU; next: interactive TPU session in the Kaggle editor; torch must be pinned to 2.9 for torch_xla 2.9.
-- [ ] Remaining Qwen levers: text-encoder cache in the batch notebook (code exists: `cached_encode`), 2-layer speed.
+- [x] Qwen levers: prompt embeddings encoded once per image in the batch notebook (`cached_encode`), 2-layer splits 25.7 s (v9b); Lightning 2 steps 22 s (v10)
 - [ ] API budget: about $0.05 per Qwen-Image-Layered run on fal; €100 ≈ 2,000 runs, better for final demos ([research/hosting.md](research/hosting.md)).
 
 ## 5. Documentation

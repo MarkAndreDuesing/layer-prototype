@@ -42,11 +42,11 @@ Peak memory 8.0 / 7.6 GB (fast settings). Measured on the forest, pixel-art and 
 
 ## Status
 
-Working; main decomposer. Heun and 2-layer variants measured (v9). Fox & cottage sweep queued.
+Working; main decomposer. Heun, 2-layer and fox & cottage variants measured (v9, v10); Lightning 2-step in [qwen-lightning.md](qwen-lightning.md).
 
 ## Next attempts
 
-Heun at 4–8 steps; 2 layers for speed; fox & cottage benchmark; text-encoder cache in the batch notebook; TPU route ([../research/hosting.md](../research/hosting.md#tpu)).
+Heun at 8 steps; TPU route ([../research/hosting.md](../research/hosting.md#tpu)).
 
 ## Sources
 
