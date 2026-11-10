@@ -112,3 +112,9 @@ Each RevealLayer object layer is sent to Qwen-Image-2.1 as an RGBA image ("relig
 - Cost: 5 layers × 23 s ≈ 2 min vs 25 s for IC-Light, versus about 22 s + a 30–70 s split for `recompose`.
 
 Results: `prototype/kaggle/results_perlayer/`, generator `make_qwen21_perlayer_trial.py`.
+
+**With an alpha check-and-retry (v2):** accept an edit only if the layer's transparent share stays within 15 points of the input, else retry with the next seed (42, 7, 123, 2024). Result: **all 10 edits accepted, 4 of them on the second try** (night: houses, gate arch, fox; rain: fox, all with seed 7), 20–26 s per try. Night (left) and rain (right), every layer edited:
+
+![per-layer Qwen-2.1 with retry](../img/event_perlayer_retry.jpg)
+
+The fox now gets a dark, cool look at night and a wet look in the rain; cottage and tree as before. Remaining flaws: the gate-arch layer comes out as a pale, blobby shape at night (it was already the weakest RevealLayer layer), and objects are only relit, not given cast shadows or reflections (the shadow layer of §2 could be added). Cost: about 2–2.5 min for five layers per event, so the three strategies cost about 25 s (IC-Light, colour casts), 2–2.5 min (per-layer Qwen-2.1, best object look and layers unchanged in shape) and 22 s + 30–70 s split (`recompose`, best overall picture).

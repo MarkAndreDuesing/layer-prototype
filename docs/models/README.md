@@ -81,6 +81,7 @@
 | Qwen-Image-Layered (decompose-recompose cycle x5) | drift building block | fox_cottage | 2x T4 | 384 px, 5 layers, 4 steps | 36 |  | 5 |  | PSNR vs original 21.4 -> 15.5 dB after 5 cycles (base); 20.1 -> 9.2 (Stable-Layers) | [results_qwen_v12](../../prototype/kaggle/results_qwen_v12/) |
 | CLD | image+boxes to layers | fox_cottage (7 boxes) | 2x T4 | 512 px, 16 steps, 7 boxes | 434 | 13.3 | 7 |  | hedge clean; ground path not extractable | [results_cld_v5](../../prototype/kaggle/results_cld_v5/) |
 | Qwen-Image-2.1 per-layer relight | story event per_layer | fox_cottage layers | 2x T4 | 512 px, 8 steps turbo, 5 layers x 2 events | 23 |  | 5 |  | alpha kept on 6 of 10 edits; much better darkening than IC-Light where it works | [results_perlayer](../../prototype/kaggle/results_perlayer/) |
+| Qwen-Image-2.1 per-layer relight + alpha retry | story event per_layer | fox_cottage layers | 2x T4 | 512 px, 5 layers x 2 events, up to 4 seeds | 140 |  | 5 |  | 10 of 10 edits accepted (4 on 2nd try); 20-26 s per try | [results_perlayer_v2](../../prototype/kaggle/results_perlayer_v2/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (59 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (60 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->
