@@ -71,7 +71,15 @@ Panels: CLD whole image | CLD background layer | CLD merged | RevealLayer backgr
 
 ## 1024 px scaling probe (T4 x2, 7 boxes, 2 steps, 2026-11-10)
 
-Same set-up as the 512 px run with the image, boxes and canvas doubled, 2 denoising steps only (a probe, to avoid a long failing run). Load 303 s (11.0 GiB on each GPU). **Out of memory on GPU 0 during the first step**: it tried to allocate another 648 MiB with 12.6 GiB already allocated by PyTorch on a 14.6 GiB card (the 512 px run peaked at 13.3 GiB). So CLD at 1024 px does not fit on a T4 as it is set up (transformer plus adapter on GPU 0). **768 px also ran out of memory** (368 MiB short), and **retries with `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` still failed** at both 768 px (246 MiB short) and 1024 px (648 MiB short), so it is not just fragmentation: about 11 GiB of static weights sit on GPU 0 and leave about 3.5 GiB for activations. Next try (running): the adapter moved to GPU 1 with forward hooks that hop inputs and outputs between the cards. Other ways: fewer boxes, or a card with more memory. Files: `prototype/kaggle/results_cld_1024/`.
+Same set-up as the 512 px run with the image, boxes and canvas doubled, 2 denoising steps only (a probe, to avoid a long failing run). Load 303 s (11.0 GiB on each GPU). **Out of memory on GPU 0 during the first step**: it tried to allocate another 648 MiB with 12.6 GiB already allocated by PyTorch on a 14.6 GiB card (the 512 px run peaked at 13.3 GiB). So CLD at 1024 px does not fit on a T4 as it is set up (transformer plus adapter on GPU 0). **768 px also ran out of memory** (368 MiB short), and **retries with `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` still failed** at both 768 px (246 MiB short) and 1024 px (648 MiB short), so it is not just fragmentation: about 11 GiB of static weights sit on GPU 0 and leave about 3.5 GiB for activations. **It fits with a different memory layout (2026-11-10, 2 steps each):**
+
+| Size | Load | 2 steps wall-clock | Peak GPU 0 |
+|---|---|---|---|
+| 512 px (earlier layout) | 281 s | 434 s for 16 steps | 13.3 GiB |
+| 768 px | 306 s | 412 s | 10.8 GiB |
+| 1024 px | 289 s | 728 s | 13.0 GiB |
+
+The recipe that made 768 and 1024 px fit (probes `cld-768c` / `cld-1024c`, files in `prototype/kaggle/results_cld_{768,1024}c/`): (1) the **adapter on GPU 1** with forward hooks that move its inputs to GPU 1 and its outputs back to GPU 0; (2) the **text encoders on the CPU in bf16** (they filled GPU 1; the prompt embeddings are cast to fp16 on GPU 0); (3) the adapter gets **its own copy of `layer_pe`**, because `adapter.to(D1)` otherwise also moves the transformer's shared parameter (the first adapter-on-GPU-1 attempt failed with "tensors on cuda:0 and cuda:1", the one before that ran out of memory on GPU 1 while the text encoders were still there). Loaded weights then are 7.0 GiB on GPU 0 and 4.0 GiB on GPU 1. The wall-clock includes the CPU text encoding and the VAE decode, so the per-step time is not separated; two steps give noise and no quality is claimed. A full 16-step run at 768 px is the next measurement. Files: `prototype/kaggle/results_cld_1024/`.
 
 ## Best features
 

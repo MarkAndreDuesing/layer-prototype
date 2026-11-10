@@ -19,7 +19,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] **CLD:** works on fox & cottage (v3): clean layers + inpainted background
 - [x] CLD on Qwen-2.1 night / rain composites (v4): works with the same boxes
 - [x] CLD with 7 boxes (v5): fits (13.3 GB, 434 s); hedge good, ground path not extractable as a layer
-- [~] CLD at 1024 px (probe 2026-11-10: out of memory on GPU 0 in step 1; try 768 px, adapter offload, fewer boxes); background comparison CLD vs RevealLayer done from existing runs (CLD's background is a separate generation, see models/cld.md)
+- [~] CLD at 768 / 1024 px: fits with the adapter on GPU 1, text encoders on the CPU and an own `layer_pe` copy (2-step probes, peak 10.8 / 13.0 GiB, see models/cld.md); open: a full 16-step run at 768 px to get quality and time, then port the layout into `make_cld_trial.py`; background comparison CLD vs RevealLayer done from existing runs (CLD's background is a separate generation, see models/cld.md)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [x] **Qwen Lightning LoRA:** 2-step runs + scale sweep done (v10): half the time, worse split
