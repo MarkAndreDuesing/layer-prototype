@@ -367,6 +367,17 @@ Docs: the six concept pages became three ([pipeline](concepts/pipeline.md) with 
 | LayerD v4 diagnostics | the matting network outputs exactly 0 on every pixel (max 0.0) for all variants and scenes → the "1 layer" results never tested LayerD; weights not materialised. v6 with transformers 4.46.3 failed (checkpoint has no safetensors metadata); v7 keeps transformers < 5 and forces a full load (`low_cpu_mem_usage=False`) with a load report |
 | ART+ v7 | own transparent decoder loaded fully; output unchanged → whole and background frames identical, so the per-layer mechanism is not taking effect; v8 logs `layer_pe` and per-frame latents |
 
+## Phase 11: ART+ fixed, CLD and the editing experiments (2026-11-10)
+
+- **ART+ root cause:** our `fp16_mixed.add_lora` overwrote LoRAs on the same module, so only the ART+ LoRA was active; stacking the three gives real transparent layers (v9). On fox & cottage (v10, v11) each box becomes a clean object in a glossy cartoon style; the background is white or flat blue; a harmonisation attempt (relocate 0.4 / 0.6 + IC-Light) did not close the style gap.
+- **LayerD:** weights load fine; empty matting on painted scenes, 3 layers on a flat design; generic BiRefNet peels the fox.
+- **CLD (v3, v4, v5):** works after a diffusers import patch and a list-output fix in the fp16 wrapper; fox & cottage 376 s, 13.2 GB; also on the Qwen-2.1 night / rain edits; 7 boxes fit (13.3 GB, 434 s), the ground path is not extractable.
+- **Moves:** relocate + shadow + IC-Light on the fox, no hole, about 9 s.
+- **Drift with real editors (6 fox moves):** layered relocate chain keeps the outside at about 60 dB; flat Qwen-2.1 chain 14–20 dB and duplicates the fox; re-decomposing without any edit already loses about 20 dB per cycle.
+- **Story events:** `recompose` (edit scene + re-split with Stable-Layers) works; `bg_relight` (background edit + IC-Light) gives colour casts; per-layer Qwen-2.1 relight darkens well where the alpha survives (6 of 10).
+- **Others:** SAM2 route with SDXL-inpaint fill (sharp background), LayerDiffuse chain on 7 elements (clean at 1024 px, garbled at 512), generator comparison feeding the splitter (FLUX / Qwen-2.1 / SDXL-Turbo), Lightning 2-step sweep (22 s, worse split).
+- **App:** image → layers path (Decompose tab, `Engine.decompose_image`, `/decompose` route) built and tested locally with a fake decomposer.
+
 ## Appendix: sketch-to-image phase summary (2026-11-05 → 07)
 
 Merged from the former `session-summary-sketch-to-image.md` (original kept in archive/ (removed 2026-11-10; in git history before commit 35dc02a)).
