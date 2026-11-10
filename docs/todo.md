@@ -39,7 +39,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 ## 3. Open questions from the team voice note (2026-11-08)
 - [x] **Where do strong text-to-image models fit?** As the base-image generator before decomposition; tested FLUX.1-dev, Qwen-Image-2.1 and SDXL-Turbo scenes through Qwen-Image-Layered / Stable-Layers: all split, FLUX and Qwen-2.1 most cleanly ([pipeline.md §2](concepts/pipeline.md)). Licences: FLUX.1-dev and Qwen Research are non-commercial.
-- [ ] **Image-to-image front end** (sketch + prompt → image) → decomposer: untested; how it fits the LayerDiffuse route (which builds its own layers) is unclear. SDXL-Turbo img2img is about 58 s on the laptop.
+- [x] **Image-to-image front end** (sketch + prompt → image) → decomposer: the sketch-to-image experiment outputs (`pixelart_camp` = canny-conditioned img2img, `sketch_skeleton` = raw-sketch img2img at strength 0.8) went through Qwen-Image-Layered / Stable-Layers in sweeps v9 and v10 and split like any other image (e.g. pale skeleton separated by Lightning). So the front end is just "any image → route A"; the LayerDiffuse chain builds its own layers and does not take an image. SDXL-Turbo img2img is about 58 s on the laptop.
 - [x] **LayerDiffuse on complex scenes** (7 elements): works at 1024 px (48 s per element, clean layers), garbled at the 512 px default; layout and scale uncontrolled ([layerdiffuse-sdxl.md](models/layerdiffuse-sdxl.md))
 - [ ] Chain with a box-aware layout (draw each element into its box via inpainting mask) or set the engine default to 1024 px
 - [~] **Continuous map development / story events:** router + previews built; whole-scene effects on GPU open.
