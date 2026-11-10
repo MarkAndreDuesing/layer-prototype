@@ -69,6 +69,10 @@ Panels: CLD whole image | CLD background layer | CLD merged | RevealLayer backgr
 - **RevealLayer's background** is the same scene with the objects taken out and filled; the cottage is partly cut away, which shows when objects move.
 - Moving a layer over each background (a CPU composite) is therefore a comparison of two different things: CLD needs a background substitute, RevealLayer's background is usable but shows cut-outs.
 
+## 1024 px scaling probe (T4 x2, 7 boxes, 2 steps, 2026-11-10)
+
+Same set-up as the 512 px run with the image, boxes and canvas doubled, 2 denoising steps only (a probe, to avoid a long failing run). Load 303 s (11.0 GiB on each GPU). **Out of memory on GPU 0 during the first step**: it tried to allocate another 648 MiB with 12.6 GiB already allocated by PyTorch on a 14.6 GiB card (the 512 px run peaked at 13.3 GiB). So CLD at 1024 px does not fit on a T4 as it is set up (transformer plus adapter on GPU 0). Ways to try: sequential offload of the adapter, fewer boxes, 768 px, or a card with more memory. Files: `prototype/kaggle/results_cld_1024/`.
+
 ## Best features
 
 Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).
