@@ -1,0 +1,93 @@
+[{"stream_name":"stderr","time":7.628105214,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.62814495,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.589324044,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.589351716,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.589356596,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.589360454,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.166665208,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.16669341,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.166698522,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.166702555,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":366.824361463,"data":"inpaint load 73.4 s\n"}
+,{"stream_name":"stdout","time":366.824400976,"data":"amodal a 30.7 s\n"}
+,{"stream_name":"stdout","time":366.824405422,"data":"amodal b 26.7 s\n"}
+,{"stream_name":"stdout","time":366.824408433,"data":"chain load 0.0 s\n"}
+,{"stream_name":"stdout","time":366.824411426,"data":"effect fog: 116.7 s, transparent 66%\n"}
+,{"stream_name":"stdout","time":366.824414304,"data":"effect glow: 42.8 s, transparent 84%\n"}
+,{"stream_name":"stdout","time":366.824417178,"data":"effect snow: 43.2 s, transparent 94%\n"}
+,{"stream_name":"stdout","time":366.824419983,"data":" 0:12,  1.48it/s]\n"}
+,{"stream_name":"stdout","time":366.8244227,"data":" 15%|█▌        | 3/20 [00:02\u003c00:12,  1.32it/s]\n"}
+,{"stream_name":"stdout","time":366.824426285,"data":" 20%|██        | 4/20 [00:02\u003c00:12,  1.25it/s]\n"}
+,{"stream_name":"stdout","time":366.824429177,"data":" 25%|██▌       | 5/20 [00:03\u003c00:12,  1.21it/s]\n"}
+,{"stream_name":"stdout","time":366.824432137,"data":" 30%|███       | 6/20 [00:04\u003c00:11,  1.19it/s]\n"}
+,{"stream_name":"stdout","time":366.824435129,"data":" 35%|███▌      | 7/20 [00:05\u003c00:11,  1.18it/s]\n"}
+,{"stream_name":"stdout","time":366.824438037,"data":" 40%|████      | 8/20 [00:06\u003c00:10,  1.17it/s]\n"}
+,{"stream_name":"stdout","time":366.824440996,"data":" 45%|████▌     | 9/20 [00:07\u003c00:09,  1.17it/s]\n"}
+,{"stream_name":"stdout","time":366.824444141,"data":" 50%|█████     | 10/20 [00:08\u003c00:08,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824447059,"data":" 55%|█████▌    | 11/20 [00:09\u003c00:07,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824449936,"data":" 60%|██████    | 12/20 [00:09\u003c00:06,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824452743,"data":" 65%|██████▌   | 13/20 [00:10\u003c00:06,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824455644,"data":" 70%|███████   | 14/20 [00:11\u003c00:05,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824467323,"data":" 75%|███████▌  | 15/20 [00:12\u003c00:04,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824470111,"data":" 80%|████████  | 16/20 [00:13\u003c00:03,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824472524,"data":" 85%|████████▌ | 17/20 [00:14\u003c00:02,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824474913,"data":" 90%|█████████ | 18/20 [00:15\u003c00:01,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824477211,"data":" 95%|█████████▌| 19/20 [00:15\u003c00:00,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824479549,"data":"100%|██████████| 20/20 [00:16\u003c00:00,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824482023,"data":"100%|██████████| 20/20 [00:16\u003c00:00,  1.19it/s]\n"}
+,{"stream_name":"stdout","time":366.824484372,"data":"\n"}
+,{"stream_name":"stdout","time":366.824486579,"data":"  0%|          | 0/20 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":366.824488875,"data":"  5%|▌         | 1/20 [00:00\u003c00:16,  1.17it/s]\n"}
+,{"stream_name":"stdout","time":366.824491172,"data":" 10%|█         | 2/20 [00:01\u003c00:15,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824493451,"data":" 15%|█▌        | 3/20 [00:02\u003c00:14,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824495769,"data":" 20%|██        | 4/20 [00:03\u003c00:13,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824498201,"data":" 25%|██▌       | 5/20 [00:04\u003c00:12,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824500571,"data":" 30%|███       | 6/20 [00:05\u003c00:12,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824502937,"data":" 35%|███▌      | 7/20 [00:06\u003c00:11,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824505227,"data":" 40%|████      | 8/20 [00:06\u003c00:10,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824507601,"data":" 45%|████▌     | 9/20 [00:07\u003c00:09,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824509892,"data":" 50%|█████     | 10/20 [00:08\u003c00:08,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824512239,"data":" 55%|█████▌    | 11/20 [00:09\u003c00:07,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824520516,"data":" 60%|██████    | 12/20 [00:10\u003c00:07,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824523946,"data":" 65%|██████▌   | 13/20 [00:11\u003c00:06,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824526301,"data":" 70%|███████   | 14/20 [00:12\u003c00:05,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824528597,"data":" 75%|███████▌  | 15/20 [00:13\u003c00:04,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824530999,"data":" 80%|████████  | 16/20 [00:13\u003c00:03,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824533317,"data":" 85%|████████▌ | 17/20 [00:14\u003c00:02,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824535647,"data":" 90%|█████████ | 18/20 [00:15\u003c00:01,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824538047,"data":" 95%|█████████▌| 19/20 [00:16\u003c00:00,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824540387,"data":"100%|██████████| 20/20 [00:17\u003c00:00,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824542692,"data":"100%|██████████| 20/20 [00:17\u003c00:00,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824545052,"data":"\n"}
+,{"stream_name":"stdout","time":366.82454727,"data":"  0%|          | 0/20 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":366.824552537,"data":"  5%|▌         | 1/20 [00:00\u003c00:07,  2.43it/s]\n"}
+,{"stream_name":"stdout","time":366.824554944,"data":" 10%|█         | 2/20 [00:01\u003c00:12,  1.45it/s]\n"}
+,{"stream_name":"stdout","time":366.824557304,"data":" 15%|█▌        | 3/20 [00:02\u003c00:13,  1.28it/s]\n"}
+,{"stream_name":"stdout","time":366.824559588,"data":" 20%|██        | 4/20 [00:03\u003c00:13,  1.22it/s]\n"}
+,{"stream_name":"stdout","time":366.824561896,"data":" 25%|██▌       | 5/20 [00:03\u003c00:12,  1.18it/s]\n"}
+,{"stream_name":"stdout","time":366.824564201,"data":" 30%|███       | 6/20 [00:04\u003c00:12,  1.16it/s]\n"}
+,{"stream_name":"stdout","time":366.824566499,"data":" 35%|███▌      | 7/20 [00:05\u003c00:11,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.824568802,"data":" 40%|████      | 8/20 [00:06\u003c00:10,  1.14it/s]\n"}
+,{"stream_name":"stdout","time":366.824571304,"data":" 45%|████▌     | 9/20 [00:07\u003c00:09,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824573676,"data":" 50%|█████     | 10/20 [00:08\u003c00:08,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824576001,"data":" 55%|█████▌    | 11/20 [00:09\u003c00:07,  1.13it/s]\n"}
+,{"stream_name":"stdout","time":366.824578309,"data":" 60%|██████    | 12/20 [00:10\u003c00:07,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824580654,"data":" 65%|██████▌   | 13/20 [00:11\u003c00:06,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824582971,"data":" 70%|███████   | 14/20 [00:11\u003c00:05,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824585292,"data":" 75%|███████▌  | 15/20 [00:12\u003c00:04,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824587634,"data":" 80%|████████  | 16/20 [00:13\u003c00:03,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824590002,"data":" 85%|████████▌ | 17/20 [00:14\u003c00:02,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.82459236,"data":" 90%|█████████ | 18/20 [00:15\u003c00:01,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.82459471,"data":" 95%|█████████▌| 19/20 [00:16\u003c00:00,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824597048,"data":"100%|██████████| 20/20 [00:17\u003c00:00,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":366.824599385,"data":"100%|██████████| 20/20 [00:17\u003c00:00,  1.15it/s]\n"}
+,{"stream_name":"stdout","time":366.82460177,"data":"\n"}
+,{"stream_name":"stderr","time":369.418346815,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":369.418376965,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":369.596599336,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":369.596625242,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":370.366373274,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":370.443474891,"data":"[NbConvertApp] Writing 384724 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":372.925560788,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":373.444801279,"data":"[NbConvertApp] Writing 659063 bytes to __results__.html\n"}
+]

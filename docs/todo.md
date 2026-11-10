@@ -27,7 +27,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] LayerD loop with generic BiRefNet on fox & cottage: fox peeled cleanly, rest of scene one layer (v11)
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [x] SAM2 route: SDXL inpaint for the background hole (v3): sharp, in style (28 s)
-- [ ] SAM2 route: amodal completion of occluded objects (pix2gestalt or SDXL-inpaint per object)
+- [x] SAM2 route: amodal completion of occluded objects: SDXL-inpaint per object done (31 s, cottage whole, [sam2-lama](models/sam2-lama.md)); pix2gestalt not tried
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)
 - [x] Qwen-Image-2.1: night / rain composites re-split (v10): works with Stable-Layers
 - [x] Halo fix on generated objects: `matte_fix.defringe` removes the rim but softens the outline ([qwen-image-2.1.md](models/qwen-image-2.1.md))
@@ -39,7 +39,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] IC-Light reddens the fox: `restore_chroma` (keep 0.8 gives a* 16.4 vs 20.3 relit vs 15.2 original)
 - [ ] attention sharing for thin parts
 - [x] Story events, generative pass: `bg_relight` (background edit + IC-Light) and `recompose` (edit + re-split) both measured: recompose looks better, IC-Light v1 gives colour casts ([editing.md §5](concepts/editing.md#5-story-event-measured-bg_relight-vs-recompose-fox--cottage-night-and-heavy-rain))
-- [ ] Story events: LayerDiffuse effect layers (fog / fire / glow); per-layer Qwen-2.1 relight with alpha check-and-retry done: all 10 edits accepted; the retry logic is `layerproto/layer_edit.py` (self-test passes); next: add shadow layers and call it from the `per_layer` event strategy once a Qwen-2.1 backend exists in the app
+- [ ] Story events: LayerDiffuse effect layers tried (fog / glow / snow give objects or the scene itself, see [layerdiffuse-sdxl](models/layerdiffuse-sdxl.md); smaller-scale prompts next); per-layer Qwen-2.1 relight with alpha check-and-retry done: all 10 edits accepted; the retry logic is `layerproto/layer_edit.py` (self-test passes); next: add shadow layers and call it from the `per_layer` event strategy once a Qwen-2.1 backend exists in the app
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C with real edits (SAM2 re-decomposition each turn): 35 dB after the first re-split, 28 dB at turn 6 (between A 60 dB and B 14 dB)

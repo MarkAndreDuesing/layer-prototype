@@ -55,6 +55,18 @@ Background (village lawn, pine forest) + oak tree, cottage, fence, blue wagon, c
 
 What this shows: the chain **does** handle 7 elements and overlap when run at 1024 px (the earlier poor results on complex scenes came from the 512 px engine default), and each element lands in the lit scene. What it does **not** control is layout and scale: with no boxes, the fox and the stone ring come out huge and cover the cottage, the lantern post was drawn with a boy, and the tree sits where the model decides. That is the gap boxes fill (ART+, CLD, RevealLayer) or a layout pass before the chain.
 
+## Effect layers (fog, glow, snow) with bg2ble -> bgble2fg (T4, 1024 px, 20 steps, run 2026-11-10)
+
+Same scene, three atmosphere prompts, extracted as a layer over the fox & cottage scene (3rd to 5th panel of the strip in [sam2-lama](sam2-lama.md)). 43 to 117 s each.
+
+| Effect | Layer transparent | What came out |
+|---|---|---|
+| fog | 66 % | the layer is mostly the scene's own cottage and tree re-extracted on a grey haze; fog is barely visible |
+| glow | 84 % | one large lantern object with a warm glow, not light rays across the scene |
+| snow | 94 % | a handful of big snowflakes, usable as a sprite but not a snowfall |
+
+Reading: with this chain a "foreground over background" prompt produces objects (lantern, flakes) rather than whole-scene atmosphere, and the fog prompt picks up the scene. The procedural effects in `events.py` stay the practical route for fog / snow; for glow a small lantern object works. Next to try: smaller scale prompts ("a few small snowflakes, tiny"), more steps, and Qwen-2.1 for RGBA overlays.
+
 ## Best features
 
 - Adds an element *into* the existing scene with matching light and perspective, as its own aligned layer.
