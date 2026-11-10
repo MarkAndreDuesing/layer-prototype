@@ -1,9 +1,0 @@
-{"scene": "fox_cottage", "target_layer": 5,
- "turns": [
-  {"dx": -0.28, "dy": -0.04, "scale": 1.15, "text": "Move the red fox to the left side of the cobblestone path near the gate, slightly bigger."},
-  {"dx": -0.10, "dy": 0.00, "scale": 1.00, "text": "Move the red fox a bit to the right, to the middle of the path."},
-  {"dx":  0.20, "dy": 0.02, "scale": 0.90, "text": "Move the red fox to the right side of the lawn, slightly smaller."},
-  {"dx":  0.35, "dy": 0.00, "scale": 1.00, "text": "Move the red fox to the far right under the big tree."},
-  {"dx": -0.20, "dy": 0.00, "scale": 1.20, "text": "Move the red fox back to the left, in front of the cottage door, bigger."},
-  {"dx":  0.00, "dy": 0.00, "scale": 1.00, "text": "Move the red fox back to where it stood originally, on the path in the lower middle."}
- ]}
