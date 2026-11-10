@@ -44,6 +44,14 @@ Case 0 of run 9 (night forest): trees, campfire + bench and moon come out as sep
 
 ![ART+ v9 case 0](../img/artplus_v9_case0.jpg)
 
+## ART+ objects on a separately generated background (composite check, no model call)
+
+Run-10 object layers (tree, cottage, houses, car, fox) pasted over RevealLayer's filled background of the same scene (original | background | composite):
+
+![ART+ objects on RevealLayer background](../img/artplus_on_reveal_bg.jpg)
+
+This is the "sticker collage" problem in one picture: the objects are in ART+'s own glossy cartoon style, at its own scale and with its own light, so they do not belong to the background. Using ART+ as an object generator would need a harmonisation pass (IC-Light for light; restyle / `relocate()` img2img at strength about 0.5 for style), which has not been tried on these layers.
+
 ## Facts from the paper and repo
 
 | Topic | Fact |

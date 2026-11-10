@@ -13,7 +13,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] **ART+:** works (v9): size fix (`vae_scale_factor` 16) + stacked LoRAs (our loader kept only the last one)
 - [x] ART+ on fox & cottage from its JSON boxes (v10): clean styled objects per box, white background, gate arch → car
 - [x] ART+: "painting" prefix + background sentence (v11): flat blue background, still vignettes
-- [ ] ART+ objects on a separately generated background + `relocate()` harmonisation; 1024 px
+- [x] ART+ objects pasted on RevealLayer's background: style / scale clash (sticker look), needs harmonisation
+- [ ] Harmonise ART+ objects (IC-Light + `relocate()` at strength ≈ 0.5); ART+ at 1024 px
 - [x] **CLD:** works on fox & cottage (v3): clean layers + inpainted background
 - [x] CLD on Qwen-2.1 night / rain composites (v4): works with the same boxes
 - [x] CLD with 7 boxes (v5): fits (13.3 GB, 434 s); hedge good, ground path not extractable as a layer
