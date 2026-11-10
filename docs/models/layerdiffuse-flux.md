@@ -23,6 +23,22 @@ GGUF Q4_K_S FLUX.1-dev + encoders/VAE from ungated `ostris/Flex.1-alpha`; LoRA k
 
 Peak 8.9 GB (one T4). Run 2 (55 s, 0 LoRA keys matched) was plain FLUX. Results: [`../../prototype/kaggle/results_ldflux_v4/`](../../prototype/kaggle/results_ldflux_v4/).
 
+## Fox & cottage benchmark
+
+LayerDiffuse-Flux generates **one transparent object per call** (text → RGBA); it does not split a given image, and **we have not run it on the fox & cottage scene**. The shared test therefore has no strip for it yet: a planned run generates the red fox, the cottage and the tree as transparent objects from the caption's words and puts them next to the other models' layers.
+
+| | Settings | Compute (T4) | Result |
+|---|---|---|---|
+| **A. Best case measured (other prompts)** | 512 px, 16 steps, GGUF Q4 | 58 s per object | campfire, deer, bottle; semi-transparent glass works ([table](#benchmarks)) |
+| **B. Live-demo budget (about 30 s)** | 512 px, fewer steps | not measured | |
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Add a layer (new transparent object) | **supported** on other prompts | [table](#benchmarks) |
+| Everything else | n/a / not tried on fox & cottage | |
+
 ## Best features
 
 Clean FLUX-quality transparent objects, including real semi-transparency (glass); one T4 is enough.

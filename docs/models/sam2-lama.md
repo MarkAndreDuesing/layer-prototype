@@ -97,6 +97,36 @@ The cottage layer gains wall on its right end, but the fill is patchy: green and
 
 The green and sky patches are gone, but the model keeps the grey it was shown, so the hidden parts of the cottage come out as grey blocks, which is not better. The flag `Sam2Decomposer.amodal_neutral` stays available (default off). The Qwen-Image-2.1 extraction ([qwen-image-2.1](qwen-image-2.1.md)) is the approach that gave a clean whole cottage, so the next step for the SAM2 route is to take the fill from Qwen-2.1 (the `qwen21-extract` method) instead of SDXL-inpaint. Geometry unit test: `prototype/tools/test_amodal_fill.py`. Files: `prototype/kaggle/results_amodal_route/`.
 
+## Fox & cottage benchmark (standard strips)
+
+Input: the shared scene, five hand boxes or names. SAM2 cuts each object, LaMa fills the background. Strips: input | recomposite | background | layers.
+
+| | Settings | Compute (T4) | What the layers show |
+|---|---|---|---|
+| **A. Best case measured** | hand boxes → SAM2 (hiera-small) + LaMa | 8 s | five clean object cut-outs; the LaMa background is blurry where the cottage and tree were; the cottage keeps its holes |
+| **B. Live-demo budget (about 30 s)** | by name: Grounding DINO → SAM2 + LaMa ([grounding-dino.md](grounding-dino.md)) | 7 s | the same without hand boxes; "village houses" boxed the cottage instead |
+| with amodal on (SDXL-inpaint) | `amodal=True` in the route | 80 s with the one-off load | patchy fill ([amodal-fill.md](amodal-fill.md)) |
+
+![SAM2 + LaMa with hand boxes](../img/fox_sam2_lama_boxes.jpg)
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **supported** | strip above |
+| Move / resize a layer | **partial**: a canvas move; the LaMa background has a smeared patch at the old place | [relocate-harmonise.md](relocate-harmonise.md) |
+| Story composite | not tried | |
+| Spatial edit | **supported**: boxes and names pick the objects | |
+| Add / remove / modify a layer | **supported** (a layer per name) | |
+| Relight / effects | n/a | |
+| Amodal completion | **partial**: SDXL-inpaint fill option | [amodal-fill.md](amodal-fill.md) |
+
+Run from the app through the Kaggle tunnel (names, then hand boxes):
+
+![by name](../img/sam2_app_test1.jpg)
+
+![hand boxes](../img/sam2_app_test2.jpg)
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.

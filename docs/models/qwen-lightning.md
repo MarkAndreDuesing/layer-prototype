@@ -42,6 +42,37 @@ Results: [`../../prototype/kaggle/results_qwen_sweep_v6_lightning/`](../../proto
 
 Results: `prototype/kaggle/results_qwen_v10/`.
 
+## Fox & cottage benchmark
+
+Lightning is a speed LoRA on the base model; same input and strip layout as [qwen-image-layered.md](qwen-image-layered.md), 384 px, 5 layers, 2× T4.
+
+| | Settings | Compute | Recomposite diff | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured** | scale 0.5, 4 steps | 43.6 s | 11.1 | cottage + tree + fox, cleanest of the sweep |
+| **B. Live-demo budget (about 30 s)** | scale 1.0, **2 steps** | 22.4 s | 15.0 | tree + fox separated, cottage / houses almost empty |
+| *base model for reference* | Euler, 4 steps | 39 s | 6–8 | all five objects |
+
+B (2 steps):
+
+![Lightning 2 steps](../img/fox_lightning_2st.png)
+
+4 steps:
+
+![Lightning 4 steps](../img/fox_lightning_4st.png)
+
+Results: `prototype/kaggle/results_qwen_v10/`.
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **supported** (quality below the base model at 2 steps) | strips above |
+| Story composite | **partial**: night edit re-split at 2 steps | below |
+| Move / harmonise / edit / relight / effects | n/a (same as the base model) | [qwen-image-layered.md](qwen-image-layered.md) |
+| Amodal completion | **partial** (as the base model) | |
+
+![night composite re-split, Lightning 2 steps](../img/fox_lightning_night_resplit.png)
+
 ## Best features
 
 Separates thin, low-contrast subjects better (the pale skeleton came out cleanly).

@@ -67,6 +67,39 @@ Same scene, three atmosphere prompts, extracted as a layer over the fox & cottag
 
 Reading: with this chain a "foreground over background" prompt produces objects (lantern, flakes) rather than whole-scene atmosphere, and the fog prompt picks up the scene. The procedural effects in `events.py` stay the practical route for fog / snow; for glow a small lantern object works. Next to try: smaller scale prompts ("a few small snowflakes, tiny"), more steps, and Qwen-2.1 for RGBA overlays.
 
+## Fox & cottage benchmark
+
+LayerDiffuse SDXL **generates** layers (draw an element into a scene, extract it as RGBA); it does not split a given image, so the shared fox & cottage picture is not an input here. The nearest test is the seven-element complex scene (background plus oak tree, cottage, fence, wagon, campfire, **red fox**, lantern post), drawn into the composite element by element.
+
+| | Settings | Compute (T4) | Result |
+|---|---|---|---|
+| **A. Best case measured** | 1024 px, 20 steps, CFG 7, seven elements | 364 s in total, 48 s per element (one pass alone is about 18 s) | all seven layers extracted cleanly, one storybook style, shared light |
+| **B. Live-demo budget (about 30 s)** | 512 px, 20 steps | 11-14 s per element (244 s for seven) | garbled artefacts, white halos: the model is out of its resolution |
+
+A (1024 px):
+
+![complex scene, 1024 px](../img/chain_complex_1024.jpg)
+
+B (512 px):
+
+![complex scene, 512 px](../img/chain_complex_512.jpg)
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | n/a (generates) | |
+| Move / resize a layer | **supported** with `relocate()` (3.4 s) | [relocate-harmonise.md](relocate-harmonise.md), `fox_move_strip.png` |
+| Harmonise after a move | **supported** | same |
+| Story composite | **partial**: a new element drawn into the changed scene | |
+| Spatial edit | **partial**: box-aware placement (`Engine.fit_layer_to_box`, relocate to the planned box) | [relocate-harmonise.md](relocate-harmonise.md) |
+| Add / remove / modify a layer | **supported**: add an element into a scene (bg2ble then bgble2fg), re-prompt a layer | complex scene above |
+| Relight / shadow | **supported** with IC-Light and the procedural shadow | [relight-ic-light.md](relight-ic-light.md), [shadow-layers.md](shadow-layers.md) |
+| Effects as layers (fog, glow, snow) | **tested, partial**: fog re-extracted the scene, glow became a large lantern, snow a few large flakes | below |
+| Amodal completion | n/a | |
+
+![effects: fog, glow, snow](../img/sdxl_batch_strip.jpg)
+
 ## Best features
 
 - Adds an element *into* the existing scene with matching light and perspective, as its own aligned layer.

@@ -77,6 +77,45 @@ To avoid a 50-minute run, one session measured only 2 denoising steps at 1024 px
 
 **Real run at 1024 px, 8 steps (`artplus-1024-8st`):** 1251 s (21 min) after a 340 s load, peak 11.0 GiB on GPU 0, so the estimate above held (about 150 s per step). Bottom row of the strip in [cld](cld.md) (whole image, background, merged, layers): a coherent sticker-style scene at 1024 px with the fox, cottage, tree, bush and cloud as separate transparent layers over a blue-to-green gradient background. As in the 512 px runs, ART+ draws its own scene from the caption and boxes in its own style, not the fox & cottage painting; 8 steps is below the 16 used at 512 px. Files: `prototype/kaggle/results_artplus_1024_8st/`.
 
+## Fox & cottage benchmark (standard strips)
+
+**ART+ does not split the fox & cottage image.** It generates a new layered scene from a caption and the five boxes (text + boxes → layers), so the recomposite is a new picture in ART+'s own style. Strips: caption-scene | recomposite | background | layers.
+
+| | Settings | Compute (2× T4) | Peak | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured** | 512 px, 16 steps, 5 boxes | 343 s | 8.6 GB | a coherent glossy cartoon scene; fox, cottage, tree, houses as transparent layers |
+| 1024 px, 8 steps (over 8 min) | | 1251 s | 11.0 GB | sticker-style scene at 1024 px with fox, cottage, tree, bush and cloud as layers |
+| **B. Live-demo budget (about 30 s)** | **not reached**: 16 steps took 343 s; 2 steps at 1024 px took 395 s | | | 2 steps give noise |
+
+A (512 px):
+
+![ART+ 512 px](../img/fox_artplus_512.jpg)
+
+1024 px:
+
+![ART+ 1024 px](../img/fox_artplus_1024.jpg)
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **n/a** (generates from text + boxes) | |
+| Move / resize a layer | **partial**: objects are separate transparent layers, a canvas move works | strips above |
+| Harmonise after a move | **tested, does not close the style gap** | harmonise strips below |
+| Story composite | not tried | |
+| Spatial edit | **supported**: a caption per box | strips above |
+| Add / remove / modify a layer | **supported**: layers are generated per box | |
+| Relight | IC-Light added colour casts | below |
+| Amodal completion | n/a | |
+
+Objects on a separately generated background, then harmonised with `relocate()` (strength 0.4 above, 0.6 below): the glossy objects stay glossy and gain halos: [relocate-harmonise.md](relocate-harmonise.md).
+
+![ART+ objects on RevealLayer background](../img/artplus_on_reveal_bg.jpg)
+
+![harmonise 0.4](../img/artplus_harmonise_s40.jpg)
+
+![harmonise 0.6](../img/artplus_harmonise_s60.jpg)
+
 ## Best features
 
 The only released FLUX model that makes a layered scene straight from text + boxes (boxes can come from our LLM breakdown).

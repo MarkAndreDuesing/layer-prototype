@@ -23,6 +23,29 @@
 | [TEMPLATE.md](TEMPLATE.md) | the shared structure and test protocol for every factsheet |
 | [../research/papers-survey.md](../research/papers-survey.md) | all methods in one table, incl. those without weights (LayerFusion, PSDiffusion, DreamLayer, OmniPSD …) |
 
+## Feature matrix (fox & cottage evidence in each factsheet)
+
+S = supported and shown with an image, P = partial or with caveats, T = tried, did not work well, - = not applicable or not tried. The structure and the test protocol (paths A and B) are in [TEMPLATE.md](TEMPLATE.md).
+
+| Model | Split | Move / resize | Harmonise | Story composite | Spatial edit | Image to image | Add / remove / modify | Relight | Effects | Amodal |
+|---|---|---|---|---|---|---|---|---|---|---|
+| [Qwen-Image-Layered](qwen-image-layered.md) | S | P | - | S | - | - | P | - | - | S |
+| [Stable-Layers](stable-layers.md) | S | P | - | S | - | - | P | - | - | S |
+| [Qwen Lightning](qwen-lightning.md) | S | P | - | P | - | - | - | - | - | P |
+| [RevealLayer](revealayer.md) | S | S | S | - | P | - | P | - | - | S |
+| [CLD](cld.md) | S | P | - | S | S | - | P | - | - | P |
+| [ART+](art-plus.md) | generates | P | T | - | S | - | S | T | - | - |
+| [LayerD](layerd.md) | P | - | - | - | - | - | - | - | - | - |
+| [LayerDiffuse SDXL](layerdiffuse-sdxl.md) | generates | S | S | P | P | - | S | S | P | - |
+| [LayerDiffuse-Flux](layerdiffuse-flux.md) | generates | - | - | - | - | - | S | - | - | - |
+| [Qwen-Image-2.1](qwen-image-2.1.md) | S | P | - | S | S | S | S | S | P | S |
+| [SAM2 + LaMa](sam2-lama.md) | S | P | - | - | S | - | S | - | - | P |
+| [Grounding DINO](grounding-dino.md) | S (with SAM2) | - | - | - | - | - | - | - | - | - |
+| [relocate()](relocate-harmonise.md) | - | S | S | - | P | - | P | P | - | - |
+| [IC-Light and relight routes](relight-ic-light.md) | - | - | P | S | - | - | - | S | - | - |
+| [Shadow layers](shadow-layers.md) | - | S | P | - | - | - | S | - | - | - |
+| [Amodal fill](amodal-fill.md) | - | enables | - | - | - | - | S | - | - | S |
+
 ## Comparison (generated)
 
 <!-- BENCHMARKS:START -->

@@ -46,6 +46,40 @@ The official pipeline runs only in bf16 at 1024 px, 30 steps. A ComfyUI port (Lt
 
 Peak 8.7 / 11.2 GB. Results: [`../../prototype/kaggle/results_reveallayer_fox_v15/`](../../prototype/kaggle/results_reveallayer_fox_v15/).
 
+## Fox & cottage benchmark (standard strips)
+
+Input: the shared scene with its five boxes; output: a filled background plus five layers (houses, cottage, arch, tree, fox). Strips: input | recomposite | filled background | layers (magenta = transparent).
+
+| | Settings | Compute (2× T4) | Peak | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured** | true_gs 3.5, 16 steps, 512 px | 334 s | 11.2 GB | same split as B, slightly cleaner edges |
+| **B. Live-demo budget** | true_gs 1.0, 12 steps, 512 px | 140 s (over 30 s; fewer steps not yet measured) | 11.2 GB | background with cottage, tree and fox removed and filled; clean cottage, arch, tree, fox; houses layer nearly empty |
+
+A:
+
+![RevealLayer A](../img/fox_reveallayer_A.jpg)
+
+B:
+
+![RevealLayer B](../img/fox_reveallayer_B.jpg)
+
+Gap: a run with 4–6 steps to find how far the compute drops toward 30 s.
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers (with boxes) | **supported** | strips above |
+| Move / resize a layer | **supported**: the filled background has no hole where the object was; the fox move loop uses this split | [relocate-harmonise.md](relocate-harmonise.md), `fox_move_strip.png` |
+| Harmonise after a move | **supported** with `relocate()` | same strip |
+| Story composite | not tried | |
+| Spatial edit | **partial**: the boxes define the grouping | strips above |
+| Image to image / relight / effects | n/a | |
+| Add / remove / modify a layer | **partial** (a box per object) | |
+| Amodal completion | **supported**: hidden parts of objects and the background behind them are filled | strips above; [amodal-fill.md](amodal-fill.md) |
+
+![fox move loop: original | naive paste | relocate | + shadow | + IC-Light](../img/fox_move_strip.png)
+
 ## Best features
 
 - Fills in what was behind each object: the background stays complete when an object is moved.

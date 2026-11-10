@@ -35,6 +35,27 @@ Generic BiRefNet (`ZhengPeng7/BiRefNet`) on the fox gives logits −27 … +19, 
 
 The fox comes out as a clean layer and the hole is filled; after that the matting takes the whole scene below the sky as one layer (salient-object matting has no notion of cottage vs tree).
 
+## Fox & cottage benchmark (standard strips)
+
+LayerD peels layers by matting and inpainting; our default matting model finds no foreground on painted scenes, so the standard strip uses the generic BiRefNet matting variant. Strips: input | recomposite | layers.
+
+| | Settings | Compute (Kaggle CPU) | Result |
+|---|---|---|---|
+| **A. Best case measured** | generic BiRefNet matting, palette refine on | 220 s | 4 layers: LaMa'd sky background, a fragment, the whole scene below the sky, the fox (diff 0.57) |
+| **B. Live-demo budget (about 30 s)** | **not reached** on CPU; a GPU run was not measured | | |
+| default matting model | | 55 s | 1 layer (nothing found) |
+
+![LayerD with generic BiRefNet](../img/fox_layerd_generic.jpg)
+
+Gap: LayerD on a T4 (the matting and inpainting would likely be faster; not measured).
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **partial**: works on flat graphic designs; on the fox scene only the fox separates | strip above, [table](#benchmarks) |
+| Everything else | n/a / not tried | |
+
 ## Best features
 
 Small, fast, CPU-only; trained for graphic-design images.

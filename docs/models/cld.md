@@ -85,6 +85,42 @@ The recipe that made 768 and 1024 px fit (probes `cld-768c` / `cld-1024c`, files
 
 ![CLD 768 px and ART+ 1024 px](../img/cld768_artplus1024_full.jpg) Files: `prototype/kaggle/results_cld_1024/`.
 
+## Fox & cottage benchmark (standard strips)
+
+Input: the shared scene with seven boxes (the five objects plus the cobblestone path and hedge). Strips: input | recomposite | background layer | layers.
+
+| | Settings | Compute (2× T4) | Peak | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured** | 512 px, 16 steps, 7 boxes | 434 s | 13.3 GB | clean cut-outs; the "background" layer is a separate village scene |
+| 768 px, 16 steps (over 8 min) | adapter on GPU 1, text encoders on CPU | 1380 s | 10.8 GB | as clean as at 512 px |
+| **B. Live-demo budget (about 30 s)** | **not reached**: 2 steps at 768 px took 412 s wall-clock including CPU text encoding and VAE decode | | 10.8 GB | 2 steps give noise |
+
+A (512 px):
+
+![CLD 512 px](../img/fox_cld_512.jpg)
+
+768 px:
+
+![CLD 768 px](../img/fox_cld_768.jpg)
+
+Gap: per-step time is not separated from the CPU text encoding; a warm profile with the prompt embeddings cached would show the real per-request time.
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers (with boxes) | **supported** | strips above |
+| Move / resize a layer | **partial**: the generated background is a different scene, so moved objects need another background | [Backgrounds comparison](#backgrounds-cld-vs-reveallayer-on-fox--cottage-existing-runs-2026-11-10) |
+| Story composite | **supported**: night and heavy-rain edits split with the same boxes | `cld_night_rain.jpg` (section above) |
+| Spatial edit | **supported**: the boxes (and the seven-box variant) control the grouping | `cld_7box.jpg` |
+| Image to image / relight / effects | n/a | |
+| Add / remove / modify a layer | **partial** (one box per layer) | |
+| Amodal completion | **partial**: objects come out whole, the background is invented | strips above |
+
+![night and rain edits split with CLD](../img/cld_night_rain.jpg)
+
+![seven boxes](../img/cld_7box.jpg)
+
 ## Best features
 
 Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).

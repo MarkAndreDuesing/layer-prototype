@@ -29,6 +29,48 @@ Apache-2.0, [Qwen/Qwen-Image-Layered](https://huggingface.co/Qwen/Qwen-Image-Lay
 
 Peak memory 8.0 / 7.6 GB (fast settings). Measured on the forest, pixel-art and sketch scenes (sweeps v3–v7, [`../../prototype/kaggle/results_qwen_sweep_v5/`](../../prototype/kaggle/results_qwen_sweep_v5/), [`results_qwen_v7_layers/`](../../prototype/kaggle/results_qwen_v7_layers/)). Fox & cottage (shared test scene): 4 layers in 33 s → background / house roof / cottage + tree / fox (diff 9.4); 6 layers 41 s; 5 layers at 512 px 62 s (tree and fox separate). Results: [`../../prototype/kaggle/results_qwen_fox_v11/`](../../prototype/kaggle/results_qwen_fox_v11/).
 
+## Fox & cottage benchmark
+
+Input: the shared scene ([TEMPLATE.md](TEMPLATE.md)); the model takes the image and a layer count (no boxes). Strips: input | recomposite | layers (green = transparent).
+
+| | Settings | Compute (2× T4) | Recomposite diff | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured on this scene** | 512 px, 5 layers, 4 steps, CFG 1 | 62 s | 13.4 | background, tree and fox separate, cottage faint |
+| **B. Live-demo budget (about 30 s)** | 384 px, 4 layers, 4 steps, CFG 1 | 33 s | 9.4 | background / roof / cottage + tree / fox |
+
+A, 512 px, 5 layers:
+
+![Qwen-Image-Layered 512 px 5 layers](../img/fox_qwenlayered_512_5L.png)
+
+B, 384 px, 4 layers:
+
+![Qwen-Image-Layered 384 px 4 layers](../img/fox_qwenlayered_384_4L.png)
+
+A has not yet been run with more steps (12–16, still under 8 minutes); the 640 px, 50-step reference setting takes 35 min and was measured on the forest scene only. Results: `prototype/kaggle/results_qwen_fox_v11/`.
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **supported** | strips above |
+| Move / resize a layer | **partial**: layers are full-canvas RGBA, so a canvas move works; no harmonising | [relocate-harmonise.md](relocate-harmonise.md) (the move loop used another model's split) |
+| Harmonise after a move | not tried on these layers | |
+| Story composite | **supported**: re-split of a night / rain edit | below |
+| Spatial edit | n/a (no text or box control) | |
+| Image to image | n/a | |
+| Add / remove / modify a layer | **partial**: choose N; edit a layer with another model | [qwen-image-2.1.md](qwen-image-2.1.md) |
+| Relight a layer | n/a | [relight-ic-light.md](relight-ic-light.md) |
+| Effects as layers | n/a | |
+| Amodal completion | **supported** (hidden areas behind objects are filled; faint ghosts of old positions remain) | strips above |
+
+**Story composite: re-split after Qwen-Image-2.1 edited the scene** (run v10, 384 px, 5 layers, 4 steps, base Euler; night then heavy rain). The base model splits the night edit worse than Stable-Layers (3 of 4 object frames 99–100 % transparent) but the rain edit with more layers filled (diff 10.8): [qwen-image-2.1.md](qwen-image-2.1.md).
+
+![night composite re-split](../img/fox_qwenlayered_night_resplit.png)
+
+![rain composite re-split](../img/fox_qwenlayered_rain_resplit.png)
+
+**Re-decomposing every turn** (drift arm C): [../research/drift-evaluation.md](../research/drift-evaluation.md), strip `redecompose_cycles.jpg`.
+
 ## Best features
 
 - Most meaningful semantic layers of all routes tried so far (background, tree groups, campfire group, characters).

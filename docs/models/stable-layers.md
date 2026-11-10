@@ -29,6 +29,43 @@ On fox & cottage both give the cleanest split so far: **sky / meadow / cottage +
 
 Heun results: [`../../prototype/kaggle/results_qwen_v9b/`](../../prototype/kaggle/results_qwen_v9b/). Euler results: [`../../prototype/kaggle/results_stable_layers_v8/`](../../prototype/kaggle/results_stable_layers_v8/). The README asks for Heun, 50 steps, 640 px.
 
+## Fox & cottage benchmark
+
+Same input and strip layout as [qwen-image-layered.md](qwen-image-layered.md). Stable-Layers is the base model plus the RL-tuned LoRA, so the cost per split is the same.
+
+| | Settings | Compute (2× T4) | Recomposite diff | What the layers show |
+|---|---|---|---|---|
+| **A. Best case measured** | 384 px, 5 layers, 4 **Heun** steps, CFG 1 | 67 s | 20.6 | sky / meadow / cottage + tree / path / fox, the same clean split |
+| **B. Live-demo budget (about 30 s)** | 384 px, 5 layers, 4 **Euler** steps, CFG 1 | 39 s | 21.0 | sky / meadow / cottage + tree / path / fox |
+
+A (Heun):
+
+![Stable-Layers Heun](../img/fox_stablelayers_heun.png)
+
+B (Euler):
+
+![Stable-Layers Euler](../img/fox_stablelayers_euler.png)
+
+The colour shift (diff about 21 against 9–13 for the base model) is visible in the recomposite. Results: `prototype/kaggle/results_qwen_fox_v11/`.
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **supported** | strips above |
+| Move / resize a layer | **partial** (canvas move; no harmonising) | [relocate-harmonise.md](relocate-harmonise.md) |
+| Story composite | **supported**: re-split of night and rain edits | below |
+| Spatial edit / image to image | n/a | |
+| Add / remove / modify a layer | **partial** (N chosen per run) | |
+| Relight / effects | n/a | |
+| Amodal completion | **supported** (background filled behind objects; very clean with Heun) | strips above |
+
+**Story composites** (Qwen-Image-2.1 edit, then Stable-Layers Heun, 5 layers, 384 px, 67–70 s). Night: moon + sky bits / cottage with lit windows / tree / fox, diff 4.2. Heavy rain: cottage / tree / fox plus a wet-path layer, diff 11.2:
+
+![night composite re-split](../img/fox_stablelayers_night_resplit.png)
+
+![rain composite re-split](../img/fox_stablelayers_rain_resplit.png)
+
 ## Best features
 
 Cleaner semantic separation than the base model: on the sketch the background is truly empty paper and the fire gets its own layer.

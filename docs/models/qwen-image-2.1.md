@@ -112,6 +112,42 @@ Files: `prototype/kaggle/results_qwen21_extract/`.
 - An unknown method raised a server error in this run (the status showed ERROR although all outputs were produced); the route now answers HTTP 400 with the list of methods.
 - Not yet served through the tunnel (needs a server notebook that loads this pipeline).
 
+## Fox & cottage benchmark: paths A and B
+
+Input: the shared scene; Qwen-Image-2.1 has no split mode, so the split is one extract call per object plus one call that removes the objects for the background (`qwen21-extract` method, [qwen21_decomposer.py](../../prototype/layerproto/backends/qwen21_decomposer.py)). Strips: input | recomposite | background | layers.
+
+| | Settings | Compute (2× T4) | Result |
+|---|---|---|---|
+| **A. Best case measured** | 512 px, 8 steps, five calls (background + four objects) | 114 s through the `/decompose` route (236 s load) | clean hole-free background; whole cottage, tree, fox; the arch came back larger than in the scene |
+| **B. Live-demo budget (about 30 s)** | 512 px, 8 steps, **one object per request** | 23–27 s per call | one clean layer per request; all four objects need four requests |
+
+![Qwen-2.1 through /decompose](../img/fox_qwen21_route.jpg)
+
+## Special features
+
+| Feature | Status | Evidence |
+|---|---|---|
+| Split an image into layers | **supported** (one call per object) | strip above |
+| Move / resize a layer | **partial**: a canvas move; the background without the object comes from the same model | [amodal-fill.md](amodal-fill.md) |
+| Harmonise after a move | not tried | |
+| Story composite | **supported**: whole-scene night and rain edits, then a re-split | [night](#story-event-composites-re-split-with-stable-layers-run-v10-5-layers-384-px-heun-6770-s), below |
+| Spatial edit | **supported**: "fox → grey wolf" in the same pose and style, alpha kept | sheet below |
+| Image to image | **supported**: scene edits | sheet below |
+| Add / remove / modify a layer | **supported**: extract, remove ("fox removed, path filled"), RGBA edit, text → transparent object | sheet and strips below |
+| Relight a layer | **supported** with an alpha retry: 10 of 10 edits accepted | `event_perlayer_retry.jpg` |
+| Effects as layers | **partial**: lantern prop with a glow; procedural overlays for rain / snow | sheet below |
+| Amodal completion | **supported**: whole cottage behind the tree | `qwen21_extract_strip.jpg` |
+
+One sheet from the first fox & cottage run (extract fox, extract cottage, fox → wolf, night, heavy rain, scene from caption, lantern):
+
+![Qwen-2.1 fox & cottage sheet](../img/fox_qwen21_sheet.jpg)
+
+Per-layer relight with the retry (night left, rain right):
+
+![per-layer relight with retry](../img/event_perlayer_retry.jpg)
+
+Whole-scene relight against recompose, night and rain: [concepts/editing.md §5](../concepts/editing.md) (`event_bg_relight_night.jpg`, `event_bg_relight_rain.jpg`).
+
 ## Best features
 
 - One model covers three loop steps: new layer from text, re-prompt a layer keeping transparency, cut an object out of a scene.
