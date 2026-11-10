@@ -60,6 +60,7 @@
 | Qwen-Image-2.1 Turbo | extract object | fox & cottage | 2x T4 | 512 px, 8 steps | 27 | 10.7 | 1 |  | clean fox in place | [results_qwen21_fox](../../prototype/kaggle/results_qwen21_fox/) |
 | Qwen-Image-2.1 Turbo | edit RGBA layer (fox to wolf) | fox & cottage | 2x T4 | 512 px, 8 steps | 21 | 10.7 | 1 |  | alpha kept | [results_qwen21_fox](../../prototype/kaggle/results_qwen21_fox/) |
 | Qwen-Image-2.1 Turbo | scene event edit (night / rain) | fox & cottage | 2x T4 | 512 px, 8 steps | 22 | 10.7 |  |  | strong; composition kept | [results_qwen21_fox](../../prototype/kaggle/results_qwen21_fox/) |
+| relocate() + shadow + IC-Light | move/resize layer | fox_cottage | 1x T4 | 512 px, 20 steps, strength 0.3, paste-back 0.8, on RevealLayer layers | 9 |  | 1 |  | no hole; relocate 3.4 s, shadow 0.04 s, IC-Light 5.9 s; IC-Light reddens | [results_fox_move_v2](../../prototype/kaggle/results_fox_move_v2/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (38 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (39 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

@@ -52,3 +52,16 @@ flowchart LR
 | `effects` | only an overlay | procedural rain/snow; LayerDiffuse fog/fire/glow |
 
 Rules in the router prompt: lighting changes apply to every visible layer; a layer holding several objects is re-prompted as a whole, never removed for one part. Code: [events.py](../../prototype/layerproto/events.py); 5 test events routed sensibly (about 30 s each on CPU). No layered method in the literature does this (gap G2): [story_events_global_edits.md](../../research_notes/Layered%20loop%20open%20paths/story_events_global_edits.md).
+
+## 4. Full move loop on fox & cottage
+
+Input: RevealLayer's fox & cottage split (filled background + 5 layers). The fox (layer 5) is moved 28 % left, 4 % up and scaled 1.15×. Code: [fox_move_demo.py](../../prototype/tools/fox_move_demo.py), notebook generator [make_fox_move_trial.py](../../prototype/tools/make_fox_move_trial.py); results in `prototype/kaggle/results_fox_move_v2`.
+
+![original | naive paste | relocate | + shadow | + IC-Light](../img/fox_move_strip.png)
+
+| Step | T4 time | Observation |
+|---|---|---|
+| naive paste | 0 | no hole at the old place (RevealLayer filled the background) |
+| `relocate()` strength 0.3 / 0.45 | 3.4 s per edit (first call 133 s incl. SDXL download) | fox kept, edges blended into the path; 0.3 and 0.45 look nearly the same with paste-back 0.8 |
+| + shadow layer | 0.04 s | soft cast shadow on the path, light from the left |
+| + IC-Light fbc | 5–6 s (load 43 s) | warmer, redder fox matching the scene; hue shift stronger than wanted |

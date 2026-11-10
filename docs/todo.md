@@ -23,7 +23,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] **OmniPSD / PSDiffusion / DreamLayer:** re-check releases occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU
-- [ ] `relocate()` + IC-Light relight + shadow layer together on a T4 ([editing.md §2](concepts/editing.md#2-relighting-and-shadows)); attention sharing for thin parts
+- [x] `relocate()` + IC-Light relight + shadow layer together on a T4: fox moved on RevealLayer's fox & cottage split, no hole, 3.4 s + 0.04 s + 5 s ([editing.md §4](concepts/editing.md#4-full-move-loop-on-fox--cottage))
+- [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
 - [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([editing.md §3](concepts/editing.md#3-story-events-across-layers))
 - [ ] Drift experiment with real editors (layered / flat / re-decompose arms) ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [ ] Wire the GPU modules into the app (`prototype/app.py`) as a selectable backend
@@ -33,7 +34,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] **Image-to-image front end** (sketch + prompt → image) → decomposer: untested; how it fits the LayerDiffuse route (which builds its own layers) is unclear. SDXL-Turbo img2img is about 58 s on the laptop.
 - [ ] **LayerDiffuse on complex scenes** (5+ or overlapping objects): not evaluated; the paper shows better results than the team saw, possibly settings.
 - [~] **Continuous map development / story events:** router + previews built; whole-scene effects on GPU open.
-- [~] **Prompt breakdown with AI placement + harmonisation:** the "sticker collage" problem; IC-Light + shadow modules built, GPU test open.
+- [~] **Prompt breakdown with AI placement + harmonisation:** the "sticker collage" problem; IC-Light + shadow modules built and tested together on a T4 (fox move).
 - [~] **Generate → segment → inpaint:** first attempt done (see SAM2 + LaMa above).
 
 ## 4. Speed and hosting

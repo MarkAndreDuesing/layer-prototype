@@ -48,11 +48,24 @@ OUT = '/kaggle/working/layerd_v2'; os.makedirs(OUT, exist_ok=True)
 IMAGES = {{k: Image.open(io.BytesIO(base64.b64decode(v))).convert('RGB') for k, v in {json.dumps({k: b64(v) for k, v in IMAGES.items()})}.items()}}
 VARIANTS = {{
     'default': dict(kw={{}}, th=None, iters=3),
-    'th0.001_iter5': dict(kw={{}}, th=0.001, iters=5),
-    'norefine_iter5': dict(kw=dict(fg_refine=False, bg_refine=False), th=None, iters=5),
-    'norefine_nounblend_iter5': dict(kw=dict(fg_refine=False, bg_refine=False, use_unblend=False), th=None, iters=5),
-    'matt1024_norefine_iter5': dict(kw=dict(fg_refine=False, bg_refine=False, matting_process_size=(1024, 1024)), th=None, iters=5),
 }}
+import torch
+def _diag(card):
+    mm = _build(card).eval()
+    ps = list(mm.parameters()); print(card, 'param dtype', ps[0].dtype, 'n', len(ps), 'abs-mean of first 3', [round(float(q.abs().mean()), 4) for q in ps[:3]], flush=True)
+    im = list(IMAGES.values())[0].resize((1024, 1024))
+    from torchvision import transforms as T
+    x = T.Compose([T.ToTensor(), T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])(im).unsqueeze(0).to(ps[0].dtype)
+    with torch.no_grad(): out = mm(x)
+    def walk(o, pre='out'):
+        if torch.is_tensor(o): print(' ', pre, tuple(o.shape), o.dtype, 'min', float(o.min()), 'max', float(o.max()), 'nan', int(o.isnan().sum()), flush=True)
+        elif isinstance(o, (list, tuple)):
+            for i, e in enumerate(o): walk(e, f'{{pre}}[{{i}}]')
+        else: print(' ', pre, type(o), flush=True)
+    walk(out)
+for _c in ('cyberagent/layerd-birefnet', 'ZhengPeng7/BiRefNet'):
+    try: _diag(_c)
+    except Exception as e: print('diag failed', _c, repr(e)[:300], flush=True)
 stats = {{}}
 for vname, v in VARIANTS.items():
     t = time.time(); m = LayerD(matting_hf_card='cyberagent/layerd-birefnet', **v['kw']).to('cpu')

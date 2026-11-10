@@ -37,3 +37,4 @@ RevealLayer,image + boxes to layers,fox & cottage,2x T4,"512 px, 5 boxes, 16 ste
 Qwen-Image-2.1 Turbo,extract object,fox & cottage,2x T4,"512 px, 8 steps",27,10.7,1,,results_qwen21_fox,2026-11-10,clean fox in place
 Qwen-Image-2.1 Turbo,edit RGBA layer (fox to wolf),fox & cottage,2x T4,"512 px, 8 steps",21,10.7,1,,results_qwen21_fox,2026-11-10,alpha kept
 Qwen-Image-2.1 Turbo,scene event edit (night / rain),fox & cottage,2x T4,"512 px, 8 steps",22,10.7,,,results_qwen21_fox,2026-11-10,strong; composition kept
+relocate() + shadow + IC-Light,move/resize layer,fox_cottage,1x T4,"512 px, 20 steps, strength 0.3, paste-back 0.8, on RevealLayer layers",9,,1,,results_fox_move_v2,2026-11-10,"no hole; relocate 3.4 s, shadow 0.04 s, IC-Light 5.9 s; IC-Light reddens"

@@ -17,7 +17,7 @@
 | Re-prompt one layer | LayerDiffuse `bg2ble → bgble2fg` through the composite; **Qwen-Image-2.1 edits a transparent layer directly** | 18 s / 23 s | [models/qwen-image-2.1.md](models/qwen-image-2.1.md) |
 | Extract one object as a layer | Qwen-Image-2.1 extraction (clean, in place); Grounding DINO + SAM2 by name | 22 s / 7 s | [models/sam2-lama.md](models/sam2-lama.md) |
 | Move / resize a layer | `relocate()` v5: warp + SDXL re-harmonise + interior pinning + paste-back | about 4 s per edit (T4) | [editing.md §1](concepts/editing.md#1-move--resize-with-re-harmonisation-relocate) |
-| Relight / shadows | IC-Light relight module and procedural shadow layer (CPU-tested) | 44 s CPU / 0.6 s | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
+| Relight / shadows | IC-Light relight + procedural shadow layer, tested with `relocate()` on the fox (T4) | IC-Light 5 s, shadow 0.04 s (T4) | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
 | Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU); **Qwen-Image-2.1 scene edits (night, heavy rain) keep the composition** | 30 s routing (CPU) + 22 s edit (T4) | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
 | Recomposite | Alpha compositing in code | instant | — |
 | Measure drift over many edits | Harness built (3 arms), self-test only | — | [research/drift-evaluation.md](research/drift-evaluation.md) |
