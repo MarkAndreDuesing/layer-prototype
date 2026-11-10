@@ -92,3 +92,23 @@ Findings:
 - **Compared with `recompose`** (Qwen-2.1 edits the whole composite, then a splitter, §3 and [qwen-image-2.1.md](../models/qwen-image-2.1.md)): the whole-scene edit gives dark cottages with lit windows and a consistent result in about 22 s plus the split (30–70 s), so for weather and time of day `recompose` currently produces the better picture; `bg_relight` keeps the layers exactly as they were, which matters only if the object pixels must not change.
 
 Files: `prototype/tools/make_qwen21_bgevent_trial.py`, `fox_event_relight.py`, results in `prototype/kaggle/results_qwen21_bgevent/` and `results_fox_event/`.
+
+### Per-layer Qwen-Image-2.1 relighting (strategy `per_layer`, same event, T4)
+
+Each RevealLayer object layer is sent to Qwen-Image-2.1 as an RGBA image ("relight this object for a dark night / a heavy rainstorm, keep its exact shape"), 23 s per layer, then composited over the edited background. Night (left) and rain (right); layers whose alpha did not survive were replaced by the unlit original:
+
+![per-layer Qwen-2.1 night and rain](../img/event_perlayer_qwen21.jpg)
+
+| Layer | Night | Rain |
+|---|---|---|
+| village houses | returned almost opaque (10 % transparent) → original used | emptied (98 % transparent) → original used |
+| cottage | edited, alpha kept (76 % transparent): dark roof and walls, wet look in rain | edited, alpha kept |
+| gate arch | edited, alpha kept | emptied → original used |
+| tree | edited, alpha kept: dark silhouette at night | edited, alpha kept |
+| fox | returned a **fully opaque night scene** (0 % transparent) → original used, so the fox stays daylight-bright | same, opaque |
+
+- Where the alpha survives, this is **much better than IC-Light** for the large objects: the cottage and tree get genuinely dark or wet, no colour cast.
+- The edit does **not reliably keep the layer's alpha**: 6 of 10 edits kept it (cottage, tree, arch once); the fox and houses came back opaque or empty. Qwen-Image-2.1's RGBA edit needs a check-and-retry (alpha coverage within ±15 % of the input) in the loop.
+- Cost: 5 layers × 23 s ≈ 2 min vs 25 s for IC-Light, versus about 22 s + a 30–70 s split for `recompose`.
+
+Results: `prototype/kaggle/results_perlayer/`, generator `make_qwen21_perlayer_trial.py`.

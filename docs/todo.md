@@ -37,7 +37,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] `relocate()` + IC-Light relight + shadow layer together on a T4: fox moved on RevealLayer's fox & cottage split, no hole, 3.4 s + 0.04 s + 5 s ([editing.md §4](concepts/editing.md#4-full-move-loop-on-fox--cottage))
 - [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
 - [x] Story events, generative pass: `bg_relight` (background edit + IC-Light) and `recompose` (edit + re-split) both measured: recompose looks better, IC-Light v1 gives colour casts ([editing.md §5](concepts/editing.md#5-story-event-measured-bg_relight-vs-recompose-fox--cottage-night-and-heavy-rain))
-- [ ] Story events: LayerDiffuse effect layers (fog / fire / glow); a relighter that darkens properly (per-layer Qwen-2.1 edit instead of IC-Light)
+- [ ] Story events: LayerDiffuse effect layers (fog / fire / glow); per-layer Qwen-2.1 relight needs an alpha check-and-retry (6 of 10 edits kept the alpha); then re-run the event
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
 - [ ] Drift: arm C with real edits, more scenes, re-prompt and relight edits
