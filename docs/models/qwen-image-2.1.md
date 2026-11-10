@@ -62,6 +62,14 @@ Heavy rain:
 
 The base model (Euler, 4 steps, 39 s) splits the night edit worse (3 of the 4 object frames 99–100 % transparent, i.e. empty) but the rain edit with more layers filled (diff 10.8). Results: `prototype/kaggle/results_qwen_v10/`.
 
+## Halo / fringe fix (CPU, `layerproto/matte_fix.py`)
+
+The RGBA outputs have a soft edge (21 % of the fox layer's visible pixels are semi-transparent, 32 % for the wolf, 20 % for the lantern, 5 % for the cottage) whose colour belongs to the background the object was drawn on. `defringe()` replaces the edge colours with the nearest solid interior colours and shrinks the alpha by one pixel. Zoom, 3×, fox and cottage roof (before | after on a dark background, then before | after on a light one):
+
+![defringe zoom](../img/halo_fix_zoom.jpg)
+
+It removes the grey-green rim (visible on the dark background) but also softens the fox's dark outline, so it trades edge crispness for a clean rim; apply it when a layer will be moved onto a very different background, not by default. Not tested on the other generators' layers.
+
 ## Usage facts (from the research notes)
 
 | Topic | Fact |

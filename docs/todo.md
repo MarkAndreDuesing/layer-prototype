@@ -30,7 +30,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] SAM2 route: amodal completion of occluded objects (pix2gestalt or SDXL-inpaint per object)
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)
 - [x] Qwen-Image-2.1: night / rain composites re-split (v10): works with Stable-Layers
-- [ ] Qwen-Image-2.1: cottage extraction without the fox, halo fix on generated objects
+- [x] Halo fix on generated objects: `matte_fix.defringe` removes the rim but softens the outline ([qwen-image-2.1.md](models/qwen-image-2.1.md))
+- [ ] Qwen-Image-2.1: cottage extraction without the fox
 - [x] **OmniPSD / PSDiffusion / DreamLayer:** re-checked 2026-11-10: OmniPSD code + dataset only (no weights; RGBA-VAE weights still a placeholder path), PSDiffusion repo not found, nothing for DreamLayer/LayerFusion on HF. Re-check occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU
