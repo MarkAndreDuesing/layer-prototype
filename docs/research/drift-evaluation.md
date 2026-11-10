@@ -76,3 +76,19 @@ The base model slowly washes out and blurs the scene; Stable-Layers saturates th
 
 ## Next
 More scenes and edit types ([../todo.md](../todo.md)).
+
+### Perceptual drift outside the edit (LPIPS and DINOv2, CPU, 2026-11-10)
+
+Same saved turns and the same edited-region mask as the PSNR/SSIM tables, edited area greyed in both images. LPIPS (AlexNet): higher = more drift. DINOv2-small CLS cosine similarity: lower = more drift. Script: [drift_perceptual.py](../../prototype/tools/drift_perceptual.py); numbers in `prototype/kaggle/results_drift/perceptual.json`.
+
+| Turn | A persistent layers: LPIPS / DINO | B flat editor: LPIPS / DINO | C re-decompose every turn: LPIPS / DINO |
+|---|---|---|---|
+| 1 | 0.000 / 1.000 | 0.228 / 0.930 | 0.000 / 1.000 |
+| 2 | 0.000 / 1.000 | 0.269 / 0.879 | 0.023 / 0.982 |
+| 3 | 0.000 / 1.000 | 0.318 / 0.879 | 0.049 / 0.986 |
+| 4 | 0.000 / 1.000 | 0.356 / 0.885 | 0.051 / 0.985 |
+| 5 | 0.000 / 1.000 | 0.389 / 0.876 | 0.056 / 0.981 |
+| 6 | 0.000 / 1.000 | 0.417 / 0.856 | 0.068 / 0.973 |
+| mean | 0.000 / 1.000 | 0.329 / 0.884 | 0.041 / 0.985 |
+
+Same ordering as PSNR: persistent layers do not drift at all outside the edit, re-decomposing each turn drifts slowly (LPIPS 0.02 to 0.07), and the flat editor drifts at once (0.23 after one turn) and keeps growing (0.42 after six). One scene and one edit type (moving the fox), so this confirms the metric ordering, not yet a general result.

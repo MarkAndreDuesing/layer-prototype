@@ -43,7 +43,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C with real edits (SAM2 re-decomposition each turn): 35 dB after the first re-split, 28 dB at turn 6 (between A 60 dB and B 14 dB)
-- [ ] Drift: more scenes, re-prompt and relight edits, LPIPS / DINO
+- [ ] Drift: more scenes, re-prompt and relight edits (LPIPS / DINO done on the fox move: same ordering as PSNR, see research/drift-evaluation.md)
 - [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); the Kaggle → laptop tunnel notebook is ready ([guides/kaggle.md §3b](guides/kaggle.md), 6 steps, you run it), Qwen-Image-Layered / CLD behind `/decompose`, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)
