@@ -40,6 +40,21 @@ def detail_transfer(new_rgb: Image.Image, orig_rgb: Image.Image, radius: float =
     return Image.fromarray(np.clip(lo(n) + amount * (o - lo(o)), 0, 255).astype(np.uint8))
 
 
+def restore_chroma(relit: Image.Image, original: Image.Image, keep: float = 0.7) -> Image.Image:
+    """Keep the relit lightness (L) but pull the colour (Lab a, b) back towards the original layer's: IC-Light shifts hue
+    (the fox turned red); keep=0 leaves the relit colour, keep=1 restores the original hue entirely. Alpha is the relit layer's."""
+    from skimage import color
+
+    r = np.asarray(relit.convert("RGB"), np.float32) / 255
+    o = np.asarray(original.convert("RGB").resize(relit.size), np.float32) / 255
+    lr, lo = color.rgb2lab(r), color.rgb2lab(o)
+    lab = lr.copy()
+    lab[..., 1:] = (1 - keep) * lr[..., 1:] + keep * lo[..., 1:]
+    out = Image.fromarray((np.clip(color.lab2rgb(lab), 0, 1) * 255).astype(np.uint8)).convert("RGBA")
+    out.putalpha(relit.convert("RGBA").getchannel("A"))
+    return out
+
+
 class ICLightFBC:
     def __init__(self, device="cuda", dtype=torch.float16, base=SD15):
         from diffusers import AutoencoderKL, DPMSolverMultistepScheduler, StableDiffusionPipeline, UNet2DConditionModel

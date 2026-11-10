@@ -36,7 +36,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 ## 2. The loop on GPU
 - [x] `relocate()` + IC-Light relight + shadow layer together on a T4: fox moved on RevealLayer's fox & cottage split, no hole, 3.4 s + 0.04 s + 5 s ([editing.md §4](concepts/editing.md#4-full-move-loop-on-fox--cottage))
-- [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
+- [x] IC-Light reddens the fox: `restore_chroma` (keep 0.8 gives a* 16.4 vs 20.3 relit vs 15.2 original)
+- [ ] attention sharing for thin parts
 - [x] Story events, generative pass: `bg_relight` (background edit + IC-Light) and `recompose` (edit + re-split) both measured: recompose looks better, IC-Light v1 gives colour casts ([editing.md §5](concepts/editing.md#5-story-event-measured-bg_relight-vs-recompose-fox--cottage-night-and-heavy-rain))
 - [ ] Story events: LayerDiffuse effect layers (fog / fire / glow); per-layer Qwen-2.1 relight with alpha check-and-retry done: all 10 edits accepted; the retry logic is `layerproto/layer_edit.py` (self-test passes); next: add shadow layers and call it from the `per_layer` event strategy once a Qwen-2.1 backend exists in the app
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))

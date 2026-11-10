@@ -32,6 +32,12 @@ Code: `LayerDiffuseChain.relocate()` in [layerdiffuse_chain.py](../../prototype/
 | **IC-Light v1 fbc** (SD1.5, Apache-2.0) | relights a layer to match a given background: Realistic Vision 5.1 UNet widened 4 → 12 input channels; fg (transparent pixels filled grey) and bg latents concatenated each step; we re-apply the layer's alpha and transfer the original's fine detail | 44 s CPU (8 steps, 384 px); seconds on a T4 [est] | [relight.py](../../prototype/layerproto/relight.py) |
 | **Procedural shadow layer** | black RGBA layer under the object: alpha squashed and sheared along the light, blurred with distance, plus a contact blob; one contact line per object; length capped (EasyOmnimatte recipe) | 0.6 s per layer CPU | [shadow.py](../../prototype/layerproto/shadow.py) |
 
+**Hue drift and its fix (CPU test, fox layer relit in place against the day scene, 384 px, 8 steps, 56 s per relight):** IC-Light lowers the fox's lightness (mean Lab L 54.8 → 46.1) and raises its redness (a* 15.2 → 20.3). `restore_chroma(relit, original, keep)` in [relight.py](../../prototype/layerproto/relight.py) keeps the relit lightness and pulls the colour back: keep 0.5 gives a* 17.8, keep 0.8 gives a* 16.4 (close to the original 15.2). Tiles: original | relit | keep 0.5 | keep 0.8:
+
+![restore chroma](../img/iclight_hue_restore.jpg)
+
+The difference is subtle on this fox at this size; the setting matters when the relit colour is far from the object (night, rain), where keeping too much chroma would also remove the intended colour cast, so `keep` should stay a per-event parameter.
+
 IC-Light v2 (FLUX) never released weights. IC-Light has no notion of light sources (a campfire gets dimmed under "night"). Literature (harmonisation, insertion, shadow methods): [object_harmonisation.md](../../research_notes/Layered%20loop%20open%20paths/object_harmonisation.md).
 
 ## 3. Story events across layers
