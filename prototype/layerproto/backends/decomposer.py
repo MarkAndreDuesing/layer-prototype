@@ -25,6 +25,7 @@ class DecomposeParams:
     resolution: int = 384
     steps: int = 4
     seed: int = 0
+    amodal: bool = False                        # SAM2: fill the parts of each object hidden by objects in front (SDXL-inpaint)
 
 
 class Decomposer(ABC):

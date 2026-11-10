@@ -27,7 +27,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] LayerD loop with generic BiRefNet on fox & cottage: fox peeled cleanly, rest of scene one layer (v11)
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [x] SAM2 route: SDXL inpaint for the background hole (v3): sharp, in style (28 s)
-- [x] SAM2 route: amodal completion of occluded objects: SDXL-inpaint per object done (31 s, cottage whole, [sam2-lama](models/sam2-lama.md)); pix2gestalt not tried; Qwen-2.1 "extract only the cottage without X" gives a whole cottage, see [qwen-image-2.1](models/qwen-image-2.1.md)
+- [x] SAM2 route: amodal completion of occluded objects: SDXL-inpaint per object done (31 s, cottage whole, [sam2-lama](models/sam2-lama.md)); pix2gestalt not tried; wired into the SAM2 `/decompose` route as the "Complete hidden parts" option (CPU-tested, needs a server session to try); Qwen-2.1 "extract only the cottage without X" gives a whole cottage, see [qwen-image-2.1](models/qwen-image-2.1.md)
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)
 - [x] Qwen-Image-2.1: night / rain composites re-split (v10): works with Stable-Layers
 - [x] Halo fix on generated objects: `matte_fix.defringe` removes the rim but softens the outline ([qwen-image-2.1.md](models/qwen-image-2.1.md))

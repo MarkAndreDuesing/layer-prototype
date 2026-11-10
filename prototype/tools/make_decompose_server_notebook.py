@@ -6,7 +6,7 @@ Output: prototype/kaggle/decompose_server/decompose-server.ipynb  (NOT pushed by
 Use: import it in the Kaggle editor (File > Import notebook), Accelerator = GPU T4, Internet = On, Save Version > Save & Run (or run
 cells in the editor); it prints two lines for prototype/config.json (remote_url, remote_token). The laptop app's "Decompose an image
 (GPU)" tab then calls it. The tunnel lives as long as the session (max 12 h; every request needs the token). Personal, non-commercial use.
-Models: Grounding DINO tiny + SAM2 small + LaMa (about 45 s to load, 5-12 s per image).
+Models: Grounding DINO tiny + SAM2 small + LaMa (about 45 s to load, 5-12 s per image); SDXL-inpaint loads on the first request with 'Complete hidden parts' ticked (about 75 s once, then about 30 s per hidden object).
 """
 import base64
 import io
@@ -45,7 +45,7 @@ cells = [
     code("""
 import os, subprocess, sys
 os.environ['SAM2_BUILD_CUDA'] = '0'
-for pkg in (['git+https://github.com/facebookresearch/sam2.git'], ['--no-deps', 'simple-lama-inpainting'], ['fire'], ['fastapi', 'uvicorn']):
+for pkg in (['git+https://github.com/facebookresearch/sam2.git'], ['--no-deps', 'simple-lama-inpainting'], ['fire'], ['fastapi', 'uvicorn'], ['diffusers==0.37.0']):
     r = subprocess.run([sys.executable, '-m', 'pip', 'install', '-q'] + pkg, capture_output=True, text=True)
     print(pkg, 'rc', r.returncode)
 """),

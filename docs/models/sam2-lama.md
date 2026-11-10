@@ -85,6 +85,10 @@ With hand boxes (`[[95,100,475,330],[62,245,150,322],[180,0,512,352],[205,325,37
 
 Both recomposite to the input. Both cottages are incomplete where the tree and hedge overlap it (lower part missing, a stray fragment on the right), and the tree has a small notch at the top right, so hand boxes did not fix the cottage here. The fox is clean in both. The first attempt with hand boxes used an image that had the box outlines painted on it, so those lines were cut out as part of the objects; the clean image is `prototype/test_scene/fox_cottage.png`. Amodal completion (SDXL-inpaint or Qwen-2.1 "extract only the cottage without ...") is the fix for the cottage.
 
+### Amodal completion in the route (built, not yet run on the server)
+
+`DecomposeParams.amodal=True` (checkbox **Complete hidden parts** in the Decompose tab) makes `Sam2Decomposer` fill, for every object that has others in front of it, the part of its box those objects cover, using the SDXL-inpaint recipe above; the object keeps its own pixels. The geometry is tested on the CPU with a stub fill (`prototype/tools/test_amodal_fill.py`); the real fill needs the server notebook rebuilt (it now installs diffusers) and a new session. Expected cost: 75 s once to load, about 30 s per object that has something in front of it.
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.

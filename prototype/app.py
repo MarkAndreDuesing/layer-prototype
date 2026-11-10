@@ -399,7 +399,7 @@ def do_load(scene_id, version):
 
 # ---------------------------------------------------------------------------- layout
 # ---------------------------------------------------------------------------- image -> layers (GPU decomposer)
-def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, progress=gr.Progress()):
+def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, amodal=False, progress=gr.Progress()):
     """Split an uploaded / generated image into RGBA layers on the remote GPU server and store it as a scene."""
     import json as _json
     from layerproto.backends.decomposer import DecomposeParams
@@ -411,7 +411,7 @@ def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, progress
         names = [n.strip() for n in names_csv.split(",") if n.strip()]
         sc = Scene(id=new_scene_id(caption or "decomposed"), user_input=caption, refined_prompt=caption, n_layers=int(n_layers))
         ENGINE.decompose_image(sc, img.convert("RGB"), DecomposeParams(caption=caption, method=method, n_layers=int(n_layers),
-                               boxes=boxes, names=names), progress=lambda m: progress(0, desc=m))
+                               boxes=boxes, names=names, amodal=bool(amodal)), progress=lambda m: progress(0, desc=m))
         final = ENGINE.compose(sc)
         return f"Scene `{sc.id}` saved with {len(sc.layers)} layers. Open it in the Scene tab (Load old scene).", overview(sc), final
     except Exception as e:  # noqa: BLE001
@@ -594,12 +594,13 @@ with gr.Blocks(title="Layer scene prototype") as demo:
                 dc_n = gr.Slider(2, 8, value=4, step=1, label="Layers (Qwen-Image-Layered / Stable-Layers)")
                 dc_boxes = gr.Textbox(label="Boxes, back to front, pixels [[x0,y0,x1,y1],...] (RevealLayer, CLD, SAM2)", lines=2)
                 dc_names = gr.Textbox(label="Names for the boxes, comma separated (also used for SAM2 by noun)")
+                dc_amodal = gr.Checkbox(False, label="Complete hidden parts (SAM2 only, SDXL-inpaint, about 30 s per hidden object)")
                 dc_btn = gr.Button("Decompose", variant="primary")
         dc_status = gr.Markdown()
         with gr.Row():
             dc_gallery = gr.Gallery(label="Layers (background first)", columns=6, height=240)
             dc_final = gr.Image(label="Recomposited", type="pil", image_mode="RGBA", height=320, interactive=False)
-        dc_btn.click(do_decompose, [dc_img, dc_caption, dc_method, dc_n, dc_boxes, dc_names], [dc_status, dc_gallery, dc_final])
+        dc_btn.click(do_decompose, [dc_img, dc_caption, dc_method, dc_n, dc_boxes, dc_names, dc_amodal], [dc_status, dc_gallery, dc_final])
 
     # ------------------------------------------------------------------ settings tab
     with gr.Tab("Settings"):
