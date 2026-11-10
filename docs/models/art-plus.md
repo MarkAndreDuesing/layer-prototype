@@ -30,7 +30,13 @@ Run 9, case 1 (whole | background | skeleton | fire | log | merged):
 
 ![ART+ v9 case 1](../img/artplus_v9_case1.jpg)
 
-Case 0 (night forest): trees, campfire + bench and moon come out as separate layers, but the whole/background frames are almost black.
+**Run 10, fox & cottage** (caption + the 5 JSON boxes, "cartoon" style prefix; 353 s, 8.6 GB). Whole | background | village houses | cottage | gate arch | tree | fox | merged:
+
+![ART+ v10 fox & cottage](../img/artplus_v10_fox.jpg)
+
+Every box gets its own clean, consistently styled transparent object at the right place; but the background is plain white (sticker look), objects are small "island" vignettes, and the gate-arch box became a red car.
+
+Case 0 of run 9 (night forest): trees, campfire + bench and moon come out as separate layers, but the whole/background frames are almost black.
 
 ![ART+ v9 case 0](../img/artplus_v9_case0.jpg)
 
@@ -59,7 +65,7 @@ Trained at 1024 px (we run 512); heavy; Drive downloads can hit quotas.
 
 ## Next attempts
 
-Generate the fox & cottage scene from text + LLM boxes; compare with LayerDiffuse chain.
+Fox scene with a style prefix that implies a full background ("painting"/"illustration" instead of "cartoon") and the sky/lawn as an explicit box; 1024 px; per-box captions if the pipeline accepts them.
 
 ## Sources
 

@@ -1,0 +1,48 @@
+{
+ "default/fox_cottage": {
+  "layers": 1,
+  "seconds": 55.0,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/forest": {
+  "layers": 1,
+  "seconds": 58.1,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/design_flat": {
+  "layers": 3,
+  "seconds": 205.9,
+  "recomposite_diff": 0.18,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.189,
+    "mean": 0.183,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.128,
+    "mean": 0.125,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ }
+}

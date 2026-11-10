@@ -1,0 +1,170 @@
+{
+ "default/fox_cottage": {
+  "layers": 1,
+  "seconds": 54.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/forest": {
+  "layers": 1,
+  "seconds": 51.5,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/design_flat": {
+  "layers": 3,
+  "seconds": 182.1,
+  "recomposite_diff": 0.18,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.189,
+    "mean": 0.183,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.128,
+    "mean": 0.125,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet/fox_cottage": {
+  "layers": 4,
+  "seconds": 219.8,
+  "recomposite_diff": 0.57,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.029,
+    "mean": 0.026,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.961,
+    "mean": 0.937,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.003,
+    "mean": 0.002,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet/forest": {
+  "layers": 1,
+  "seconds": 47.0,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet/design_flat": {
+  "layers": 2,
+  "seconds": 106.3,
+  "recomposite_diff": 0.15,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.305,
+    "mean": 0.3,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet_norefine/fox_cottage": {
+  "layers": 4,
+  "seconds": 189.4,
+  "recomposite_diff": 0.57,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.029,
+    "mean": 0.026,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.961,
+    "mean": 0.937,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.003,
+    "mean": 0.002,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet_norefine/forest": {
+  "layers": 1,
+  "seconds": 45.2,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "generic_birefnet_norefine/design_flat": {
+  "layers": 5,
+  "seconds": 217.5,
+  "recomposite_diff": 0.38,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.305,
+    "mean": 0.3,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.34,
+    "mean": 0.333,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.378,
+    "mean": 0.37,
+    "max": 1.0
+   },
+   {
+    "above_th": 0.417,
+    "mean": 0.41,
+    "max": 1.0
+   }
+  ]
+ }
+}

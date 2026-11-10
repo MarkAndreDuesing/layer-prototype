@@ -11,13 +11,14 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
 - [x] **RevealLayer:** works on forest and fox & cottage (140 s at 12 steps; filled background + clean object layers)
 - [x] **ART+:** works (v9): size fix (`vae_scale_factor` 16) + stacked LoRAs (our loader kept only the last one)
-- [ ] ART+ on fox & cottage from its JSON boxes; 1024 px; brighter night scene
+- [x] ART+ on fox & cottage from its JSON boxes (v10): clean styled objects per box, white background, gate arch → car
+- [ ] ART+: full-background style prefix + sky/lawn box; 1024 px; brighter night scene
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
 - [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
 - [x] **LayerD:** weights load fine; 3 layers on a flat design, none on painted scenes (matting predicts no foreground)
-- [ ] LayerD loop with generic BiRefNet as matting model on fox & cottage
+- [x] LayerD loop with generic BiRefNet on fox & cottage: fox peeled cleanly, rest of scene one layer (v11)
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [ ] SAM2 route: SDXL inpaint for large holes, pix2gestalt amodal completion
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)

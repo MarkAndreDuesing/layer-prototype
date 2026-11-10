@@ -63,6 +63,8 @@
 | relocate() + shadow + IC-Light | move/resize layer | fox_cottage | 1x T4 | 512 px, 20 steps, strength 0.3, paste-back 0.8, on RevealLayer layers | 9 |  | 1 |  | no hole; relocate 3.4 s, shadow 0.04 s, IC-Light 5.9 s; IC-Light reddens | [results_fox_move_v2](../../prototype/kaggle/results_fox_move_v2/) |
 | LayerD | image to layers | design_flat | Kaggle CPU | defaults, 3 iterations | 206 |  | 3 | 0.18 | control image in its design domain; fox & forest: 1 layer, matting empty | [results_layerd_v10](../../prototype/kaggle/results_layerd_v10/) |
 | ART+ | text+boxes to layers | skeleton campfire (repo case 1) | 1x T4 | 512 px, 16 steps, CFG 4, GGUF Q4_K_S, 3 stacked LoRAs | 294 | 8.4 | 4 |  | clean transparent layers + background | [results_artplus_v9](../../prototype/kaggle/results_artplus_v9/) |
+| ART+ | text+boxes to layers | fox_cottage | 1x T4 | 512 px, 16 steps, CFG 4, cartoon prefix, 5 JSON boxes | 353 | 8.6 | 6 |  | clean object per box; white background; gate arch became a car | [results_artplus_v10](../../prototype/kaggle/results_artplus_v10/) |
+| LayerD + generic BiRefNet | image to layers | fox_cottage | Kaggle CPU | ZhengPeng7/BiRefNet matting, 4 iterations | 220 |  | 4 | 0.57 | fox peeled cleanly; rest of scene one layer | [results_layerd_v11](../../prototype/kaggle/results_layerd_v11/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (41 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (43 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

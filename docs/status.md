@@ -36,7 +36,7 @@ One line per model; the full measured table is generated in [models/README.md](m
 | LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
 | ART+ | text + boxes → clean background + transparent object layers (≈ 5 min, 8.5 GB); night scene very dark | ✅ since v9 (stacked-LoRA fix) | [→](models/art-plus.md) |
 | SAM2 + LaMa | **by noun (Grounding DINO + SAM2): house / cottage / gate / tree / fox in 7 s**, fully automatic; blurry background fill | ✅ by noun | [→](models/sam2-lama.md) |
-| LayerD | 3 clean layers on a flat graphic design (206 s CPU); finds no foreground on painted scenes (matting empty) | ⚠️ works only in its design domain so far | [→](models/layerd.md) |
+| LayerD | 3 clean layers on a flat graphic design (206 s CPU); finds no foreground on painted scenes (matting empty) ; with generic BiRefNet it peels the fox cleanly, then takes the rest of the scene as one layer | ⚠️ partial on painted scenes | [→](models/layerd.md) |
 | Qwen Lightning LoRA | no speed-up at 4 steps | ⚠️ retry at 2 steps | [→](models/qwen-lightning.md) |
 | CLD | — | ⏳ not run yet | [→](models/cld.md) |
 | Plain FLUX.1-dev (control) | 41 s for 16 steps, no overflow | ✅ check only | — |

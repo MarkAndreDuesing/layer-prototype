@@ -23,6 +23,18 @@ Kaggle CPU (no GPU quota), `transformers<5`, BiRefNet built with `low_cpu_mem_us
 
 Generic BiRefNet (`ZhengPeng7/BiRefNet`) on the fox gives logits −27 … +19, so the pipeline and preprocessing are fine; LayerD's fine-tuned matting model simply sees no foreground in painted scenes. Results: `prototype/kaggle/results_layerd_v10/`.
 
+**v11: LayerD loop with generic BiRefNet** as the matting model (`results_layerd_v11/`):
+
+| Image | Layers | CPU time | Recomposite diff |
+|---|---|---|---|
+| fox & cottage | 4 (LaMa'd sky background, tiny fragment, whole scene minus sky, **fox**) | 220 s | 0.57 |
+| forest | 1 (nothing found) | 47 s | 0 |
+| flat design | 2 (palette refine on) / 5 (off) | 106 / 218 s | 0.15 / 0.38 |
+
+![LayerD + generic BiRefNet on fox & cottage](../img/layerd_v11_fox_generic.jpg)
+
+The fox comes out as a clean layer and the hole is filled; after that the matting takes the whole scene below the sky as one layer (salient-object matting has no notion of cottage vs tree).
+
 ## Best features
 
 Small, fast, CPU-only; trained for graphic-design images.
@@ -37,7 +49,7 @@ Works as designed on flat graphic designs (3 clean layers); on our painted test 
 
 ## Next attempts
 
-Swap LayerD's matting model for generic BiRefNet (gives real masks on the fox) while keeping its peel + LaMa + unblend loop; or use LayerD only for UI/title overlays.
+Generic-BiRefNet loop peels only the most salient object; combine with box-prompted masks (SAM2 by noun) for the remaining objects; or use LayerD only for UI/title overlays.
 
 ## Sources
 
