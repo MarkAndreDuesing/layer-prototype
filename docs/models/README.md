@@ -74,6 +74,9 @@
 | Qwen-Image-Layered + Lightning 0.5 | image to layers | fox_cottage | 2x T4 | 384 px, 5 layers, 4 steps | 43.6 |  | 5 | 11.09 | cleanest Lightning variant; no speed-up | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
 | LayerDiffuse chain | text to layers (7 elements) | village scene | 1x T4 | 1024 px, 20 steps, CFG 7, SDXL base | 364 |  | 8 |  | clean layers; layout/scale uncontrolled; 48 s per element | [results_chain_complex](../../prototype/kaggle/results_chain_complex/) |
 | LayerDiffuse chain | text to layers (7 elements) | village scene | 1x T4 | 512 px, 20 steps, CFG 7 | 244 |  | 8 |  | garbled at 512 px | [results_chain_complex](../../prototype/kaggle/results_chain_complex/) |
+| Stable-Layers + Heun | image to layers | flux_campfire (FLUX.1-dev) | 2x T4 | 384 px, 4 layers, 4 steps | 57.0 |  | 3 | 11.01 | cleanest split: trees / campfire / empty clearing | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
+| Qwen-Image-Layered | image to layers | flux_campfire (FLUX.1-dev) | 2x T4 | 384 px, 4 layers, 4 steps | 32.0 |  | 3 | 6.33 | frames mostly empty | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
+| Stable-Layers + Heun | image to layers | q21_t2i (Qwen-Image-2.1) | 2x T4 | 384 px, 5 layers, 4 steps | 65.8 |  | 4 | 21.23 | arch+path / cottage / tree / fox | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (52 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (55 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

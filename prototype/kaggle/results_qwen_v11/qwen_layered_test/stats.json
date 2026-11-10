@@ -1,0 +1,201 @@
+{
+ "weights_cached": true,
+ "input_read_MBps": 380.8,
+ "copy_to_local_s": 94.7,
+ "stage1_load_s": 68.8,
+ "stage1_encode_s": 3.8,
+ "stage1_peak_GB": [
+  8.82,
+  8.14
+ ],
+ "gguf_params_dequantized": 1,
+ "transformer_load_s": 44.2,
+ "mixed_smoke": {
+  "denoise_s": 19.1,
+  "s_per_step": 7.5,
+  "decode_s": 0.6
+ },
+ "sweep": [
+  {
+   "variant": "stable_layers",
+   "sampler": "heun",
+   "image": "flux_campfire",
+   "res": 384,
+   "layers": 4,
+   "steps": 4,
+   "total_s": 57.0,
+   "denoise_s": 56.0,
+   "s_per_step": 13.37,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    70.0,
+    91.4,
+    100.0
+   ],
+   "recomposite_diff": 11.01
+  },
+  {
+   "variant": "base",
+   "sampler": "euler",
+   "image": "flux_campfire",
+   "res": 384,
+   "layers": 4,
+   "steps": 4,
+   "total_s": 32.0,
+   "denoise_s": 31.1,
+   "s_per_step": 7.77,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    99.7,
+    92.3,
+    94.9
+   ],
+   "recomposite_diff": 6.33
+  },
+  {
+   "variant": "base",
+   "sampler": "euler",
+   "image": "flux_campfire",
+   "res": 384,
+   "layers": 6,
+   "steps": 4,
+   "total_s": 40.0,
+   "denoise_s": 38.8,
+   "s_per_step": 9.68,
+   "decode_s": 0.8,
+   "transparent_pct": [
+    0.0,
+    100.0,
+    100.0,
+    94.8,
+    92.3,
+    97.5
+   ],
+   "recomposite_diff": 6.21
+  },
+  {
+   "variant": "stable_layers",
+   "sampler": "heun",
+   "image": "q21_t2i",
+   "res": 384,
+   "layers": 5,
+   "steps": 4,
+   "total_s": 65.8,
+   "denoise_s": 64.7,
+   "s_per_step": 15.41,
+   "decode_s": 0.7,
+   "transparent_pct": [
+    0.0,
+    64.7,
+    81.2,
+    66.4,
+    98.2
+   ],
+   "recomposite_diff": 21.23
+  },
+  {
+   "variant": "base",
+   "sampler": "euler",
+   "image": "q21_t2i",
+   "res": 384,
+   "layers": 5,
+   "steps": 4,
+   "total_s": 36.3,
+   "denoise_s": 35.3,
+   "s_per_step": 8.8,
+   "decode_s": 0.7,
+   "transparent_pct": [
+    0.0,
+    62.5,
+    62.8,
+    29.0,
+    98.5
+   ],
+   "recomposite_diff": 17.39
+  },
+  {
+   "variant": "stable_layers",
+   "sampler": "heun",
+   "image": "fox_cottage",
+   "res": 384,
+   "layers": 5,
+   "steps": 4,
+   "total_s": 65.8,
+   "denoise_s": 64.7,
+   "s_per_step": 15.4,
+   "decode_s": 0.7,
+   "transparent_pct": [
+    0.0,
+    48.1,
+    54.4,
+    87.7,
+    97.0
+   ],
+   "recomposite_diff": 20.7
+  },
+  {
+   "variant": "base",
+   "sampler": "euler",
+   "image": "fox_cottage",
+   "res": 384,
+   "layers": 5,
+   "steps": 4,
+   "total_s": 36.4,
+   "denoise_s": 35.2,
+   "s_per_step": 8.8,
+   "decode_s": 0.7,
+   "transparent_pct": [
+    0.0,
+    83.5,
+    40.8,
+    41.2,
+    72.3
+   ],
+   "recomposite_diff": 16.74
+  },
+  {
+   "variant": "stable_layers",
+   "sampler": "heun",
+   "image": "forest",
+   "res": 384,
+   "layers": 4,
+   "steps": 4,
+   "total_s": 59.2,
+   "denoise_s": 58.2,
+   "s_per_step": 13.86,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    87.7,
+    79.2,
+    95.8
+   ],
+   "recomposite_diff": 17.86
+  },
+  {
+   "variant": "base",
+   "sampler": "euler",
+   "image": "forest",
+   "res": 384,
+   "layers": 4,
+   "steps": 4,
+   "total_s": 32.7,
+   "denoise_s": 31.7,
+   "s_per_step": 7.92,
+   "decode_s": 0.6,
+   "transparent_pct": [
+    0.0,
+    83.5,
+    78.6,
+    95.2
+   ],
+   "recomposite_diff": 7.09
+  }
+ ],
+ "lora_match": [
+  420,
+  0
+ ]
+}

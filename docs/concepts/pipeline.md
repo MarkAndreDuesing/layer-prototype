@@ -36,6 +36,33 @@ flowchart LR
 
 **Re-prompting a layer while staying coherent:** never regenerate the layer alone. Background = composite of all other layers → mask = the layer's region → draw the new content into that scene (LayerDiffuse `bg2ble`, SDXL inpaint) → extract it as a layer (`bgble2fg`, a segmenter, or re-split). Qwen-Image-2.1 can edit the RGBA layer directly but doesn't see the scene.
 
+### Which text-to-image generator feeds route A? (run v11, 384 px, 4–5 layers, 2× T4)
+
+Same splitter, three generators. Tiles: image | recomposite | background | layers.
+
+| Generator → scene | Splitter | Time | Recomposite diff | What came out |
+|---|---|---|---|---|
+| FLUX.1-dev (campfire in a pine forest, painting) | Stable-Layers, Heun | 57 s | 11.0 | two tree groups, campfire as its own layer, empty clearing as background; the cleanest split of the three |
+| FLUX.1-dev | base, Euler | 32 s | 6.3 | 3 frames mostly empty (92–100 % transparent) |
+| Qwen-Image-2.1 (fox & cottage from the caption) | Stable-Layers, Heun | 66 s | 21.2 | arch + path, cottage, tree, fox; mist-like background |
+| Qwen-Image-2.1 | base, Euler | 36 s | 17.4 | 4 object frames, uneven |
+| SDXL-Turbo (the shared fox & cottage) | Stable-Layers, Heun | 66 s | 20.7 | sky, meadow, cottage + tree together, path, fox |
+| SDXL-Turbo | base, Euler | 36 s | 16.7 | 4 frames, fox and cottage separated |
+
+FLUX.1-dev:
+
+![FLUX split](../img/gen_flux_split.png)
+
+Qwen-Image-2.1:
+
+![Qwen-Image-2.1 split](../img/gen_q21_split.png)
+
+SDXL-Turbo:
+
+![SDXL-Turbo split](../img/gen_sdxlturbo_split.png)
+
+Reading: every generator gives a separable picture; the scenes with clearly spaced objects and visible depth (FLUX campfire, Qwen-2.1 cottage) split most cleanly, while SDXL-Turbo's overlapping cottage and tree stay together. Stable-Layers gives cleaner layers but shifts colour (diff 11–21 vs 6–17 for the base model) and takes about 30 s longer. One scene and one seed per generator, so this compares examples, not generators.
+
 ## 3. Roles (one model per role, each behind its own interface)
 
 | # | Role | Default now | Alternatives | Runs on |

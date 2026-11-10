@@ -15,17 +15,19 @@ PROTO = os.path.dirname(HERE)
 OUT = os.path.join(PROTO, "kaggle", "upload_cld_trial")
 MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8").read()
 
-def _fox_case():
+def _case(img_rel, extra):
     j = json.load(open(os.path.join(PROTO, 'test_scene', 'fox_cottage.json'), encoding='utf-8'))
-    return {'whole_image': {'caption': j['caption'], 'height': 512, 'width': 512},
+    import base64, io
+    from PIL import Image as _I
+    buf = io.BytesIO(); _I.open(os.path.join(PROTO, *img_rel)).convert('RGB').resize((512, 512)).save(buf, 'JPEG', quality=90)
+    return {'whole_image': {'caption': j['caption'] + extra, 'height': 512, 'width': 512}, 'img': base64.b64encode(buf.getvalue()).decode(),
             'layout': [[0, 0, 512, 512], [0, 0, 512, 512]] + [L['box'] for L in j['layers_back_to_front']]}
 
 
-LAYOUTS = [_fox_case()]
-import base64, io
-from PIL import Image as _I
-_buf = io.BytesIO(); _I.open(os.path.join(PROTO, 'test_scene', 'fox_cottage.png')).convert('RGB').resize((512, 512)).save(_buf, 'JPEG', quality=93)
-IMG_B64 = base64.b64encode(_buf.getvalue()).decode()
+# v4: the story-event path "edit the composite with Qwen-Image-2.1, then split with CLD": same five boxes, since the edits keep the composition
+LAYOUTS = [_case(('kaggle', 'results_qwen21_fox', 'q21_out', 'edit_scene_night.png'), ' Now at night, moonlit, lantern light.'),
+           _case(('kaggle', 'results_qwen21_fox', 'q21_out', 'edit_scene_heavy_rain.png'), ' Now in heavy rain, grey sky.')]
+IMG_B64 = ''
 
 src = r'''import signal, time as _t
 _T0 = _t.time()
@@ -136,7 +138,6 @@ print("loaded", round(time.time() - _T0), "s; GiB", [round(torch.cuda.memory_all
 def boxes16(bs):
     return [((x0//16)*16, (y0//16)*16, ((x1//16)+1)*16 if x1 < 512 else 512, ((y1//16)+1)*16 if y1 < 512 else 512) for x0, y0, x1, y1 in bs]
 LAYOUTS = __LAYOUTS__
-ADAPTER_IMG = Image.open(io.BytesIO(base64.b64decode('__IMG__'))).convert('RGB')
 os.makedirs("/kaggle/working/cld_out", exist_ok=True)
 for k, inp in enumerate(LAYOUTS):
     for steps in (16,):
@@ -144,7 +145,7 @@ for k, inp in enumerate(LAYOUTS):
             t.to(D0); adapter.to(D0); torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats(0); t0 = time.time()
             with torch.inference_mode():
-                x_hat, image, _lat = pipe(prompt=inp["whole_image"]["caption"], adapter_image=ADAPTER_IMG, adapter_conditioning_scale=0.9, validation_box=boxes16(inp["layout"]),
+                x_hat, image, _lat = pipe(prompt=inp["whole_image"]["caption"], adapter_image=Image.open(io.BytesIO(base64.b64decode(inp["img"]))).convert("RGB"), adapter_conditioning_scale=0.9, validation_box=boxes16(inp["layout"]),
                                        generator=torch.Generator(D0).manual_seed(42), height=512, width=512,
                                        num_inference_steps=steps, guidance_scale=4.0, num_layers=len(inp["layout"]), sdxl_vae=transp_vae)
             _l = _lat.float().reshape(_lat.shape[0] * _lat.shape[1] if _lat.dim() == 5 else _lat.shape[0], -1) if torch.is_tensor(_lat) else None

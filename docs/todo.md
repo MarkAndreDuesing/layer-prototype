@@ -38,7 +38,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [~] Wire the GPU modules into the app: image → layers path done (tab, engine, `/decompose` route, `backends/decomposer.py`, round-trip test); open: serve a real model from Kaggle via a tunnel, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)
-- [ ] **Where do strong text-to-image models fit?** Most likely as the base-image generator before decomposition (Comfy Cloud's reference: Krea2-Turbo → Qwen-Image-Layered, 6 layers). Which shortlisted models give the most separable images, which run on Kaggle, which licences? Planned test: Qwen-Image-2.1 / FLUX / SDXL-Turbo scenes → Qwen-Image-Layered.
+- [x] **Where do strong text-to-image models fit?** As the base-image generator before decomposition; tested FLUX.1-dev, Qwen-Image-2.1 and SDXL-Turbo scenes through Qwen-Image-Layered / Stable-Layers: all split, FLUX and Qwen-2.1 most cleanly ([pipeline.md §2](concepts/pipeline.md)). Licences: FLUX.1-dev and Qwen Research are non-commercial.
 - [ ] **Image-to-image front end** (sketch + prompt → image) → decomposer: untested; how it fits the LayerDiffuse route (which builds its own layers) is unclear. SDXL-Turbo img2img is about 58 s on the laptop.
 - [x] **LayerDiffuse on complex scenes** (7 elements): works at 1024 px (48 s per element, clean layers), garbled at the 512 px default; layout and scale uncontrolled ([layerdiffuse-sdxl.md](models/layerdiffuse-sdxl.md))
 - [ ] Chain with a box-aware layout (draw each element into its box via inpainting mask) or set the engine default to 1024 px

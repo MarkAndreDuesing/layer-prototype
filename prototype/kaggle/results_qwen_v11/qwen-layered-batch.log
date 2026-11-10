@@ -1,0 +1,98 @@
+[{"stream_name":"stderr","time":7.302454979,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.302520782,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.307482976,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.307509191,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.307514361,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.30751795,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.920449382,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.920475168,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.920480186,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.920484197,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.148733809,"data":"name, memory.total [MiB]\r\n"}
+,{"stream_name":"stdout","time":10.148778947,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":10.14879057,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":18.583202442,"data":"{'torch': '2.11.0+cu130', 'diffusers': '0.37.0', 'transformers': '5.20.2', 'gguf': '0.19.0', 'accelerate': '1.15.0'}\n"}
+,{"stream_name":"stdout","time":26.414853205,"data":"module ok\n"}
+,{"stream_name":"stdout","time":27.821680566,"data":"transformer from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-transformer/qwen-image-layered-Q4_K_S.gguf | base from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-base/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":37.898301158,"data":"cached text encoder read speed: 380.8 MB/s\n"}
+,{"stream_name":"stderr","time":70.408563137,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":70.408591787,"data":"\n"}
+,{"stream_name":"stderr","time":70.408597125,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":70.409549497,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":70.409568418,"data":"\n"}
+,{"stream_name":"stderr","time":70.40957371,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stdout","time":70.824469714,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":71.026318145,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":165.549778097,"data":"base weights on local disk after 94.7 s -\u003e /tmp/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":233.201757891,"data":"text encoder loaded in 67.7 s\n"}
+,{"stream_name":"stdout","time":238.455037716,"data":"stage1 peak GB per GPU: [8.82, 8.14]\n"}
+,{"stream_name":"stdout","time":238.481363951,"data":"after unload, GB allocated: 0.27\n"}
+,{"stream_name":"stdout","time":238.481386811,"data":"{'weights_cached': True, 'input_read_MBps': 380.8, 'copy_to_local_s': 94.7, 'stage1_load_s': 68.8, 'stage1_encode_s': 3.8, 'stage1_peak_GB': [8.82, 8.14]}\n"}
+,{"stream_name":"stdout","time":282.715282145,"data":"loaded in 44.2 s; GB allocated 12.67\n"}
+,{"stream_name":"stdout","time":283.142791444,"data":"linears patched, params moved to fp32: (846, 242)\n"}
+,{"stream_name":"stderr","time":283.76389972,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":283.763941938,"data":"\n"}
+,{"stream_name":"stderr","time":283.763946384,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":311.276939892,"data":"latents nan: False inf: False absmax: 1.22\n"}
+,{"stream_name":"stdout","time":311.302300104,"data":"vae input nan: False inf: False absmax: 0.45\n"}
+,{"stream_name":"stdout","time":311.478777645,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":311.491080067,"data":"vae input nan: False inf: False absmax: 0.34\n"}
+,{"stream_name":"stdout","time":311.613683892,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":311.621831593,"data":"vae input nan: False inf: False absmax: 0.44\n"}
+,{"stream_name":"stdout","time":311.740739606,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":311.748501323,"data":"vae input nan: False inf: False absmax: 0.37\n"}
+,{"stream_name":"stdout","time":311.869011449,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":311.877350757,"data":"{'denoise_s': 19.1, 's_per_step': 7.5, 'decode_s': 0.6} | peak GB per GPU: [7.35, 7.01]\n"}
+,{"stream_name":"stderr","time":312.405398526,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":312.405423764,"data":"\n"}
+,{"stream_name":"stderr","time":312.405429594,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":312.406310246,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":312.406327573,"data":"\n"}
+,{"stream_name":"stderr","time":312.406332153,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":325.10279478,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":325.102831854,"data":"\n"}
+,{"stream_name":"stderr","time":325.102838124,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":382.077409568,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'flux_campfire', 'res': 384, 'layers': 4, 'steps': 4, 'total_s': 57.0, 'denoise_s': 56.0, 's_per_step': 13.37, 'decode_s': 0.6, 'transparent_pct': [0.0, 70.0, 91.4, 100.0], 'recomposite_diff': 11.01}\n"}
+,{"stream_name":"stderr","time":382.274921974,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":382.27495021,"data":"\n"}
+,{"stream_name":"stderr","time":382.274954272,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":414.331477896,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'flux_campfire', 'res': 384, 'layers': 4, 'steps': 4, 'total_s': 32.0, 'denoise_s': 31.1, 's_per_step': 7.77, 'decode_s': 0.6, 'transparent_pct': [0.0, 99.7, 92.3, 94.9], 'recomposite_diff': 6.33}\n"}
+,{"stream_name":"stderr","time":414.554435271,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":414.554463018,"data":"\n"}
+,{"stream_name":"stderr","time":414.554467694,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":454.56202624,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'flux_campfire', 'res': 384, 'layers': 6, 'steps': 4, 'total_s': 40.0, 'denoise_s': 38.8, 's_per_step': 9.68, 'decode_s': 0.8, 'transparent_pct': [0.0, 100.0, 100.0, 94.8, 92.3, 97.5], 'recomposite_diff': 6.21}\n"}
+,{"stream_name":"stderr","time":454.94967722,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":454.949707048,"data":"\n"}
+,{"stream_name":"stderr","time":454.949711978,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":520.738727011,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'q21_t2i', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 65.8, 'denoise_s': 64.7, 's_per_step': 15.41, 'decode_s': 0.7, 'transparent_pct': [0.0, 64.7, 81.2, 66.4, 98.2], 'recomposite_diff': 21.23}\n"}
+,{"stream_name":"stderr","time":520.944158694,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":520.944186631,"data":"\n"}
+,{"stream_name":"stderr","time":520.944191995,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":557.288861639,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'q21_t2i', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 36.3, 'denoise_s': 35.3, 's_per_step': 8.8, 'decode_s': 0.7, 'transparent_pct': [0.0, 62.5, 62.8, 29.0, 98.5], 'recomposite_diff': 17.39}\n"}
+,{"stream_name":"stderr","time":557.711340132,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":557.711370001,"data":"\n"}
+,{"stream_name":"stderr","time":557.71137511,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":623.497888393,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 65.8, 'denoise_s': 64.7, 's_per_step': 15.4, 'decode_s': 0.7, 'transparent_pct': [0.0, 48.1, 54.4, 87.7, 97.0], 'recomposite_diff': 20.7}\n"}
+,{"stream_name":"stderr","time":623.736238513,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":623.736266414,"data":"\n"}
+,{"stream_name":"stderr","time":623.736271496,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":660.102185752,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 36.4, 'denoise_s': 35.2, 's_per_step': 8.8, 'decode_s': 0.7, 'transparent_pct': [0.0, 83.5, 40.8, 41.2, 72.3], 'recomposite_diff': 16.74}\n"}
+,{"stream_name":"stderr","time":660.560082494,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":660.560114296,"data":"\n"}
+,{"stream_name":"stderr","time":660.560119552,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":719.723125539,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'forest', 'res': 384, 'layers': 4, 'steps': 4, 'total_s': 59.2, 'denoise_s': 58.2, 's_per_step': 13.86, 'decode_s': 0.6, 'transparent_pct': [0.0, 87.7, 79.2, 95.8], 'recomposite_diff': 17.86}\n"}
+,{"stream_name":"stderr","time":719.932882534,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":719.932911822,"data":"\n"}
+,{"stream_name":"stderr","time":719.932916781,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":752.635016876,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'forest', 'res': 384, 'layers': 4, 'steps': 4, 'total_s': 32.7, 'denoise_s': 31.7, 's_per_step': 7.92, 'decode_s': 0.6, 'transparent_pct': [0.0, 83.5, 78.6, 95.2], 'recomposite_diff': 7.09}\n"}
+,{"stream_name":"stderr","time":760.059763032,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":760.059794753,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":760.423914083,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":760.42393891,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":762.519071251,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":762.645317551,"data":"[NbConvertApp] Writing 1730201 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":765.099900527,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":766.102025633,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":766.102053518,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":766.102541914,"data":"[NbConvertApp] Writing 1440610 bytes to __results__.html\n"}
+]
