@@ -33,7 +33,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] `relocate()` + IC-Light relight + shadow layer together on a T4: fox moved on RevealLayer's fox & cottage split, no hole, 3.4 s + 0.04 s + 5 s ([editing.md §4](concepts/editing.md#4-full-move-loop-on-fox--cottage))
 - [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
 - [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([editing.md §3](concepts/editing.md#3-story-events-across-layers))
-- [ ] Drift experiment with real editors (layered / flat / re-decompose arms) ([research/drift-evaluation.md](research/drift-evaluation.md))
+- [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
+- [ ] Drift: arm C (re-decompose every turn), more scenes, re-prompt and relight edits
 - [~] Wire the GPU modules into the app: image → layers path done (tab, engine, `/decompose` route, `backends/decomposer.py`, round-trip test); open: serve a real model from Kaggle via a tunnel, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)

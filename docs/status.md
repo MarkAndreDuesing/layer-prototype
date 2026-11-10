@@ -20,7 +20,7 @@
 | Relight / shadows | IC-Light relight + procedural shadow layer, tested with `relocate()` on the fox (T4) | IC-Light 5 s, shadow 0.04 s (T4) | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
 | Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU); **Qwen-Image-2.1 scene edits (night, heavy rain) keep the composition** | 30 s routing (CPU) + 22 s edit (T4) | [editing.md §3](concepts/editing.md#3-story-events-across-layers) |
 | Recomposite | Alpha compositing in code | instant | — |
-| Measure drift over many edits | Harness built (3 arms), self-test only | — | [research/drift-evaluation.md](research/drift-evaluation.md) |
+| Measure drift over many edits | Harness + first real run (6 fox moves): layered arm 60 dB outside the edit vs flat Qwen-2.1 14–20 dB, fox duplicated at turn 5 | one scene, arms A and B | [research/drift-evaluation.md](research/drift-evaluation.md) |
 
 ## Each model: best result so far
 

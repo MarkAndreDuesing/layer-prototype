@@ -18,5 +18,28 @@
 ## Code
 Harness: [`../../prototype/layerproto/drift_eval.py`](../../prototype/layerproto/drift_eval.py); self-test with stand-in editors: [`../../prototype/tools/drift_harness_selftest.py`](../../prototype/tools/drift_harness_selftest.py) (tests the logic, not real editors). Soft alpha edges mean even the layered arm is not exactly unchanged.
 
+## First result with real editors (fox & cottage, 6 successive fox moves, 2026-11-10)
+
+Task: move the red fox six times (left, right, far right, back left, back home), the same ground-truth edits in both arms. Arm A (layered): `relocate()` on RevealLayer's layers, every other layer untouched. Arm B (flat): Qwen-Image-2.1 edits the whole composite each turn from the previous output ("move the red fox to …, keep everything else the same"). Metrics: PSNR / SSIM against turn 0 **outside** the union of old and new fox areas (`drift_eval.py`).
+
+| Turn | A layered: PSNR out / SSIM out | B flat: PSNR out / SSIM out | B luminance shift |
+|---|---|---|---|
+| 1 | 59.2 dB / 0.992 | 19.6 dB / 0.569 | −2.5 |
+| 2 | 60.9 / 0.995 | 18.6 / 0.517 | −5.1 |
+| 3 | 60.8 / 0.995 | 17.1 / 0.425 | −6.6 |
+| 4 | 60.8 / 0.995 | 15.9 / 0.351 | −7.3 |
+| 5 | 60.5 / 0.996 | 15.0 / 0.295 | −9.5 |
+| 6 | 61.9 / 0.997 | 14.3 / 0.252 | −11.6 |
+
+Top row = arm A, bottom row = arm B (turn 0 … 6):
+
+![drift strips](../img/drift_fox_strip.jpg)
+
+- **Flat editor:** falls below 25 dB at turn 1, darkens by 11.6 grey levels over 6 turns, loses fine texture, and from turn 5 draws a second fox (the edit "move" turns into "add"). Cost about 23 s per turn.
+- **Layered arm:** the background is exact by construction (about 60 dB; the remainder is soft alpha edges), which is the expected strength of layers and not a surprise. The moved object itself is not free: against turn 0 its colour L1 grows 0.22 → 0.30 over six moves (crop-normalised), and its size does not return exactly (back at its home position it covers 84 % of the original area, and the first move came out 1.7× the area instead of the intended 1.3×).
+- **Not yet run:** arm C (re-decompose every turn), more scenes and edit types (re-prompt, relight), LPIPS / DINO. One scene, one seed: a demonstration of the harness with real editors, not a benchmark.
+
+Files: `prototype/tools/fox_drift_demo.py` (arm A), `make_qwen21_drift_trial.py` (arm B), `drift_analyse.py`, results in `prototype/kaggle/results_drift*/`.
+
 ## Next
-Run with real editors on the fox & cottage scene ([../todo.md](../todo.md)).
+Arm C and more scenes ([../todo.md](../todo.md)).
