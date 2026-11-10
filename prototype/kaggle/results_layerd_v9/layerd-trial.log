@@ -1,0 +1,84 @@
+[{"stream_name":"stderr","time":7.540069147,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.540173876,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.661944189,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.66197802,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.661984594,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.661989487,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.404124871,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.404159648,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.404165672,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.404170401,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":36.986870903,"data":"pip rc 0 ace-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":36.986906714,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":36.986912322,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":36.986916685,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":36.986921388,"data":"\n"}
+,{"stream_name":"stdout","time":53.335858785,"data":"transformers 4.57.6\n"}
+,{"stream_name":"stderr","time":53.740378636,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":53.740410519,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":53.740416699,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":53.740422553,"data":"\n"}
+,{"stream_name":"stderr","time":53.740427673,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":53.74043303,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":53.740438068,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":58.476762784,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":58.476798042,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":58.476809927,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":58.476828431,"data":"\n"}
+,{"stream_name":"stderr","time":58.476831452,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":58.476834278,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":58.476837012,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":62.473567962,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.473608142,"data":"I0000 00:00:1794269634.459175      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":62.476226578,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.476252014,"data":"I0000 00:00:1794269634.459175      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":62.476256899,"data":"\n"}
+,{"stream_name":"stderr","time":62.476260834,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":62.476265254,"data":"I0000 00:00:1794269634.459175      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":76.773021695,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":76.773067813,"data":"I0000 00:00:1794269650.667083      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":76.975818564,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":76.975846584,"data":"I0000 00:00:1794269650.667083      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":76.975852808,"data":"\n"}
+,{"stream_name":"stderr","time":76.975857314,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":76.9758623,"data":"I0000 00:00:1794269650.667083      16 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":79.048375573,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":79.04841406,"data":"\n"}
+,{"stream_name":"stderr","time":79.048421654,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stdout","time":85.259764259,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stdout","time":85.276143073,"data":"cyberagent/layerd-birefnet param dtype torch.float32 n 601 abs-mean of first 3 [0.0501, 0.1377, 1.3505]\n"}
+,{"stream_name":"stderr","time":85.474919968,"data":"/tmp/ipykernel_16/289601831.py:30: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":85.474954832,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":85.474961052,"data":"  ps = list(mm.parameters()); print(card, 'param dtype', ps[0].dtype, 'n', len(ps), 'abs-mean of first 3', [round(float(q.abs().mean()), 4) for q in ps[:3]], flush=True)\n"}
+,{"stream_name":"stderr","time":85.475006,"data":"\n"}
+,{"stream_name":"stderr","time":85.475010884,"data":"/tmp/ipykernel_16/289601831.py:30: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":85.475015249,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":85.475019625,"data":"  ps = list(mm.parameters()); print(card, 'param dtype', ps[0].dtype, 'n', len(ps), 'abs-mean of first 3', [round(float(q.abs().mean()), 4) for q in ps[:3]], flush=True)\n"}
+,{"stream_name":"stdout","time":146.251877719,"data":"  out[0] (1, 1, 1024, 1024) torch.float32 min -151.0607452392578 max -11.895347595214844 nan 0\n"}
+,{"stream_name":"stdout","time":146.739707266,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stderr","time":146.906222876,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":146.906276047,"data":"\n"}
+,{"stream_name":"stderr","time":146.906283451,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":146.907528284,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":147.009757061,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r  7%|▋         | 14.1M/196M [00:00\u003c00:01, 148MB/s]\n"}
+,{"stream_name":"stderr","time":147.112355437,"data":"\r  7%|▋         | 14.1M/196M [00:00\u003c00:01, 148MB/s]\r 21%|██        | 40.5M/196M [00:00\u003c00:00, 219MB/s]\n"}
+,{"stream_name":"stderr","time":147.223057942,"data":"\r 21%|██        | 40.5M/196M [00:00\u003c00:00, 219MB/s]\r 36%|███▌      | 70.0M/196M [00:00\u003c00:00, 249MB/s]\n"}
+,{"stream_name":"stderr","time":147.3234313,"data":"\r 36%|███▌      | 70.0M/196M [00:00\u003c00:00, 249MB/s]\r 57%|█████▋    | 112M/196M [00:00\u003c00:00, 322MB/s] \n"}
+,{"stream_name":"stderr","time":147.45786587,"data":"\r 57%|█████▋    | 112M/196M [00:00\u003c00:00, 322MB/s] \r 73%|███████▎  | 143M/196M [00:00\u003c00:00, 287MB/s]\n"}
+,{"stream_name":"stderr","time":147.617181942,"data":"\r 73%|███████▎  | 143M/196M [00:00\u003c00:00, 287MB/s]\r 87%|████████▋ | 171M/196M [00:00\u003c00:00, 245MB/s]\n"}
+,{"stream_name":"stderr","time":147.714389367,"data":"\r 87%|████████▋ | 171M/196M [00:00\u003c00:00, 245MB/s]\r100%|██████████| 196M/196M [00:00\u003c00:00, 256MB/s]\n"}
+,{"stream_name":"stderr","time":148.414973631,"data":"\r100%|██████████| 196M/196M [00:00\u003c00:00, 256MB/s]\n"}
+,{"stream_name":"stderr","time":148.4150225,"data":"\n"}
+,{"stream_name":"stderr","time":148.415027871,"data":"\n"}
+,{"stream_name":"stdout","time":203.887247876,"data":"default fox_cottage {'layers': 1, 'seconds': 55.4, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":260.916860485,"data":"default forest {'layers': 1, 'seconds': 57.0, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":332.198399033,"data":"FAILED default design_flat AssertionError('Expected alpha dtype float64, got float32')\n"}
+,{"stream_name":"stderr","time":337.87108944,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":337.871135113,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":338.062331151,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":338.06235761,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":338.990481699,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":339.091561295,"data":"[NbConvertApp] Writing 305670 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":342.271577351,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":342.903100343,"data":"[NbConvertApp] Writing 594644 bytes to __results__.html\n"}
+]

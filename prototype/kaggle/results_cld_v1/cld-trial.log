@@ -1,0 +1,84 @@
+[{"stream_name":"stderr","time":6.971651342,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.971686071,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.933661526,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.933687053,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.933691535,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.933695245,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.520615853,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.520643745,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.520649155,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.520653643,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.711136696,"data":"pip -q install 'transformers==4.57.1' diffusers==0.32.2 peft==0.14.0 gguf\u003e=0.10 sentencepiece protobuf mmengine gdown einops\n"}
+,{"stream_name":"stderr","time":30.051760881,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":30.051788309,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.051792196,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.051794926,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254044572,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":30.25407736,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254082283,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254086165,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254089855,"data":"\n"}
+,{"stream_name":"stderr","time":30.254093,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":30.254104415,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254108244,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":30.254144225,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":30.289854739,"data":"git clone --depth 1 https://github.com/monkek123King/CLD /kaggle/working/CLD\n"}
+,{"stream_name":"stderr","time":30.312473092,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":30.514744846,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":30.514769246,"data":"\n"}
+,{"stream_name":"stderr","time":30.514773823,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":63.436282375,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":63.436314213,"data":"I0000 00:00:1794292236.003104      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":63.641847974,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":63.641876189,"data":"I0000 00:00:1794292236.003104      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":63.641894644,"data":"\n"}
+,{"stream_name":"stderr","time":63.641899754,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":63.641905062,"data":"I0000 00:00:1794292236.003104      24 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":68.325719408,"data":"diffusers 0.32.2\n"}
+,{"stream_name":"stdout","time":160.442595247,"data":"CLD files: ['README.md', 'decouple_LoRA/adapter/pytorch_lora_weights.safetensors', 'decouple_LoRA/layer_pe.pth', 'decouple_LoRA/transformer/pytorch_lora_weights.safetensors', 'pre_trained_LoRA/pytorch_lora_weights.safetensors', 'prism_ft_LoRA/pytorch_lora_weights.safetensors', 'trans_vae/0008000.pt']\n"}
+,{"stream_name":"stderr","time":190.409156115,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":190.4098171,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":190.409831378,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":190.409840577,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":190.409860974,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":190.409864235,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":190.409867365,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":190.40987041,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":190.409873849,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":190.410039964,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":190.410051579,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":190.410064959,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":190.410069193,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":190.410073236,"data":"ImportError                               Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":190.410077262,"data":"/tmp/ipykernel_24/506499468.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":190.410081479,"data":"     38 D0, D1, DT = torch.device(\"cuda:0\"), torch.device(\"cuda:1\"), torch.float16\n"}
+,{"stream_name":"stderr","time":190.410085956,"data":"     39 from models.mmdit import CustomFluxTransformer2DModel\n"}
+,{"stream_name":"stderr","time":190.410090781,"data":"---\u003e 40 from models.pipeline import CustomFluxPipelineCfgLayer\n"}
+,{"stream_name":"stderr","time":190.410095785,"data":"     41 from models.multiLayer_adapter import MultiLayerAdapter\n"}
+,{"stream_name":"stderr","time":190.41010049,"data":"     42 from models.transp_vae import AutoencoderKLTransformerTraining as CustomVAE\n"}
+,{"stream_name":"stderr","time":190.410105124,"data":"\n"}
+,{"stream_name":"stderr","time":190.410122876,"data":"/kaggle/working/CLD/models/pipeline.py in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":190.410130792,"data":"     13 \n"}
+,{"stream_name":"stderr","time":190.410135401,"data":"     14 from diffusers.image_processor import PipelineImageInput, VaeImageProcessor\n"}
+,{"stream_name":"stderr","time":190.410140306,"data":"---\u003e 15 from models.multiLayer_adapter import MultiLayerAdapter\n"}
+,{"stream_name":"stderr","time":190.410144559,"data":"     16 \n"}
+,{"stream_name":"stderr","time":190.410148616,"data":"     17 from PIL import Image\n"}
+,{"stream_name":"stderr","time":190.410152574,"data":"\n"}
+,{"stream_name":"stderr","time":190.410156413,"data":"/kaggle/working/CLD/models/multiLayer_adapter.py in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":190.41016134,"data":"     16     unscale_lora_layers,\n"}
+,{"stream_name":"stderr","time":190.410165686,"data":"     17 )\n"}
+,{"stream_name":"stderr","time":190.410169707,"data":"---\u003e 18 from diffusers.models.controlnet import BaseOutput, zero_module\n"}
+,{"stream_name":"stderr","time":190.410174356,"data":"     19 from diffusers.models.embeddings import (\n"}
+,{"stream_name":"stderr","time":190.41017947,"data":"     20     CombinedTimestepGuidanceTextProjEmbeddings,\n"}
+,{"stream_name":"stderr","time":190.410184369,"data":"\n"}
+,{"stream_name":"stderr","time":190.410188381,"data":"ImportError: cannot import name 'BaseOutput' from 'diffusers.models.controlnet' (/usr/local/lib/python3.13/dist-packages/diffusers/models/controlnet.py)\n"}
+,{"stream_name":"stderr","time":190.410193104,"data":"\n"}
+,{"stream_name":"stderr","time":192.788567327,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":192.788612059,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":192.977503883,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":192.97753924,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":193.754138045,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":193.92741601,"data":"[NbConvertApp] Writing 1010925 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":196.431392767,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":197.063615642,"data":"[NbConvertApp] Writing 1165676 bytes to __results__.html\n"}
+]

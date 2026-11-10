@@ -7,6 +7,7 @@ Endpoints (JSON, images as base64 PNG):
     POST /chain/background {params}
     POST /chain/blend      {params, scene}
     POST /chain/extract    {params, scene, blended}
+    POST /decompose        {params, image} -> {layers: [b64 PNG, background first]}   (only if a decomposer callable is given)
 Locally, point prototype/config.json at it:
     {"image_backend": "remote", "remote_url": "https://<tunnel-url>", "remote_token": "<secret>"}
 """
@@ -22,13 +23,19 @@ from .backends.layerdiffuse_chain import LayerDiffuseChain
 from .backends.remote import b64_to_img, img_to_b64
 
 
+class DecomposeReq(BaseModel):
+    params: dict
+    image: str
+
+
 class Req(BaseModel):
     params: dict
     scene: str | None = None
     blended: str | None = None
 
 
-def build_app(chain, token: str = "") -> FastAPI:
+def build_app(chain, token: str = "", decomposer=None) -> FastAPI:
+    """decomposer: optional callable (PIL image, DecomposeParams) -> list of RGBA PIL images, background first."""
     app = FastAPI(title="layerproto chain backend")
 
     def check(x_token):
@@ -55,6 +62,15 @@ def build_app(chain, token: str = "") -> FastAPI:
         check(x_token)
         img = chain.extract(b64_to_img(req.scene), b64_to_img(req.blended), ChainParams(**req.params))
         return {"image": img_to_b64(img)}
+
+    if decomposer is not None:
+        from .backends.decomposer import DecomposeParams
+
+        @app.post("/decompose")
+        def decompose(req: DecomposeReq, x_token: str | None = Header(default=None)):
+            check(x_token)
+            layers = decomposer(b64_to_img(req.image).convert("RGB"), DecomposeParams(**req.params))
+            return {"layers": [img_to_b64(L) for L in layers]}
 
     return app
 

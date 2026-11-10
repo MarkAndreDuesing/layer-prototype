@@ -1,0 +1,122 @@
+{
+ "default/fox_cottage": {
+  "layers": 1,
+  "seconds": 53.5,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/forest": {
+  "layers": 1,
+  "seconds": 52.1,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "th0.001_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 52.8,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "th0.001_iter5/forest": {
+  "layers": 1,
+  "seconds": 52.5,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "norefine_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 51.3,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "norefine_iter5/forest": {
+  "layers": 1,
+  "seconds": 51.8,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "norefine_nounblend_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 53.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "norefine_nounblend_iter5/forest": {
+  "layers": 1,
+  "seconds": 53.7,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "matt1024_norefine_iter5/fox_cottage": {
+  "layers": 1,
+  "seconds": 53.0,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "matt1024_norefine_iter5/forest": {
+  "layers": 1,
+  "seconds": 53.6,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ }
+}

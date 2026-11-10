@@ -1,0 +1,26 @@
+{
+ "default/fox_cottage": {
+  "layers": 1,
+  "seconds": 55.4,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ },
+ "default/forest": {
+  "layers": 1,
+  "seconds": 57.0,
+  "recomposite_diff": 0.0,
+  "alpha_coverage_per_step": [
+   {
+    "above_th": 0.0,
+    "mean": 0.0,
+    "max": 0.0
+   }
+  ]
+ }
+}

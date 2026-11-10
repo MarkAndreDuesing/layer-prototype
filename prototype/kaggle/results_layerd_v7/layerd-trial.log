@@ -1,0 +1,84 @@
+[{"stream_name":"stderr","time":6.782940578,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.782991084,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.896637466,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.896671938,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.8967187039999995,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.896723517,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.64217615,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.642213429,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.64221872,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.642222764,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":34.945095175,"data":"pip rc 0 ace-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.945131972,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.945137579,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.945142133,"data":"diffusers 0.42.0 requires huggingface-hub\u003c3.0,\u003e=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":34.945146793,"data":"\n"}
+,{"stream_name":"stdout","time":50.389211422,"data":"transformers 4.57.6\n"}
+,{"stream_name":"stderr","time":50.897908743,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":50.897941478,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":50.897947115,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":50.897952586,"data":"\n"}
+,{"stream_name":"stderr","time":50.897957218,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":50.897961872,"data":"- BiRefNet_config.py\n"}
+,{"stream_name":"stderr","time":50.897966309,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":55.786864284,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":55.786901441,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":55.786906511,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":55.786928136,"data":"\n"}
+,{"stream_name":"stderr","time":55.786931964,"data":"A new version of the following files was downloaded from https://huggingface.co/cyberagent/layerd-birefnet:\n"}
+,{"stream_name":"stderr","time":55.786936122,"data":"- birefnet.py\n"}
+,{"stream_name":"stderr","time":55.786939847,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stderr","time":58.933247539999996,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":58.933281543,"data":"I0000 00:00:1794268324.012749      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":59.141360893,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":59.141391117,"data":"I0000 00:00:1794268324.012749      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":59.141396725,"data":"\n"}
+,{"stream_name":"stderr","time":59.141400502,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":59.141404744,"data":"I0000 00:00:1794268324.012749      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":72.222261312,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":72.222299204,"data":"I0000 00:00:1794268338.686045      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":72.425932351,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":72.425961148,"data":"I0000 00:00:1794268338.686045      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":72.425967496,"data":"\n"}
+,{"stream_name":"stderr","time":72.425971307,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":72.425975786,"data":"I0000 00:00:1794268338.686045      17 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":74.483097844,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stderr","time":74.483128853,"data":"\n"}
+,{"stream_name":"stderr","time":74.483133734,"data":"WARNING:torchao.kernel.intmm:Warning: Detected no triton, on systems without Triton certain kernels will not work\n"}
+,{"stream_name":"stdout","time":83.012979651,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stderr","time":83.2217168,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":83.221756351,"data":"\n"}
+,{"stream_name":"stderr","time":83.221763019,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":83.287479834,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":83.38920474,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r 14%|█▍        | 27.6M/196M [00:00\u003c00:00, 289MB/s]\n"}
+,{"stream_name":"stderr","time":83.490271926,"data":"\r 14%|█▍        | 27.6M/196M [00:00\u003c00:00, 289MB/s]\r 37%|███▋      | 71.8M/196M [00:00\u003c00:00, 389MB/s]\n"}
+,{"stream_name":"stderr","time":83.590787057,"data":"\r 37%|███▋      | 71.8M/196M [00:00\u003c00:00, 389MB/s]\r 57%|█████▋    | 112M/196M [00:00\u003c00:00, 400MB/s] \n"}
+,{"stream_name":"stderr","time":83.712608176,"data":"\r 57%|█████▋    | 112M/196M [00:00\u003c00:00, 400MB/s] \r 76%|███████▋  | 150M/196M [00:00\u003c00:00, 370MB/s]\n"}
+,{"stream_name":"stderr","time":83.828909627,"data":"\r 76%|███████▋  | 150M/196M [00:00\u003c00:00, 370MB/s]\r 94%|█████████▍| 185M/196M [00:00\u003c00:00, 351MB/s]\n"}
+,{"stream_name":"stderr","time":83.864814278,"data":"\r 94%|█████████▍| 185M/196M [00:00\u003c00:00, 351MB/s]\r100%|██████████| 196M/196M [00:00\u003c00:00, 357MB/s]\n"}
+,{"stream_name":"stderr","time":84.603128696,"data":"\r100%|██████████| 196M/196M [00:00\u003c00:00, 357MB/s]\n"}
+,{"stream_name":"stderr","time":84.603163106,"data":"\n"}
+,{"stream_name":"stderr","time":84.603168598,"data":"\n"}
+,{"stream_name":"stdout","time":138.240039032,"data":"default fox_cottage {'layers': 1, 'seconds': 53.5, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":190.389675587,"data":"default forest {'layers': 1, 'seconds': 52.1, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":191.054084694,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stdout","time":244.567992162,"data":"th0.001_iter5 fox_cottage {'layers': 1, 'seconds': 52.8, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":297.068454003,"data":"th0.001_iter5 forest {'layers': 1, 'seconds': 52.5, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":297.727815803,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stdout","time":350.280486879,"data":"norefine_iter5 fox_cottage {'layers': 1, 'seconds': 51.3, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":402.090531638,"data":"norefine_iter5 forest {'layers': 1, 'seconds': 51.8, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":402.783608537,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stdout","time":457.158580072,"data":"norefine_nounblend_iter5 fox_cottage {'layers': 1, 'seconds': 53.6, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":510.878919467,"data":"norefine_nounblend_iter5 forest {'layers': 1, 'seconds': 53.7, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":511.556427067,"data":"birefnet load info: {'missing_keys': 0, 'unexpected_keys': 0, 'mismatched_keys': 0, 'error_msgs': 0} {}\n"}
+,{"stream_name":"stdout","time":565.351932029,"data":"matt1024_norefine_iter5 fox_cottage {'layers': 1, 'seconds': 53.0, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stdout","time":618.902051548,"data":"matt1024_norefine_iter5 forest {'layers': 1, 'seconds': 53.6, 'recomposite_diff': 0.0, 'alpha_coverage_per_step': [{'above_th': 0.0, 'mean': 0.0, 'max': 0.0}]}\n"}
+,{"stream_name":"stderr","time":625.296307361,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":625.296348703,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":625.496940801,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":625.496972803,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":626.401214439,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":626.506053541,"data":"[NbConvertApp] Writing 305279 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":629.727139545,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":630.369944572,"data":"[NbConvertApp] Writing 587511 bytes to __results__.html\n"}
+]

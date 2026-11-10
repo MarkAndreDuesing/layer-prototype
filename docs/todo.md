@@ -32,7 +32,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
 - [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([editing.md §3](concepts/editing.md#3-story-events-across-layers))
 - [ ] Drift experiment with real editors (layered / flat / re-decompose arms) ([research/drift-evaluation.md](research/drift-evaluation.md))
-- [ ] Wire the GPU modules into the app (`prototype/app.py`) as a selectable backend
+- [~] Wire the GPU modules into the app: image → layers path done (tab, engine, `/decompose` route, `backends/decomposer.py`, round-trip test); open: serve a real model from Kaggle via a tunnel, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)
 - [ ] **Where do strong text-to-image models fit?** Most likely as the base-image generator before decomposition (Comfy Cloud's reference: Krea2-Turbo → Qwen-Image-Layered, 6 layers). Which shortlisted models give the most separable images, which run on Kaggle, which licences? Planned test: Qwen-Image-2.1 / FLUX / SDXL-Turbo scenes → Qwen-Image-Layered.

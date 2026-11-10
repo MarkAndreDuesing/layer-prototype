@@ -60,20 +60,34 @@ cfg = _json.load(open(hf_hub_download('StabilityLabs/Stable-Layers', 'model/adap
 lp = hf_hub_download('StabilityLabs/Stable-Layers', 'model/adapter_model.safetensors')
 lscale = cfg.get('lora_alpha', cfg.get('r', 1)) / cfg.get('r', 1)
 IMGS = {'forest': (img, emb), **{k: (EXTRA[k][0], emb_x[k]) for k in EXTRA}}
+import math
+from huggingface_hub import hf_hub_download
+from diffusers import FlowMatchEulerDiscreteScheduler
+LIGHT_SCHED = dict(base_image_seq_len=256, base_shift=math.log(3), invert_sigmas=False, max_image_seq_len=8192,
+                   max_shift=math.log(3), num_train_timesteps=1000, shift=1.0, shift_terminal=None,
+                   stochastic_sampling=False, time_shift_type='exponential', use_beta_sigmas=False,
+                   use_dynamic_shifting=True, use_exponential_sigmas=False, use_karras_sigmas=False)
+orig_sched = pipe.scheduler
+lightp = hf_hub_download('lightx2v/Qwen-Image-Lightning', 'Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors')
 CONFIGS = [  # (variant, sampler, image, resolution, layers, steps)
-    ('base', 'euler', 'fox_cottage', 384, 4, 4), ('base', 'euler', 'fox_cottage', 384, 6, 4),
-    ('base', 'euler', 'fox_cottage', 512, 5, 4), ('stable_layers', 'euler', 'fox_cottage', 384, 5, 4),
-    ('stable_layers', 'heun', 'fox_cottage', 384, 5, 4), ('base', 'heun', 'fox_cottage', 384, 5, 4),
-    ('stable_layers', 'heun', 'forest', 384, 4, 4), ('stable_layers', 'heun', 'sketch_skeleton', 384, 4, 4),
-    ('stable_layers', 'heun', 'pixelart_camp', 384, 4, 4), ('stable_layers', 'heun', 'forest', 384, 4, 8),
-    ('base', 'heun', 'forest', 384, 4, 4),
-    ('base', 'euler', 'forest', 384, 2, 4), ('base', 'euler', 'sketch_skeleton', 384, 2, 4),
-    ('base', 'euler', 'pixelart_camp', 384, 2, 4), ('stable_layers', 'euler', 'forest', 384, 2, 4),
+    # v10 part 1: Qwen-Image-2.1 story-event composites (night / rain edits, text-to-image scene) re-split with Stable-Layers (Heun)
+    ('stable_layers', 'heun', 'q21_night', 384, 5, 4), ('stable_layers', 'heun', 'q21_rain', 384, 5, 4), ('stable_layers', 'heun', 'q21_t2i', 384, 5, 4),
+    ('base', 'euler', 'q21_night', 384, 5, 4), ('base', 'euler', 'q21_rain', 384, 5, 4), ('base', 'euler', 'q21_t2i', 384, 5, 4),
+    # part 2: Lightning LoRA at 2 and 4 steps, scale sweep, on the fox scene
+    ('lightning0.25', 'euler', 'fox_cottage', 384, 5, 2), ('lightning0.5', 'euler', 'fox_cottage', 384, 5, 2),
+    ('lightning0.75', 'euler', 'fox_cottage', 384, 5, 2), ('lightning1.0', 'euler', 'fox_cottage', 384, 5, 2),
+    ('lightning0.5', 'euler', 'fox_cottage', 384, 5, 4), ('lightning1.0', 'euler', 'fox_cottage', 384, 5, 4),
+    ('lightning1.0', 'euler', 'q21_night', 384, 5, 2),
 ]
 stats['sweep'] = []
 split_across_gpus(tr)
 for variant, sampler, key, res, nl, steps in CONFIGS:
     remove_lora(tr)
+    pipe.scheduler = orig_sched
+    if variant.startswith('lightning'):
+        hit, miss = add_lora(tr, lightp, scale=float(variant[len('lightning'):]))
+        stats.setdefault('light_match', [hit, len(miss)])
+        pipe.scheduler = FlowMatchEulerDiscreteScheduler.from_config(LIGHT_SCHED)
     if variant == 'stable_layers':
         hit, miss = add_lora(tr, lp, scale=lscale)
         stats.setdefault('lora_match', [hit, len(miss)])
@@ -91,7 +105,7 @@ for variant, sampler, key, res, nl, steps in CONFIGS:
                recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(im.size), dtype=int) - np.array(im, dtype=int)).mean()), 2))
     stats['sweep'].append(row); save(); print(row, flush=True)
     Q.strip([im, canvas] + out).save(f'{OUT}/v9_{tag}.png')
-remove_lora(tr)
+remove_lora(tr); pipe.scheduler = orig_sched
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []

@@ -63,7 +63,7 @@ flowchart LR
 |---|---|
 | 1. Remote decompose (Qwen-Image-Layered on Kaggle) | ✅ done (batch notebook; no live endpoint yet) |
 | 2. Stronger text-to-image | ⚠️ tested (FLUX, Qwen-Image-2.1), not wired into the app |
-| 3. "Generate → choose → decompose" in the UI + canvas | ❌ open |
+| 3. "Generate → choose → decompose" in the UI + canvas | ⚠️ "Decompose an image (GPU)" tab + `Engine.decompose_image` + server route `/decompose` + `RemoteDecomposer` built and tested with a fake decomposer (`tools/test_decompose_roundtrip.py`); a Kaggle notebook that serves a real model behind it (tunnel) is open |
 | 4. Re-prompt / story-event layers via the chain | ✅ on Kaggle; app integration open |
 | 5. Content edit of one layer (Qwen-Image-2.1 / Qwen-Image-Edit) | ✅ Qwen-Image-2.1 tested |
 | 6. Captions and word links | ✅ in the local app |

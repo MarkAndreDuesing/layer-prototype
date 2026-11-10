@@ -21,6 +21,7 @@ from typing import Callable, Optional
 from PIL import Image
 
 from .backends import ChainParams, make_chain_backend
+from .backends.decomposer import DecomposeParams, Decomposer, RemoteDecomposer, recomposite
 from .config import Settings
 from .llm import breakdown, make_captioner, make_llm, word_check
 from .scene import Layer, Scene, Variant, new_scene_id, slug
@@ -34,6 +35,7 @@ class Engine:
         self.chain = make_chain_backend(settings)
         self.llm = make_llm(settings)
         self.captioner = make_captioner(settings)
+        self.decomposer: Decomposer | None = RemoteDecomposer(settings.remote_url, settings.remote_token) if settings.remote_url else None
 
     def reconfigure(self, settings: Settings) -> None:
         """Apply new settings live; the image model is only reloaded if a setting it depends on changed."""
@@ -66,6 +68,39 @@ class Engine:
         scene.layers.sort(key=lambda l: l.depth)
         scene.save(self.s.scenes_dir)
         return scene
+
+    # ---- image -> layers (decompose an existing image: generated, uploaded, or a story-event edit) ----------
+    def import_layers(self, scene: Scene, layers: list[Image.Image], names: list[str] | None = None,
+                      source: str = "decomposed") -> Scene:
+        """Replace the scene's layers with an RGBA stack (background first). Each layer gets one variant, mode=`source`."""
+        names = names or []
+        scene.layers = []
+        for i, img in enumerate(layers):
+            name = names[i - 1] if i > 0 and i - 1 < len(names) else ("background" if i == 0 else f"layer {i}")
+            lid = slug(name)
+            while any(l.id == lid for l in scene.layers):
+                lid += "x"
+            layer = Layer(id=lid, name=name, role="background" if i == 0 else "object", depth=i, prompt=name)
+            scene.layers.append(layer)
+            rgba = img.convert("RGBA").resize((self.s.width, self.s.height))
+            rel = scene.save_image(self.s.scenes_dir, layer, rgba, f"v00-{source}")
+            hist = rgba.split()[-1].histogram()
+            layer.variants.append(Variant(file=rel, seed=0, prompt=name, mode=source,
+                                          transparent_pct=round(100 * sum(hist[:10]) / max(1, sum(hist)), 1)))
+        scene.save(self.s.scenes_dir)
+        return scene
+
+    def decompose_image(self, scene: Scene, image: Image.Image, params: DecomposeParams | None = None,
+                        progress: Progress = None) -> Scene:
+        """Send `image` to the GPU decomposer and turn the returned RGBA stack into this scene's layers."""
+        if self.decomposer is None:
+            raise RuntimeError("No decomposer configured: set remote_url (a layerproto.remote_server with a decomposer).")
+        p = params or DecomposeParams(caption=scene.refined_prompt or scene.user_input, n_layers=scene.n_layers)
+        self._say(progress, f"decomposing with {p.method} (remote GPU)")
+        t0 = time.time()
+        layers = self.decomposer.decompose(image, p)
+        self._say(progress, f"{len(layers)} layers in {time.time() - t0:.0f} s")
+        return self.import_layers(scene, layers, p.names, source=p.method)
 
     # ---- generation -----------------------------------------------------------------------------
     def generate_all(self, scene: Scene, variants: int | None = None, progress: Progress = None,

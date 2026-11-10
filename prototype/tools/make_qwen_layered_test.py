@@ -26,6 +26,10 @@ import json as _json
 _FC = _json.load(open(os.path.join(PROTO, "test_scene", "fox_cottage.json"), encoding="utf-8"))
 EXTRA = {
     "fox_cottage": (os.path.join(PROTO, "test_scene", "fox_cottage.png"), _FC["caption"]),   # shared test scene
+    # Qwen-Image-2.1 outputs on the fox scene (story-event strategy "recompose": edit the composite, then re-split)
+    "q21_night": (os.path.join(PROTO, "kaggle", "results_qwen21_fox", "q21_out", "edit_scene_night.png"), _FC["caption"] + " Now at night, moonlit, lantern light."),
+    "q21_rain": (os.path.join(PROTO, "kaggle", "results_qwen21_fox", "q21_out", "edit_scene_heavy_rain.png"), _FC["caption"] + " Now in heavy rain, grey sky."),
+    "q21_t2i": (os.path.join(PROTO, "kaggle", "results_qwen21_fox", "q21_out", "t2i_scene_from_caption.png"), _FC["caption"]),
     "pixelart_camp": (os.path.join(ROOT, "experiments", "P3__ph4__canny-raw__neutral-scale70-steps6-g1.0__seed7__pixelart.png"),
                       "A colourful pixel-art night scene: a skeleton sitting next to a small brick campfire, stylised white, yellow and "
                       "green trees, a big yellow moon and a small orange moon in a dark blue starry sky, brown ground."),
@@ -36,7 +40,7 @@ EXTRA = {
 def _jpeg_b64(f):   # JPEG keeps the notebook small (the Kaggle API rejected a 1.5 MB notebook with PNGs)
     import io
     from PIL import Image
-    buf = io.BytesIO(); Image.open(f).convert("RGB").save(buf, "JPEG", quality=92)
+    buf = io.BytesIO(); Image.open(f).convert("RGB").resize((512, 512)).save(buf, "JPEG", quality=85)
     return base64.b64encode(buf.getvalue()).decode()
 EXTRA_B64 = {k: (_jpeg_b64(f), c) for k, (f, c) in EXTRA.items()}
 module_src = open(os.path.join(PROTO, "layerproto", "qwen_layered.py"), encoding="utf-8").read()
