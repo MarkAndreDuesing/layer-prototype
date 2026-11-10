@@ -43,7 +43,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C with real edits (SAM2 re-decomposition each turn): 35 dB after the first re-split, 28 dB at turn 6 (between A 60 dB and B 14 dB)
 - [ ] Drift: more scenes, re-prompt and relight edits, LPIPS / DINO
-- [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); open: Kaggle → laptop tunnel (you run it), Qwen-Image-Layered / CLD behind `/decompose`, `/relocate` + relight + shadow routes
+- [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); the Kaggle → laptop tunnel notebook is ready ([guides/kaggle.md §3b](guides/kaggle.md), 6 steps, you run it), Qwen-Image-Layered / CLD behind `/decompose`, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)
 - [x] **Where do strong text-to-image models fit?** As the base-image generator before decomposition; tested FLUX.1-dev, Qwen-Image-2.1 and SDXL-Turbo scenes through Qwen-Image-Layered / Stable-Layers: all split, FLUX and Qwen-2.1 most cleanly ([pipeline.md §2](concepts/pipeline.md)). Licences: FLUX.1-dev and Qwen Research are non-commercial.

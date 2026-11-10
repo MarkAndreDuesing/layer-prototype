@@ -60,6 +60,17 @@ Every model has a notebook generator `prototype/tools/make_<name>.py` that write
 - **Debug cell by cell:** Kaggle editor → File → Import Notebook → `kaggle/upload_qwen_test/qwen-layered-feasibility.ipynb`, Accelerator GPU T4 x2. Re-importing keeps the kernel alive; the toolbar's circular-arrow button restarts the whole session.
 - **Gotchas:** reading the text encoder straight from `/kaggle/input` stalls at 0/729 tensors (copy to `/tmp` first, about 100 s); the transformer is split over both T4s (blocks 0–29 / 30–59, peak 8.8 / 8.4 GB); T4 speeds: fp16 19 TFLOPS, bf16 2 (emulated), fp32 3.7.
 
+## 3b. Serve the app's /decompose route from Kaggle (your steps)
+
+The notebook is built but not pushed (pushing would start a run and use GPU quota). Its models (Grounding DINO + SAM2 + LaMa) were tested through the real route: 5–12 s per image after a 45 s load ([../models/sam2-lama.md](../models/sam2-lama.md)).
+
+1. On the laptop run `fastsdcpu\env\Scripts\python.exe prototype	ools\make_decompose_server_notebook.py` (already done; the file is [decompose-server.ipynb](../../prototype/kaggle/decompose_server/decompose-server.ipynb)).
+2. Kaggle → New Notebook → File → Import Notebook → that file. Settings: Accelerator **GPU T4 x1**, Internet **On**.
+3. Run all cells (about 3 min). The 4th cell prints two lines.
+4. Copy them into `prototype/config.json`: `{"remote_url": "https://….trycloudflare.com", "remote_token": "…"}`. Keep `image_backend` as it is: the decomposer uses `remote_url` on its own.
+5. Start the app, open the tab **Decompose an image (GPU)**, upload an image, method `sam2-lama`, type the object names (comma separated) and press Decompose.
+6. Stop the Kaggle notebook when done (the tunnel and the GPU session end with it).
+
 ## 4. Rules learned
 | Rule | Why |
 |---|---|
