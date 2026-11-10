@@ -30,7 +30,7 @@ class Case:
 @dataclass
 class Profile:
     name: str
-    pip: list = field(default_factory=list)
+    pip: list = field(default_factory=list)      # pip groups: each string is one `pip install` call (args split on spaces, as one resolution)
     kernel_sources: list = field(default_factory=list)
     gpu: str = "NvidiaTeslaT4"
     factory: str = ""              # "module:function" returning a decomposer callable (image, DecomposeParams) -> layers
@@ -45,7 +45,7 @@ def P(**kw):
 PROFILES = {
     "qwen-layered": Profile(
         name="qwen-layered",
-        pip=["diffusers==0.37.0", "transformers>=4.51", "accelerate", "gguf"],
+        pip=["diffusers==0.37.0 transformers>=4.51 accelerate gguf"],
         kernel_sources=["markandreduesing/qwen-layered-weights-transformer", "markandreduesing/qwen-layered-weights-base"],
         factory="layerproto.serve.qwen_layered:make",
         doc="docs/models/qwen-image-layered.md (also stable-layers.md, qwen-lightning.md)",
@@ -59,11 +59,21 @@ PROFILES = {
         ]),
     "qwen21": Profile(
         name="qwen21",
-        pip=["transformers>=5.17", "gguf>=0.10", "accelerate", "git+https://github.com/huggingface/diffusers"],
+        pip=["transformers>=5.17 gguf>=0.10 accelerate git+https://github.com/huggingface/diffusers"],
         factory="layerproto.serve.qwen21:make",
         doc="docs/models/qwen-image-2.1.md",
         cases=[
             Case("qwen21_A", "A", P(method="qwen21-extract", names=NAMES[1:], boxes=BOXES[1:]), "background + 4 objects, 8 steps, 512 px"),
             Case("qwen21_B", "B", P(method="qwen21-extract", names=["red fox"], boxes=[BOXES[4]]), "one object per request, 8 steps, 512 px", repeats=2),
+        ]),
+    "sam2": Profile(
+        name="sam2",
+        pip=["git+https://github.com/facebookresearch/sam2.git", "--no-deps simple-lama-inpainting", "fire", "diffusers==0.37.0", "fastapi uvicorn"],
+        factory="layerproto.serve.sam2:make",
+        doc="docs/models/sam2-lama.md (also grounding-dino.md, amodal-fill.md)",
+        cases=[
+            Case("sam2_A", "A", P(method="sam2-lama", names=NAMES, boxes=BOXES), "hand boxes -> SAM2 + LaMa"),
+            Case("sam2_B", "B", P(method="sam2-lama", names=NAMES), "names -> Grounding DINO -> SAM2 + LaMa"),
+            Case("sam2_amodal", "A", P(method="sam2-lama", names=NAMES[1:], boxes=BOXES[1:], amodal=True), "hand boxes + SDXL-inpaint amodal fill", repeats=1),
         ]),
 }

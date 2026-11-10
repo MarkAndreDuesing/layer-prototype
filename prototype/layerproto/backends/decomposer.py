@@ -55,6 +55,13 @@ class RemoteDecomposer(Decomposer):
         return [b64_to_img(s) for s in r.json()["layers"]]
 
 
+def remote_methods(url: str, token: str = "", timeout: float = 20) -> dict:
+    """GET /methods of the remote server: {profile, methods: [{method, presets: [...]}]}."""
+    r = requests.get(f"{url.rstrip('/')}/methods", headers={"X-Token": token} if token else {}, timeout=timeout)
+    r.raise_for_status()
+    return r.json()
+
+
 def recomposite(layers: list[Image.Image]) -> Image.Image:
     canvas = layers[0].convert("RGBA").copy()
     for L in layers[1:]:

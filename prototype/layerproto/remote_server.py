@@ -8,6 +8,7 @@ Endpoints (JSON, images as base64 PNG):
     POST /chain/blend      {params, scene}
     POST /chain/extract    {params, scene, blended}
     POST /chain/relocate   {params, scene, layer, box, strength, pin_frac} -> {layer, composite}   (move / resize with re-harmonisation)
+    GET  /methods          -> {profile, methods: [{method, presets: [{label, path, params}]}]}   (only with a decomposer)
     POST /decompose        {params, image} -> {layers: [b64 PNG, background first]}   (only if a decomposer callable is given)
 Locally, point prototype/config.json at it:
     {"image_backend": "remote", "remote_url": "https://<tunnel-url>", "remote_token": "<secret>"}
@@ -44,7 +45,25 @@ class Req(BaseModel):
     blended: str | None = None
 
 
-def build_app(chain, token: str = "", decomposer=None) -> FastAPI:
+def describe_methods(decomposer, profile: str | None) -> dict:
+    """Methods the loaded decomposer offers, with the presets (benchmark paths A / B) of the running profile for the frontend."""
+    from dataclasses import asdict
+    names = sorted(getattr(decomposer, "by_method", {}) or [])
+    presets: dict[str, list] = {}
+    if profile:
+        try:
+            from .serve.profiles import PROFILES
+            for c in PROFILES[profile].cases:
+                params = {k: v for k, v in asdict(c.params).items() if k in ("method", "resolution", "n_layers", "steps", "sampler", "amodal")}
+                label = f"{'A best case' if c.path == 'A' else 'B live demo (~30 s)'}: {c.note}"
+                presets.setdefault(c.params.method, []).append({"label": label, "path": c.path, "params": params})
+        except Exception:  # noqa: BLE001 - presets are optional
+            pass
+    names = names or sorted(presets)
+    return {"profile": profile, "methods": [{"method": m, "presets": presets.get(m, [])} for m in names]}
+
+
+def build_app(chain, token: str = "", decomposer=None, profile: str | None = None) -> FastAPI:
     """decomposer: optional callable (PIL image, DecomposeParams) -> list of RGBA PIL images, background first."""
     app = FastAPI(title="layerproto chain backend")
 
@@ -86,6 +105,11 @@ def build_app(chain, token: str = "", decomposer=None) -> FastAPI:
 
     if decomposer is not None:
         from .backends.decomposer import DecomposeParams
+
+        @app.get("/methods")
+        def methods(x_token: str | None = Header(default=None)):
+            check(x_token)
+            return describe_methods(decomposer, profile)
 
         @app.post("/decompose")
         def decompose(req: DecomposeReq, x_token: str | None = Header(default=None)):

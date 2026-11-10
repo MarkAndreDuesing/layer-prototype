@@ -102,6 +102,16 @@ class Engine:
         self._say(progress, f"{len(layers)} layers in {time.time() - t0:.0f} s")
         return self.import_layers(scene, layers, p.names, source=p.method)
 
+    def remote_methods(self) -> dict:
+        """What the remote GPU server offers right now (profile, methods, presets); {} when no server is configured or reachable."""
+        from .backends.decomposer import remote_methods
+        if not self.s.remote_url:
+            return {}
+        try:
+            return remote_methods(self.s.remote_url, self.s.remote_token)
+        except Exception as e:  # noqa: BLE001
+            return {"error": str(e)}
+
     # ---- generation -----------------------------------------------------------------------------
     def generate_all(self, scene: Scene, variants: int | None = None, progress: Progress = None,
                      missing_only: bool = False) -> Scene:

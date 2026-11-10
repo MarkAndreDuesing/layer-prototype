@@ -417,7 +417,38 @@ def do_load(scene_id, version):
 
 # ---------------------------------------------------------------------------- layout
 # ---------------------------------------------------------------------------- image -> layers (GPU decomposer)
-def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, amodal=False, progress=gr.Progress()):
+REMOTE_PRESETS: dict = {}
+
+
+def do_refresh_methods():
+    """Ask the server which profile is loaded and which methods / presets it offers."""
+    global REMOTE_PRESETS
+    info = ENGINE.remote_methods()
+    if not info or "error" in info:
+        msg = "No server configured (set `remote_url` in prototype/config.json)." if not info else f"Server not reachable: {info['error']}"
+        return gr.update(), gr.update(choices=[], value=None), msg
+    methods = [m["method"] for m in info["methods"]]
+    REMOTE_PRESETS = {m["method"]: m["presets"] for m in info["methods"]}
+    first = methods[0] if methods else None
+    labels = [p["label"] for p in REMOTE_PRESETS.get(first, [])]
+    return (gr.update(choices=methods, value=first), gr.update(choices=labels, value=labels[0] if labels else None),
+            f"Server profile **{info.get('profile') or 'unknown'}**: {', '.join(methods)}")
+
+
+def do_pick_method(method):
+    labels = [p["label"] for p in REMOTE_PRESETS.get(method, [])]
+    return gr.update(choices=labels, value=labels[0] if labels else None)
+
+
+def do_pick_preset(method, label):
+    for p in REMOTE_PRESETS.get(method, []):
+        if p["label"] == label:
+            q = p["params"]
+            return q.get("resolution", 384), q.get("n_layers", 4), q.get("steps", 4), q.get("sampler", "euler"), bool(q.get("amodal", False))
+    return gr.update(), gr.update(), gr.update(), gr.update(), gr.update()
+
+
+def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, amodal=False, resolution=384, steps=4, sampler="euler", progress=gr.Progress()):
     """Split an uploaded / generated image into RGBA layers on the remote GPU server and store it as a scene."""
     import json as _json
     from layerproto.backends.decomposer import DecomposeParams
@@ -429,7 +460,8 @@ def do_decompose(img, caption, method, n_layers, boxes_json, names_csv, amodal=F
         names = [n.strip() for n in names_csv.split(",") if n.strip()]
         sc = Scene(id=new_scene_id(caption or "decomposed"), user_input=caption, refined_prompt=caption, n_layers=int(n_layers))
         ENGINE.decompose_image(sc, img.convert("RGB"), DecomposeParams(caption=caption, method=method, n_layers=int(n_layers),
-                               boxes=boxes, names=names, amodal=bool(amodal)), progress=lambda m: progress(0, desc=m))
+                               boxes=boxes, names=names, amodal=bool(amodal), resolution=int(resolution),
+                               steps=int(steps), sampler=sampler), progress=lambda m: progress(0, desc=m))
         final = ENGINE.compose(sc)
         return f"Scene `{sc.id}` saved with {len(sc.layers)} layers. Open it in the Scene tab (Load old scene).", overview(sc), final
     except Exception as e:  # noqa: BLE001
@@ -612,7 +644,16 @@ with gr.Blocks(title="Layer scene prototype") as demo:
             dc_img = gr.Image(label="Image", type="pil", height=320)
             with gr.Column():
                 dc_caption = gr.Textbox(label="Caption (what the image shows)", lines=3)
-                dc_method = gr.Dropdown(["qwen-layered", "stable-layers", "reveallayer", "cld", "sam2-lama"], value="qwen-layered", label="Method")
+                with gr.Row():
+                    dc_method = gr.Dropdown(["qwen-layered", "stable-layers", "qwen-lightning", "reveallayer", "cld", "sam2-lama", "qwen21-extract"],
+                                            value="qwen-layered", label="Method", allow_custom_value=True)
+                    dc_preset = gr.Dropdown([], label="Preset (benchmark path A best case / B live demo)")
+                dc_refresh = gr.Button("Ask the server which methods it offers")
+                dc_info = gr.Markdown()
+                with gr.Row():
+                    dc_res = gr.Number(384, label="Resolution (px)", precision=0)
+                    dc_steps = gr.Number(4, label="Steps", precision=0)
+                    dc_sampler = gr.Dropdown(["euler", "heun"], value="euler", label="Sampler (Qwen-Image-Layered family)")
                 dc_n = gr.Slider(2, 8, value=4, step=1, label="Layers (Qwen-Image-Layered / Stable-Layers)")
                 dc_boxes = gr.Textbox(label="Boxes, back to front, pixels [[x0,y0,x1,y1],...] (RevealLayer, CLD, SAM2)", lines=2)
                 dc_names = gr.Textbox(label="Names for the boxes, comma separated (also used for SAM2 by noun)")
@@ -622,7 +663,11 @@ with gr.Blocks(title="Layer scene prototype") as demo:
         with gr.Row():
             dc_gallery = gr.Gallery(label="Layers (background first)", columns=6, height=240)
             dc_final = gr.Image(label="Recomposited", type="pil", image_mode="RGBA", height=320, interactive=False)
-        dc_btn.click(do_decompose, [dc_img, dc_caption, dc_method, dc_n, dc_boxes, dc_names, dc_amodal], [dc_status, dc_gallery, dc_final])
+        dc_refresh.click(do_refresh_methods, None, [dc_method, dc_preset, dc_info])
+        dc_method.input(do_pick_method, dc_method, dc_preset)
+        dc_preset.input(do_pick_preset, [dc_method, dc_preset], [dc_res, dc_n, dc_steps, dc_sampler, dc_amodal])
+        dc_btn.click(do_decompose, [dc_img, dc_caption, dc_method, dc_n, dc_boxes, dc_names, dc_amodal, dc_res, dc_steps, dc_sampler],
+                     [dc_status, dc_gallery, dc_final])
 
     # ------------------------------------------------------------------ settings tab
     with gr.Tab("Settings"):

@@ -53,7 +53,7 @@ import json, re, secrets, threading, urllib.request, uvicorn
 from layerproto.remote_server import build_app
 TOKEN = secrets.token_urlsafe(16)
 stub = type("NoChain", (), {"info": lambda self: {"backend": "decompose-only", "profile": prof.name}})()
-server = uvicorn.Server(uvicorn.Config(build_app(stub, TOKEN, decomposer=dec), host="127.0.0.1", port=8765, log_level="warning"))
+server = uvicorn.Server(uvicorn.Config(build_app(stub, TOKEN, decomposer=dec, profile=prof.name), host="127.0.0.1", port=8765, log_level="warning"))
 threading.Thread(target=server.run, daemon=True).start()
 if not os.path.exists("/kaggle/working/cloudflared"):
     urllib.request.urlretrieve("https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64", "/kaggle/working/cloudflared")
@@ -77,8 +77,10 @@ signal.signal(signal.SIGALRM, _cap); signal.alarm(55 * 60)
 import base64, io, zipfile, subprocess, sys, os, time, importlib
 os.environ["HF_HUB_DISABLE_XET"] = "1"
 PIP = {json.dumps(prof.pip)}
-if PIP:
-    subprocess.run([sys.executable, "-m", "pip", "-q", "install"] + PIP, check=False)
+os.environ["SAM2_BUILD_CUDA"] = "0"
+for _grp in PIP:
+    _r = subprocess.run([sys.executable, "-m", "pip", "-q", "install"] + _grp.split(), capture_output=True, text=True)
+    print("pip", _grp, "rc", _r.returncode, flush=True)
 os.makedirs("/kaggle/working/code", exist_ok=True)
 zipfile.ZipFile(io.BytesIO(base64.b64decode("{code_b64}"))).extractall("/kaggle/working/code")
 sys.path.insert(0, "/kaggle/working/code/prototype")
