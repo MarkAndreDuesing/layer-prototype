@@ -85,9 +85,13 @@ With hand boxes (`[[95,100,475,330],[62,245,150,322],[180,0,512,352],[205,325,37
 
 Both recomposite to the input. Both cottages are incomplete where the tree and hedge overlap it (lower part missing, a stray fragment on the right), and the tree has a small notch at the top right, so hand boxes did not fix the cottage here. The fox is clean in both. The first attempt with hand boxes used an image that had the box outlines painted on it, so those lines were cut out as part of the objects; the clean image is `prototype/test_scene/fox_cottage.png`. Amodal completion (SDXL-inpaint or Qwen-2.1 "extract only the cottage without ...") is the fix for the cottage.
 
-### Amodal completion in the route (built, not yet run on the server)
+### Amodal completion in the route (run 2026-11-10, live tunnel, T4 x2 session)
 
-`DecomposeParams.amodal=True` (checkbox **Complete hidden parts** in the Decompose tab) makes `Sam2Decomposer` fill, for every object that has others in front of it, the part of its box those objects cover, using the SDXL-inpaint recipe above; the object keeps its own pixels. The geometry is tested on the CPU with a stub fill (`prototype/tools/test_amodal_fill.py`); the real fill needs the server notebook rebuilt (it now installs diffusers) and a new session. Expected cost: 75 s once to load, about 30 s per object that has something in front of it.
+`DecomposeParams.amodal=True` (checkbox **Complete hidden parts**) makes `Sam2Decomposer` fill, for every object with others in front of it, the part of its box those objects cover, using SDXL-inpaint. Called from the laptop with the hand boxes on the clean scene ([amodal_route_test.py](../../prototype/tools/amodal_route_test.py)): plain 8.5 s, amodal 80 s (includes the one-off SDXL load; two objects had something in front). Top row plain, bottom row amodal; the recomposite is unchanged.
+
+![amodal in the route](../img/sam2_amodal_route.jpg)
+
+The cottage layer gains wall on its right end, but the fill is patchy: green and sky-coloured patches appear where the arch and the tree were, because the inpaint sees the leftover background around the hole and the prompt is only the object name. The Qwen-Image-2.1 "extract only the cottage without X" result ([qwen-image-2.1](qwen-image-2.1.md)) is much cleaner. Next: a better fill prompt (wall, roof, door), a tighter hidden mask, and routing the same box prompt to Qwen-2.1 on the server. Geometry unit test: `prototype/tools/test_amodal_fill.py`. Files: `prototype/kaggle/results_amodal_route/`.
 
 ## Best features
 
