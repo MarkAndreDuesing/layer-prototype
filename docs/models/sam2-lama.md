@@ -71,6 +71,20 @@ The part of the cottage's box that the tree, arch and fox cover (precomputed on 
 
 Both fills keep the style and make the cottage movable without a hole. Files: `prototype/kaggle/results_sdxl_batch/`.
 
+## Run by hand in the app (laptop UI -> Kaggle T4 tunnel, 2026-11-10)
+
+First user-driven run of the **Decompose an image (GPU)** tab through a Cloudflare tunnel to the `decompose-server` notebook. Strip order: background, then the layers, then the recomposite.
+
+By noun (`cottage, big tree, red fox, stone gate arch`):
+
+![by noun](../img/sam2_app_test1.jpg)
+
+With hand boxes (`[[95,100,475,330],[62,245,150,322],[180,0,512,352],[205,325,375,452]]`, same names):
+
+![hand boxes](../img/sam2_app_test2.jpg)
+
+Both recomposite to the input. Both cottages are incomplete where the tree and hedge overlap it (lower part missing, a stray fragment on the right), and the tree has a small notch at the top right, so hand boxes did not fix the cottage here. The fox is clean in both. The first attempt with hand boxes used an image that had the box outlines painted on it, so those lines were cut out as part of the objects; the clean image is `prototype/test_scene/fox_cottage.png`. Amodal completion (SDXL-inpaint or Qwen-2.1 "extract only the cottage without ...") is the fix for the cottage.
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.
