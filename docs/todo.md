@@ -12,7 +12,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] **RevealLayer:** works on forest and fox & cottage (140 s at 12 steps; filled background + clean object layers)
 - [x] **ART+:** works (v9): size fix (`vae_scale_factor` 16) + stacked LoRAs (our loader kept only the last one)
 - [x] ART+ on fox & cottage from its JSON boxes (v10): clean styled objects per box, white background, gate arch → car
-- [ ] ART+: full-background style prefix + sky/lawn box; 1024 px; brighter night scene
+- [x] ART+: "painting" prefix + background sentence (v11): flat blue background, still vignettes
+- [ ] ART+ objects on a separately generated background + `relocate()` harmonisation; 1024 px
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction

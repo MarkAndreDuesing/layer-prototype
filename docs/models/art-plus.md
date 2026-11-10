@@ -36,6 +36,10 @@ Run 9, case 1 (whole | background | skeleton | fire | log | merged):
 
 Every box gets its own clean, consistently styled transparent object at the right place; but the background is plain white (sticker look), objects are small "island" vignettes, and the gate-arch box became a red car.
 
+**Run 11, fox & cottage, "painting" prefix + "sky and lawn fill the whole background"** (343 s): background now flat blue instead of white; objects still island vignettes (the tree box now holds a tree + arch-door vignette). The vignette look seems to come from the training data (PrismLayersPro: poster/sticker-style designs), not the prompt.
+
+![ART+ v11 fox & cottage](../img/artplus_v11_fox.jpg)
+
 Case 0 of run 9 (night forest): trees, campfire + bench and moon come out as separate layers, but the whole/background frames are almost black.
 
 ![ART+ v9 case 0](../img/artplus_v9_case0.jpg)
@@ -65,7 +69,7 @@ Trained at 1024 px (we run 512); heavy; Drive downloads can hit quotas.
 
 ## Next attempts
 
-Fox scene with a style prefix that implies a full background ("painting"/"illustration" instead of "cartoon") and the sky/lawn as an explicit box; 1024 px; per-box captions if the pipeline accepts them.
+Use ART+ only for the object layers and take the background from a scene model (e.g. RevealLayer's filled background or a text-to-image pass), then `relocate()`-harmonise each object; 1024 px; per-box captions.
 
 ## Sources
 

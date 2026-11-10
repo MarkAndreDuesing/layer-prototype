@@ -65,6 +65,7 @@
 | ART+ | text+boxes to layers | skeleton campfire (repo case 1) | 1x T4 | 512 px, 16 steps, CFG 4, GGUF Q4_K_S, 3 stacked LoRAs | 294 | 8.4 | 4 |  | clean transparent layers + background | [results_artplus_v9](../../prototype/kaggle/results_artplus_v9/) |
 | ART+ | text+boxes to layers | fox_cottage | 1x T4 | 512 px, 16 steps, CFG 4, cartoon prefix, 5 JSON boxes | 353 | 8.6 | 6 |  | clean object per box; white background; gate arch became a car | [results_artplus_v10](../../prototype/kaggle/results_artplus_v10/) |
 | LayerD + generic BiRefNet | image to layers | fox_cottage | Kaggle CPU | ZhengPeng7/BiRefNet matting, 4 iterations | 220 |  | 4 | 0.57 | fox peeled cleanly; rest of scene one layer | [results_layerd_v11](../../prototype/kaggle/results_layerd_v11/) |
+| ART+ | text+boxes to layers | fox_cottage | 1x T4 | 512 px, 16 steps, painting prefix + background sentence | 343 | 8.6 | 6 |  | flat blue background; objects still vignettes | [results_artplus_v11](../../prototype/kaggle/results_artplus_v11/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (43 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (44 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

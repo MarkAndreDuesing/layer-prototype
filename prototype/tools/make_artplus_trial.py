@@ -27,17 +27,13 @@ MIXED = open(os.path.join(PROTO, "layerproto", "fp16_mixed.py"), encoding="utf-8
 
 def _fox_case():
     j = json.load(open(os.path.join(PROTO, 'test_scene', 'fox_cottage.json'), encoding='utf-8'))
-    return {'whole_image': {'caption': 'This is a cartoon style image. ' + j['caption'], 'height': 512, 'width': 512},
+    return {'whole_image': {'caption': 'This is a painting style image. ' + j['caption'] + ' Blue sky with white clouds and a green lawn fill the whole background.', 'height': 512, 'width': 512},
             'layout': [[0, 0, 512, 512], [0, 0, 512, 512]] + [L['box'] for L in j['layers_back_to_front']]}
 
 
 # our scenes as ART+ input: caption with style prefix + boxes (first two = full image, as in PrismLayers)
 LAYOUTS = [
     _fox_case(),   # v10: the shared test scene, from prototype/test_scene/fox_cottage.json
-    {"whole_image": {"caption": "This is a sketch style image. A pale pencil sketch of a skeleton sitting next to a small campfire "
-                                "in a snowy forest, with a log on the ground.",
-                     "height": 512, "width": 512},
-     "layout": [[0, 0, 512, 512], [0, 0, 512, 512], [250, 120, 400, 400], [120, 330, 300, 450], [300, 380, 460, 450]]},
 ]
 
 src = r'''import signal, time as _t

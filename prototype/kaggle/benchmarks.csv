@@ -42,3 +42,4 @@ LayerD,image to layers,design_flat,Kaggle CPU,"defaults, 3 iterations",206,,3,0.
 ART+,text+boxes to layers,skeleton campfire (repo case 1),1x T4,"512 px, 16 steps, CFG 4, GGUF Q4_K_S, 3 stacked LoRAs",294,8.4,4,,results_artplus_v9,2026-11-10,"clean transparent layers + background"
 ART+,text+boxes to layers,fox_cottage,1x T4,"512 px, 16 steps, CFG 4, cartoon prefix, 5 JSON boxes",353,8.6,6,,results_artplus_v10,2026-11-10,"clean object per box; white background; gate arch became a car"
 LayerD + generic BiRefNet,image to layers,fox_cottage,Kaggle CPU,"ZhengPeng7/BiRefNet matting, 4 iterations",220,,4,0.57,results_layerd_v11,2026-11-10,"fox peeled cleanly; rest of scene one layer"
+ART+,text+boxes to layers,fox_cottage,1x T4,"512 px, 16 steps, painting prefix + background sentence",343,8.6,6,,results_artplus_v11,2026-11-10,"flat blue background; objects still vignettes"
