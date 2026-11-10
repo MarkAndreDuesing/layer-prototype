@@ -124,17 +124,25 @@ os.makedirs("/kaggle/working/perlayer", exist_ok=True)
 LAYERS = [Image.open(io.BytesIO(base64.b64decode(b))).convert("RGBA") for b in __LAYERS__]
 EVENTS = {"night": "Relight this object for a dark night with a full moon: cool dim moonlight, deep shadows, keep its exact shape, pose and painting style",
           "rain": "Relight this object for a heavy rainstorm: dark grey overcast light, wet and glistening surfaces, keep its exact shape, pose and painting style"}
+def tr_frac(im): return float((np.asarray(im.convert("RGBA"))[..., 3] < 16).mean())
+SEEDS = [42, 7, 123, 2024]
 for ev, text in EVENTS.items():
     for i, L in enumerate(LAYERS):
-        t0 = time.time()
-        try:
-            with torch.inference_mode():
-                out = pipe(prompt=RGBA.format(text), image=[L], width=512, height=512, output_resolution=512, use_kv_cache=True,
-                           generator=torch.Generator(D0).manual_seed(42)).images[0]
-            out.save(f"/kaggle/working/perlayer/{ev}_layer{i + 1}.png"); print(f"{ev} layer {i + 1}: {time.time()-t0:.0f}s, {alpha_stats(out)}", flush=True)
-        except BaseException as e:
-            import traceback; traceback.print_exc(); print("FAILED", ev, i + 1, flush=True)
-            if isinstance(e, TimeoutError): raise
+        want = tr_frac(L); best = None
+        for k, seed in enumerate(SEEDS):
+            t0 = time.time()
+            try:
+                with torch.inference_mode():
+                    out = pipe(prompt=RGBA.format(text), image=[L], width=512, height=512, output_resolution=512, use_kv_cache=True,
+                               generator=torch.Generator(D0).manual_seed(seed)).images[0]
+                got = tr_frac(out); ok = abs(got - want) < 0.15
+                print(f"{ev} layer {i + 1} try {k + 1} (seed {seed}): {time.time()-t0:.0f}s, transparent {got*100:.0f}% (input {want*100:.0f}%) -> {'accept' if ok else 'retry'}", flush=True)
+                if best is None or abs(got - want) < abs(tr_frac(best) - want): best = out
+                if ok: break
+            except BaseException as e:
+                import traceback; traceback.print_exc(); print("FAILED", ev, i + 1, flush=True)
+                if isinstance(e, TimeoutError): raise
+        if best is not None: best.save(f"/kaggle/working/perlayer/{ev}_layer{i + 1}.png")
 print("total", round(time.time() - _T0), "s", flush=True)
 '''
 import json as _j

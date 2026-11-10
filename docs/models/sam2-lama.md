@@ -57,6 +57,12 @@ LaMa fill (left strip) vs SDXL fill (right strip): input | recomposite | backgro
 
 Object masks are the same in both; the cottage mask is incomplete where the tree and hedge overlap (no amodal completion), which shows when the tree is moved. Results: `prototype/kaggle/results_segment_inpaint_v3/`.
 
+## As the app's decomposer (real `/decompose` route, T4)
+
+`Sam2Decomposer` is a class that matches the app's decomposer contract, served through the FastAPI route and used by `Engine.decompose_image`. Result by noun (input | recomposite | background | five layers): 12 s by noun, 5 s with the hand boxes, 43 s load. The "village houses" layer is empty by noun (Grounding DINO boxes the whole cottage for that phrase), which hand boxes avoid.
+
+![Sam2Decomposer through /decompose](../img/sam2_server_by_noun.jpg)
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.

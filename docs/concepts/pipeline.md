@@ -90,7 +90,7 @@ Reading: every generator gives a separable picture; the scenes with clearly spac
 |---|---|
 | 1. Remote decompose (Qwen-Image-Layered on Kaggle) | ✅ done (batch notebook; no live endpoint yet) |
 | 2. Stronger text-to-image | ⚠️ tested (FLUX, Qwen-Image-2.1), not wired into the app |
-| 3. "Generate → choose → decompose" in the UI + canvas | ⚠️ "Decompose an image (GPU)" tab + `Engine.decompose_image` + server route `/decompose` + `RemoteDecomposer` built and tested with a fake decomposer (`tools/test_decompose_roundtrip.py`); a Kaggle notebook that serves a real model behind it (tunnel) is open |
+| 3. "Generate → choose → decompose" in the UI + canvas | ⚠️ "Decompose an image (GPU)" tab + `Engine.decompose_image` + server route `/decompose` + `RemoteDecomposer` built and tested with a fake decomposer (`tools/test_decompose_roundtrip.py`); the route is also proven with a **real model**: `Sam2Decomposer` (Grounding DINO + SAM2 + LaMa, `backends/sam2_decomposer.py`) behind `/decompose` on a T4, called through the real client, by noun 12 s and by boxes 5 s after a 43 s load, five layers + background stored as a scene (`tools/sam2_server_demo.py`, `results_sam2_server/`); a tunnel from Kaggle to the laptop and Qwen-Image-Layered / CLD behind the same route are open |
 | 4. Re-prompt / story-event layers via the chain | ✅ on Kaggle; app integration open |
 | 5. Content edit of one layer (Qwen-Image-2.1 / Qwen-Image-Edit) | ✅ Qwen-Image-2.1 tested |
 | 6. Captions and word links | ✅ in the local app |
