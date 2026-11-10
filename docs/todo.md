@@ -7,8 +7,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 - [x] Fox & cottage test scene chosen (seed 13): `prototype/test_scene/fox_cottage.png` + `fox_cottage.json` (names, boxes, caption)
 - [x] Fox & cottage: Qwen-Image-Layered and Stable-Layers done (Stable-Layers cleanest: sky / meadow / cottage + tree / path / fox)
-- [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
-- [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
+- [x] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, CLD, ART+ (from the scene's caption + boxes), Qwen-Image-2.1, SAM2 + LaMa, LayerD (LayerDiffuse chain builds its own scene: 7-element village scene instead)
+- [x] `tools/build_benchmarks.py` → comparison table in `models/README.md` (rerun after every result)
 - [x] **RevealLayer:** works on forest and fox & cottage (140 s at 12 steps; filled background + clean object layers)
 - [x] **ART+:** works (v9): size fix (`vae_scale_factor` 16) + stacked LoRAs (our loader kept only the last one)
 - [x] ART+ on fox & cottage from its JSON boxes (v10): clean styled objects per box, white background, gate arch → car
