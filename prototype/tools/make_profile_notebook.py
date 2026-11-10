@@ -76,6 +76,7 @@ def _cap(*a): raise TimeoutError("55 min cap hit after %.0fs" % (_t.time() - _T0
 signal.signal(signal.SIGALRM, _cap); signal.alarm(55 * 60)
 import base64, io, zipfile, subprocess, sys, os, time, importlib
 os.environ["HF_HUB_DISABLE_XET"] = "1"
+os.environ.update({json.dumps(prof.env)})
 PIP = {json.dumps(prof.pip)}
 os.environ["SAM2_BUILD_CUDA"] = "0"
 for _grp in PIP:

@@ -31,6 +31,7 @@ class Case:
 class Profile:
     name: str
     pip: list = field(default_factory=list)      # pip groups: each string is one `pip install` call (args split on spaces, as one resolution)
+    env: dict = field(default_factory=dict)       # environment variables set before anything imports torch
     kernel_sources: list = field(default_factory=list)
     gpu: str = "NvidiaTeslaT4"
     factory: str = ""              # "module:function" returning a decomposer callable (image, DecomposeParams) -> layers
@@ -75,5 +76,36 @@ PROFILES = {
             Case("sam2_A", "A", P(method="sam2-lama", names=NAMES, boxes=BOXES), "hand boxes -> SAM2 + LaMa"),
             Case("sam2_B", "B", P(method="sam2-lama", names=NAMES), "names -> Grounding DINO -> SAM2 + LaMa"),
             Case("sam2_amodal", "A", P(method="sam2-lama", names=NAMES[1:], boxes=BOXES[1:], amodal=True), "hand boxes + SDXL-inpaint amodal fill", repeats=1),
+        ]),
+    "cld": Profile(
+        name="cld",
+        pip=["transformers==4.57.1 diffusers==0.32.2 peft==0.14.0 gguf>=0.10 sentencepiece protobuf mmengine gdown einops"],
+        env={"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"},
+        factory="layerproto.serve.cld:make",
+        doc="docs/models/cld.md",
+        cases=[
+            Case("cld_A", "A", P(method="cld", boxes=[BOXES[0], [0, 330, 300, 512], BOXES[1], [0, 255, 512, 330], BOXES[2], BOXES[3], BOXES[4]],
+                                 resolution=512, steps=16), "512 px, 7 boxes, 16 steps (prompt embeddings cached on the second run)", repeats=2),
+            Case("cld_B", "B", P(method="cld", boxes=BOXES, resolution=512, steps=4), "512 px, 5 boxes, 4 steps (cheapest setting, quality not checked)", repeats=2),
+        ]),
+    "artplus": Profile(
+        name="artplus",
+        pip=["transformers==4.57.1 diffusers==0.32.2 peft==0.14.0 gguf>=0.10 sentencepiece protobuf mmengine gdown einops"],
+        env={"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"},
+        factory="layerproto.serve.artplus:make",
+        doc="docs/models/art-plus.md",
+        cases=[
+            Case("artplus_A", "A", P(method="artplus", boxes=BOXES, resolution=512, steps=16), "512 px, 5 boxes, 16 steps", repeats=1),
+            Case("artplus_B", "B", P(method="artplus", boxes=BOXES, resolution=512, steps=4), "512 px, 5 boxes, 4 steps (cheapest setting, quality not checked)", repeats=2),
+        ]),
+    "reveallayer": Profile(
+        name="reveallayer",
+        pip=["transformers==4.57.1 gguf>=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf"],
+        env={"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"},
+        factory="layerproto.serve.reveallayer:make",
+        doc="docs/models/revealayer.md",
+        cases=[
+            Case("reveallayer_A", "A", P(method="reveallayer", boxes=BOXES, steps=16, guidance=3.5, resolution=512), "512 px, 5 boxes, true_gs 3.5, 16 steps", repeats=1),
+            Case("reveallayer_B", "B", P(method="reveallayer", boxes=BOXES, steps=6, guidance=1.0, resolution=512), "512 px, 5 boxes, true_gs 1.0, 6 steps (cheapest setting, quality not checked)", repeats=2),
         ]),
 }

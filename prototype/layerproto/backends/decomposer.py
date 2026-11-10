@@ -25,6 +25,7 @@ class DecomposeParams:
     resolution: int = 384
     steps: int = 4
     seed: int = 0
+    guidance: float = 1.0                       # RevealLayer true_gs (1.0 skips the negative pass)
     sampler: str = "euler"                    # Qwen-Image-Layered family: euler or heun
     amodal: bool = False                        # SAM2: fill the parts of each object hidden by objects in front (SDXL-inpaint)
 
