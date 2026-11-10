@@ -42,6 +42,21 @@ More in [../research/hosting.md §7](../research/hosting.md#7-matting-segmentati
 
 Weak spot of A/B: the LaMa background fill is blurry where large objects (cottage, tree) were removed; hidden parts of objects stay missing. Results: [`../../prototype/kaggle/results_segment_inpaint_v2/`](../../prototype/kaggle/results_segment_inpaint_v2/).
 
+## Background fill: LaMa vs SDXL-inpaint (v3, hand boxes, 512 px → 1024 inpaint, T4)
+
+| Fill | Time (whole route) | Look |
+|---|---|---|
+| LaMa | 13 s | blurry, smeared texture over the removed cottage + tree + fox area |
+| **SDXL-inpaint 1.0** (fp16-fix VAE, 30 steps, scene prompt, negative "fox, animal, person") | 28 s (30 s with Grounding DINO boxes) | sharp, in the scene's style, plausible new cottage behind; but **invents content** (different cottage, no village houses) so the recomposite differs from the input only where objects are moved |
+
+LaMa fill (left strip) vs SDXL fill (right strip): input | recomposite | background | five object layers.
+
+![LaMa fill](../img/sam2_lamafill.png)
+
+![SDXL fill](../img/sam2_sdxlfill.png)
+
+Object masks are the same in both; the cottage mask is incomplete where the tree and hedge overlap (no amodal completion), which shows when the tree is moved. Results: `prototype/kaggle/results_segment_inpaint_v3/`.
+
 ## Best features
 
 Very fast; exact pixels kept; every part public and light.

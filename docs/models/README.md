@@ -67,6 +67,7 @@
 | LayerD + generic BiRefNet | image to layers | fox_cottage | Kaggle CPU | ZhengPeng7/BiRefNet matting, 4 iterations | 220 |  | 4 | 0.57 | fox peeled cleanly; rest of scene one layer | [results_layerd_v11](../../prototype/kaggle/results_layerd_v11/) |
 | ART+ | text+boxes to layers | fox_cottage | 1x T4 | 512 px, 16 steps, painting prefix + background sentence | 343 | 8.6 | 6 |  | flat blue background; objects still vignettes | [results_artplus_v11](../../prototype/kaggle/results_artplus_v11/) |
 | CLD | image+boxes to layers | fox_cottage | 2x T4 | 512 px, 16 steps, CFG 4, adapter 0.9, GGUF Q4_K_S, 3 LoRAs + adapter | 376 | 13.2 | 5 |  | clean layers + inpainted background | [results_cld_v3](../../prototype/kaggle/results_cld_v3/) |
+| SAM2 + SDXL-inpaint fill | image to layers | fox_cottage | 1x T4 | 5 hand boxes, SDXL inpaint 1024 px 30 steps | 28 |  | 6 | 4.65 | sharp in-style background; invents content | [results_segment_inpaint_v3](../../prototype/kaggle/results_segment_inpaint_v3/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (45 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (46 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->
