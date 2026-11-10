@@ -33,7 +33,7 @@ with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
         b = io.BytesIO(); Image.open(src).convert("RGBA").resize((512, 512)).save(b, "WEBP", quality=90, alpha_quality=100); return b.getvalue()
     import glob as _g
     for _f in sorted(_g.glob(os.path.join(PROTO, "kaggle", "results_qwen21_bgevent", "bg_events", "bg_*.png"))):
-        if "bg_day" not in _f: z.writestr("bg_events/" + os.path.basename(_f), open(_f, "rb").read())
+        if "bg_day" not in _f: z.writestr("bg_events/" + os.path.basename(_f), webp(_f))
     z.writestr("layers/fox_cottage/layer_0.webp", webp(os.path.join(RL, "bg_rgba.png")))
     for i in range(5):
         z.writestr(f"layers/fox_cottage/layer_{i + 1}.webp", webp(os.path.join(RL, f"layer_{i}_rgba.png")))

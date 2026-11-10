@@ -65,3 +65,30 @@ Input: RevealLayer's fox & cottage split (filled background + 5 layers). The fox
 | `relocate()` strength 0.3 / 0.45 | 3.4 s per edit (first call 133 s incl. SDXL download) | fox kept, edges blended into the path; 0.3 and 0.45 look nearly the same with paste-back 0.8 |
 | + shadow layer | 0.04 s | soft cast shadow on the path, light from the left |
 | + IC-Light fbc | 5–6 s (load 43 s) | warmer, redder fox matching the scene; hue shift stronger than wanted |
+
+## 5. Story event, measured: `bg_relight` vs `recompose` (fox & cottage, night and heavy rain)
+
+`bg_relight`: Qwen-Image-2.1 edits only RevealLayer's filled **background**; the five object layers are then relit one by one, back to front, against the scene below with IC-Light fbc (T4: Qwen-2.1 edit about 20 s per event, IC-Light 24–28 s for five layers). Tiles: day composite | edited background | objects pasted unchanged | objects relit.
+
+Night:
+
+![bg_relight night](../img/event_bg_relight_night.jpg)
+
+Heavy rain:
+
+![bg_relight rain](../img/event_bg_relight_rain.jpg)
+
+| Measure (mean grey level) | Night | Rain |
+|---|---|---|
+| day composite | 148.7 | 148.7 |
+| edited background alone | 33.1 | 52.2 |
+| objects pasted unchanged | 73.9 | 83.0 |
+| objects relit with IC-Light | 65.5 | 85.1 |
+
+Findings:
+- The **background edit is very good** (moon, wet cobblestones, rain streaks, same composition) because the input has no objects to disturb.
+- **Pasted objects look like daylight cut-outs** on the new background (the expected failure).
+- **IC-Light v1 does not fix it**: it brightens the cottage and tree to a pale blue-grey (night) or white-grey (rain), turns the fox yellowish, and darkens only slightly (luminance 74 → 65 at night, no change in rain). It has no sense of a night scene's low key; this is the known IC-Light limitation (no light sources, relights towards the background colour).
+- **Compared with `recompose`** (Qwen-2.1 edits the whole composite, then a splitter, §3 and [qwen-image-2.1.md](../models/qwen-image-2.1.md)): the whole-scene edit gives dark cottages with lit windows and a consistent result in about 22 s plus the split (30–70 s), so for weather and time of day `recompose` currently produces the better picture; `bg_relight` keeps the layers exactly as they were, which matters only if the object pixels must not change.
+
+Files: `prototype/tools/make_qwen21_bgevent_trial.py`, `fox_event_relight.py`, results in `prototype/kaggle/results_qwen21_bgevent/` and `results_fox_event/`.
