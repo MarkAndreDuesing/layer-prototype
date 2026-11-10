@@ -1,0 +1,47 @@
+[{"stream_name":"stderr","time":6.6082576809999996,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.608310168,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.541512311,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.541542297,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.541547181,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.541550988,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.175741932,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.175779795,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.175792697,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.175795999,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.353178897,"data":"pip -q install 'transformers\u003e=5.17' gguf\u003e=0.10 accelerate git+https://github.com/huggingface/diffusers\n"}
+,{"stream_name":"stdout","time":62.601210406,"data":"diffusers 0.42.0.dev0 torch 2.11.0+cu130\n"}
+,{"stream_name":"stderr","time":62.787862552,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":62.787891450000004,"data":"\n"}
+,{"stream_name":"stderr","time":62.787897399,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":169.364053958,"data":"downloads done 160 s\n"}
+,{"stream_name":"stdout","time":171.953402113,"data":"transformer: GGUF Q4_K_S\n"}
+,{"stream_name":"stdout","time":171.961470196,"data":"dequantized non-linear GGUF params: 1\n"}
+,{"stream_name":"stderr","time":173.197707888,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":173.197735678,"data":"\n"}
+,{"stream_name":"stderr","time":173.197741003,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":237.617228927,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":237.617379299,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":237.617390639,"data":"\n"}
+,{"stream_name":"stderr","time":237.617395299,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":237.617400322,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":246.91402388,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":246.914081589,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stderr","time":246.914087605,"data":"\n"}
+,{"stream_name":"stderr","time":246.914091323,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":246.914095908,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stdout","time":249.597467761,"data":"loaded 240 s; GiB [8.0, 12.7]\n"}
+,{"stream_name":"stdout","time":277.072455206,"data":"cottage_a: 27s, RGBA, transparent 73%, opaque 27%\n"}
+,{"stream_name":"stdout","time":299.307108132,"data":"cottage_b: 22s, RGBA, transparent 69%, opaque 29%\n"}
+,{"stream_name":"stdout","time":322.50253639,"data":"tree_a: 23s, RGBA, transparent 83%, opaque 16%\n"}
+,{"stream_name":"stdout","time":346.961598154,"data":"fox_a: 24s, RGBA, transparent 97%, opaque 2%\n"}
+,{"stream_name":"stdout","time":370.459534653,"data":"nofox: 23s, RGBA, transparent 0%, opaque 100%\n"}
+,{"stream_name":"stdout","time":370.460605038,"data":"total 361 s\n"}
+,{"stream_name":"stderr","time":376.597672596,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":376.597705307,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":376.851034157,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":376.851075573,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":377.814951454,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":377.91580134,"data":"[NbConvertApp] Writing 306901 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":380.567563162,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":381.367834936,"data":"[NbConvertApp] Writing 576650 bytes to __results__.html\n"}
+]

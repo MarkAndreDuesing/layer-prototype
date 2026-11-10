@@ -86,6 +86,20 @@ It removes the grey-green rim (visible on the dark background) but also softens 
 
 Full notes: [qwen_image_21_rgba.md](../../research_notes/Layered%20loop%20open%20paths/qwen_image_21_rgba.md).
 
+## Extracting single objects from the scene (T4 x2, 512 px, run 2026-11-10)
+
+One scene image in, one object out as RGBA, about 23-27 s each after the 240 s load (361 s in total). Panels: cottage (prompt a), cottage (prompt b), tree, fox, scene with the fox removed.
+
+![Qwen-2.1 extraction](../img/qwen21_extract_strip.jpg)
+
+- **Cottage, prompt a** ("only the cottage ... without the tree, fox, arch or hedge in front"): a whole, clean cottage, with the hidden parts completed. This is the best amodal result so far, better than the SDXL-inpaint fill.
+- **Cottage, prompt b** ("complete the parts hidden behind the tree and the arch"): the tree, arch and fox came along. The wording "without X" works, "complete the hidden parts" does not.
+- **Tree:** clean cut, the crown is clipped at the top edge of the canvas.
+- **Fox:** clean cut, 97 % transparent.
+- **Fox removed:** the path and grass are filled and the rest is unchanged (opaque output, edit mode).
+
+Files: `prototype/kaggle/results_qwen21_extract/`.
+
 ## Best features
 
 - One model covers three loop steps: new layer from text, re-prompt a layer keeping transparency, cut an object out of a scene.
