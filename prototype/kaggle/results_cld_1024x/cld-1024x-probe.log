@@ -1,0 +1,220 @@
+[{"stream_name":"stderr","time":7.099379887,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.099425161,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.110864666,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.110898535,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.11090508,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.110912236,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.739625023,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.739657817,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.739663554,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.739668458,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.042558545,"data":"pip -q install 'transformers==4.57.1' diffusers==0.32.2 peft==0.14.0 gguf\u003e=0.10 sentencepiece protobuf mmengine gdown einops\n"}
+,{"stream_name":"stderr","time":31.685714134,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":31.685745391,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.685754656,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.685757812,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888121926,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":31.888159367,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888164902,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888169175,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888172767,"data":"\n"}
+,{"stream_name":"stderr","time":31.888175998,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":31.888179837,"data":"gradio-client 2.7.2 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888183326,"data":"gradio 6.30.0 requires huggingface-hub\u003c3.0,\u003e=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\n"}
+,{"stream_name":"stderr","time":31.888206176,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":31.939853859,"data":"git clone --depth 1 https://github.com/monkek123King/CLD /kaggle/working/CLD\n"}
+,{"stream_name":"stderr","time":31.967740668,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":32.170202562,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":32.170234486,"data":"\n"}
+,{"stream_name":"stderr","time":32.170238534,"data":"Cloning into '/kaggle/working/CLD'...\n"}
+,{"stream_name":"stderr","time":65.17429751,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":65.174333371,"data":"I0000 00:00:1794342325.768112      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":65.3799332,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":65.379971632,"data":"I0000 00:00:1794342325.768112      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":65.379978139,"data":"\n"}
+,{"stream_name":"stderr","time":65.379982734,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":65.379988155,"data":"I0000 00:00:1794342325.768112      22 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stdout","time":70.252583787,"data":"diffusers 0.32.2\n"}
+,{"stream_name":"stdout","time":170.878375276,"data":"CLD files: ['README.md', 'decouple_LoRA/adapter/pytorch_lora_weights.safetensors', 'decouple_LoRA/layer_pe.pth', 'decouple_LoRA/transformer/pytorch_lora_weights.safetensors', 'pre_trained_LoRA/pytorch_lora_weights.safetensors', 'prism_ft_LoRA/pytorch_lora_weights.safetensors', 'trans_vae/0008000.pt']\n"}
+,{"stream_name":"stdout","time":226.114282923,"data":"layer_pe file: /root/.cache/huggingface/hub/models--thuteam--CLD/snapshots/13e6c46dc1a6a1d2f2def53b24370e28c76e3379/decouple_LoRA/layer_pe.pth type dict keys ['layer_pe'] shape (1, 52, 1, 1, 3072) norm 12.154 frame-to-frame diff 0.04072\n"}
+,{"stream_name":"stdout","time":229.010786227,"data":"LoRA pre_trained: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":232.143222617,"data":"LoRA prism_ft: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":235.095492451,"data":"LoRA decouple: matched 304, missing 0 []\n"}
+,{"stream_name":"stdout","time":253.967755394,"data":"LoRA adapter: matched 48 missing 0 []\n"}
+,{"stream_name":"stderr","time":255.198479931,"data":"Expected types for transformer: ['FluxTransformer2DModel'], got CustomFluxTransformer2DModel.\n"}
+,{"stream_name":"stderr","time":255.198511061,"data":"\n"}
+,{"stream_name":"stderr","time":255.198517363,"data":"Expected types for transformer: ['FluxTransformer2DModel'], got CustomFluxTransformer2DModel.\n"}
+,{"stream_name":"stderr","time":255.206481084,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":255.206502605,"data":"\n"}
+,{"stream_name":"stderr","time":255.206508523,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":294.833312749,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":294.833360151,"data":"\n"}
+,{"stream_name":"stderr","time":294.833365857,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stdout","time":298.962649492,"data":"vae_scale_factor -\u003e 16\n"}
+,{"stream_name":"stdout","time":300.736555663,"data":"Downloading: \"https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\" to /root/.cache/torch/hub/checkpoints/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stderr","time":300.736975725,"data":"\r  0%|          | 0.00/337M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":300.838153094,"data":"\r  0%|          | 0.00/337M [00:00\u003c?, ?B/s]\r  2%|▏         | 7.50M/337M [00:00\u003c00:04, 78.6MB/s]\n"}
+,{"stream_name":"stderr","time":300.938934025,"data":"\r  2%|▏         | 7.50M/337M [00:00\u003c00:04, 78.6MB/s]\r  8%|▊         | 27.8M/337M [00:00\u003c00:02, 157MB/s] \n"}
+,{"stream_name":"stderr","time":301.039792452,"data":"\r  8%|▊         | 27.8M/337M [00:00\u003c00:02, 157MB/s] \r 15%|█▌        | 50.5M/337M [00:00\u003c00:01, 194MB/s]\n"}
+,{"stream_name":"stderr","time":301.150384175,"data":"\r 15%|█▌        | 50.5M/337M [00:00\u003c00:01, 194MB/s]\r 20%|██        | 69.0M/337M [00:00\u003c00:01, 186MB/s]\n"}
+,{"stream_name":"stderr","time":301.250788286,"data":"\r 20%|██        | 69.0M/337M [00:00\u003c00:01, 186MB/s]\r 27%|██▋       | 91.5M/337M [00:00\u003c00:01, 203MB/s]\n"}
+,{"stream_name":"stderr","time":301.351155967,"data":"\r 27%|██▋       | 91.5M/337M [00:00\u003c00:01, 203MB/s]\r 34%|███▎      | 113M/337M [00:00\u003c00:01, 211MB/s] \n"}
+,{"stream_name":"stderr","time":301.451494384,"data":"\r 34%|███▎      | 113M/337M [00:00\u003c00:01, 211MB/s] \r 40%|████      | 135M/337M [00:00\u003c00:00, 217MB/s]\n"}
+,{"stream_name":"stderr","time":301.552247128,"data":"\r 40%|████      | 135M/337M [00:00\u003c00:00, 217MB/s]\r 47%|████▋     | 158M/337M [00:00\u003c00:00, 224MB/s]\n"}
+,{"stream_name":"stderr","time":301.652527194,"data":"\r 47%|████▋     | 158M/337M [00:00\u003c00:00, 224MB/s]\r 54%|█████▎    | 180M/337M [00:00\u003c00:00, 226MB/s]\n"}
+,{"stream_name":"stderr","time":301.752112313,"data":"\r 54%|█████▎    | 180M/337M [00:00\u003c00:00, 226MB/s]\r 60%|██████    | 202M/337M [00:01\u003c00:00, 227MB/s]\n"}
+,{"stream_name":"stderr","time":301.852266757,"data":"\r 60%|██████    | 202M/337M [00:01\u003c00:00, 227MB/s]\r 67%|██████▋   | 224M/337M [00:01\u003c00:00, 229MB/s]\n"}
+,{"stream_name":"stderr","time":301.95314628,"data":"\r 67%|██████▋   | 224M/337M [00:01\u003c00:00, 229MB/s]\r 73%|███████▎  | 247M/337M [00:01\u003c00:00, 232MB/s]\n"}
+,{"stream_name":"stderr","time":302.05323457,"data":"\r 73%|███████▎  | 247M/337M [00:01\u003c00:00, 232MB/s]\r 80%|███████▉  | 269M/337M [00:01\u003c00:00, 232MB/s]\n"}
+,{"stream_name":"stderr","time":302.15377232,"data":"\r 80%|███████▉  | 269M/337M [00:01\u003c00:00, 232MB/s]\r 87%|████████▋ | 291M/337M [00:01\u003c00:00, 231MB/s]\n"}
+,{"stream_name":"stderr","time":302.254577259,"data":"\r 87%|████████▋ | 291M/337M [00:01\u003c00:00, 231MB/s]\r 93%|█████████▎| 314M/337M [00:01\u003c00:00, 231MB/s]\n"}
+,{"stream_name":"stderr","time":302.357098716,"data":"\r 93%|█████████▎| 314M/337M [00:01\u003c00:00, 231MB/s]\r100%|█████████▉| 336M/337M [00:01\u003c00:00, 229MB/s]\n"}
+,{"stream_name":"stderr","time":302.362540441,"data":"\r100%|█████████▉| 336M/337M [00:01\u003c00:00, 229MB/s]\r100%|██████████| 337M/337M [00:01\u003c00:00, 217MB/s]\n"}
+,{"stream_name":"stderr","time":302.455030939,"data":"\r100%|██████████| 337M/337M [00:01\u003c00:00, 217MB/s]\n"}
+,{"stream_name":"stderr","time":302.455073707,"data":"\n"}
+,{"stream_name":"stderr","time":302.4550774,"data":"\n"}
+,{"stream_name":"stdout","time":302.53940189,"data":"ViT Encoder Missing keys: []\n"}
+,{"stream_name":"stdout","time":302.539431386,"data":"ViT Encoder Unexpected keys: ['pos_embedding']\n"}
+,{"stream_name":"stdout","time":302.539436038,"data":"transparent decoder file: /root/.cache/huggingface/hub/models--thuteam--CLD/snapshots/13e6c46dc1a6a1d2f2def53b24370e28c76e3379/trans_vae/0008000.pt\n"}
+,{"stream_name":"stdout","time":306.688432291,"data":"transp vae: \u003cAll keys matched successfully\u003e\n"}
+,{"stream_name":"stdout","time":306.769501704,"data":"loaded 297 s; GiB [10.9, 11.0]\n"}
+,{"stream_name":"stdout","time":320.305322132,"data":"FAILED 0 2\n"}
+,{"stream_name":"stdout","time":320.307091668,"data":"total 310 s\n"}
+,{"stream_name":"stderr","time":320.308371315,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":320.308387977,"data":"  File \"/tmp/ipykernel_22/3851616979.py\", line 118, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":320.308393939,"data":"    x_hat, image, _lat = pipe(prompt=inp[\"whole_image\"][\"caption\"], adapter_image=Image.open(io.BytesIO(base64.b64decode(inp[\"img\"]))).convert(\"RGB\"), adapter_conditioning_scale=0.9, validation_box=boxes16(inp[\"layout\"]),\n"}
+,{"stream_name":"stderr","time":320.308416997,"data":"                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308422408,"data":"                           generator=torch.Generator(D0).manual_seed(42), height=1024, width=1024,\n"}
+,{"stream_name":"stderr","time":320.308426193,"data":"                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308429979,"data":"                           num_inference_steps=steps, guidance_scale=4.0, num_layers=len(inp[\"layout\"]), sdxl_vae=transp_vae)\n"}
+,{"stream_name":"stderr","time":320.308433869,"data":"                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308437585,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":320.308441307,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308444848,"data":"  File \"/kaggle/working/CLD/models/pipeline.py\", line 673, in __call__\n"}
+,{"stream_name":"stderr","time":320.308448545,"data":"    ) = self.multiLayerAdapter(\n"}
+,{"stream_name":"stderr","time":320.30845207,"data":"        ~~~~~~~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":320.308455493,"data":"        hidden_states=latents,\n"}
+,{"stream_name":"stderr","time":320.30845892,"data":"        ^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308462352,"data":"    ...\u003c10 lines\u003e...\n"}
+,{"stream_name":"stderr","time":320.308465816,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":320.308469233,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308474235,"data":"    )\n"}
+,{"stream_name":"stderr","time":320.308477543,"data":"    ^\n"}
+,{"stream_name":"stderr","time":320.308480794,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308498612,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308502884,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308507226,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308511424,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308514683,"data":"  File \"fp16_mixed\", line 148, in fwd\n"}
+,{"stream_name":"stderr","time":320.308517875,"data":"  File \"/kaggle/working/CLD/models/multiLayer_adapter.py\", line 370, in forward\n"}
+,{"stream_name":"stderr","time":320.308521482,"data":"    encoder_hidden_states, hidden_states = block(\n"}
+,{"stream_name":"stderr","time":320.308524802,"data":"                                           ~~~~~^\n"}
+,{"stream_name":"stderr","time":320.308528073,"data":"        hidden_states=hidden_states,\n"}
+,{"stream_name":"stderr","time":320.308532627,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308536144,"data":"    ...\u003c2 lines\u003e...\n"}
+,{"stream_name":"stderr","time":320.308539469,"data":"        image_rotary_emb=image_rotary_emb,\n"}
+,{"stream_name":"stderr","time":320.308543198,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308547731,"data":"    )\n"}
+,{"stream_name":"stderr","time":320.30855225,"data":"    ^\n"}
+,{"stream_name":"stderr","time":320.308555962,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308559572,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308563202,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308566751,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308571334,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308574879,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_flux.py\", line 199, in forward\n"}
+,{"stream_name":"stderr","time":320.308578626,"data":"    ff_output = self.ff(norm_hidden_states)\n"}
+,{"stream_name":"stderr","time":320.30858232,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308616347,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308620036,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308623596,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308627497,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308631478,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/attention.py\", line 1251, in forward\n"}
+,{"stream_name":"stderr","time":320.308635287,"data":"    hidden_states = module(hidden_states)\n"}
+,{"stream_name":"stderr","time":320.308638932,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308642442,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308645908,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308656824,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308660702,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308664308,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/activations.py\", line 88, in forward\n"}
+,{"stream_name":"stderr","time":320.308668153,"data":"    hidden_states = self.proj(hidden_states)\n"}
+,{"stream_name":"stderr","time":320.308672298,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308676061,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.30867951,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308683148,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308687456,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.30869106,"data":"  File \"fp16_mixed\", line 45, in _mixed_linear\n"}
+,{"stream_name":"stderr","time":320.308696382,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 648.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 502.81 MiB is free. Including non-PyTorch memory, this process has 14.07 GiB memory in use. Of the allocated memory 13.81 GiB is allocated by PyTorch, and 128.76 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stderr","time":320.308706728,"data":"\n"}
+,{"stream_name":"stderr","time":320.308710031,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":320.308713438,"data":"  File \"/tmp/ipykernel_22/3851616979.py\", line 118, in \u003ccell line: 0\u003e\n"}
+,{"stream_name":"stderr","time":320.308717545,"data":"    x_hat, image, _lat = pipe(prompt=inp[\"whole_image\"][\"caption\"], adapter_image=Image.open(io.BytesIO(base64.b64decode(inp[\"img\"]))).convert(\"RGB\"), adapter_conditioning_scale=0.9, validation_box=boxes16(inp[\"layout\"]),\n"}
+,{"stream_name":"stderr","time":320.308722208,"data":"                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308726446,"data":"                           generator=torch.Generator(D0).manual_seed(42), height=1024, width=1024,\n"}
+,{"stream_name":"stderr","time":320.308730767,"data":"                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308734746,"data":"                           num_inference_steps=steps, guidance_scale=4.0, num_layers=len(inp[\"layout\"]), sdxl_vae=transp_vae)\n"}
+,{"stream_name":"stderr","time":320.308739084,"data":"                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308743385,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stderr","time":320.308747271,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308751073,"data":"  File \"/kaggle/working/CLD/models/pipeline.py\", line 673, in __call__\n"}
+,{"stream_name":"stderr","time":320.308758924,"data":"    ) = self.multiLayerAdapter(\n"}
+,{"stream_name":"stderr","time":320.308762627,"data":"        ~~~~~~~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stderr","time":320.30876605,"data":"        hidden_states=latents,\n"}
+,{"stream_name":"stderr","time":320.308769563,"data":"        ^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308773257,"data":"    ...\u003c10 lines\u003e...\n"}
+,{"stream_name":"stderr","time":320.308777028,"data":"        return_dict=False,\n"}
+,{"stream_name":"stderr","time":320.308780563,"data":"        ^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308784198,"data":"    )\n"}
+,{"stream_name":"stderr","time":320.308787706,"data":"    ^\n"}
+,{"stream_name":"stderr","time":320.308792594,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308796768,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308800346,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308803657,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.30880747,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308810841,"data":"  File \"fp16_mixed\", line 148, in fwd\n"}
+,{"stream_name":"stderr","time":320.308814474,"data":"  File \"/kaggle/working/CLD/models/multiLayer_adapter.py\", line 370, in forward\n"}
+,{"stream_name":"stderr","time":320.308818195,"data":"    encoder_hidden_states, hidden_states = block(\n"}
+,{"stream_name":"stderr","time":320.30882193,"data":"                                           ~~~~~^\n"}
+,{"stream_name":"stderr","time":320.30882554,"data":"        hidden_states=hidden_states,\n"}
+,{"stream_name":"stderr","time":320.308828867,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.30883215,"data":"    ...\u003c2 lines\u003e...\n"}
+,{"stream_name":"stderr","time":320.308835648,"data":"        image_rotary_emb=image_rotary_emb,\n"}
+,{"stream_name":"stderr","time":320.30883926,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308842838,"data":"    )\n"}
+,{"stream_name":"stderr","time":320.308846183,"data":"    ^\n"}
+,{"stream_name":"stderr","time":320.308849542,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308853044,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308856434,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308859938,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308863764,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308867335,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/transformers/transformer_flux.py\", line 199, in forward\n"}
+,{"stream_name":"stderr","time":320.30887143,"data":"    ff_output = self.ff(norm_hidden_states)\n"}
+,{"stream_name":"stderr","time":320.308875276,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308879042,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308886901,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308890623,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308894035,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308897815,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/attention.py\", line 1251, in forward\n"}
+,{"stream_name":"stderr","time":320.308901701,"data":"    hidden_states = module(hidden_states)\n"}
+,{"stream_name":"stderr","time":320.308905267,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308909121,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308912745,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308916509,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308920459,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308925165,"data":"  File \"/usr/local/lib/python3.13/dist-packages/diffusers/models/activations.py\", line 88, in forward\n"}
+,{"stream_name":"stderr","time":320.308929383,"data":"    hidden_states = self.proj(hidden_states)\n"}
+,{"stream_name":"stderr","time":320.308933033,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stderr","time":320.308936915,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308940495,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":320.308944162,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stderr","time":320.308947734,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":320.308951186,"data":"  File \"fp16_mixed\", line 45, in _mixed_linear\n"}
+,{"stream_name":"stderr","time":320.308954899,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 648.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 502.81 MiB is free. Including non-PyTorch memory, this process has 14.07 GiB memory in use. Of the allocated memory 13.81 GiB is allocated by PyTorch, and 128.76 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stderr","time":327.179395874,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":327.179436193,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":327.453373039,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":327.453403761,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":328.507618986,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":328.704197682,"data":"[NbConvertApp] Writing 1182666 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":331.540108526,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":332.454843757,"data":"[NbConvertApp] Writing 1332439 bytes to __results__.html\n"}
+]

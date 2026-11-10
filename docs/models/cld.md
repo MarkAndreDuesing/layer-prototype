@@ -71,7 +71,7 @@ Panels: CLD whole image | CLD background layer | CLD merged | RevealLayer backgr
 
 ## 1024 px scaling probe (T4 x2, 7 boxes, 2 steps, 2026-11-10)
 
-Same set-up as the 512 px run with the image, boxes and canvas doubled, 2 denoising steps only (a probe, to avoid a long failing run). Load 303 s (11.0 GiB on each GPU). **Out of memory on GPU 0 during the first step**: it tried to allocate another 648 MiB with 12.6 GiB already allocated by PyTorch on a 14.6 GiB card (the 512 px run peaked at 13.3 GiB). So CLD at 1024 px does not fit on a T4 as it is set up (transformer plus adapter on GPU 0). Ways to try: sequential offload of the adapter, fewer boxes, 768 px, or a card with more memory. Files: `prototype/kaggle/results_cld_1024/`.
+Same set-up as the 512 px run with the image, boxes and canvas doubled, 2 denoising steps only (a probe, to avoid a long failing run). Load 303 s (11.0 GiB on each GPU). **Out of memory on GPU 0 during the first step**: it tried to allocate another 648 MiB with 12.6 GiB already allocated by PyTorch on a 14.6 GiB card (the 512 px run peaked at 13.3 GiB). So CLD at 1024 px does not fit on a T4 as it is set up (transformer plus adapter on GPU 0). **768 px also ran out of memory** (368 MiB short), and **retries with `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` still failed** at both 768 px (246 MiB short) and 1024 px (648 MiB short), so it is not just fragmentation: about 11 GiB of static weights sit on GPU 0 and leave about 3.5 GiB for activations. Next try (running): the adapter moved to GPU 1 with forward hooks that hop inputs and outputs between the cards. Other ways: fewer boxes, or a card with more memory. Files: `prototype/kaggle/results_cld_1024/`.
 
 ## Best features
 
