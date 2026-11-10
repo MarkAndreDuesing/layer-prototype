@@ -1,0 +1,89 @@
+[
+ {
+  "tag": "qwen21_A",
+  "path": "A",
+  "note": "background + 4 objects, 8 steps, 512 px",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen21-extract",
+   "n_layers": 4,
+   "boxes": [
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 118.6,
+  "all_runs_s": [
+   117.5,
+   118.6
+  ],
+  "layers": 5,
+  "recomposite_diff": 17.17
+ },
+ {
+  "tag": "qwen21_B",
+  "path": "B",
+  "note": "one object per request, 8 steps, 512 px",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen21-extract",
+   "n_layers": 4,
+   "boxes": [
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 47.6,
+  "all_runs_s": [
+   47.4,
+   47.6
+  ],
+  "layers": 2,
+  "recomposite_diff": 5.71
+ }
+]

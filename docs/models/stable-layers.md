@@ -48,6 +48,23 @@ B (Euler):
 
 The colour shift (diff about 21 against 9–13 for the base model) is visible in the recomposite. Results: `prototype/kaggle/results_qwen_fox_v11/`.
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Same `qwen-layered` profile as the base model (the LoRA is swapped in a few seconds); second run reported. Results: `prototype/kaggle/results_profile_qwen-layered/`.
+
+| | Settings | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case (up to 8 min)** | 512 px, 5 layers, 8 Heun steps, CFG 1 | 248.4 s | 5 | 16.09 |
+| **B. Live-demo budget (about 30 s)** | 384 px, 5 layers, 3 Euler steps, CFG 1 | 30.9 s | 5 | 23.2 |
+
+A (8 Heun steps at 512 px): a clean filled meadow as the background, and separate layers for the cottage with its gate arch, the path, the tree and the fox (plus a layer with the left-hand sky and tree):
+
+![A, 512 px Heun](../img/bench_stablelayers_A.jpg)
+
+B (3 Euler steps at 384 px):
+
+![B, 384 px 3 steps](../img/bench_stablelayers_B.jpg)
+
 ## Special features
 
 | Feature | Status | Evidence |

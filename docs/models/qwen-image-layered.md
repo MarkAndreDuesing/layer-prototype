@@ -48,6 +48,25 @@ B, 384 px, 4 layers:
 
 A has not yet been run with more steps (12–16, still under 8 minutes); the 640 px, 50-step reference setting takes 35 min and was measured on the forest scene only. Results: `prototype/kaggle/results_qwen_fox_v11/`.
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `qwen-layered` server profile ([`layerproto/serve/qwen_layered.py`](../../prototype/layerproto/serve/qwen_layered.py)); the model was loaded once (354 s), each case was run twice and the second run is reported. Compute is the decompose call only. Results: `prototype/kaggle/results_profile_qwen-layered/`.
+
+| | Settings | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case (up to 8 min)** | 512 px, 5 layers, 16 Euler steps, CFG 1 | 254.8 s | 5 | 8.54 |
+| **B. Live-demo budget (about 30 s)** | 384 px, 4 layers, 4 Euler steps, CFG 1 | 34.5 s | 4 | 8.68 |
+
+A (16 steps): the background layer keeps a blurred cottage and path, the other layers hold sky and tree pieces, the tree and cottage detail, and the fox (split into two layers):
+
+![A, 512 px 16 steps](../img/bench_qwenlayered_A.jpg)
+
+B (4 steps):
+
+![B, 384 px 4 steps](../img/bench_qwenlayered_B.jpg)
+
+16 steps cost 7× the 4-step run and improved the recomposite difference only from 8.68 to 8.54, so on this scene the extra steps buy little.
+
 ## Special features
 
 | Feature | Status | Evidence |

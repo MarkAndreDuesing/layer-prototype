@@ -62,6 +62,23 @@ B (2 steps):
 
 Results: `prototype/kaggle/results_qwen_v10/`.
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Same `qwen-layered` profile, Lightning LoRA at scale 1.0; second run reported. Results: `prototype/kaggle/results_profile_qwen-layered/`.
+
+| | Settings | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case (up to 8 min)** | 512 px, 5 layers, 4 steps | 73.8 s | 5 | 14.37 |
+| **B. Live-demo budget (about 30 s)** | 384 px, 5 layers, 2 steps | 22.5 s | 5 | 56.39 |
+
+A (4 steps):
+
+![A, 512 px 4 steps](../img/bench_lightning_A.jpg)
+
+B (2 steps): the recomposite comes out washed out and the background layer is nearly white, so the very large difference is visible in the image, not only in the number:
+
+![B, 384 px 2 steps](../img/bench_lightning_B.jpg)
+
 ## Special features
 
 | Feature | Status | Evidence |

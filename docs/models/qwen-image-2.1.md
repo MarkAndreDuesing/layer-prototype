@@ -123,6 +123,25 @@ Input: the shared scene; Qwen-Image-2.1 has no split mode, so the split is one e
 
 ![Qwen-2.1 through /decompose](../img/fox_qwen21_route.jpg)
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `qwen21` server profile ([`layerproto/serve/qwen21.py`](../../prototype/layerproto/serve/qwen21.py)): loaded once (393 s), each case run twice, second run reported, 512 px, 8 steps. Results: `prototype/kaggle/results_profile_qwen21/`.
+
+| | Request | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case** | background + four objects (cottage, arch, tree, fox) | 118.6 s | 5 | 17.17 |
+| **B. Live-demo budget** | background + one object (the fox) | 47.6 s (two edit calls, about 24 s each) | 2 | 5.71 |
+
+B shows the model's cost structure: every object is one 24 s call, and the background is one more. For a 30 s budget a request can ask for one thing (one object, or the background).
+
+A:
+
+![A, five layers](../img/bench_qwen21_A.jpg)
+
+B:
+
+![B, background + fox](../img/bench_qwen21_B.jpg)
+
 ## Special features
 
 | Feature | Status | Evidence |

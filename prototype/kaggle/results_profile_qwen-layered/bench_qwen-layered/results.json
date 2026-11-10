@@ -1,0 +1,146 @@
+[
+ {
+  "tag": "qwenlayered_A",
+  "path": "A",
+  "note": "512 px, 5 layers, 16 Euler steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 5,
+   "boxes": [],
+   "names": [],
+   "resolution": 512,
+   "steps": 16,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 254.8,
+  "all_runs_s": [
+   251.5,
+   254.8
+  ],
+  "layers": 5,
+  "recomposite_diff": 8.54
+ },
+ {
+  "tag": "qwenlayered_B",
+  "path": "B",
+  "note": "384 px, 4 layers, 4 Euler steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 34.5,
+  "all_runs_s": [
+   34.6,
+   34.5
+  ],
+  "layers": 4,
+  "recomposite_diff": 8.68
+ },
+ {
+  "tag": "stablelayers_A",
+  "path": "A",
+  "note": "512 px, 5 layers, 8 Heun steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "stable-layers",
+   "n_layers": 5,
+   "boxes": [],
+   "names": [],
+   "resolution": 512,
+   "steps": 8,
+   "seed": 0,
+   "sampler": "heun",
+   "amodal": false
+  },
+  "compute_s": 248.4,
+  "all_runs_s": [
+   248.7,
+   248.4
+  ],
+  "layers": 5,
+  "recomposite_diff": 16.09
+ },
+ {
+  "tag": "stablelayers_B",
+  "path": "B",
+  "note": "384 px, 5 layers, 3 Euler steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "stable-layers",
+   "n_layers": 5,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 3,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 30.9,
+  "all_runs_s": [
+   30.8,
+   30.9
+  ],
+  "layers": 5,
+  "recomposite_diff": 23.2
+ },
+ {
+  "tag": "lightning_A",
+  "path": "A",
+  "note": "512 px, 5 layers, 4 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-lightning",
+   "n_layers": 5,
+   "boxes": [],
+   "names": [],
+   "resolution": 512,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 73.8,
+  "all_runs_s": [
+   74.7,
+   73.8
+  ],
+  "layers": 5,
+  "recomposite_diff": 14.37
+ },
+ {
+  "tag": "lightning_B",
+  "path": "B",
+  "note": "384 px, 5 layers, 2 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-lightning",
+   "n_layers": 5,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 2,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 22.5,
+  "all_runs_s": [
+   22.5,
+   22.5
+  ],
+  "layers": 5,
+  "recomposite_diff": 56.39
+ }
+]
