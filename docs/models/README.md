@@ -15,6 +15,12 @@
 | [qwen-image-2.1.md](qwen-image-2.1.md) | RGBA generation, layer edit, extraction |
 | [layerd.md](layerd.md) | image → layers by peeling |
 | [sam2-lama.md](sam2-lama.md) | segment + inpaint |
+| [relocate-harmonise.md](relocate-harmonise.md) | move / resize a layer with re-harmonisation |
+| [relight-ic-light.md](relight-ic-light.md) | relight a layer (IC-Light, Qwen-2.1, grade) |
+| [shadow-layers.md](shadow-layers.md) | procedural cast shadows |
+| [amodal-fill.md](amodal-fill.md) | fill the hidden parts of an object |
+| [grounding-dino.md](grounding-dino.md) | find objects by name (boxes for SAM2) |
+| [TEMPLATE.md](TEMPLATE.md) | the shared structure and test protocol for every factsheet |
 | [../research/papers-survey.md](../research/papers-survey.md) | all methods in one table, incl. those without weights (LayerFusion, PSDiffusion, DreamLayer, OmniPSD …) |
 
 ## Comparison (generated)
