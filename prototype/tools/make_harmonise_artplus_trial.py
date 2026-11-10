@@ -1,0 +1,69 @@
+r"""Kaggle T4 notebook: move the fox on fox & cottage with relocate() + shadow layer + IC-Light (tools/harmonise_artplus_demo.py).
+
+    fastsdcpu\env\Scripts\python.exe prototype\tools\make_fox_move_trial.py
+    cd prototype\kaggle\upload_harmonise_artplus_trial && python -m kaggle.cli kernels push -p .
+
+Input layers: RevealLayer's fox & cottage split (results_reveallayer_fox_v15, 12 steps): its background has the
+objects removed and filled, so moving the fox leaves no hole. layer_0 = background, layer_1..5 = RevealLayer layers
+(village houses, cottage, gate arch, tree, fox) -> the fox is index 5.
+"""
+import base64
+import io
+import json
+import os
+import zipfile
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PROTO = os.path.dirname(HERE)
+OUT = os.path.join(PROTO, "kaggle", "upload_harmonise_artplus_trial")
+RL = os.path.join(PROTO, "kaggle", "results_reveallayer_fox_v15", "reveal_out", "gs1.0_st12", "fox_cottage")
+AP = os.path.join(PROTO, "kaggle", "results_artplus_v10", "art_out", "case0_16st")
+
+buf = io.BytesIO()
+with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+    for top in ("layerproto", os.path.join("vendor", "diffuser_layerdiffuse", "layer_diffuse")):
+        for root, dirs, files in os.walk(os.path.join(PROTO, top)):
+            dirs[:] = [d for d in dirs if d != "__pycache__"]
+            for fn in files:
+                if fn.endswith(".py"):
+                    full = os.path.join(root, fn)
+                    z.write(full, os.path.join("prototype", os.path.relpath(full, PROTO)))
+    z.write(os.path.join(HERE, "harmonise_artplus_demo.py"), "prototype/tools/harmonise_artplus_demo.py")
+    from PIL import Image
+    def webp(src):   # keep the notebook small (Kaggle rejected 1.1 MB): lossy WebP with alpha
+        b = io.BytesIO(); Image.open(src).convert("RGBA").resize((512, 512)).save(b, "WEBP", quality=90, alpha_quality=100); return b.getvalue()
+    z.writestr("layers/artplus/layer_0.webp", webp(os.path.join(RL, "bg_rgba.png")))
+    for i in range(5):
+        z.writestr(f"layers/artplus/layer_{i + 1}.webp", webp(os.path.join(AP, f"layer_{i}_rgba.png")))
+code_b64 = base64.b64encode(buf.getvalue()).decode()
+
+SRC = f'''
+import signal, time as _t
+_T0 = _t.time()
+def _cap(*a): raise TimeoutError("25 min cap")
+signal.signal(signal.SIGALRM, _cap); signal.alarm(25 * 60)
+import base64, io, zipfile, subprocess, sys, os
+subprocess.run([sys.executable, '-m', 'pip', 'install', '-q', 'diffusers==0.37.0'], check=False)  # same as the working relocate notebooks
+os.makedirs('/kaggle/working/code', exist_ok=True)
+zipfile.ZipFile(io.BytesIO(base64.b64decode("{code_b64}"))).extractall('/kaggle/working/code')
+os.chdir('/kaggle/working/code')
+cmds = [
+    ["prototype/tools/harmonise_artplus_demo.py", "--layers-dir", "layers/artplus", "--out", "/kaggle/working/harmonise"],
+]
+for c in cmds:
+    r = subprocess.run([sys.executable] + c, capture_output=True, text=True)
+    print(r.stdout[-3000:], r.stderr[-3000:], flush=True)
+'''
+compile(SRC, "cell", "exec")
+os.makedirs(OUT, exist_ok=True)
+nb = {"cells": [{"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [],
+                 "source": SRC.strip("\n").splitlines(True)}],
+      "metadata": {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+                   "language_info": {"name": "python"}}, "nbformat": 4, "nbformat_minor": 5}
+json.dump(nb, open(os.path.join(OUT, "harmonise-artplus-trial.ipynb"), "w", encoding="utf-8"), indent=1)
+json.dump({"id": "markandreduesing/harmonise-artplus-trial", "title": "harmonise-artplus-trial", "code_file": "harmonise-artplus-trial.ipynb",
+           "language": "python", "kernel_type": "notebook", "is_private": "true", "enable_gpu": "true",
+           "enable_tpu": "false", "enable_internet": "true", "machine_shape": "NvidiaTeslaT4", "dataset_sources": [],
+           "competition_sources": [], "kernel_sources": [], "model_sources": []},
+          open(os.path.join(OUT, "kernel-metadata.json"), "w"), indent=1)
+print("wrote", OUT, round(os.path.getsize(os.path.join(OUT, "harmonise-artplus-trial.ipynb")) / 1e6, 2), "MB")

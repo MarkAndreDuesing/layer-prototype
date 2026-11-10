@@ -50,7 +50,15 @@ Run-10 object layers (tree, cottage, houses, car, fox) pasted over RevealLayer's
 
 ![ART+ objects on RevealLayer background](../img/artplus_on_reveal_bg.jpg)
 
-This is the "sticker collage" problem in one picture: the objects are in ART+'s own glossy cartoon style, at its own scale and with its own light, so they do not belong to the background. Using ART+ as an object generator would need a harmonisation pass (IC-Light for light; restyle / `relocate()` img2img at strength about 0.5 for style), which has not been tried on these layers.
+This is the "sticker collage" problem in one picture: the objects are in ART+'s own glossy cartoon style, at its own scale and with its own light, so they do not belong to the background. **Harmonisation attempt** (`tools/harmonise_artplus_demo.py`, T4): each object re-blended in place with `relocate()` against the composite so far (paste-back 0.5), then IC-Light. Tiles: background | pasted | relocate | relocate + IC-Light. Strength 0.4:
+
+![harmonise 0.4](../img/artplus_harmonise_s40.jpg)
+
+Strength 0.6:
+
+![harmonise 0.6](../img/artplus_harmonise_s60.jpg)
+
+It does **not** close the style gap: the glossy objects stay glossy and oversized, edges gain halos and stray fragments at 0.6, and IC-Light adds colour casts (a pink tree trunk). Matching style would need a stronger restyle than the pin-and-paste-back `relocate()` allows, or generating the background in ART+'s own style (its whole-image frame). Results: `prototype/kaggle/results_harmonise_artplus/`.
 
 ## Facts from the paper and repo
 
