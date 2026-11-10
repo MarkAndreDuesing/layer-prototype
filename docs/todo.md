@@ -62,3 +62,12 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 ## 5. Documentation
 - [ ] Keep factsheets and [status.md](status.md) in sync after each run; run `prototype/tools/check_doc_links.py` before pushing.
+
+## Next from the user's first-look assessment (2026-11-11)
+
+- [ ] **Qwen-Image-Layered extracts noise on the fox & cottage scene** although the forest runs (`results_qwen_sweep_v5`, `results_qwen_v7_layers`) were good: find out what changed (scene, resolution, caption, code) with the `qwen-layered-diag` session; remove from consideration if unfixable.
+- [ ] **Qwen Lightning**: check whether the story-composite use can be improved; otherwise discard.
+- [ ] **Qwen-Image-2.1 image-to-image**: compare with other image-to-image models (those cannot split layers); test relight further together with IC-Light.
+- [ ] **Combined run**: best model per purpose (story edit: Qwen-2.1; split: Stable-Layers; background: RevealLayer / Qwen-2.1 removal; relight: IC-Light + Qwen-2.1; shadows; boxes: RevealLayer), with the models and their roles stated for every output.
+- [ ] Fill the 30 s benchmark rows for the remaining profiles (`sam2`, `reveallayer`, `cld`, `artplus`; sessions started 2026-11-11).
+- Verdict notes (the user's) are in each factsheet under the role line.

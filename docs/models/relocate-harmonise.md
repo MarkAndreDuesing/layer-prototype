@@ -2,6 +2,8 @@
 
 > **Role: current factsheet** (an approach we built, not a released model). Template: [TEMPLATE.md](TEMPLATE.md). Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Interesting and very fast, but moving and resizing is probably best done by direct user interaction with individual layers. Re-harmonising could still be useful.
+
 **Type:** layer + new box + the scene below it → the layer re-drawn at its new place, matching the new surroundings.
 
 ## What it does

@@ -2,6 +2,8 @@
 
 > **Role: current factsheet** (approaches compared, not one model). Template: [TEMPLATE.md](TEMPLATE.md). Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Qwen-2.1 extraction strip (cottage a, cottage b, tree, fox, fox removed): good. SDXL-inpaint fills: good for the first three panels, terrible for the other two, it cannot add elements convincingly. Everything else: bad.
+
 **Type:** an object layer cut from a scene (with parts hidden behind other objects) → the whole object.
 
 ## What it does

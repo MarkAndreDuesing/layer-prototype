@@ -1,6 +1,8 @@
 # Qwen-Image-Lightning LoRA (on Qwen-Image-Layered)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** As bad at layer extraction as Qwen-Image-Layered. Maybe ok for story composites, worth seeing whether that can be improved; otherwise discard.
+
 ## What it does
 
 lightx2v's distillation LoRA for plain Qwen-Image (4–8 steps). Untested on Layered before us.

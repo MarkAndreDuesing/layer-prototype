@@ -1,6 +1,8 @@
 # Stable-Layers (Stability AI)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Pretty decent layer extraction, particularly useful for story composites (with a Qwen-Image-2.1 edit).
+
 ## What it does
 
 An RL-tuned LoRA (330 MB, PEFT, 420 modules) on top of Qwen-Image-Layered, trained with a VLM teacher for cleaner semantic splits.

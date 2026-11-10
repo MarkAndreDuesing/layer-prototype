@@ -1,6 +1,8 @@
 # Qwen-Image-2.1 (RGBA)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Very useful for scene editing and story-event composites. Also a useful decompose method (with successful background inpainting) and good layer splitting together with Stable-Layers. A bit slow (maybe better for adding single layers or modifying scenes). The only model here that supports image-to-image: worth comparing with other image-to-image models that cannot split layers.
+
 ## What it does
 
 7B text-to-image and editing model with a native 4-channel (RGBA) VAE: generates transparent images, **edits a transparent layer**, **extracts a subject** from an image, local and multi-reference edits. No multi-layer split mode.

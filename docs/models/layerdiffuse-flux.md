@@ -1,6 +1,8 @@
 # LayerDiffuse-Flux
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** TBD.
+
 ## What it does
 
 LayerDiffuse's transparency for FLUX.1-dev: a LoRA plus a transparent VAE decoder; text → one transparent image.

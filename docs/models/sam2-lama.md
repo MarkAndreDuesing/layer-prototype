@@ -1,6 +1,8 @@
 # Generate → SAM2 → LaMa (segment + inpaint)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Very fast, but quite bad layer splitting and inpainting (the inpainting is modular: another model can do it).
+
 ## What it does
 
 Build-your-own decomposition: segment objects with SAM2, cut each out as a layer, inpaint the holes in the background with LaMa (optionally amodal completion).

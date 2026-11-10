@@ -139,12 +139,19 @@ class QwenLayeredDecomposer:
         emb = self.emb.get(p.caption) or self.emb[GENERIC_CAPTION]
         sampler = getattr(p, "sampler", "euler")
         layers, st = Q.decompose(self.pipe, self.tr, image.convert("RGB").resize((p.resolution, p.resolution)), p.caption or GENERIC_CAPTION,
-                                 emb, steps=p.steps, layers=p.n_layers, resolution=p.resolution, seed=p.seed or 777, true_cfg=1.0,
+                                 emb, steps=p.steps, layers=p.n_layers, resolution=p.resolution, seed=p.seed or 777, true_cfg=float(getattr(p, "cfg", 1.0)),
                                  offload=False, sampler=sampler)
         self.last_stats = st
         split_across_gpus(self.tr)                      # decompose() unregisters the transformer; keep the split in place
         size = image.size
         return [L.convert("RGBA").resize(size) for L in layers]
+
+
+def make_diag(log=print):
+    """Diagnosis profile: also encodes the forest caption and the empty caption."""
+    from .profiles import CAPTION, PROFILES
+    caps = [CAPTION, ""] + [c.params.caption for c in PROFILES["qwen-layered-diag"].cases]
+    return QwenLayeredDecomposer(captions=caps, log=log)
 
 
 def make(log=print):

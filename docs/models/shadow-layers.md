@@ -2,6 +2,8 @@
 
 > **Role: current factsheet** (CPU component we wrote, not a released model). Template: [TEMPLATE.md](TEMPLATE.md). Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Not really a model, but useful for what it does.
+
 **Type:** RGBA object layer → a black RGBA shadow layer that sits between the background and the object and moves with it.
 
 ## What it does

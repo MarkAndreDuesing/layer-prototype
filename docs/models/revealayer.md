@@ -1,6 +1,8 @@
 # RevealLayer (ICML 2026)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Good layer removal and background inpainting (`results_reveallayer_v11/reveal_out/gs1.0_st12/forest/bg_rgba.png`). Layer extraction ok but very slow; the layers follow the boxes, which could be a useful feature.
+
 ## What it does
 
 Image + one box per object → RGBA layers, **including the hidden parts** (amodal completion), plus a background with the objects removed and filled in.

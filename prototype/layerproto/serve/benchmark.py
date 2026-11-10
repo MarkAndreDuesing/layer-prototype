@@ -33,9 +33,10 @@ def strip(inp, layers, tile=256):
 
 def run_cases(decomposer, cases, out_dir, scene=SCENE, log=print):
     os.makedirs(out_dir, exist_ok=True)
-    inp = Image.open(scene).convert("RGB").resize((512, 512))
     results = []
     for c in cases:
+        sp = os.path.join(os.path.dirname(scene), c.scene + ".png")
+        inp = Image.open(sp).convert("RGB").resize((512, 512))
         row = dict(tag=c.tag, path=c.path, note=c.note, params=asdict(c.params))
         try:
             secs, layers = [], None

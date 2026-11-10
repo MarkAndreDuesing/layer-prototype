@@ -1,6 +1,8 @@
 # CLD (Controllable Layer Decomposition)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Layer extraction is ok, but not as good as others. Adding replacement backgrounds is interesting. The v4 Qwen-Image-2.1 night and heavy-rain edits show good style variation.
+
 ## What it does
 
 Image + caption + one box per layer → RGBA whole image, background and one layer per box. Fine-tuned FLUX.1-dev (ART base + PrismLayers fine-tune + decouple LoRA) with an inpainting ControlNet adapter.

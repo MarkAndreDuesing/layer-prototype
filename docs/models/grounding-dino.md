@@ -2,6 +2,8 @@
 
 > **Role: current factsheet** (helper model). Template: [TEMPLATE.md](TEMPLATE.md). Verdicts are the user's.
 
+> **User assessment (first look, 2026-11-11):** Layer extraction not the best, but very fast.
+
 **Type:** image + a noun (or phrase) → a bounding box, which then prompts SAM2 for a mask ([sam2-lama.md](sam2-lama.md)).
 
 ## What it does

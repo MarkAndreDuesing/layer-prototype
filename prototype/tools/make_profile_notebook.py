@@ -39,6 +39,11 @@ with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
             if fn.endswith(".py"):
                 full = os.path.join(root, fn)
                 z.write(full, os.path.join("prototype", os.path.relpath(full, PROTO)))
+    for rel, src in prof.files.items():          # extra images: 512 px JPEG data (the Kaggle API rejects notebooks of about 1.1 MB and more)
+        from PIL import Image
+        b = io.BytesIO()
+        Image.open(os.path.join(os.path.dirname(PROTO), src)).convert("RGB").resize((512, 512)).save(b, "JPEG", quality=88)
+        z.writestr(f"prototype/{rel}", b.getvalue())
     for fn in ("fox_cottage.png", "fox_cottage.json"):
         z.write(os.path.join(PROTO, "test_scene", fn), f"prototype/test_scene/{fn}")
 code_b64 = base64.b64encode(buf.getvalue()).decode()

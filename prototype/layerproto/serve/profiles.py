@@ -25,6 +25,7 @@ class Case:
     params: DecomposeParams
     note: str = ""
     repeats: int = 2               # the first call warms up (kernels, caches); report the last
+    scene: str = "fox_cottage"     # image name under prototype/test_scene (the notebook zip carries Profile.files)
 
 
 @dataclass
@@ -36,6 +37,7 @@ class Profile:
     gpu: str = "NvidiaTeslaT4"
     factory: str = ""              # "module:function" returning a decomposer callable (image, DecomposeParams) -> layers
     cases: list = field(default_factory=list)
+    files: dict = field(default_factory=dict)       # extra files for the zip: {path inside prototype/: path relative to the repo root}
     doc: str = ""
 
 
@@ -107,5 +109,20 @@ PROFILES = {
         cases=[
             Case("reveallayer_A", "A", P(method="reveallayer", boxes=BOXES, steps=16, guidance=3.5, resolution=512), "512 px, 5 boxes, true_gs 3.5, 16 steps", repeats=1),
             Case("reveallayer_B", "B", P(method="reveallayer", boxes=BOXES, steps=6, guidance=1.0, resolution=512), "512 px, 5 boxes, true_gs 1.0, 6 steps (cheapest setting, quality not checked)", repeats=2),
+        ]),
+    "qwen-layered-diag": Profile(
+        name="qwen-layered-diag",
+        pip=["diffusers==0.37.0 transformers>=4.51 accelerate gguf"],
+        kernel_sources=["markandreduesing/qwen-layered-weights-transformer", "markandreduesing/qwen-layered-weights-base"],
+        factory="layerproto.serve.qwen_layered:make_diag",
+        files={"test_scene/forest.png": "experiments/blkE__P2__textonly__sdxlturbo-steps4-g1.0__seed11__impressionist.png"},
+        doc="docs/models/qwen-image-layered.md (diagnosis of the weak fox & cottage split)",
+        cases=[
+            Case("diag_forest_384", "A", DecomposeParams(caption='An impressionist oil painting of a forest clearing at night: tall pine trees and bare trees, a full moon and stars in a blue sky, distant mountains, a campfire with logs in the middle, a wooden chair next to it, rocks and fallen branches on the ground.', method="qwen-layered", resolution=384, n_layers=4, steps=4), "control: forest, 384 px, 4 layers, 4 steps (the old good setting)", repeats=1, scene="forest"),
+            Case("diag_fox_384", "A", P(method="qwen-layered", resolution=384, n_layers=4, steps=4), "fox, 384 px, 4 layers, 4 steps", repeats=1),
+            Case("diag_fox_384_nocaption", "A", DecomposeParams(caption="", method="qwen-layered", resolution=384, n_layers=4, steps=4), "fox, 384 px, empty caption", repeats=1),
+            Case("diag_fox_640_4st", "A", P(method="qwen-layered", resolution=640, n_layers=4, steps=4), "fox, 640 px (native), 4 layers, 4 steps", repeats=1),
+            Case("diag_fox_640_20st", "A", P(method="qwen-layered", resolution=640, n_layers=4, steps=20), "fox, 640 px, 4 layers, 20 steps", repeats=1),
+            Case("diag_fox_640_cfg4", "A", P(method="qwen-layered", resolution=640, n_layers=4, steps=12, cfg=4.0), "fox, 640 px, 12 steps, CFG 4", repeats=1),
         ]),
 }
