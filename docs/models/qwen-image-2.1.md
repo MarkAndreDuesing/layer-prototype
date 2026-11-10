@@ -100,9 +100,17 @@ One scene image in, one object out as RGBA, about 23-27 s each after the 240 s l
 
 Files: `prototype/kaggle/results_qwen21_extract/`.
 
-### As a `/decompose` method (code ready, not yet run through the route)
+### As a `/decompose` method (run through the real route, 2026-11-10)
 
-[qwen21_decomposer.py](../../prototype/layerproto/backends/qwen21_decomposer.py) turns the prompts above into the app's decomposer contract (`method="qwen21-extract"`): one "remove all named objects" call for the background, then one extract call per name from the original image, each naming the objects in front of it as exclusions, retrying with the next seed if a layer comes back empty or flooded. `MethodRouter` in `decomposer.py` lets one server offer it next to `sam2-lama`. Logic tested with a stub pipeline (`prototype/tools/test_qwen21_decomposer.py`). Open: a server notebook that loads the Qwen-2.1 pipeline (about 4 min, both T4s) and serves it, then a run through the real route.
+[qwen21_decomposer.py](../../prototype/layerproto/backends/qwen21_decomposer.py) turns the prompts above into the app's decomposer contract (`method="qwen21-extract"`): one "remove all named objects" call for the background, then one extract call per name from the original image, each naming the objects in front of it as exclusions, retrying with the next seed if a layer comes back empty or flooded. `MethodRouter` in `decomposer.py` lets one server offer it next to `sam2-lama`. Logic tested with a stub pipeline (`prototype/tools/test_qwen21_decomposer.py`). 
+**Through the FastAPI route** (in-process test client inside the T4 x2 session, `MethodRouter` with `qwen21-extract`, 512 px, boxes and four names): HTTP 200 in 114 s after a 236 s load. Strip: background, cottage, gate arch, tree, fox, recomposite.
+
+![Qwen-2.1 through /decompose](../img/qwen21_route.jpg)
+
+- The **background** comes out clean, hole-free and coherent, with every named object removed (the SAM2 + LaMa background is smeared where the cottage and tree were).
+- Cottage, tree and fox are whole and clean. The **arch** came back larger than in the scene (the extract prompt has no position, so the model redraws it big) and overlaps the fox in the recomposite; the boxes are not used by this method for position. Next: pass the box as a crop or a position hint, or paste the extracted object back into its box.
+- An unknown method raised a server error in this run (the status showed ERROR although all outputs were produced); the route now answers HTTP 400 with the list of methods.
+- Not yet served through the tunnel (needs a server notebook that loads this pipeline).
 
 ## Best features
 

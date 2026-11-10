@@ -71,6 +71,10 @@ It does **not** close the style gap: the glossy objects stay glossy and oversize
 | diffusers ≥ 0.32 | FLUX `vae_scale_factor` changed from 16 to 8 → set `pipe.vae_scale_factor = 16`, else latents for twice the size and boxes in one corner |
 | LoRA files | diffusers format, no alpha keys (scale 1.0); ART / ART+ rank 64, pre-fuse rank 16 |
 
+## 1024 px scaling probe (T4 x2, 5 boxes of the fox & cottage scene, 2 steps, 2026-11-10)
+
+To avoid a 50-minute run, one session measured only 2 denoising steps at 1024 px (boxes doubled): load 290 s, **2 steps 395 s, peak 11.0 GiB on GPU 0**. So 1024 px **fits in memory** (the 512 px run peaked at 8.6 GiB). Per step that is about 190 s against about 21 s at 512 px (343 s for 16 steps), roughly 9x, so a 16-step run at 1024 px would take about 50 min and 8 steps about 25 min; both exceed the 25-min cap used in the trials (the cap can be raised to 55 min). Two steps give noise, so no quality is claimed. Files: `prototype/kaggle/results_artplus_1024/`.
+
 ## Best features
 
 The only released FLUX model that makes a layered scene straight from text + boxes (boxes can come from our LLM breakdown).

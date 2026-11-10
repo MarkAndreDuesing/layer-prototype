@@ -1,65 +1,348 @@
-[{"stream_name":"stderr","time":9.060861739,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
-,{"stream_name":"stderr","time":9.060904386,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
-,{"stream_name":"stderr","time":10.367361033,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":10.367385967,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":10.367391049,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":10.367394846,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stderr","time":11.054121122,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":11.05414797,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":11.054152674,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":11.054156219,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stdout","time":12.479443222,"data":"pip -q install 'transformers\u003e=5.17' gguf\u003e=0.10 accelerate git+https://github.com/huggingface/diffusers\n"}
-,{"stream_name":"stdout","time":81.745075354,"data":"diffusers 0.42.0.dev0 torch 2.11.0+cu130\n"}
-,{"stream_name":"stderr","time":82.260526092,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
-,{"stream_name":"stderr","time":82.260555999,"data":"\n"}
-,{"stream_name":"stderr","time":82.260562277,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
-,{"stream_name":"stdout","time":189.063471007,"data":"downloads done 177 s\n"}
-,{"stream_name":"stdout","time":192.017984841,"data":"transformer: GGUF Q4_K_S\n"}
-,{"stream_name":"stdout","time":192.028483024,"data":"dequantized non-linear GGUF params: 1\n"}
-,{"stream_name":"stderr","time":193.266292843,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
-,{"stream_name":"stderr","time":193.266323432,"data":"\n"}
-,{"stream_name":"stderr","time":193.266328929,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
-,{"stream_name":"stderr","time":255.855494128,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
-,{"stream_name":"stderr","time":255.856332474,"data":"  warnings.warn(\n"}
-,{"stream_name":"stderr","time":255.856363884,"data":"\n"}
-,{"stream_name":"stderr","time":255.856369716,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
-,{"stream_name":"stderr","time":255.856375254,"data":"  warnings.warn(\n"}
-,{"stream_name":"stderr","time":265.738137236,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
-,{"stream_name":"stderr","time":265.738182658,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
-,{"stream_name":"stderr","time":265.738186753,"data":"\n"}
-,{"stream_name":"stderr","time":265.738189408,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
-,{"stream_name":"stderr","time":265.738192338,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
-,{"stream_name":"stdout","time":269.183212211,"data":"loaded 257 s; GiB [8.0, 12.7]\n"}
-,{"stream_name":"stdout","time":269.193716805,"data":"pip -q install fastapi httpx\n"}
-,{"stream_name":"stderr","time":277.804542029,"data":"Traceback (most recent call last):\n"}
-,{"stream_name":"stderr","time":277.805218181,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
-,{"stream_name":"stderr","time":277.805232231,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
-,{"stream_name":"stderr","time":277.805237069,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
-,{"stream_name":"stderr","time":277.805241421,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
-,{"stream_name":"stderr","time":277.805245262,"data":"    raise_for_execution_errors(nb, output_path)\n"}
-,{"stream_name":"stderr","time":277.805250271,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
-,{"stream_name":"stderr","time":277.805256814,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
-,{"stream_name":"stderr","time":277.805259226,"data":"    raise error\n"}
-,{"stream_name":"stderr","time":277.805261442,"data":"papermill.exceptions.PapermillExecutionError: \n"}
-,{"stream_name":"stderr","time":277.805263687,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":277.805266028,"data":"Exception encountered at \"In [1]\":\n"}
-,{"stream_name":"stderr","time":277.805268517,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":277.805270743,"data":"ModuleNotFoundError                       Traceback (most recent call last)\n"}
-,{"stream_name":"stderr","time":277.805272975,"data":"/tmp/ipykernel_23/3464737957.py in \u003ccell line: 0\u003e()\n"}
-,{"stream_name":"stderr","time":277.805275367,"data":"     95 client = TestClient(build_app(stub, \"tok\", decomposer=MethodRouter({\"qwen21-extract\": dec})))\n"}
-,{"stream_name":"stderr","time":277.805277899,"data":"     96 import requests\n"}
-,{"stream_name":"stderr","time":277.805280084,"data":"---\u003e 97 from layerproto.remote import img_to_b64, b64_to_img\n"}
-,{"stream_name":"stderr","time":277.805282379,"data":"     98 BOXES = [[95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]]\n"}
-,{"stream_name":"stderr","time":277.805285191,"data":"     99 NAMES = [\"cottage\", \"stone gate arch\", \"big tree\", \"red fox\"]\n"}
-,{"stream_name":"stderr","time":277.805301121,"data":"\n"}
-,{"stream_name":"stderr","time":277.805316117,"data":"ModuleNotFoundError: No module named 'layerproto.remote'\n"}
-,{"stream_name":"stderr","time":277.805320501,"data":"\n"}
-,{"stream_name":"stderr","time":280.38311936,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":280.383158847,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":280.752403117,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":280.752426173,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":281.577748987,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
-,{"stream_name":"stderr","time":281.667544901,"data":"[NbConvertApp] Writing 329201 bytes to __notebook__.ipynb\n"}
-,{"stream_name":"stderr","time":284.188961195,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
-,{"stream_name":"stderr","time":285.198366232,"data":"[NbConvertApp] Writing 615555 bytes to __results__.html\n"}
+[{"stream_name":"stderr","time":6.552621966,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.55266278,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.448629748,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.448673226,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.448678522,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.448682869,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.04136602,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.041392996,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.041397755,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.041410144,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.252215439,"data":"pip -q install 'transformers\u003e=5.17' gguf\u003e=0.10 accelerate git+https://github.com/huggingface/diffusers\n"}
+,{"stream_name":"stdout","time":62.09457568,"data":"diffusers 0.42.0.dev0 torch 2.11.0+cu130\n"}
+,{"stream_name":"stderr","time":62.465681414,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":62.46572707,"data":"\n"}
+,{"stream_name":"stderr","time":62.465735502,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":165.728212491,"data":"downloads done 156 s\n"}
+,{"stream_name":"stdout","time":169.082806333,"data":"transformer: GGUF Q4_K_S\n"}
+,{"stream_name":"stdout","time":169.092456596,"data":"dequantized non-linear GGUF params: 1\n"}
+,{"stream_name":"stderr","time":170.360544189,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":170.360572651,"data":"\n"}
+,{"stream_name":"stderr","time":170.360579447,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":233.410937258,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":233.411966822,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":233.411983271,"data":"\n"}
+,{"stream_name":"stderr","time":233.411988535,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":233.411993775,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":242.777766529,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":242.777825343,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stderr","time":242.777831573,"data":"\n"}
+,{"stream_name":"stderr","time":242.777835176,"data":"/usr/local/lib/python3.13/dist-packages/diffusers/utils/deprecation_utils.py:23: FutureWarning: `torch_dtype` is deprecated and will be removed in version 1.0.0. Please use `dtype` instead.\n"}
+,{"stream_name":"stderr","time":242.777839302,"data":"  deprecate(\"torch_dtype\", \"1.0.0\", _TORCH_DTYPE_DEPRECATION_MESSAGE)\n"}
+,{"stream_name":"stdout","time":245.493127748,"data":"loaded 236 s; GiB [8.0, 12.7]\n"}
+,{"stream_name":"stdout","time":245.501189437,"data":"pip -q install fastapi httpx\n"}
+,{"stream_name":"stdout","time":363.342332985,"data":"route status 200 114 s\n"}
+,{"stream_name":"stdout","time":363.537264911,"data":"layer 0 RGBA, transparent 0%, opaque 100%\n"}
+,{"stream_name":"stdout","time":363.64230811,"data":"layer 1 RGBA, transparent 74%, opaque 25%\n"}
+,{"stream_name":"stdout","time":363.72495193,"data":"layer 2 RGBA, transparent 87%, opaque 12%\n"}
+,{"stream_name":"stdout","time":363.810327895,"data":"layer 3 RGBA, transparent 83%, opaque 16%\n"}
+,{"stream_name":"stdout","time":363.893488034,"data":"layer 4 RGBA, transparent 97%, opaque 2%\n"}
+,{"stream_name":"stderr","time":367.818469082,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":367.819194553,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":367.819216243,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":367.819223177,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":367.819228582,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":367.819233313,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":367.819237766,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":367.819242029,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":367.819246523,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":367.81959179,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":367.81961492,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":367.819622223,"data":"Exception encountered at \"In [1]\":\n"}
+,{"stream_name":"stderr","time":367.819628135,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":367.819633653,"data":"ValueError                                Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":367.819639541,"data":"/tmp/ipykernel_23/2475209545.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":367.819644376,"data":"    107 from layerproto.backends.decomposer import recomposite\n"}
+,{"stream_name":"stderr","time":367.819661782,"data":"    108 recomposite(layers).convert(\"RGB\").save(\"/kaggle/working/route/recomposite.png\")\n"}
+,{"stream_name":"stderr","time":367.819667026,"data":"--\u003e 109 bad = client.post(\"/decompose\", json={\"params\": asdict(DecomposeParams(method=\"nope\", names=NAMES)), \"image\": img_to_b64(SCENE)}, headers={\"X-Token\": \"tok\"})\n"}
+,{"stream_name":"stderr","time":367.819672161,"data":"    110 print(\"unknown method -\u003e\", bad.status_code, bad.text[:120], flush=True)\n"}
+,{"stream_name":"stderr","time":367.81967625,"data":"    111 print(\"total\", round(time.time() - _T0), \"s\", flush=True)\n"}
+,{"stream_name":"stderr","time":367.819681327,"data":"\n"}
+,{"stream_name":"stderr","time":367.819684508,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_client.py in post(self, url, content, data, files, json, params, headers, cookies, auth, follow_redirects, timeout, extensions)\n"}
+,{"stream_name":"stderr","time":367.819689083,"data":"   1201         **Parameters**: See `httpx2.request`.\n"}
+,{"stream_name":"stderr","time":367.819692994,"data":"   1202         \"\"\"\n"}
+,{"stream_name":"stderr","time":367.819696942,"data":"-\u003e 1203         return self.request(\n"}
+,{"stream_name":"stderr","time":367.819700963,"data":"   1204             \"POST\",\n"}
+,{"stream_name":"stderr","time":367.81971991,"data":"   1205             url,\n"}
+,{"stream_name":"stderr","time":367.819727641,"data":"\n"}
+,{"stream_name":"stderr","time":367.819732164,"data":"/usr/local/lib/python3.13/dist-packages/starlette/testclient.py in request(self, method, url, content, data, files, json, params, headers, cookies, auth, follow_redirects, timeout, extensions)\n"}
+,{"stream_name":"stderr","time":367.819736458,"data":"    516             )\n"}
+,{"stream_name":"stderr","time":367.819740887,"data":"    517         url = self._merge_url(url)\n"}
+,{"stream_name":"stderr","time":367.819744555,"data":"--\u003e 518         return super().request(\n"}
+,{"stream_name":"stderr","time":367.819748819,"data":"    519             method,\n"}
+,{"stream_name":"stderr","time":367.819753421,"data":"    520             url,\n"}
+,{"stream_name":"stderr","time":367.819758057,"data":"\n"}
+,{"stream_name":"stderr","time":367.819761904,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_client.py in request(self, method, url, content, data, files, json, params, headers, cookies, auth, follow_redirects, timeout, extensions)\n"}
+,{"stream_name":"stderr","time":367.819765607,"data":"    794             extensions=extensions,\n"}
+,{"stream_name":"stderr","time":367.819769907,"data":"    795         )\n"}
+,{"stream_name":"stderr","time":367.819773733,"data":"--\u003e 796         return self.send(request, auth=auth, follow_redirects=follow_redirects)\n"}
+,{"stream_name":"stderr","time":367.819778113,"data":"    797 \n"}
+,{"stream_name":"stderr","time":367.819781942,"data":"    798     @contextmanager\n"}
+,{"stream_name":"stderr","time":367.819785894,"data":"\n"}
+,{"stream_name":"stderr","time":367.819790215,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_client.py in send(self, request, stream, auth, follow_redirects)\n"}
+,{"stream_name":"stderr","time":367.819796403,"data":"    991         except BaseException as exc:\n"}
+,{"stream_name":"stderr","time":367.819800126,"data":"    992             response.close()\n"}
+,{"stream_name":"stderr","time":367.819804684,"data":"--\u003e 993             raise exc\n"}
+,{"stream_name":"stderr","time":367.819808538,"data":"    994 \n"}
+,{"stream_name":"stderr","time":367.819811851,"data":"    995     def _send_handling_auth(\n"}
+,{"stream_name":"stderr","time":367.819815599,"data":"\n"}
+,{"stream_name":"stderr","time":367.81982537,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_client.py in send(self, request, stream, auth, follow_redirects)\n"}
+,{"stream_name":"stderr","time":367.819829877,"data":"    985         try:\n"}
+,{"stream_name":"stderr","time":367.819834467,"data":"    986             if not stream:\n"}
+,{"stream_name":"stderr","time":367.819838855,"data":"--\u003e 987                 response.read()\n"}
+,{"stream_name":"stderr","time":367.819843132,"data":"    988 \n"}
+,{"stream_name":"stderr","time":367.819847398,"data":"    989             return response\n"}
+,{"stream_name":"stderr","time":367.819851367,"data":"\n"}
+,{"stream_name":"stderr","time":367.819855095,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_models.py in read(self)\n"}
+,{"stream_name":"stderr","time":367.819860382,"data":"    875         \"\"\"\n"}
+,{"stream_name":"stderr","time":367.81986517,"data":"    876         if not hasattr(self, \"_content\"):\n"}
+,{"stream_name":"stderr","time":367.819869389,"data":"--\u003e 877             self._content = b\"\".join(self.iter_bytes())\n"}
+,{"stream_name":"stderr","time":367.819873435,"data":"    878         return self._content\n"}
+,{"stream_name":"stderr","time":367.819877721,"data":"    879 \n"}
+,{"stream_name":"stderr","time":367.819881763,"data":"\n"}
+,{"stream_name":"stderr","time":367.819884853,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_models.py in iter_bytes(self, chunk_size)\n"}
+,{"stream_name":"stderr","time":367.819888703,"data":"    891             chunker = ByteChunker(chunk_size=chunk_size)\n"}
+,{"stream_name":"stderr","time":367.819892713,"data":"    892             with request_context(request=self._request):\n"}
+,{"stream_name":"stderr","time":367.819896621,"data":"--\u003e 893                 for raw_bytes in self.iter_raw():\n"}
+,{"stream_name":"stderr","time":367.819900909,"data":"    894                     for decoded in decoder.decode(raw_bytes):\n"}
+,{"stream_name":"stderr","time":367.819904881,"data":"    895                         for chunk in chunker.decode(decoded):\n"}
+,{"stream_name":"stderr","time":367.819908683,"data":"\n"}
+,{"stream_name":"stderr","time":367.819912361,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_models.py in iter_raw(self, chunk_size)\n"}
+,{"stream_name":"stderr","time":367.819916488,"data":"    946         try:\n"}
+,{"stream_name":"stderr","time":367.81992019,"data":"    947             with request_context(request=self._request):\n"}
+,{"stream_name":"stderr","time":367.819935059,"data":"--\u003e 948                 for raw_stream_bytes in self.stream:\n"}
+,{"stream_name":"stderr","time":367.819938947,"data":"    949                     self._num_bytes_downloaded += len(raw_stream_bytes)\n"}
+,{"stream_name":"stderr","time":367.819942771,"data":"    950                     for chunk in chunker.decode(raw_stream_bytes):\n"}
+,{"stream_name":"stderr","time":367.819947307,"data":"\n"}
+,{"stream_name":"stderr","time":367.81995096,"data":"/usr/local/lib/python3.13/dist-packages/httpx2/_client.py in __iter__(self)\n"}
+,{"stream_name":"stderr","time":367.819955761,"data":"    141 \n"}
+,{"stream_name":"stderr","time":367.819959292,"data":"    142     def __iter__(self) -\u003e typing.Iterator[bytes]:\n"}
+,{"stream_name":"stderr","time":367.819963212,"data":"--\u003e 143         yield from self._stream\n"}
+,{"stream_name":"stderr","time":367.819966625,"data":"    144 \n"}
+,{"stream_name":"stderr","time":367.81997029,"data":"    145     def close(self) -\u003e None:\n"}
+,{"stream_name":"stderr","time":367.819973986,"data":"\n"}
+,{"stream_name":"stderr","time":367.819977341,"data":"/usr/local/lib/python3.13/dist-packages/starlette/testclient.py in iter_body()\n"}
+,{"stream_name":"stderr","time":367.819985024,"data":"    382                 if request.method != \"HEAD\" and body:\n"}
+,{"stream_name":"stderr","time":367.819988657,"data":"    383                     yield body\n"}
+,{"stream_name":"stderr","time":367.819991934,"data":"--\u003e 384             exit_stack.close()\n"}
+,{"stream_name":"stderr","time":367.819995147,"data":"    385 \n"}
+,{"stream_name":"stderr","time":367.819998149,"data":"    386         def cancel_if_incomplete() -\u003e None:\n"}
+,{"stream_name":"stderr","time":367.82000155,"data":"\n"}
+,{"stream_name":"stderr","time":367.820004534,"data":"/usr/lib/python3.13/contextlib.py in close(self)\n"}
+,{"stream_name":"stderr","time":367.820007751,"data":"    625     def close(self):\n"}
+,{"stream_name":"stderr","time":367.820011451,"data":"    626         \"\"\"Immediately unwind the context stack.\"\"\"\n"}
+,{"stream_name":"stderr","time":367.820014796,"data":"--\u003e 627         self.__exit__(None, None, None)\n"}
+,{"stream_name":"stderr","time":367.820018099,"data":"    628 \n"}
+,{"stream_name":"stderr","time":367.820021137,"data":"    629 \n"}
+,{"stream_name":"stderr","time":367.820024138,"data":"\n"}
+,{"stream_name":"stderr","time":367.820027193,"data":"/usr/lib/python3.13/contextlib.py in __exit__(self, *exc_details)\n"}
+,{"stream_name":"stderr","time":367.820031961,"data":"    617                 # set-up context\n"}
+,{"stream_name":"stderr","time":367.820057277,"data":"    618                 fixed_ctx = exc.__context__\n"}
+,{"stream_name":"stderr","time":367.820059903,"data":"--\u003e 619                 raise exc\n"}
+,{"stream_name":"stderr","time":367.820082042,"data":"    620             except BaseException:\n"}
+,{"stream_name":"stderr","time":367.820086498,"data":"    621                 exc.__context__ = fixed_ctx\n"}
+,{"stream_name":"stderr","time":367.820090006,"data":"\n"}
+,{"stream_name":"stderr","time":367.820093217,"data":"/usr/lib/python3.13/contextlib.py in __exit__(self, *exc_details)\n"}
+,{"stream_name":"stderr","time":367.820096757,"data":"    602                 else:\n"}
+,{"stream_name":"stderr","time":367.820100272,"data":"    603                     exc_details = type(exc), exc, exc.__traceback__\n"}
+,{"stream_name":"stderr","time":367.820103792,"data":"--\u003e 604                 if cb(*exc_details):\n"}
+,{"stream_name":"stderr","time":367.820107223,"data":"    605                     suppressed_exc = True\n"}
+,{"stream_name":"stderr","time":367.820110648,"data":"    606                     pending_raise = False\n"}
+,{"stream_name":"stderr","time":367.820113969,"data":"\n"}
+,{"stream_name":"stderr","time":367.820117163,"data":"/usr/local/lib/python3.13/dist-packages/starlette/testclient.py in close_app(exc_type, *_)\n"}
+,{"stream_name":"stderr","time":367.820120569,"data":"    397             self._open_requests.discard(abort)\n"}
+,{"stream_name":"stderr","time":367.820128157,"data":"    398             if exc_type is None and self.raise_server_exceptions and (exception := app_task.exception()):\n"}
+,{"stream_name":"stderr","time":367.820131691,"data":"--\u003e 399                 raise exception\n"}
+,{"stream_name":"stderr","time":367.820135485,"data":"    400 \n"}
+,{"stream_name":"stderr","time":367.820138811,"data":"    401         def abort() -\u003e None:\n"}
+,{"stream_name":"stderr","time":367.820147786,"data":"\n"}
+,{"stream_name":"stderr","time":367.820150305,"data":"/usr/local/lib/python3.13/dist-packages/anyio/from_thread.py in _call_func(self, func, args, kwargs, future)\n"}
+,{"stream_name":"stderr","time":367.820152703,"data":"    263                 with CancelScope() as scope:\n"}
+,{"stream_name":"stderr","time":367.820158581,"data":"    264                     future.add_done_callback(callback)\n"}
+,{"stream_name":"stderr","time":367.820160998,"data":"--\u003e 265                     retval = await retval_or_awaitable\n"}
+,{"stream_name":"stderr","time":367.82016339,"data":"    266             else:\n"}
+,{"stream_name":"stderr","time":367.820165681,"data":"    267                 retval = retval_or_awaitable\n"}
+,{"stream_name":"stderr","time":367.820168063,"data":"\n"}
+,{"stream_name":"stderr","time":367.820170236,"data":"/usr/local/lib/python3.13/dist-packages/starlette/testclient.py in run_app()\n"}
+,{"stream_name":"stderr","time":367.820172577,"data":"    364                 with cancel_scope:\n"}
+,{"stream_name":"stderr","time":367.820174846,"data":"    365                     async with body_tx:\n"}
+,{"stream_name":"stderr","time":367.820177151,"data":"--\u003e 366                         await self.app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820179526,"data":"    367             finally:\n"}
+,{"stream_name":"stderr","time":367.820181799,"data":"    368                 response_available.set()\n"}
+,{"stream_name":"stderr","time":367.820184105,"data":"\n"}
+,{"stream_name":"stderr","time":367.820186295,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/applications.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820188712,"data":"   1161         if self.root_path:\n"}
+,{"stream_name":"stderr","time":367.820190988,"data":"   1162             scope[\"root_path\"] = self.root_path\n"}
+,{"stream_name":"stderr","time":367.82019343,"data":"-\u003e 1163         await super().__call__(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820195815,"data":"   1164 \n"}
+,{"stream_name":"stderr","time":367.820198025,"data":"   1165     def add_api_route(\n"}
+,{"stream_name":"stderr","time":367.820200395,"data":"\n"}
+,{"stream_name":"stderr","time":367.820204113,"data":"/usr/local/lib/python3.13/dist-packages/starlette/applications.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820206579,"data":"     94         if self.middleware_stack is None:\n"}
+,{"stream_name":"stderr","time":367.820208888,"data":"     95             self.middleware_stack = self.build_middleware_stack()\n"}
+,{"stream_name":"stderr","time":367.82021124,"data":"---\u003e 96         await self.middleware_stack(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820213659,"data":"     97 \n"}
+,{"stream_name":"stderr","time":367.820215859,"data":"     98     def mount(self, path: str, app: ASGIApp, name: str | None = None) -\u003e None:\n"}
+,{"stream_name":"stderr","time":367.820218321,"data":"\n"}
+,{"stream_name":"stderr","time":367.820220515,"data":"/usr/local/lib/python3.13/dist-packages/starlette/middleware/errors.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820222913,"data":"    184             # This allows servers to log the error, or allows test clients\n"}
+,{"stream_name":"stderr","time":367.820225285,"data":"    185             # to optionally raise the error within the test case.\n"}
+,{"stream_name":"stderr","time":367.820227653,"data":"--\u003e 186             raise exc\n"}
+,{"stream_name":"stderr","time":367.820229949,"data":"    187 \n"}
+,{"stream_name":"stderr","time":367.820232163,"data":"    188     def format_line(self, index: int, line: str, frame_lineno: int, frame_index: int) -\u003e str:\n"}
+,{"stream_name":"stderr","time":367.820234629,"data":"\n"}
+,{"stream_name":"stderr","time":367.820236897,"data":"/usr/local/lib/python3.13/dist-packages/starlette/middleware/errors.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820242249,"data":"    162 \n"}
+,{"stream_name":"stderr","time":367.820244554,"data":"    163         try:\n"}
+,{"stream_name":"stderr","time":367.820246829,"data":"--\u003e 164             await self.app(scope, receive, _send)\n"}
+,{"stream_name":"stderr","time":367.820249183,"data":"    165         except Exception as exc:\n"}
+,{"stream_name":"stderr","time":367.820251501,"data":"    166             request = Request(scope)\n"}
+,{"stream_name":"stderr","time":367.820253817,"data":"\n"}
+,{"stream_name":"stderr","time":367.820256003,"data":"/usr/local/lib/python3.13/dist-packages/starlette/middleware/exceptions.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820258431,"data":"     61             conn = WebSocket(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820260835,"data":"     62 \n"}
+,{"stream_name":"stderr","time":367.820263052,"data":"---\u003e 63         await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820265599,"data":"     64 \n"}
+,{"stream_name":"stderr","time":367.820267805,"data":"     65     async def http_exception(self, request: Request, exc: Exception) -\u003e Response:\n"}
+,{"stream_name":"stderr","time":367.820270302,"data":"\n"}
+,{"stream_name":"stderr","time":367.820272494,"data":"/usr/local/lib/python3.13/dist-packages/starlette/_exception_handler.py in wrapped_app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820274925,"data":"     51 \n"}
+,{"stream_name":"stderr","time":367.820277135,"data":"     52             if handler is None:\n"}
+,{"stream_name":"stderr","time":367.820279435,"data":"---\u003e 53                 raise exc\n"}
+,{"stream_name":"stderr","time":367.820281786,"data":"     54 \n"}
+,{"stream_name":"stderr","time":367.820284011,"data":"     55             if response_started:\n"}
+,{"stream_name":"stderr","time":367.820286317,"data":"\n"}
+,{"stream_name":"stderr","time":367.820288503,"data":"/usr/local/lib/python3.13/dist-packages/starlette/_exception_handler.py in wrapped_app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820290923,"data":"     40 \n"}
+,{"stream_name":"stderr","time":367.820293143,"data":"     41         try:\n"}
+,{"stream_name":"stderr","time":367.820295416,"data":"---\u003e 42             await app(scope, receive, sender)\n"}
+,{"stream_name":"stderr","time":367.820297955,"data":"     43         except Exception as exc:\n"}
+,{"stream_name":"stderr","time":367.820300252,"data":"     44             handler = None\n"}
+,{"stream_name":"stderr","time":367.820302555,"data":"\n"}
+,{"stream_name":"stderr","time":367.820305073,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/middleware/asyncexitstack.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820307545,"data":"     16         async with AsyncExitStack() as stack:\n"}
+,{"stream_name":"stderr","time":367.820315948,"data":"     17             scope[self.context_name] = stack\n"}
+,{"stream_name":"stderr","time":367.820318321,"data":"---\u003e 18             await self.app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820320701,"data":"\n"}
+,{"stream_name":"stderr","time":367.820322886,"data":"/usr/local/lib/python3.13/dist-packages/starlette/routing.py in __call__(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820325293,"data":"    676         The main entry point to the Router class.\n"}
+,{"stream_name":"stderr","time":367.820327633,"data":"    677         \"\"\"\n"}
+,{"stream_name":"stderr","time":367.820332237,"data":"--\u003e 678         await self.middleware_stack(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820334722,"data":"    679 \n"}
+,{"stream_name":"stderr","time":367.820336902,"data":"    680     async def app(self, scope: Scope, receive: Receive, send: Send) -\u003e None:\n"}
+,{"stream_name":"stderr","time":367.820339285,"data":"\n"}
+,{"stream_name":"stderr","time":367.820341447,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in app(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820343842,"data":"   2732             if match == Match.FULL:\n"}
+,{"stream_name":"stderr","time":367.820346124,"data":"   2733                 scope.update(child_scope)\n"}
+,{"stream_name":"stderr","time":367.820348426,"data":"-\u003e 2734                 await route.handle(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820350815,"data":"   2735                 return\n"}
+,{"stream_name":"stderr","time":367.820353075,"data":"   2736             if match == Match.PARTIAL and partial is None:\n"}
+,{"stream_name":"stderr","time":367.82035546,"data":"\n"}
+,{"stream_name":"stderr","time":367.820357639,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in handle(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820360035,"data":"   1279             await app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820362353,"data":"   1280             return\n"}
+,{"stream_name":"stderr","time":367.820364643,"data":"-\u003e 1281         await super().handle(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820366989,"data":"   1282 \n"}
+,{"stream_name":"stderr","time":367.820369192,"data":"   1283 \n"}
+,{"stream_name":"stderr","time":367.820371393,"data":"\n"}
+,{"stream_name":"stderr","time":367.820373572,"data":"/usr/local/lib/python3.13/dist-packages/starlette/routing.py in handle(self, scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820376313,"data":"    282             await response(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820378618,"data":"    283         else:\n"}
+,{"stream_name":"stderr","time":367.820380899,"data":"--\u003e 284             await self.app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820383241,"data":"    285 \n"}
+,{"stream_name":"stderr","time":367.820385521,"data":"    286     def __eq__(self, other: Any) -\u003e bool:\n"}
+,{"stream_name":"stderr","time":367.820387895,"data":"\n"}
+,{"stream_name":"stderr","time":367.820390061,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820392442,"data":"    156 \n"}
+,{"stream_name":"stderr","time":367.820394723,"data":"    157         # Same as in Starlette\n"}
+,{"stream_name":"stderr","time":367.820397171,"data":"--\u003e 158         await wrap_app_handling_exceptions(app, request)(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820399887,"data":"    159 \n"}
+,{"stream_name":"stderr","time":367.820402095,"data":"    160     return app\n"}
+,{"stream_name":"stderr","time":367.820404355,"data":"\n"}
+,{"stream_name":"stderr","time":367.820406536,"data":"/usr/local/lib/python3.13/dist-packages/starlette/_exception_handler.py in wrapped_app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820408931,"data":"     51 \n"}
+,{"stream_name":"stderr","time":367.820411139,"data":"     52             if handler is None:\n"}
+,{"stream_name":"stderr","time":367.820413495,"data":"---\u003e 53                 raise exc\n"}
+,{"stream_name":"stderr","time":367.820417914,"data":"     54 \n"}
+,{"stream_name":"stderr","time":367.820420207,"data":"     55             if response_started:\n"}
+,{"stream_name":"stderr","time":367.820422501,"data":"\n"}
+,{"stream_name":"stderr","time":367.820424785,"data":"/usr/local/lib/python3.13/dist-packages/starlette/_exception_handler.py in wrapped_app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820441645,"data":"     40 \n"}
+,{"stream_name":"stderr","time":367.820445523,"data":"     41         try:\n"}
+,{"stream_name":"stderr","time":367.820449371,"data":"---\u003e 42             await app(scope, receive, sender)\n"}
+,{"stream_name":"stderr","time":367.820453195,"data":"     43         except Exception as exc:\n"}
+,{"stream_name":"stderr","time":367.820456643,"data":"     44             handler = None\n"}
+,{"stream_name":"stderr","time":367.82046068,"data":"\n"}
+,{"stream_name":"stderr","time":367.820464405,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in app(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820467987,"data":"    142                 async with AsyncExitStack() as function_stack:\n"}
+,{"stream_name":"stderr","time":367.820471415,"data":"    143                     scope[\"fastapi_function_astack\"] = function_stack\n"}
+,{"stream_name":"stderr","time":367.820475047,"data":"--\u003e 144                     response = await f(request)\n"}
+,{"stream_name":"stderr","time":367.820478565,"data":"    145                 await response(scope, receive, send)\n"}
+,{"stream_name":"stderr","time":367.820482021,"data":"    146                 # Continues customization\n"}
+,{"stream_name":"stderr","time":367.820485468,"data":"\n"}
+,{"stream_name":"stderr","time":367.820488799,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in app(request)\n"}
+,{"stream_name":"stderr","time":367.820492243,"data":"    704                 response.headers.raw.extend(solved_result.response.headers.raw)\n"}
+,{"stream_name":"stderr","time":367.820495871,"data":"    705             else:\n"}
+,{"stream_name":"stderr","time":367.82049912,"data":"--\u003e 706                 raw_response = await run_endpoint_function(\n"}
+,{"stream_name":"stderr","time":367.820502687,"data":"    707                     dependant=dependant,\n"}
+,{"stream_name":"stderr","time":367.820506141,"data":"    708                     values=solved_result.values,\n"}
+,{"stream_name":"stderr","time":367.820514451,"data":"\n"}
+,{"stream_name":"stderr","time":367.82051765799997,"data":"/usr/local/lib/python3.13/dist-packages/fastapi/routing.py in run_endpoint_function(dependant, values, is_coroutine)\n"}
+,{"stream_name":"stderr","time":367.820520199,"data":"    352         return await dependant.call(**values)\n"}
+,{"stream_name":"stderr","time":367.820522527,"data":"    353     else:\n"}
+,{"stream_name":"stderr","time":367.820524777,"data":"--\u003e 354         return await run_in_threadpool(dependant.call, **values)\n"}
+,{"stream_name":"stderr","time":367.820528071,"data":"    355 \n"}
+,{"stream_name":"stderr","time":367.820543207,"data":"    356 \n"}
+,{"stream_name":"stderr","time":367.820547035,"data":"\n"}
+,{"stream_name":"stderr","time":367.820550877,"data":"/usr/local/lib/python3.13/dist-packages/starlette/concurrency.py in run_in_threadpool(func, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":367.820554853,"data":"     32 async def run_in_threadpool(func: Callable[P, T], *args: P.args, **kwargs: P.kwargs) -\u003e T:\n"}
+,{"stream_name":"stderr","time":367.820559254,"data":"     33     func = functools.partial(func, *args, **kwargs)\n"}
+,{"stream_name":"stderr","time":367.820563079,"data":"---\u003e 34     return await anyio.to_thread.run_sync(func)\n"}
+,{"stream_name":"stderr","time":367.820570362,"data":"     35 \n"}
+,{"stream_name":"stderr","time":367.820573812,"data":"     36 \n"}
+,{"stream_name":"stderr","time":367.820577089,"data":"\n"}
+,{"stream_name":"stderr","time":367.820580286,"data":"/usr/local/lib/python3.13/dist-packages/anyio/to_thread.py in run_sync(func, abandon_on_cancel, cancellable, limiter, *args)\n"}
+,{"stream_name":"stderr","time":367.820583956,"data":"     63         )\n"}
+,{"stream_name":"stderr","time":367.820587321,"data":"     64 \n"}
+,{"stream_name":"stderr","time":367.820590666,"data":"---\u003e 65     return await get_async_backend().run_sync_in_worker_thread(\n"}
+,{"stream_name":"stderr","time":367.82059418,"data":"     66         func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter\n"}
+,{"stream_name":"stderr","time":367.820597756,"data":"     67     )\n"}
+,{"stream_name":"stderr","time":367.820601067,"data":"\n"}
+,{"stream_name":"stderr","time":367.820604411,"data":"/usr/local/lib/python3.13/dist-packages/anyio/_backends/_asyncio.py in run_sync_in_worker_thread(cls, func, args, abandon_on_cancel, limiter)\n"}
+,{"stream_name":"stderr","time":367.820608124,"data":"   2704 \n"}
+,{"stream_name":"stderr","time":367.82061283,"data":"   2705                 worker.queue.put_nowait((context, func, args, future, worker_scope))\n"}
+,{"stream_name":"stderr","time":367.820625322,"data":"-\u003e 2706                 return await future\n"}
+,{"stream_name":"stderr","time":367.820628998,"data":"   2707 \n"}
+,{"stream_name":"stderr","time":367.820634108,"data":"   2708     @classmethod\n"}
+,{"stream_name":"stderr","time":367.820638212,"data":"\n"}
+,{"stream_name":"stderr","time":367.820642322,"data":"/usr/local/lib/python3.13/dist-packages/anyio/_backends/_asyncio.py in run(self)\n"}
+,{"stream_name":"stderr","time":367.820646914,"data":"   1098                     threadlocals.current_cancel_scope = cancel_scope\n"}
+,{"stream_name":"stderr","time":367.820651174,"data":"   1099                     try:\n"}
+,{"stream_name":"stderr","time":367.82065465,"data":"-\u003e 1100                         result = context.run(func, *args)\n"}
+,{"stream_name":"stderr","time":367.820658416,"data":"   1101                     except BaseException as exc:\n"}
+,{"stream_name":"stderr","time":367.82066191,"data":"   1102                         exception = exc\n"}
+,{"stream_name":"stderr","time":367.820665408,"data":"\n"}
+,{"stream_name":"stderr","time":367.820668658,"data":"/kaggle/working/code/prototype/layerproto/remote_server.py in decompose(req, x_token)\n"}
+,{"stream_name":"stderr","time":367.820672271,"data":"     91         def decompose(req: DecomposeReq, x_token: str | None = Header(default=None)):\n"}
+,{"stream_name":"stderr","time":367.820675911,"data":"     92             check(x_token)\n"}
+,{"stream_name":"stderr","time":367.820679265,"data":"---\u003e 93             layers = decomposer(b64_to_img(req.image).convert(\"RGB\"), DecomposeParams(**req.params))\n"}
+,{"stream_name":"stderr","time":367.82068312,"data":"     94             return {\"layers\": [img_to_b64(L) for L in layers]}\n"}
+,{"stream_name":"stderr","time":367.820686745,"data":"     95 \n"}
+,{"stream_name":"stderr","time":367.820690002,"data":"\n"}
+,{"stream_name":"stderr","time":367.820693179,"data":"/kaggle/working/code/prototype/layerproto/backends/decomposer.py in __call__(self, image, p)\n"}
+,{"stream_name":"stderr","time":367.8206968,"data":"     73     def __call__(self, image: Image.Image, p: DecomposeParams) -\u003e list[Image.Image]:\n"}
+,{"stream_name":"stderr","time":367.820700457,"data":"     74         if p.method not in self.by_method:\n"}
+,{"stream_name":"stderr","time":367.820708976,"data":"---\u003e 75             raise ValueError(f\"unknown method {p.method!r}; this server offers {sorted(self.by_method)}\")\n"}
+,{"stream_name":"stderr","time":367.820726456,"data":"     76         return self.by_method[p.method](image, p)\n"}
+,{"stream_name":"stderr","time":367.820736431,"data":"\n"}
+,{"stream_name":"stderr","time":367.820740086,"data":"ValueError: unknown method 'nope'; this server offers ['qwen21-extract']\n"}
+,{"stream_name":"stderr","time":367.820743954,"data":"\n"}
+,{"stream_name":"stderr","time":370.247890704,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":370.247922487,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":370.463333012,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":370.463358299,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":371.270083455,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":371.36802487,"data":"[NbConvertApp] Writing 440509 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":373.881378698,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":374.585493656,"data":"[NbConvertApp] Writing 715306 bytes to __results__.html\n"}
 ]

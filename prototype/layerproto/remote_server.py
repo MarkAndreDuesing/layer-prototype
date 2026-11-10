@@ -90,7 +90,10 @@ def build_app(chain, token: str = "", decomposer=None) -> FastAPI:
         @app.post("/decompose")
         def decompose(req: DecomposeReq, x_token: str | None = Header(default=None)):
             check(x_token)
-            layers = decomposer(b64_to_img(req.image).convert("RGB"), DecomposeParams(**req.params))
+            try:
+                layers = decomposer(b64_to_img(req.image).convert("RGB"), DecomposeParams(**req.params))
+            except ValueError as e:                      # unknown method, no names, nothing found: the caller's input, not a crash
+                raise HTTPException(400, str(e))
             return {"layers": [img_to_b64(L) for L in layers]}
 
     return app

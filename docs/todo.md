@@ -15,7 +15,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] ART+: "painting" prefix + background sentence (v11): flat blue background, still vignettes
 - [x] ART+ objects pasted on RevealLayer's background: style / scale clash (sticker look), needs harmonisation
 - [x] Harmonise ART+ objects (`relocate()` 0.4 / 0.6 + IC-Light): does not close the style gap
-- [ ] ART+ at 1024 px; use ART+'s own whole-image frame as the background instead of another model's
+- [~] ART+ at 1024 px (probe: fits, 11.0 GiB, about 190 s per step, 16 steps about 50 min; full run open, needs a 55-min cap); use ART+'s own whole-image frame as the background instead of another model's
 - [x] **CLD:** works on fox & cottage (v3): clean layers + inpainted background
 - [x] CLD on Qwen-2.1 night / rain composites (v4): works with the same boxes
 - [x] CLD with 7 boxes (v5): fits (13.3 GB, 434 s); hedge good, ground path not extractable as a layer
@@ -44,7 +44,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C with real edits (SAM2 re-decomposition each turn): 35 dB after the first re-split, 28 dB at turn 6 (between A 60 dB and B 14 dB)
 - [ ] Drift: more scenes, re-prompt and relight edits (LPIPS / DINO done on the fox move: same ordering as PSNR, see research/drift-evaluation.md)
-- [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); the Kaggle → laptop tunnel notebook is ready ([guides/kaggle.md §3b](guides/kaggle.md), 6 steps, you run it), Qwen-Image-2.1 extraction behind `/decompose` (code + stub test done: `backends/qwen21_decomposer.py`; server notebook open), Qwen-Image-Layered / CLD behind `/decompose`, `/chain/relocate` route + `RemoteChain.relocate` + `Engine.relocate_layer` + button **Fit + re-harmonise (GPU)** (done, tested with a fake chain: `tools/test_relocate_route.py`; real run on a server open), relight + shadow routes (`layerproto/event_apply.py` has the CPU glue)
+- [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); the Kaggle → laptop tunnel notebook is ready ([guides/kaggle.md §3b](guides/kaggle.md), 6 steps, you run it), Qwen-Image-2.1 extraction behind `/decompose` (works through the real route in a T4 x2 session, 114 s, clean background; open: arch scale / box use, a tunnel notebook for it), Qwen-Image-Layered / CLD behind `/decompose`, `/chain/relocate` route + `RemoteChain.relocate` + `Engine.relocate_layer` + button **Fit + re-harmonise (GPU)** (done, tested with a fake chain: `tools/test_relocate_route.py`; real run on a server open), relight + shadow routes (`layerproto/event_apply.py` has the CPU glue)
 
 ## 3. Open questions from the team voice note (2026-11-08)
 - [x] **Where do strong text-to-image models fit?** As the base-image generator before decomposition; tested FLUX.1-dev, Qwen-Image-2.1 and SDXL-Turbo scenes through Qwen-Image-Layered / Stable-Layers: all split, FLUX and Qwen-2.1 most cleanly ([pipeline.md §2](concepts/pipeline.md)). Licences: FLUX.1-dev and Qwen Research are non-commercial.
