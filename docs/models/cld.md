@@ -38,6 +38,18 @@ Results: `prototype/kaggle/results_cld_v3/`. The first runs failed on a diffuser
 | Inputs | image (to the ControlNet adapter) + caption + boxes (snapped to 16 px); adapter conditioning scale 0.9, CFG 4 |
 | Outputs | RGBA whole image, RGBA background, one RGBA layer per box |
 
+## Story-event composites split with CLD (v4: Qwen-Image-2.1 night and heavy-rain edits, same 5 boxes)
+
+The edits keep the composition, so the hand boxes still fit. 2× T4, 512 px, 16 steps, about 6 min per case. Top row night, bottom row rain: whole | background | houses | cottage | gate arch | tree | fox | merged.
+
+![CLD on night and rain edits](../img/cld_night_rain.jpg)
+
+- Layers keep the edit's look (lit windows, dark roof, wet greenery) and are clean cut-outs: cottage 27 % of the canvas, tree 17 %, fox 2 %.
+- The gate-arch layer comes out as a small stump-like object and the houses layer as a couple of roofs, as in the daylight run.
+- The inpainted background is a **different village** (houses, lit windows at night, mist in the rain) rather than the real area behind the cottage, so a moved cottage reveals invented ground. For story events that is acceptable; for exact preservation it is not.
+
+Results: `prototype/kaggle/results_cld_v4/`.
+
 ## Best features
 
 Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).

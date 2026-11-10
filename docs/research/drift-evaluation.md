@@ -41,5 +41,23 @@ Top row = arm A, bottom row = arm B (turn 0 … 6):
 
 Files: `prototype/tools/fox_drift_demo.py` (arm A), `make_qwen21_drift_trial.py` (arm B), `drift_analyse.py`, results in `prototype/kaggle/results_drift*/`.
 
+## Arm C building block: error of re-decomposing again and again (no edit)
+
+Fox & cottage at 384 px, Qwen-Image-Layered (5 layers, 4 steps): decompose → recomposite → feed the recomposite back in, five cycles, PSNR of the whole image against the original (2× T4, `results_qwen_v12/`).
+
+| Cycle | Base model (Euler) | Stable-Layers (Heun) |
+|---|---|---|
+| 1 | 21.4 dB | 20.1 dB |
+| 2 | 19.6 | 15.2 |
+| 3 | 18.0 | 12.2 |
+| 4 | 17.1 | 10.4 |
+| 5 | 15.5 | 9.2 |
+
+Top row base model, bottom row Stable-Layers (cycle 0 … 5):
+
+![re-decompose cycles](../img/redecompose_cycles.jpg)
+
+The base model slowly washes out and blurs the scene; Stable-Layers saturates the colours towards green and loses texture. Cycle 1 already costs about 20 dB (partly the 384 px working resolution), so re-decomposing every turn (arm C) would sit far below the persistent-layer arm A (about 60 dB outside the edit) before any editing error is added. Caveat: one scene, no edits, two splitter settings.
+
 ## Next
-Arm C and more scenes ([../todo.md](../todo.md)).
+Arm C with real edits (decompose each turn, then relocate) ([../todo.md](../todo.md)).

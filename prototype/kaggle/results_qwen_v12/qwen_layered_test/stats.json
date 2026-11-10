@@ -1,0 +1,81 @@
+{
+ "weights_cached": true,
+ "input_read_MBps": 253.2,
+ "copy_to_local_s": 119.8,
+ "stage1_load_s": 73.2,
+ "stage1_encode_s": 3.2,
+ "stage1_peak_GB": [
+  8.82,
+  8.14
+ ],
+ "gguf_params_dequantized": 1,
+ "transformer_load_s": 58.7,
+ "mixed_smoke": {
+  "denoise_s": 18.0,
+  "s_per_step": 7.65,
+  "decode_s": 0.6
+ },
+ "sweep": [],
+ "cycles": [
+  {
+   "variant": "base",
+   "cycle": 1,
+   "psnr_vs_original": 21.35,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "base",
+   "cycle": 2,
+   "psnr_vs_original": 19.58,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "base",
+   "cycle": 3,
+   "psnr_vs_original": 17.97,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "base",
+   "cycle": 4,
+   "psnr_vs_original": 17.05,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "base",
+   "cycle": 5,
+   "psnr_vs_original": 15.51,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "stable_layers",
+   "cycle": 1,
+   "psnr_vs_original": 20.08,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "stable_layers",
+   "cycle": 2,
+   "psnr_vs_original": 15.21,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "stable_layers",
+   "cycle": 3,
+   "psnr_vs_original": 12.16,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "stable_layers",
+   "cycle": 4,
+   "psnr_vs_original": 10.36,
+   "psnr_vs_previous": null
+  },
+  {
+   "variant": "stable_layers",
+   "cycle": 5,
+   "psnr_vs_original": 9.19,
+   "psnr_vs_previous": null
+  }
+ ]
+}

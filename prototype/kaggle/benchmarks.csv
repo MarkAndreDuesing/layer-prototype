@@ -54,3 +54,5 @@ LayerDiffuse chain,text to layers (7 elements),village scene,1x T4,"512 px, 20 s
 Stable-Layers + Heun,image to layers,flux_campfire (FLUX.1-dev),2x T4,"384 px, 4 layers, 4 steps",57.0,,3,11.01,results_qwen_v11,2026-11-10,"cleanest split: trees / campfire / empty clearing"
 Qwen-Image-Layered,image to layers,flux_campfire (FLUX.1-dev),2x T4,"384 px, 4 layers, 4 steps",32.0,,3,6.33,results_qwen_v11,2026-11-10,"frames mostly empty"
 Stable-Layers + Heun,image to layers,q21_t2i (Qwen-Image-2.1),2x T4,"384 px, 5 layers, 4 steps",65.8,,4,21.23,results_qwen_v11,2026-11-10,"arch+path / cottage / tree / fox"
+CLD,image+boxes to layers,q21_night / q21_rain (Qwen-2.1 edits),2x T4,"512 px, 16 steps, 5 boxes",360,13.2,5,,results_cld_v4,2026-11-10,"layers keep the edit look; invented background"
+Qwen-Image-Layered (decompose-recompose cycle x5),drift building block,fox_cottage,2x T4,"384 px, 5 layers, 4 steps",36,,5,,results_qwen_v12,2026-11-10,"PSNR vs original 21.4 -> 15.5 dB after 5 cycles (base); 20.1 -> 9.2 (Stable-Layers)"

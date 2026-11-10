@@ -15,6 +15,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [x] ART+: "painting" prefix + background sentence (v11): flat blue background, still vignettes
 - [ ] ART+ objects on a separately generated background + `relocate()` harmonisation; 1024 px
 - [x] **CLD:** works on fox & cottage (v3): clean layers + inpainted background
+- [x] CLD on Qwen-2.1 night / rain composites (v4): works with the same boxes
 - [ ] CLD: 1024 px, more boxes, compare moving layers over CLD vs RevealLayer background
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
@@ -34,7 +35,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] attention sharing for thin parts; IC-Light keeps original hue (it reddens the fox)
 - [ ] Story events, generative pass: background edit + relight layers, LayerDiffuse effect layers, or edit-and-re-split ([editing.md §3](concepts/editing.md#3-story-events-across-layers))
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
-- [ ] Drift: arm C (re-decompose every turn), more scenes, re-prompt and relight edits
+- [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
+- [ ] Drift: arm C with real edits, more scenes, re-prompt and relight edits
 - [~] Wire the GPU modules into the app: image → layers path done (tab, engine, `/decompose` route, `backends/decomposer.py`, round-trip test); open: serve a real model from Kaggle via a tunnel, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)

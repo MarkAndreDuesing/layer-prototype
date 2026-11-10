@@ -77,6 +77,8 @@
 | Stable-Layers + Heun | image to layers | flux_campfire (FLUX.1-dev) | 2x T4 | 384 px, 4 layers, 4 steps | 57.0 |  | 3 | 11.01 | cleanest split: trees / campfire / empty clearing | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
 | Qwen-Image-Layered | image to layers | flux_campfire (FLUX.1-dev) | 2x T4 | 384 px, 4 layers, 4 steps | 32.0 |  | 3 | 6.33 | frames mostly empty | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
 | Stable-Layers + Heun | image to layers | q21_t2i (Qwen-Image-2.1) | 2x T4 | 384 px, 5 layers, 4 steps | 65.8 |  | 4 | 21.23 | arch+path / cottage / tree / fox | [results_qwen_v11](../../prototype/kaggle/results_qwen_v11/) |
+| CLD | image+boxes to layers | q21_night / q21_rain (Qwen-2.1 edits) | 2x T4 | 512 px, 16 steps, 5 boxes | 360 | 13.2 | 5 |  | layers keep the edit look; invented background | [results_cld_v4](../../prototype/kaggle/results_cld_v4/) |
+| Qwen-Image-Layered (decompose-recompose cycle x5) | drift building block | fox_cottage | 2x T4 | 384 px, 5 layers, 4 steps | 36 |  | 5 |  | PSNR vs original 21.4 -> 15.5 dB after 5 cycles (base); 20.1 -> 9.2 (Stable-Layers) | [results_qwen_v12](../../prototype/kaggle/results_qwen_v12/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (55 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (57 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

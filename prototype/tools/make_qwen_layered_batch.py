@@ -69,13 +69,7 @@ LIGHT_SCHED = dict(base_image_seq_len=256, base_shift=math.log(3), invert_sigmas
                    use_dynamic_shifting=True, use_exponential_sigmas=False, use_karras_sigmas=False)
 orig_sched = pipe.scheduler
 lightp = hf_hub_download('lightx2v/Qwen-Image-Lightning', 'Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors')
-CONFIGS = [  # (variant, sampler, image, resolution, layers, steps)
-    # v11: which text-to-image generator gives the most separable scene? FLUX.1-dev (plain control run), Qwen-Image-2.1 (t2i), SDXL-Turbo (fox, forest)
-    ('stable_layers', 'heun', 'flux_campfire', 384, 4, 4), ('base', 'euler', 'flux_campfire', 384, 4, 4), ('base', 'euler', 'flux_campfire', 384, 6, 4),
-    ('stable_layers', 'heun', 'q21_t2i', 384, 5, 4), ('base', 'euler', 'q21_t2i', 384, 5, 4),
-    ('stable_layers', 'heun', 'fox_cottage', 384, 5, 4), ('base', 'euler', 'fox_cottage', 384, 5, 4),
-    ('stable_layers', 'heun', 'forest', 384, 4, 4), ('base', 'euler', 'forest', 384, 4, 4),
-]
+CONFIGS = []   # v12: only the decompose -> recompose cycle experiment below (drift arm C: error of re-decomposing every turn)
 stats['sweep'] = []
 split_across_gpus(tr)
 for variant, sampler, key, res, nl, steps in CONFIGS:
@@ -103,6 +97,23 @@ for variant, sampler, key, res, nl, steps in CONFIGS:
     stats['sweep'].append(row); save(); print(row, flush=True)
     Q.strip([im, canvas] + out).save(f'{OUT}/v11_{tag}.png')
 remove_lora(tr); pipe.scheduler = orig_sched
+# drift arm C building block: re-decompose the recomposite again and again with NO edit; error vs the original per cycle
+import numpy as _np
+def _psnr(a, b):
+    d = (_np.asarray(a.convert('RGB'), _np.float32) - _np.asarray(b.convert('RGB'), _np.float32)); m = float((d ** 2).mean())
+    return round(10 * math.log10(255 ** 2 / m), 2) if m > 0 else 99.0
+stats['cycles'] = []
+for variant, sampler in (('base', 'euler'), ('stable_layers', 'heun')):
+    remove_lora(tr)
+    if variant == 'stable_layers': add_lora(tr, lp, scale=lscale)
+    im0, e = IMGS['fox_cottage']; im0 = im0.convert('RGB').resize((384, 384)); cur = im0
+    for k in range(1, 6):
+        out, st = Q.decompose(pipe, tr, cur, CAPTION, e, steps=4, layers=5, resolution=384, true_cfg=1.0, offload=False, sampler=sampler)
+        canvas, info = Q.recompose(out, cur.size); cur = canvas.convert('RGB').resize((384, 384))
+        row = dict(variant=variant, cycle=k, psnr_vs_original=_psnr(im0, cur), psnr_vs_previous=None); stats['cycles'].append(row); save(); print(row, flush=True)
+        cur.save(f'{OUT}/cycle_{variant}_{k}.png')
+    im0.save(f'{OUT}/cycle_{variant}_0.png')
+remove_lora(tr)
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px
 keep = []
