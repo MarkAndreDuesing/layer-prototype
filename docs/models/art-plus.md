@@ -22,7 +22,17 @@ GGUF Q4_K_S FLUX.1-dev re-classed into `CustomFluxTransformer2DModel` (max 52 la
 | 4 | denoising finished; OOM in the fp32 VAE decode |
 | 5 | end to end: 345 s / 285 s at 16 steps, 10 GB; image small in one corner, opaque rectangles |
 | **6** | **`vae_scale_factor` 16 restored → full-size coherent scenes** (330 s / 282 s, 8.2 GB); layers still opaque crops of the whole image |
-| 7 | ART+'s own transparent decoder (Drive, mirror fallback) instead of CLD's — running |
+| 7 | ART+'s own transparent decoder (Drive, mirror fallback): same opaque crops |
+| 8 | diagnostics: `layer_pe` distinct per layer, final latents differ per frame → conditioning reaches the model |
+| **9** | **bug found in our `fp16_mixed.add_lora`: each LoRA replaced the previous one on the same module, so only the ART+ LoRA was active (pre_fuse and ART base dropped). Stacked → real transparent layers** (356 s / 294 s at 16 steps, 8.5 GB) |
+
+Run 9, case 1 (whole | background | skeleton | fire | log | merged):
+
+![ART+ v9 case 1](../img/artplus_v9_case1.jpg)
+
+Case 0 (night forest): trees, campfire + bench and moon come out as separate layers, but the whole/background frames are almost black.
+
+![ART+ v9 case 0](../img/artplus_v9_case0.jpg)
 
 ## Facts from the paper and repo
 
@@ -45,7 +55,7 @@ Trained at 1024 px (we run 512); heavy; Drive downloads can hit quotas.
 
 ## Status
 
-Runs end to end since run 5 (transformer offloaded before the VAE decode): 345 s and 285 s for 16 steps, peak 10 GB. **Output not yet correct:** the whole image comes out small in one corner, layers are opaque rectangles, case 2 blank → size handling and the transparent decode need debugging ([`results_artplus_v5/`](../../prototype/kaggle/results_artplus_v5/)).
+**Works since run 9:** text + boxes → background + clean transparent object layers on 1× T4 in about 5 min (16 steps, 512 px, 8.5 GB). Night scene very dark. Results: `prototype/kaggle/results_artplus_v9/`.
 
 ## Next attempts
 

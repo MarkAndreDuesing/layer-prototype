@@ -25,3 +25,5 @@ add_lora(transformer, "lora.safetensors", scale=1.0)
 
 ## What we learned about FLUX
 Plain FLUX.1-dev GGUF Q4 runs cleanly in plain fp16 on a T4 (41 s for 16 steps at 512 px, zero non-finite values): diffusers already clamps the single-block residuals. Breakage in FLUX-based layer models came from their own code. Sources: [../../research_notes/Layered loop open paths/flux_layered_t4_and_weights.md](../../research_notes/Layered%20loop%20open%20paths/flux_layered_t4_and_weights.md).
+
+**Several LoRAs on GGUF weights:** `fp16_mixed.add_lora` keeps a list per module and adds every delta; until 2026-11-10 it overwrote, so multi-LoRA models (ART+) silently ran with only the last LoRA.

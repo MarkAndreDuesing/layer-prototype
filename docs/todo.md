@@ -10,7 +10,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] Run every working model on it: Qwen-Image-Layered, Stable-Layers, RevealLayer, Qwen-Image-2.1, LayerDiffuse chain, SAM2 + LaMa, LayerD
 - [ ] `tools/build_benchmarks.py` → comparison table in `models/README.md`
 - [x] **RevealLayer:** works on forest and fox & cottage (140 s at 12 steps; filled background + clean object layers)
-- [~] **ART+:** size bug fixed (diffusers 0.32+ FLUX `vae_scale_factor` 8 vs 16) → full-size scenes; layers still opaque crops → v7 loads ART+'s own transparent decoder
+- [x] **ART+:** works (v9): size fix (`vae_scale_factor` 16) + stacked LoRAs (our loader kept only the last one)
+- [ ] ART+ on fox & cottage from its JSON boxes; 1024 px; brighter night scene
 - [ ] **CLD:** notebook (same code family as RevealLayer; image + boxes + ControlNet adapter)
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
