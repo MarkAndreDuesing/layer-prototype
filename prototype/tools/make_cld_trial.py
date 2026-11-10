@@ -24,9 +24,15 @@ def _case(img_rel, extra):
             'layout': [[0, 0, 512, 512], [0, 0, 512, 512]] + [L['box'] for L in j['layers_back_to_front']]}
 
 
-# v4: the story-event path "edit the composite with Qwen-Image-2.1, then split with CLD": same five boxes, since the edits keep the composition
-LAYOUTS = [_case(('kaggle', 'results_qwen21_fox', 'q21_out', 'edit_scene_night.png'), ' Now at night, moonlit, lantern light.'),
-           _case(('kaggle', 'results_qwen21_fox', 'q21_out', 'edit_scene_heavy_rain.png'), ' Now in heavy rain, grey sky.')]
+# v5: more boxes on the original fox scene (5 hand boxes + cobblestone path + hedge/garden wall): does CLD scale to 7 layers on 2x T4?
+def _case7():
+    c = _case(('test_scene', 'fox_cottage.png'), '')
+    lay = c['layout']
+    # back to front: houses, path, cottage, hedge, gate arch, tree, fox  (full-image boxes stay first)
+    houses, cottage, gate, tree, fox = lay[2:]
+    c['layout'] = lay[:2] + [houses, [0, 330, 300, 512], cottage, [0, 255, 512, 330], gate, tree, fox]
+    return c
+LAYOUTS = [_case7()]
 IMG_B64 = ''
 
 src = r'''import signal, time as _t

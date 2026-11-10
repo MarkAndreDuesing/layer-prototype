@@ -50,6 +50,14 @@ The edits keep the composition, so the hand boxes still fit. 2× T4, 512 px, 16 
 
 Results: `prototype/kaggle/results_cld_v4/`.
 
+## Seven boxes (v5: the five objects + cobblestone path + hedge, original scene)
+
+434 s, **peak 13.3 GB** (the same as with five boxes, so the two T4s are not the limit yet). Whole | background | houses | path | cottage | hedge | gate arch | tree | fox | merged:
+
+![CLD with 7 boxes](../img/cld_7box.jpg)
+
+The hedge/garden wall comes out as a clean horizontal strip and the cottage, tree and fox are as good as before; the **path layer is a faint blotch**: a ground plane under the other objects is not something CLD extracts as an object (it ends up in the background, which is correct for the picture but not a movable layer). Results: `prototype/kaggle/results_cld_v5/`.
+
 ## Best features
 
 Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).
