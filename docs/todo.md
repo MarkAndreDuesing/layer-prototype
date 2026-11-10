@@ -18,14 +18,15 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] CLD: 1024 px, more boxes, compare moving layers over CLD vs RevealLayer background
 - [x] **LayerDiffuse-Flux:** works (run 4), 58 s per object
 - [x] **Stable-Layers:** Heun works (v9); fox & cottage: cleanest split so far. Next: colour-shift correction
-- [ ] **Qwen Lightning LoRA:** 2-step runs, scale sweep 0.25–0.75
+- [x] **Qwen Lightning LoRA:** 2-step runs + scale sweep done (v10): half the time, worse split
 - [x] **LayerD:** weights load fine; 3 layers on a flat design, none on painted scenes (matting predicts no foreground)
 - [x] LayerD loop with generic BiRefNet on fox & cottage: fox peeled cleanly, rest of scene one layer (v11)
 - [x] **SAM2 + LaMa by noun:** Grounding DINO + SAM2 gives clean object layers fully automatically (7 s)
 - [x] SAM2 route: SDXL inpaint for the background hole (v3): sharp, in style (28 s)
 - [ ] SAM2 route: amodal completion of occluded objects (pix2gestalt or SDXL-inpaint per object)
 - [x] **Qwen-Image-2.1 on fox & cottage:** extraction, fox → wolf, night and heavy-rain edits all work (about 20 s each)
-- [ ] Qwen-Image-2.1: re-split the night / rain composites with Qwen-Image-Layered (story-event strategy a), cottage extraction without the fox, halo fix on generated objects
+- [x] Qwen-Image-2.1: night / rain composites re-split (v10): works with Stable-Layers
+- [ ] Qwen-Image-2.1: cottage extraction without the fox, halo fix on generated objects
 - [x] **OmniPSD / PSDiffusion / DreamLayer:** re-checked 2026-11-10: OmniPSD code + dataset only (no weights; RGBA-VAE weights still a placeholder path), PSDiffusion repo not found, nothing for DreamLayer/LayerFusion on HF. Re-check occasionally ([papers-survey.md §2](research/papers-survey.md#2-methods-we-cannot-run-no-weights-or-code))
 
 ## 2. The loop on GPU

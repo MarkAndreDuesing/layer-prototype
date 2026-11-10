@@ -1,0 +1,114 @@
+[{"stream_name":"stderr","time":6.195685583,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.1957459870000005,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.072910992,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.072936663,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.072945278,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.072948193,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.661100633,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.661151183,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.661157424,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.661161683,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.775936753,"data":"name, memory.total [MiB]\r\n"}
+,{"stream_name":"stdout","time":8.775963532,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":8.775968418,"data":"Tesla T4, 15360 MiB\r\n"}
+,{"stream_name":"stdout","time":16.472680424,"data":"{'torch': '2.11.0+cu130', 'diffusers': '0.37.0', 'transformers': '5.20.2', 'gguf': '0.19.0', 'accelerate': '1.15.0'}\n"}
+,{"stream_name":"stdout","time":22.216662327,"data":"module ok\n"}
+,{"stream_name":"stdout","time":23.568597421,"data":"transformer from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-transformer/qwen-image-layered-Q4_K_S.gguf | base from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-base/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":33.738115666,"data":"cached text encoder read speed: 344.2 MB/s\n"}
+,{"stream_name":"stderr","time":64.518675715,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":64.518709208,"data":"\n"}
+,{"stream_name":"stderr","time":64.518715755,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":64.519727642,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":64.519749523,"data":"\n"}
+,{"stream_name":"stderr","time":64.519755159,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stdout","time":64.611611862,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":64.814759166,"data":"overlay         8.0T  7.1T  967G  89% /\n"}
+,{"stream_name":"stdout","time":153.340486478,"data":"base weights on local disk after 88.7 s -\u003e /tmp/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":219.957521414,"data":"text encoder loaded in 66.6 s\n"}
+,{"stream_name":"stdout","time":225.276757676,"data":"stage1 peak GB per GPU: [8.82, 8.14]\n"}
+,{"stream_name":"stdout","time":225.630109529,"data":"after unload, GB allocated: 0.27\n"}
+,{"stream_name":"stdout","time":225.630140447,"data":"{'weights_cached': True, 'input_read_MBps': 344.2, 'copy_to_local_s': 88.7, 'stage1_load_s': 68.6, 'stage1_encode_s': 3.3, 'stage1_peak_GB': [8.82, 8.14]}\n"}
+,{"stream_name":"stdout","time":273.228446914,"data":"loaded in 47.6 s; GB allocated 12.67\n"}
+,{"stream_name":"stdout","time":273.688201388,"data":"linears patched, params moved to fp32: (846, 242)\n"}
+,{"stream_name":"stderr","time":274.229615797,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":274.229653558,"data":"\n"}
+,{"stream_name":"stderr","time":274.229826265,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":302.301452407,"data":"latents nan: False inf: False absmax: 1.22\n"}
+,{"stream_name":"stdout","time":302.327897982,"data":"vae input nan: False inf: False absmax: 0.45\n"}
+,{"stream_name":"stdout","time":302.501967453,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.515662402,"data":"vae input nan: False inf: False absmax: 0.34\n"}
+,{"stream_name":"stdout","time":302.643319694,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.650275148,"data":"vae input nan: False inf: False absmax: 0.44\n"}
+,{"stream_name":"stdout","time":302.775508329,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.786037313,"data":"vae input nan: False inf: False absmax: 0.37\n"}
+,{"stream_name":"stdout","time":302.909540714,"data":"vae output nan: False inf: False absmax: 1.0\n"}
+,{"stream_name":"stdout","time":302.918071803,"data":"{'denoise_s': 19.2, 's_per_step': 7.75, 'decode_s': 0.6} | peak GB per GPU: [7.35, 7.01]\n"}
+,{"stream_name":"stderr","time":303.367715702,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.367741833,"data":"\n"}
+,{"stream_name":"stderr","time":303.367747485,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.368339994,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":303.368358934,"data":"\n"}
+,{"stream_name":"stderr","time":303.368363987,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":316.726576866,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":316.726618764,"data":"\n"}
+,{"stream_name":"stderr","time":316.726624261,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":384.111836867,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'q21_night', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 67.4, 'denoise_s': 66.2, 's_per_step': 15.86, 'decode_s': 0.8, 'transparent_pct': [0.0, 85.8, 72.1, 81.8, 97.0], 'recomposite_diff': 4.16}\n"}
+,{"stream_name":"stderr","time":384.491687417,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":384.491722507,"data":"\n"}
+,{"stream_name":"stderr","time":384.491726916,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":454.535572558,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'q21_rain', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 70.0, 'denoise_s': 68.9, 's_per_step': 16.43, 'decode_s': 0.7, 'transparent_pct': [0.0, 75.4, 69.4, 81.8, 97.3], 'recomposite_diff': 11.16}\n"}
+,{"stream_name":"stderr","time":454.921505001,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":454.921554136,"data":"\n"}
+,{"stream_name":"stderr","time":454.921560644,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":524.653024434,"data":"{'variant': 'stable_layers', 'sampler': 'heun', 'image': 'q21_t2i', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 69.7, 'denoise_s': 68.6, 's_per_step': 16.36, 'decode_s': 0.8, 'transparent_pct': [0.0, 63.7, 62.7, 85.1, 98.3], 'recomposite_diff': 21.1}\n"}
+,{"stream_name":"stderr","time":524.865409354,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":524.865440406,"data":"\n"}
+,{"stream_name":"stderr","time":524.865445777,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":564.26836853,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'q21_night', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 39.4, 'denoise_s': 38.2, 's_per_step': 9.54, 'decode_s': 0.7, 'transparent_pct': [0.0, 99.3, 100.0, 100.0, 86.2], 'recomposite_diff': 2.34}\n"}
+,{"stream_name":"stderr","time":564.482105716,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":564.482139637,"data":"\n"}
+,{"stream_name":"stderr","time":564.482145118,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":603.729006694,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'q21_rain', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 39.2, 'denoise_s': 38.1, 's_per_step': 9.53, 'decode_s': 0.8, 'transparent_pct': [0.0, 62.8, 18.6, 25.0, 56.0], 'recomposite_diff': 10.78}\n"}
+,{"stream_name":"stderr","time":604.009146595,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":604.009177216,"data":"\n"}
+,{"stream_name":"stderr","time":604.009182438,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":643.195218998,"data":"{'variant': 'base', 'sampler': 'euler', 'image': 'q21_t2i', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 39.2, 'denoise_s': 38.1, 's_per_step': 9.49, 'decode_s': 0.8, 'transparent_pct': [0.0, 60.8, 41.4, 22.3, 98.5], 'recomposite_diff': 19.77}\n"}
+,{"stream_name":"stderr","time":644.164595518,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":644.164621797,"data":"\n"}
+,{"stream_name":"stderr","time":644.164626829,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":666.660462372,"data":"{'variant': 'lightning0.25', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 2, 'total_s': 22.5, 'denoise_s': 21.4, 's_per_step': 10.67, 'decode_s': 0.7, 'transparent_pct': [0.0, 47.2, 26.4, 17.8, 96.7], 'recomposite_diff': 32.26}\n"}
+,{"stream_name":"stderr","time":667.598938442,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":667.598970613,"data":"\n"}
+,{"stream_name":"stderr","time":667.59897416,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":690.122231498,"data":"{'variant': 'lightning0.5', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 2, 'total_s': 22.5, 'denoise_s': 21.4, 's_per_step': 10.69, 'decode_s': 0.8, 'transparent_pct': [0.0, 97.9, 29.8, 37.4, 97.1], 'recomposite_diff': 22.14}\n"}
+,{"stream_name":"stderr","time":691.044929944,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":691.044964267,"data":"\n"}
+,{"stream_name":"stderr","time":691.044969304,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":713.59566887,"data":"{'variant': 'lightning0.75', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 2, 'total_s': 22.5, 'denoise_s': 21.4, 's_per_step': 10.66, 'decode_s': 0.8, 'transparent_pct': [0.0, 98.8, 38.1, 58.2, 97.1], 'recomposite_diff': 15.15}\n"}
+,{"stream_name":"stderr","time":714.522632207,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":714.522995672,"data":"\n"}
+,{"stream_name":"stderr","time":714.523009907,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":736.96020931,"data":"{'variant': 'lightning1.0', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 2, 'total_s': 22.4, 'denoise_s': 21.3, 's_per_step': 10.63, 'decode_s': 0.8, 'transparent_pct': [0.0, 92.2, 70.9, 97.0, 97.1], 'recomposite_diff': 14.98}\n"}
+,{"stream_name":"stderr","time":737.870595567,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":737.870625459,"data":"\n"}
+,{"stream_name":"stderr","time":737.870629953,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":781.524182256,"data":"{'variant': 'lightning0.5', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 43.6, 'denoise_s': 42.5, 's_per_step': 10.62, 'decode_s': 0.8, 'transparent_pct': [0.0, 100.0, 67.9, 98.2, 97.1], 'recomposite_diff': 11.09}\n"}
+,{"stream_name":"stderr","time":782.470504587,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":782.470537894,"data":"\n"}
+,{"stream_name":"stderr","time":782.470542981,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":826.380848365,"data":"{'variant': 'lightning1.0', 'sampler': 'euler', 'image': 'fox_cottage', 'res': 384, 'layers': 5, 'steps': 4, 'total_s': 43.9, 'denoise_s': 42.8, 's_per_step': 10.69, 'decode_s': 0.8, 'transparent_pct': [0.0, 99.9, 96.9, 99.8, 88.9], 'recomposite_diff': 13.76}\n"}
+,{"stream_name":"stderr","time":827.263460336,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":827.263492049,"data":"\n"}
+,{"stream_name":"stderr","time":827.263496551,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":849.921590846,"data":"{'variant': 'lightning1.0', 'sampler': 'euler', 'image': 'q21_night', 'res': 384, 'layers': 5, 'steps': 2, 'total_s': 22.6, 'denoise_s': 21.6, 's_per_step': 10.74, 'decode_s': 0.7, 'transparent_pct': [0.0, 0.0, 97.2, 97.0, 97.1], 'recomposite_diff': 4.97}\n"}
+,{"stream_name":"stderr","time":857.718065332,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":857.718097534,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":858.039764698,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":858.039804399,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":859.959326542,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":860.097480827,"data":"[NbConvertApp] Writing 1881795 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":862.652260169,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":863.66882109,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":863.668844957,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":863.669445159,"data":"[NbConvertApp] Writing 1584818 bytes to __results__.html\n"}
+]

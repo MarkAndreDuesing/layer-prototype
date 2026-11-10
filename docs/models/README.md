@@ -68,6 +68,10 @@
 | ART+ | text+boxes to layers | fox_cottage | 1x T4 | 512 px, 16 steps, painting prefix + background sentence | 343 | 8.6 | 6 |  | flat blue background; objects still vignettes | [results_artplus_v11](../../prototype/kaggle/results_artplus_v11/) |
 | CLD | image+boxes to layers | fox_cottage | 2x T4 | 512 px, 16 steps, CFG 4, adapter 0.9, GGUF Q4_K_S, 3 LoRAs + adapter | 376 | 13.2 | 5 |  | clean layers + inpainted background | [results_cld_v3](../../prototype/kaggle/results_cld_v3/) |
 | SAM2 + SDXL-inpaint fill | image to layers | fox_cottage | 1x T4 | 5 hand boxes, SDXL inpaint 1024 px 30 steps | 28 |  | 6 | 4.65 | sharp in-style background; invents content | [results_segment_inpaint_v3](../../prototype/kaggle/results_segment_inpaint_v3/) |
+| Stable-Layers + Heun | image to layers | q21_night (Qwen-2.1 edit) | 2x T4 | 384 px, 5 layers, 4 steps | 67.4 |  | 4 | 4.16 | story-event re-split: moon / cottage / tree / fox | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
+| Stable-Layers + Heun | image to layers | q21_rain (Qwen-2.1 edit) | 2x T4 | 384 px, 5 layers, 4 steps | 70.0 |  | 4 | 11.16 | story-event re-split | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
+| Qwen-Image-Layered + Lightning 1.0 | image to layers | fox_cottage | 2x T4 | 384 px, 5 layers, 2 steps | 22.4 |  | 5 | 14.98 | half the time; cottage layer nearly empty | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
+| Qwen-Image-Layered + Lightning 0.5 | image to layers | fox_cottage | 2x T4 | 384 px, 5 layers, 4 steps | 43.6 |  | 5 | 11.09 | cleanest Lightning variant; no speed-up | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (46 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (50 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

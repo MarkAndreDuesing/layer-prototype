@@ -48,7 +48,7 @@ flowchart LR
 |---|---|---|
 | `bg_relight` (most events) | weather, light, time of day | edit background, relight the other layers (IC-Light) |
 | `per_layer` | several objects change appearance | Qwen-Image-2.1 RGBA edit per layer (keeps alpha) |
-| `recompose` | geometry changes across objects (snow piles up) | edit the composite (Qwen-Image-2.1: night and heavy-rain edits keep the composition, about 22 s), re-split |
+| `recompose` | geometry changes across objects (snow piles up) | edit the composite (Qwen-Image-2.1: night and heavy-rain edits keep the composition, about 22 s), re-split with Stable-Layers (Heun, 70 s; measured on the night and rain edits: cottage / tree / fox / moon come out as separate layers, [qwen-image-2.1.md](../models/qwen-image-2.1.md#story-event-composites-re-split-with-stable-layers-run-v10-5-layers-384-px-heun-6770-s)) |
 | `effects` | only an overlay | procedural rain/snow; LayerDiffuse fog/fire/glow |
 
 Rules in the router prompt: lighting changes apply to every visible layer; a layer holding several objects is re-prompted as a whole, never removed for one part. Code: [events.py](../../prototype/layerproto/events.py); 5 test events routed sensibly (about 30 s each on CPU). No layered method in the literature does this (gap G2): [story_events_global_edits.md](../../research_notes/Layered%20loop%20open%20paths/story_events_global_edits.md).

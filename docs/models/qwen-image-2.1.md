@@ -42,6 +42,26 @@ Load 247 s; peak 9.6–10.7 GB. Results: [`../../prototype/kaggle/results_qwen21
 
 Results: [`../../prototype/kaggle/results_qwen21_fox/`](../../prototype/kaggle/results_qwen21_fox/). Strong, explicit edit prompts ("Keep every object, the composition and the style") fixed the subtle rain edit of the first run.
 
+## Story-event composites re-split with Stable-Layers (run v10, 5 layers, 384 px, Heun, 67–70 s)
+
+Strategy "recompose" end to end: Qwen-Image-2.1 edits the whole scene (night, heavy rain), then Stable-Layers splits the result.
+
+| Composite | Layers found | Recomposite diff |
+|---|---|---|
+| night edit | moon + sky bits / cottage (lit windows) / tree / fox, path + hedge as a layer | 4.2 |
+| heavy-rain edit | cottage / tree / fox, wet path + lawn layer, rain mostly in the background | 11.2 |
+| text-to-image scene (Qwen-Image-2.1 from the caption) | 5 frames, 63–98 % transparent; strip in `results_qwen_v10/` not inspected in detail | 21.1 |
+
+Night (input | recomposite | background | layers):
+
+![night re-split](../img/q21_night_resplit_stable.png)
+
+Heavy rain:
+
+![rain re-split](../img/q21_rain_resplit_stable.png)
+
+The base model (Euler, 4 steps, 39 s) splits the night edit worse (3 of the 4 object frames 99–100 % transparent, i.e. empty) but the rain edit with more layers filled (diff 10.8). Results: `prototype/kaggle/results_qwen_v10/`.
+
 ## Usage facts (from the research notes)
 
 | Topic | Fact |
