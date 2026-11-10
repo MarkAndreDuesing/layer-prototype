@@ -40,7 +40,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] Story events: LayerDiffuse effect layers (fog / fire / glow); per-layer Qwen-2.1 relight with alpha check-and-retry done: all 10 edits accepted; the retry logic is `layerproto/layer_edit.py` (self-test passes); next: add shadow layers and call it from the `per_layer` event strategy once a Qwen-2.1 backend exists in the app
 - [x] Drift experiment with real editors, arms A (relocate chain) and B (Qwen-2.1 flat chain), 6 fox moves ([research/drift-evaluation.md](research/drift-evaluation.md))
 - [x] Drift arm C building block: re-decompose cycles lose 20 dB at once and 6–11 dB more by cycle 5 ([drift-evaluation.md](research/drift-evaluation.md))
-- [ ] Drift: arm C with real edits, more scenes, re-prompt and relight edits
+- [x] Drift arm C with real edits (SAM2 re-decomposition each turn): 35 dB after the first re-split, 28 dB at turn 6 (between A 60 dB and B 14 dB)
+- [ ] Drift: more scenes, re-prompt and relight edits, LPIPS / DINO
 - [~] Wire the GPU modules into the app: image → layers path done and proven with a real model (SAM2 decomposer on a T4 through the real route, 5–12 s); open: Kaggle → laptop tunnel (you run it), Qwen-Image-Layered / CLD behind `/decompose`, `/relocate` + relight + shadow routes
 
 ## 3. Open questions from the team voice note (2026-11-08)

@@ -37,9 +37,24 @@ Top row = arm A, bottom row = arm B (turn 0 … 6):
 
 - **Flat editor:** falls below 25 dB at turn 1, darkens by 11.6 grey levels over 6 turns, loses fine texture, and from turn 5 draws a second fox (the edit "move" turns into "add"). Cost about 23 s per turn.
 - **Layered arm:** the background is exact by construction (about 60 dB; the remainder is soft alpha edges), which is the expected strength of layers and not a surprise. The moved object itself is not free: against turn 0 its colour L1 grows 0.22 → 0.30 over six moves (crop-normalised), and its size does not return exactly (back at its home position it covers 84 % of the original area, and the first move came out 1.7× the area instead of the intended 1.3×).
-- **Not yet run:** arm C (re-decompose every turn), more scenes and edit types (re-prompt, relight), LPIPS / DINO. One scene, one seed: a demonstration of the harness with real editors, not a benchmark.
+- **Arm C (re-decompose every turn), added later the same day:** the same six moves, but before each move after the first the composite is split again with Grounding DINO + SAM2 by noun + LaMa (6–9 s per turn). PSNR outside the edit against turn 0: 59.2 dB at turn 1 (no decomposition yet), **35.3 dB at turn 2**, 31.6, 30.2, 29.1 and **28.2 dB at turn 6**; SSIM 0.93. The untouched layers' alpha IoU against turn 0 falls to 0.38–0.68 (the masks are re-estimated each time and only the visible parts are kept). It stays above the 25 dB line but sits between A (about 60 dB) and B (14–20 dB):
 
-Files: `prototype/tools/fox_drift_demo.py` (arm A), `make_qwen21_drift_trial.py` (arm B), `drift_analyse.py`, results in `prototype/kaggle/results_drift*/`.
+| Turn | A persistent layers | C re-decompose each turn | B flat editor |
+|---|---|---|---|
+| 1 | 59.2 dB | 59.2 dB | 19.6 dB |
+| 2 | 60.9 | 35.3 | 18.6 |
+| 3 | 60.8 | 31.6 | 17.1 |
+| 4 | 60.8 | 30.2 | 15.9 |
+| 5 | 60.5 | 29.1 | 15.0 |
+| 6 | 61.9 | 28.2 | 14.3 |
+
+Composites of arm C, turn 0 … 6:
+
+![arm C composites](../img/drift_armC_strip.jpg)
+
+- **Still open:** more scenes and edit types (re-prompt, relight), LPIPS / DINO, arm C with Qwen-Image-Layered as the decomposer (the cycle test above suggests it would be worse than SAM2). One scene, one seed: a demonstration of the harness with real editors, not a benchmark.
+
+Files: `prototype/tools/fox_drift_demo.py` (arm A), `make_qwen21_drift_trial.py` (arm B), `fox_drift_armc.py` (arm C), `drift_analyse.py`, results in `prototype/kaggle/results_drift*/`.
 
 ## Arm C building block: error of re-decomposing again and again (no edit)
 
@@ -60,4 +75,4 @@ Top row base model, bottom row Stable-Layers (cycle 0 … 5):
 The base model slowly washes out and blurs the scene; Stable-Layers saturates the colours towards green and loses texture. Cycle 1 already costs about 20 dB (partly the 384 px working resolution), so re-decomposing every turn (arm C) would sit far below the persistent-layer arm A (about 60 dB outside the edit) before any editing error is added. Caveat: one scene, no edits, two splitter settings.
 
 ## Next
-Arm C with real edits (decompose each turn, then relocate) ([../todo.md](../todo.md)).
+More scenes and edit types ([../todo.md](../todo.md)).

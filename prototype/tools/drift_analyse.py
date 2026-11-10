@@ -9,6 +9,7 @@ from PIL import Image
 from layerproto import drift_eval as D
 
 dirA, dirB, edits_path, out = sys.argv[1:5]
+dirC = sys.argv[5] if len(sys.argv) > 5 else None
 os.makedirs(out, exist_ok=True)
 E = json.load(open(edits_path)); T = E["target_layer"]; n_turns = len(E["turns"])
 nl = len(glob.glob(f"{dirA}/t0_layer*.png"))
@@ -40,6 +41,16 @@ def run_flat():
     return rows
 rowsB = run_flat()
 res = {"A_layered_relocate": dict(rows=rowsA, summary=D.summarise(rowsA)), "B_flat_qwen21": dict(rows=rowsB, summary=D.summarise(rowsB))}
+if dirC:
+    layersAtC = lambda t: [Image.open(f"{dirC}/t{t}_layer{i}.png").convert("RGBA") for i in range(nl)]
+    stC = {"t": 0}
+    def c_replay(layers, e):
+        stC["t"] += 1; return layersAtC(stC["t"])
+    rowsC = D.run_arm("layered", layersAtC(0), edits, layered_edit=c_replay)
+    res["C_redecompose_every_turn"] = dict(rows=rowsC, summary=D.summarise(rowsC))
+    print("turn | C psnr_out ssim_out alpha_iou_untouched")
+    for r in rowsC[1:]:
+        print(f"{r['turn']:4d} | {min(r['psnr_out'], 99):9.1f} {r['ssim_out']:9.3f} {r.get('alpha_iou_untouched', float('nan')):.3f}")
 D.save(res, f"{out}/drift_results.json")
 print("turn | A psnr_out  ssim_out  | B psnr_out  ssim_out  lum_shift")
 for t in range(1, max(len(rowsA), len(rowsB))):

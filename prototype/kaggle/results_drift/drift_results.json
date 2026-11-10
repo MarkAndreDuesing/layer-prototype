@@ -130,5 +130,77 @@
    "first_turn_below_threshold": 1,
    "threshold_db": 25.0
   }
+ },
+ "C_redecompose_every_turn": {
+  "rows": [
+   {
+    "turn": 0,
+    "psnr_out": Infinity,
+    "ssim_out": 1.0,
+    "lum_shift": 0.0
+   },
+   {
+    "turn": 1,
+    "psnr_out": 59.20841699445588,
+    "ssim_out": 0.9915915216057567,
+    "lum_shift": -0.52777099609375,
+    "edited_frac": 0.07198333740234375,
+    "alpha_iou_untouched": 1.0,
+    "alpha_l1_untouched": 0.0
+   },
+   {
+    "turn": 2,
+    "psnr_out": 35.295884203435875,
+    "ssim_out": 0.9733277647269336,
+    "lum_shift": -0.3328857421875,
+    "edited_frac": 0.08909225463867188,
+    "alpha_iou_untouched": 0.3843286697647406,
+    "alpha_l1_untouched": 0.05022749714553356
+   },
+   {
+    "turn": 3,
+    "psnr_out": 31.57614184034839,
+    "ssim_out": 0.9547544187593835,
+    "lum_shift": 0.437713623046875,
+    "edited_frac": 0.11520767211914062,
+    "alpha_iou_untouched": 0.6829307938347002,
+    "alpha_l1_untouched": 0.032773282006382944
+   },
+   {
+    "turn": 4,
+    "psnr_out": 30.157440683841344,
+    "ssim_out": 0.9439679051701855,
+    "lum_shift": 0.615631103515625,
+    "edited_frac": 0.14217758178710938,
+    "alpha_iou_untouched": 0.6328466668230398,
+    "alpha_l1_untouched": 0.04187107868492603
+   },
+   {
+    "turn": 5,
+    "psnr_out": 29.083198662061214,
+    "ssim_out": 0.9374018145637669,
+    "lum_shift": -0.5885009765625,
+    "edited_frac": 0.15227890014648438,
+    "alpha_iou_untouched": 0.3834868459605737,
+    "alpha_l1_untouched": 0.05284035820513964
+   },
+   {
+    "turn": 6,
+    "psnr_out": 28.241833166802103,
+    "ssim_out": 0.9321527850740642,
+    "lum_shift": 0.28497314453125,
+    "edited_frac": 0.1609954833984375,
+    "alpha_iou_untouched": 0.382129502414048,
+    "alpha_l1_untouched": 0.05389130748808384
+   }
+  ],
+  "summary": {
+   "turns": 6,
+   "auc_psnr": 35.593819258490804,
+   "final_psnr": 28.241833166802103,
+   "final_ssim": 0.9321527850740642,
+   "first_turn_below_threshold": null,
+   "threshold_db": 25.0
+  }
  }
 }

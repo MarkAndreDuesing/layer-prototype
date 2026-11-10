@@ -20,7 +20,7 @@
 | Relight / shadows | IC-Light relight + procedural shadow layer, tested with `relocate()` on the fox (T4) | IC-Light 5 s, shadow 0.04 s (T4) | [editing.md §2](concepts/editing.md#2-relighting-and-shadows) |
 | Story events | Event router (LLM → per-layer actions) + instant procedural previews (CPU); GPU pass measured three ways on night / rain: `recompose` (scene edit + re-split) works best so far, `bg_relight` (IC-Light) gives colour casts, per-layer Qwen-2.1 relight with an alpha check-and-retry darkens every object well (10 of 10 accepted, 2–2.5 min per event) | 30 s routing (CPU) + 22 s edit (T4) + 30–70 s split | [editing.md §3, §5](concepts/editing.md#5-story-event-measured-bg_relight-vs-recompose-fox--cottage-night-and-heavy-rain) |
 | Recomposite | Alpha compositing in code | instant | — |
-| Measure drift over many edits | Harness + first real run (6 fox moves): layered arm 60 dB outside the edit vs flat Qwen-2.1 14–20 dB, fox duplicated at turn 5 | one scene, arms A and B | [research/drift-evaluation.md](research/drift-evaluation.md) |
+| Measure drift over many edits | Harness + first real run (6 fox moves): persistent layers 60 dB outside the edit, re-decompose every turn 59 → 28 dB, flat Qwen-2.1 20 → 14 dB with the fox duplicated at turn 5 | one scene, arms A, B and C | [research/drift-evaluation.md](research/drift-evaluation.md) |
 
 ## Each model: best result so far
 
