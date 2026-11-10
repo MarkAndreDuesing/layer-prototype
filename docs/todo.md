@@ -56,7 +56,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [~] **Generate → segment → inpaint:** first attempt done (see SAM2 + LaMa above).
 
 ## 4. Speed and hosting
-- [~] **TPU:** probe notebook ready (`prototype/tools/make_tpu_probe.py`); CLI batch runs got no TPU; next: interactive TPU session in the Kaggle editor (2026-11-10: the editor offers "TPU v5e-8" in Session options; importing `tpu-probe.ipynb` through Claude in Chrome froze the editor tab twice, so import it by hand: File > Import Notebook); torch must be pinned to 2.9 for torch_xla 2.9.
+- [~] **TPU:** probe notebook ready (`prototype/tools/make_tpu_probe.py`); CLI batch runs got no TPU; next: interactive TPU session in the Kaggle editor (2026-11-10: the editor offers "TPU v5e-8" in Session options; importing `tpu-probe.ipynb` through Claude in Chrome froze the editor tab twice, so import it by hand: File > Import Notebook); the user then started it and Kaggle queued it at #1510, so no TPU ran yet; torch must be pinned to 2.9 for torch_xla 2.9.
 - [x] Qwen levers: prompt embeddings encoded once per image in the batch notebook (`cached_encode`), 2-layer splits 25.7 s (v9b); Lightning 2 steps 22 s (v10)
 - [ ] API budget: about $0.05 per Qwen-Image-Layered run on fal; €100 ≈ 2,000 runs, better for final demos ([research/hosting.md](research/hosting.md)).
 

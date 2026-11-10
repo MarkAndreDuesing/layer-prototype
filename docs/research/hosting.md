@@ -86,7 +86,7 @@ The T4 is also too small for bf16 (16 GB, compute capability 7.5), so on a T4 yo
 <a id="tpu"></a>
 ## 5. TPU
 - Kaggle offers TPU v5e-8 (8 chips × 16 GB HBM, native bf16) on a separate 20 h/week quota. Template: diffusers' PyTorch/XLA FLUX SPMD example (tested on v5e-8). Estimated about 40 s per Qwen split at about 30 steps; the "2–5 days" effort figure was an unverified guess.
-- **Probe ([`../../prototype/tools/make_tpu_probe.py`](../../prototype/tools/make_tpu_probe.py)), 2026-11-09:** three CLI batch runs never got a TPU (Kaggle stored `machine_shape: TpuV5E8`, the run used the standard CPU image). The image ships torch 2.11 (CPU) + JAX 0.11.1 and no torch_xla; pip's newest torch_xla is 2.9, so torch must be pinned to 2.9. **Next:** run the probe as an interactive TPU session in the editor.
+- **Probe ([`../../prototype/tools/make_tpu_probe.py`](../../prototype/tools/make_tpu_probe.py)), 2026-11-09:** three CLI batch runs never got a TPU (Kaggle stored `machine_shape: TpuV5E8`, the run used the standard CPU image). The image ships torch 2.11 (CPU) + JAX 0.11.1 and no torch_xla; pip's newest torch_xla is 2.9, so torch must be pinned to 2.9. **2026-11-10 interactive attempt:** the editor offers "TPU v5e-8" (TPU quota shown as 00:00 / 20 hrs) but the session sat in a queue: "TPUs are popular right now. You are #1510 in the queue". No TPU was allocated, so no probe stage ran. **Next:** retry at a quieter time (the queue position is shown in the editor), or skip the TPU route.
 
 ### TPU software routes (researched, not measured)
 
