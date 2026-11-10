@@ -100,6 +100,10 @@ One scene image in, one object out as RGBA, about 23-27 s each after the 240 s l
 
 Files: `prototype/kaggle/results_qwen21_extract/`.
 
+### As a `/decompose` method (code ready, not yet run through the route)
+
+[qwen21_decomposer.py](../../prototype/layerproto/backends/qwen21_decomposer.py) turns the prompts above into the app's decomposer contract (`method="qwen21-extract"`): one "remove all named objects" call for the background, then one extract call per name from the original image, each naming the objects in front of it as exclusions, retrying with the next seed if a layer comes back empty or flooded. `MethodRouter` in `decomposer.py` lets one server offer it next to `sam2-lama`. Logic tested with a stub pipeline (`prototype/tools/test_qwen21_decomposer.py`). Open: a server notebook that loads the Qwen-2.1 pipeline (about 4 min, both T4s) and serves it, then a run through the real route.
+
 ## Best features
 
 - One model covers three loop steps: new layer from text, re-prompt a layer keeping transparency, cut an object out of a scene.

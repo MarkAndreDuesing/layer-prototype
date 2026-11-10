@@ -59,3 +59,18 @@ def recomposite(layers: list[Image.Image]) -> Image.Image:
     for L in layers[1:]:
         canvas.alpha_composite(L.convert("RGBA").resize(canvas.size))
     return canvas
+
+
+class MethodRouter:
+    """Serve several decomposers on one /decompose route: picks one by DecomposeParams.method.
+
+        build_app(chain, token, decomposer=MethodRouter({"sam2-lama": sam2_dec, "qwen21-extract": q21_dec}))
+    """
+
+    def __init__(self, by_method: dict):
+        self.by_method = by_method
+
+    def __call__(self, image: Image.Image, p: DecomposeParams) -> list[Image.Image]:
+        if p.method not in self.by_method:
+            raise ValueError(f"unknown method {p.method!r}; this server offers {sorted(self.by_method)}")
+        return self.by_method[p.method](image, p)
