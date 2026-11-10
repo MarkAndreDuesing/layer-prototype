@@ -7,6 +7,7 @@ Endpoints (JSON, images as base64 PNG):
     POST /chain/background {params}
     POST /chain/blend      {params, scene}
     POST /chain/extract    {params, scene, blended}
+    POST /chain/relocate   {params, scene, layer, box, strength, pin_frac} -> {layer, composite}   (move / resize with re-harmonisation)
     POST /decompose        {params, image} -> {layers: [b64 PNG, background first]}   (only if a decomposer callable is given)
 Locally, point prototype/config.json at it:
     {"image_backend": "remote", "remote_url": "https://<tunnel-url>", "remote_token": "<secret>"}
@@ -21,6 +22,15 @@ from pydantic import BaseModel
 from .backends.chain_base import ChainParams
 from .backends.layerdiffuse_chain import LayerDiffuseChain
 from .backends.remote import b64_to_img, img_to_b64
+
+
+class RelocateReq(BaseModel):
+    params: dict
+    scene: str              # canvas without the layer (RGB)
+    layer: str              # the layer's RGBA (canvas-sized)
+    box: list               # new [x, y, w, h] in pixels for the layer's visible content
+    strength: float = 0.5
+    pin_frac: float = 0.4
 
 
 class DecomposeReq(BaseModel):
@@ -62,6 +72,17 @@ def build_app(chain, token: str = "", decomposer=None) -> FastAPI:
         check(x_token)
         img = chain.extract(b64_to_img(req.scene), b64_to_img(req.blended), ChainParams(**req.params))
         return {"image": img_to_b64(img)}
+
+    @app.post("/chain/relocate")
+    def relocate(req: RelocateReq, x_token: str | None = Header(default=None)):
+        check(x_token)
+        if not hasattr(chain, "relocate"):
+            raise HTTPException(501, "this chain has no relocate()")
+        p = ChainParams(**req.params)
+        _naive, harm, new_layer = chain.relocate(b64_to_img(req.scene), b64_to_img(req.layer), req.box, p.prompt, p.seed,
+                                                 strength=req.strength, pin_frac=req.pin_frac, w=p.width, h=p.height,
+                                                 steps=p.steps, guidance=p.guidance, negative=p.negative_prompt)
+        return {"layer": img_to_b64(new_layer), "composite": img_to_b64(harm)}
 
     if decomposer is not None:
         from .backends.decomposer import DecomposeParams

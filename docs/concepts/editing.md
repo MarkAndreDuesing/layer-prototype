@@ -25,6 +25,8 @@ Code: `LayerDiffuseChain.relocate()` in [layerdiffuse_chain.py](../../prototype/
 
 **Limits:** thin parts at the edge (chair legs) can still change; the old position needs inpainting if the background still contains the object (RevealLayer's filled background avoids this). Based on DreamLayer's harmonisation step ([../research/papers-survey.md](../research/papers-survey.md#3-move-and-resize-in-the-papers)).
 
+**In the app (2026-11-10):** the layer-order panel has two buttons next to Apply / Reset. **Fit to planned box** is a canvas transform into the planner's box (CPU, instant). **Fit + re-harmonise (GPU)** calls `Engine.relocate_layer`, which sends the layer, the scene below it and the target box to the chain's `relocate()` (locally or through the new `/chain/relocate` route of the remote server) and stores the result as a new variant with the position baked in. Both are tested without a model (`tools/test_fit_to_box.py`, `tools/test_relocate_route.py`); the real call is the 3.5 s `relocate()` measured above.
+
 ## 2. Relighting and shadows
 
 | Component | What it does | Speed | Code |

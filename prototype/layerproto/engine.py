@@ -227,6 +227,38 @@ class Engine:
         # _placed keeps the visible centre fixed while scaling, then shifts by dx*W / dy*H
         return self.transform_layer(scene, layer_id, ((bx + bw / 2) * W - cx) / W, ((by + bh / 2) * H - cy) / H, s_)
 
+    def relocate_layer(self, scene: Scene, layer_id: str, box: list | None = None, strength: float = 0.5,
+                       progress: Progress = None) -> Scene:
+        """Move / resize an element into a box [x, y, w, h] (0..1, default: its planned box) WITH re-harmonisation on the chain
+        (about 3.5 s on a T4): the new layer becomes a new variant with a baked-in position, and the canvas transform is reset."""
+        layer = scene.layer(layer_id)
+        v = layer.current()
+        if layer.role == "background" or v is None:
+            return scene
+        if not hasattr(self.chain, "relocate"):
+            raise RuntimeError("the image backend has no relocate(); use 'Fit to planned box' (canvas transform) instead")
+        W, H = self.s.width, self.s.height
+        folder = scene.folder(self.s.scenes_dir)
+        below = self.compose(scene, below_depth=layer.depth, save=False).convert("RGB")
+        cur = Image.open(f"{folder}/{v.file}").convert("RGBA").resize((W, H))
+        bx, by, bw, bh = [float(x) for x in (box or layer.box)]
+        bbox = cur.getchannel("A").point(lambda a: 255 if a > 40 else 0).getbbox() or (0, 0, W, H)
+        w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        k = min(bw * W / w, bh * H / h)                              # keep the aspect ratio inside the box
+        nw, nh = max(1, int(w * k)), max(1, int(h * k))
+        px, py = int((bx + bw / 2) * W - nw / 2), int((by + bh / 2) * H - nh / 2)
+        t0 = time.time()
+        self._say(progress, f"{layer.name}: relocating with re-harmonisation")
+        _naive, _harm, new_layer = self.chain.relocate(below, cur, [px, py, nw, nh], v.prompt or layer.prompt, v.seed,
+                                                       w=W, h=H, strength=strength)
+        p = self._params(scene, v.prompt or layer.prompt)
+        self._store(scene, layer, new_layer, p, "relocate", time.time() - t0, progress)
+        layer.selected = len(layer.variants) - 1
+        layer.dx = layer.dy = 0.0
+        layer.scale = 1.0
+        scene.save(self.s.scenes_dir)
+        return scene
+
     def fit_all_to_boxes(self, scene: Scene) -> Scene:
         for l in self._ordered(scene):
             if l.role != "background":

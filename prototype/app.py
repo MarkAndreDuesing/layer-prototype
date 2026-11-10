@@ -373,6 +373,17 @@ def do_fit_box(scene_id, layer_id):
     return _final_outputs(ENGINE.fit_layer_to_box(load(scene_id), layer_id), layer_id)
 
 
+def do_relocate(scene_id, layer_id):
+    """Fit the layer into its planned box AND re-harmonise it on the chain (about 3.5 s on a T4)."""
+    if not scene_id or not layer_id:
+        return NO_FINAL
+    try:
+        return _final_outputs(ENGINE.relocate_layer(load(scene_id), layer_id), layer_id)
+    except Exception as e:  # noqa: BLE001
+        gr.Warning(str(e))
+        return NO_FINAL
+
+
 def do_pick_move(scene_id, layer_id):
     if not scene_id or not layer_id:
         return 0.0, 0.0, 1.0
@@ -505,6 +516,7 @@ with gr.Blocks(title="Layer scene prototype") as demo:
                     t_apply = gr.Button("Apply move / resize", variant="primary")
                     t_reset = gr.Button("Reset")
                     t_fit = gr.Button("Fit to planned box")
+                    t_reloc = gr.Button("Fit + re-harmonise (GPU)")
                 compose_btn = gr.Button("Recompose (after selecting variants or editing the table)")
 
         gr.Markdown("### Story event: add a new element into the current scene")
@@ -587,6 +599,7 @@ with gr.Blocks(title="Layer scene prototype") as demo:
         move_pick.input(do_pick_move, [scene_id, move_pick], [t_dx, t_dy, t_scale])
         t_apply.click(do_transform, [scene_id, move_pick, t_dx, t_dy, t_scale], final_outs)
         t_reset.click(lambda s, l: do_transform(s, l, 0, 0, 1), [scene_id, move_pick], final_outs)
+        t_reloc.click(do_relocate, [scene_id, move_pick], final_outs).then(do_pick_move, [scene_id, move_pick], [t_dx, t_dy, t_scale])
         t_fit.click(do_fit_box, [scene_id, move_pick], final_outs).then(do_pick_move, [scene_id, move_pick], [t_dx, t_dy, t_scale])
         ev_btn.click(do_event, [scene_id, ev_name, ev_prompt, n_var, version], [over, version, status]).then(*recompose)
 
