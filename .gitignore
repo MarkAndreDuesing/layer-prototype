@@ -32,3 +32,5 @@ prototype/kaggle/results_*/LayerDiffuse-Flux/
 prototype/kaggle/results_*/RevealLayer/
 prototype/kaggle/results_*/PrismLayers/
 prototype/kaggle/results_*/CLD/
+
+prototype/config.json
