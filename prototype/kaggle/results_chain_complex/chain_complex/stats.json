@@ -1,0 +1,82 @@
+{
+ "512": {
+  "total_s": 244.3,
+  "elements": [
+   {
+    "element": "a large old oak tree on the right",
+    "seconds": 11.4,
+    "transparent_pct": 52.0
+   },
+   {
+    "element": "a stone cottage with a thatched roof on the left",
+    "seconds": 12.5,
+    "transparent_pct": 47.2
+   },
+   {
+    "element": "a wooden fence in front of the cottage",
+    "seconds": 12.9,
+    "transparent_pct": 56.2
+   },
+   {
+    "element": "a small blue wagon next to the fence",
+    "seconds": 13.1,
+    "transparent_pct": 84.2
+   },
+   {
+    "element": "a campfire with a ring of stones in the middle",
+    "seconds": 13.6,
+    "transparent_pct": 8.6
+   },
+   {
+    "element": "a red fox sitting in front of the campfire",
+    "seconds": 14.0,
+    "transparent_pct": 9.3
+   },
+   {
+    "element": "a tall iron lantern post at the front left",
+    "seconds": 14.3,
+    "transparent_pct": 44.2
+   }
+  ]
+ },
+ "1024": {
+  "total_s": 363.5,
+  "elements": [
+   {
+    "element": "a large old oak tree on the right",
+    "seconds": 47.5,
+    "transparent_pct": 76.1
+   },
+   {
+    "element": "a stone cottage with a thatched roof on the left",
+    "seconds": 48.7,
+    "transparent_pct": 74.6
+   },
+   {
+    "element": "a wooden fence in front of the cottage",
+    "seconds": 48.6,
+    "transparent_pct": 75.2
+   },
+   {
+    "element": "a small blue wagon next to the fence",
+    "seconds": 48.7,
+    "transparent_pct": 67.3
+   },
+   {
+    "element": "a campfire with a ring of stones in the middle",
+    "seconds": 48.7,
+    "transparent_pct": 69.5
+   },
+   {
+    "element": "a red fox sitting in front of the campfire",
+    "seconds": 48.8,
+    "transparent_pct": 78.9
+   },
+   {
+    "element": "a tall iron lantern post at the front left",
+    "seconds": 48.8,
+    "transparent_pct": 70.4
+   }
+  ]
+ }
+}

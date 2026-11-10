@@ -1,0 +1,100 @@
+[{"stream_name":"stderr","time":6.693996049,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.694036843,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.665697465,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.66573284,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.665736743,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.665742117,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.261617788,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.261649751,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.261655506,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.261659629,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":631.96502962,"data":"512 {'element': 'a large old oak tree on the right', 'seconds': 11.4, 'transparent_pct': 52.0}\n"}
+,{"stream_name":"stdout","time":631.965098679,"data":"512 {'element': 'a stone cottage with a thatched roof on the left', 'seconds': 12.5, 'transparent_pct': 47.2}\n"}
+,{"stream_name":"stdout","time":631.965105799,"data":"512 {'element': 'a wooden fence in front of the cottage', 'seconds': 12.9, 'transparent_pct': 56.2}\n"}
+,{"stream_name":"stdout","time":631.965111459,"data":"512 {'element': 'a small blue wagon next to the fence', 'seconds': 13.1, 'transparent_pct': 84.2}\n"}
+,{"stream_name":"stdout","time":631.965117396,"data":"512 {'element': 'a campfire with a ring of stones in the middle', 'seconds': 13.6, 'transparent_pct': 8.6}\n"}
+,{"stream_name":"stdout","time":631.965123553,"data":"512 {'element': 'a red fox sitting in front of the campfire', 'seconds': 14.0, 'transparent_pct': 9.3}\n"}
+,{"stream_name":"stdout","time":631.965128987,"data":"512 {'element': 'a tall iron lantern post at the front left', 'seconds': 14.3, 'transparent_pct': 44.2}\n"}
+,{"stream_name":"stdout","time":631.965134348,"data":"1024 {'element': 'a large old oak tree on the right', 'seconds': 47.5, 'transparent_pct': 76.1}\n"}
+,{"stream_name":"stdout","time":631.965139873,"data":"1024 {'element': 'a stone cottage with a thatched roof on the left', 'seconds': 48.7, 'transparent_pct': 74.6}\n"}
+,{"stream_name":"stdout","time":631.965145027,"data":"1024 {'element': 'a wooden fence in front of the cottage', 'seconds': 48.6, 'transparent_pct': 75.2}\n"}
+,{"stream_name":"stdout","time":631.965150282,"data":"1024 {'element': 'a small blue wagon next to the fence', 'seconds': 48.7, 'transparent_pct': 67.3}\n"}
+,{"stream_name":"stdout","time":631.965155749,"data":"1024 {'element': 'a campfire with a ring of stones in the middle', 'seconds': 48.7, 'transparent_pct': 69.5}\n"}
+,{"stream_name":"stdout","time":631.965161017,"data":"1024 {'element': 'a red fox sitting in front of the campfire', 'seconds': 48.8, 'transparent_pct': 78.9}\n"}
+,{"stream_name":"stdout","time":631.965166085,"data":"1024 {'element': 'a tall iron lantern post at the front left', 'seconds': 48.8, 'transparent_pct': 70.4}\n"}
+,{"stream_name":"stdout","time":631.965188863,"data":" 0:14,  1.26it/s]\n"}
+,{"stream_name":"stdout","time":631.96519387,"data":" 15%|█▌        | 3/20 [00:02\u003c00:15,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":631.965199126,"data":" 20%|██        | 4/20 [00:03\u003c00:15,  1.06it/s]\n"}
+,{"stream_name":"stdout","time":631.965202799,"data":" 25%|██▌       | 5/20 [00:04\u003c00:14,  1.03it/s]\n"}
+,{"stream_name":"stdout","time":631.965206714,"data":" 30%|███       | 6/20 [00:05\u003c00:13,  1.01it/s]\n"}
+,{"stream_name":"stdout","time":631.96521079,"data":" 35%|███▌      | 7/20 [00:06\u003c00:12,  1.01it/s]\n"}
+,{"stream_name":"stdout","time":631.965214819,"data":" 40%|████      | 8/20 [00:07\u003c00:12,  1.00s/it]\n"}
+,{"stream_name":"stdout","time":631.965218807,"data":" 45%|████▌     | 9/20 [00:08\u003c00:11,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965222736,"data":" 50%|█████     | 10/20 [00:09\u003c00:10,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965226845,"data":" 55%|█████▌    | 11/20 [00:10\u003c00:09,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965230901,"data":" 60%|██████    | 12/20 [00:11\u003c00:08,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965236938,"data":" 65%|██████▌   | 13/20 [00:12\u003c00:07,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965242089,"data":" 70%|███████   | 14/20 [00:13\u003c00:06,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965246283,"data":" 75%|███████▌  | 15/20 [00:14\u003c00:05,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965250596,"data":" 80%|████████  | 16/20 [00:15\u003c00:04,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965255562,"data":" 85%|████████▌ | 17/20 [00:16\u003c00:03,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965259879,"data":" 90%|█████████ | 18/20 [00:17\u003c00:02,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965264176,"data":" 95%|█████████▌| 19/20 [00:18\u003c00:01,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965268384,"data":"100%|██████████| 20/20 [00:19\u003c00:00,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965272501,"data":"100%|██████████| 20/20 [00:19\u003c00:00,  1.01it/s]\n"}
+,{"stream_name":"stdout","time":631.965276365,"data":"\n"}
+,{"stream_name":"stdout","time":631.965279964,"data":"  0%|          | 0/20 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":631.965283855,"data":"  5%|▌         | 1/20 [00:00\u003c00:18,  1.01it/s]\n"}
+,{"stream_name":"stdout","time":631.965287915,"data":" 10%|█         | 2/20 [00:02\u003c00:18,  1.00s/it]\n"}
+,{"stream_name":"stdout","time":631.965291946,"data":" 15%|█▌        | 3/20 [00:03\u003c00:17,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965296158,"data":" 20%|██        | 4/20 [00:04\u003c00:16,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965300299,"data":" 25%|██▌       | 5/20 [00:05\u003c00:15,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965328424,"data":" 30%|███       | 6/20 [00:06\u003c00:14,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965336146,"data":" 35%|███▌      | 7/20 [00:07\u003c00:13,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965340018,"data":" 40%|████      | 8/20 [00:08\u003c00:12,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965355901,"data":" 45%|████▌     | 9/20 [00:09\u003c00:11,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965359694,"data":" 50%|█████     | 10/20 [00:10\u003c00:10,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.96536926,"data":" 55%|█████▌    | 11/20 [00:11\u003c00:09,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965373951,"data":" 60%|██████    | 12/20 [00:12\u003c00:08,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965377936,"data":" 65%|██████▌   | 13/20 [00:13\u003c00:07,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965381851,"data":" 70%|███████   | 14/20 [00:14\u003c00:06,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965385826,"data":" 75%|███████▌  | 15/20 [00:15\u003c00:05,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965389178,"data":" 80%|████████  | 16/20 [00:16\u003c00:04,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965392845,"data":" 85%|████████▌ | 17/20 [00:17\u003c00:03,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965396809,"data":" 90%|█████████ | 18/20 [00:18\u003c00:02,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965400602,"data":" 95%|█████████▌| 19/20 [00:19\u003c00:01,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965404459,"data":"100%|██████████| 20/20 [00:20\u003c00:00,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.96540844,"data":"100%|██████████| 20/20 [00:20\u003c00:00,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965412675,"data":"\n"}
+,{"stream_name":"stdout","time":631.965416211,"data":"  0%|          | 0/20 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":631.965428576,"data":"  5%|▌         | 1/20 [00:00\u003c00:08,  2.16it/s]\n"}
+,{"stream_name":"stdout","time":631.965432475,"data":" 10%|█         | 2/20 [00:01\u003c00:14,  1.27it/s]\n"}
+,{"stream_name":"stdout","time":631.965436497,"data":" 15%|█▌        | 3/20 [00:02\u003c00:15,  1.12it/s]\n"}
+,{"stream_name":"stdout","time":631.965441791,"data":" 20%|██        | 4/20 [00:03\u003c00:15,  1.06it/s]\n"}
+,{"stream_name":"stdout","time":631.965445481,"data":" 25%|██▌       | 5/20 [00:04\u003c00:14,  1.04it/s]\n"}
+,{"stream_name":"stdout","time":631.965449014,"data":" 30%|███       | 6/20 [00:05\u003c00:13,  1.02it/s]\n"}
+,{"stream_name":"stdout","time":631.965452881,"data":" 35%|███▌      | 7/20 [00:06\u003c00:12,  1.00it/s]\n"}
+,{"stream_name":"stdout","time":631.965456801,"data":" 40%|████      | 8/20 [00:07\u003c00:12,  1.00s/it]\n"}
+,{"stream_name":"stdout","time":631.965460508,"data":" 45%|████▌     | 9/20 [00:08\u003c00:11,  1.00s/it]\n"}
+,{"stream_name":"stdout","time":631.965464261,"data":" 50%|█████     | 10/20 [00:09\u003c00:10,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965468135,"data":" 55%|█████▌    | 11/20 [00:10\u003c00:09,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965472092,"data":" 60%|██████    | 12/20 [00:11\u003c00:08,  1.01s/it]\n"}
+,{"stream_name":"stdout","time":631.965475957,"data":" 65%|██████▌   | 13/20 [00:12\u003c00:07,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965479889,"data":" 70%|███████   | 14/20 [00:13\u003c00:06,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965495493,"data":" 75%|███████▌  | 15/20 [00:14\u003c00:05,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965499358,"data":" 80%|████████  | 16/20 [00:15\u003c00:04,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.96550328,"data":" 85%|████████▌ | 17/20 [00:16\u003c00:03,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965507265,"data":" 90%|█████████ | 18/20 [00:17\u003c00:02,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965515599,"data":" 95%|█████████▌| 19/20 [00:18\u003c00:01,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965519658,"data":"100%|██████████| 20/20 [00:19\u003c00:00,  1.02s/it]\n"}
+,{"stream_name":"stdout","time":631.965523541,"data":"100%|██████████| 20/20 [00:19\u003c00:00,  1.01it/s]\n"}
+,{"stream_name":"stdout","time":631.965527365,"data":"\n"}
+,{"stream_name":"stderr","time":634.496880825,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":634.496921948,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":634.677861132,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":634.677888965,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":635.433434472,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":635.505856674,"data":"[NbConvertApp] Writing 91518 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":638.007776995,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":638.519082942,"data":"[NbConvertApp] Writing 366435 bytes to __results__.html\n"}
+]

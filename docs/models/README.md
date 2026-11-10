@@ -72,6 +72,8 @@
 | Stable-Layers + Heun | image to layers | q21_rain (Qwen-2.1 edit) | 2x T4 | 384 px, 5 layers, 4 steps | 70.0 |  | 4 | 11.16 | story-event re-split | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
 | Qwen-Image-Layered + Lightning 1.0 | image to layers | fox_cottage | 2x T4 | 384 px, 5 layers, 2 steps | 22.4 |  | 5 | 14.98 | half the time; cottage layer nearly empty | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
 | Qwen-Image-Layered + Lightning 0.5 | image to layers | fox_cottage | 2x T4 | 384 px, 5 layers, 4 steps | 43.6 |  | 5 | 11.09 | cleanest Lightning variant; no speed-up | [results_qwen_v10](../../prototype/kaggle/results_qwen_v10/) |
+| LayerDiffuse chain | text to layers (7 elements) | village scene | 1x T4 | 1024 px, 20 steps, CFG 7, SDXL base | 364 |  | 8 |  | clean layers; layout/scale uncontrolled; 48 s per element | [results_chain_complex](../../prototype/kaggle/results_chain_complex/) |
+| LayerDiffuse chain | text to layers (7 elements) | village scene | 1x T4 | 512 px, 20 steps, CFG 7 | 244 |  | 8 |  | garbled at 512 px | [results_chain_complex](../../prototype/kaggle/results_chain_complex/) |
 
-Source: `prototype/kaggle/benchmarks.csv` (50 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
+Source: `prototype/kaggle/benchmarks.csv` (52 runs). Times exclude model loading. Recomposite diff: see [../glossary.md](../glossary.md).
 <!-- BENCHMARKS:END -->

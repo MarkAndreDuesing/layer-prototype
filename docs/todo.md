@@ -40,7 +40,8 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 ## 3. Open questions from the team voice note (2026-11-08)
 - [ ] **Where do strong text-to-image models fit?** Most likely as the base-image generator before decomposition (Comfy Cloud's reference: Krea2-Turbo → Qwen-Image-Layered, 6 layers). Which shortlisted models give the most separable images, which run on Kaggle, which licences? Planned test: Qwen-Image-2.1 / FLUX / SDXL-Turbo scenes → Qwen-Image-Layered.
 - [ ] **Image-to-image front end** (sketch + prompt → image) → decomposer: untested; how it fits the LayerDiffuse route (which builds its own layers) is unclear. SDXL-Turbo img2img is about 58 s on the laptop.
-- [ ] **LayerDiffuse on complex scenes** (5+ or overlapping objects): not evaluated; the paper shows better results than the team saw, possibly settings.
+- [x] **LayerDiffuse on complex scenes** (7 elements): works at 1024 px (48 s per element, clean layers), garbled at the 512 px default; layout and scale uncontrolled ([layerdiffuse-sdxl.md](models/layerdiffuse-sdxl.md))
+- [ ] Chain with a box-aware layout (draw each element into its box via inpainting mask) or set the engine default to 1024 px
 - [~] **Continuous map development / story events:** router + previews built; whole-scene effects on GPU open.
 - [~] **Prompt breakdown with AI placement + harmonisation:** the "sticker collage" problem; IC-Light + shadow modules built and tested together on a T4 (fox move).
 - [~] **Generate → segment → inpaint:** first attempt done (see SAM2 + LaMa above).

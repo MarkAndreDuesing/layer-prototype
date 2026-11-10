@@ -49,3 +49,5 @@ Stable-Layers + Heun,image to layers,q21_night (Qwen-2.1 edit),2x T4,"384 px, 5 
 Stable-Layers + Heun,image to layers,q21_rain (Qwen-2.1 edit),2x T4,"384 px, 5 layers, 4 steps",70.0,,4,11.16,results_qwen_v10,2026-11-10,"story-event re-split"
 Qwen-Image-Layered + Lightning 1.0,image to layers,fox_cottage,2x T4,"384 px, 5 layers, 2 steps",22.4,,5,14.98,results_qwen_v10,2026-11-10,"half the time; cottage layer nearly empty"
 Qwen-Image-Layered + Lightning 0.5,image to layers,fox_cottage,2x T4,"384 px, 5 layers, 4 steps",43.6,,5,11.09,results_qwen_v10,2026-11-10,"cleanest Lightning variant; no speed-up"
+LayerDiffuse chain,text to layers (7 elements),village scene,1x T4,"1024 px, 20 steps, CFG 7, SDXL base",364,,8,,results_chain_complex,2026-11-10,"clean layers; layout/scale uncontrolled; 48 s per element"
+LayerDiffuse chain,text to layers (7 elements),village scene,1x T4,"512 px, 20 steps, CFG 7",244,,8,,results_chain_complex,2026-11-10,"garbled at 512 px"

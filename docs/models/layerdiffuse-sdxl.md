@@ -36,6 +36,25 @@ SDXL **base** (not Turbo), 20 steps, CFG 7, Euler; 1024 px on a T4 or 512 px on 
 | per element, 512 px, laptop CPU | about 11 min (base) / 80 s per plain layer (Turbo) |
 | `relocate()` move/resize, 512 px, T4 | about 4 s |
 
+## Complex scene: 7 elements, several overlapping (run 2026-11-10, T4, SDXL base, 20 steps, CFG 7)
+
+Background (village lawn, pine forest) + oak tree, cottage, fence, blue wagon, campfire with stone ring, red fox, iron lantern post, each drawn into the composite so far (`bg2ble`) and extracted (`bgble2fg`). Tiles: background and composite after each element, then the seven extracted layers.
+
+| Setting | Total | Per element | Extracted layers' transparency | Look |
+|---|---|---|---|---|
+| **1024 px** | 364 s | 48 s | 67–79 % | all seven layers extracted cleanly, one consistent storybook style, shared light |
+| 512 px (engine default) | 244 s | 11–14 s | 8–84 % (campfire and fox layers almost opaque) | garbled graphic-style artefacts, white halos, repeated fence spikes; the model is out of its resolution |
+
+1024 px:
+
+![chain, 1024 px](../img/chain_complex_1024.jpg)
+
+512 px:
+
+![chain, 512 px](../img/chain_complex_512.jpg)
+
+What this shows: the chain **does** handle 7 elements and overlap when run at 1024 px (the earlier poor results on complex scenes came from the 512 px engine default), and each element lands in the lit scene. What it does **not** control is layout and scale: with no boxes, the fox and the stone ring come out huge and cover the cottage, the lantern post was drawn with a boy, and the tree sits where the model decides. That is the gap boxes fill (ART+, CLD, RevealLayer) or a layout pass before the chain.
+
 ## Best features
 
 - Adds an element *into* the existing scene with matching light and perspective, as its own aligned layer.

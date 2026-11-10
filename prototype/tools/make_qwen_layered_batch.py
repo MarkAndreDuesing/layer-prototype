@@ -70,14 +70,11 @@ LIGHT_SCHED = dict(base_image_seq_len=256, base_shift=math.log(3), invert_sigmas
 orig_sched = pipe.scheduler
 lightp = hf_hub_download('lightx2v/Qwen-Image-Lightning', 'Qwen-Image-Lightning-4steps-V2.0-bf16.safetensors')
 CONFIGS = [  # (variant, sampler, image, resolution, layers, steps)
-    # v10 part 1: Qwen-Image-2.1 story-event composites (night / rain edits, text-to-image scene) re-split with Stable-Layers (Heun)
-    ('stable_layers', 'heun', 'q21_night', 384, 5, 4), ('stable_layers', 'heun', 'q21_rain', 384, 5, 4), ('stable_layers', 'heun', 'q21_t2i', 384, 5, 4),
-    ('base', 'euler', 'q21_night', 384, 5, 4), ('base', 'euler', 'q21_rain', 384, 5, 4), ('base', 'euler', 'q21_t2i', 384, 5, 4),
-    # part 2: Lightning LoRA at 2 and 4 steps, scale sweep, on the fox scene
-    ('lightning0.25', 'euler', 'fox_cottage', 384, 5, 2), ('lightning0.5', 'euler', 'fox_cottage', 384, 5, 2),
-    ('lightning0.75', 'euler', 'fox_cottage', 384, 5, 2), ('lightning1.0', 'euler', 'fox_cottage', 384, 5, 2),
-    ('lightning0.5', 'euler', 'fox_cottage', 384, 5, 4), ('lightning1.0', 'euler', 'fox_cottage', 384, 5, 4),
-    ('lightning1.0', 'euler', 'q21_night', 384, 5, 2),
+    # v11: which text-to-image generator gives the most separable scene? FLUX.1-dev (plain control run), Qwen-Image-2.1 (t2i), SDXL-Turbo (fox, forest)
+    ('stable_layers', 'heun', 'flux_campfire', 384, 4, 4), ('base', 'euler', 'flux_campfire', 384, 4, 4), ('base', 'euler', 'flux_campfire', 384, 6, 4),
+    ('stable_layers', 'heun', 'q21_t2i', 384, 5, 4), ('base', 'euler', 'q21_t2i', 384, 5, 4),
+    ('stable_layers', 'heun', 'fox_cottage', 384, 5, 4), ('base', 'euler', 'fox_cottage', 384, 5, 4),
+    ('stable_layers', 'heun', 'forest', 384, 4, 4), ('base', 'euler', 'forest', 384, 4, 4),
 ]
 stats['sweep'] = []
 split_across_gpus(tr)
@@ -104,7 +101,7 @@ for variant, sampler, key, res, nl, steps in CONFIGS:
                transparent_pct=[i['transparent_pct'] for i in info],
                recomposite_diff=round(float(np.abs(np.array(canvas.convert('RGB').resize(im.size), dtype=int) - np.array(im, dtype=int)).mean()), 2))
     stats['sweep'].append(row); save(); print(row, flush=True)
-    Q.strip([im, canvas] + out).save(f'{OUT}/v9_{tag}.png')
+    Q.strip([im, canvas] + out).save(f'{OUT}/v11_{tag}.png')
 remove_lora(tr); pipe.scheduler = orig_sched
 """
 SWEEP_MODE = True   # False: the original single 50-step run at 640 px

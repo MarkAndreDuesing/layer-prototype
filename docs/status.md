@@ -33,7 +33,7 @@ One line per model; the full measured table is generated in [models/README.md](m
 | RevealLayer | 134 s, background with hidden areas filled + clean layers (forest) | ✅ forest and fox & cottage (140 s, 5 boxes: filled background + cottage / gate / tree / fox) | [→](models/revealayer.md) |
 | Qwen-Image-2.1 | about 20 s: fox extracted cleanly, fox → wolf keeping alpha, **strong night / heavy-rain scene edits keeping the composition** | ✅ | [→](models/qwen-image-2.1.md) |
 | LayerDiffuse-Flux | 58 s per transparent object (one T4), semi-transparent glass | ✅ | [→](models/layerdiffuse-flux.md) |
-| LayerDiffuse SDXL + chain | 18 s per element (T4); `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
+| LayerDiffuse SDXL + chain | 48 s per element at 1024 px / 20 steps (earlier measurement 18 s); 7-element scene works at 1024 px, garbled at 512; `relocate()` 4 s | ✅ prototype base | [→](models/layerdiffuse-sdxl.md) |
 | ART+ | text + boxes → clean background + transparent object layers (≈ 5 min, 8.5 GB); night scene very dark | ✅ since v9 (stacked-LoRA fix) | [→](models/art-plus.md) |
 | SAM2 + LaMa | **by noun (Grounding DINO + SAM2): house / cottage / gate / tree / fox in 7 s**, fully automatic; background fill blurry with LaMa, sharp and in style with SDXL-inpaint (28 s) | ✅ by noun | [→](models/sam2-lama.md) |
 | LayerD | 3 clean layers on a flat graphic design (206 s CPU); finds no foreground on painted scenes (matting empty) ; with generic BiRefNet it peels the fox cleanly, then takes the rest of the scene as one layer | ⚠️ partial on painted scenes | [→](models/layerd.md) |
