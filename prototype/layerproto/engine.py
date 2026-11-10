@@ -208,6 +208,31 @@ class Engine:
         scene.save(self.s.scenes_dir)
         return scene
 
+    def fit_layer_to_box(self, scene: Scene, layer_id: str, box: list | None = None) -> Scene:
+        """Move and resize an element so its visible content fills the layer's planned box [x, y, w, h] (0..1), keeping the
+        aspect ratio and centring it in the box. CPU only, no re-harmonisation (use the chain's relocate() for that)."""
+        layer = scene.layer(layer_id)
+        v = layer.current()
+        if layer.role == "background" or v is None:
+            return scene
+        W, H = self.s.width, self.s.height
+        bbox = Image.open(f"{scene.folder(self.s.scenes_dir)}/{v.file}").convert("RGBA").resize((W, H)).split()[-1].point(
+            lambda a: 255 if a > 40 else 0).getbbox()
+        if bbox is None:
+            return scene
+        bx, by, bw, bh = [float(x) for x in (box or layer.box)]
+        w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+        s_ = max(0.05, min(bw * W / w, bh * H / h))
+        cx, cy = (bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2
+        # _placed keeps the visible centre fixed while scaling, then shifts by dx*W / dy*H
+        return self.transform_layer(scene, layer_id, ((bx + bw / 2) * W - cx) / W, ((by + bh / 2) * H - cy) / H, s_)
+
+    def fit_all_to_boxes(self, scene: Scene) -> Scene:
+        for l in self._ordered(scene):
+            if l.role != "background":
+                self.fit_layer_to_box(scene, l.id)
+        return scene
+
     def _placed(self, img: Image.Image, layer: Layer, W: int, H: int) -> Image.Image:
         """Apply a layer's move/resize to its full-canvas RGBA image."""
         img = img.convert("RGBA").resize((W, H))

@@ -31,6 +31,8 @@ class Sam2Decomposer:
         self.lama = SimpleLama()
         self._inpaint = None                                # SDXL-inpaint, loaded on the first amodal request
 
+    amodal_neutral = True       # inpaint on the object over neutral grey, so the fill does not copy leftover background colours
+
     def _fill_hidden(self, base: Image.Image, hidden: np.ndarray, prompt: str, seed: int = 5) -> Image.Image:
         """SDXL-inpaint `base` inside `hidden` (bool mask); returns an RGB image of base's size."""
         if self._inpaint is None:
@@ -40,7 +42,8 @@ class Sam2Decomposer:
                 "diffusers/stable-diffusion-xl-1.0-inpainting-0.1", vae=vae, torch_dtype=self.torch.float16, variant="fp16").to(self.device)
         S = 1024
         mask = Image.fromarray((hidden * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(7)).filter(ImageFilter.GaussianBlur(1.5))
-        out = self._inpaint(prompt=f"{prompt}, storybook illustration", negative_prompt="text, watermark, extra objects",
+        out = self._inpaint(prompt=f"a complete {prompt}, the same material and colours continuing, storybook illustration",
+                            negative_prompt="grass, hedge, leaves, sky, tree, background, text, watermark, extra objects",
                             image=base.resize((S, S), Image.LANCZOS), mask_image=mask.resize((S, S)), num_inference_steps=30,
                             strength=0.99, guidance_scale=7.0, generator=self.torch.Generator(self.device).manual_seed(seed)).images[0]
         return out.resize(base.size, Image.LANCZOS).convert("RGB")
@@ -100,7 +103,7 @@ class Sam2Decomposer:
         hidden = box & front & ~masks[i][1]
         if hidden.mean() < 0.002:
             return L
-        base = bg.convert("RGBA")
+        base = Image.new("RGBA", (W, H), (128, 128, 128, 255)) if self.amodal_neutral else bg.convert("RGBA")
         base.alpha_composite(L)
         filled = self._fill_hidden(base.convert("RGB"), hidden, masks[i][0])
         h = np.asarray(Image.fromarray((hidden * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.0)), np.float32) / 255
