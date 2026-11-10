@@ -58,6 +58,17 @@ Results: `prototype/kaggle/results_cld_v4/`.
 
 The hedge/garden wall comes out as a clean horizontal strip and the cottage, tree and fox are as good as before; the **path layer is a faint blotch**: a ground plane under the other objects is not something CLD extracts as an object (it ends up in the background, which is correct for the picture but not a movable layer). Results: `prototype/kaggle/results_cld_v5/`.
 
+## Backgrounds: CLD vs RevealLayer on fox & cottage (existing runs, 2026-11-10)
+
+Panels: CLD whole image | CLD background layer | CLD merged | RevealLayer background | RevealLayer layer 0 (the village houses).
+
+![CLD vs RevealLayer backgrounds](../img/cld_vs_reveal_bg.jpg)
+
+- **CLD's background layer is its own generation**: a village street with houses, trees and a path, not the scene without its objects. Moving objects over it would put them into a different scene, so with CLD the background has to come from elsewhere (RevealLayer's, SAM2 + LaMa, or a fill) if the objects are to be moved.
+- **CLD's merged output** (layers put back together) matches the original, with a smeared patch on the path where the fox was.
+- **RevealLayer's background** is the same scene with the objects taken out and filled; the cottage is partly cut away, which shows when objects move.
+- Moving a layer over each background (a CPU composite) is therefore a comparison of two different things: CLD needs a background substitute, RevealLayer's background is usable but shows cut-outs.
+
 ## Best features
 
 Controllable decomposition by boxes with a re-rendered, consistent whole image and a filled background; layers keep the input's style (unlike ART+).
