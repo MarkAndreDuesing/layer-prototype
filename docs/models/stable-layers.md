@@ -59,11 +59,11 @@ Same `qwen-layered` profile as the base model (the LoRA is swapped in a few seco
 | **A. Best case (up to 8 min)** | 512 px, 5 layers, 8 Heun steps, CFG 1 | 248.4 s | 5 | 16.09 |
 | **B. Live-demo budget (about 30 s)** | 384 px, 5 layers, 3 Euler steps, CFG 1 | 30.9 s | 5 | 23.2 |
 
-A (8 Heun steps at 512 px): a clean filled meadow as the background, and separate layers for the cottage with its gate arch, the path, the tree and the fox (plus a layer with the left-hand sky and tree):
+A (8 Heun steps at 512 px), measured with [`layer_report.py`](../../prototype/tools/layer_report.py): the objects are really taken out of the background (colour difference 50 / 64 / 62 for cottage / tree / fox, a clean filled meadow); layer 1 is a sky band (16 %, top 54 %), layer 2 is a band with the cottage and gate arch (31 %, 83 % of the cottage box), layer 3 holds the tree and the path (29 %, fox-shaped hole in it), layer 4 is the fox alone (2.7 % of the canvas, 33 % of its box = the whole fox). **The best split of the three Qwen-Layered variants on this scene.** The cottage and the sky/tree pieces are still bands, not tight object cut-outs:
 
 ![A, 512 px Heun](../img/bench_stablelayers_A.jpg)
 
-B (3 Euler steps at 384 px):
+B (3 Euler steps at 384 px), measured: objects are also taken out of the background (55 / 65 / 88); layer 1 is a ground layer covering the whole canvas with the fox in it (53.6 %), layer 2 the top block with cottage and tree together (44.6 %), layer 3 a strip on the left (9 %), layer 4 the fox alone (2.8 %). The fox is separated, the cottage and tree are one block:
 
 ![B, 384 px 3 steps](../img/bench_stablelayers_B.jpg)
 

@@ -73,11 +73,11 @@ Same `qwen-layered` profile, Lightning LoRA at scale 1.0; second run reported. R
 | **A. Best case (up to 8 min)** | 512 px, 5 layers, 4 steps | 73.8 s | 5 | 14.37 |
 | **B. Live-demo budget (about 30 s)** | 384 px, 5 layers, 2 steps | 22.5 s | 5 | 56.39 |
 
-A (4 steps):
+A (512 px, 4 steps), measured: the background still contains the cottage and the tree (colour difference 15 / 17), layers 1 and 2 are **empty (0.0 %)**, layer 3 is the fox (2.7 % of the canvas), layer 4 a 0.1 % fragment. Only the fox is extracted; for the cottage and the tree nothing is extracted:
 
 ![A, 512 px 4 steps](../img/bench_lightning_A.jpg)
 
-B (2 steps): the recomposite comes out washed out and the background layer is nearly white, so the very large difference is visible in the image, not only in the number:
+B (384 px, 2 steps), measured: the colours are washed out everywhere (background colour difference 113 / 153 / 133 in the object masks, so objects and surroundings are re-drawn, not just taken out); layers 1-3 are large overlapping slabs (28 %, 26 %, 35 % of the canvas) and layer 4 is the fox alone. The recomposite no longer looks like the input:
 
 ![B, 384 px 2 steps](../img/bench_lightning_B.jpg)
 

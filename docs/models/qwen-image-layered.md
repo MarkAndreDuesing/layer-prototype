@@ -59,32 +59,38 @@ Run through the new `qwen-layered` server profile ([`layerproto/serve/qwen_layer
 | **A. Best case (up to 8 min)** | 512 px, 5 layers, 16 Euler steps, CFG 1 | 254.8 s | 5 | 8.54 |
 | **B. Live-demo budget (about 30 s)** | 384 px, 4 layers, 4 Euler steps, CFG 1 | 34.5 s | 4 | 8.68 |
 
-A (16 steps): the background layer keeps a blurred cottage and path, the other layers hold sky and tree pieces, the tree and cottage detail, and the fox (split into two layers):
+A (512 px, 16 steps), measured: the background layer is 67.5 % opaque (the top 114 px are transparent) and has the objects partly removed (colour difference 26 / 41 / 66 for cottage / tree / fox); layer 1 is a top band (24.5 %, sky and tree parts), layer 2 covers half the canvas and mixes pieces of the cottage, tree and fox (47-74 % of their boxes), layers 3 and 4 are fox fragments (21 % and 14 % of its box). The fox is cut across several layers; the objects are mixed, not separated:
 
 ![A, 512 px 16 steps](../img/bench_qwenlayered_A.jpg)
 
-B (4 steps):
+B (384 px, 4 layers, 4 steps) is the same case as row 2 above: nothing is taken out of the background, the extra layers are a ghost, a top slab and the fox:
 
 ![B, 384 px 4 steps](../img/bench_qwenlayered_B.jpg)
 
-16 steps cost 7× the 4-step run and improved the recomposite difference only from 8.68 to 8.54, so on this scene the extra steps buy little.
+16 steps cost 7× the 4-step run and improved the recomposite difference only from 8.68 to 8.54, but the recomposite difference does not measure separation (see the diagnosis above): the 16-step split is mixed, the 4-step split extracts almost nothing.
 
-### Diagnosis: why the fox & cottage split looked like noise (2026-11-11)
+### Diagnosis: what the model returns on the fox & cottage scene (2026-11-11, replaces an earlier wrong reading)
 
-Question from the first look: the forest runs of the past were good, the fox & cottage splits are not; code regression or scene? One session (`qwen-layered-diag` profile, current code, same weights) ran the forest as a control and the fox at other settings. Rows top to bottom: forest 384 px (control), fox 384 px, fox 384 px with an empty caption, fox 640 px 4 steps, fox 640 px 20 steps, fox 640 px 12 steps CFG 4. Strip: input | recomposite | layers (magenta = transparent). Results: `prototype/kaggle/results_profile_qwen-layered-diag/`.
+Question from the first look: the forest runs of the past were good, the fox & cottage splits are not. Code regression, or the scene? One session (`qwen-layered-diag` profile, current code and weights) ran the forest as a control and the fox scene at other settings. Rows top to bottom: forest 384 px (control), fox 384 px, fox 384 px with an empty caption, fox 640 px 4 steps, 640 px 20 steps, 640 px 12 steps CFG 4. Strip: input | recomposite | layer 0 (background) | layers 1-3. Magenta = transparent. Numbers from [`layer_report.py`](../../prototype/tools/layer_report.py); results in `prototype/kaggle/results_profile_qwen-layered-diag/`.
 
 ![diagnosis](../img/qwenlayered_diagnosis.jpg)
 
-| Row | Settings | Compute | Recomposite diff | What the layers show |
-|---|---|---|---|---|
-| 1 | forest, 384 px, 4 layers, 4 steps | 35.1 s | 6.97 | **good**: bare trees, pines, campfire and the background as separate layers (the old result is reproduced) |
-| 2 | fox & cottage, 384 px, 4 steps | 32.6 s | 8.68 | the background layer keeps almost the whole picture; the other layers hold faint ghosts of the roof and fox, one holds the tree + cottage |
-| 3 | the same with an empty caption | 33.3 s | 7.8 | no better |
-| 4 | fox & cottage, **640 px**, 4 steps | 88.2 s | 8.64 | a real split: fox on its own, ground and path, cottage + tree as one block |
-| 5 | 640 px, 20 steps | 431.9 s | 5.18 | the same split with the lowest difference; the background is a green wash with the fox |
-| 6 | 640 px, 12 steps, CFG 4 | 516.9 s | 6.64 | the same split with a white background |
+"Objects left in the background" below is the colour difference between layer 0 and the input inside the SAM2 masks of the cottage, the tree and the fox: about 10 means the object is still in the background layer (nothing was taken out), large means it was removed and the hole filled. The recomposite difference cannot show this, because duplicated content recomposites perfectly.
 
-**Reading:** the code did not regress (row 1 reproduces the good forest result with the current code). The model is sensitive to the scene and to the size: this dense, flat-coloured scene is dumped almost whole into one layer at 384 px (and at 512 px in the earlier runs) and only separates at the model's native 640 px, where the fox, the ground and the cottage + tree block come out as layers. The caption does not matter much. The cost is 88 s for 4 steps at 640 px, against 33 s at 384 px; the cottage and the tree stay together in every row.
+| Row | Compute | Cottage / tree / fox still in the background (colour diff) | What the layers actually are |
+|---|---|---|---|
+| 1 forest, 384 px, 4 steps (control) | 35.1 s | n/a | **a real split**: background without objects, the two bare trees, the pines, the campfire |
+| 2 fox scene, 384 px, 4 steps | 32.6 s | 8.8 / 10.5 / 11.5: **all three still in the background** | layer 1: a 0.7 % ghost of the roof; layer 2: a rectangular slab (top 70 % of the canvas, full width) holding sky, tree and cottage, a duplicate of what the background already shows; layer 3: the fox (32 % of its box = the whole fox) with a few path pixels. Only the fox is extracted, and it also stays in the background |
+| 3 fox scene, 384 px, **empty caption** | 33.3 s | 9.5 / 8.9 / 9.7: all three still in the background | **nothing extracted**: layers 1-3 hold 2.7 %, 0.6 % and 0.5 % of the canvas (ghost fragments); the background is the whole picture. **Not acceptable.** |
+| 4 fox scene, **640 px**, 4 steps | 88.2 s | 70.8 / 111.8 / **9.8** | the background is a blank cream wash **with the fox still in it**; layer 1: a ground slab (bottom 36 %) with a fox-shaped hole; layer 2: one slab (top 64 %, full width) holding sky, tree, cottage and hedge together; layer 3: a 0.6 % door fragment |
+| 5 640 px, 20 steps | 431.9 s | 32.7 / 78.4 / **5.9** | green wash background with the fox in it; **layer 1 empty (0.0 %)**; layer 2 the top slab; layer 3 two door fragments |
+| 6 640 px, 12 steps, CFG 4 | 516.9 s | 117 / 156 / **25.1** | white background with the fox in it; layer 1 the ground slab with a fox-shaped hole; layer 2 the top slab; layer 3 empty |
+
+**What this shows**
+- It is **not a code regression**: the forest control reproduces the good old result with the current code and weights.
+- On the fox & cottage scene the model does **not return object layers** at any setting we tried. At 384 px nothing is taken out of the background and the extra layers are duplicates or ghosts (row 3: nothing at all). At 640 px it cuts the picture into two horizontal blocks, a top block with sky + tree + cottage and a ground slab, and the fox stays on the background layer. The cottage and the tree are never separated from each other or from the sky.
+- More steps (20) and CFG 4 do not change that; the empty caption makes 384 px worse; the caption itself is not the cause.
+- Why it works on the forest and not here is **not established**. Candidates we have not separated: the scene (flat cartoon colours, dense overlapping objects, no depth cues, unlike the forest painting), our quantised Q4_K_S GGUF with fp16_mixed numerics on a T4 (the forest works under the same pipeline, so it is not simply broken), or the model's own limit. A run of the same image through a full-precision host (the hosted API costs about $0.05 per run, see [../research/hosting.md](../research/hosting.md)) would separate "our numerics" from "the model"; not run yet, the user decides.
 
 ## Special features
 
