@@ -37,7 +37,7 @@ Text to image (the prompt that made the shared scene; rows: seed 13 with 1, 2, 4
 ![SDXL-Turbo text to image](../img/sdxlturbo_t2i.jpg)
 
 - Every image is a coherent storybook cottage scene with a fox, stone walls and a path, so one step already gives a usable draft. Details are cleaner at 4 steps.
-- **The layout varies with every seed and step count** and does not follow the prompt closely: the fox "alone on the lawn" appears next to the path or the wall, and **four of the seven images contain a second fox** (the 1-step images and the 768 px image included; the 4-step seed 13 and seed 5 images show one).
+- **The layout varies with every seed and step count** and does not follow the prompt closely: the fox "alone on the lawn" appears next to the path or the wall, and **four of the seven images contain a second fox** (both 1-step images, the seed 5 2-step image and the 768 px image); the 2-step seed 13 image and the two 4-step 512 px images show one.
 - The shared scene cannot be reproduced on the T4: the same seed 13 with 4 steps in fp16 on the GPU gives a different picture (third tile) than the CPU fp32 run that made `fox_cottage.png`.
 
 Image to image from the shared scene (top row: scene | night strength 0.5 | night 0.75 | **Qwen-2.1 night edit** for comparison; bottom row: scene | rain 0.5 | rain 0.75 | **Qwen-2.1 rain edit**):

@@ -59,6 +59,24 @@ What the tiles show:
 
 Reading: giving IC-Light an already night-graded object (B) removes the "not dark" failure, and the result carries a cool light cast that the plain grade lacks, at about 45 s per layer on the CPU; the lightness match alone does not help. IC-Light's remaining defects here are the cyan arch and the blue-white cast it adds to pale walls. The Qwen-2.1 per-layer relight (`event_perlayer_retry.jpg`) remains the other route for these layers. Not tested: the rain objects, other steps / prompts, `restore_chroma` on these variants.
 
+### Side by side with the Qwen-2.1 per-layer relight, night and rain (CPU, 2026-11-11)
+
+Same five RevealLayer object layers, same Qwen-2.1 edited background (384 px). Tiles: objects unchanged | colour grade only | IC-Light B (graded first) | IC-Light D (graded, IC-Light, lightness match) | **Qwen-2.1 per-layer relight** (the 10 edits of `results_perlayer_v3`, 512 px resized). Mean grey of the composite is in brackets; the background alone is 33.1 (night) and 52.1 (rain). Script [`relight_compare.py`](../../prototype/tools/relight_compare.py); IC-Light variants from `iclight_night_variants.py night|rain`.
+
+Night (unchanged 73.6, grade 48.0, B 46.1, D 45.4, **Qwen-2.1 32.4**):
+
+![night relight comparison](../img/relight_compare_night.jpg)
+
+Rain (unchanged 82.7, grade 79.3, B 74.1, D 80.1, **Qwen-2.1 62.4**):
+
+![rain relight comparison](../img/relight_compare_rain.jpg)
+
+What the tiles show:
+- **Night, grade:** dim and desaturated, a plausible dusk, no cool cast. **IC-Light B / D:** a cool grey-blue cottage and a dark blue-grey tree (a moonlit cast the grade lacks), a cyan arch blob. **Qwen-2.1:** the darkest and the most consistent with the dark background (mean grey 32.4 against the background's 33.1), but the cottage is close to a black silhouette, the fox almost black, and the arch layer is left in its tan daylight colours (the layer fell back to the unlit original).
+- **Rain, grade:** almost no change (79.3 against 82.7). **IC-Light B / D:** the cottage and tree turn pale grey-white, a bright, washed-out look that does not match the grey rainy background, and again a cyan arch; IC-Light hardly darkens anything in the rain (mean grey 74-80). **Qwen-2.1:** a dark wet-looking thatch and walls with texture, a darker fox, the leaves still bright green; the most convincing of the five for rain; arch not relit.
+
+Reading: on these layers **Qwen-2.1 per-layer relight is clearly the better route for night (darkness and consistency, but too dark on the cottage and fox) and for rain**; IC-Light with a night pre-grade gives a usable cool moonlit cast at night, but fails on the rain objects and turns the arch cyan in both. Where IC-Light was not beaten is where it was meant to work: matching the light of a daylight object inside a daylight scene (the fox in the move strip), which these tests do not include. Untested ideas for IC-Light that could change the picture: a rain pre-grade stronger than the current one, other prompts and step counts, `restore_chroma` on these variants, and a lighting mismatch inside one scene (sun to shade). The user's view that it is not superseded stays open until those are run.
+
 ## Further investigations
 
 - The hue-drift fix and per-event `keep` parameter: [concepts/editing.md §2](../concepts/editing.md).
