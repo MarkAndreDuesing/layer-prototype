@@ -18,11 +18,15 @@
 | **Image to image** | **Qwen-2.1** only, so far | about 22 s | not compared with other image-to-image models yet |
 | **Effects (fog, glow, snow) as layers** | procedural overlays | CPU, instant | LayerDiffuse SDXL effect layers gave objects or the scene itself ([layerdiffuse-sdxl](layerdiffuse-sdxl.md)) |
 
+## 1b. Core path after the user's update (2026-11-11)
+
+**SDXL-Turbo makes the first picture (text to image, or image to image from a sketch or an edit prompt); Qwen-Image-2.1 splits it and modifies it.** This is what `results_qwen21_fox/sheet.jpg` already is (SDXL-Turbo scene + Qwen-2.1 operations; only the two text-to-image tiles are Qwen-2.1 alone, [provenance](provenance.md)). SDXL-Turbo is not a layer model and is not in the layer analysis, but it stays in the pipeline as the simple fast first step; measured: about 1.1-1.5 s per 512 px image on a T4 against 17-23 s for Qwen-2.1 text to image, but its image to image regenerates the scene (the fox became a horse), so story edits stay with Qwen-2.1 ([sdxl-turbo.md](sdxl-turbo.md)). Stable-Layers and CLD remain **options for splitting** when they have an advantage over Qwen-2.1. Measured so far: on the daylight scene Qwen-2.1 extraction gives a clean background and whole objects (118 s for four objects, arch mis-scaled); on the night and rain edits Qwen-2.1 extraction left the cottage and tree in the background, cut a block for the cottage and invented a misplaced arch (139-184 s) while Stable-Layers split both cleanly (178 s) ([qwen-image-2.1.md](qwen-image-2.1.md), [stable-layers.md](stable-layers.md)). Runtime is of the same order. RevealLayer is kept for **inpainting** (filled backgrounds, hidden parts), not for splitting. SDXL-inpaint may be usable in some capacity; LayerDiffuse effect layers are dropped; LayerDiffuse SDXL stays only as the engine of `relocate()`.
+
 ## 2. Proposed pipeline, as roles (one model per role)
 
 ```mermaid
 flowchart LR
-    T[Text or uploaded image] --> G[Scene image<br/>Qwen-2.1 text to image]
+    T[Text or uploaded image] --> G[Scene image<br/>SDXL-Turbo text to image / image to image]
     G --> S[Split once, offline<br/>Stable-Layers 640 px]
     S --> L[(Object layers + background<br/>edited by the user directly)]
     L --> E[Story event or edit]
@@ -62,13 +66,13 @@ The key timing consequence: **splitting a scene takes about 100 s, so it is done
 | Model / approach | Proposed verdict | Reason (from the factsheets) |
 |---|---|---|
 | Qwen-Image-2.1 | **Core**; keep developing | scene edit, story composites, image to image, add / remove / modify, background inpainting, amodal, relight; slow per call |
-| Stable-Layers (on Qwen-Image-Layered weights) | **Core for the split** (not a story-composite model: the night and rain edits are Qwen-2.1's) | the only splitter that gave clean object layers at 640 px on the scene and on Qwen-2.1's edits of it (base and Lightning did not; RevealLayer was not run on the edits); colour shift in the recomposite; about 100 s |
+| Stable-Layers (on Qwen-Image-Layered weights) | **Optional splitter next to Qwen-2.1 extraction** (the user), the one that gave clean layers in one pass (not a story-composite model: the night and rain edits are Qwen-2.1's) | the only splitter that gave clean object layers at 640 px on the scene and on Qwen-2.1's edits of it (base and Lightning did not; RevealLayer was not run on the edits); colour shift in the recomposite; about 100 s |
 | Shadow layers | **Core** (CPU helper) | instant, any layer |
 | IC-Light + chroma fix | **Keep, tune further** | relights a daylight fox plausibly (darker, redder); on the objects of a night or rain scene it left them pale (the good night look in the `bg_relight` strips is Qwen-2.1's edit of the background, [provenance](provenance.md)); the Qwen-2.1 per-layer relight is the working one there. Tuning: see section 7 |
 | Grounding DINO + SAM2 | **Keep** (fast masks); combine with Qwen-2.1 fill (combination B) | 3 s; the fill and hidden parts are the weak part, not the masks |
 | `relocate()` / harmonise | **Keep as an optional step**; move/resize itself is direct user interaction | 3.4 s; depends on LayerDiffuse SDXL today |
-| RevealLayer | **Keep for the box-controlled path; explore** | its own results: clean filled backgrounds (the strongest background removal seen) and layers that follow boxes; it also supplied the input layers of the move and per-layer relight strips, whose other effects are other models' work; slow, FLUX non-commercial |
-| CLD | **Keep as the alternative to RevealLayer; explore** | its own results: decent layers at 4-16 steps, an invented replacement background (a different scene), slow. The style variation on the night and rain strip is the Qwen-2.1 edit's, not CLD's |
+| RevealLayer | **Keep for inpainting (filled backgrounds, hidden parts), not for splitting** (the user, 2026-11-11); box control is a side benefit | its own results: clean filled backgrounds (the strongest background removal seen) and layers that follow boxes; it also supplied the input layers of the move and per-layer relight strips, whose other effects are other models' work; slow, FLUX non-commercial |
+| CLD | **Keep as an optional splitter** (the user: unless Qwen-2.1 has an absolute advantage; runtime matters) | its own results: decent layers at 4-16 steps, an invented replacement background (a different scene), slow. The style variation on the night and rain strip is the Qwen-2.1 edit's, not CLD's |
 | Qwen-Image-Layered (base) | **Keep in contention** (the user, 2026-11-11): it is the base of Stable-Layers and may still have advantages over Qwen-2.1 | inconsistent: good on the forest, no object layers on the fox scene at any setting tried; to test: more scenes, whether it keeps what Qwen-2.1 extraction loses (all objects in one pass, no per-object call), the full-precision question |
 | Qwen Lightning | **Candidate to drop** (the user decides) | no object layers on the fox scene at 384, 512 or 640 px; story composites not improved at 640 px |
 | LayerD | **Park, look at it a little more** (the user's note) | limited on painted scenes; CPU only |

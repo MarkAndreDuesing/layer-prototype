@@ -1,0 +1,112 @@
+[
+ {
+  "tag": "q21story_night",
+  "path": "A",
+  "note": "night edit: background + 4 objects, 8 steps, 512 px",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen21-extract",
+   "n_layers": 4,
+   "boxes": [
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 138.7,
+  "all_runs_s": [
+   138.7
+  ],
+  "layers": 5,
+  "recomposite_diff": 3.97
+ },
+ {
+  "tag": "q21story_rain",
+  "path": "A",
+  "note": "rain edit: background + 4 objects, 8 steps, 512 px",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen21-extract",
+   "n_layers": 4,
+   "boxes": [
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 184.3,
+  "all_runs_s": [
+   184.3
+  ],
+  "layers": 5,
+  "recomposite_diff": 13.96
+ }
+]

@@ -2,6 +2,8 @@
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
 > **User assessment (first look, 2026-11-11):** All bad, not worth pursuing.
+>
+> **User update (2026-11-11, after the attribution audit):** The LayerDiffuse SDXL effect layers are garbage. Keep it only as the engine of `relocate()`; explore replacements, starting with Qwen-Image-2.1.
 
 ## What it does
 

@@ -4,6 +4,7 @@
 
 | Factsheet | Type |
 |---|---|
+| [sdxl-turbo.md](sdxl-turbo.md) | fast first step: text to image, image to image (not a layer model) |
 | [qwen-image-layered.md](qwen-image-layered.md) | image → layers (main) |
 | [stable-layers.md](stable-layers.md) | image → layers (LoRA on Qwen-Image-Layered) |
 | [qwen-lightning.md](qwen-lightning.md) | speed LoRA tried on Qwen-Image-Layered |
@@ -31,6 +32,7 @@ S = supported and shown with an image, P = partial or with caveats, T = tried, d
 
 | Model | Split | Move / resize | Harmonise | Story composite | Spatial edit | Image to image | Add / remove / modify | Relight | Effects | Amodal |
 |---|---|---|---|---|---|---|---|---|---|---|
+| [SDXL-Turbo](sdxl-turbo.md) | - | - | - | T (replaces the scene) | - | P (regenerates) | - | - | - | - |
 | [Qwen-Image-Layered](qwen-image-layered.md) | T (see factsheet) | P | - | T (split only) | - | - | P | - | - | T |
 | [Stable-Layers](stable-layers.md) | S (640 px) | P | - | S (split only) | - | - | P | - | - | S |
 | [Qwen Lightning](qwen-lightning.md) | T | P | - | T (split only) | - | - | - | - | - | T |

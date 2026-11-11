@@ -2,6 +2,8 @@
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
 > **User assessment (final intermediate, 2026-11-11):** Layer extraction is pretty decent, but slow. Adding replacement backgrounds is interesting. The v4 Qwen-Image-2.1 night and heavy-rain edits show good style variation.
+>
+> **User update (2026-11-11, after the attribution audit):** Keep Stable-Layers and CLD as options for splitting unless there is an absolute advantage to just using Qwen-2.1; runtime matters too.
 
 ## What it does
 

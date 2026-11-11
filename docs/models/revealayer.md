@@ -2,6 +2,8 @@
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
 > **User assessment (final intermediate, 2026-11-11):** Good layer removal and background inpainting (`results_reveallayer_v11/reveal_out/gs1.0_st12/forest/bg_rgba.png`). Layer extraction ok but very slow (and it seems to need the time); the layers follow the boxes, which could be a useful feature.
+>
+> **User update (2026-11-11, after the attribution audit):** Considering how slow it is, RevealLayer might be best just for inpainting (if sensible), not for layer splitting.
 
 ## What it does
 

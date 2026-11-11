@@ -146,4 +146,15 @@ PROFILES = {
             Case("w640_rain_stable_heun", "A", DecomposeParams(caption=CAPTION + " Now in heavy rain, grey sky.", method="stable-layers", resolution=640, n_layers=5, steps=4, sampler="heun"), "rain composite, Stable-Layers, 4 Heun steps", repeats=1, scene="rain"),
             Case("w640_rain_light4", "A", DecomposeParams(caption=CAPTION + " Now in heavy rain, grey sky.", method="qwen-lightning", resolution=640, n_layers=5, steps=4, sampler="euler"), "rain composite, Lightning, 4 steps", repeats=1, scene="rain"),
         ]),
+    "qwen21-story": Profile(
+        name="qwen21-story",
+        pip=["transformers>=5.17 gguf>=0.10 accelerate git+https://github.com/huggingface/diffusers"],
+        factory="layerproto.serve.qwen21:make",
+        files={"test_scene/night.png": "prototype/kaggle/results_qwen21_fox/q21_out/edit_scene_night.png",
+               "test_scene/rain.png": "prototype/kaggle/results_qwen21_fox/q21_out/edit_scene_heavy_rain.png"},
+        doc="docs/models/qwen-image-2.1.md (split of the night and rain edits, for the comparison with Stable-Layers / CLD)",
+        cases=[
+            Case("q21story_night", "A", P(method="qwen21-extract", names=NAMES[1:], boxes=BOXES[1:]), "night edit: background + 4 objects, 8 steps, 512 px", repeats=1, scene="night"),
+            Case("q21story_rain", "A", P(method="qwen21-extract", names=NAMES[1:], boxes=BOXES[1:]), "rain edit: background + 4 objects, 8 steps, 512 px", repeats=1, scene="rain"),
+        ]),
 }

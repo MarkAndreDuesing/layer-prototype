@@ -1,0 +1,112 @@
+[
+ {
+  "case": "t2i_512_s13_1st",
+  "median_s": 1.08,
+  "runs": [
+   1.07,
+   1.08,
+   1.08
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_512_s13_2st",
+  "median_s": 1.21,
+  "runs": [
+   1.21,
+   1.21,
+   1.21
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_512_s13_4st",
+  "median_s": 1.47,
+  "runs": [
+   1.46,
+   1.47,
+   1.47
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_512_s5_1st",
+  "median_s": 1.11,
+  "runs": [
+   1.11,
+   1.11,
+   1.11
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_512_s5_2st",
+  "median_s": 1.25,
+  "runs": [
+   1.25,
+   1.25,
+   1.25
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_512_s5_4st",
+  "median_s": 1.52,
+  "runs": [
+   1.52,
+   1.52,
+   1.53
+  ],
+  "peak_gib": 7.5
+ },
+ {
+  "case": "t2i_768_s13_4st",
+  "median_s": 3.49,
+  "runs": [
+   3.46,
+   3.49,
+   3.53
+  ],
+  "peak_gib": 8.4
+ },
+ {
+  "case": "i2i_night_str0.5",
+  "median_s": 1.83,
+  "runs": [
+   1.83,
+   1.83,
+   1.85
+  ],
+  "peak_gib": 8.4
+ },
+ {
+  "case": "i2i_night_str0.75",
+  "median_s": 2.03,
+  "runs": [
+   2.01,
+   2.03,
+   2.03
+  ],
+  "peak_gib": 8.4
+ },
+ {
+  "case": "i2i_rain_str0.5",
+  "median_s": 1.9,
+  "runs": [
+   1.9,
+   1.9,
+   1.91
+  ],
+  "peak_gib": 8.4
+ },
+ {
+  "case": "i2i_rain_str0.75",
+  "median_s": 2.07,
+  "runs": [
+   2.07,
+   2.06,
+   2.07
+  ],
+  "peak_gib": 8.4
+ }
+]

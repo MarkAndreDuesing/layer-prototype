@@ -2,6 +2,8 @@
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
 > **User assessment (final intermediate, 2026-11-11):** Pretty solid layer extraction, particularly useful for story composites (with a Qwen-Image-2.1 edit).
+>
+> **User update (2026-11-11, after the attribution audit):** Keep Stable-Layers and CLD as options for splitting unless there is an absolute advantage to just using Qwen-2.1; runtime matters too.
 
 ## What it does
 
@@ -89,6 +91,10 @@ Same `qwen-layered` profile, 640 px, 5 layers, first run (each case once); a sec
 ![story composites at 640 px (night base, night Stable-Layers, night Lightning, rain base, rain Stable-Layers, rain Lightning)](../img/qwenlayered_640_story.jpg)
 
 What this means for the earlier rows of this file: the 384 and 512 px runs above gave bands and partial splits; **the resolution is what matters for Stable-Layers on this scene**, and 640 px costs about 100 s (Euler) instead of 31 s. A 30 s budget at 640 px is not reached (2 or 3 steps at 640 px are not measured yet).
+
+### Against Qwen-2.1 extraction on the same edits (2026-11-11)
+
+On the night and rain edits Qwen-2.1 extraction (138.7 s / 184.3 s) left the cottage and the tree in the background layer, cut a block instead of the cottage and invented a misplaced arch ([qwen-image-2.1.md](qwen-image-2.1.md)); Stable-Layers at 640 px split both edits cleanly in 178 s (Heun). It is the measured advantage that keeps it as the splitter for story composites. For the daylight scene Qwen-2.1 extraction gave a clean background and whole objects but a mis-scaled arch.
 
 ## Special features
 

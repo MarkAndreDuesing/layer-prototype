@@ -2,6 +2,8 @@
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
 > **User assessment (first look, 2026-11-11):** Very useful for scene editing and story-event composites. Also a useful decompose method (with successful background inpainting) and good layer splitting together with Stable-Layers. A bit slow (maybe better for adding single layers or modifying scenes). The only model here that supports image-to-image: worth comparing with other image-to-image models that cannot split layers.
+>
+> **User update (2026-11-11, after the attribution audit):** `sheet.jpg` is Qwen-2.1 plus SDXL-Turbo (SDXL-Turbo made the input scene), which is quite good and probably the best core path: generate with SDXL-Turbo (if faster than Qwen-2.1, locally or on Kaggle), then split and modify with Qwen-2.1. SDXL-Turbo is not a layer model but stays in the pipeline as the simple, fast first step for text to image and image to image.
 
 ## What it does
 
@@ -143,6 +145,20 @@ A:
 B:
 
 ![B, background + fox](../img/bench_qwen21_B.jpg)
+
+### Qwen-2.1 extraction on the night and rain edits (session `qwen21-story`, 2026-11-11)
+
+Same `qwen21-extract` method as above, applied to the two Qwen-2.1 night / rain edits of the SDXL-Turbo scene (background + four objects, 512 px, 8 steps; night 138.7 s, rain 184.3 s). Strip rows: night, rain; tiles: input | recomposite | layer 0 (background) | cottage | arch | tree | fox. Results `prototype/kaggle/results_profile_qwen21-story/`.
+
+![Qwen-2.1 split of the night and rain edits](../img/qwen21_story_split.jpg)
+
+Checked layer by layer ([`layer_report.py`](../../prototype/tools/layer_report.py) style measurements):
+- **The background layer still contains the cottage and the tree.** Colour difference of the background layer to the input inside the cottage / tree / fox masks: night 3.9 / 2.5 / 14.5, rain 15.9 / 11.2 / 32.1 (about 4 means unchanged). Only the fox was (partly) taken out, whereas on the daylight scene the same request emptied the background.
+- **The cottage layer is a block**, not the cottage: at night 45.5 % of the canvas (x 71-511, y 0-353) with the moon and the top of the tree in it; in the rain 22.5 % with holes.
+- **The arch is invented and misplaced:** at night a large stone dome with a door (13.2 % of the canvas, x 193-388, y 245-467) that covers the fox in the recomposite; in the rain a stone arch (x 53-261) that spans over the cottage; the scene's arch is small and at the left (x 62-150).
+- The tree (a clean cut-out, 17 %) and the fox (2.3-2.6 %, clean) are fine.
+
+On the same two edits **Stable-Layers at 640 px** gave one clean layer per object, with a hole-free background that no longer contains them ([stable-layers.md](stable-layers.md)); it took 178 s with Heun on both edits (the Euler variant, about 100 s on the fox scene, was not run on them). So for splitting these story composites Stable-Layers has a measured advantage over Qwen-2.1 extraction (and the runtimes are of the same order); one seed and one prompt set, so no more than that. Qwen-2.1 remains the model that made the edits.
 
 ## Special features
 

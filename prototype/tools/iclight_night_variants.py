@@ -28,13 +28,15 @@ from layerproto.events import grade  # noqa: E402
 from layerproto.relight import ICLightFBC  # noqa: E402
 
 S = 384
+EV = sys.argv[1] if len(sys.argv) > 1 else "night"          # night or rain
 RL = os.path.join(PROTO, "kaggle", "results_reveallayer_fox_v15", "reveal_out", "gs1.0_st12", "fox_cottage")
 OUT = os.path.join(PROTO, "kaggle", "results_iclight_tuning")
 os.makedirs(OUT, exist_ok=True)
 objs = [Image.open(f"{RL}/layer_{i}_rgba.png").convert("RGBA").resize((S, S)) for i in range(5)]
 bg_day = Image.open(f"{RL}/bg_rgba.png").convert("RGBA").resize((S, S))
-night_bg = Image.open(os.path.join(PROTO, "kaggle", "results_qwen21_bgevent", "bg_events", "bg_night.png")).convert("RGB").resize((S, S))
-PROMPT = "dark night scene, full moon, soft cool moonlight, storybook illustration"
+night_bg = Image.open(os.path.join(PROTO, "kaggle", "results_qwen21_bgevent", "bg_events", f"bg_{EV}.png")).convert("RGB").resize((S, S))
+PROMPT = {"night": "dark night scene, full moon, soft cool moonlight, storybook illustration",
+          "rain": "heavy rain, dark grey overcast light, wet scene, storybook illustration"}[EV]
 
 
 def match_lightness(relit, target, gain_cap=(0.3, 1.5)):
@@ -59,14 +61,14 @@ for L in objs:
     day.alpha_composite(L)
 t0 = time.time()
 for i, L in enumerate(objs):
-    graded = grade(L, "night")
+    graded = grade(L, EV)
     lit_a = rl.relight(L, scenes["A"].convert("RGB"), PROMPT, steps=8, size=S)
     lit_b = rl.relight(graded, scenes["B"].convert("RGB"), PROMPT, steps=8, size=S)
     new = {"grade": graded, "A": lit_a, "B": lit_b, "C": match_lightness(rl_c := rl.relight(L, scenes["C"].convert("RGB"), PROMPT, steps=8, size=S), graded),
            "D": match_lightness(rl.relight(graded, scenes["D"].convert("RGB"), PROMPT, steps=8, size=S), graded)}
     for v in VARIANTS:
         scenes[v].alpha_composite(new[v])
-        new[v].save(f"{OUT}/night_layer{i}_{v}.png")
+        new[v].save(f"{OUT}/{EV}_layer{i}_{v}.png")
     print(f"layer {i} done, {time.time() - t0:.0f} s", flush=True)
 naive = night_bg.convert("RGBA")
 for L in objs:
@@ -79,5 +81,5 @@ T = 256
 sheet = Image.new("RGB", (T * 4, T * 2), (255, 255, 255))
 for k, (n, im) in enumerate(tiles):
     sheet.paste(im.convert("RGB").resize((T, T), Image.LANCZOS), (T * (k % 4), T * (k // 4)))
-sheet.save(os.path.join(ROOT, "docs", "img", "iclight_night_variants.jpg"), quality=90)
+sheet.save(os.path.join(ROOT, "docs", "img", f"iclight_{EV}_variants.jpg"), quality=90)
 print("tiles:", [n for n, _ in tiles])
