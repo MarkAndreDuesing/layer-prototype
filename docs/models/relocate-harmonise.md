@@ -39,7 +39,32 @@ The whole loop (move, harmonise, shadow, relight) took about 9 s on a T4 without
 - **ART+ objects harmonised onto another background:** it does not close a style gap (the glossy objects stay glossy and gain halos at strength 0.6): [art-plus.md](art-plus.md), strips `artplus_harmonise_s40.jpg` / `s60.jpg`.
 - Identity drift over repeated moves (a long chain of relocations) is unsolved; pin length does not help.
 
-## Special features
+### Can Qwen-Image-2.1 replace `relocate()` as the harmonise step? (test 2026-11-11)
+
+Input: RevealLayer's split (SDXL-Turbo scene), fox moved 28 % left, 4 % up, 1.15× by a plain paste (naive), and a harder case at 1.6×. All edits are Qwen-Image-2.1, 512 px, 8 steps; results `prototype/kaggle/results_qwen21_harmonise/`, numbers from [`harmonise_eval.py`](../../prototype/tools/harmonise_eval.py). "Outside" = PSNR / mean grey difference to the naive paste away from the fox and its old place; the **control** asks the editor to change nothing, so it shows the editor's own drift.
+
+| Job (what it asked) | Compute | Outside the fox | Inside the fox (mean diff) | What the image shows |
+|---|---|---|---|---|
+| control ("keep the picture exactly the same") | 29.2 s | 30.9 dB, diff 4.8 | 8.8 | the whole picture is redrawn slightly (crisper lines, arch and hedge textures differ), fox in the same pose |
+| harmonise, seed 42 (blend the pasted fox in, soft shadow, keep the rest) | 21.9 s | 30.5 dB, 4.7 | 9.8 | **a clear soft cast shadow under the feet on the grass and the path**, same pose and markings; outside the same drift as the control |
+| harmonise, seed 7 | 23.1 s | **17.3 dB, 22.6** | 48.5 | the whole picture is shifted / re-composed (the path and the fox sit differently): **seed-unstable** |
+| shadow only ("add only a soft cast shadow") | 24.4 s | 27.6 dB, 5.1 | 8.8 | a larger, darker shadow that runs to the right over the stones, fox unchanged |
+| two references (the fox layer + the scene without the fox) | 27.6 s | 30.0 dB, 5.6 | 41.6 | the fox is placed, with a shadow, but **re-posed** (straighter legs, lower head): identity changed |
+| layer relight (RGBA fox, "stands on a sunlit path") | 22.9 s | n/a | n/a | **not a layer edit**: Qwen-2.1 drew a whole photographic sunlit-path scene around a copy of the fox; unusable as a layer |
+| harder case, control | 23.2 s | 31.5 dB, 4.7 | 6.9 | as the control |
+| harder case, harmonise (1.6×) | 23.6 s | 30.8 dB, 4.9 | 39.0 | the large fox is re-rendered (diff 39) with a faint shadow; outside drift as the control |
+
+Contact sheet (tiles: naive, control, harmonise s42, harmonise s7, shadow only; two references, layer relight, naive 1.6×, control 1.6×, harmonise 1.6×):
+
+![Qwen-2.1 harmonise test](../img/qwen21_harmonise.jpg)
+
+Crops around the fox (top: naive paste, control, harmonise s42; bottom: harmonise s7, shadow only, two references):
+
+![crops](../img/qwen21_harmonise_zoom.jpg)
+
+**Reading:** Qwen-2.1 can make a convincing contact shadow in the scene's own flat style (harmonise s42, shadow only) and keeps the fox's pose, which `relocate()` plus the procedural shadow layer also do. Against that: it costs 22-29 s instead of 3.4 s + 0.5 s; it redraws the whole picture slightly even when told to change nothing (about 31 dB, so it cannot be used on a picture whose other pixels must stay exact; per-layer use would avoid this but the RGBA layer edit turned into a scene); one of two seeds shifted the whole picture; a reference-based placement re-posed the fox. So it is a candidate for a "make it look placed" button on a flattened composite, not a drop-in for `relocate()`'s layer-level result. The daylight scene gives little lighting to harmonise; a lighting mismatch case (the fox moved from sun to shade, or into the night scene) is not tested.
+
+
 
 | Feature | Status | Evidence |
 |---|---|---|

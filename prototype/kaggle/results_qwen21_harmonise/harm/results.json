@@ -1,0 +1,75 @@
+[
+ {
+  "job": "control",
+  "inputs": [
+   "naive"
+  ],
+  "seed": 42,
+  "compute_s": 29.2,
+  "mode": "RGBA"
+ },
+ {
+  "job": "harmonise_s42",
+  "inputs": [
+   "naive"
+  ],
+  "seed": 42,
+  "compute_s": 21.9,
+  "mode": "RGBA"
+ },
+ {
+  "job": "harmonise_s7",
+  "inputs": [
+   "naive"
+  ],
+  "seed": 7,
+  "compute_s": 23.1,
+  "mode": "RGBA"
+ },
+ {
+  "job": "shadow_only",
+  "inputs": [
+   "naive"
+  ],
+  "seed": 42,
+  "compute_s": 24.4,
+  "mode": "RGBA"
+ },
+ {
+  "job": "refs",
+  "inputs": [
+   "fox1",
+   "scene_nofox"
+  ],
+  "seed": 42,
+  "compute_s": 27.6,
+  "mode": "RGBA"
+ },
+ {
+  "job": "layer_relight",
+  "inputs": [
+   "fox1"
+  ],
+  "seed": 42,
+  "compute_s": 22.9,
+  "mode": "RGBA"
+ },
+ {
+  "job": "harder_control",
+  "inputs": [
+   "naive2"
+  ],
+  "seed": 42,
+  "compute_s": 23.2,
+  "mode": "RGBA"
+ },
+ {
+  "job": "harder_harmonise",
+  "inputs": [
+   "naive2"
+  ],
+  "seed": 42,
+  "compute_s": 23.6,
+  "mode": "RGBA"
+ }
+]

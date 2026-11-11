@@ -96,7 +96,7 @@ The key timing consequence: **splitting a scene takes about 100 s, so it is done
 1. **The combined run (the user's plan):** combination A end to end on the fox & cottage scene and on two more scenes, with the model and role named for every output.
 2. **Check that Stable-Layers' split holds on other scenes** (the forest, the pixel-art and the sketch scenes; Qwen-Image-Layered was inconsistent), and measure 640 px with 2-3 steps for a shorter split.
 3. **Combination B:** SAM2 masks plus Qwen-2.1 fill, against Qwen-2.1 extraction alone.
-4. **A Qwen-2.1 harmonise** ("re-light and blend this moved object into the scene") against `relocate()`, so LayerDiffuse SDXL can be dropped fully.
+4. **A Qwen-2.1 harmonise** (first test done 2026-11-11, [relocate-harmonise.md](relocate-harmonise.md): a convincing shadow but whole-picture drift, one unstable seed and a re-posed fox with references, 22-29 s; a lighting-mismatch case is still to test) ("re-light and blend this moved object into the scene") against `relocate()`, so LayerDiffuse SDXL can be dropped fully.
 5. **Image to image:** compare Qwen-2.1 with other image-to-image models.
 6. **Effects:** a Qwen-2.1 transparent fog / glow / snow layer.
 7. **Decide Lightning** after the 640 px result (listed as a candidate to drop above).

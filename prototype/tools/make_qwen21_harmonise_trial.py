@@ -117,7 +117,7 @@ os.makedirs("/kaggle/working/harm", exist_ok=True)
 for k in DATA:
     img(k).convert("RGBA" if k.startswith("fox") else "RGB").save(f"/kaggle/working/harm/input_{{k}}.png")
 results = []
-for name, ins, prompt, seed, rgba in {json.dumps(JOBS)}:
+for name, ins, prompt, seed, rgba in {JOBS!r}:
     row = dict(job=name, inputs=ins, seed=seed)
     try:
         images = [img(k).convert("RGBA" if k.startswith("fox") else "RGB") for k in ins]
