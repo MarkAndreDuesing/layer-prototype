@@ -1,7 +1,7 @@
 # LayerD (ICCV 2025)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
-> **User assessment (first look, 2026-11-11):** Layer extraction seems limited.
+> **User assessment (final intermediate, 2026-11-11):** Layer extraction capabilities seem limited; could still look into more before considering rejecting.
 
 ## What it does
 

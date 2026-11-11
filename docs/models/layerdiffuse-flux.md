@@ -1,7 +1,7 @@
 # LayerDiffuse-Flux
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
-> **User assessment (first look, 2026-11-11):** TBD.
+> **User assessment (final intermediate, 2026-11-11):** All bad, not worth pursuing.
 
 ## What it does
 

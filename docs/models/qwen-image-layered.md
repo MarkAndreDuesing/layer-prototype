@@ -1,7 +1,7 @@
 # Qwen-Image-Layered
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
-> **User assessment (first look, 2026-11-11):** Surprisingly bad layer extraction on the fox & cottage scene, although it showed promise before (`results_qwen_v7_layers/layers_forest_384px_4L_4st`, `results_qwen_sweep_v5/v5_forest_384px_4L_4st.png`); it effectively extracts noise. Find out what is going wrong; remove from consideration if unfixable.
+> **User assessment (final intermediate, 2026-11-11):** Surprisingly bad layer extraction in some cases, in others pretty decent: quite inconsistent. It showed promise before (`results_qwen_v7_layers/layers_forest_384px_4L_4st`, `results_qwen_sweep_v5/v5_forest_384px_4L_4st.png`). Find out what is going wrong; remove from consideration if unfixable.
 
 ## What it does
 

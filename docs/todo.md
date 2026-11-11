@@ -72,3 +72,4 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] Fill the 30 s benchmark rows for the remaining profiles (`sam2`, `reveallayer`, `cld`, `artplus`; sessions started 2026-11-11).
 - Verdict notes (the user's) are in each factsheet under the role line.
 - [x] LayerDiffuse-Flux on the five fox & cottage objects (A 28 steps 111 s, B 6 steps 24.7 s per object; [layerdiffuse-flux.md](models/layerdiffuse-flux.md)); the user's assessment of it is still TBD.
+- [ ] **Pipeline plan (2026-11-11)** [models/pipeline-plan.md](models/pipeline-plan.md): proposal for combinations and verdicts; the user decides. Next: the combined run, Stable-Layers on other scenes and at 2-3 steps (640 px), SAM2 + Qwen-2.1 fill, a Qwen-2.1 harmonise to replace `relocate()`'s LayerDiffuse SDXL engine, image-to-image comparison, Qwen-2.1 effect layers.

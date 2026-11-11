@@ -20,6 +20,7 @@
 | [shadow-layers.md](shadow-layers.md) | procedural cast shadows |
 | [amodal-fill.md](amodal-fill.md) | fill the hidden parts of an object |
 | [grounding-dino.md](grounding-dino.md) | find objects by name (boxes for SAM2) |
+| [pipeline-plan.md](pipeline-plan.md) | proposal: which models go in which combination, keep / explore / park / drop, feature coverage |
 | [TEMPLATE.md](TEMPLATE.md) | the shared structure and test protocol for every factsheet |
 | [../research/papers-survey.md](../research/papers-survey.md) | all methods in one table, incl. those without weights (LayerFusion, PSDiffusion, DreamLayer, OmniPSD …) |
 

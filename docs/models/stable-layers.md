@@ -1,7 +1,7 @@
 # Stable-Layers (Stability AI)
 > **Role: current factsheet.** Template: What it does · Licence & weights · How we run it (happy path) · Benchmarks · Best features · Weak spots · Status · Next attempts · Sources. Verdicts are the user's.
 
-> **User assessment (first look, 2026-11-11):** Pretty decent layer extraction, particularly useful for story composites (with a Qwen-Image-2.1 edit).
+> **User assessment (final intermediate, 2026-11-11):** Pretty solid layer extraction, particularly useful for story composites (with a Qwen-Image-2.1 edit).
 
 ## What it does
 
