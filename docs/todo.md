@@ -71,3 +71,4 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] **Combined run**: best model per purpose (story edit: Qwen-2.1; split: Stable-Layers; background: RevealLayer / Qwen-2.1 removal; relight: IC-Light + Qwen-2.1; shadows; boxes: RevealLayer), with the models and their roles stated for every output.
 - [ ] Fill the 30 s benchmark rows for the remaining profiles (`sam2`, `reveallayer`, `cld`, `artplus`; sessions started 2026-11-11).
 - Verdict notes (the user's) are in each factsheet under the role line.
+- [x] LayerDiffuse-Flux on the five fox & cottage objects (A 28 steps 111 s, B 6 steps 24.7 s per object; [layerdiffuse-flux.md](models/layerdiffuse-flux.md)); the user's assessment of it is still TBD.

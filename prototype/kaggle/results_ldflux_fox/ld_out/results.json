@@ -1,0 +1,122 @@
+[
+ {
+  "object": "village_houses",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 108.1,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 57.9,
+  "opaque_pct": 38.7
+ },
+ {
+  "object": "village_houses",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.1,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 36.1,
+  "opaque_pct": 48.6
+ },
+ {
+  "object": "cottage",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 111.2,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 50.5,
+  "opaque_pct": 46.6
+ },
+ {
+  "object": "cottage",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.7,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 49.0,
+  "opaque_pct": 48.3
+ },
+ {
+  "object": "gate_arch",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 111.7,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 40.7,
+  "opaque_pct": 50.6
+ },
+ {
+  "object": "gate_arch",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.7,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 36.9,
+  "opaque_pct": 33.4
+ },
+ {
+  "object": "big_tree",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 111.8,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 53.6,
+  "opaque_pct": 43.0
+ },
+ {
+  "object": "big_tree",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.8,
+  "encode_s": 0.3,
+  "peak_gib": 8.9,
+  "transparent_pct": 51.8,
+  "opaque_pct": 41.3
+ },
+ {
+  "object": "red_fox",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 111.7,
+  "encode_s": 0.4,
+  "peak_gib": 8.9,
+  "transparent_pct": 72.6,
+  "opaque_pct": 24.9
+ },
+ {
+  "object": "red_fox",
+  "path": "A",
+  "steps": 28,
+  "compute_s": 111.5,
+  "encode_s": 0.4,
+  "peak_gib": 8.9,
+  "transparent_pct": 72.6,
+  "opaque_pct": 24.9
+ },
+ {
+  "object": "red_fox",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.7,
+  "encode_s": 0.4,
+  "peak_gib": 8.9,
+  "transparent_pct": 71.4,
+  "opaque_pct": 19.1
+ },
+ {
+  "object": "red_fox",
+  "path": "B",
+  "steps": 6,
+  "compute_s": 24.7,
+  "encode_s": 0.4,
+  "peak_gib": 8.9,
+  "transparent_pct": 71.4,
+  "opaque_pct": 19.1
+ }
+]
