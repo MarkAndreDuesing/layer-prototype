@@ -20,7 +20,20 @@ def _bbox(a, thr=40):
     return xs.min(), ys.min(), xs.max(), ys.max()
 
 
-def shadow_layer(obj: Image.Image, per_component: bool = True, min_area: float = 0.002, **kw) -> Image.Image:
+def shadow_layer(obj: Image.Image, per_component: bool = True, min_area: float = 0.002, background: Image.Image | None = None,
+                 multiply: float = 0.3, **kw) -> Image.Image:
+    """Shadow layer; with `background` (the RGB picture below the object) the shadow is a multiply-style shadow: its colour is the
+    ground colour times `multiply` (darker for smaller values) instead of flat black, so it keeps the ground's hue and texture
+    (cobblestones show through) and does not look like a black sticker on a coloured meadow. Same alpha as the black version."""
+    lay = _shadow_layer(obj, per_component=per_component, min_area=min_area, **kw)
+    if background is not None:
+        rgb = np.asarray(background.convert("RGB").resize(lay.size), np.float32) * multiply
+        a = lay.getchannel("A")
+        lay = Image.fromarray(np.dstack([rgb.clip(0, 255).astype(np.uint8), np.asarray(a)]), "RGBA")
+    return lay
+
+
+def _shadow_layer(obj: Image.Image, per_component: bool = True, min_area: float = 0.002, **kw) -> Image.Image:
     """Shadow for every separate object in the layer (Qwen sometimes groups several objects into one layer, each
     needs its own contact line). Components smaller than min_area of the canvas are ignored."""
     if not per_component:

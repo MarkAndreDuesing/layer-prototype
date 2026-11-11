@@ -154,6 +154,18 @@ def make_diag(log=print):
     return QwenLayeredDecomposer(captions=caps, log=log)
 
 
+def make_for(profile: str):
+    """Factory for a profile whose cases bring their own captions (all of them are encoded at load time)."""
+    def _make(log=print):
+        from .profiles import CAPTION, PROFILES
+        caps = [CAPTION, ""] + [c.params.caption for c in PROFILES[profile].cases]
+        return QwenLayeredDecomposer(captions=caps, log=log)
+    return _make
+
+
+make_640 = make_for("qwen-layered-640")
+
+
 def make(log=print):
     """Factory used by the profile registry: encodes the shared fox & cottage caption at load time."""
     from .profiles import CAPTION

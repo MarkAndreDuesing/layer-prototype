@@ -58,7 +58,10 @@ def apply_event(layers: list[Image.Image], plan: dict, editor: Callable[[Image.I
                     rep["fallback"] = "unedited"
         report.append(rep)
         if shadows and i > 0:
-            sh = shadow_layer(new)
+            below = out[0].copy()                               # the picture below this object: the shadow takes its colour (multiply)
+            for L in out[1:]:
+                below.alpha_composite(L.convert("RGBA"))
+            sh = shadow_layer(new, background=below.convert("RGB"))
             if sh.getchannel("A").getbbox() is not None:
                 out.append(sh)
                 rep["shadow"] = True

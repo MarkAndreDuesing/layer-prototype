@@ -1,6 +1,6 @@
 # Which models go where: pipeline plan after the first-look assessment
 
-> **Role: proposal for the first prototype (2026-11-11).** Built from the user's assessments in the factsheets ([README](README.md)) and the measurements in them. Everything under "Proposed verdict" is a proposal; the user decides. Numbers are measured on the fox & cottage scene unless stated; the combined run that tests these combinations is not done yet (see section 7).
+> **Role: proposal for the first prototype (2026-11-11, revised after the attribution audit [provenance.md](provenance.md)).** Built from the user's assessments in the factsheets ([README](README.md)) and the measurements in them. Everything under "Proposed verdict" is a proposal; the user decides. Numbers are measured on the fox & cottage scene unless stated; the combined run that tests these combinations is not done yet (see section 7).
 
 ## 1. What the evidence says, in one table
 
@@ -51,29 +51,30 @@ The key timing consequence: **splitting a scene takes about 100 s, so it is done
 ## 4. Interactions that constrain the verdicts
 
 1. **Dropping LayerDiffuse SDXL has two consequences.** (a) `relocate()` (harmonise after a move) runs on it; without it the "re-harmonise" button has no engine until a replacement exists. (b) The current scene generator (the layer-by-layer chain, `Engine.generate_all`) is built on it; the replacement is "text → scene with Qwen-2.1, then split once" (the generate-then-decompose route in [concepts/pipeline.md](../concepts/pipeline.md)). Proposal: stop developing it as a generator, **keep it only as the engine of `relocate()` until a Qwen-2.1 based harmonise has been tested**, then decide.
-2. **Stable-Layers needs the Qwen-Image-Layered weights** (it is a LoRA on them), so those stay on the server even though the base model alone splits this scene poorly. The base model is the comparison for Stable-Layers, not a separate pipeline step.
-3. **Qwen-2.1 is the hub:** edit, image to image, add / remove / modify, background removal, amodal, relight and its output is what Stable-Layers splits. Its weaknesses (about 24 s per call, non-commercial licence, object position and scale not controlled in extraction) therefore matter most. A second model for the same roles (an alternative editor) is the main redundancy to consider.
-4. **IC-Light and the shadow layer are independent** of the other models (SD1.5, and CPU), which makes them cheap to keep.
-5. **Servers:** one profile per session for now (`layerproto/serve/profiles.py`). Combination A needs two profiles (`qwen21` and `qwen-layered`); the Qwen-2.1 profile alone loads about 21 GiB across the two T4s (8.0 + 12.7 GiB) and the Qwen-Image-Layered transformer is another 12 GB or more, so keeping both loaded probably does not fit (not measured together); a live demo would swap profiles or use a larger card. That is the "rethink" the user expects for later.
+2. **Who gets credit for what:** the story edit (night, rain, a new element) is Qwen-2.1's; Stable-Layers (or another splitter) only splits the result; IC-Light, shadows and `relocate()` act on layers made by the splitter. Attribution per image: [provenance.md](provenance.md).
+3. **Stable-Layers needs the Qwen-Image-Layered weights** (it is a LoRA on them), so those stay on the server even though the base model alone splits this scene poorly. The base model is the comparison for Stable-Layers, not a separate pipeline step.
+4. **Qwen-2.1 is the hub:** edit, image to image, add / remove / modify, background removal, amodal, relight and its output is what Stable-Layers splits. Its weaknesses (about 24 s per call, non-commercial licence, object position and scale not controlled in extraction) therefore matter most. A second model for the same roles (an alternative editor) is the main redundancy to consider.
+5. **IC-Light and the shadow layer are independent** of the other models (SD1.5, and CPU), which makes them cheap to keep.
+6. **Servers:** one profile per session for now (`layerproto/serve/profiles.py`). Combination A needs two profiles (`qwen21` and `qwen-layered`); the Qwen-2.1 profile alone loads about 21 GiB across the two T4s (8.0 + 12.7 GiB) and the Qwen-Image-Layered transformer is another 12 GB or more, so keeping both loaded probably does not fit (not measured together); a live demo would swap profiles or use a larger card. That is the "rethink" the user expects for later.
 
 ## 5. Proposed verdicts
 
 | Model / approach | Proposed verdict | Reason (from the factsheets) |
 |---|---|---|
 | Qwen-Image-2.1 | **Core**; keep developing | scene edit, story composites, image to image, add / remove / modify, background inpainting, amodal, relight; slow per call |
-| Stable-Layers (on Qwen-Image-Layered weights) | **Core** for the split | clean object layers at 640 px; splits Qwen-2.1's night and rain edits; colour shift in the recomposite; about 100 s |
+| Stable-Layers (on Qwen-Image-Layered weights) | **Core for the split** (not a story-composite model: the night and rain edits are Qwen-2.1's) | the only splitter that gave clean object layers at 640 px on the scene and on Qwen-2.1's edits of it (base and Lightning did not; RevealLayer was not run on the edits); colour shift in the recomposite; about 100 s |
 | Shadow layers | **Core** (CPU helper) | instant, any layer |
-| IC-Light + chroma fix | **Keep, tune further** | good relighting, especially with Qwen-2.1; hue drift |
+| IC-Light + chroma fix | **Keep, tune further** | relights a daylight fox plausibly (darker, redder); on the objects of a night or rain scene it left them pale (the good night look in the `bg_relight` strips is Qwen-2.1's edit of the background, [provenance](provenance.md)); the Qwen-2.1 per-layer relight is the working one there. Tuning: see section 7 |
 | Grounding DINO + SAM2 | **Keep** (fast masks); combine with Qwen-2.1 fill (combination B) | 3 s; the fill and hidden parts are the weak part, not the masks |
 | `relocate()` / harmonise | **Keep as an optional step**; move/resize itself is direct user interaction | 3.4 s; depends on LayerDiffuse SDXL today |
-| RevealLayer | **Keep for the box-controlled path; explore** | best background removal and fill, layers follow boxes; slow, FLUX non-commercial |
-| CLD | **Keep as the alternative to RevealLayer; explore** | decent layers, replacement background and style variation on the edits; slow; the background is a different scene |
-| Qwen-Image-Layered (base) | **Park**: keep only as the base of Stable-Layers | inconsistent: good on the forest, no object layers on the fox scene at any setting tried |
+| RevealLayer | **Keep for the box-controlled path; explore** | its own results: clean filled backgrounds (the strongest background removal seen) and layers that follow boxes; it also supplied the input layers of the move and per-layer relight strips, whose other effects are other models' work; slow, FLUX non-commercial |
+| CLD | **Keep as the alternative to RevealLayer; explore** | its own results: decent layers at 4-16 steps, an invented replacement background (a different scene), slow. The style variation on the night and rain strip is the Qwen-2.1 edit's, not CLD's |
+| Qwen-Image-Layered (base) | **Keep in contention** (the user, 2026-11-11): it is the base of Stable-Layers and may still have advantages over Qwen-2.1 | inconsistent: good on the forest, no object layers on the fox scene at any setting tried; to test: more scenes, whether it keeps what Qwen-2.1 extraction loses (all objects in one pass, no per-object call), the full-precision question |
 | Qwen Lightning | **Candidate to drop** (the user decides) | no object layers on the fox scene at 384, 512 or 640 px; story composites not improved at 640 px |
 | LayerD | **Park, look at it a little more** (the user's note) | limited on painted scenes; CPU only |
-| SDXL-inpaint amodal fill | **Park**; Qwen-2.1 replaces it for amodal | good for 3 of 5 fills, cannot add elements convincingly |
+| SDXL-inpaint amodal fill | **Park**; Qwen-2.1 replaces it for amodal | its own result is the two cottage fills (the rest of those panels is SAM2 / LaMa / the input); the other panels of the strip the first look judged were LayerDiffuse effect layers, a different model; redundant with Qwen-2.1 extraction |
 | ART+ | **Drop** | all bad (the user); generates its own scene, does not split ours |
-| LayerDiffuse SDXL | **Stop as a generator; keep only as the engine of `relocate()` for now** | all bad (the user); see 4.1 |
+| LayerDiffuse SDXL | **Keep exclusively as the engine of `relocate()`** (the user) while a replacement is explored, Qwen-2.1 first; no further development as a generator | all bad as a generator (the user); see 4.1 and the harmonise test in section 7 |
 | LayerDiffuse-Flux | **Drop** | all bad (the user); objects do not match the scene's style |
 
 ## 6. Feature coverage if these verdicts hold
