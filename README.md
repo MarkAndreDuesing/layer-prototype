@@ -8,7 +8,9 @@ Personal, non-commercial team prototype on free hardware (Kaggle 2× T4, a CPU l
 
 | You want… | Read |
 |---|---|
+| **New to the project / taking it over** | [docs/handoff.md](docs/handoff.md) |
 | **Where are we now?** | [docs/status.md](docs/status.md) |
+| Which model does what, keep / drop, who made which picture | [docs/models/pipeline-plan.md](docs/models/pipeline-plan.md), [docs/models/provenance.md](docs/models/provenance.md) |
 | What's left to do / open questions | [docs/todo.md](docs/todo.md) |
 | How we got here (history, all runs) | [docs/log.md](docs/log.md) |
 | Each model: happy path, benchmarks, best features | [docs/models/](docs/models/README.md) |

@@ -69,7 +69,30 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 - [ ] **Qwen Lightning**: check whether the story-composite use can be improved; otherwise discard.
 - [ ] **Qwen-Image-2.1 image-to-image**: compare with other image-to-image models (those cannot split layers); test relight further together with IC-Light.
 - [ ] **Combined run**: best model per purpose (story edit: Qwen-2.1; split: Stable-Layers; background: RevealLayer / Qwen-2.1 removal; relight: IC-Light + Qwen-2.1; shadows; boxes: RevealLayer), with the models and their roles stated for every output.
-- [ ] Fill the 30 s benchmark rows for the remaining profiles (`sam2`, `reveallayer`, `cld`, `artplus`; sessions started 2026-11-11).
+- [x] 30 s benchmark rows (paths A and B) for `sam2`, `reveallayer`, `cld`, `artplus` filled 2026-11-11 (only SAM2 is under 30 s).
 - Verdict notes (the user's) are in each factsheet under the role line.
 - [x] LayerDiffuse-Flux on the five fox & cottage objects (A 28 steps 111 s, B 6 steps 24.7 s per object; [layerdiffuse-flux.md](models/layerdiffuse-flux.md)); the user's assessment of it is still TBD.
 - [ ] **Pipeline plan (2026-11-11)** [models/pipeline-plan.md](models/pipeline-plan.md): proposal for combinations and verdicts; the user decides. Next: the combined run, Stable-Layers on other scenes and at 2-3 steps (640 px), SAM2 + Qwen-2.1 fill, a Qwen-2.1 harmonise to replace `relocate()`'s LayerDiffuse SDXL engine, image-to-image comparison, Qwen-2.1 effect layers.
+
+## Hand-off: decisions and open items (2026-11-11)
+
+Hand-off page: [handoff.md](handoff.md). Decisions by the user: **keep IC-Light** until further tests; **progressive loading** of layers is the answer to Qwen-2.1's per-object latency; **LayerDiffuse SDXL only as the engine of `relocate()`** (find a replacement, Qwen-2.1 first); **Qwen-Image-Layered stays in contention**; RevealLayer for inpainting only; Stable-Layers and CLD as optional splitters unless Qwen-2.1 has an absolute advantage (runtime counts); SDXL-Turbo stays as the fast first image step.
+
+**Prototype (P1, in this order)**
+- [ ] **Progressive loading:** the user works on the SDXL-Turbo baseline, or the first Qwen-2.1 layer, while the other layers and objects keep arriving. Needs an async / streaming decompose route (job id and `GET /jobs/<id>`, or server-sent events) and a Gradio generator that adds layer cards as they arrive; the background and the biggest object first ([handoff.md §6](handoff.md)).
+- [ ] **SDXL-Turbo route** (`/txt2img`, `/img2img`) on a server profile and a first-image step in the app; a prompt style that gives separable layouts (draft images often contain a second fox, [models/sdxl-turbo.md](models/sdxl-turbo.md)).
+- [ ] **Qwen-2.1 edit route** (`/edit`: scene edit, per-layer edit with the alpha retry) and wire `event_apply.py`, the event router (`events.py`) and the shadow layers (multiply option) into the app UI.
+- [ ] **Run a profile `serve` notebook live** through the tunnel (only the earlier SAM2-only notebook was); `qwen21` first.
+- [ ] Decide how a live demo holds two Qwen models (the Qwen-2.1 profile alone loads about 21 GiB): swap profiles, a bigger GPU, or the hosted API ([research/hosting.md](research/hosting.md)); pre-downloaded weights as Kaggle inputs for every profile (done for Qwen-Image-Layered).
+- [ ] Qwen-2.1 extraction: pass the box (crop or paste back) so objects keep their place and scale (the arch came back too big); make the background removal work on the night and rain edits.
+
+**Experiments**
+- [ ] **Qwen-2.1 harmonise with a lighting mismatch** (the fox moved from sun to shade, or into the night scene); per-layer use instead of a whole-scene edit; replaces `relocate()`'s LayerDiffuse SDXL engine if it holds up ([models/relocate-harmonise.md](models/relocate-harmonise.md)).
+- [ ] **IC-Light further tuning (kept):** a stronger rain pre-grade, other prompts and step counts, `restore_chroma` on the night and rain variants, the arch layer that turns cyan, a lighting mismatch inside one scene; compare with Qwen-2.1 per-layer relight on the same layers.
+- [ ] **Qwen-Image-Layered (in contention):** more scenes, a full-precision run (hosted API, about $0.05) to separate "our Q4 + fp16" from "the model", what it can do that Qwen-2.1 extraction cannot (all layers in one pass).
+- [ ] **Stable-Layers:** other scenes (forest, pixel art, sketch) and 2-3 steps at 640 px; the same for CLD.
+- [ ] **SAM2 masks + Qwen-2.1 fill** (combination B in [models/pipeline-plan.md](models/pipeline-plan.md)) against Qwen-2.1 extraction alone.
+- [ ] **Combined run** (combination A end to end on three scenes), every output labelled with the model and its role.
+- [ ] Image to image: compare Qwen-2.1 with other image-to-image models; Qwen-2.1 transparent effect layers (fog, glow, snow); decide Lightning (candidate to drop).
+- [ ] Look at the models and papers not tried yet ([models/pipeline-plan.md §8](models/pipeline-plan.md)): LayerFusion, the DreamLayer dataset, other editing and segmentation models, newer layered models.
+- [ ] TPU: the interactive session is queued (position 1510); retry when quiet or skip.

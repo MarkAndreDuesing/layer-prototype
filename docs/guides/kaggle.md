@@ -60,16 +60,22 @@ Every model has a notebook generator `prototype/tools/make_<name>.py` that write
 - **Debug cell by cell:** Kaggle editor → File → Import Notebook → `kaggle/upload_qwen_test/qwen-layered-feasibility.ipynb`, Accelerator GPU T4 x2. Re-importing keeps the kernel alive; the toolbar's circular-arrow button restarts the whole session.
 - **Gotchas:** reading the text encoder straight from `/kaggle/input` stalls at 0/729 tensors (copy to `/tmp` first, about 100 s); the transformer is split over both T4s (blocks 0–29 / 30–59, peak 8.8 / 8.4 GB); T4 speeds: fp16 19 TFLOPS, bf16 2 (emulated), fp32 3.7.
 
-## 3b. Serve the app's /decompose route from Kaggle (your steps)
+## 3b. Serve a model behind the app from Kaggle (one profile per session)
 
-The notebook is built but not pushed (pushing would start a run and use GPU quota). Its models (Grounding DINO + SAM2 + LaMa) were tested through the real route: 5–12 s per image after a 45 s load ([../models/sam2-lama.md](../models/sam2-lama.md)).
+Each Kaggle session loads **one** model family (a *profile*, `prototype/layerproto/serve/profiles.py`): `qwen-layered` (methods `qwen-layered`, `stable-layers`, `qwen-lightning`), `qwen21` (`qwen21-extract`), `sam2` (`sam2-lama`, with Grounding DINO, LaMa and the optional SDXL-inpaint amodal fill), `reveallayer`, `cld`, `artplus`. The notebook is built but never pushed with the CLI (a push would start a batch run and use GPU quota); you import it in the editor. Load times: SAM2 about 40 s, Qwen-2.1 about 240-390 s, Qwen-Image-Layered about 350 s, FLUX-based ones about 240-300 s.
 
-1. On the laptop run `fastsdcpu\env\Scripts\python.exe prototype	ools\make_decompose_server_notebook.py` (already done; the file is [decompose-server.ipynb](../../prototype/kaggle/decompose_server/decompose-server.ipynb)).
-2. Kaggle → New Notebook → File → Import Notebook → that file. Settings: Accelerator **GPU T4 x1**, Internet **On**.
-3. Run all cells (about 3 min). The 4th cell prints two lines.
-4. Copy them into `prototype/config.json`: `{"remote_url": "https://….trycloudflare.com", "remote_token": "…"}`. Keep `image_backend` as it is: the decomposer uses `remote_url` on its own.
-5. Start the app, open the tab **Decompose an image (GPU)**, upload an image, method `sam2-lama`, type the object names (comma separated) and press Decompose.
-6. Stop the Kaggle notebook when done (the tunnel and the GPU session end with it).
+1. Build the notebook for a profile:
+   ```bash
+   fastsdcpu\env\Scripts\python.exe prototype\tools\make_profile_notebook.py --profile sam2 --mode serve
+   ```
+   Output: `prototype/kaggle/upload_profile_sam2_serve/profile-sam2-serve.ipynb`.
+2. Kaggle → New Notebook → File → Import Notebook → that file. Settings: Accelerator **GPU T4 x2** (the editor has no T4 x1), Internet **On**. For `qwen-layered`, also **Add Input** the two public notebook outputs `markandreduesing/qwen-layered-weights-transformer` and `markandreduesing/qwen-layered-weights-base` (pre-downloaded weights; without them Hugging Face is used).
+3. Run all cells. The tunnel cell prints a block with `remote_url` and `remote_token`.
+4. Copy them into `prototype/config.json` (git-ignored): `{"remote_url": "https://….trycloudflare.com", "remote_token": "…"}`. Keep `image_backend` as it is: the decomposer uses `remote_url` on its own.
+5. Start the app, open **Decompose an image (GPU)**, press **Ask the server which methods it offers**, pick the method and a preset (A best case, B live demo), upload an image, add names and boxes if the method needs them, press **Decompose**.
+6. Stop the Kaggle session when done (the tunnel and the GPU session end with it; the URL changes every session).
+
+Benchmark sessions (paths A and B on the fox & cottage scene) use `--mode bench` and **are** pushed with the CLI; `prototype/tools/wait_and_fetch.sh` waits and downloads the results.
 
 ### Editor notes (2026-11-10)
 - The editor's Accelerator list offers only **GPU T4 x2**, **TPU v5e-8** and **None** (no T4 x1); the quota line there (for example "15:05 / 30 hrs") is the live weekly GPU counter.
