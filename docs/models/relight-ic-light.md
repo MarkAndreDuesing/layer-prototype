@@ -41,6 +41,22 @@ IC-Light v1 fbc: Apache-2.0 (Realistic Vision 5.1 UNet widened from 4 to 12 inpu
 
 In `event_perlayer_retry.jpg` above both the background and the object layers are Qwen-2.1's; the layers themselves (and a malformed gate-arch layer, a tan stump) come from RevealLayer.
 
+### Tuning IC-Light on the night objects (CPU test, 2026-11-11)
+
+Objects = RevealLayer's layers (SDXL-Turbo scene); background = the Qwen-2.1 night edit of RevealLayer's filled background. Five object layers relit back to front, IC-Light fbc, 8 steps, 384 px, CPU float32 (about 200 s per variant for five layers). Script [`iclight_night_variants.py`](../../prototype/tools/iclight_night_variants.py), files `prototype/kaggle/results_iclight_tuning/`. Tiles, top row: day composite | Qwen-2.1 night background | objects unchanged (mean grey 73.6) | **colour grade only** (no IC-Light, 48.0); bottom row: **A** IC-Light as before (62.0) | **B** night grade first, then IC-Light (46.1) | **C** IC-Light, then lightness scaled to the graded version (47.6) | **D** grade, IC-Light, lightness match (45.4).
+
+![IC-Light night variants](../img/iclight_night_variants.jpg)
+
+What the tiles show:
+- **A (as before):** the cottage glows white-blue like snow, the arch is a bright cyan blob, the tree dark; mean grey 62, not dark.
+- **Grade only:** dark, desaturated and flat: the cottage grey, the tree dark grey-green, the fox brown; the darkest natural-looking result of the five, with no cool moonlight cast.
+- **B (grade first, then IC-Light):** the cottage is a muted grey-blue (a cool moonlit cast), the tree dark, the fox brown; mean grey 46. The best of the IC-Light variants.
+- **C (lightness match only):** the mean falls to 47.6 but the cottage stays pale blue-grey and the tree turns greenish; the global scaling does not fix A.
+- **D:** close to B (45.4).
+- **In every IC-Light variant (A-D) the arch layer turns cyan** (it is the malformed RevealLayer layer from the earlier strips); the grade alone does not do that.
+
+Reading: giving IC-Light an already night-graded object (B) removes the "not dark" failure, and the result carries a cool light cast that the plain grade lacks, at about 45 s per layer on the CPU; the lightness match alone does not help. IC-Light's remaining defects here are the cyan arch and the blue-white cast it adds to pale walls. The Qwen-2.1 per-layer relight (`event_perlayer_retry.jpg`) remains the other route for these layers. Not tested: the rain objects, other steps / prompts, `restore_chroma` on these variants.
+
 ## Further investigations
 
 - The hue-drift fix and per-event `keep` parameter: [concepts/editing.md §2](../concepts/editing.md).
