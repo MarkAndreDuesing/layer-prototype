@@ -88,9 +88,21 @@ Question from the first look: the forest runs of the past were good, the fox & c
 
 **What this shows**
 - It is **not a code regression**: the forest control reproduces the good old result with the current code and weights.
-- On the fox & cottage scene the model does **not return object layers** at any setting we tried. At 384 px nothing is taken out of the background and the extra layers are duplicates or ghosts (row 3: nothing at all). At 640 px it cuts the picture into two horizontal blocks, a top block with sky + tree + cottage and a ground slab, and the fox stays on the background layer. The cottage and the tree are never separated from each other or from the sky.
+- On the fox & cottage scene the base model does **not return object layers** at any setting we tried (Stable-Layers = the same weights plus a LoRA does at 640 px: [stable-layers.md](stable-layers.md)). At 384 px nothing is taken out of the background and the extra layers are duplicates or ghosts (row 3: nothing at all). At 640 px it cuts the picture into two horizontal blocks, a top block with sky + tree + cottage and a ground slab, and the fox stays on the background layer. The cottage and the tree are never separated from each other or from the sky.
 - More steps (20) and CFG 4 do not change that; the empty caption makes 384 px worse; the caption itself is not the cause.
 - Why it works on the forest and not here is **not established**. Candidates we have not separated: the scene (flat cartoon colours, dense overlapping objects, no depth cues, unlike the forest painting), our quantised Q4_K_S GGUF with fp16_mixed numerics on a T4 (the forest works under the same pipeline, so it is not simply broken), or the model's own limit. A run of the same image through a full-precision host (the hosted API costs about $0.05 per run, see [../research/hosting.md](../research/hosting.md)) would separate "our numerics" from "the model"; not run yet, the user decides.
+
+### Native 640 px session, 5 layers (base model, no LoRA; 2026-11-11)
+
+Same session as in [stable-layers.md](stable-layers.md#native-640-px-session-warm-model-2026-11-11-the-split-that-works), strips `docs/img/qwenlayered_640_fox.jpg` (row 1) and `docs/img/qwenlayered_640_story.jpg` (rows 1 and 4).
+
+| Case | Compute | Layers, checked |
+|---|---|---|
+| fox & cottage, 4 Euler steps | 97.0 s | background: a blank cream wash with the fox still in it (colour difference 77 / 117 / 10 for cottage / tree / fox); layer 1 the ground slab with a fox-shaped hole; layer 2 a top slab (64 %) with sky and hedge; layer 3 cottage and tree together (73 % / 80 % of their boxes) with holes; layer 4 a 0.7 % fragment |
+| night composite, 4 Euler steps | 98.8 s | background: a blank white image; layer 1 a dark smear; layer 2 a ground smear; **layer 3 holds the complete night scene** (100 % opaque: cottage, tree and fox together); layer 4 empty |
+| rain composite, 4 Euler steps | 98.4 s | background white; layer 1 the scene with holes (94 %); layer 2 a ground smear; layer 3 the scene again with pink holes (71 %); layer 4 the fox |
+
+The base model does not give object layers on these scenes at 640 px either; the LoRA of [Stable-Layers](stable-layers.md) does on the same weights and settings. **Wording fix for the diagnosis above:** "does not return object layers at any setting we tried" holds for the base model only.
 
 ## Special features
 

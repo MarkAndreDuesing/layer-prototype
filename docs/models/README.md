@@ -29,9 +29,9 @@ S = supported and shown with an image, P = partial or with caveats, T = tried, d
 
 | Model | Split | Move / resize | Harmonise | Story composite | Spatial edit | Image to image | Add / remove / modify | Relight | Effects | Amodal |
 |---|---|---|---|---|---|---|---|---|---|---|
-| [Qwen-Image-Layered](qwen-image-layered.md) | S | P | - | S | - | - | P | - | - | S |
-| [Stable-Layers](stable-layers.md) | S | P | - | S | - | - | P | - | - | S |
-| [Qwen Lightning](qwen-lightning.md) | S | P | - | P | - | - | - | - | - | P |
+| [Qwen-Image-Layered](qwen-image-layered.md) | T (see factsheet) | P | - | T | - | - | P | - | - | T |
+| [Stable-Layers](stable-layers.md) | S (640 px) | P | - | S | - | - | P | - | - | S |
+| [Qwen Lightning](qwen-lightning.md) | T | P | - | T | - | - | - | - | - | T |
 | [RevealLayer](revealayer.md) | S | S | S | - | P | - | P | - | - | S |
 | [CLD](cld.md) | S | P | - | S | S | - | P | - | - | P |
 | [ART+](art-plus.md) | generates | P | T | - | S | - | S | T | - | - |

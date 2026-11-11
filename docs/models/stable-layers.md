@@ -67,6 +67,29 @@ B (3 Euler steps at 384 px), measured: objects are also taken out of the backgro
 
 ![B, 384 px 3 steps](../img/bench_stablelayers_B.jpg)
 
+### Native 640 px session (warm model, 2026-11-11): the split that works
+
+Same `qwen-layered` profile, 640 px, 5 layers, first run (each case once); a second session `qwen-layered-640`. Checked layer by layer with [`layer_report.py`](../../prototype/tools/layer_report.py). Results: `prototype/kaggle/results_profile_qwen-layered-640/`. Strip: input | recomposite | layers 0-4 (layer 0 = background).
+
+| Case | Compute | Recomposite diff |
+|---|---|---|
+| fox & cottage, 4 Euler steps | 101.7 s | 18.48 |
+| fox & cottage, 4 Heun steps | 177.7 s | 18.41 |
+| night composite (Qwen-Image-2.1 edit), 4 Heun steps | 178.6 s | 4.61 |
+| rain composite (Qwen-Image-2.1 edit), 4 Heun steps | 178.2 s | 11.35 |
+
+**Fox & cottage, rows 2 (Euler) and 3 (Heun) of the strip:** one object per layer. Layer 0 is a sky wash with a cloud and the objects removed (colour difference to the input 54 / 70 / 83 for cottage / tree / fox); layer 1 is the hedge, meadow and path without the fox (the path is filled where the fox stood); layer 2 is the cottage with its gate arch as a clean cut-out (83 % of its box); layer 3 is the tree with its leaves as a clean cut-out; layer 4 is the fox alone (2.8 % of the canvas). **This is the first split of this scene where every object is its own layer and the background is hole-free.** Euler and Heun give the same layers (the numbers differ by hundredths); Heun costs 76 s more.
+
+![Stable-Layers at 640 px, fox & cottage (rows: base model for comparison, Stable-Layers Euler, Stable-Layers Heun, Lightning 4 steps, Lightning 2 steps)](../img/qwenlayered_640_fox.jpg)
+
+**Story composites at 640 px** (strip below; rows: night base, **night Stable-Layers**, night Lightning, rain base, **rain Stable-Layers**, rain Lightning). Stable-Layers splits both Qwen-Image-2.1 edits properly:
+- **Night:** layer 0 is the dark sky with the moon and the dark landscape (objects removed); layer 1 the cottage with its lit windows as a clean cut-out; layer 2 the path; layer 3 the tree; layer 4 the fox. The window light stays on the cottage layer.
+- **Rain:** layer 0 is the grey rainy sky and wet greenery; layer 1 the cottage; layer 2 the tree; layer 3 the wet path; layer 4 the fox, all clean.
+
+![story composites at 640 px (night base, night Stable-Layers, night Lightning, rain base, rain Stable-Layers, rain Lightning)](../img/qwenlayered_640_story.jpg)
+
+What this means for the earlier rows of this file: the 384 and 512 px runs above gave bands and partial splits; **the resolution is what matters for Stable-Layers on this scene**, and 640 px costs about 100 s (Euler) instead of 31 s. A 30 s budget at 640 px is not reached (2 or 3 steps at 640 px are not measured yet).
+
 ## Special features
 
 | Feature | Status | Evidence |

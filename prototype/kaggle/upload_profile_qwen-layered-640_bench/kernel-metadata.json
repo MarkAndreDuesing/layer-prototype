@@ -1,0 +1,19 @@
+{
+ "id": "markandreduesing/profile-qwen-layered-640-bench",
+ "title": "profile-qwen-layered-640-bench",
+ "code_file": "profile-qwen-layered-640-bench.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": "true",
+ "enable_gpu": "true",
+ "enable_tpu": "false",
+ "enable_internet": "true",
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [
+  "markandreduesing/qwen-layered-weights-transformer",
+  "markandreduesing/qwen-layered-weights-base"
+ ],
+ "model_sources": []
+}

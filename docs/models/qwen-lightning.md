@@ -81,6 +81,19 @@ B (384 px, 2 steps), measured: the colours are washed out everywhere (background
 
 ![B, 384 px 2 steps](../img/bench_lightning_B.jpg)
 
+### Native 640 px session (warm model, 2026-11-11)
+
+Same session as in [stable-layers.md](stable-layers.md#native-640-px-session-warm-model-2026-11-11-the-split-that-works); strips are in `docs/img/qwenlayered_640_fox.jpg` (rows 4 and 5) and `docs/img/qwenlayered_640_story.jpg` (rows 3 and 6). Lightning scale 1.0, 640 px, 5 layers.
+
+| Case | Compute | Layers, checked |
+|---|---|---|
+| fox & cottage, 4 steps | 112.2 s | the background still holds the whole scene (cottage colour difference 14, fox 13); layer 1 empty; layers 2 and 3 are both the tree (the second one a duplicate, with leaf spill); layer 4 a pink, half-transparent fox fragment (16 % of its box instead of 33 %). The cottage is not extracted |
+| fox & cottage, 2 steps | 57.4 s | the same: background keeps the scene, layer 1 empty, tree plus a pink ghost of the cottage, a second tree, a pink fox |
+| night composite, 4 steps | 112.8 s | the background is the whole night scene (moon included); layers 1 empty; layer 2 the fox; layer 3 a smear of cottage and tree with ragged edges (65 % of the canvas); layer 4 a 0.1 % ghost of the moon |
+| rain composite, 4 steps | 112.5 s | layer 0 and layer 1 both hold the whole scene (100 %); layer 2 a 1 % fragment; layer 3 a smear; layer 4 a fragment. Not split |
+
+**Story composites are not improved at 640 px**: Lightning leaves the cottage in the background or smears it, duplicates the tree and damages the fox, while Stable-Layers on the same edits gives one clean layer per object. Lightning at 640 px is also no faster than Stable-Layers Euler (112 s against 102 s at 4 steps).
+
 ## Special features
 
 | Feature | Status | Evidence |
