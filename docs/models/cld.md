@@ -42,7 +42,7 @@ Results: `prototype/kaggle/results_cld_v3/`. The first runs failed on a diffuser
 
 ## Story-event composites split with CLD (v4: Qwen-Image-2.1 night and heavy-rain edits, same 5 boxes)
 
-The edits keep the composition, so the hand boxes still fit. 2× T4, 512 px, 16 steps, about 6 min per case. Top row night, bottom row rain: whole | background | houses | cottage | gate arch | tree | fox | merged.
+**Credit:** the night and rain pictures, and therefore the style variation, are **Qwen-Image-2.1 edits** of the SDXL-Turbo scene; CLD only splits them (and invents its own background). The edits keep the composition, so the hand boxes still fit. 2× T4, 512 px, 16 steps, about 6 min per case. Top row night, bottom row rain: whole | background | houses | cottage | gate arch | tree | fox | merged.
 
 ![CLD on night and rain edits](../img/cld_night_rain.jpg)
 
@@ -132,7 +132,7 @@ B (4 steps): the cottage, tree and fox are extracted cleanly with their own grou
 |---|---|---|
 | Split an image into layers (with boxes) | **supported** | strips above |
 | Move / resize a layer | **partial**: the generated background is a different scene, so moved objects need another background | [Backgrounds comparison](#backgrounds-cld-vs-reveallayer-on-fox--cottage-existing-runs-2026-11-10) |
-| Story composite | **supported**: night and heavy-rain edits split with the same boxes | `cld_night_rain.jpg` (section above) |
+| Story composite | the edit is Qwen-2.1's; CLD **splits** the night and heavy-rain edits with the same boxes (tested) | `cld_night_rain.jpg` (section above), [provenance](provenance.md) |
 | Spatial edit | **supported**: the boxes (and the seven-box variant) control the grouping | `cld_7box.jpg` |
 | Image to image / relight / effects | n/a | |
 | Add / remove / modify a layer | **partial** (one box per layer) | |

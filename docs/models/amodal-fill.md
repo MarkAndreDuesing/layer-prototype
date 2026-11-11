@@ -29,13 +29,13 @@ SDXL-inpaint: `diffusers/stable-diffusion-xl-1.0-inpainting-0.1` (CreativeML Ope
 | SDXL-inpaint fill inside the real route (amodal on) | 80 s with load (8.5 s without amodal) | patchy: green and sky patches where the arch and tree were |
 | **B. Live-demo budget (about 30 s)** | Qwen-2.1 about 23–27 s for one object; SDXL-inpaint about 31 s per object | both fit one object per request; not all five |
 
-Qwen-2.1 extraction strip (cottage a, cottage b, tree, fox, scene with the fox removed):
+Qwen-2.1 extraction strip (cottage a, cottage b, tree, fox, scene with the fox removed); the input is the SDXL-Turbo scene and every tile is Qwen-2.1's work ([provenance](provenance.md)):
 
 ![Qwen-2.1 extraction](../img/qwen21_extract_strip.jpg)
 
-SDXL-inpaint fills (panels 1 and 2 are the two cottage prompts):
+SDXL-inpaint fills of the cottage, the two prompts. **What is whose in these two panels:** the background (tree, arch and fox taken out) is SAM2 + LaMa, the visible cottage is the SDXL-Turbo scene cut out by SAM2, and **SDXL-inpaint made only the filled hidden part of the cottage**. (An earlier version of this page showed a five-panel strip here whose panels 3-5, fog, glow and snow, were LayerDiffuse SDXL effect layers, not SDXL-inpaint fills; they are now on [layerdiffuse-sdxl.md](layerdiffuse-sdxl.md).)
 
-![SDXL amodal fills](../img/sdxl_batch_strip.jpg)
+![SDXL amodal fills (SAM2 + LaMa base, SDXL-inpaint fill)](../img/sdxl_amodal_panels.jpg)
 
 In the real route (top plain, bottom amodal on) and the neutral-base variant:
 

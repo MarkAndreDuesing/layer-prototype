@@ -100,7 +100,9 @@ B (512 px):
 | Effects as layers (fog, glow, snow) | **tested, partial**: fog re-extracted the scene, glow became a large lantern, snow a few large flakes | below |
 | Amodal completion | n/a | |
 
-![effects: fog, glow, snow](../img/sdxl_batch_strip.jpg)
+LayerDiffuse SDXL effect layers over the SDXL-Turbo scene (fog, glow, snow; **not** SDXL-inpaint, which is a different model used for the amodal fills):
+
+![effects: fog, glow, snow](../img/layerdiffuse_effects_panels.jpg)
 
 ## Best features
 

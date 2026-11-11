@@ -111,7 +111,7 @@ The base model does not give object layers on these scenes at 640 px either; the
 | Split an image into layers | **supported** | strips above |
 | Move / resize a layer | **partial**: layers are full-canvas RGBA, so a canvas move works; no harmonising | [relocate-harmonise.md](relocate-harmonise.md) (the move loop used another model's split) |
 | Harmonise after a move | not tried on these layers | |
-| Story composite | **supported**: re-split of a night / rain edit | below |
+| Story composite | the edit is Qwen-2.1's; this model only **splits** a night / rain edit (poor at 384 and 640 px) | below, [provenance](provenance.md) |
 | Spatial edit | n/a (no text or box control) | |
 | Image to image | n/a | |
 | Add / remove / modify a layer | **partial**: choose N; edit a layer with another model | [qwen-image-2.1.md](qwen-image-2.1.md) |

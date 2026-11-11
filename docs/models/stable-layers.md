@@ -82,7 +82,7 @@ Same `qwen-layered` profile, 640 px, 5 layers, first run (each case once); a sec
 
 ![Stable-Layers at 640 px, fox & cottage (rows: base model for comparison, Stable-Layers Euler, Stable-Layers Heun, Lightning 4 steps, Lightning 2 steps)](../img/qwenlayered_640_fox.jpg)
 
-**Story composites at 640 px** (strip below; rows: night base, **night Stable-Layers**, night Lightning, rain base, **rain Stable-Layers**, rain Lightning). Stable-Layers splits both Qwen-Image-2.1 edits properly:
+**Story composites at 640 px.** The night and rain pictures are **Qwen-Image-2.1 edits** of the SDXL-Turbo scene; what Stable-Layers adds is the split (strip below; rows: night base, **night Stable-Layers**, night Lightning, rain base, **rain Stable-Layers**, rain Lightning). Stable-Layers splits both Qwen-Image-2.1 edits properly:
 - **Night:** layer 0 is the dark sky with the moon and the dark landscape (objects removed); layer 1 the cottage with its lit windows as a clean cut-out; layer 2 the path; layer 3 the tree; layer 4 the fox. The window light stays on the cottage layer.
 - **Rain:** layer 0 is the grey rainy sky and wet greenery; layer 1 the cottage; layer 2 the tree; layer 3 the wet path; layer 4 the fox, all clean.
 
@@ -96,7 +96,7 @@ What this means for the earlier rows of this file: the 384 and 512 px runs above
 |---|---|---|
 | Split an image into layers | **supported** | strips above |
 | Move / resize a layer | **partial** (canvas move; no harmonising) | [relocate-harmonise.md](relocate-harmonise.md) |
-| Story composite | **supported**: re-split of night and rain edits | below |
+| Story composite | the edit is Qwen-2.1's; Stable-Layers **splits** the night and rain edits (tested, clean at 640 px) | below, [provenance](provenance.md) |
 | Spatial edit / image to image | n/a | |
 | Add / remove / modify a layer | **partial** (N chosen per run) | |
 | Relight / effects | n/a | |

@@ -99,7 +99,7 @@ Same session as in [stable-layers.md](stable-layers.md#native-640-px-session-war
 | Feature | Status | Evidence |
 |---|---|---|
 | Split an image into layers | **supported** (quality below the base model at 2 steps) | strips above |
-| Story composite | **partial**: night edit re-split at 2 steps | below |
+| Story composite | the edit is Qwen-2.1's; Lightning only **splits** a night / rain edit (poor at 384 and 640 px) | below, [provenance](provenance.md) |
 | Move / harmonise / edit / relight / effects | n/a (same as the base model) | [qwen-image-layered.md](qwen-image-layered.md) |
 | Amodal completion | **partial** (as the base model) | |
 

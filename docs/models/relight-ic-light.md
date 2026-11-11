@@ -32,6 +32,15 @@ IC-Light v1 fbc: Apache-2.0 (Realistic Vision 5.1 UNet widened from 4 to 12 inpu
 
 ![per-layer Qwen-2.1 relight, night and rain, with retry](../img/event_perlayer_retry.jpg)
 
+
+### Who did the relighting in the night and rain strips (attribution check, 2026-11-11)
+
+`bg_relight` strategy on RevealLayer's split: tiles = day composite | **background edited by Qwen-Image-2.1** | objects pasted unchanged | objects relit with **IC-Light fbc**. The convincing night (moon, dark sky and ground) in tile 2 is Qwen-2.1's edit of the filled background; the IC-Light objects in tile 4 are pale blue-white (cottage, tree, arch) with a darker, yellowish fox; the mean grey level of the objects only falls from 74 (tile 3) to 65 at night and does not change in the rain (85), so they are not dark. The IC-Light result is therefore the weak part of this strip, not the good part.
+
+![bg_relight night: day | Qwen-2.1 background | objects pasted | objects relit by IC-Light](../img/event_bg_relight_night.jpg)
+
+In `event_perlayer_retry.jpg` above both the background and the object layers are Qwen-2.1's; the layers themselves (and a malformed gate-arch layer, a tan stump) come from RevealLayer.
+
 ## Further investigations
 
 - The hue-drift fix and per-event `keep` parameter: [concepts/editing.md §2](../concepts/editing.md).
@@ -42,8 +51,8 @@ IC-Light v1 fbc: Apache-2.0 (Realistic Vision 5.1 UNet widened from 4 to 12 inpu
 
 | Feature | Status | Evidence |
 |---|---|---|
-| Relight a layer | **supported** (IC-Light, Qwen-2.1, grade) | images above |
-| Story composite | **supported** | night / rain strips in [qwen-image-2.1.md](qwen-image-2.1.md) |
+| Relight a layer | **IC-Light: partial** (a daylight fox is matched, but night and rain objects come out pale); **Qwen-2.1: supported** (10 of 10 edits accepted with the retry); grade: preview only | images above and below |
+| Story composite | the edit is Qwen-2.1's; IC-Light on the objects of a night / rain scene gave pale blue-grey / white-grey objects (tested, poor) | `event_bg_relight_night.jpg` below, [provenance](provenance.md) |
 | Harmonise after a move | partial | the last step of the move strip in [relocate-harmonise.md](relocate-harmonise.md) |
 | Others | n/a | |
 

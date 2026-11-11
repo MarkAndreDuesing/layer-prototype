@@ -40,7 +40,7 @@
 
 ## Rules for adding results
 
-- **Name every model in a combination.** Many results chain models (an edit by Qwen-Image-2.1, then a split by Stable-Layers; objects from one model on a background from another). Each image caption and table row says which model produced which part, so a good or bad result can be traced to one model. A combined run of the best model per purpose is planned (docs/todo.md).
+- **Name every model in a combination** and add the chain to [provenance.md](provenance.md). Many results chain models (an edit by Qwen-Image-2.1, then a split by Stable-Layers; objects from one model on a background from another). Each image caption and table row says which model produced which part, so a good or bad result can be traced to one model. A combined run of the best model per purpose is planned (docs/todo.md).
 
 - Every claim in section 6 links to an image under `docs/img/` and to the results folder it came from.
 - Put the generated comparison row in `prototype/kaggle/benchmarks.csv` (the README table is built from it by `prototype/tools/build_benchmarks.py`).

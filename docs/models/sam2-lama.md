@@ -69,7 +69,7 @@ Object masks are the same in both; the cottage mask is incomplete where the tree
 
 The part of the cottage's box that the tree, arch and fox cover (precomputed on the CPU) is filled by SDXL-inpaint and pasted into the cottage layer, so the cottage becomes whole. 31 s per image, 73 s model load. Panels 1 and 2 of the strip: prompt a (whole cottage: the arch side gets a second door, the right end gets a tall wall) and prompt b ("left half ... no tree": the left side reads as a cottage wall with a clean arch opening, the right end is slightly better).
 
-![amodal and effects](../img/sdxl_batch_strip.jpg)
+![SDXL-inpaint amodal fills on the SAM2 + LaMa base (the fox, tree and arch are left out of this base)](../img/sdxl_amodal_panels.jpg)
 
 Both fills keep the style and make the cottage movable without a hole. Files: `prototype/kaggle/results_sdxl_batch/`.
 

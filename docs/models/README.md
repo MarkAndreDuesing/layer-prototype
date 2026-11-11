@@ -20,21 +20,22 @@
 | [shadow-layers.md](shadow-layers.md) | procedural cast shadows |
 | [amodal-fill.md](amodal-fill.md) | fill the hidden parts of an object |
 | [grounding-dino.md](grounding-dino.md) | find objects by name (boxes for SAM2) |
+| [provenance.md](provenance.md) | who made what: which model produced which part of each image |
 | [pipeline-plan.md](pipeline-plan.md) | proposal: which models go in which combination, keep / explore / park / drop, feature coverage |
 | [TEMPLATE.md](TEMPLATE.md) | the shared structure and test protocol for every factsheet |
 | [../research/papers-survey.md](../research/papers-survey.md) | all methods in one table, incl. those without weights (LayerFusion, PSDiffusion, DreamLayer, OmniPSD …) |
 
 ## Feature matrix (fox & cottage evidence in each factsheet)
 
-S = supported and shown with an image, P = partial or with caveats, T = tried, did not work well, - = not applicable or not tried. The structure and the test protocol (paths A and B) are in [TEMPLATE.md](TEMPLATE.md).
+S = supported and shown with an image, P = partial or with caveats, T = tried, did not work well, - = not applicable or not tried. **"split only"** in the story-composite column means the model splits a picture whose edit was made by Qwen-Image-2.1; the story composite itself (the edit) is Qwen-2.1's. Which model made which picture: [provenance.md](provenance.md). The structure and the test protocol (paths A and B) are in [TEMPLATE.md](TEMPLATE.md).
 
 | Model | Split | Move / resize | Harmonise | Story composite | Spatial edit | Image to image | Add / remove / modify | Relight | Effects | Amodal |
 |---|---|---|---|---|---|---|---|---|---|---|
-| [Qwen-Image-Layered](qwen-image-layered.md) | T (see factsheet) | P | - | T | - | - | P | - | - | T |
-| [Stable-Layers](stable-layers.md) | S (640 px) | P | - | S | - | - | P | - | - | S |
-| [Qwen Lightning](qwen-lightning.md) | T | P | - | T | - | - | - | - | - | T |
+| [Qwen-Image-Layered](qwen-image-layered.md) | T (see factsheet) | P | - | T (split only) | - | - | P | - | - | T |
+| [Stable-Layers](stable-layers.md) | S (640 px) | P | - | S (split only) | - | - | P | - | - | S |
+| [Qwen Lightning](qwen-lightning.md) | T | P | - | T (split only) | - | - | - | - | - | T |
 | [RevealLayer](revealayer.md) | S | S | S | - | P | - | P | - | - | S |
-| [CLD](cld.md) | S | P | - | S | S | - | P | - | - | P |
+| [CLD](cld.md) | S | P | - | S (split only) | S | - | P | - | - | P |
 | [ART+](art-plus.md) | generates | P | T | - | S | - | S | T | - | - |
 | [LayerD](layerd.md) | P | - | - | - | - | - | - | - | - | - |
 | [LayerDiffuse SDXL](layerdiffuse-sdxl.md) | generates | S | S | P | P | - | S | S | P | - |
@@ -43,7 +44,7 @@ S = supported and shown with an image, P = partial or with caveats, T = tried, d
 | [SAM2 + LaMa](sam2-lama.md) | S | P | - | - | S | - | S | - | - | P |
 | [Grounding DINO](grounding-dino.md) | S (with SAM2) | - | - | - | - | - | - | - | - | - |
 | [relocate()](relocate-harmonise.md) | - | S | S | - | P | - | P | P | - | - |
-| [IC-Light and relight routes](relight-ic-light.md) | - | - | P | S | - | - | - | S | - | - |
+| [IC-Light and relight routes](relight-ic-light.md) | - | - | P | T (objects poor) | - | - | - | P (IC-Light) / S (Qwen-2.1) | - | - |
 | [Shadow layers](shadow-layers.md) | - | S | P | - | - | - | S | - | - | - |
 | [Amodal fill](amodal-fill.md) | - | enables | - | - | - | - | S | - | - | S |
 
