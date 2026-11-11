@@ -1,0 +1,65 @@
+[{"stream_name":"stderr","time":6.268593191,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.268678703,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.132190663,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.132233749,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.132238419,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.1322419870000004,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.73327138,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.733305819,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.733310617,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.733314427,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":580.247002407,"data":"pip git+https://github.com/facebookresearch/sam2.git rc 0\n"}
+,{"stream_name":"stdout","time":581.776968282,"data":"pip --no-deps simple-lama-inpainting rc 0\n"}
+,{"stream_name":"stdout","time":584.107658622,"data":"pip fire rc 0\n"}
+,{"stream_name":"stdout","time":591.305420146,"data":"pip diffusers==0.37.0 rc 0\n"}
+,{"stream_name":"stdout","time":592.962742704,"data":"pip fastapi uvicorn rc 0\n"}
+,{"stream_name":"stderr","time":619.569739835,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":619.569804757,"data":"\n"}
+,{"stream_name":"stderr","time":619.569810067,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":630.549537663,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":630.54961043,"data":"\n"}
+,{"stream_name":"stderr","time":630.549616773,"data":"Downloading: \"https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt\" to /root/.cache/torch/hub/checkpoints/big-lama.pt\n"}
+,{"stream_name":"stderr","time":630.550365062,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\n"}
+,{"stream_name":"stderr","time":630.658634309,"data":"\r  0%|          | 0.00/196M [00:00\u003c?, ?B/s]\r 10%|█         | 20.1M/196M [00:00\u003c00:00, 198MB/s]\n"}
+,{"stream_name":"stderr","time":630.793266943,"data":"\r 10%|█         | 20.1M/196M [00:00\u003c00:00, 198MB/s]\r 26%|██▌       | 50.1M/196M [00:00\u003c00:00, 221MB/s]\n"}
+,{"stream_name":"stderr","time":630.893240013,"data":"\r 26%|██▌       | 50.1M/196M [00:00\u003c00:00, 221MB/s]\r 46%|████▌     | 90.0M/196M [00:00\u003c00:00, 301MB/s]\n"}
+,{"stream_name":"stderr","time":630.993590742,"data":"\r 46%|████▌     | 90.0M/196M [00:00\u003c00:00, 301MB/s]\r 62%|██████▏   | 123M/196M [00:00\u003c00:00, 316MB/s] \n"}
+,{"stream_name":"stderr","time":631.221780853,"data":"\r 62%|██████▏   | 123M/196M [00:00\u003c00:00, 316MB/s] \r 78%|███████▊  | 153M/196M [00:00\u003c00:00, 221MB/s]\n"}
+,{"stream_name":"stderr","time":631.320756165,"data":"\r 78%|███████▊  | 153M/196M [00:00\u003c00:00, 221MB/s]\r 92%|█████████▏| 180M/196M [00:00\u003c00:00, 235MB/s]\n"}
+,{"stream_name":"stderr","time":631.365508936,"data":"\r 92%|█████████▏| 180M/196M [00:00\u003c00:00, 235MB/s]\r100%|██████████| 196M/196M [00:00\u003c00:00, 253MB/s]\n"}
+,{"stream_name":"stderr","time":632.049403718,"data":"\r100%|██████████| 196M/196M [00:00\u003c00:00, 253MB/s]\n"}
+,{"stream_name":"stderr","time":632.04944219,"data":"\n"}
+,{"stream_name":"stderr","time":632.049446505,"data":"\n"}
+,{"stream_name":"stdout","time":632.084558294,"data":"PROFILE LOADED sam2 39 s\n"}
+,{"stream_name":"stderr","time":632.50448732,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/transforms/functional.py:154: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n"}
+,{"stream_name":"stderr","time":632.504523159,"data":"  img = torch.from_numpy(pic.transpose((2, 0, 1))).contiguous()\n"}
+,{"stream_name":"stderr","time":632.504527704,"data":"\n"}
+,{"stream_name":"stderr","time":632.50453115,"data":"/usr/local/lib/python3.13/dist-packages/torchvision/transforms/functional.py:154: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)\n"}
+,{"stream_name":"stderr","time":632.504536371,"data":"  img = torch.from_numpy(pic.transpose((2, 0, 1))).contiguous()\n"}
+,{"stream_name":"stdout","time":643.009990025,"data":"{\"tag\": \"sam2_A\", \"path\": \"A\", \"note\": \"hand boxes -\u003e SAM2 + LaMa\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"sam2-lama\", \"n_layers\": 4, \"boxes\": [[0, 195, 115, 280], [95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]], \"names\": [\"village houses\", \"cottage\", \"stone gate arch\", \"big tree\", \"red fox\"], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 3.3, \"all_runs_s\": [6.3, 3.3], \"layers\": 6, \"recomposite_diff\": 1.33}\n"}
+,{"stream_name":"stdout","time":650.852511863,"data":"{\"tag\": \"sam2_B\", \"path\": \"B\", \"note\": \"names -\u003e Grounding DINO -\u003e SAM2 + LaMa\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"sam2-lama\", \"n_layers\": 4, \"boxes\": [], \"names\": [\"village houses\", \"cottage\", \"stone gate arch\", \"big tree\", \"red fox\"], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 2.8, \"all_runs_s\": [4.0, 2.8], \"layers\": 6, \"recomposite_diff\": 1.44}\n"}
+,{"stream_name":"stderr","time":662.569443577,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":662.569494829,"data":"\n"}
+,{"stream_name":"stderr","time":662.569501098,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":662.570375896,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":662.570396781,"data":"\n"}
+,{"stream_name":"stderr","time":662.57040138,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":662.771638443,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":662.771666464,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":662.771670757,"data":"\n"}
+,{"stream_name":"stderr","time":662.771674255,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\n"}
+,{"stream_name":"stderr","time":662.771678497,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":720.720640351,"data":"The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.\n"}
+,{"stream_name":"stderr","time":720.720685454,"data":"\n"}
+,{"stream_name":"stderr","time":720.720690642,"data":"The config attributes {'decay': 0.9999, 'inv_gamma': 1.0, 'min_decay': 0.0, 'optimization_step': 37000, 'power': 0.6666666666666666, 'update_after_step': 0, 'use_ema_warmup': False} were passed to UNet2DConditionModel, but are not expected and will be ignored. Please verify your config.json configuration file.\n"}
+,{"stream_name":"stdout","time":752.533289838,"data":"{\"tag\": \"sam2_amodal\", \"path\": \"A\", \"note\": \"hand boxes + SDXL-inpaint amodal fill\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"sam2-lama\", \"n_layers\": 4, \"boxes\": [[95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]], \"names\": [\"cottage\", \"stone gate arch\", \"big tree\", \"red fox\"], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"sampler\": \"euler\", \"amodal\": true}, \"compute_s\": 101.0, \"all_runs_s\": [101.0], \"layers\": 5, \"recomposite_diff\": 1.24}\n"}
+,{"stream_name":"stdout","time":752.533341063,"data":"BENCH DONE 743 s since start\n"}
+,{"stream_name":"stderr","time":759.728546898,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":759.728584487,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":759.89447904,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":759.894525826,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":760.686271566,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":760.803701905,"data":"[NbConvertApp] Writing 906801 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":763.644014876,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":764.217331614,"data":"[NbConvertApp] Writing 1139262 bytes to __results__.html\n"}
+]

@@ -1,0 +1,111 @@
+[
+ {
+  "tag": "artplus_A",
+  "path": "A",
+  "note": "512 px, 5 boxes, 16 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "artplus",
+   "n_layers": 4,
+   "boxes": [
+    [
+     0,
+     195,
+     115,
+     280
+    ],
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [],
+   "resolution": 512,
+   "steps": 16,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 363.5,
+  "all_runs_s": [
+   363.5
+  ],
+  "layers": 6,
+  "recomposite_diff": 88.03
+ },
+ {
+  "tag": "artplus_B",
+  "path": "B",
+  "note": "512 px, 5 boxes, 4 steps (cheapest setting, quality not checked)",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "artplus",
+   "n_layers": 4,
+   "boxes": [
+    [
+     0,
+     195,
+     115,
+     280
+    ],
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [],
+   "resolution": 512,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 102.7,
+  "all_runs_s": [
+   103.6,
+   102.7
+  ],
+  "layers": 6,
+  "recomposite_diff": 89.94
+ }
+]

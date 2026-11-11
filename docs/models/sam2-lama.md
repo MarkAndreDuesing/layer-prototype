@@ -111,6 +111,28 @@ Input: the shared scene, five hand boxes or names. SAM2 cuts each object, LaMa f
 
 ![SAM2 + LaMa with hand boxes](../img/fox_sam2_lama_boxes.jpg)
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `sam2` server profile ([`layerproto/serve/sam2.py`](../../prototype/layerproto/serve/sam2.py)); loaded once (39 s), second run reported. Results: `prototype/kaggle/results_profile_sam2/`.
+
+| | Request | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case: hand boxes** | five boxes, SAM2 + LaMa | 3.3 s | 6 | 1.33 |
+| **B. Live-demo budget: names only** | five names, Grounding DINO → SAM2 + LaMa | 2.8 s | 6 | 1.44 |
+| with SDXL-inpaint amodal fill | four boxes, `amodal=True` (first request, includes loading SDXL) | 101 s | 5 | 1.24 |
+
+Both A and B are far under 30 s. A (hand boxes):
+
+![A, hand boxes](../img/bench_sam2_A.jpg)
+
+B (names):
+
+![B, names](../img/bench_sam2_B.jpg)
+
+With the amodal fill:
+
+![amodal fill](../img/bench_sam2_amodal.jpg)
+
 ## Special features
 
 | Feature | Status | Evidence |

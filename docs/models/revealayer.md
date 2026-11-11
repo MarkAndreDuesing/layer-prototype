@@ -67,6 +67,25 @@ B:
 
 Gap: a run with 4–6 steps to find how far the compute drops toward 30 s.
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `reveallayer` server profile ([`layerproto/serve/reveallayer.py`](../../prototype/layerproto/serve/reveallayer.py)); loaded once (242 s), 512 px, five boxes, background + five layers. Results: `prototype/kaggle/results_profile_reveallayer/`.
+
+| | Settings | Compute | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case** | true_gs 3.5, 16 steps | 357.6 s | 6 | 10.84 |
+| **B. Cheapest setting tried** (not under 30 s) | true_gs 1.0, 6 steps | 84.7 s | 6 | 13.5 |
+
+A:
+
+![A](../img/bench_reveallayer_A.jpg)
+
+B: the background is still a clean filled scene with the cottage, tree and fox removed; the cottage layer carries a grey cast and ragged right edge, the houses layer is a small fragment:
+
+![B](../img/bench_reveallayer_B.jpg)
+
+The 30 s budget is not reached; the negative-guidance pass is already skipped at true_gs 1.0, so the remaining cost is the step count.
+
 ## Special features
 
 | Feature | Status | Evidence |

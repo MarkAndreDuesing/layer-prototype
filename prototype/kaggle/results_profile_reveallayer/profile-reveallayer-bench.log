@@ -1,0 +1,310 @@
+[{"stream_name":"stderr","time":7.382920212,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.382960986,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.430105027,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.430135952,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.430141793,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.430146467,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.063583608,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.063617309,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.063621472,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.063624132,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":29.646991789,"data":"pip transformers==4.57.1 gguf\u003e=0.10 peft==0.15.2 mmengine==0.10.7 einops sentencepiece protobuf rc 0\n"}
+,{"stream_name":"stdout","time":29.740777164,"data":"$ git clone https://github.com/360CVGroup/RevealLayer /kaggle/working/RevealLayer \u0026\u0026 cd /kaggle/working/RevealLayer \u0026\u0026 git checkout da68ff58889a1799a1e75efd23e72bccebbf7589\n"}
+,{"stream_name":"stderr","time":29.76153323,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":29.964029377,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":29.964056125,"data":"\n"}
+,{"stream_name":"stderr","time":29.964061357,"data":"Cloning into '/kaggle/working/RevealLayer'...\n"}
+,{"stream_name":"stderr","time":31.405835253,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":31.405864545,"data":"\n"}
+,{"stream_name":"stderr","time":31.405869466,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":31.405873836,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":31.40587776,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":31.405881285,"data":"\n"}
+,{"stream_name":"stderr","time":31.405884407,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":31.405887786,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":31.405891149,"data":"\n"}
+,{"stream_name":"stderr","time":31.40589424,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":31.405898351,"data":"\n"}
+,{"stream_name":"stderr","time":31.40590344,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":31.405906727,"data":"\n"}
+,{"stream_name":"stderr","time":31.405911799,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":31.405925698,"data":"\n"}
+,{"stream_name":"stderr","time":31.405929465,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":31.405937864,"data":"\n"}
+,{"stream_name":"stderr","time":31.405941515,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":31.410550148,"data":"$ wget -q -nc -O /kaggle/working/vit32/vit_b_32-d86f8d99.pth https://download.pytorch.org/models/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stderr","time":31.60944252,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":31.609470822,"data":"\n"}
+,{"stream_name":"stderr","time":31.609476176,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":31.609480891,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":31.609485294,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":31.609490086,"data":"\n"}
+,{"stream_name":"stderr","time":31.609494355,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":31.609499114,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":31.609503922000002,"data":"\n"}
+,{"stream_name":"stderr","time":31.609507834,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":31.609524548,"data":"\n"}
+,{"stream_name":"stderr","time":31.609528021,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":31.609531864,"data":"\n"}
+,{"stream_name":"stderr","time":31.609535347,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":31.60953904,"data":"\n"}
+,{"stream_name":"stderr","time":31.60954252,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":31.609552685,"data":"\n"}
+,{"stream_name":"stderr","time":31.609556704,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stderr","time":31.609560747,"data":"\n"}
+,{"stream_name":"stderr","time":31.60956488,"data":"Note: switching to 'da68ff58889a1799a1e75efd23e72bccebbf7589'.\n"}
+,{"stream_name":"stderr","time":31.609569328,"data":"\n"}
+,{"stream_name":"stderr","time":31.609573566,"data":"You are in 'detached HEAD' state. You can look around, make experimental\n"}
+,{"stream_name":"stderr","time":31.609578333,"data":"changes and commit them, and you can discard any commits you make in this\n"}
+,{"stream_name":"stderr","time":31.609583143000002,"data":"state without impacting any branches by switching back to a branch.\n"}
+,{"stream_name":"stderr","time":31.609587078,"data":"\n"}
+,{"stream_name":"stderr","time":31.609590547,"data":"If you want to create a new branch to retain commits you create, you may\n"}
+,{"stream_name":"stderr","time":31.609594339,"data":"do so (now or later) by using -c with the switch command. Example:\n"}
+,{"stream_name":"stderr","time":31.609598154,"data":"\n"}
+,{"stream_name":"stderr","time":31.609601712,"data":"  git switch -c \u003cnew-branch-name\u003e\n"}
+,{"stream_name":"stderr","time":31.609605415,"data":"\n"}
+,{"stream_name":"stderr","time":31.609608966,"data":"Or undo this operation with:\n"}
+,{"stream_name":"stderr","time":31.609612655,"data":"\n"}
+,{"stream_name":"stderr","time":31.609616181,"data":"  git switch -\n"}
+,{"stream_name":"stderr","time":31.609619722,"data":"\n"}
+,{"stream_name":"stderr","time":31.609634135,"data":"Turn off this advice by setting config variable advice.detachedHead to false\n"}
+,{"stream_name":"stderr","time":31.609638123,"data":"\n"}
+,{"stream_name":"stderr","time":31.609643491,"data":"HEAD is now at da68ff5 Create eval.py\n"}
+,{"stream_name":"stdout","time":32.221306837,"data":"$ mkdir -p /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32 \u0026\u0026 cp /kaggle/working/vit32/vit_b_32-d86f8d99.pth /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/\n"}
+,{"stream_name":"stderr","time":78.364902324,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":78.364941338,"data":"I0000 00:00:1794352077.059218      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":78.574430861,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":78.574464683,"data":"I0000 00:00:1794352077.059218      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":78.57448532,"data":"\n"}
+,{"stream_name":"stderr","time":78.574490941,"data":"WARNING: All log messages before absl::InitializeLog() is called are written to STDERR\n"}
+,{"stream_name":"stderr","time":78.574496346,"data":"I0000 00:00:1794352077.059218      23 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.\n"}
+,{"stream_name":"stderr","time":223.463421358,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":223.463466592,"data":"\n"}
+,{"stream_name":"stderr","time":223.463487824,"data":"`torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":260.604502625,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":260.604651227,"data":"\n"}
+,{"stream_name":"stderr","time":260.604666763,"data":"You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers\n"}
+,{"stream_name":"stderr","time":266.571444342,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stderr","time":266.571487316,"data":"\n"}
+,{"stream_name":"stderr","time":266.57149317,"data":"No LoRA keys associated to CLIPTextModel found with the prefix='text_encoder'. This is safe to ignore if LoRA state dict didn't originally have any CLIPTextModel related params. You can also try specifying `prefix=None` to resolve the warning. Otherwise, open an issue if you think it's unexpected: https://github.com/huggingface/diffusers/issues/new\n"}
+,{"stream_name":"stdout","time":267.64823983,"data":"[23] Creating ViT-B/32 structure...\n"}
+,{"stream_name":"stdout","time":268.61860411,"data":"[23] Loading local weights from: /home/jovyan/boomcheng-work-shcdt/zhaoshihao/pretrained_model/vit32/vit_b_32-d86f8d99.pth\n"}
+,{"stream_name":"stdout","time":269.976141357,"data":"[23] Applying weights to the model...\n"}
+,{"stream_name":"stdout","time":269.97617509,"data":"[23] ViT-B/32 loaded successfully.\n"}
+,{"stream_name":"stdout","time":269.976184976,"data":"ViT Encoder Missing keys: []\n"}
+,{"stream_name":"stdout","time":269.976188547,"data":"ViT Encoder Unexpected keys: ['pos_embedding']\n"}
+,{"stream_name":"stdout","time":271.358303096,"data":"loaded 188 s; GiB [7.5, 10.7]\n"}
+,{"stream_name":"stdout","time":271.358374963,"data":"PROFILE LOADED reveallayer 242 s\n"}
+,{"stream_name":"stdout","time":271.550457088,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":271.733888457,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":271.73392677,"data":"Running generation for sample: req with 7 layers...\n"}
+,{"stream_name":"stdout","time":620.835910786,"data":"images.shape: torch.Size([7, 3, 512, 512])\n"}
+,{"stream_name":"stderr","time":625.271374344,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":625.27141593,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":625.271424097,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":625.27142958,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":625.271433887,"data":"\n"}
+,{"stream_name":"stderr","time":625.271438382,"data":"/usr/local/lib/python3.13/dist-packages/torch/_dynamo/eval_frame.py:1263: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. Starting in PyTorch 2.9, calling checkpoint without use_reentrant will raise an exception. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.\n"}
+,{"stream_name":"stderr","time":625.2714444,"data":"  return fn(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":625.271449023,"data":"/usr/local/lib/python3.13/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":625.271455219,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":628.313699993,"data":"tensor([[[[ 0.9978,  1.0006,  0.9954,  ...,  1.0035,  1.0035,  1.0017],\n"}
+,{"stream_name":"stdout","time":628.313735047,"data":"          [ 0.9958,  1.0046,  1.0027,  ...,  1.0028,  1.0056,  1.0012],\n"}
+,{"stream_name":"stdout","time":628.313739188,"data":"          [ 0.9961,  1.0077,  1.0009,  ...,  1.0022,  1.0043,  1.0014],\n"}
+,{"stream_name":"stdout","time":628.313742543,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.313745593,"data":"          [ 1.0009,  1.0024,  1.0013,  ...,  0.9995,  1.0022,  0.9949],\n"}
+,{"stream_name":"stdout","time":628.313748587,"data":"          [ 0.9983,  1.0042,  0.9997,  ...,  1.0077,  1.0135,  0.9978],\n"}
+,{"stream_name":"stdout","time":628.313751555,"data":"          [ 1.0053,  1.0071,  1.0024,  ...,  1.0093,  1.0141,  1.0038]]],\n"}
+,{"stream_name":"stdout","time":628.313754604,"data":"\n"}
+,{"stream_name":"stdout","time":628.313757465,"data":"\n"}
+,{"stream_name":"stdout","time":628.313760444,"data":"        [[[ 1.0019,  0.9960,  0.9934,  ...,  1.0036,  1.0049,  1.0062],\n"}
+,{"stream_name":"stdout","time":628.313763415,"data":"          [ 1.0028,  0.9988,  1.0019,  ...,  1.0039,  1.0051,  1.0023],\n"}
+,{"stream_name":"stdout","time":628.313766408,"data":"          [ 1.0068,  0.9986,  0.9991,  ...,  1.0028,  1.0056,  1.0036],\n"}
+,{"stream_name":"stdout","time":628.313779794,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.313782293,"data":"          [ 1.0044,  0.9985,  1.0011,  ...,  1.0029,  1.0022,  0.9922],\n"}
+,{"stream_name":"stdout","time":628.313784691,"data":"          [ 1.0021,  1.0017,  0.9997,  ...,  0.9955,  1.0016,  1.0003],\n"}
+,{"stream_name":"stdout","time":628.313787187,"data":"          [ 1.0051,  1.0040,  1.0020,  ...,  0.9954,  1.0045,  0.9997]]],\n"}
+,{"stream_name":"stdout","time":628.313789609,"data":"\n"}
+,{"stream_name":"stdout","time":628.313791907,"data":"\n"}
+,{"stream_name":"stdout","time":628.313794128,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313796505,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313798889,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313801345,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.313803623,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313806004,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313808379,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":628.313810867,"data":"\n"}
+,{"stream_name":"stdout","time":628.313813101,"data":"\n"}
+,{"stream_name":"stdout","time":628.313815355,"data":"        ...,\n"}
+,{"stream_name":"stdout","time":628.313817656,"data":"\n"}
+,{"stream_name":"stdout","time":628.313819921,"data":"\n"}
+,{"stream_name":"stdout","time":628.313822178,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313824582,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313826954,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313829427,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.31383171,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313834094,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313836471,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":628.313838873,"data":"\n"}
+,{"stream_name":"stdout","time":628.313841119,"data":"\n"}
+,{"stream_name":"stdout","time":628.313854192,"data":"        [[[-1.0000, -1.0000, -1.0000,  ...,  0.8878,  0.9141,  0.9227],\n"}
+,{"stream_name":"stdout","time":628.313856763,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  1.0042,  1.0165,  0.9962],\n"}
+,{"stream_name":"stdout","time":628.313859165,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9924,  0.9940,  0.9852],\n"}
+,{"stream_name":"stdout","time":628.313862695,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.313865074,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313867545,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313869904,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":628.313872316,"data":"\n"}
+,{"stream_name":"stdout","time":628.313874592,"data":"\n"}
+,{"stream_name":"stdout","time":628.313879503,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313883125,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313885506,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313887919,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":628.313890188,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313892561,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":628.313894933,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]]],\n"}
+,{"stream_name":"stdout","time":628.313897367,"data":"       device='cuda:0')\n"}
+,{"stream_name":"stdout","time":628.313899701,"data":"result_list.shape: (7, 512, 512, 4)\n"}
+,{"stream_name":"stdout","time":628.313902083,"data":"Original input image saved to /kaggle/working/reveal_req/out/req/original_full_image.png\n"}
+,{"stream_name":"stdout","time":628.525760043,"data":"Resized image saved to /kaggle/working/reveal_req/out/req/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":629.124336709,"data":"All 7 layers and merged image saved to /kaggle/working/reveal_req/out/req\n"}
+,{"stream_name":"stdout","time":629.651061047,"data":"{\"tag\": \"reveallayer_A\", \"path\": \"A\", \"note\": \"512 px, 5 boxes, true_gs 3.5, 16 steps\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"reveallayer\", \"n_layers\": 4, \"boxes\": [[0, 195, 115, 280], [95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]], \"names\": [], \"resolution\": 512, \"steps\": 16, \"seed\": 0, \"guidance\": 3.5, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 357.6, \"all_runs_s\": [357.6], \"layers\": 6, \"recomposite_diff\": 10.84}\n"}
+,{"stream_name":"stdout","time":631.596007353,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":631.596038436,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":631.596043066,"data":"Running generation for sample: req with 7 layers...\n"}
+,{"stream_name":"stdout","time":707.826667672,"data":"images.shape: torch.Size([7, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":715.254702501,"data":"tensor([[[[ 0.9985,  0.9981,  0.9974,  ...,  1.0023,  1.0006,  0.9976],\n"}
+,{"stream_name":"stdout","time":715.254733892,"data":"          [ 0.9968,  1.0017,  1.0030,  ...,  1.0016,  1.0034,  0.9980],\n"}
+,{"stream_name":"stdout","time":715.254739273,"data":"          [ 0.9997,  1.0054,  1.0016,  ...,  0.9997,  1.0010,  0.9971],\n"}
+,{"stream_name":"stdout","time":715.254743856,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.254747984,"data":"          [ 1.0012,  1.0004,  1.0001,  ...,  0.9965,  1.0005,  0.9927],\n"}
+,{"stream_name":"stdout","time":715.254752497,"data":"          [ 0.9982,  1.0028,  0.9987,  ...,  1.0059,  1.0114,  0.9945],\n"}
+,{"stream_name":"stdout","time":715.254756803,"data":"          [ 1.0042,  1.0052,  1.0003,  ...,  1.0108,  1.0142,  1.0062]]],\n"}
+,{"stream_name":"stdout","time":715.254761239,"data":"\n"}
+,{"stream_name":"stdout","time":715.254765411,"data":"\n"}
+,{"stream_name":"stdout","time":715.254769672,"data":"        [[[ 0.9980,  0.9948,  0.9909,  ...,  1.0007,  1.0008,  1.0026],\n"}
+,{"stream_name":"stdout","time":715.254783159,"data":"          [ 0.9970,  0.9978,  1.0005,  ...,  1.0000,  1.0024,  0.9994],\n"}
+,{"stream_name":"stdout","time":715.254786757,"data":"          [ 0.9993,  0.9970,  0.9964,  ...,  0.9982,  1.0015,  0.9998],\n"}
+,{"stream_name":"stdout","time":715.254793141,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.254796595,"data":"          [ 1.0041,  0.9975,  0.9996,  ...,  0.9987,  0.9992,  0.9915],\n"}
+,{"stream_name":"stdout","time":715.254800141,"data":"          [ 1.0008,  1.0007,  0.9985,  ...,  0.9934,  1.0019,  0.9960],\n"}
+,{"stream_name":"stdout","time":715.254803582,"data":"          [ 1.0063,  1.0029,  1.0000,  ...,  0.9998,  1.0074,  0.9950]]],\n"}
+,{"stream_name":"stdout","time":715.254807062,"data":"\n"}
+,{"stream_name":"stdout","time":715.254810187,"data":"\n"}
+,{"stream_name":"stdout","time":715.254813285,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254816637,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254819974,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254823401,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.254826607,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254830056,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254833403,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":715.254836802,"data":"\n"}
+,{"stream_name":"stdout","time":715.254839989,"data":"\n"}
+,{"stream_name":"stdout","time":715.254843173,"data":"        ...,\n"}
+,{"stream_name":"stdout","time":715.254846442,"data":"\n"}
+,{"stream_name":"stdout","time":715.254849633,"data":"\n"}
+,{"stream_name":"stdout","time":715.254852952,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254856498,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254859914,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.2548634,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.25486664,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254870189,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254873417,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":715.254876715,"data":"\n"}
+,{"stream_name":"stdout","time":715.254879818,"data":"\n"}
+,{"stream_name":"stdout","time":715.254882887,"data":"        [[[-1.0000, -1.0000, -1.0000,  ...,  0.8269,  0.8476,  0.8720],\n"}
+,{"stream_name":"stdout","time":715.254886159,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9714,  0.9793,  0.9610],\n"}
+,{"stream_name":"stdout","time":715.254889519,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9664,  0.9656,  0.9497],\n"}
+,{"stream_name":"stdout","time":715.254894194,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.254897428,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254900763,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254907692,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":715.254911179,"data":"\n"}
+,{"stream_name":"stdout","time":715.254914329,"data":"\n"}
+,{"stream_name":"stdout","time":715.254917594,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254921041,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254924896,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254928346,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":715.254931646,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254942736,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":715.254946384,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]]],\n"}
+,{"stream_name":"stdout","time":715.254949929,"data":"       device='cuda:0')\n"}
+,{"stream_name":"stdout","time":715.254953307,"data":"result_list.shape: (7, 512, 512, 4)\n"}
+,{"stream_name":"stdout","time":715.254956834,"data":"Original input image saved to /kaggle/working/reveal_req/out/req/original_full_image.png\n"}
+,{"stream_name":"stdout","time":715.478459846,"data":"Resized image saved to /kaggle/working/reveal_req/out/req/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":716.089573673,"data":"All 7 layers and merged image saved to /kaggle/working/reveal_req/out/req\n"}
+,{"stream_name":"stdout","time":718.084108867,"data":"Shuffle layer order: False\n"}
+,{"stream_name":"stdout","time":718.084143038,"data":"Full image tensor shape: torch.Size([1, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":718.084147918,"data":"Running generation for sample: req with 7 layers...\n"}
+,{"stream_name":"stdout","time":792.440261521,"data":"images.shape: torch.Size([7, 3, 512, 512])\n"}
+,{"stream_name":"stdout","time":799.936726919,"data":"tensor([[[[ 0.9984,  0.9981,  0.9974,  ...,  1.0023,  1.0006,  0.9977],\n"}
+,{"stream_name":"stdout","time":799.936760376,"data":"          [ 0.9968,  1.0018,  1.0029,  ...,  1.0016,  1.0035,  0.9980],\n"}
+,{"stream_name":"stdout","time":799.936770218,"data":"          [ 0.9996,  1.0054,  1.0016,  ...,  0.9997,  1.0010,  0.9971],\n"}
+,{"stream_name":"stdout","time":799.936776854,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.936782627,"data":"          [ 1.0013,  1.0004,  1.0001,  ...,  0.9965,  1.0005,  0.9927],\n"}
+,{"stream_name":"stdout","time":799.936788178,"data":"          [ 0.9982,  1.0028,  0.9987,  ...,  1.0060,  1.0115,  0.9946],\n"}
+,{"stream_name":"stdout","time":799.936793782,"data":"          [ 1.0042,  1.0053,  1.0004,  ...,  1.0108,  1.0143,  1.0062]]],\n"}
+,{"stream_name":"stdout","time":799.936799368,"data":"\n"}
+,{"stream_name":"stdout","time":799.936804534,"data":"\n"}
+,{"stream_name":"stdout","time":799.936809735,"data":"        [[[ 0.9980,  0.9948,  0.9909,  ...,  1.0008,  1.0008,  1.0026],\n"}
+,{"stream_name":"stdout","time":799.936815284,"data":"          [ 0.9969,  0.9979,  1.0005,  ...,  1.0000,  1.0025,  0.9994],\n"}
+,{"stream_name":"stdout","time":799.936820692,"data":"          [ 0.9992,  0.9970,  0.9964,  ...,  0.9982,  1.0015,  0.9998],\n"}
+,{"stream_name":"stdout","time":799.936826232,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.936831336,"data":"          [ 1.0042,  0.9975,  0.9996,  ...,  0.9988,  0.9992,  0.9915],\n"}
+,{"stream_name":"stdout","time":799.936847233,"data":"          [ 1.0008,  1.0007,  0.9985,  ...,  0.9934,  1.0020,  0.9960],\n"}
+,{"stream_name":"stdout","time":799.936851654,"data":"          [ 1.0063,  1.0029,  1.0000,  ...,  0.9998,  1.0075,  0.9950]]],\n"}
+,{"stream_name":"stdout","time":799.93685608,"data":"\n"}
+,{"stream_name":"stdout","time":799.936859955,"data":"\n"}
+,{"stream_name":"stdout","time":799.936863894,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936868059,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936872294,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936876486,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.936880699,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.93688499,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936889336,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":799.936893718,"data":"\n"}
+,{"stream_name":"stdout","time":799.936897718,"data":"\n"}
+,{"stream_name":"stdout","time":799.936901672,"data":"        ...,\n"}
+,{"stream_name":"stdout","time":799.936905879,"data":"\n"}
+,{"stream_name":"stdout","time":799.936909642,"data":"\n"}
+,{"stream_name":"stdout","time":799.93691329,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936917236,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936921303,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936925432,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.936929546,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936933898,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936938324,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":799.936942719,"data":"\n"}
+,{"stream_name":"stdout","time":799.936946709,"data":"\n"}
+,{"stream_name":"stdout","time":799.936950816,"data":"        [[[-1.0000, -1.0000, -1.0000,  ...,  0.8269,  0.8477,  0.8721],\n"}
+,{"stream_name":"stdout","time":799.936955029,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9711,  0.9791,  0.9608],\n"}
+,{"stream_name":"stdout","time":799.93695939,"data":"          [-1.0000, -1.0000, -1.0000,  ...,  0.9662,  0.9654,  0.9496],\n"}
+,{"stream_name":"stdout","time":799.936965403,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.936969578,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936973976,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.936990021,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]],\n"}
+,{"stream_name":"stdout","time":799.936994154,"data":"\n"}
+,{"stream_name":"stdout","time":799.936997961,"data":"\n"}
+,{"stream_name":"stdout","time":799.937001738,"data":"        [[[-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.937006004,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.93701402,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.937018344,"data":"          ...,\n"}
+,{"stream_name":"stdout","time":799.937022232,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.937026313,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000],\n"}
+,{"stream_name":"stdout","time":799.937030359,"data":"          [-1.0000, -1.0000, -1.0000,  ..., -1.0000, -1.0000, -1.0000]]]],\n"}
+,{"stream_name":"stdout","time":799.937034417,"data":"       device='cuda:0')\n"}
+,{"stream_name":"stdout","time":799.937038637,"data":"result_list.shape: (7, 512, 512, 4)\n"}
+,{"stream_name":"stdout","time":799.937042872,"data":"Original input image saved to /kaggle/working/reveal_req/out/req/original_full_image.png\n"}
+,{"stream_name":"stdout","time":800.151378595,"data":"Resized image saved to /kaggle/working/reveal_req/out/req/resized_full_image.png\n"}
+,{"stream_name":"stdout","time":800.817041124,"data":"All 7 layers and merged image saved to /kaggle/working/reveal_req/out/req\n"}
+,{"stream_name":"stdout","time":801.156274594,"data":"{\"tag\": \"reveallayer_B\", \"path\": \"B\", \"note\": \"512 px, 5 boxes, true_gs 1.0, 6 steps (cheapest setting, quality not checked)\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"reveallayer\", \"n_layers\": 4, \"boxes\": [[0, 195, 115, 280], [95, 100, 475, 330], [62, 245, 150, 322], [180, 0, 512, 352], [205, 325, 375, 452]], \"names\": [], \"resolution\": 512, \"steps\": 6, \"seed\": 0, \"guidance\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 84.7, \"all_runs_s\": [86.5, 84.7], \"layers\": 6, \"recomposite_diff\": 13.5}\n"}
+,{"stream_name":"stdout","time":801.15630886,"data":"BENCH DONE 791 s since start\n"}
+,{"stream_name":"stderr","time":807.492354969,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":807.492381729,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":807.68064862,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":807.680676399,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":808.490450132,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":808.618006418,"data":"[NbConvertApp] Writing 1055039 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":811.223160106,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":811.788388342,"data":"[NbConvertApp] Writing 1261620 bytes to __results__.html\n"}
+]

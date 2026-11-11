@@ -107,6 +107,25 @@ A (512 px):
 
 Gap: per-step time is not separated from the CPU text encoding; a warm profile with the prompt embeddings cached would show the real per-request time.
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `cld` server profile ([`layerproto/serve/cld.py`](../../prototype/layerproto/serve/cld.py)): adapter on GPU 1, text encoders on the CPU in bf16, loaded once (296 s), 512 px. Each case was run twice; **the second run reuses the cached prompt embeddings**, the first run also pays the CPU text encoding (674.9 s for case A). Results: `prototype/kaggle/results_profile_cld/`.
+
+| | Settings | Compute (second run) | Layers | Recomposite diff |
+|---|---|---|---|---|
+| **A. Best case** | seven boxes (five objects + path + hedge), 16 steps | 459.3 s | 8 | 13.39 |
+| **B. Cheapest setting tried** (not under 30 s) | five boxes, 4 steps | 115.8 s | 6 | 11.96 |
+
+A:
+
+![A](../img/bench_cld_A.jpg)
+
+B (4 steps): the cottage, tree and fox are extracted cleanly with their own ground shadows; the "background" is again a different village:
+
+![B](../img/bench_cld_B.jpg)
+
+4 steps already give usable object layers, at a quarter of the 16-step time. The prompt-embedding cache matters for live use: it removes about 215 s per new caption from the CPU text encoder only when the caption repeats, so a new caption still costs that.
+
 ## Special features
 
 | Feature | Status | Evidence |

@@ -97,6 +97,23 @@ A (512 px):
 
 ![ART+ 1024 px](../img/fox_artplus_1024.jpg)
 
+### Profile benchmark (warm model in one Kaggle session, 2026-11-11)
+
+Run through the new `artplus` server profile ([`layerproto/serve/artplus.py`](../../prototype/layerproto/serve/artplus.py)); loaded once (299 s), 512 px, five boxes. ART+ generates a new scene from the caption, so the recomposite difference against the fox & cottage image (about 88–90) is not a quality measure. Results: `prototype/kaggle/results_profile_artplus/`.
+
+| | Settings | Compute | Layers |
+|---|---|---|---|
+| **A. Best case** | 16 steps | 363.5 s | 6 |
+| **B. Cheapest setting tried** (not under 30 s) | 4 steps | 102.7 s | 6 |
+
+A:
+
+![A](../img/bench_artplus_A.jpg)
+
+B:
+
+![B](../img/bench_artplus_B.jpg)
+
 ## Special features
 
 | Feature | Status | Evidence |

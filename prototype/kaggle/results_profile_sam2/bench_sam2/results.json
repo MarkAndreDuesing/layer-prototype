@@ -1,0 +1,146 @@
+[
+ {
+  "tag": "sam2_A",
+  "path": "A",
+  "note": "hand boxes -> SAM2 + LaMa",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "sam2-lama",
+   "n_layers": 4,
+   "boxes": [
+    [
+     0,
+     195,
+     115,
+     280
+    ],
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "village houses",
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 3.3,
+  "all_runs_s": [
+   6.3,
+   3.3
+  ],
+  "layers": 6,
+  "recomposite_diff": 1.33
+ },
+ {
+  "tag": "sam2_B",
+  "path": "B",
+  "note": "names -> Grounding DINO -> SAM2 + LaMa",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "sam2-lama",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [
+    "village houses",
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 2.8,
+  "all_runs_s": [
+   4.0,
+   2.8
+  ],
+  "layers": 6,
+  "recomposite_diff": 1.44
+ },
+ {
+  "tag": "sam2_amodal",
+  "path": "A",
+  "note": "hand boxes + SDXL-inpaint amodal fill",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "sam2-lama",
+   "n_layers": 4,
+   "boxes": [
+    [
+     95,
+     100,
+     475,
+     330
+    ],
+    [
+     62,
+     245,
+     150,
+     322
+    ],
+    [
+     180,
+     0,
+     512,
+     352
+    ],
+    [
+     205,
+     325,
+     375,
+     452
+    ]
+   ],
+   "names": [
+    "cottage",
+    "stone gate arch",
+    "big tree",
+    "red fox"
+   ],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "sampler": "euler",
+   "amodal": true
+  },
+  "compute_s": 101.0,
+  "all_runs_s": [
+   101.0
+  ],
+  "layers": 5,
+  "recomposite_diff": 1.24
+ }
+]
