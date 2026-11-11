@@ -69,6 +69,23 @@ B (4 steps):
 
 16 steps cost 7× the 4-step run and improved the recomposite difference only from 8.68 to 8.54, so on this scene the extra steps buy little.
 
+### Diagnosis: why the fox & cottage split looked like noise (2026-11-11)
+
+Question from the first look: the forest runs of the past were good, the fox & cottage splits are not; code regression or scene? One session (`qwen-layered-diag` profile, current code, same weights) ran the forest as a control and the fox at other settings. Rows top to bottom: forest 384 px (control), fox 384 px, fox 384 px with an empty caption, fox 640 px 4 steps, fox 640 px 20 steps, fox 640 px 12 steps CFG 4. Strip: input | recomposite | layers (magenta = transparent). Results: `prototype/kaggle/results_profile_qwen-layered-diag/`.
+
+![diagnosis](../img/qwenlayered_diagnosis.jpg)
+
+| Row | Settings | Compute | Recomposite diff | What the layers show |
+|---|---|---|---|---|
+| 1 | forest, 384 px, 4 layers, 4 steps | 35.1 s | 6.97 | **good**: bare trees, pines, campfire and the background as separate layers (the old result is reproduced) |
+| 2 | fox & cottage, 384 px, 4 steps | 32.6 s | 8.68 | the background layer keeps almost the whole picture; the other layers hold faint ghosts of the roof and fox, one holds the tree + cottage |
+| 3 | the same with an empty caption | 33.3 s | 7.8 | no better |
+| 4 | fox & cottage, **640 px**, 4 steps | 88.2 s | 8.64 | a real split: fox on its own, ground and path, cottage + tree as one block |
+| 5 | 640 px, 20 steps | 431.9 s | 5.18 | the same split with the lowest difference; the background is a green wash with the fox |
+| 6 | 640 px, 12 steps, CFG 4 | 516.9 s | 6.64 | the same split with a white background |
+
+**Reading:** the code did not regress (row 1 reproduces the good forest result with the current code). The model is sensitive to the scene and to the size: this dense, flat-coloured scene is dumped almost whole into one layer at 384 px (and at 512 px in the earlier runs) and only separates at the model's native 640 px, where the fox, the ground and the cottage + tree block come out as layers. The caption does not matter much. The cost is 88 s for 4 steps at 640 px, against 33 s at 384 px; the cottage and the tree stay together in every row.
+
 ## Special features
 
 | Feature | Status | Evidence |

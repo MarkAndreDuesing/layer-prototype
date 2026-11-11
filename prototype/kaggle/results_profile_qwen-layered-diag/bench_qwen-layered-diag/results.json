@@ -1,0 +1,152 @@
+[
+ {
+  "tag": "diag_forest_384",
+  "path": "A",
+  "note": "control: forest, 384 px, 4 layers, 4 steps (the old good setting)",
+  "params": {
+   "caption": "An impressionist oil painting of a forest clearing at night: tall pine trees and bare trees, a full moon and stars in a blue sky, distant mountains, a campfire with logs in the middle, a wooden chair next to it, rocks and fallen branches on the ground.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 35.1,
+  "all_runs_s": [
+   35.1
+  ],
+  "layers": 4,
+  "recomposite_diff": 6.97
+ },
+ {
+  "tag": "diag_fox_384",
+  "path": "A",
+  "note": "fox, 384 px, 4 layers, 4 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 32.6,
+  "all_runs_s": [
+   32.6
+  ],
+  "layers": 4,
+  "recomposite_diff": 8.68
+ },
+ {
+  "tag": "diag_fox_384_nocaption",
+  "path": "A",
+  "note": "fox, 384 px, empty caption",
+  "params": {
+   "caption": "",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 384,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 33.3,
+  "all_runs_s": [
+   33.3
+  ],
+  "layers": 4,
+  "recomposite_diff": 7.8
+ },
+ {
+  "tag": "diag_fox_640_4st",
+  "path": "A",
+  "note": "fox, 640 px (native), 4 layers, 4 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 640,
+   "steps": 4,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 88.2,
+  "all_runs_s": [
+   88.2
+  ],
+  "layers": 4,
+  "recomposite_diff": 8.64
+ },
+ {
+  "tag": "diag_fox_640_20st",
+  "path": "A",
+  "note": "fox, 640 px, 4 layers, 20 steps",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 640,
+   "steps": 20,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 1.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 431.9,
+  "all_runs_s": [
+   431.9
+  ],
+  "layers": 4,
+  "recomposite_diff": 5.18
+ },
+ {
+  "tag": "diag_fox_640_cfg4",
+  "path": "A",
+  "note": "fox, 640 px, 12 steps, CFG 4",
+  "params": {
+   "caption": "Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.",
+   "method": "qwen-layered",
+   "n_layers": 4,
+   "boxes": [],
+   "names": [],
+   "resolution": 640,
+   "steps": 12,
+   "seed": 0,
+   "guidance": 1.0,
+   "cfg": 4.0,
+   "sampler": "euler",
+   "amodal": false
+  },
+  "compute_s": 516.9,
+  "all_runs_s": [
+   516.9
+  ],
+  "layers": 4,
+  "recomposite_diff": 6.64
+ }
+]

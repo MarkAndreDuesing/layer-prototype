@@ -65,7 +65,7 @@ Goal per model: a happy path, best features, and numbers on the shared fox & cot
 
 ## Next from the user's first-look assessment (2026-11-11)
 
-- [ ] **Qwen-Image-Layered extracts noise on the fox & cottage scene** although the forest runs (`results_qwen_sweep_v5`, `results_qwen_v7_layers`) were good: find out what changed (scene, resolution, caption, code) with the `qwen-layered-diag` session; remove from consideration if unfixable.
+- [x] **Qwen-Image-Layered extracts noise on the fox & cottage scene**: diagnosed 2026-11-11, not a code regression (the forest control reproduces the old good result); the fox scene only separates at the native 640 px (88 s for 4 steps), at 384 / 512 px most of it lands in the background layer ([qwen-image-layered.md](models/qwen-image-layered.md)). Open: the same 640 px test for Stable-Layers and Lightning (they were only run at 384 / 512 px); whether 88 s at 640 px is acceptable is the user's call.
 - [ ] **Qwen Lightning**: check whether the story-composite use can be improved; otherwise discard.
 - [ ] **Qwen-Image-2.1 image-to-image**: compare with other image-to-image models (those cannot split layers); test relight further together with IC-Light.
 - [ ] **Combined run**: best model per purpose (story edit: Qwen-2.1; split: Stable-Layers; background: RevealLayer / Qwen-2.1 removal; relight: IC-Light + Qwen-2.1; shadows; boxes: RevealLayer), with the models and their roles stated for every output.

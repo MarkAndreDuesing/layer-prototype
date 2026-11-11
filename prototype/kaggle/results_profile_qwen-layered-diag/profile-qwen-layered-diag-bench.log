@@ -1,0 +1,59 @@
+[{"stream_name":"stderr","time":6.028700704,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.028744982,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.869017541,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.869042417,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.869046515,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.869050824,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.425402549,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.425436439,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.42544148,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.425445429,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":16.097941322,"data":"pip diffusers==0.37.0 transformers\u003e=4.51 accelerate gguf rc 0\n"}
+,{"stream_name":"stdout","time":23.175043317,"data":"transformer from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-transformer/qwen-image-layered-Q4_K_S.gguf | base from: /kaggle/input/notebooks/markandreduesing/qwen-layered-weights-base/Qwen-Image-Layered\n"}
+,{"stream_name":"stdout","time":121.950482838,"data":"base copied to local disk after 100 s\n"}
+,{"stream_name":"stderr","time":155.654447406,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":155.654477263,"data":"\n"}
+,{"stream_name":"stderr","time":155.654483045,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":155.655416425,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stderr","time":155.655434347,"data":"\n"}
+,{"stream_name":"stderr","time":155.655439888,"data":"Flax classes are deprecated and will be removed in Diffusers v1.0.0. We recommend migrating to PyTorch classes or pinning your version of Diffusers.\n"}
+,{"stream_name":"stdout","time":225.652935155,"data":"text encoder used and unloaded after 203 s; 4 caption(s) encoded\n"}
+,{"stream_name":"stderr","time":273.518741631,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":273.5188755,"data":"\n"}
+,{"stream_name":"stderr","time":273.51888318,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":273.51972657,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":273.519760625,"data":"\n"}
+,{"stream_name":"stderr","time":273.519765711,"data":"WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":287.331720031,"data":"loaded in 265 s; GiB [6.1, 5.8]\n"}
+,{"stream_name":"stdout","time":287.331751356,"data":"PROFILE LOADED qwen-layered-diag 271 s\n"}
+,{"stream_name":"stderr","time":287.412524751,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":287.412551611,"data":"\n"}
+,{"stream_name":"stderr","time":287.412555928,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":322.95383231,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":322.953868577,"data":"\n"}
+,{"stream_name":"stderr","time":322.953874031,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":323.039375804,"data":"{\"tag\": \"diag_forest_384\", \"path\": \"A\", \"note\": \"control: forest, 384 px, 4 layers, 4 steps (the old good setting)\", \"params\": {\"caption\": \"An impressionist oil painting of a forest clearing at night: tall pine trees and bare trees, a full moon and stars in a blue sky, distant mountains, a campfire with logs in the middle, a wooden chair next to it, rocks and fallen branches on the ground.\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 35.1, \"all_runs_s\": [35.1], \"layers\": 4, \"recomposite_diff\": 6.97}\n"}
+,{"stream_name":"stderr","time":356.030458985,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":356.030493571,"data":"\n"}
+,{"stream_name":"stderr","time":356.030498926,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":356.116996292,"data":"{\"tag\": \"diag_fox_384\", \"path\": \"A\", \"note\": \"fox, 384 px, 4 layers, 4 steps\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 32.6, \"all_runs_s\": [32.6], \"layers\": 4, \"recomposite_diff\": 8.68}\n"}
+,{"stream_name":"stderr","time":389.742246717,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":389.742285685,"data":"\n"}
+,{"stream_name":"stderr","time":389.74229093,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":389.896958416,"data":"{\"tag\": \"diag_fox_384_nocaption\", \"path\": \"A\", \"note\": \"fox, 384 px, empty caption\", \"params\": {\"caption\": \"\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 384, \"steps\": 4, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 33.3, \"all_runs_s\": [33.3], \"layers\": 4, \"recomposite_diff\": 7.8}\n"}
+,{"stream_name":"stderr","time":478.539261943,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stderr","time":478.539304383,"data":"\n"}
+,{"stream_name":"stderr","time":478.539309187,"data":" negative_prompt is passed but classifier-free guidance is not enabled since true_cfg_scale \u003c= 1\n"}
+,{"stream_name":"stdout","time":478.694836959,"data":"{\"tag\": \"diag_fox_640_4st\", \"path\": \"A\", \"note\": \"fox, 640 px (native), 4 layers, 4 steps\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 640, \"steps\": 4, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 88.2, \"all_runs_s\": [88.2], \"layers\": 4, \"recomposite_diff\": 8.64}\n"}
+,{"stream_name":"stdout","time":911.112354945,"data":"{\"tag\": \"diag_fox_640_20st\", \"path\": \"A\", \"note\": \"fox, 640 px, 4 layers, 20 steps\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 640, \"steps\": 20, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 1.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 431.9, \"all_runs_s\": [431.9], \"layers\": 4, \"recomposite_diff\": 5.18}\n"}
+,{"stream_name":"stdout","time":1428.311997626,"data":"{\"tag\": \"diag_fox_640_cfg4\", \"path\": \"A\", \"note\": \"fox, 640 px, 12 steps, CFG 4\", \"params\": {\"caption\": \"Storybook illustration of a thatched stone cottage with a large leafy tree on the right, a stone gate arch on the left, small village houses behind, a cobblestone path leading into the foreground and a red fox standing on the path.\", \"method\": \"qwen-layered\", \"n_layers\": 4, \"boxes\": [], \"names\": [], \"resolution\": 640, \"steps\": 12, \"seed\": 0, \"guidance\": 1.0, \"cfg\": 4.0, \"sampler\": \"euler\", \"amodal\": false}, \"compute_s\": 516.9, \"all_runs_s\": [516.9], \"layers\": 4, \"recomposite_diff\": 6.64}\n"}
+,{"stream_name":"stdout","time":1428.31205932,"data":"BENCH DONE 1420 s since start\n"}
+,{"stream_name":"stderr","time":1433.938359899,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1433.938390033,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1434.107314461,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1434.107340481,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1434.866444549,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1434.967608325,"data":"[NbConvertApp] Writing 895043 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1437.435422553,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1437.955332785,"data":"[NbConvertApp] Writing 1151951 bytes to __results__.html\n"}
+]
